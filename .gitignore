@@ -10,6 +10,10 @@ dataset/federated_dataset/
 dataset/OpenImages/data
 dataset/OpenImages/selected_img
 dataset/OpenImages/selected_label
+dataset/annotations/*
+dataset/images/*
+dataset/new annotations/*
+dataset/original labels/*
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 results/CrowdWorks/
 results/Prolific/
