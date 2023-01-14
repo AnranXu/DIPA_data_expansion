@@ -1,9 +1,5 @@
 import { Component } from "react";
-//s3 uploader to our Amazon S3 storage for saving images. 
-//I am not familar with uploading data to our own backend server by using secure ways (I only know ways like jQuery).
-//Currently, I am not planning to deploy some backend intelligent cut properties so we do not need backend computations. 
-//Also, always setting a server in Google/Amazon will cost us much money. So, I prefer using Amazon S3 to deploy our backend data transfer. 
-import s3_handler from "./library/s3uploader.js";
+import awsHandler from "./library/awsHandler.js";
 import {Container, Row, Col, Card, ListGroup} from 'react-bootstrap';
 import DefaultAnnotationCard from './defaultAnnotation.js';
 import ManualAnnotationCard from "./manualAnnotation.js";
@@ -18,6 +14,8 @@ class Toolbar extends Component{
         this.image_ID = '';
         this.cur_source = '';
         this.task_record = {};
+        //now, we store the progress in test mode in local and not upload to s3 or dynamodb
+        this.test_progress = 0;
         this.platform = {'en': 'Prolific/',
         'jp': 'CrowdWorks/'};
         this.text = {'load': {'en': 'Load the next image', 'jp': '次の画像を読み込む'},
@@ -29,6 +27,8 @@ class Toolbar extends Component{
         'privacyButton': {'en': 'The above content is not privacy-threatening',
         'jp': '上記の内容はプライバシーを脅かすものではありません'},
         'finishPopUp': {'en':'You have finished your task, thank you!', 'jp': 'タスクは完了です、ありがとうございました'}};
+        this.awsHandler = new awsHandler(this.props.language, this.props.testMode);
+        //this.aws_test.dbReadTaskTable('0').then(value=>console.log(value['Item']));
     }
     toolCallback = (childData) =>{
         console.log(childData);
@@ -142,7 +142,6 @@ class Toolbar extends Component{
             anns['manualAnnotation'][id]['importance'] = importance.value;
             anns['manualAnnotation'][id]['sharing'] = sharing.value;
             anns['manualAnnotation'][id]['sharingInput'] = sharing_input.value;
-
         }
         //clear all not privacy button
         for(var i = 0; i < this.state.labelList.length; i++)
@@ -151,26 +150,25 @@ class Toolbar extends Component{
             privacyButton.checked = false;
         }
         this.props.toolCallback({clearManualBbox: true});
-        var s3 = new s3_handler(this.props.language, this.props.testMode);
-        s3.updateAnns(this.image_ID, this.props.workerId, anns);
+        this.awsHandler.updateAnns(this.image_ID, this.props.workerId, anns);
         return true;
     }
     readURL = (image_URL, label_URL) => {
-        // fetch data from amazon S3
+        // fetch data from amazon S3 
         var ori_bboxs = [];
         var label_list = {};
         fetch(label_URL).then( (res) => res.text() ) //read new label as text
         .then( (text) => {
-            var ori_anns = text.split('\n'); // split it as each row has one annotation
-            for(var i = 0; i < ori_anns.length; i++)
+            var json = text.replaceAll("\'", "\"");
+            var cur_ann = JSON.parse(json); // parse each row as json file
+            var keys = Object.keys(cur_ann['annotations']);
+            for(var i = 0; i < keys.length; i++)
             {
-                var json = ori_anns[i].replaceAll("\'", "\"");
-                var cur_ann = JSON.parse(json); // parse each row as json file
                 this.cur_source = cur_ann['source'];
-                ori_bboxs.push({'bbox': cur_ann['bbox'], 'category': cur_ann['category'], 
+                ori_bboxs.push({'bbox': cur_ann['annotations'][keys[i]]['bbox'], 'category': cur_ann['annotations'][keys[i]]['category'], 
                 'width': cur_ann['width'], 'height': cur_ann['height']}); //get bbox (x, y, w, h), width, height of the image (for unknown reasons, the scale of bboxs and real image sometimes are not identical), and category
                 //create list of category, we just need to know that this image contain those categories.
-                label_list[cur_ann['category']] = 1;
+                label_list[cur_ann['annotations'][keys[i]]['category']] = 1;
             }
             this.setState({bboxs: ori_bboxs, labelList: Object.keys(label_list)});
         }
@@ -194,61 +192,189 @@ class Toolbar extends Component{
                 ifFinished = this.uploadAnnotation();  
             }
             console.log('first loading: ', this.first_loading);
-            resolve(ifFinished);
+            if(ifFinished)
+                resolve(true);
+            else
+                reject(false);
             // update the record then
-        }).then((flag) =>{
-            if(!this.first_loading && flag)
+        }).then((resolved) =>{
+            if(resolved)
             {
-                //unsync problem here, so we need to fetch the record again and update it immediately
-                var prefix = 'https://iui-privacy-dataset.s3.ap-northeast-1.amazonaws.com/';
-                var task_record_URL = '';
                 if(this.props.testMode)
-                    task_record_URL = prefix+ 'testMode/' + 'task_record.json';
+                {
+                    if(!this.first_loading)
+                    {
+                        this.getTestLabel();
+                        this.test_progress += 1;
+                    }
+                    else{
+                        this.getTestLabel();
+                        this.first_loading = false;
+                    }
+                    return;
+                }
+                if(!this.first_loading)
+                {
+                    this.awsHandler.dbReadWorkerTable(this.props.workerId).then((workerRecord)=>{
+                        workerRecord = workerRecord['Item'];
+                        var cur_progress = Number(workerRecord['progress']['N']);
+                        var workerRecordsParams = {
+                            Item: {
+                                ...workerRecord,
+                                "progress":{
+                                    "N": String(cur_progress + 1)
+                                }
+                            },
+                            ReturnConsumedCapacity: "TOTAL", 
+                            TableName: "soupsWorkerRecords"
+                        }
+                        this.awsHandler.dbUpdateTable(workerRecordsParams).then((value)=>{
+                            this.getLabel();
+                        }
+                        );
+                    });
+                }
                 else
-                    task_record_URL = prefix+ this.platform[this.props.language] + 'task_record.json';
-                fetch(task_record_URL).then((res) => res.text()).then( (text) =>{
-                    text = text.replaceAll("\'", "\"");
-                    this.task_record = JSON.parse(text); // parse each row as json file
-                    //if this worker is back to his/her work
-                    var task_num = '0';
-                    var task_num = this.task_record['worker_record'][this.props.workerId]['task_num'];
-                    this.task_record['worker_record'][this.props.workerId]['progress'] += 1; 
-                    this.task_record[task_num]['workerprogress'] += 1;
-                    console.log(this.task_record[task_num]);
-                    //var ifUpdateRecord = this.updateRecord();
-                    var s3_uploader = new s3_handler(this.props.language, this.props.testMode);
-                    var res = JSON.stringify(this.task_record);
-                    var name = '';
-                    if(this.props.testMode)
-                        name = 'testMode/' + 'task_record.json';
-                    else
-                        name = this.platform[this.props.language] + 'task_record.json';
-                    var textBlob = new Blob([res], {
-                        type: 'text/plain'
-                    });
-                    var upload = s3_uploader.s3.upload({
-                        Bucket: 'iui-privacy-dataset',
-                        Key: name,
-                        Body: textBlob,
-                        ContentType: 'text/plain',
-                        ACL: 'bucket-owner-full-control'
-                    });
-                    var promise = upload.promise();
-                    promise.then(()=>{
-                        this.getLabel();
-                    });
-                    });
+                // first uploading
+                {
+                    this.getLabel();
+                    this.first_loading = false;
+                }
             }
-            else if(this.first_loading && flag)
-            {
-                this.getLabel();
-                this.first_loading = false;
-            }
-            // load the new record and get labelURL and imageURL
+            
+        },
+        (rejected)=>{
+            console.log('did not finish annotations for this image');
+        });
+    }
+    getTestLabel = ()=>{
+        var prefix = 'https://soups-data-collection.s3.ap-northeast-1.amazonaws.com/sources/';
+        this.awsHandler.dbReadTestMode().then((testRecord)=>{
+            testRecord = testRecord['Item'];
+            var taskList = testRecord['taskList']['SS'];
+            this.image_ID = taskList[this.test_progress];
+            var image_URL = prefix + 'images/'+ this.image_ID + '.jpg';
+            var label_URL = prefix + 'annotations/'+ this.image_ID + '_label.json';
+            console.log(image_URL);
+            console.log(label_URL);
+            this.readURL(image_URL, label_URL);
         });
     }
     getLabel = ()=>{
-        var prefix = 'https://iui-privacy-dataset.s3.ap-northeast-1.amazonaws.com/';
+        var prefix = 'https://soups-data-collection.s3.ap-northeast-1.amazonaws.com/sources/';
+        this.awsHandler.dbReadGeneralController().then( (generalRecords)=>
+        {
+            generalRecords = generalRecords['Item'];
+            var workerList = generalRecords['workerList']['SS'];
+            var cur_progress = 0;
+            if(workerList.includes(this.props.workerId))
+            {
+                console.log('find worker\'s id');
+                this.awsHandler.dbReadWorkerTable(this.props.workerId).then((workerRecord)=>{
+                    workerRecord = workerRecord['Item'];
+                    cur_progress = Number(workerRecord['progress']['N']);
+                    if(cur_progress >= Number(workerRecord['taskNum']['N']))
+                    {
+                        return false;
+                    }
+                    this.image_ID = workerRecord['taskList']['SS'][cur_progress];
+                    return true;
+                }).then((flag) => {
+                    if(flag)
+                    {
+                        var image_URL = prefix + 'images/'+ this.image_ID + '.jpg';
+                        var label_URL = prefix + 'annotations/'+ this.image_ID + '_label.json';
+                        console.log(image_URL);
+                        console.log(label_URL);
+                        this.readURL(image_URL, label_URL);
+                    }
+                    else{
+                        console.log('the task is finished');
+                        alert(this.text['finishPopUp'][this.props.language]);
+                        if(this.props.language === 'en' && this.props.testMode === false)
+                            window.location.replace('anranxu.com');//need new prolific link 
+                    }
+                });
+            }
+            else{
+                //create new worker record to database
+                //first read the tasklist
+                console.log('new worker in');
+                this.awsHandler.dbReadTaskTable(generalRecords['nextTask']['N']).then((taskRecord)=>{
+                    taskRecord = taskRecord['Item'];
+                    var taskList = taskRecord['taskList']['SS'];
+                    //to task Table
+                    var taskRecordsParams = {
+                        Item: {
+                            ...taskRecord,
+                            "assigned":{
+                                "N": String(Number(taskRecord['assigned']["N"]) + 1)
+                            }
+                        },
+                        ReturnConsumedCapacity: "TOTAL", 
+                        TableName: "soupsTaskRecords"
+                    }
+                    //to worker Table
+                    var workerRecordsParams = {
+                        Item: {
+                            "workerId":{
+                                "S": this.props.workerId
+                            },
+                            "progress":{
+                                "N": String(0)
+                            },
+                            "taskId":{
+                                "N": generalRecords['nextTask']['N']
+                            },
+                            "taskNum":{
+                                "N": String(20)
+                            },
+                            "taskList":{
+                                "SS": taskList
+                            }
+                        },
+                        ReturnConsumedCapacity: "TOTAL", 
+                        TableName: "soupsWorkerRecords"
+                    }
+                    //to general records
+                    generalRecords['workerList']['SS'].push(this.props.workerId);
+                    generalRecords['totalWorker']['N'] = Number(generalRecords['totalWorker']['N']) + 1;
+                    generalRecords['nextTask']['N'] = Number(generalRecords['nextTask']['N']) + 1;
+                    if(generalRecords['nextTask']['N'] >= Number(generalRecords['totalTask']['N'])){
+                        generalRecords['round']['N'] = Number(generalRecords['round']['N']) + 1;
+                        generalRecords['nextTask']['N'] = 0;
+                    }
+                    //change type to String
+                    generalRecords['totalWorker']['N'] = String(generalRecords['totalWorker']['N']);
+                    generalRecords['nextTask']['N'] = String(generalRecords['nextTask']['N']);
+                    generalRecords['round']['N'] = String(generalRecords['round']['N']);
+                    var generalControllerParams = {
+                        Item: {
+                            ...generalRecords
+                           }, 
+                           ReturnConsumedCapacity: "TOTAL", 
+                           TableName: "soupsGeneralController"
+                    };
+                    const promise1 = this.awsHandler.dbUpdateTable(taskRecordsParams);
+                    const promise2 = this.awsHandler.dbUpdateTable(workerRecordsParams);
+                    const promise3 = this.awsHandler.dbUpdateTable(generalControllerParams);
+                    
+                    //when all update finished, go readURL
+                    Promise.all([promise1,promise2,promise3]).then(values=>{
+                        this.image_ID = taskList[0];
+                        var image_URL = prefix + 'images/'+ this.image_ID + '.jpg';
+                        var label_URL = prefix + 'annotations/'+ this.image_ID + '_label.json';
+                        console.log(image_URL);
+                        console.log(label_URL);
+                        this.readURL(image_URL, label_URL);
+                    });
+                });
+                
+            }
+        });
+
+
+        /*var prefix = 'https://iui-privacy-dataset.s3.ap-northeast-1.amazonaws.com/';
         var task_record_URL = '';
         if(this.props.testMode)
             task_record_URL = prefix+ 'testMode/' + 'task_record.json';
@@ -301,7 +427,7 @@ class Toolbar extends Component{
                 console.log(label_URL);
                 this.readURL(image_URL, label_URL);
             }
-        });
+        });*/
     }
     changePrivacyButton = (e) => {
         //users may choose the default label as 'not privacy' to quickly annotating.
@@ -401,7 +527,7 @@ class Toolbar extends Component{
     render(){
         return (
             <div>
-                <button onClick = {() => this.loadData()}>{this.text['load'][this.props.language]}</button>
+                <button id={"loadButton"} onClick = {() => this.loadData()}>{this.text['load'][this.props.language]}</button>
                 <button onClick=  {() => this.manualAnn()}>{this.props.manualMode? this.text['manualOn'][this.props.language]: this.text['manualOff'][this.props.language]}</button>
                 {/* Menu for choosing all bounding boxes from a specific category */}
                 <div className="defaultLabel">

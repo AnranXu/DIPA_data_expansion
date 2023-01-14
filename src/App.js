@@ -3,6 +3,7 @@ import General from './general.js';
 import Intro from './intro.js';
 import { Component } from "react";
 import { useSearchParams } from "react-router-dom";
+import awsHandler from "./library/awsHandler.js";
 
 class App extends Component {
   constructor(props)

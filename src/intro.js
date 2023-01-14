@@ -1,14 +1,13 @@
 import {Container, Row, Col, Card, Form, Button, ButtonGroup} from 'react-bootstrap';
 import { Component } from "react";
 import React from 'react';
-import s3_handler from "./library/s3uploader.js";
+import awsHandler from "./library/awsHandler.js";
 import $ from "jquery";
 import './intro.css';
 
 class Intro extends Component{
     constructor(props){
         super(props);
-        this.state = {gender: ''};
         this.bigfiveRef = [];
         this.bigfiveAns = new Array(10).fill('0');
         this.gender = '';
@@ -16,6 +15,8 @@ class Intro extends Component{
         this.age = React.createRef();
         this.nationality = React.createRef();
         this.workerId = React.createRef();
+        this.ifFirstLoad = true;
+        this.awsHandler = new awsHandler(this.props.language, this.props.testMode);
         for(var i = 0; i < 10; i++)
             this.bigfiveRef[i] = React.createRef();
         this.platform = {'en': 'Prolific/',
@@ -30,9 +31,10 @@ class Intro extends Component{
         'not mention': {'en': 'Prefer not to mention', 'jp': '回答しない'},
         'age': {'en': 'Age (Your age should be from 20 to 70. Write in Arabic numerals.):', 'jp': '年齢（20歳以上70歳未満でお願いします。アラビア数字で表記する。）:'},
         'nationality': {'en': 'Nationality:', 'jp': '国籍:'},
-        'workerId': {'en': 'Worker\'s ID:', 'jp': 'ワーカーズID:'},
+        'workerId': {'en': 'Worker\'s ID:', 
+        'jp': 'ワーカーズID:'},
         'bigfiveTitle': {'en': 'Please answer the following questions.', 'jp': '以下の質問にお答えください。'},
-        'confirmText0': {'en': 'I fully understood the study and want to do this task with my consent.', 'jp': '私はこの研究を十分に理解し、同意の上でこの作業を行いたいです。'},
+        'confirmText0': {'en': 'I fully understand the study and want to do this task with my consent.', 'jp': '私はこの研究を十分に理解し、同意の上でこの作業を行いたいです。'},
         'confirmText1': {'en': '(You may back to read the instruction later if you need)', 'jp': '(必要であれば、後で説明書を読み返すことができます）'}};
     }
     submit = () =>{
@@ -88,65 +90,15 @@ class Intro extends Component{
             var anws = {'name': this.name.current.value, 'age': this.age.current.value,
             'gender': this.gender, 'nationality': this.nationality.current.value,
             'workerId': this.workerId.current.value, 'bigfives': this.bigfiveAns};
-            var s3 = new s3_handler(this.props.language, this.props.testMode);
-            s3.updateQuestionnaire(anws, this.workerId.current.value);
-            // we need to update a new working record if this is a new worker right after he click it.
-            // or there will be problem of assigning the same worker id after the first image is uploaded.
-            var prefix = 'https://iui-privacy-dataset.s3.ap-northeast-1.amazonaws.com/';
-            var task_record_URL = '';
-            if(this.props.testMode)
-                task_record_URL = prefix+ 'testMode/' + 'task_record.json';
-            else
-                task_record_URL = prefix+ this.platform[this.props.language] + 'task_record.json';
-            console.log(task_record_URL);
-            fetch(task_record_URL).then((res) => res.text()).then( (text) =>{
-                //upload the annotation first
-                text = text.replaceAll("\'", "\"");
-                var task_record = JSON.parse(text); // parse each row as json file
-                //if this worker is back to his/her work
-                var task_num = '0';
-                var workerId = this.workerId.current.value;
-                if(!(workerId in task_record['worker_record']))
-                {
-                    task_num = task_record['cur_progress'];
-                    if(parseInt(task_num) >= task_record['list_len'])
-                    {
-                        task_num = '0';
-                    }
-                    task_record['worker_record'][workerId] = {};
-                    task_record['worker_record'][workerId]['progress'] = 0;
-                    task_record[task_num]['workerid'] = workerId;
-                    task_record[task_num]['workerprogress'] = 0;
-                    task_record['worker_record'][workerId]['task_num'] = task_num;
-                    task_record['cur_progress'] = String(parseInt(task_record['cur_progress']) + 1);
-                    var s3_uploader = new s3_handler(this.props.language, this.props.testMode);
-                    var res = JSON.stringify(task_record);
-                    var name = '';
-                    if(this.props.testMode)
-                        name = 'testMode/' + 'task_record.json';
-                    else
-                        name = this.platform[this.props.language] + 'task_record.json';
-                    var textBlob = new Blob([res], {
-                        type: 'text/plain'
-                    });
-                    var upload = s3_uploader.s3.upload({
-                        Bucket: 'iui-privacy-dataset',
-                        Key: name,
-                        Body: textBlob,
-                        ContentType: 'text/plain',
-                        ACL: 'bucket-owner-full-control'
-                    });
-                    var promise = upload.promise();
-                    promise.then(()=>{
-                        this.props.toolCallback({page: 'task', workerId: this.workerId.current.value});
-                        document.body.scrollTop = document.documentElement.scrollTop = 0;
-                    });
-                }
-                else{
-                    this.props.toolCallback({page: 'task', workerId: this.workerId.current.value});
-                    document.body.scrollTop = document.documentElement.scrollTop = 0;
-                }
-            });
+            this.awsHandler.updateQuestionnaire(anws, this.workerId.current.value);
+            //exist bugs when back to intro then go to the interface
+            if(this.ifFirstLoad)
+            {
+                this.ifFirstLoad = false;
+                document.getElementById('loadButton').click();
+            }
+            this.props.toolCallback({page: 'task', workerId: this.workerId.current.value});
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
         }
         else{
             alert('Please fill out all questions');
@@ -219,7 +171,10 @@ class Intro extends Component{
                 <Card.Title><h1><strong>How to use the interface</strong></h1></Card.Title>
                 <Card.Text>
                     <h3>
-                        Click the button '<strong>Load the next image</strong>' to get the next image you need to annotate.
+                        Please finish the questionnaire first and click the button "I fully understand the study and want to do this task with my consent." at the bottom to go to the task page.
+                        <br></br>
+                        <br></br>
+                        In the task page, click the button '<strong>Load the next image</strong>' to get the next image you need to annotate.
                         <br></br>
                         <br></br>
                         You will see a list of labels after you load an image. 
@@ -267,6 +222,9 @@ class Intro extends Component{
                         <br></br>
                         <br></br>
                         If you want to leave the interface before finishing all tasks, please input the same info (especially <strong>Worker's ID</strong>) on this page and you may resume your task stage.
+                        <br></br>
+                        <br></br>
+                        If you need to change your ID during the task, please reload this page.                
                     </h3>
                 </Card.Text>
             </div>
@@ -292,6 +250,9 @@ class Intro extends Component{
                 <Card.Title><h1><strong>インターフェイスの使い方</strong></h1></Card.Title>
                 <Card.Text>
                     <h3>
+                        まずはアンケートに答えていただき、一番下の「私はこの研究を十分に理解し、同意の上でこの作業を行いたいです」というボタンをクリックし、タスクのページに進んでください。
+                        <br></br>
+                        <br></br>
                         ボタン 「<strong>次の画像を読み込む</strong>」をクリックすると、次にアノテーションする画像が表示されます。 画像が読み込まれると、ラベルのリストが表示されます。
                         <br></br>
                         <br></br>
@@ -334,6 +295,9 @@ class Intro extends Component{
                         <br></br>
                         <br></br>
                         もしすべてのタスクを完了する前に離れたい場合は、同じ情報（特に、<strong>クラウドワークスのID</strong>）を入力してください。それにより、途中から再開することができます。
+                        <br></br>
+                        <br></br>
+                        タスクの途中でIDを変更する必要がある場合は、このページを再読み込みしてください。  
                     </h3>
                 </Card.Text>
                 <Card.Title><h1><strong>追記</strong></h1></Card.Title>
@@ -380,8 +344,13 @@ class Intro extends Component{
                         {/*this button can skip the input procedure in test mode*/}
                         {   
                             this.props.testMode? <button onClick={()=>{
-                            this.props.toolCallback({page: 'task', workerId: 'test'});
-                            document.body.scrollTop = document.documentElement.scrollTop = 0;
+                                this.props.toolCallback({page: 'task', workerId: 'test'});
+                                if(this.ifFirstLoad)
+                                {
+                                    this.ifFirstLoad = false;
+                                    document.getElementById('loadButton').click();
+                                }
+                                document.body.scrollTop = document.documentElement.scrollTop = 0;
                             }}>{this.text['skipButton'][this.props.language]}</button>: 
                             <div></div>
                         }
@@ -405,15 +374,17 @@ class Intro extends Component{
                             <h3>{this.text['bigfiveTitle'][this.props.language]}</h3>
                         </Card.Text>
                         {this.generateBigfive()}
-                        <Card.Footer onClick = {this.submit} style={{cursor: 'pointer'}}>
+                        <Button onClick = {this.submit} variant="outline-dark" style={{cursor: 'pointer', width: '80%', margin: 'auto'}}>
                             <h2 style={{textAlign: "center"}}>{this.text['confirmText0'][this.props.language]}</h2>
                             <h2 style={{textAlign: "center"}}>{this.text['confirmText1'][this.props.language]}</h2>
-                        </Card.Footer>
+                        </Button>
                         </Card>
                         </Col>
                     </Row>
                 </Container>
+                <div style={{height: '10px'}}>
 
+                </div>
             </div>
         );
     }

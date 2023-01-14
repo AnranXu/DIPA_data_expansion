@@ -2,6 +2,7 @@ import os
 import json
 import shutil
 import csv
+import numpy as np
 
 class unify_annotation:
     # unify the annotations of each image, so every image only has one annotation file that contains
@@ -24,9 +25,9 @@ class unify_annotation:
             # copy image to the new folder
             # add suffix
             key = key + '.jpg'
-            new_label = key + '_label.json'
+            new_label = key[:-4] + '_label.json'
             shutil.copyfile(os.path.join(self.img_folder, key), os.path.join(self.output_folder, 'images', key))
-            anns = {'annotations': {}, 'width': 0, 'height': 0}
+            anns = {'annotations': {}, 'width': 0, 'height': 0, 'source': ""}
             for platform_name, annotation_names in value.items():
                 # copy workerinfo
                 for annotation_name in annotation_names:
@@ -41,20 +42,39 @@ class unify_annotation:
                         ori_label = [json.loads(i.replace('\'', '\"')) for i in f1.readlines()]
                         # we only choose default annotations
                         source = ori_ann['source']
+                        anns['source'] = source
+                        cnt = 0
                         for object, ann in ori_ann['defaultAnnotation'].items():
                             if not ann['ifNoPrivacy'] and object not in anns.keys():
                                 #find all corresponding bboxes
-                                anns['annotations'][object] = {'category': object, 'bbox': []}
                                 for label in ori_label:
                                     if label['category'] == object:
-                                        anns['annotations'][object]['bbox'].append(label['bbox'])
+                                        anns['annotations'][str(cnt)] = {'category': object, 'bbox': []}
+                                        anns['annotations'][str(cnt)]['bbox'] = label['bbox']
                                         anns['width'] = label['width']
                                         anns['height'] = label['height']
+                                        cnt += 1
             #print(anns)
             with open(os.path.join(self.output_folder, 'annotations', new_label), 'w') as w:
                 w.write(json.dumps(anns))
     
-
+    def generate_task_json(self)->None:
+        img_list = os.listdir(os.path.join(self.output_folder, 'images'))
+        name_list = [img[:-4] for img in img_list]
+        #name_list = np.array(name_list)
+        np.random.seed(0)
+        np.random.shuffle(name_list)
+        task_per_worker = 20
+        task_record = dict()
+        for i in range(int(len(name_list) / task_per_worker) + 1):
+            start = i*task_per_worker
+            end = (i+1)*task_per_worker if (i+1)*task_per_worker < len(name_list) else len(name_list)
+            task_record[str(i)] = {'taskId': i, 'taskList': name_list[start:end],
+            'progress': 0, 'assigned': 0}
+        print(task_record)
+        with open('task_record.json', 'w') as w:
+            w.write(json.dumps(task_record))
 if __name__ == '__main__':
     unifier = unify_annotation()
     unifier.unifying()
+    #unifier.generate_task_json()
