@@ -11,7 +11,7 @@ class Intro extends Component{
         this.bigfiveRef = [];
         this.bigfiveAns = new Array(10).fill('0');
         this.gender = '';
-        this.name = React.createRef();
+        //this.name = React.createRef();
         this.age = React.createRef();
         this.nationality = React.createRef();
         this.workerId = React.createRef();
@@ -24,12 +24,11 @@ class Intro extends Component{
         this.text = {'instruction': {'en': 'Instruction', 'jp': '手順'},
         'skipButton': {'en': 'Directly try the task (You are in the test mode now)', 'jp': 'タスクを直接試す（現在、テストモードになっています）'},
         'task': {'en': 'Task', 'jp': '作業'},
-        'name': {'en': 'Name:', 'jp': '名前:'},
         'gender': {'en': 'Gender:', 'jp': '性别:'},
         'male': {'en': 'Male', 'jp': '男性'},
         'female': {'en': 'Female', 'jp': '女性'},
         'not mention': {'en': 'Prefer not to mention', 'jp': '回答しない'},
-        'age': {'en': 'Age (Your age should be from 20 to 70. Write in Arabic numerals.):', 'jp': '年齢（20歳以上70歳未満でお願いします。アラビア数字で表記する。）:'},
+        'age': {'en': 'Age:', 'jp': '年齢:'},
         'nationality': {'en': 'Nationality:', 'jp': '国籍:'},
         'workerId': {'en': 'Worker\'s ID:', 
         'jp': 'ワーカーズID:'},
@@ -39,12 +38,12 @@ class Intro extends Component{
     }
     submit = () =>{
         var ifFinished = true;
-        //check name
+        /*check name
         if(this.name.current.value == '')
         {
             console.log('false');
             ifFinished = false;
-        }
+        }*/
             
         //check age
         if(this.age.current.value == '')
@@ -87,7 +86,7 @@ class Intro extends Component{
         if(ifFinished)
         {
             console.log('uploading worker info');
-            var anws = {'name': this.name.current.value, 'age': this.age.current.value,
+            var anws = {'age': this.age.current.value,
             'gender': this.gender, 'nationality': this.nationality.current.value,
             'workerId': this.workerId.current.value, 'bigfives': this.bigfiveAns};
             this.awsHandler.updateQuestionnaire(anws, this.workerId.current.value);
@@ -158,7 +157,7 @@ class Intro extends Component{
             <div>
                 <Card.Text text={'dark'}>
                     <h3>
-                    Your task is to annotate all privacy-threatening content in given images (Normally there are 10 images). 
+                    Your task is to annotate all privacy-threatening content in given images (Normally there are 20 images). 
                     <br></br>
                     <br></br>
                     Please first input your basic information and fill out a small questionnaire. 
@@ -174,9 +173,15 @@ class Intro extends Component{
                         Please finish the questionnaire first and click the button "I fully understand the study and want to do this task with my consent." at the bottom to go to the task page.
                         <br></br>
                         <br></br>
-                        In the task page, click the button '<strong>Load the next image</strong>' to get the next image you need to annotate.
+                        The figure below is an example of the interface.
                         <br></br>
                         <br></br>
+                        <img src = {loading} style = {{maxHeight: '100%', maxWidth: '100%'}}/>
+                        <br></br>
+                        <br></br>   
+                        {/*In the task page, click the button '<strong>Load the next image</strong>' to get the next image you need to annotate.
+                        <br></br>
+                        <br></br>*/}
                         You will see a list of labels after you load an image. 
                         <br></br>
                         <br></br>
@@ -201,12 +206,7 @@ class Intro extends Component{
                         Once you finish all the annotations, please click '<strong>Load the next image</strong>' to annotate the next image.
                         <br></br>
                         <br></br>
-                        The image below is an example of the interface.
-                        <br></br>
-                        <br></br>
-                        <img src = {loading} style = {{maxHeight: '100%', maxWidth: '100%'}}/>
-                        <br></br>
-                        <br></br>   
+                        
                     </h3>
                 </Card.Text>
                 <Card.Title><h1><strong>How to know if I finish the task?</strong></h1></Card.Title>
@@ -238,7 +238,7 @@ class Intro extends Component{
             <div>
                 <Card.Text text={'dark'}>
                     <h3>
-                    この作業は、与えられた画像（通常10枚の画像があります）の中で、プライバシーを脅かすすべてのコンテンツにアノテーションを行う（注釈を付ける）ことです。 
+                    この作業は、与えられた画像（通常20枚の画像があります）の中で、プライバシーを脅かすすべてのコンテンツにアノテーションを行う（注釈を付ける）ことです。 
                     <br></br>
                     <br></br>
                     まず、あなたの基本情報を入力し、簡単なアンケートに答えてください。 
@@ -253,9 +253,18 @@ class Intro extends Component{
                         まずはアンケートに答えていただき、一番下の「私はこの研究を十分に理解し、同意の上でこの作業を行いたいです」というボタンをクリックし、タスクのページに進んでください。
                         <br></br>
                         <br></br>
-                        ボタン 「<strong>次の画像を読み込む</strong>」をクリックすると、次にアノテーションする画像が表示されます。 画像が読み込まれると、ラベルのリストが表示されます。
+                        下図はインターフェースの一例です。
                         <br></br>
                         <br></br>
+                        <img src = {loading} style = {{maxHeight: '100%', maxWidth: '100%'}}/>
+                        <br></br>
+                        <br></br>   
+                        {/*ボタン 「<strong>次の画像を読み込む</strong>」をクリックすると、次にアノテーションする画像が表示されます。 
+                        <br></br>
+                        <br></br>*/}
+                        画像が読み込まれると、ラベルのリストが表示されます。
+                        <br></br>
+                        <br></br>   
                         これらが<strong>プライバシーを脅かすもの</strong>と考えた場合、クリックしてください。また、その場合ラベルに折りたたまれている質問にも答えてください。
                         <br></br>
                         <br></br>
@@ -274,12 +283,6 @@ class Intro extends Component{
                         全てのアノテーションが終了したら、「<strong>次の画像を読み込む</strong>」をクリックして、次の画像にアノテーションを付けてください。 
                         <br></br>
                         <br></br>
-                        下の画像は、インターフェースの例です。
-                        <br></br>
-                        <br></br>
-                        <img src = {loading} style = {{maxHeight: '100%', maxWidth: '100%'}}/>
-                        <br></br>
-                        <br></br>   
                     </h3>
                 </Card.Text>
                 <Card.Title><h1><strong>タスクが完了したかどうかを知るには？</strong></h1></Card.Title>
@@ -355,8 +358,8 @@ class Intro extends Component{
                             <div></div>
                         }
                         <br></br>
-                        <span style={{textAlign: 'left'}}><h3>{this.text['name'][this.props.language]}</h3></span>
-                        <input type="text" id="particpant-name" ref={this.name}/><br/>
+                        <span  style={{ textAlign: 'left'}}><h3>{this.text['workerId'][this.props.language]}</h3></span>
+                        <input type="text" id={"particpant-workerid"} ref={this.workerId} /><br/>
                         <span  style={{ textAlign: 'left'}}><h3>{this.text['age'][this.props.language]}</h3></span>
                         <input type="text" id="particpant-age" ref={this.age}/><br/>
                         <span  style={{ textAlign: 'left'}}><h3>{this.text['gender'][this.props.language]}</h3></span>
@@ -367,8 +370,6 @@ class Intro extends Component{
                         </div>
                         <span  style={{ textAlign: 'left'}}><h3>{this.text['nationality'][this.props.language]}</h3></span>
                         <input type="text" id="particpant-nationality" ref={this.nationality} /><br/>
-                        <span  style={{ textAlign: 'left'}}><h3>{this.text['workerId'][this.props.language]}</h3></span>
-                        <input type="text" id={"particpant-workerid"} ref={this.workerId} /><br/>
                         <br></br>
                         <Card.Text style={{ textAlign: 'left'}}>
                             <h3>{this.text['bigfiveTitle'][this.props.language]}</h3>
