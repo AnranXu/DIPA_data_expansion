@@ -3,6 +3,8 @@ import awsHandler from "./library/awsHandler.js";
 import {Container, Row, Col, Card, ListGroup} from 'react-bootstrap';
 import DefaultAnnotationCard from './defaultAnnotation.js';
 import ManualAnnotationCard from "./manualAnnotation.js";
+import Informativeness from './component/Informativeness/informativeness.js';
+import $ from "jquery";
 class Toolbar extends Component{
 	constructor(props)
 	{
@@ -372,62 +374,6 @@ class Toolbar extends Component{
                 
             }
         });
-
-
-        /*var prefix = 'https://iui-privacy-dataset.s3.ap-northeast-1.amazonaws.com/';
-        var task_record_URL = '';
-        if(this.props.testMode)
-            task_record_URL = prefix+ 'testMode/' + 'task_record.json';
-        else
-            task_record_URL = prefix+ this.platform[this.props.language] + 'task_record.json';
-        var image_URL = '';
-        var label_URL = '';
-        fetch(task_record_URL).then((res) => res.text()).then( (text) =>{
-            //upload the annotation first
-            text = text.replaceAll("\'", "\"");
-            this.task_record = JSON.parse(text); // parse each row as json file
-            //if this worker is back to his/her work
-            var cur_progress = 0;
-            var task_num = '0';
-            if(this.props.workerId in this.task_record['worker_record'])
-            {
-                console.log('find worker\'s id');
-                cur_progress = this.task_record['worker_record'][this.props.workerId]['progress'];
-                task_num = this.task_record['worker_record'][this.props.workerId]['task_num'];
-            }
-            //create new record and move old record
-            else{
-                task_num = this.task_record['cur_progress'];
-                if(parseInt(task_num) >= this.task_record['list_len'])
-                {
-                    task_num = '0';
-                }
-                this.task_record['worker_record'][this.props.workerId] = {};
-                this.task_record['worker_record'][this.props.workerId]['progress'] = 0;
-                this.task_record[task_num]['workerid'] = this.props.workerId;
-                this.task_record[task_num]['workerprogress'] = 0;
-                this.task_record['worker_record'][this.props.workerId]['task_num'] = task_num;
-                this.task_record['cur_progress'] = String(parseInt(this.task_record['cur_progress']) + 1);
-            }
-            if(cur_progress >= 10)
-            {
-                alert(this.text['finishPopUp'][this.props.language]);
-                if(this.props.language === 'en' && this.props.testMode === false)
-                    window.location.replace('https://app.prolific.co/submissions/complete?cc=C17L3MGU');
-                return false;
-            }
-            this.image_ID = this.task_record[task_num]['img_list'][cur_progress];
-            image_URL = prefix + 'all_img/'+ this.image_ID + '.jpg';
-            label_URL = prefix + 'all_label/'+ this.image_ID + '_label';
-            return true;
-        }).then((flag) => {
-            if(flag)
-            {
-                console.log(image_URL);
-                console.log(label_URL);
-                this.readURL(image_URL, label_URL);
-            }
-        });*/
     }
     changePrivacyButton = (e) => {
         //users may choose the default label as 'not privacy' to quickly annotating.
@@ -450,7 +396,7 @@ class Toolbar extends Component{
             <input type={'checkbox'} id={'privacyButton-' + label} onClick={this.changePrivacyButton}></input>
                 <span>{this.text['privacyButton'][this.props.language]}</span>
             <div className={'defaultAnnotationCard'}>
-                <DefaultAnnotationCard key={'defaultAnnotationCard-'+label} visibleCat={this.state.curCat} 
+                <DefaultAnnotationCard width = {this.props.width} key={'defaultAnnotationCard-'+label} visibleCat={this.state.curCat} 
                 category = {label} clickCnt={this.state.defaultLabelClickCnt}language = {this.props.language}>
                 </DefaultAnnotationCard>
             </div>
@@ -491,7 +437,7 @@ class Toolbar extends Component{
                 {'Label ' + String(bbox['id'])}
             </ListGroup.Item>
             <ManualAnnotationCard key={'manualAnnotationCard-' + String(bbox['id'])} className={'manualAnnotationCard'} 
-            id = {String(bbox['id'])} manualNum={String(bbox['id'])} language = {this.props.language}
+            width = {this.props.width} id = {String(bbox['id'])} manualNum={String(bbox['id'])} language = {this.props.language}
             visibleBbox={this.state.curManualBbox} bboxsLength={this.props.manualBboxs.length} 
             clickCnt={this.state.manualLabelClickCnt} stageRef={this.props.stageRef} trRef={this.props.trRef}></ManualAnnotationCard>
         </div>
@@ -532,7 +478,7 @@ class Toolbar extends Component{
                 {/* Menu for choosing all bounding boxes from a specific category */}
                 <div className="defaultLabel">
                 <h3>{this.text['labelList'][this.props.language]}</h3>
-                <Card style={{left: '3rem', width: '20rem' }} key={'DefaultAnnotationCard'}>
+                <Card style={{left: '3rem', width: String(this.props.width)}} key={'DefaultAnnotationCard'}>
                 {
                         this.state.labelList.length? 
                         <ListGroup variant="flush">
@@ -546,8 +492,8 @@ class Toolbar extends Component{
                 <div className="manualLabel">
                 <h3>{this.text['manualList'][this.props.language]}</h3>
                 <br></br>
-                {this.props.manualBboxs.length? <button onClick={ () => this.deleteSelectedLabel()}>{this.text['deleteManualBbox'][this.props.language]}</button>: <div></div>}
-                <Card style={{left: '3rem', width: '20rem' }} key={'ManualAnnotationCard'}>
+                {this.props.manualBboxs.length? <button id={'deleteButton'} onClick={ () => this.deleteSelectedLabel()}>{this.text['deleteManualBbox'][this.props.language]}</button>: <div></div>}
+                <Card style={{left: '3rem',width: String(this.props.width) }} key={'ManualAnnotationCard'}>
                 {
                     this.props.manualBboxs.length? 
                     <div>

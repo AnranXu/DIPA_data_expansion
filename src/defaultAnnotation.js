@@ -24,7 +24,7 @@ class DefaultAnnotationCard extends Component{
             7: 'とても情報量が多い'}
         };
         this.marks = { 'en':[
-            {value: 1,label: 'unimformatic'},
+            {value: 1,label: 'uninformative'},
             {value: 2,label: ''},
             {value: 3,label: ''},
             {value: 4,label: 'neutral'},
@@ -132,7 +132,7 @@ class DefaultAnnotationCard extends Component{
     render(){
         return(
             <div style={this.state.mainStyle}>
-                <Card style={{ width: '20rem' }} border={'none'} category={this.props.category}>
+                <Card style={{ width: String(this.props.width) }} border={'none'} category={this.props.category}>
                 <Card.Body>
                     <Card.Title style={{fontSize: 'large'}}><strong>{this.text['title'][this.props.language]}</strong></Card.Title>
                     <Card.Text style={{textAlign: 'left'}}>

@@ -21,8 +21,16 @@ class Canvas extends Component{
 	constructor(props)
 	{
         super(props);
-        this.state = {bboxs: [], anns: [], imageURL: '', labelURL: '', 
-        imageWidth: 0, imageHeight: 0, manualBboxs: [], selectedBbox: ''};
+        this.state = {bboxs: [], 
+        anns: [], 
+        imageURL: '', 
+        labelURL: '', 
+        imageWidth: 0, 
+        imageHeight: 0, 
+        manualBboxs: [], 
+        selectedBbox: '',
+        canvasWidth: 0,
+        canvasHeight: 0};
         this.stageRef = React.createRef();
         this.imageRef = React.createRef();
         this.trRef = React.createRef();
@@ -36,20 +44,22 @@ class Canvas extends Component{
     }
     componentDidUpdate(prevProps, prevState){
       if(this.props.deleteFlag){
-        var lefted_bboxs = [];
+        this.deleteManualBbox();
+      }
+    }
+    deleteManualBbox = () =>{
+      var lefted_bboxs = [];
         var existing_bboxs = this.stageRef.current.find('.manualBbox');
         var existing_ids = [];
         for(var i = 0; i < existing_bboxs.length; i++)
           existing_ids.push(existing_bboxs[i].attrs['id']);
         for(var i = 0; i < this.state.manualBboxs.length; i++)
         {
-          if(this.state.manualBboxs[i]['id'] in existing_ids)
+          //bug fixed, we should not use "in" but need to use "includes"
+          if(existing_ids.includes('manualBbox-' + this.state.manualBboxs[i]['id']))
             lefted_bboxs.push(this.state.manualBboxs[i]);
         }
-        // find the one which 
         this.setState({manualBboxs:lefted_bboxs}, () => {this.props.toolCallback({manualBboxs:lefted_bboxs, deleteFlag: false});});
-        
-      }
       if(this.props.clearManualBbox){
         this.trRef.current.nodes([]);
         this.setState({manualBboxs: []}, () => {this.props.toolCallback({manualBboxs: [], clearManualBbox: false});});
@@ -223,7 +233,7 @@ class Canvas extends Component{
     render(){
         return (
             <div>
-                <Stage width={window.innerWidth} height={window.innerHeight} ref={this.stageRef} 
+                <Stage width={this.props.width} height={window.innerHeight} ref={this.stageRef} 
                 onMouseDown={this.checkDeselect} onTouchStart={this.checkDeselect}>
                     <Layer>
                         <URLImage src={this.props.imageURL} setRef={this.imageRef}></URLImage>
