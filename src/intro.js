@@ -28,7 +28,7 @@ class Intro extends Component{
         'male': {'en': 'Male', 'jp': '男性'},
         'female': {'en': 'Female', 'jp': '女性'},
         'not mention': {'en': 'Prefer not to mention', 'jp': '回答しない'},
-        'age': {'en': 'Age:', 'jp': '年齢:'},
+        'age': {'en': 'Age (in Arabic Number):', 'jp': '年齢 (アラビア数字で表記):'},
         'nationality': {'en': 'Nationality:', 'jp': '国籍:'},
         'workerId': {'en': 'Worker\'s ID:', 
         'jp': 'ワーカーズID:'},
@@ -46,33 +46,45 @@ class Intro extends Component{
         }*/
             
         //check age
-        if(this.age.current.value == '')
-        {
-            console.log('false');
-            ifFinished = false;
-        }
-            
-        //check gender
-        if(this.gender === '')
-        {
-            ifFinished = false;
-            console.log('false');
-        }
-            
-        // check nationality
-        if(this.nationality.current.value == '')
-        {
-            ifFinished = false;
-            console.log('false');
-        }
-            
+        var alertText = {'age': {'en': 'Please fill out your age', 'jp': '年齢をご記入ください'},
+        'gender': {'en': 'Please fill out your gender', 'jp': '性別をご記入ください'},
+        'ageFormat': {'en': 'Please fill in your age in Arabic numerals', 'jp':'年齢をアラビア数字でご記入ください'},
+        'nationality': {'en': 'Please fill out your nationality', 'jp': '国籍をご記入ください'},
+        'workerId': {'en': 'Please fill out your worker ID', 'jp': 'ワーカーズIDをご記入ください'},
+        'bigfive': {'en': 'Please fill out all questions', 'jp': 'すべての質問をご記入ください' }};
         // check workerid
         if(this.workerId.current.value == '')
         {
-            ifFinished = false;
             console.log('false');
+            alert(alertText['workerId'][this.props.language]);
+            return;
         }
-            
+        if(this.age.current.value == '')
+        {
+            console.log('false');
+            alert(alertText['age'][this.props.language]);
+            return;
+        }
+        var x=this.age.current.value;
+        if (isNaN(x)) 
+        {
+            alert(alertText['ageFormat'][this.props.language]);
+            return;
+        }
+        //check gender
+        if(this.gender === '')
+        {
+            console.log('false');
+            alert(alertText['gender'][this.props.language]);
+            return;
+        }
+        // check nationality
+        if(this.nationality.current.value == '')
+        {
+            console.log('false');
+            alert(alertText['nationality'][this.props.language]);
+            return;
+        }
         // check bigfive
         for(var i = 0; i < 10; i++)
         {
@@ -80,7 +92,8 @@ class Intro extends Component{
             {
                 ifFinished = false;
                 console.log('break');
-                break;
+                alert(alertText['bigfive'][this.props.language]);
+                return;
             }
         }
         if(ifFinished)
@@ -98,9 +111,6 @@ class Intro extends Component{
             }
             this.props.toolCallback({page: 'task', workerId: this.workerId.current.value});
             document.body.scrollTop = document.documentElement.scrollTop = 0;
-        }
-        else{
-            alert('Please fill out all questions');
         }
     }
     selectGender = (e) =>{
