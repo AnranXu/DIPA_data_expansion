@@ -8,7 +8,7 @@ class DefaultAnnotationCard extends Component{
         super(props);
         this.state = {mainStyle: {position: 'relative', display: 'none'}, importanceValue: '4'};
         this.importanceRef = React.createRef();
-        this.intensity = { 'en': {1: 'extremely uninformative',
+        /*this.intensity = { 'en': {1: 'extremely uninformative',
             2: 'moderately uninformative',
             3: 'slightly uninformative',
             4: 'neutral',
@@ -38,12 +38,43 @@ class DefaultAnnotationCard extends Component{
             {value: 5,label: ''},
             {value: 6,label: ''},
             {value: 7,label: '情報量が多い'}]
+        };*/
+        this.intensity = { 'en': {1: '1',
+            2: '2',
+            3: '3',
+            4: '4',
+            5: '5',
+            6: '6',
+            7: '7'},
+            'jp':{1: '1',
+            2: '2',
+            3: '3',
+            4: '4',
+            5: '5',
+            6: '6',
+            7: '7'}
+        };
+        this.marks = { 'en':[
+            {value: 1,label: 'slightly'},
+            {value: 2,label: ''},
+            {value: 3,label: ''},
+            {value: 4,label: 'moderately'},
+            {value: 5,label: ''},
+            {value: 6,label: ''},
+            {value: 7,label: 'extremely'}], 
+            'jp':[{value: 1,label: '情報量が少ない'},
+            {value: 2,label: ''},
+            {value: 3,label: ''},
+            {value: 4,label: 'どちらでもない'},
+            {value: 5,label: ''},
+            {value: 6,label: ''},
+            {value: 7,label: '情報量が多い'}]
         };
         this.text = {'title': {'en': 'Annotation Box', 'jp': 'アノテーションボックス'},
         'reasonQuestion': {'en': 'Assuming you want to seek privacy of the photo owner, what kind of information can this content tell?',
         'jp': '写真の所有者のプライバシーを得ようとする場合、このコンテンツからはどのような情報を読み取れますか？'},
-        'informativeQuestion': {'en': 'How informative do you think about this privacy information for the photo owner?', 
-        'jp': 'この写真所有者のプライバシー情報については、どの程度考えていますか？'},
+        'informativeQuestion': {'en': 'From 1 (slightly informative) to 7 (extremely informative), how informative do you think about this privacy information for the photo owner?', 
+        'jp': '1(情報量が少ない)から7(情報量が多い)まで、この写真所有者のプライバシー情報については、どの程度考えていますか？'},
         'placeHolder': {'en': 'Please input here.', 'jp': 'ここに理由を記入してください。'},
         'sharingQuestion': {'en': 'Assuming you are the photo owner, to what extent would you share this content at most?', 
         'jp': 'あなたが写真の所有者であると仮定して、このコンテンツを最大でどこまで共有しますか？'}};
@@ -132,7 +163,7 @@ class DefaultAnnotationCard extends Component{
     render(){
         return(
             <div style={this.state.mainStyle}>
-                <Card style={{ width: String(this.props.width) }} border={'none'} category={this.props.category}>
+                <Card style={{ width: 'String(this.props.width)' }} border={'none'} category={this.props.category}>
                 <Card.Body>
                     <Card.Title style={{fontSize: 'large'}}><strong>{this.text['title'][this.props.language]}</strong></Card.Title>
                     <Card.Text style={{textAlign: 'left'}}>

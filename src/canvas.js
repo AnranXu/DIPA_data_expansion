@@ -1,4 +1,3 @@
-import {Container, Row, Col, ThemeProvider} from 'react-bootstrap';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { Component } from 'react';
 import React from 'react';
@@ -6,6 +5,13 @@ import React from 'react';
 import { Stage, Layer, Image, Rect, Transformer} from 'react-konva';
 import URLImage from './urlImage.js';
 import s3_handler from "./library/s3uploader.js";
+import { Box, styled } from "@mui/material";
+
+const Container = styled(Box)(() => ({
+    left: "0px",
+    // padding: "0 20px",
+    backgroundColor: "rgba(100, 100, 100, 0.2)",
+}));
 /*
 Canvas serves as showing the samples for annotators.
 When annotators load a new image, canvas will read existing annotations provided by other datasets.
@@ -28,10 +34,9 @@ class Canvas extends Component{
         imageWidth: 0, 
         imageHeight: 0, 
         manualBboxs: [], 
-        selectedBbox: '',
-        canvasWidth: 0,
-        canvasHeight: 0};
+        selectedBbox: ''};
         this.stageRef = React.createRef();
+        this.layerRef = React.createRef();
         this.imageRef = React.createRef();
         this.trRef = React.createRef();
         this.virtualRectRef = React.createRef();
@@ -43,6 +48,7 @@ class Canvas extends Component{
         this.setManualMode();
     }
     componentDidUpdate(prevProps, prevState){
+      //this.layerRef.current.getCanvas()._canvas.style.maxWidth = String(this.props.width) + 'px';
       if(this.props.deleteFlag){
         this.deleteManualBbox();
       }
@@ -233,9 +239,9 @@ class Canvas extends Component{
     render(){
         return (
             <div>
-                <Stage width={this.props.width} height={window.innerHeight} ref={this.stageRef} 
+                <Stage width={window.innerWidth} height={window.innerHeight} ref={this.stageRef} 
                 onMouseDown={this.checkDeselect} onTouchStart={this.checkDeselect}>
-                    <Layer>
+                    <Layer ref={this.layerRef}>
                         <URLImage src={this.props.imageURL} setRef={this.imageRef}></URLImage>
                         {/*Add A virtual rectangle for creating bounding box */}
                         <Rect fill={'rgba(0,50,180,0.5)'} stroke = {'blue'} visible={false} key={'virtualRect'} ref={this.virtualRectRef}></Rect>

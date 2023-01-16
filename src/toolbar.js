@@ -5,6 +5,14 @@ import DefaultAnnotationCard from './defaultAnnotation.js';
 import ManualAnnotationCard from "./manualAnnotation.js";
 import Informativeness from './component/Informativeness/informativeness.js';
 import $ from "jquery";
+import {
+    Box,
+    Button,
+    Stack,
+    ToggleButton,
+    ToggleButtonGroup,
+    Typography,
+} from "@mui/material";
 class Toolbar extends Component{
 	constructor(props)
 	{
@@ -16,6 +24,7 @@ class Toolbar extends Component{
         this.image_ID = '';
         this.cur_source = '';
         this.task_record = {};
+        this.widthScale = 1.00;
         //now, we store the progress in test mode in local and not upload to s3 or dynamodb
         this.test_progress = 0;
         this.platform = {'en': 'Prolific/',
@@ -35,6 +44,12 @@ class Toolbar extends Component{
     toolCallback = (childData) =>{
         console.log(childData);
         this.setState(childData);
+    }
+    componentDidUpdate(prevProps, prevState){
+        if(prevProps.manualMode == false && this.props.manualMode == true)
+            document.getElementById('manualButton').style.color = 'red';
+        else if (prevProps.manualMode == true && this.props.manualMode == false)
+            document.getElementById('manualButton').style.color = 'black';
     }
     uploadAnnotation = () =>{
         // collecting default annotation card
@@ -387,9 +402,29 @@ class Toolbar extends Component{
             <Container>
 				<Row>
                     <Col md={12}>
-                        <ListGroup.Item action key={'categoryList-'+label} id={label} onClick={this.chooseLabel}>
-                            {label}
-                        </ListGroup.Item>
+                    <Box
+                        sx={{
+                            border: "2px solid rgba(0, 0, 0, 0.2)",
+                            borderRadius: "5px",
+                            boxShadow: "2px 2px 1px 0px rgba(0,0,0,0.2)",
+                        }}
+                        textAlign="left"
+                    >
+                    <Button
+                        key={'categoryList-'+label} 
+                        id={label} 
+                        onClick={this.chooseLabel}
+                        fullWidth
+                        sx={{
+                            justifyContent: "flex-start",
+                            fontSize: "30px",
+                            color: "black",
+                            padding: "10px 25px",
+                        }}
+                    >
+                        {label}
+                    </Button>
+                    </Box>
                     </Col>
                 </Row>
             </Container>
@@ -433,9 +468,27 @@ class Toolbar extends Component{
         //list label according to the category
         return this.props.manualBboxs.map((bbox,i)=>(
         <div key={'manualLabelList-' + String(bbox['id'])}>
-            <ListGroup.Item action key={'manualList-'+ String(bbox['id'])} id={String(bbox['id'])} onClick={this.chooseManualBbox}>
-                {'Label ' + String(bbox['id'])}
-            </ListGroup.Item>
+            <Box
+                        sx={{
+                            border: "2px solid rgba(0, 0, 0, 0.2)",
+                            borderRadius: "5px",
+                            boxShadow: "2px 2px 1px 0px rgba(0,0,0,0.2)",
+                        }}
+                        textAlign="left"
+                    >
+                    <Button
+                        key={'manualList-'+ String(bbox['id'])} id={String(bbox['id'])} onClick={this.chooseManualBbox}
+                        fullWidth
+                        sx={{
+                            justifyContent: "flex-start",
+                            fontSize: "30px",
+                            color: "black",
+                            padding: "10px 25px",
+                        }}
+                    >
+                        {this.text['manualList'][this.props.language] + ' ' + String(bbox['id'])}
+                    </Button>
+                    </Box>
             <ManualAnnotationCard key={'manualAnnotationCard-' + String(bbox['id'])} className={'manualAnnotationCard'} 
             width = {this.props.width} id = {String(bbox['id'])} manualNum={String(bbox['id'])} language = {this.props.language}
             visibleBbox={this.state.curManualBbox} bboxsLength={this.props.manualBboxs.length} 
@@ -450,7 +503,7 @@ class Toolbar extends Component{
             this.props.toolCallback({addingBbox: false});
         }
     }
-    manualAnn = () => {
+    manualAnn = (e) => {
         if(this.props.manualMode === false)
         {
             this.props.toolCallback({'manualMode': true});
@@ -473,12 +526,63 @@ class Toolbar extends Component{
     render(){
         return (
             <div>
-                <button id={"loadButton"} onClick = {() => this.loadData()}>{this.text['load'][this.props.language]}</button>
-                <button onClick=  {() => this.manualAnn()}>{this.props.manualMode? this.text['manualOn'][this.props.language]: this.text['manualOff'][this.props.language]}</button>
+                <Box>
+                    <Button
+                        id={"loadButton"} onClick = {() => this.loadData()}
+                           fullWidth  sx={{
+                                justifyContent: "flex-start",
+                                fontSize: "20px",
+                                color: "black",
+                                padding: "10px 25px",
+                                border: "5px solid rgba(0, 0, 0, 0.2)",
+                                borderRadius: "5px",
+                                boxShadow: "2px 2px 1px 0px rgba(0,0,0,0.2)",
+                            }}
+                        >
+                            {this.text['load'][this.props.language]}
+                    </Button>
+                    <Button
+                        onClick=  {(e) => {
+                            this.manualAnn(e);
+                        }}
+                        id = {'manualButton'}
+                        fullWidth  sx={{
+                                justifyContent: "flex-start",
+                                fontSize: "20px",
+                                color: "black",
+                                padding: "10px 25px",
+                                border: "5px solid rgba(0, 0, 0, 0.2)",
+                                borderRadius: "5px",
+                                boxShadow: "2px 2px 1px 0px rgba(0,0,0,0.2)",
+                            }}
+                        >
+                            {this.props.manualMode? this.text['manualOn'][this.props.language]: this.text['manualOff'][this.props.language]}
+                    </Button>
+                    {this.props.manualBboxs.length? 
+                    <div>
+                    <Button
+                        id={'deleteButton'} onClick={ () => this.deleteSelectedLabel()}
+                        fullWidth  sx={{
+                                justifyContent: "flex-start",
+                                fontSize: "20px",
+                                color: "black",
+                                padding: "10px 25px",
+                                border: "5px solid rgba(0, 0, 0, 0.2)",
+                                borderRadius: "5px",
+                                boxShadow: "2px 2px 1px 0px rgba(0,0,0,0.2)",
+                            }}
+                        >
+                            {this.text['deleteManualBbox'][this.props.language]}
+                    </Button>
+                    <br></br>
+                    <br></br>
+                    </div>
+                    : <div></div>}
+                </Box>
                 {/* Menu for choosing all bounding boxes from a specific category */}
                 <div className="defaultLabel">
                 <h3>{this.text['labelList'][this.props.language]}</h3>
-                <Card style={{left: '3rem', width: String(this.props.width)}} key={'DefaultAnnotationCard'}>
+                <Card fullWidth key={'DefaultAnnotationCard'}>
                 {
                         this.state.labelList.length? 
                         <ListGroup variant="flush">
@@ -492,8 +596,8 @@ class Toolbar extends Component{
                 <div className="manualLabel">
                 <h3>{this.text['manualList'][this.props.language]}</h3>
                 <br></br>
-                {this.props.manualBboxs.length? <button id={'deleteButton'} onClick={ () => this.deleteSelectedLabel()}>{this.text['deleteManualBbox'][this.props.language]}</button>: <div></div>}
-                <Card style={{left: '3rem',width: String(this.props.width) }} key={'ManualAnnotationCard'}>
+                
+                <Card fullWidth key={'ManualAnnotationCard'}>
                 {
                     this.props.manualBboxs.length? 
                     <div>

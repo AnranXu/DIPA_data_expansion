@@ -1,6 +1,6 @@
 {
-  "homepage": "http://anranxu.github.io/iui_dataset",
-  "name": "iui_dataset",
+  "homepage": "http://anranxu.github.io/soups_data_collection",
+  "name": "soups_data_collection",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -6,6 +6,8 @@ class URLImage extends React.Component {
       this.state = {
         image: null,
       };
+      this.oriWidth = 0;
+      this.oriHeight = 0;
     }
     componentDidMount() {
       this.loadImage();

@@ -346,7 +346,8 @@ class Intro extends Component{
                         </Card.Body>
                         {/*this button can skip the input procedure in test mode*/}
                         {   
-                            this.props.testMode? <button onClick={()=>{
+                            this.props.testMode? <Button variant="outline-dark" style={{cursor: 'pointer', width: '60%', margin: 'auto'}} 
+                            onClick={()=>{
                                 this.props.toolCallback({page: 'task', workerId: 'test'});
                                 if(this.ifFirstLoad)
                                 {
@@ -354,7 +355,7 @@ class Intro extends Component{
                                     document.getElementById('loadButton').click();
                                 }
                                 document.body.scrollTop = document.documentElement.scrollTop = 0;
-                            }}>{this.text['skipButton'][this.props.language]}</button>: 
+                            }}>{this.text['skipButton'][this.props.language]}</Button>: 
                             <div></div>
                         }
                         <br></br>
