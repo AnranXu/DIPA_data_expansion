@@ -26,6 +26,7 @@ class Toolbar extends Component{
         this.widthScale = 1.00;
         //now, we store the progress in test mode in local and not upload to s3 or dynamodb
         this.test_progress = 0;
+        this.loading = require('./img/play.png');
         this.platform = {'en': 'Prolific/',
         'jp': 'CrowdWorks/'};
         this.text = {'load': {'en': 'Load the next image', 'jp': '次の画像を読み込む'},
@@ -550,14 +551,15 @@ class Toolbar extends Component{
                             boxShadow: "2px 2px 1px 0px rgba(0,0,0,0.2)",
                         }}
                         >
-                            {this.text['progress'][this.props.language] + '   ' + this.state.currentProgress + ' / ' + this.state.taskNum}
+                            {this.text['progress'][this.props.language] + ':    ' + 
+                            this.state.currentProgress + ' / ' + this.state.taskNum}
                     </Button>
                     <Button
                         id={"loadButton"} onClick = {() => this.loadData()}
                            fullWidth  sx={{
                                 justifyContent: "flex-start",
-                                fontSize: "25px",
-                                color: "black",
+                                fontSize: "20px",
+                                color: "#DC143C",
                                 padding: "10px 25px",
                                 border: "5px solid rgba(0, 0, 0, 0.2)",
                                 borderRadius: "5px",
@@ -565,6 +567,7 @@ class Toolbar extends Component{
                             }}
                         >
                             {this.text['load'][this.props.language]}
+                        <img src = {this.loading} style = {{marginLeft: '50px', height: '50px', width: '50px'}}/>
                     </Button>
                     <Button
                         onClick=  {(e) => {
