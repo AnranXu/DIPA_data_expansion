@@ -1,13 +1,19 @@
 import { Component } from "react";
 import {Container, Row, Col, Card, Form} from 'react-bootstrap';
 import React from 'react';
-import Slider from '@mui/material/Slider';
-
+import Slider　from '@mui/material/Slider';
+import InformativenessStar from './component/Informativeness/star.js';
 class DefaultAnnotationCard extends Component{
     constructor(props){
         super(props);
-        this.state = {mainStyle: {position: 'relative', display: 'none'}, importanceValue: '4'};
-        this.importanceRef = React.createRef();
+        this.informativenessNum = 5;
+        this.starArray = []
+        for (var i = 0; i < this.informativenessNum; i++)
+            this.starArray.push(i + 1);
+        this.state = {mainStyle: {position: 'relative', display: 'none'}, 
+            informativenessValue: 0};
+        //n-likert scale we use in the user study
+        
         /*this.intensity = { 'en': {1: 'extremely uninformative',
             2: 'moderately uninformative',
             3: 'slightly uninformative',
@@ -46,7 +52,7 @@ class DefaultAnnotationCard extends Component{
             5: '5',
             6: '6',
             7: '7'},
-            'jp':{1: '1',
+            'jp':{1: '',
             2: '2',
             3: '3',
             4: '4',
@@ -73,13 +79,19 @@ class DefaultAnnotationCard extends Component{
         this.text = {'title': {'en': 'Annotation Box', 'jp': 'アノテーションボックス'},
         'reasonQuestion': {'en': 'Assuming you want to seek privacy of the photo owner, what kind of information can this content tell?',
         'jp': '写真の所有者のプライバシーを得ようとする場合、このコンテンツからはどのような情報を読み取れますか？'},
-        'informativeQuestion': {'en': 'From 1 (slightly informative) to 7 (extremely informative), how informative do you think about this privacy information for the photo owner?', 
-        'jp': '1(情報量が少ない)から7(情報量が多い)まで、この写真所有者のプライバシー情報については、どの程度考えていますか？'},
+        'informativeQuestion': {'en': 'From 1 to 5, how informative do you think about this privacy information for the photo owner? \
+        Higher scores mean the more informative the content is (Please click the star to input your score).', 
+        'jp': '1から5まで、この写真所有者のプライバシー情報については、どの程度考えていますか？\
+        評価が高いほど、情報量が多いことを意味します（星をクリックして点数をご入力ください）。'},
         'placeHolder': {'en': 'Please input here.', 'jp': 'ここに理由を記入してください。'},
         'sharingQuestion': {'en': 'Assuming you are the photo owner, to what extent would you share this content at most?', 
         'jp': 'あなたが写真の所有者であると仮定して、このコンテンツを最大でどこまで共有しますか？'}};
     }
-    componentDidUpdate(prevProps) {
+    toolCallback = (childData) =>{
+        console.log(childData);
+        this.setState(childData);
+    }
+    componentDidUpdate(prevProps, prevState) {
         //when new click comes
         if(this.props.clickCnt !== prevProps.clickCnt) 
         {
@@ -94,6 +106,12 @@ class DefaultAnnotationCard extends Component{
                 this.setState({mainStyle: {position: 'relative', display: 'none'}});
             }
         }
+        if(this.state.informativenessValue !== prevState.informativenessValue)
+        {
+            var input = document.getElementById('informativeness-' + this.props.category);
+            input.value = this.state.informativenessValue;
+        }
+        
     }
     reasonChange = (e)=>{
         var category = e.target.id.split('-')[1];
@@ -160,6 +178,17 @@ class DefaultAnnotationCard extends Component{
         );
         
     }
+    generateStars = ()=>{
+        return this.starArray.map((num)=>(
+            <InformativenessStar
+                value={num}
+                key={this.props.category + '-informativeness-' + String(num)}
+                id = {this.props.category + '-informativeness-' + String(num)}
+                filled={num <= this.state.informativenessValue}
+                toolCallback = {this.toolCallback}
+            />
+        ));
+    }
     render(){
         return(
             <div style={this.state.mainStyle}>
@@ -177,17 +206,21 @@ class DefaultAnnotationCard extends Component{
                     <Card.Text style={{textAlign: 'left'}}>
                     <strong>{this.text['informativeQuestion'][this.props.language]}</strong>
                     </Card.Text>
-                    <Card.Text style={{textAlign: 'center'}} ref={this.importanceRef}>
-                    <strong> {this.intensity[this.props.language][this.state.importanceValue]} </strong>
+                    <Card.Text style={{textAlign: 'center'}}>
+                    <strong> {this.intensity[this.props.language][this.state.informativenessValue]} </strong>
                     </Card.Text>
-                    <Slider required style ={{width: '15rem'}} key={'importance-' + this.props.category} 
+                    {this.generateStars()}
+                    <input defaultvalue={0} id={'informativeness-' + this.props.category} style={{display: 'none'}}></input>
+                    <br></br>
+                    <br></br>
+                    {/*<Slider required style ={{width: '15rem'}} key={'importance-' + this.props.category} 
                     defaultValue={4}  max={7} min={1} step={1} 
                     marks={this.marks[this.props.language]} onChange={(e, val)=>{
                         this.setState({importanceValue: val}); 
                         var input = document.getElementById('importance-' + this.props.category);
                         input.value = val;
                         }}/>
-                    <input defaultValue={4} id={'importance-' + this.props.category} style={{display: 'none'}}></input>
+                    <input defaultValue={4} id={'importance-' + this.props.category} style={{display: 'none'}}></input>*/}
                     {/*<input key = {'importance-' + this.props.category} type='range' max={'7'} min={'1'} step={'1'} defaultValue={'4'} onChange={(e)=>{this.setState({importanceValue: e.target.value})}}/> */}
                     <Card.Text style={{textAlign: 'left'}}>
                         <strong>{this.text['sharingQuestion'][this.props.language]}</strong>

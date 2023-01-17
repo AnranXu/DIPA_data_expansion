@@ -3,7 +3,6 @@ import awsHandler from "./library/awsHandler.js";
 import {Container, Row, Col, Card, ListGroup} from 'react-bootstrap';
 import DefaultAnnotationCard from './defaultAnnotation.js';
 import ManualAnnotationCard from "./manualAnnotation.js";
-import Informativeness from './component/Informativeness/informativeness.js';
 import $ from "jquery";
 import {
     Box,
@@ -19,7 +18,7 @@ class Toolbar extends Component{
         super(props);
         this.state = {bboxs: [], labelList: [], 
         curCat: '', curManualBbox: '', prevCat: '', defaultLabelClickCnt: 0,
-        manualLabelClickCnt: 0};
+        manualLabelClickCnt: 0, currentProgress: 0, taskNum: 20};
         this.first_loading = true;
         this.image_ID = '';
         this.cur_source = '';
@@ -37,6 +36,7 @@ class Toolbar extends Component{
         'deleteManualBbox': {'en': 'Delete selected label', 'jp': '選択したラベルを削除する'},
         'privacyButton': {'en': 'The above content is not privacy-threatening',
         'jp': '上記の内容はプライバシーを脅かすものではありません'},
+        'progress':{'en': 'progress', 'jp': 'プログレス'},
         'finishPopUp': {'en':'You have finished your task, thank you!', 'jp': 'タスクは完了です、ありがとうございました'}};
         this.awsHandler = new awsHandler(this.props.language, this.props.testMode);
         //this.aws_test.dbReadTaskTable('0').then(value=>console.log(value['Item']));
@@ -68,6 +68,10 @@ class Toolbar extends Component{
             var reason_input = document.getElementById('reasonInput-' + category);
             if(reason.value === '0' || (reason.value === '5' && reason_input.value === ''))
                 ifFinished = false;
+            var informativeness = document.getElementById('informativeness-' + category);
+            console.log(informativeness);
+            if(informativeness === 0)
+                ifFinished = false;
             //check question 'to what extent would you share this photo at most?'
             var sharing = document.getElementById('sharing-' + category);
             var sharing_input = document.getElementById('sharing-' + category);
@@ -94,6 +98,11 @@ class Toolbar extends Component{
             var reason_input = document.getElementById('reasonInput-' + id);
             if(reason.value === '0' || (reason.value === '5' && reason_input.value === ''))
                 ifFinished = false;
+            
+            var informativeness = document.getElementById('informativeness-' + category);
+            console.log(informativeness);
+            if(informativeness === 0)
+                ifFinished = false;
             //check question 'to what extent would you share this photo at most?'
             var sharing = document.getElementById('sharing-' + id);
             var sharing_input = document.getElementById('sharing-' + id);
@@ -116,7 +125,7 @@ class Toolbar extends Component{
         {
             
             var category = this.state.labelList[i];
-            anns['defaultAnnotation'][category] = {'category': category, 'reason': '', 'reasonInput': '', 'importance': 4, 
+            anns['defaultAnnotation'][category] = {'category': category, 'reason': '', 'reasonInput': '', 'informativeness': 0, 
             'sharing': '', 'sharingInput': '', 'ifNoPrivacy': false};
             var ifNoPrivacy = document.getElementById('privacyButton-' + category).checked;
             if(ifNoPrivacy)
@@ -126,19 +135,20 @@ class Toolbar extends Component{
             }
             var reason = document.getElementById('reason-' + category);
             var reason_input = document.getElementById('reasonInput-' + category);
-            var importance = document.getElementById('importance-' + category);
+            var informativeness = document.getElementById('informativeness-' + category);
+            console.log(informativeness);
             var sharing = document.getElementById('sharing-' + category);
             var sharing_input = document.getElementById('sharingInput-' + category);
             anns['defaultAnnotation'][category]['reason'] = reason.value;
             anns['defaultAnnotation'][category]['reasonInput'] = reason_input.value;
-            anns['defaultAnnotation'][category]['importance'] = importance.value;
+            anns['defaultAnnotation'][category]['informativeness'] = informativeness.value;
             anns['defaultAnnotation'][category]['sharing'] = sharing.value;
             anns['defaultAnnotation'][category]['sharingInput'] = sharing_input.value;
         }
         for(var i = 0; i < this.props.manualBboxs.length; i++)
         {
             var id = this.props.manualBboxs[i]['id'];
-            anns['manualAnnotation'][id] = {'category': '', 'bbox': [], 'reason': '', 'reasonInput': '', 'importance': 4, 
+            anns['manualAnnotation'][id] = {'category': '', 'bbox': [], 'reason': '', 'reasonInput': '', 'informativeness': 4, 
             'sharing': '', 'sharingInput': ''};
             var category_input = document.getElementById('categoryInput-' + id);
             var bboxs =  this.props.stageRef.current.find('.manualBbox');
@@ -150,13 +160,13 @@ class Toolbar extends Component{
             anns['manualAnnotation'][id]['bbox'] = [bbox.attrs['x'], bbox.attrs['y'], bbox.attrs['width'], bbox.attrs['height']];
             var reason = document.getElementById('reason-' + id);
             var reason_input = document.getElementById('reasonInput-' + id);
-            var importance = document.getElementById('importance-' + id);
-            console.log(importance);
+            var informativeness = document.getElementById('informativeness-' + id);
+            console.log(informativeness);
             var sharing = document.getElementById('sharing-' + id);
             var sharing_input = document.getElementById('sharingInput-' + id);
             anns['manualAnnotation'][id]['reason'] = reason.value;
             anns['manualAnnotation'][id]['reasonInput'] = reason_input.value;
-            anns['manualAnnotation'][id]['importance'] = importance.value;
+            anns['manualAnnotation'][id]['informativeness'] = informativeness.value;
             anns['manualAnnotation'][id]['sharing'] = sharing.value;
             anns['manualAnnotation'][id]['sharingInput'] = sharing_input.value;
         }
@@ -290,6 +300,7 @@ class Toolbar extends Component{
                 this.awsHandler.dbReadWorkerTable(this.props.workerId).then((workerRecord)=>{
                     workerRecord = workerRecord['Item'];
                     cur_progress = Number(workerRecord['progress']['N']);
+                    this.setState({currentProgress: cur_progress, taskNum: Number(workerRecord['taskNum']['N'])});
                     if(cur_progress >= Number(workerRecord['taskNum']['N']))
                     {
                         return false;
@@ -309,7 +320,7 @@ class Toolbar extends Component{
                         console.log('the task is finished');
                         alert(this.text['finishPopUp'][this.props.language]);
                         if(this.props.language === 'en' && this.props.testMode === false)
-                            window.location.replace('anranxu.com');//need new prolific link 
+                            window.location.replace('https://www.anranxu.com');//need new prolific link 
                     }
                 });
             }
@@ -375,7 +386,7 @@ class Toolbar extends Component{
                     const promise1 = this.awsHandler.dbUpdateTable(taskRecordsParams);
                     const promise2 = this.awsHandler.dbUpdateTable(workerRecordsParams);
                     const promise3 = this.awsHandler.dbUpdateTable(generalControllerParams);
-                    
+                    this.setState({currentProgress: 0, taskNum: Number(generalRecords['taskPerWorker']['N'])});
                     //when all update finished, go readURL
                     Promise.all([promise1,promise2,promise3]).then(values=>{
                         this.image_ID = taskList[0];
@@ -527,11 +538,25 @@ class Toolbar extends Component{
         return (
             <div>
                 <Box>
+                <Button
+                        
+                        fullWidth  sx={{
+                            justifyContent: "flex-start",
+                            fontSize: "20px",
+                            color: "black",
+                            padding: "10px 25px",
+                            border: "5px solid rgba(0, 0, 0, 0.2)",
+                            borderRadius: "5px",
+                            boxShadow: "2px 2px 1px 0px rgba(0,0,0,0.2)",
+                        }}
+                        >
+                            {this.text['progress'][this.props.language] + '   ' + this.state.currentProgress + ' / ' + this.state.taskNum}
+                    </Button>
                     <Button
                         id={"loadButton"} onClick = {() => this.loadData()}
                            fullWidth  sx={{
                                 justifyContent: "flex-start",
-                                fontSize: "20px",
+                                fontSize: "25px",
                                 color: "black",
                                 padding: "10px 25px",
                                 border: "5px solid rgba(0, 0, 0, 0.2)",

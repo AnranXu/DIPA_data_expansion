@@ -1,6 +1,6 @@
-import { Stack, Typography } from "@mui/material";
+/*import { Stack, Typography } from "@mui/material";
 import React from "react";
-import InformativenessStar from "./Star/star.js";
+import InformativenessStar from "./star.js";
 
 // props
 // value: number (-3 <= n <=3)
@@ -89,4 +89,4 @@ const Informativeness = (props) => {
     // );
 };
 
-export default Informativeness;
+export default Informativeness;*/
