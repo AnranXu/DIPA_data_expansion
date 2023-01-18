@@ -1,6 +1,6 @@
 {
-  "homepage": "http://anranxu.github.io/soups_data_collection",
-  "name": "soups_data_collection",
+  "homepage": "http://anranxu.github.io/DIPA_data_expansion",
+  "name": "DIPA_data_expansion",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
