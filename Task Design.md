@@ -8,7 +8,7 @@
 
 task per worker: 20
 
-task requirement: Annotating default labels that were annotated as privacy-threatening in DIPA 1.0. Allowing to add manual labels.
+task requirement: Only annotating labels that were annotated as privacy-threatening in DIPA 1.0 (1,495 images in total). Allowing to add manual labels.
 
 ## Current Metrics
 
@@ -19,7 +19,7 @@ task requirement: Annotating default labels that were annotated as privacy-threa
   - social circle
   - others
 - **Informativeness of the privacy-threatening content**
-  - From 1 to 5 (last version: from 1 to 7, in description), present as Star. 
+  - From 1 to 5, presenting in Star.  (last version: from 1 to 7, in descriptions)
 - **Maximum sharing scope if you are the photo owner** 
   - I won't share it
   - Family or friend
@@ -33,15 +33,15 @@ task requirement: Annotating default labels that were annotated as privacy-threa
 
 - **Reason for identifying content as privacy-threatening**
 
-  - Other papers concluded that reasons like "photo quality" and "illegal" as the reason to identify a photo to be sensitive. However, I do not want to add these options as they are subjective. "Personal habits" can include those things. Or we can say "personal habits/life". I wonder if you have a better idea to rename this option. I think others are fine.
+  - Other papers concluded that reasons like "**photo quality**" and "**illegal**" as the reasons to identify a photo to be sensitive. However, I do not want to add these options as they are subjective. "Personal habits" can include those things. Or we can say "**personal habits/life**". I wonder if you have a better idea to rename this option. I think others are fine.
 
 - **Informativeness of the privacy-threatening content**
 
-  - Using "uninformative" to describe how much information a privacy-threatening content might be not suitable. I change the description to only mention this metric as "informative" and how informative it is. As adverbs (e.g. slightly, little, moderate)  can be implied differently by different people, I choose to use rating scores in the next data collection. Also, changing 7-Likert to 5-Likert can avoid ambiguity in near scores (e.g. find it difficult to choose 3 or 4).
+  - Using "uninformative" to describe how much information a privacy-threatening content might be not suitable. I change the description to only mention this metric as "informative" and how informative it is. As adverbs (e.g. slightly, little, moderate)  can be implied differently by different people, I choose to use rating scores in the next data collection. Also, changing 7-Likert to 5-Likert can avoid ambiguity in near scores (e.g. find it difficult to decide to choose 3 or 4).
 
 - **Maximum sharing scope if you are the photo owner** 
 
-  - Many other papers use different recipient groups (e.g. Colleagues & Classmates, supervisors, normal friends, and relatives). It is not practical to include all possible groups in our data collection. Also, different people may hold different opinions when we tell them about a specific group of recipients. For example, for family or colleagues, somebody might think it can be a close relationship while others just want to avoid showing information to them. Sometimes, people do not want to share photos of their close relationships but choose to share with strangers. So, actually, it is not objective when we use a specific group to refer to different scales of sharing; or assuming that if people want to share a photo to the public, they must want to share it to closer relationships. I do not have a concrete idea to solve this problem. But I think we need to clearly show that the scale of provided choices is a recursive increase.
+  - Many other papers use different recipient groups (e.g. Colleagues & Classmates, supervisors, normal friends, and relatives). It is not practical to include all possible groups in our data collection because it will be too complex. Also, different people may hold different opinions when we tell them about a specific group of recipients. For example, for family or colleagues, somebody might think it can be a close relationship while others just want to avoid showing information to them. Sometimes, people do not want to share photos of their close relationships but choose to share with strangers. So, actually, it is not objective when we use a specific group to refer to different scales of sharing; or assuming that if people want to share a photo to the public, they must want to share it to closer relationships. I do not have a concrete idea to solve this problem. But I think we need to clearly show that the scale of provided choices is a recursive increase.
 
   - Design 1: **How many people are you willing to share this privacy-threatening content at most?**
   
