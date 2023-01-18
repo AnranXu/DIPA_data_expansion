@@ -16,7 +16,7 @@ class awsHandler{
         this.db = this.dbInit();
         this.language = language;
         this.testMode = testMode;
-        this.bucketName = 'soups-data-collection';
+        this.bucketName = 'dipa-data-expansion';
         this.platform = {'en': 'Prolific/',
         'jp': 'CrowdWorks/'};
         //var len = 0;
@@ -38,7 +38,7 @@ class awsHandler{
     } 
     dbCheck () {
         var params = {
-            TableName: "soupsWorkerRecords"
+            TableName: "DIPAWorkerRecords"
         };
         this.db.describeTable(params, function(err, data) {
             if (err) console.log(err, err.stack); // an error occurred
@@ -47,7 +47,7 @@ class awsHandler{
     }
     dbPreparation () {
         //create initial table, task_record.json will only be used here in this dynamodb version.
-        var task_URL = "https://soups-data-collection.s3.ap-northeast-1.amazonaws.com/sources/task_record.json";
+        var task_URL = "https://dipa-data-expansion.s3.ap-northeast-1.amazonaws.com/sources/task_record.json";
         fetch(task_URL).then( (res) => res.text() ) //read new label as text
         .then( (text) => {
             var json = text.replaceAll("\'", "\"");
@@ -69,7 +69,7 @@ class awsHandler{
                       }
                     }, 
                     ReturnConsumedCapacity: "TOTAL", 
-                    TableName: "soupsTaskRecords"
+                    TableName: "DIPATaskRecords"
                    };
                 this.db.putItem(params, async function(err, data) {
                      if (err)
@@ -95,7 +95,7 @@ class awsHandler{
                "N": String(taskId)
               }
             }, 
-            TableName: "soupsTaskRecords"
+            TableName: "DIPATaskRecords"
            };
         try{
             var data = await this.db.getItem(params).promise();
@@ -114,7 +114,7 @@ class awsHandler{
                S: workerId
               }
             }, 
-            TableName: "soupsWorkerRecords"
+            TableName: "DIPAWorkerRecords"
            };
         try{
             var data = await this.db.getItem(params).promise();
@@ -132,7 +132,7 @@ class awsHandler{
                "N": String(0)
               }
             }, 
-            TableName: "soupsGeneralController"
+            TableName: "DIPAGeneralController"
            };
         try{
             var data = await this.db.getItem(params).promise();

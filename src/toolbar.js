@@ -180,7 +180,8 @@ class Toolbar extends Component{
             var privacyButton = document.getElementById('privacyButton-' + this.state.labelList[i]);
             privacyButton.checked = false;
         }
-        this.props.toolCallback({clearManualBbox: true});
+        console.log('clear box');
+        this.props.toolCallback({clearManualBbox: true}, ()=>{console.log('clear box')});
         this.awsHandler.updateAnns(this.image_ID, this.props.workerId, anns);
         return true;
     }
@@ -257,7 +258,7 @@ class Toolbar extends Component{
                                 }
                             },
                             ReturnConsumedCapacity: "TOTAL", 
-                            TableName: "soupsWorkerRecords"
+                            TableName: "DIPAWorkerRecords"
                         }
                         this.awsHandler.dbUpdateTable(workerRecordsParams).then((value)=>{
                             this.getLabel();
@@ -279,7 +280,7 @@ class Toolbar extends Component{
         });
     }
     getTestLabel = ()=>{
-        var prefix = 'https://soups-data-collection.s3.ap-northeast-1.amazonaws.com/sources/';
+        var prefix = 'https://dipa-data-expansion.s3.ap-northeast-1.amazonaws.com/sources/';
         this.awsHandler.dbReadTestMode().then((testRecord)=>{
             this.setState({currentProgress: this.test_progress});
             testRecord = testRecord['Item'];
@@ -293,7 +294,7 @@ class Toolbar extends Component{
         });
     }
     getLabel = ()=>{
-        var prefix = 'https://soups-data-collection.s3.ap-northeast-1.amazonaws.com/sources/';
+        var prefix = 'https://dipa-data-expansion.s3.ap-northeast-1.amazonaws.com/sources/';
         this.awsHandler.dbReadGeneralController().then( (generalRecords)=>
         {
             generalRecords = generalRecords['Item'];
@@ -345,7 +346,7 @@ class Toolbar extends Component{
                             }
                         },
                         ReturnConsumedCapacity: "TOTAL", 
-                        TableName: "soupsTaskRecords"
+                        TableName: "DIPATaskRecords"
                     }
                     //to worker Table
                     var workerRecordsParams = {
@@ -367,7 +368,7 @@ class Toolbar extends Component{
                             }
                         },
                         ReturnConsumedCapacity: "TOTAL", 
-                        TableName: "soupsWorkerRecords"
+                        TableName: "DIPAWorkerRecords"
                     }
                     //to general records
                     generalRecords['workerList']['SS'].push(this.props.workerId);
@@ -386,7 +387,7 @@ class Toolbar extends Component{
                             ...generalRecords
                            }, 
                            ReturnConsumedCapacity: "TOTAL", 
-                           TableName: "soupsGeneralController"
+                           TableName: "DIPAGeneralController"
                     };
                     const promise1 = this.awsHandler.dbUpdateTable(taskRecordsParams);
                     const promise2 = this.awsHandler.dbUpdateTable(workerRecordsParams);

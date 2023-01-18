@@ -52,24 +52,28 @@ class Canvas extends Component{
       if(this.props.deleteFlag){
         this.deleteManualBbox();
       }
+      if(this.props.clearManualBbox)
+      {
+        this.deleteAllManualBbox();
+      }
     }
     deleteManualBbox = () =>{
       var lefted_bboxs = [];
-        var existing_bboxs = this.stageRef.current.find('.manualBbox');
-        var existing_ids = [];
-        for(var i = 0; i < existing_bboxs.length; i++)
-          existing_ids.push(existing_bboxs[i].attrs['id']);
-        for(var i = 0; i < this.state.manualBboxs.length; i++)
-        {
-          //bug fixed, we should not use "in" but need to use "includes"
-          if(existing_ids.includes('manualBbox-' + this.state.manualBboxs[i]['id']))
-            lefted_bboxs.push(this.state.manualBboxs[i]);
-        }
-        this.setState({manualBboxs:lefted_bboxs}, () => {this.props.toolCallback({manualBboxs:lefted_bboxs, deleteFlag: false});});
-      if(this.props.clearManualBbox){
-        this.trRef.current.nodes([]);
-        this.setState({manualBboxs: []}, () => {this.props.toolCallback({manualBboxs: [], clearManualBbox: false});});
+      var existing_bboxs = this.stageRef.current.find('.manualBbox');
+      var existing_ids = [];
+      for(var i = 0; i < existing_bboxs.length; i++)
+        existing_ids.push(existing_bboxs[i].attrs['id']);
+      for(var i = 0; i < this.state.manualBboxs.length; i++)
+      {
+        //bug fixed, we should not use "in" but need to use "includes"
+        if(existing_ids.includes('manualBbox-' + this.state.manualBboxs[i]['id']))
+          lefted_bboxs.push(this.state.manualBboxs[i]);
       }
+      this.setState({manualBboxs:lefted_bboxs}, () => {this.props.toolCallback({manualBboxs:lefted_bboxs, deleteFlag: false});});
+    }
+    deleteAllManualBbox = () =>{
+      this.trRef.current.nodes([]);
+      this.setState({manualBboxs: []}, () => {this.props.toolCallback({manualBboxs: [], clearManualBbox: false});});
     }
     createDefaultBboxs = () => {
         //console.log(this.props.bboxs);
