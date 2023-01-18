@@ -12,6 +12,8 @@ import {
     ToggleButtonGroup,
     Typography,
 } from "@mui/material";
+import SendIcon from '@mui/icons-material/Send';
+import DeleteIcon from '@mui/icons-material/Delete';
 class Toolbar extends Component{
 	constructor(props)
 	{
@@ -38,7 +40,8 @@ class Toolbar extends Component{
         'privacyButton': {'en': 'The above content is not privacy-threatening',
         'jp': '上記の内容はプライバシーを脅かすものではありません'},
         'progress':{'en': 'progress', 'jp': 'プログレス'},
-        'finishPopUp': {'en':'You have finished your task, thank you!', 'jp': 'タスクは完了です、ありがとうございました'}};
+        'finishPopUp': {'en':'You have finished your task, thank you!', 'jp': 'タスクは完了です、ありがとうございました'},
+        'back': {'en': 'Back to Introduction', 'jp': 'はじめにに戻る'}};
         this.awsHandler = new awsHandler(this.props.language, this.props.testMode);
         //this.aws_test.dbReadTaskTable('0').then(value=>console.log(value['Item']));
     }
@@ -278,6 +281,7 @@ class Toolbar extends Component{
     getTestLabel = ()=>{
         var prefix = 'https://soups-data-collection.s3.ap-northeast-1.amazonaws.com/sources/';
         this.awsHandler.dbReadTestMode().then((testRecord)=>{
+            this.setState({currentProgress: this.test_progress});
             testRecord = testRecord['Item'];
             var taskList = testRecord['taskList']['SS'];
             this.image_ID = taskList[this.test_progress];
@@ -539,16 +543,30 @@ class Toolbar extends Component{
         return (
             <div>
                 <Box>
-                <Button
-                        
-                        fullWidth  sx={{
+                    {this.props.testMode? <div></div>:<div></div>}
+                    <Button
+                        onClick= { () => {this.props.toolCallback({backToIntro: true});
+                        document.body.scrollTop = document.documentElement.scrollTop = 0;}}
+                        sx={{
+                                justifyContent: "flex-start",
+                                fontSize: "12px",
+                                color: "black",
+                                padding: "10px 25px",
+                                border: "2px solid rgba(0, 0, 0, 0.2)",
+                                borderRadius: "5px",
+                                boxShadow: "2px 2px 1px 0px rgba(0,0,0,0.2)",
+                                display: 'inline'
+                            }}
+                        >
+                            {this.text['back'][this.props.language]}
+                    </Button>
+                    <Button
+                        sx={{
                             justifyContent: "flex-start",
-                            fontSize: "20px",
+                            fontSize: "12px",
                             color: "black",
                             padding: "10px 25px",
-                            border: "5px solid rgba(0, 0, 0, 0.2)",
-                            borderRadius: "5px",
-                            boxShadow: "2px 2px 1px 0px rgba(0,0,0,0.2)",
+                            display: 'inline',
                         }}
                         >
                             {this.text['progress'][this.props.language] + ':    ' + 
@@ -565,9 +583,10 @@ class Toolbar extends Component{
                                 borderRadius: "5px",
                                 boxShadow: "2px 2px 1px 0px rgba(0,0,0,0.2)",
                             }}
+                        endIcon={<SendIcon />}
                         >
                             {this.text['load'][this.props.language]}
-                        <img src = {this.loading} style = {{marginLeft: '50px', height: '50px', width: '50px'}}/>
+                        {/*<img src = {this.loading} style = {{marginLeft: '50px', height: '50px', width: '50px'}}/>*/}
                     </Button>
                     <Button
                         onClick=  {(e) => {
@@ -599,6 +618,7 @@ class Toolbar extends Component{
                                 borderRadius: "5px",
                                 boxShadow: "2px 2px 1px 0px rgba(0,0,0,0.2)",
                             }}
+                        startIcon={<DeleteIcon />}
                         >
                             {this.text['deleteManualBbox'][this.props.language]}
                     </Button>

@@ -34,7 +34,7 @@ class Intro extends Component{
         'jp': 'ワーカーズID:'},
         'bigfiveTitle': {'en': 'Please answer the following questions.', 'jp': '以下の質問にお答えください。'},
         'confirmText0': {'en': 'I fully understand the study and want to do this task with my consent.', 'jp': '私はこの研究を十分に理解し、同意の上でこの作業を行いたいです。'},
-        'confirmText1': {'en': '(You may back to read the instruction later if you need)', 'jp': '(必要であれば、後で説明書を読み返すことができます）'}};
+        'confirmText1': {'en': '(You may back to read the instruction later if you need)', 'jp': '（（必要であれば、後で説明書を読み返すことができます）'}};
     }
     submit = () =>{
         var ifFinished = true;
@@ -173,13 +173,15 @@ class Intro extends Component{
                     Please first input your basic information and fill out a small questionnaire. 
                     <br></br>
                     <br></br>
-                    After you click the bottommost button, you will go to the annotation interface.
-                    
+                    After you click the bottommost button, you will go to the annotation interface (You may back to read the instruction later if you need).
+                    <br></br>
+                    <br></br>
                     </h3>
                 </Card.Text>
                 <Card.Title><h1><strong>How to use the interface</strong></h1></Card.Title>
                 <Card.Text>
                     <h3>
+                        <br></br>
                         Please finish the questionnaire first and click the button "I fully understand the study and want to do this task with my consent." at the bottom to go to the task page.
                         <br></br>
                         <br></br>
@@ -201,7 +203,7 @@ class Intro extends Component{
                         If you think this content is privacy-threatening, please answer the questions folded in the label.
                         <br></br>
                         <br></br>
-                        If you think this content is not privacy-threatening, please check the 'not privacy' box to <strong>skip the annotation</strong>.
+                        If you think this content is <strong>not</strong> privacy-threatening, please check the box 'The above content is not privacy-threatening' to <strong>skip the annotation</strong>.
                         <br></br>
                         <br></br>
                         You may mark another object by the button 'Create bounding box' if you find something privacy-threatening but <strong>is not given in the default annotations</strong>. 
@@ -216,13 +218,13 @@ class Intro extends Component{
                         Once you finish all the annotations, please click '<strong>Load the next image</strong>' to annotate the next image.
                         <br></br>
                         <br></br>
-                        
                     </h3>
                 </Card.Text>
                 <Card.Title><h1><strong>How to know if I finish the task?</strong></h1></Card.Title>
                 <Card.Text>
                     <h3>
-                        If you finish all the annotation tasks, the interface will pop up a piece of information.
+                        <br></br>
+                        If you finish all the annotation tasks, the interface will pop up a piece of information and go to <strong>Prolific Completion Code</strong> page automatically.
                         <br></br>
                         <br></br>
                         <img src = {finishPop} style = {{maxHeight: '100%', maxWidth: '100%'}}/>
@@ -231,7 +233,7 @@ class Intro extends Component{
                         Then, you may leave the interface, submit your status on the platform, and get approved. 
                         <br></br>
                         <br></br>
-                        If you want to leave the interface before finishing all tasks, please input the same info (especially <strong>Worker's ID</strong>) on this page and you may resume your task stage.
+                        If you want to leave the interface before finishing all tasks, please input the same information (especially <strong>Worker's ID</strong>) on this page and you may resume your task stage.
                         <br></br>
                         <br></br>
                         If you need to change your ID during the task, please reload this page.                
@@ -254,12 +256,15 @@ class Intro extends Component{
                     まず、あなたの基本情報を入力し、簡単なアンケートに答えてください。 
                     <br></br>
                     <br></br>
-                    一番下のボタンをクリックすると、作業用の画面に移ります。
+                    一番下のボタンをクリックすると、作業用の画面に移ります（必要であれば、後で説明書を読み返すことができます）。
+                    <br></br>
+                    <br></br>
                     </h3>
                 </Card.Text>
                 <Card.Title><h1><strong>インターフェイスの使い方</strong></h1></Card.Title>
                 <Card.Text>
                     <h3>
+                        <br></br>
                         まずはアンケートに答えていただき、一番下の「私はこの研究を十分に理解し、同意の上でこの作業を行いたいです」というボタンをクリックし、タスクのページに進んでください。
                         <br></br>
                         <br></br>
@@ -278,7 +283,7 @@ class Intro extends Component{
                         これらが<strong>プライバシーを脅かすもの</strong>と考えた場合、クリックしてください。また、その場合ラベルに折りたたまれている質問にも答えてください。
                         <br></br>
                         <br></br>
-                        このコンテンツがプライバシーを脅かすものではないと考える場合は、「<strong>上記の内容はプライバシーを脅かすものではありません</strong>」とうボックスにチェックを入れて、<strong>アノテーションをスキップしてください</strong>。
+                        このコンテンツがプライバシーを脅かすもの<strong>ではない</strong>と考える場合は、「<strong>上記の内容はプライバシーを脅かすものではありません</strong>」とうボックスにチェックを入れて、<strong>アノテーションをスキップしてください</strong>。
                         <br></br>
                         <br></br>
                         プライバシーを脅かすが、<strong>デフォルトの枠囲みが付与されていない</strong>ものを見つけた場合、「<strong>バウンディングボックスの作成</strong>」ボタンで追加のボックスを追加することができます。
@@ -298,6 +303,7 @@ class Intro extends Component{
                 <Card.Title><h1><strong>タスクが完了したかどうかを知るには？</strong></h1></Card.Title>
                 <Card.Text>
                     <h3>
+                        <br></br>
                         すべてのアノテーション作業が終わると、ポップアップで情報が提示されます。
                         <br></br>
                         <br></br>
@@ -341,19 +347,16 @@ class Intro extends Component{
     render(){
         return(
             <div style={this.props.display?{display: 'block'}:{display: 'none'}}>
-                <Container>
-                    <Row>
-                        <Col md ={1}>
+                <Container style ={{paddingLeft: 0, paddingRight: 0}}>
+                    <Row style ={{paddingLeft: 0, paddingRight: 0}} >
+                        <Col md ={1} style ={{paddingLeft: 0, paddingRight: 0}}>
                         </Col>
-                        <Col md={11}>
+                        <Col md={11} style ={{paddingLeft: 0, paddingRight: 0}}>
+                        
                         <Card style={{ maxWidth: '80%'}} border={'dark'}>
                         <Card.Header  style={{ textAlign: 'left'}}>
                             <h2><strong>{this.text['instruction'][this.props.language]}</strong></h2>
                         </Card.Header>
-                        <Card.Body text={'dark'}  style={{ textAlign: 'left'}}>
-                            <Card.Title><h1><strong>{this.text['task'][this.props.language]}</strong></h1></Card.Title>
-                            {this.props.language==='en'? this.taskIntroEn():this.taskIntroJp()}
-                        </Card.Body>
                         {/*this button can skip the input procedure in test mode*/}
                         {   
                             this.props.testMode? <Button variant="outline-dark" style={{cursor: 'pointer', width: '60%', margin: 'auto'}} 
@@ -368,6 +371,10 @@ class Intro extends Component{
                             }}>{this.text['skipButton'][this.props.language]}</Button>: 
                             <div></div>
                         }
+                        <Card.Body text={'dark'}  style={{ textAlign: 'left'}}>
+                            <Card.Title><h1><strong>{this.text['task'][this.props.language]}</strong></h1></Card.Title>
+                            {this.props.language==='en'? this.taskIntroEn():this.taskIntroJp()}
+                        </Card.Body>
                         <br></br>
                         <span  style={{ textAlign: 'left'}}><h3>{this.text['workerId'][this.props.language]}</h3></span>
                         <input type="text" id={"particpant-workerid"} ref={this.workerId} /><br/>
