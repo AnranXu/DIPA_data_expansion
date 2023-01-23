@@ -1,14 +1,14 @@
 # Task Design
 
-## Task Link
+## Task Preview Link
 
  https://anranxu.github.io/DIPA_data_expansion/?lg=en&test=true
 
 ## Overview
 
-task per worker: 20
+**task per worker**: 20
 
-task requirement: Only annotating labels that were annotated as privacy-threatening in DIPA 1.0 (1,495 images in total). Allowing to add manual labels.
+**task requirement**: Only annotating labels were annotated as privacy-threatening in DIPA 1.0 (1,495 images in total, non-privacy-threatening content will be removed in advance). Workers need to provide three answers to each privacy-threatening content they have identified, including "reason, informativeness, and maximum sharing scope". Also, we allow workers to add manual labels.
 
 ## Current Metrics
 
