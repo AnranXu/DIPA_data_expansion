@@ -82,15 +82,6 @@ class anova:
                 
                 for label_path in labels:
                     img_id = label_path.split('_')[0]
-                    if img_id not in used_image:
-                        used_image.append(img_id)
-                        #self.valid_label_list.append(label_path)
-                    else:
-                        #if img_id in self.img_annotation_map.keys():
-                            #print(self.img_annotation_map[img_id])
-                            #self.img_annotation_map[img_id][platform].remove(label_path)
-                            #print(self.img_annotation_map[img_id])
-                        continue
                     with open(os.path.join(folder,label_path)) as f:
                         text = f.read()
                         label = json.loads(text)
