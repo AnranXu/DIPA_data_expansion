@@ -1,0 +1,3171 @@
+ID,my_cat,reason,informativeness,sharing
+0,Screen,5,7,1
+1,Cosmetics,3,4,2
+2,Person,1,6,1
+3,Person,1,6,1
+4,Vehicle Plate,1,7,1
+5,Person,2,2,1
+6,Person,1,7,2
+7,Person,1,5,2
+8,Person,1,6,2
+9,Person,1,6,2
+10,Clothing,3,5,2
+11,Person,1,5,2
+12,Person,1,6,2
+13,Person,1,6,2
+14,Person,1,6,2
+15,Person,1,6,2
+16,Pet,1,3,3
+17,Person,1,6,2
+18,Person,2,5,1
+19,Person,1,5,1
+20,Screen,3,5,1
+21,Person,1,7,2
+22,Person,1,7,2
+23,Person,1,2,3
+24,Person,4,7,2
+25,Toy,1,3,2
+26,Person,3,3,1
+27,Clothing,3,4,1
+28,Scenery,2,5,2
+29,Person,1,7,2
+30,Person,1,7,2
+31,Accessory,1,5,2
+32,Person,1,7,2
+33,Person,1,1,3
+34,Clothing,1,1,3
+35,Person,1,4,2
+36,Person,1,7,2
+37,Person,1,5,2
+38,Person,1,1,3
+39,Person,1,1,3
+40,Person,1,1,3
+41,Person,1,2,3
+42,Person,1,7,2
+43,Person,1,7,2
+44,Machine,1,5,1
+45,Table,2,6,1
+46,Vehicle Plate,1,5,1
+47,Toy,4,4,2
+48,Clothing,1,5,1
+49,Vehicle Plate,1,7,1
+50,Pet,3,4,2
+51,Home interior,2,3,3
+52,Person,1,7,1
+53,Person,1,5,1
+54,Person,1,7,1
+55,Vehicle Plate,2,6,2
+56,Finger,2,2,3
+57,Table,2,2,3
+58,Accessory,1,4,2
+59,Person,3,5,2
+60,Person,3,4,2
+61,Clothing,3,5,2
+62,Person,3,4,2
+63,Person,1,5,1
+64,Screen,3,5,2
+65,Person,3,4,2
+66,Person,1,7,1
+67,Person,1,4,2
+68,Person,1,5,2
+69,Person,1,6,2
+70,Vehicle Plate,1,6,2
+71,Clothing,1,6,1
+72,Person,1,6,1
+73,Person,1,5,1
+74,Accessory,3,4,1
+75,Person,1,6,1
+76,Person,1,4,1
+77,Clothing,1,4,1
+78,Person,1,5,1
+79,Person,1,5,1
+80,Person,1,5,1
+81,Person,1,5,1
+82,Person,1,5,1
+83,Person,1,5,1
+84,Person,1,5,1
+85,Person,1,5,1
+86,Person,1,5,1
+87,Person,1,5,1
+88,Person,1,4,1
+89,Clothing,4,5,1
+90,Person,1,6,1
+91,Person,1,4,1
+92,Person,1,6,1
+93,Clothing,2,2,2
+94,Book,3,5,2
+95,Scenery,2,2,4
+96,Place Identifier,2,1,4
+97,Screen,3,6,1
+98,Vehicle Plate,2,5,3
+99,Table,3,7,2
+100,Accessory,4,4,1
+101,Accessory,1,5,4
+102,Clothing,1,5,4
+103,Person,1,5,2
+104,Person,1,4,2
+105,Person,1,7,2
+106,Clothing,1,4,2
+107,Person,3,3,2
+108,Person,1,7,2
+109,Person,1,6,2
+110,Person,1,7,1
+111,Screen,3,2,3
+112,Pet,1,4,1
+113,Table,2,5,2
+114,Table,3,5,1
+115,Person,1,6,2
+116,Person,1,5,2
+117,Person,1,5,2
+118,Person,1,2,2
+119,Person,1,5,2
+120,Person,1,2,1
+121,Person,1,2,1
+122,Person,1,7,2
+123,Paper&Document&Label,3,3,2
+124,Cosmetics,3,6,2
+125,Vehicle Plate,1,7,1
+126,Scenery,2,3,3
+127,Vehicle Plate,1,7,2
+128,Home interior,1,4,2
+129,Person,1,5,1
+130,Person,1,5,1
+131,Person,1,5,1
+132,Place Identifier,2,4,2
+133,Place Identifier,2,6,2
+134,Vehicle Plate,1,7,1
+135,Person,1,7,2
+136,Person,1,7,1
+137,Person,1,7,1
+138,Person,1,7,1
+139,Person,1,7,1
+140,Person,1,5,2
+141,Pet,1,4,3
+142,Machine,3,3,2
+143,Person,3,5,1
+144,Clothing,2,7,2
+145,Person,1,7,2
+146,Scenery,2,5,1
+147,Place Identifier,2,6,1
+148,Person,1,6,1
+149,Person,4,5,1
+150,Person,1,6,1
+151,Person,1,6,1
+152,Person,1,6,1
+153,Person,1,7,2
+154,Person,1,4,2
+155,Person,1,6,2
+156,Person,1,7,2
+157,Person,1,7,2
+158,Person,1,7,1
+159,Person,1,6,2
+160,Place Identifier,2,7,2
+161,Pet,3,5,1
+162,Food,1,4,2
+163,Clothing,3,4,2
+164,Person,1,6,2
+165,Clothing,1,4,2
+166,Person,1,6,2
+167,Person,1,5,2
+168,Accessory,3,3,2
+169,Person,1,3,2
+170,Person,1,3,1
+171,Person,1,3,2
+172,Person,1,3,2
+173,Person,1,3,2
+174,Pet,3,2,3
+175,Clothing,3,2,4
+176,Toy,3,5,4
+177,Cosmetics,3,4,3
+178,Place Identifier,2,5,1
+179,Musical instrument,3,3,1
+180,Food,2,5,2
+181,Person,1,7,2
+182,Clothing,2,4,2
+183,Table,2,4,2
+184,Place Identifier,2,5,2
+185,Clothing,1,5,2
+186,Person,1,7,2
+187,Accessory,3,3,1
+188,Place Identifier,2,5,1
+189,Clothing,3,4,1
+190,Vehicle Plate,1,7,1
+191,Person,1,6,2
+192,Person,1,5,2
+193,Cosmetics,1,3,2
+194,Person,1,5,2
+195,Person,1,5,2
+196,Person,1,4,2
+197,Person,1,5,2
+198,Person,1,5,2
+199,Cigarettes,1,6,1
+200,Person,1,6,2
+201,Person,1,7,1
+202,Person,1,7,1
+203,Person,1,7,1
+204,Person,1,5,2
+205,Person,1,6,2
+206,Accessory,1,5,2
+207,Person,1,7,2
+208,Person,1,5,2
+209,Person,1,7,2
+210,Person,1,5,1
+211,Table,2,4,2
+212,Vehicle Plate,1,7,1
+213,Vehicle Plate,1,6,2
+214,Book,3,4,2
+215,Person,1,6,2
+216,Person,1,6,2
+217,Person,1,7,1
+218,Person,3,4,1
+219,Person,1,5,1
+220,Screen,3,5,1
+221,Clothing,1,7,1
+222,Person,1,7,1
+223,Person,1,7,1
+224,Person,1,7,1
+225,Table,2,2,3
+226,Person,1,7,2
+227,Person,1,4,2
+228,Pet,3,3,3
+229,Vehicle Plate,1,7,2
+230,Pet,1,5,2
+231,Person,1,4,1
+232,Clothing,1,4,1
+233,Book,2,5,1
+234,Person,1,4,2
+235,Vehicle Plate,1,6,1
+236,Scenery,2,5,2
+237,Vehicle Plate,1,6,2
+238,Book,3,5,2
+239,Toy,3,5,2
+240,Home interior,1,6,2
+241,Food,2,2,2
+242,Paper&Document&Label,2,2,2
+243,Finger,2,2,3
+244,Table,2,4,2
+245,Vehicle Plate,1,7,2
+246,Scenery,2,6,2
+247,Pet,2,4,1
+248,Clothing,2,4,1
+249,Cigarettes,3,4,2
+250,Vehicle Plate,1,7,2
+251,Person,1,7,2
+252,Finger,2,4,2
+253,Person,1,7,1
+254,Person,1,7,1
+255,Table,2,5,2
+256,Person,1,7,1
+257,Clothing,3,4,1
+258,Toy,3,4,1
+259,Machine,3,2,3
+260,Clothing,3,3,3
+261,Cosmetics,3,2,2
+262,Table,3,4,2
+263,Machine,2,4,3
+264,Vehicle Plate,1,7,1
+265,Person,1,4,2
+266,Clothing,1,4,2
+267,Person,1,4,2
+268,Person,1,4,2
+269,Person,1,3,3
+270,Clothing,1,3,3
+271,Person,1,5,3
+272,Person,1,6,3
+273,Table,3,2,3
+274,Toy,3,4,3
+275,Screen,1,5,1
+276,Screen,3,5,1
+277,Person,1,2,1
+278,Person,1,2,1
+279,Clothing,1,4,1
+280,Person,1,4,1
+281,Person,1,3,1
+282,Person,1,2,1
+283,Person,1,4,1
+284,Clothing,1,4,2
+285,Electronic Devices,1,4,2
+286,Person,1,6,1
+287,Person,1,5,1
+288,Accessory,1,5,1
+289,Person,4,4,1
+290,Person,1,4,1
+291,Clothing,3,5,1
+292,Person,1,5,1
+293,Person,1,5,1
+294,Person,1,4,1
+295,Person,1,4,1
+296,Person,1,4,1
+297,Person,1,7,1
+298,Person,1,4,1
+299,Person,4,5,1
+300,Person,1,6,1
+301,Person,1,4,1
+302,Person,1,3,3
+303,Person,1,7,2
+304,Clothing,1,5,2
+305,Person,1,7,2
+306,Person,1,7,2
+307,Person,5,4,2
+308,Person,1,5,2
+309,Person,1,7,2
+310,Person,1,6,1
+311,Clothing,2,4,3
+312,Photo,2,4,2
+313,Vehicle Plate,1,7,2
+314,Clothing,1,4,2
+315,Table,3,5,1
+316,Table,2,5,1
+317,Screen,1,7,1
+318,Screen,1,6,1
+319,Place Identifier,2,6,2
+320,Vehicle Plate,1,7,2
+321,Person,1,6,2
+322,Person,1,6,2
+323,Person,1,6,2
+324,Vehicle Plate,1,7,1
+325,Clothing,1,5,3
+326,Vehicle Plate,1,4,3
+327,Pet,5,2,2
+328,Book,3,5,2
+329,Accessory,1,5,1
+330,Vehicle Plate,1,7,1
+331,Cosmetics,1,1,3
+332,Person,1,6,2
+333,Person,1,5,2
+334,Person,1,5,2
+335,Clothing,1,5,2
+336,Person,1,6,2
+337,Person,1,5,2
+338,Person,1,5,2
+339,Person,1,7,2
+340,Person,1,7,2
+341,Accessory,3,5,2
+342,Person,1,7,2
+343,Person,1,6,2
+344,Person,1,7,2
+345,Person,3,3,1
+346,Paper&Document&Label,2,5,1
+347,Vehicle Plate,1,7,1
+348,Musical instrument,3,1,3
+349,Screen,3,6,1
+350,Table,2,5,1
+351,Paper&Document&Label,3,6,2
+352,Vehicle Plate,1,4,1
+353,Home interior,2,5,2
+354,Musical instrument,3,4,2
+355,Paper&Document&Label,3,3,3
+356,Person,1,6,2
+357,Person,1,6,2
+358,Person,1,7,1
+359,Table,2,2,3
+360,Person,1,7,1
+361,Person,1,7,1
+362,Person,1,7,1
+363,Person,1,7,1
+364,Person,1,6,2
+365,Person,1,5,2
+366,Person,1,5,2
+367,Home interior,2,7,1
+368,Pet,1,7,1
+369,Book,1,6,1
+370,Toy,1,7,1
+371,Book,4,6,2
+372,Person,1,7,1
+373,Clothing,5,3,2
+374,Person,1,7,1
+375,Machine,3,5,2
+376,Place Identifier,2,6,2
+377,Person,1,5,1
+378,Person,1,6,1
+379,Person,1,6,1
+380,Person,1,6,1
+381,Person,1,6,1
+382,Home interior,3,3,3
+383,Photo,2,2,2
+384,Cigarettes,3,3,3
+385,Place Identifier,2,1,1
+386,Home interior,3,2,3
+387,Place Identifier,2,6,2
+388,Book,3,5,2
+389,Book,3,5,2
+390,Pet,1,6,2
+391,Paper&Document&Label,5,4,3
+392,Paper&Document&Label,1,6,1
+393,Scenery,2,7,2
+394,Screen,1,6,1
+395,Clothing,1,5,2
+396,Home interior,2,4,2
+397,Person,4,6,2
+398,Person,4,7,2
+399,Person,4,7,2
+400,Home interior,3,2,2
+401,Clothing,1,7,2
+402,Screen,3,7,1
+403,Electronic Devices,3,4,3
+404,Place Identifier,2,4,2
+405,Place Identifier,2,5,2
+406,Table,3,2,2
+407,Machine,3,4,3
+408,Pet,1,6,2
+409,Book,3,5,1
+410,Table,3,4,4
+411,Toy,3,1,4
+412,Musical instrument,3,4,2
+413,Screen,3,7,1
+414,Place Identifier,2,3,3
+415,Place Identifier,2,3,3
+416,Person,1,6,1
+417,Person,1,6,1
+418,Screen,2,3,3
+419,Screen,3,2,3
+420,Clothing,1,4,2
+421,Accessory,1,5,2
+422,Person,1,1,3
+423,Clothing,1,2,3
+424,Person,1,1,3
+425,Person,1,7,1
+426,Person,1,6,1
+427,Paper&Document&Label,2,4,3
+428,Book,3,4,3
+429,Person,1,5,1
+430,Clothing,1,2,2
+431,Person,1,6,1
+432,Book,3,5,3
+433,Person,1,2,2
+434,Person,1,6,1
+435,Place Identifier,2,6,1
+436,Vehicle Plate,1,7,1
+437,Pet,3,5,2
+438,Paper&Document&Label,2,6,3
+439,Person,1,4,1
+440,Person,1,7,1
+441,Finger,2,2,3
+442,Person,1,3,3
+443,Person,3,3,3
+444,Clothing,1,2,3
+445,Person,1,5,1
+446,Table,2,3,3
+447,Person,1,2,3
+448,Place Identifier,2,4,2
+449,Electronic Devices,2,5,2
+450,Vehicle Plate,1,7,1
+451,Place Identifier,2,5,2
+452,Clothing,3,5,1
+453,Photo,3,6,1
+454,Screen,3,4,1
+455,Accessory,1,5,2
+456,Cigarettes,3,5,2
+457,Scenery,2,4,3
+458,Person,1,7,1
+459,Person,1,7,1
+460,Place Identifier,2,6,1
+461,Person,1,7,1
+462,Table,2,6,1
+463,Table,2,7,1
+464,Screen,3,7,1
+465,Toy,2,6,2
+466,Person,1,5,1
+467,Person,1,6,1
+468,Person,1,5,1
+469,Screen,3,6,1
+470,Screen,3,6,1
+471,Table,3,5,1
+472,Home interior,3,3,2
+473,Table,3,3,2
+474,Table,3,4,2
+475,Book,3,5,2
+476,Person,1,5,1
+477,Person,1,5,1
+478,Finger,3,5,3
+479,Person,1,7,1
+480,Person,1,7,1
+481,Accessory,1,7,1
+482,Person,1,7,1
+483,Person,1,7,1
+484,Person,1,7,1
+485,Accessory,3,3,3
+486,Person,1,5,2
+487,Person,1,5,2
+488,Screen,1,6,2
+489,Person,1,4,2
+490,Identity,1,7,1
+491,Clothing,1,5,1
+492,Screen,4,6,1
+493,Screen,4,6,1
+494,Pet,1,3,1
+495,Screen,3,5,2
+496,Person,1,7,1
+497,Person,1,5,1
+498,Person,1,7,1
+499,Person,1,5,1
+500,Person,1,7,1
+501,Person,1,7,1
+502,Person,1,7,1
+503,Person,1,7,1
+504,Person,1,5,1
+505,Person,1,7,1
+506,Person,1,7,1
+507,Clothing,2,7,1
+508,Person,2,3,2
+509,Person,1,6,2
+510,Vehicle Plate,1,7,2
+511,Vehicle Plate,1,7,3
+512,Place Identifier,2,5,3
+513,Person,1,7,1
+514,Clothing,1,2,3
+515,Home interior,2,2,2
+516,Vehicle Plate,2,3,3
+517,Vehicle Plate,1,7,1
+518,Clothing,3,6,3
+519,Person,1,7,3
+520,Person,1,5,2
+521,Person,1,3,2
+522,Clothing,1,6,2
+523,Person,1,7,2
+524,Person,1,7,1
+525,Person,1,7,1
+526,Person,1,7,1
+527,Person,4,7,1
+528,Person,1,3,2
+529,Person,1,3,2
+530,Person,1,7,2
+531,Person,1,7,2
+532,Person,1,2,2
+533,Clothing,1,6,2
+534,Person,1,6,2
+535,Person,1,3,2
+536,Person,1,6,2
+537,Person,1,5,2
+538,Accessory,1,5,2
+539,Person,1,7,2
+540,Person,1,5,2
+541,Clothing,1,5,2
+542,Person,1,5,2
+543,Person,1,6,2
+544,Person,1,6,2
+545,Person,1,5,2
+546,Person,1,5,2
+547,Person,1,5,2
+548,Person,1,7,2
+549,Person,1,7,2
+550,Screen,1,2,3
+551,Screen,3,2,3
+552,Book,3,5,3
+553,Person,1,5,2
+554,Person,1,5,2
+555,Person,1,5,2
+556,Book,3,5,1
+557,Person,1,7,2
+558,Pet,3,6,2
+559,Clothing,1,5,1
+560,Vehicle Plate,1,6,1
+561,Photo,3,5,2
+562,Finger,2,5,3
+563,Person,1,5,2
+564,Person,2,4,3
+565,Vehicle Plate,1,4,1
+566,Pet,3,5,2
+567,Person,1,7,2
+568,Person,1,7,1
+569,Screen,5,4,2
+570,Clothing,1,4,1
+571,Place Identifier,2,4,4
+572,Vehicle Plate,1,6,1
+573,Person,1,7,1
+574,Person,3,6,2
+575,Person,1,7,1
+576,Person,1,6,1
+577,Clothing,3,6,1
+578,Person,1,5,2
+579,Person,1,7,1
+580,Person,1,3,2
+581,Person,1,4,2
+582,Person,1,7,1
+583,Table,2,7,2
+584,Person,1,3,2
+585,Person,1,7,2
+586,Person,1,2,2
+587,Person,1,7,2
+588,Person,1,5,2
+589,Person,1,2,3
+590,Person,1,2,2
+591,Person,1,2,3
+592,Person,1,2,3
+593,Person,1,7,2
+594,Person,1,7,1
+595,Person,1,7,1
+596,Person,1,7,1
+597,Person,1,7,1
+598,Paper&Document&Label,1,2,3
+599,Scenery,2,7,3
+600,Person,1,7,1
+601,Person,1,4,2
+602,Person,1,5,1
+603,Person,1,2,2
+604,Clothing,1,2,2
+605,Person,1,5,2
+606,Person,1,6,1
+607,Person,1,2,2
+608,Person,1,2,3
+609,Person,1,7,1
+610,Person,3,3,2
+611,Accessory,3,2,2
+612,Person,1,7,1
+613,Person,1,5,2
+614,Person,1,3,2
+615,Person,1,3,2
+616,Person,1,6,1
+617,Person,3,2,3
+618,Person,1,7,1
+619,Clothing,3,4,3
+620,Person,1,6,1
+621,Person,1,6,1
+622,Place Identifier,2,5,2
+623,Book,3,6,2
+624,Person,1,7,2
+625,Paper&Document&Label,1,7,1
+626,Home interior,3,2,2
+627,Musical instrument,3,4,2
+628,Person,1,4,1
+629,Clothing,3,4,2
+630,Person,3,4,2
+631,Person,5,4,2
+632,Person,1,7,2
+633,Screen,3,3,1
+634,Screen,3,6,1
+635,Pet,1,2,3
+636,Clothing,1,1,4
+637,Home interior,1,1,4
+638,Book,3,6,1
+639,Screen,3,5,2
+640,Table,3,4,3
+641,Screen,3,6,1
+642,Pet,3,5,3
+643,Person,1,5,3
+644,Person,1,3,4
+645,Person,3,3,3
+646,Person,2,7,1
+647,Photo,2,6,1
+648,Person,2,7,1
+649,Electronic Devices,1,4,1
+650,Food,1,4,1
+651,Cigarettes,1,5,2
+652,Person,1,7,1
+653,Person,1,5,1
+654,Place Identifier,2,6,2
+655,Scenery,2,5,2
+656,Cigarettes,3,2,2
+657,Vehicle Plate,1,7,2
+658,Screen,3,6,1
+659,Clothing,1,5,2
+660,Person,5,4,2
+661,Clothing,3,1,3
+662,Clothing,5,6,1
+663,Book,3,4,2
+664,Place Identifier,2,5,2
+665,Vehicle Plate,1,7,1
+666,Person,3,2,3
+667,Accessory,3,2,3
+668,Person,1,3,2
+669,Person,1,5,2
+670,Cigarettes,3,4,2
+671,Person,1,2,4
+672,Person,1,2,4
+673,Musical instrument,2,4,1
+674,Place Identifier,2,4,3
+675,Person,1,2,3
+676,Scenery,2,5,2
+677,Person,1,6,2
+678,Accessory,3,2,3
+679,Person,1,7,2
+680,Finger,1,7,2
+681,Person,1,6,2
+682,Clothing,1,5,2
+683,Person,1,7,2
+684,Person,1,7,2
+685,Person,1,7,2
+686,Cosmetics,3,4,2
+687,Place Identifier,2,6,2
+688,Pet,1,5,2
+689,Table,2,5,2
+690,Machine,3,4,2
+691,Electronic Devices,3,7,2
+692,Clothing,3,5,2
+693,Food,2,5,1
+694,Screen,2,5,1
+695,Pet,3,5,2
+696,Scenery,2,6,1
+697,Table,3,4,2
+698,Clothing,2,6,3
+699,Screen,3,5,1
+700,Machine,3,1,4
+701,Person,1,5,2
+702,Person,1,7,2
+703,Person,1,7,1
+704,Person,1,7,1
+705,Cigarettes,3,2,1
+706,Vehicle Plate,1,7,2
+707,Person,1,7,2
+708,Person,2,6,1
+709,Person,2,4,1
+710,Person,1,7,2
+711,Person,1,4,2
+712,Person,1,7,2
+713,Person,1,3,2
+714,Clothing,3,5,3
+715,Photo,2,6,2
+716,Person,1,6,2
+717,Clothing,2,3,1
+718,Photo,2,6,2
+719,Scenery,2,7,3
+720,Finger,2,4,1
+721,Table,2,5,1
+722,Scenery,2,7,2
+723,Screen,3,4,1
+724,Book,3,5,3
+725,Paper&Document&Label,3,5,1
+726,Person,1,7,2
+727,Toy,3,6,1
+728,Book,3,7,1
+729,Vehicle Plate,1,7,1
+730,Person,1,5,2
+731,Clothing,3,5,2
+732,Person,1,7,2
+733,Clothing,3,3,3
+734,Person,1,5,2
+735,Person,1,5,2
+736,Person,1,5,2
+737,Person,1,5,2
+738,Person,1,5,2
+739,Pet,3,4,2
+740,Pet,4,6,2
+741,Person,1,6,1
+742,Person,1,7,2
+743,Person,1,7,2
+744,Cosmetics,3,1,4
+745,Person,1,7,2
+746,Person,1,7,2
+747,Person,1,1,3
+748,Clothing,1,2,3
+749,Person,1,7,2
+750,Person,1,7,2
+751,Photo,1,7,1
+752,Person,1,7,2
+753,Pet,3,5,2
+754,Person,1,5,2
+755,Person,1,6,2
+756,Person,1,7,2
+757,Person,1,6,2
+758,Accessory,1,4,2
+759,Vehicle Plate,1,6,1
+760,Home interior,2,5,2
+761,Clothing,1,5,2
+762,Table,1,6,1
+763,Place Identifier,2,7,1
+764,Person,1,7,1
+765,Person,1,7,1
+766,Accessory,1,5,1
+767,Person,1,7,1
+768,Person,1,7,1
+769,Vehicle Plate,5,5,1
+770,Person,1,6,2
+771,Clothing,3,6,2
+772,Person,1,7,2
+773,Person,1,7,2
+774,Person,1,5,2
+775,Person,1,5,2
+776,Person,1,7,2
+777,Person,1,7,1
+778,Person,1,7,1
+779,Vehicle Plate,1,7,1
+780,Person,1,6,2
+781,Person,1,5,2
+782,Person,1,6,2
+783,Person,1,5,2
+784,Person,1,5,2
+785,Pet,1,3,3
+786,Vehicle Plate,1,7,1
+787,Paper&Document&Label,1,6,1
+788,Table,4,5,2
+789,Home interior,2,2,3
+790,Table,3,2,3
+791,Food,3,4,3
+792,Table,3,2,3
+793,Screen,4,4,1
+794,Paper&Document&Label,3,3,2
+795,Cigarettes,3,3,2
+796,Screen,2,3,2
+797,Person,1,7,2
+798,Person,1,3,3
+799,Person,1,2,3
+800,Clothing,1,2,2
+801,Person,1,7,1
+802,Person,1,6,1
+803,Screen,3,2,3
+804,Person,1,6,1
+805,Person,1,6,1
+806,Person,1,6,1
+807,Person,3,5,1
+808,Person,1,6,1
+809,Place Identifier,2,4,2
+810,Scenery,2,4,3
+811,Machine,3,3,3
+812,Toy,3,4,2
+813,Screen,3,5,1
+814,Clothing,1,2,3
+815,Vehicle Plate,1,6,1
+816,Book,3,4,1
+817,Food,2,2,4
+818,Food,2,3,4
+819,Person,1,7,1
+820,Person,1,7,1
+821,Accessory,3,5,2
+822,Person,1,7,1
+823,Clothing,1,6,2
+824,Person,1,7,1
+825,Person,1,7,1
+826,Person,1,7,1
+827,Person,1,7,1
+828,Person,1,7,1
+829,Screen,3,5,1
+830,Screen,3,5,2
+831,Table,3,4,2
+832,Screen,1,7,1
+833,Table,5,2,3
+834,Screen,1,7,1
+835,Scenery,2,3,3
+836,Place Identifier,2,3,3
+837,Person,1,6,2
+838,Person,1,5,2
+839,Person,1,5,2
+840,Person,1,7,2
+841,Person,1,7,1
+842,Person,2,5,2
+843,Person,2,3,2
+844,Person,2,3,2
+845,Person,2,5,2
+846,Person,2,5,2
+847,Person,1,4,3
+848,Person,1,5,3
+849,Person,1,4,2
+850,Person,1,5,2
+851,Person,1,4,2
+852,Screen,1,5,1
+853,Machine,1,5,2
+854,Person,1,4,3
+855,Person,1,4,3
+856,Scenery,2,5,1
+857,Pet,3,7,2
+858,Person,1,7,2
+859,Clothing,2,7,2
+860,Person,1,7,1
+861,Person,1,7,1
+862,Scenery,1,5,2
+863,Paper&Document&Label,2,3,3
+864,Book,1,6,2
+865,Cosmetics,3,2,1
+866,Person,1,4,2
+867,Person,1,4,2
+868,Person,1,4,2
+869,Person,1,4,2
+870,Clothing,1,4,2
+871,Person,1,4,2
+872,Person,1,4,2
+873,Person,1,4,2
+874,Person,1,4,2
+875,Person,1,4,2
+876,Screen,1,4,3
+877,Person,1,4,2
+878,Person,1,4,2
+879,Cosmetics,3,3,2
+880,Person,1,7,1
+881,Person,1,4,1
+882,Accessory,1,4,1
+883,Person,1,4,1
+884,Clothing,1,5,1
+885,Person,1,7,1
+886,Person,1,7,1
+887,Person,1,4,1
+888,Person,1,5,1
+889,Person,1,3,1
+890,Person,1,7,1
+891,Place Identifier,1,5,2
+892,Home interior,2,6,2
+893,Vehicle Plate,1,5,2
+894,Table,2,2,3
+895,Food,3,3,3
+896,Paper&Document&Label,3,3,2
+897,Person,1,3,2
+898,Person,1,5,2
+899,Person,1,5,2
+900,Person,1,1,2
+901,Person,1,2,2
+902,Person,1,5,2
+903,Person,3,2,3
+904,Person,1,6,2
+905,Person,1,5,1
+906,Person,1,7,2
+907,Person,1,6,2
+908,Person,1,7,2
+909,Person,1,6,2
+910,Person,1,6,2
+911,Person,1,7,2
+912,Paper&Document&Label,3,5,3
+913,Vehicle Plate,1,6,3
+914,Musical instrument,3,3,2
+915,Clothing,3,3,3
+916,Pet,1,3,2
+917,Person,1,7,1
+918,Person,3,6,2
+919,Person,3,5,2
+920,Person,1,6,1
+921,Clothing,3,5,2
+922,Person,1,7,1
+923,Person,1,7,1
+924,Person,1,7,1
+925,Person,3,6,1
+926,Person,3,5,2
+927,Person,3,5,2
+928,Person,1,7,1
+929,Toy,3,5,2
+930,Person,3,6,1
+931,Identity,5,2,2
+932,Screen,3,6,1
+933,Person,1,7,2
+934,Person,1,6,2
+935,Person,1,6,2
+936,Clothing,3,5,2
+937,Person,1,7,2
+938,Person,1,7,2
+939,Person,1,6,2
+940,Electronic Devices,3,5,3
+941,Person,1,5,2
+942,Person,1,7,2
+943,Person,1,5,2
+944,Accessory,3,5,2
+945,Accessory,3,5,2
+946,Pet,3,4,3
+947,Screen,3,6,2
+948,Clothing,1,3,1
+949,Paper&Document&Label,2,6,3
+950,Finger,2,5,2
+951,Table,2,5,2
+952,Screen,3,4,3
+953,Clothing,3,4,1
+954,Person,1,6,1
+955,Person,1,6,1
+956,Home interior,3,5,1
+957,Photo,1,5,1
+958,Person,1,4,2
+959,Food,3,5,2
+960,Scenery,2,5,3
+961,Place Identifier,2,2,3
+962,Vehicle Plate,1,7,2
+963,Place Identifier,2,4,3
+964,Vehicle Plate,1,5,1
+965,Pet,3,5,2
+966,Person,1,4,2
+967,Person,1,4,2
+968,Person,1,4,2
+969,Person,1,4,2
+970,Person,1,4,2
+971,Person,1,4,2
+972,Person,1,3,3
+973,Clothing,1,3,3
+974,Person,1,5,1
+975,Book,2,5,1
+976,Person,1,7,1
+977,Food,3,4,3
+978,Accessory,3,4,3
+979,Person,1,7,2
+980,Person,1,6,2
+981,Person,1,7,1
+982,Person,1,5,2
+983,Person,1,7,2
+984,Person,1,6,2
+985,Person,1,5,2
+986,Person,1,5,2
+987,Person,1,7,2
+988,Person,1,7,2
+989,Person,1,7,2
+990,Pet,1,6,2
+991,Toy,1,4,1
+992,Pet,3,5,4
+993,Person,1,7,2
+994,Finger,2,7,2
+995,Person,1,6,2
+996,Person,1,7,2
+997,Person,1,7,2
+998,Person,1,7,2
+999,Person,1,5,2
+1000,Person,1,7,2
+1001,Person,1,6,2
+1002,Toy,3,5,2
+1003,Person,1,6,1
+1004,Person,1,6,1
+1005,Person,1,4,1
+1006,Clothing,3,5,1
+1007,Person,1,6,1
+1008,Person,1,5,1
+1009,Person,1,4,1
+1010,Electronic Devices,4,4,2
+1011,Person,1,5,1
+1012,Person,1,4,1
+1013,Book,3,5,2
+1014,Person,1,7,2
+1015,Person,1,6,2
+1016,Accessory,1,5,2
+1017,Person,1,5,2
+1018,Clothing,1,5,2
+1019,Person,1,5,2
+1020,Person,1,5,2
+1021,Person,1,6,2
+1022,Person,1,5,2
+1023,Person,1,4,2
+1024,Person,1,4,2
+1025,Person,1,7,2
+1026,Person,1,5,2
+1027,Person,1,7,2
+1028,Electronic Devices,1,1,4
+1029,Place Identifier,2,7,4
+1030,Person,1,7,1
+1031,Place Identifier,2,4,3
+1032,Person,1,7,1
+1033,Person,1,7,1
+1034,Clothing,3,6,1
+1035,Person,1,7,1
+1036,Electronic Devices,3,2,1
+1037,Person,1,6,2
+1038,Person,1,5,2
+1039,Person,1,7,1
+1040,Person,1,7,1
+1041,Screen,1,5,2
+1042,Musical instrument,3,3,2
+1043,Screen,3,3,2
+1044,Screen,3,1,2
+1045,Screen,3,1,2
+1046,Person,1,7,2
+1047,Clothing,3,3,2
+1048,Person,3,5,2
+1049,Person,1,7,2
+1050,Clothing,2,6,3
+1051,Person,1,6,2
+1052,Cigarettes,3,5,2
+1053,Pet,1,4,2
+1054,Vehicle Plate,1,7,1
+1055,Person,1,7,2
+1056,Person,1,4,2
+1057,Person,1,4,2
+1058,Person,1,4,2
+1059,Person,1,3,2
+1060,Person,1,7,2
+1061,Musical instrument,2,5,2
+1062,Clothing,3,3,3
+1063,Book,3,3,3
+1064,Person,1,7,2
+1065,Food,3,4,1
+1066,Machine,3,4,1
+1067,Cigarettes,3,3,3
+1068,Photo,2,4,1
+1069,Identity,2,4,2
+1070,Electronic Devices,3,3,3
+1071,Person,1,7,2
+1072,Person,1,7,2
+1073,Clothing,4,5,3
+1074,Person,1,7,2
+1075,Table,3,4,3
+1076,Place Identifier,1,7,2
+1077,Person,1,7,2
+1078,Person,1,7,2
+1079,Person,1,6,2
+1080,Musical instrument,1,6,2
+1081,Person,1,6,2
+1082,Person,1,5,2
+1083,Person,1,7,2
+1084,Accessory,4,5,3
+1085,Person,1,6,1
+1086,Person,1,7,1
+1087,Person,1,7,1
+1088,Clothing,1,5,1
+1089,Person,1,6,1
+1090,Person,1,7,1
+1091,Person,1,4,2
+1092,Person,1,4,1
+1093,Clothing,3,4,1
+1094,Clothing,3,6,3
+1095,Cigarettes,3,6,1
+1096,Accessory,5,5,2
+1097,Accessory,3,3,3
+1098,Clothing,4,5,1
+1099,Person,1,4,1
+1100,Paper&Document&Label,5,5,2
+1101,Person,1,7,2
+1102,Clothing,1,7,2
+1103,Person,1,7,2
+1104,Person,1,7,2
+1105,Person,1,7,2
+1106,Finger,1,6,2
+1107,Person,1,7,1
+1108,Table,3,4,2
+1109,Table,2,4,1
+1110,Pet,3,4,1
+1111,Machine,3,4,1
+1112,Screen,1,5,1
+1113,Paper&Document&Label,3,4,1
+1114,Clothing,1,5,2
+1115,Person,1,6,2
+1116,Person,1,4,2
+1117,Place Identifier,2,6,2
+1118,Vehicle Plate,1,6,2
+1119,Pet,3,4,2
+1120,Accessory,3,5,2
+1121,Accessory,3,5,2
+1122,Toy,3,3,3
+1123,Person,1,5,2
+1124,Person,1,6,2
+1125,Person,1,6,2
+1126,Accessory,1,2,2
+1127,Person,1,4,2
+1128,Screen,1,5,1
+1129,Pet,1,6,1
+1130,Person,1,7,2
+1131,Person,1,7,2
+1132,Person,1,7,2
+1133,Person,1,7,2
+1134,Table,3,2,2
+1135,Person,1,4,1
+1136,Clothing,2,4,1
+1137,Place Identifier,2,4,2
+1138,Vehicle Plate,1,4,1
+1139,Paper&Document&Label,1,6,1
+1140,Finger,3,5,2
+1141,Person,1,7,2
+1142,Person,1,7,2
+1143,Clothing,1,7,2
+1144,Person,1,7,2
+1145,Person,1,7,2
+1146,Person,3,6,2
+1147,Table,3,6,2
+1148,Person,3,6,2
+1149,Place Identifier,2,7,2
+1150,Person,1,7,2
+1151,Pet,2,2,2
+1152,Person,1,6,2
+1153,Person,1,2,2
+1154,Person,1,2,2
+1155,Person,1,5,2
+1156,Person,1,5,2
+1157,Person,1,2,2
+1158,Place Identifier,2,5,2
+1159,Table,1,5,1
+1160,Place Identifier,2,7,1
+1161,Pet,1,6,2
+1162,Screen,1,7,1
+1163,Person,1,6,2
+1164,Person,1,5,2
+1165,Person,1,5,2
+1166,Person,1,5,2
+1167,Person,1,5,2
+1168,Person,1,4,2
+1169,Person,1,4,2
+1170,Person,1,7,2
+1171,Person,1,7,1
+1172,Person,1,6,1
+1173,Person,1,7,1
+1174,Person,1,7,1
+1175,Food,1,5,1
+1176,Machine,1,6,1
+1177,Machine,3,4,2
+1178,Pet,1,7,1
+1179,Clothing,3,7,2
+1180,Person,3,6,2
+1181,Person,3,6,2
+1182,Cosmetics,3,5,2
+1183,Pet,2,5,1
+1184,Home interior,3,1,3
+1185,Person,1,4,1
+1186,Person,1,4,1
+1187,Accessory,1,4,1
+1188,Person,1,4,1
+1189,Person,1,4,1
+1190,Person,1,4,1
+1191,Person,1,4,1
+1192,Person,1,4,1
+1193,Person,1,5,1
+1194,Place Identifier,2,4,1
+1195,Screen,3,4,1
+1196,Person,1,5,1
+1197,Clothing,1,6,1
+1198,Person,1,7,1
+1199,Table,1,7,1
+1200,Person,1,7,1
+1201,Accessory,1,2,3
+1202,Person,1,7,2
+1203,Person,1,5,2
+1204,Accessory,1,5,2
+1205,Person,1,5,2
+1206,Person,1,5,2
+1207,Person,1,6,2
+1208,Person,1,6,2
+1209,Person,1,5,2
+1210,Person,1,6,2
+1211,Home interior,1,1,4
+1212,Book,3,2,3
+1213,Table,1,1,4
+1214,Scenery,2,3,2
+1215,Screen,3,6,1
+1216,Paper&Document&Label,2,4,2
+1217,Home interior,1,6,2
+1218,Person,1,6,2
+1219,Person,1,7,2
+1220,Person,1,3,2
+1221,Person,1,2,3
+1222,Person,1,2,3
+1223,Place Identifier,2,1,3
+1224,Place Identifier,2,3,2
+1225,Place Identifier,2,7,1
+1226,Book,2,6,1
+1227,Book,2,5,1
+1228,Screen,1,5,1
+1229,Screen,1,6,1
+1230,Screen,3,6,1
+1231,Screen,3,6,1
+1232,Place Identifier,2,7,2
+1233,Clothing,1,3,3
+1234,Place Identifier,2,4,3
+1235,Vehicle Plate,1,6,1
+1236,Food,2,5,3
+1237,Finger,2,1,2
+1238,Person,1,2,2
+1239,Person,1,2,2
+1240,Clothing,3,2,2
+1241,Person,1,2,2
+1242,Person,1,2,2
+1243,Person,1,2,2
+1244,Musical instrument,4,4,1
+1245,Clothing,1,7,2
+1246,Person,1,7,2
+1247,Table,2,7,2
+1248,Person,1,7,2
+1249,Screen,3,4,2
+1250,Place Identifier,2,4,2
+1251,Clothing,1,7,2
+1252,Musical instrument,2,5,2
+1253,Book,3,3,3
+1254,Paper&Document&Label,5,5,1
+1255,Screen,5,6,1
+1256,Vehicle Plate,1,7,2
+1257,Vehicle Plate,1,7,1
+1258,Musical instrument,3,5,2
+1259,Vehicle Plate,1,7,2
+1260,Clothing,1,4,2
+1261,Person,1,6,2
+1262,Book,3,5,2
+1263,Person,1,6,2
+1264,Book,1,2,3
+1265,Home interior,2,2,3
+1266,Scenery,2,2,3
+1267,Pet,3,5,2
+1268,Home interior,2,2,2
+1269,Pet,3,2,2
+1270,Screen,2,7,1
+1271,Screen,1,2,3
+1272,Vehicle Plate,1,7,1
+1273,Person,1,4,1
+1274,Person,1,4,1
+1275,Accessory,1,4,1
+1276,Person,1,4,1
+1277,Person,1,4,1
+1278,Clothing,1,4,1
+1279,Person,1,4,1
+1280,Person,1,4,1
+1281,Person,1,4,1
+1282,Person,1,4,1
+1283,Book,3,7,3
+1284,Table,3,5,2
+1285,Paper&Document&Label,3,5,2
+1286,Person,1,7,1
+1287,Person,1,5,2
+1288,Person,1,7,2
+1289,Person,1,6,2
+1290,Person,1,6,2
+1291,Person,1,7,2
+1292,Person,1,6,2
+1293,Accessory,3,5,2
+1294,Person,1,6,2
+1295,Scenery,2,4,3
+1296,Accessory,1,3,4
+1297,Person,1,7,2
+1298,Clothing,1,6,2
+1299,Place Identifier,2,6,2
+1300,Person,1,7,2
+1301,Electronic Devices,2,5,1
+1302,Food,3,6,2
+1303,Person,1,5,1
+1304,Person,1,5,3
+1305,Person,1,5,3
+1306,Person,1,7,2
+1307,Scenery,2,6,2
+1308,Place Identifier,2,3,3
+1309,Person,1,7,1
+1310,Pet,3,5,2
+1311,Cigarettes,3,4,2
+1312,Accessory,5,4,3
+1313,Person,1,6,2
+1314,Person,1,7,2
+1315,Person,1,7,2
+1316,Clothing,3,5,2
+1317,Person,1,7,2
+1318,Table,2,5,2
+1319,Person,1,6,2
+1320,Person,1,5,2
+1321,Book,3,5,2
+1322,Person,1,6,2
+1323,Clothing,1,5,1
+1324,Person,1,6,1
+1325,Person,1,3,1
+1326,Person,1,5,1
+1327,Person,2,6,1
+1328,Clothing,2,6,1
+1329,Person,1,7,1
+1330,Person,1,3,2
+1331,Paper&Document&Label,5,2,2
+1332,Person,1,7,2
+1333,Person,1,7,2
+1334,Person,1,7,2
+1335,Person,1,7,2
+1336,Person,1,7,2
+1337,Person,1,7,2
+1338,Person,1,7,2
+1339,Person,1,6,2
+1340,Person,1,5,2
+1341,Person,1,7,2
+1342,Person,1,6,1
+1343,Screen,3,6,1
+1344,Place Identifier,2,2,1
+1345,Scenery,2,4,2
+1346,Paper&Document&Label,1,4,2
+1347,Screen,3,4,1
+1348,Table,3,5,1
+1349,Machine,3,5,1
+1350,Person,1,3,3
+1351,Scenery,2,6,2
+1352,Scenery,2,5,1
+1353,Photo,2,6,2
+1354,Vehicle Plate,1,4,1
+1355,Home interior,3,4,3
+1356,Paper&Document&Label,3,4,3
+1357,Toy,3,3,3
+1358,Person,1,7,2
+1359,Accessory,1,2,3
+1360,Clothing,3,4,1
+1361,Screen,1,4,2
+1362,Clothing,2,3,2
+1363,Person,1,4,2
+1364,Person,1,2,2
+1365,Person,1,2,2
+1366,Person,1,5,2
+1367,Person,1,3,1
+1368,Person,1,5,1
+1369,Person,1,7,2
+1370,Musical instrument,3,5,3
+1371,Place Identifier,2,7,1
+1372,Book,3,6,1
+1373,Musical instrument,3,4,2
+1374,Electronic Devices,3,6,1
+1375,Home interior,2,6,1
+1376,Screen,3,5,1
+1377,Screen,1,4,1
+1378,Screen,1,3,1
+1379,Clothing,1,2,3
+1380,Person,1,6,1
+1381,Person,1,6,1
+1382,Book,3,6,2
+1383,Place Identifier,2,7,2
+1384,Scenery,2,2,2
+1385,Clothing,1,5,2
+1386,Person,1,4,1
+1387,Accessory,1,3,2
+1388,Person,1,4,1
+1389,Clothing,1,4,1
+1390,Person,1,4,1
+1391,Person,1,2,2
+1392,Person,1,4,1
+1393,Food,2,4,3
+1394,Finger,1,2,2
+1395,Person,1,7,2
+1396,Person,1,7,2
+1397,Clothing,1,3,2
+1398,Person,1,6,2
+1399,Person,1,7,2
+1400,Person,1,6,2
+1401,Paper&Document&Label,3,5,2
+1402,Toy,3,2,2
+1403,Book,3,3,1
+1404,Screen,3,6,1
+1405,Person,5,4,1
+1406,Person,1,3,1
+1407,Cosmetics,3,6,2
+1408,Machine,2,5,2
+1409,Screen,3,5,1
+1410,Table,3,5,2
+1411,Person,1,7,1
+1412,Person,1,7,1
+1413,Person,1,7,1
+1414,Person,1,2,1
+1415,Person,1,2,1
+1416,Person,1,2,1
+1417,Person,1,2,1
+1418,Person,1,7,1
+1419,Scenery,2,6,2
+1420,Clothing,1,7,1
+1421,Person,3,2,2
+1422,Vehicle Plate,1,7,1
+1423,Person,1,7,2
+1424,Person,1,2,2
+1425,Person,1,2,2
+1426,Person,1,2,2
+1427,Person,1,7,2
+1428,Person,1,2,2
+1429,Person,1,2,2
+1430,Person,1,1,2
+1431,Place Identifier,2,6,2
+1432,Person,1,7,2
+1433,Paper&Document&Label,1,5,1
+1434,Person,4,7,2
+1435,Clothing,3,5,2
+1436,Person,1,7,2
+1437,Person,1,3,2
+1438,Musical instrument,3,4,2
+1439,Person,1,2,1
+1440,Clothing,3,2,3
+1441,Person,1,6,2
+1442,Person,1,2,1
+1443,Person,1,2,1
+1444,Person,1,2,1
+1445,Person,1,7,2
+1446,Person,1,5,2
+1447,Machine,2,1,3
+1448,Book,3,2,2
+1449,Person,1,6,1
+1450,Person,1,5,1
+1451,Person,1,7,1
+1452,Place Identifier,2,6,1
+1453,Finger,2,3,3
+1454,Screen,1,4,1
+1455,Home interior,3,3,2
+1456,Book,3,6,2
+1457,Screen,3,6,2
+1458,Home interior,2,5,2
+1459,Screen,2,5,2
+1460,Book,3,5,2
+1461,Table,1,6,2
+1462,Musical instrument,3,4,3
+1463,Identity,5,6,1
+1464,Pet,3,2,4
+1465,Person,1,6,2
+1466,Person,1,7,2
+1467,Person,1,6,2
+1468,Person,1,7,2
+1469,Person,1,7,2
+1470,Person,1,6,2
+1471,Person,1,4,2
+1472,Place Identifier,2,3,3
+1473,Vehicle Plate,1,2,3
+1474,Book,3,2,3
+1475,Person,1,5,2
+1476,Clothing,2,3,2
+1477,Person,1,7,2
+1478,Person,1,6,2
+1479,Person,1,6,2
+1480,Toy,2,3,2
+1481,Pet,3,4,2
+1482,Food,2,4,4
+1483,Photo,1,4,2
+1484,Pet,3,3,3
+1485,Person,5,7,1
+1486,Person,5,7,1
+1487,Person,5,7,1
+1488,Clothing,5,7,1
+1489,Person,5,6,1
+1490,Person,5,7,1
+1491,Screen,3,7,1
+1492,Toy,5,7,1
+1493,Person,5,7,1
+1494,Place Identifier,2,5,2
+1495,Vehicle Plate,1,7,2
+1496,Person,1,4,1
+1497,Place Identifier,2,5,3
+1498,Clothing,1,4,2
+1499,Person,1,5,2
+1500,Person,1,5,2
+1501,Musical instrument,3,3,3
+1502,Clothing,2,7,3
+1503,Person,3,7,3
+1504,Person,1,7,2
+1505,Person,3,4,3
+1506,Person,1,7,2
+1507,Person,1,5,2
+1508,Clothing,4,5,2
+1509,Person,1,4,2
+1510,Person,1,7,1
+1511,Person,1,7,1
+1512,Person,1,6,1
+1513,Clothing,3,3,1
+1514,Book,3,3,3
+1515,Paper&Document&Label,3,2,3
+1516,Person,4,5,1
+1517,Person,4,5,1
+1518,Person,4,5,1
+1519,Person,1,6,1
+1520,Table,2,2,3
+1521,Person,1,5,2
+1522,Place Identifier,2,6,1
+1523,Vehicle Plate,1,7,2
+1524,Vehicle Plate,1,6,1
+1525,Finger,2,2,3
+1526,Table,2,2,3
+1527,Machine,3,4,2
+1528,Vehicle Plate,1,3,1
+1529,Accessory,1,2,2
+1530,Cigarettes,1,2,2
+1531,Person,1,7,1
+1532,Home interior,3,4,2
+1533,Book,3,2,2
+1534,Table,3,2,3
+1535,Clothing,1,1,4
+1536,Vehicle Plate,1,6,2
+1537,Person,1,7,1
+1538,Person,1,7,1
+1539,Person,1,7,1
+1540,Person,1,7,1
+1541,Person,1,7,1
+1542,Machine,1,5,1
+1543,Book,3,5,2
+1544,Musical instrument,3,5,2
+1545,Home interior,3,2,2
+1546,Pet,4,5,2
+1547,Person,1,4,2
+1548,Person,3,4,2
+1549,Clothing,3,3,3
+1550,Person,1,7,2
+1551,Book,2,2,2
+1552,Finger,2,2,4
+1553,Table,2,2,4
+1554,Table,2,2,4
+1555,Pet,2,5,2
+1556,Person,1,7,2
+1557,Person,1,6,2
+1558,Person,1,4,2
+1559,Person,1,5,2
+1560,Person,1,5,2
+1561,Person,1,5,2
+1562,Person,1,6,2
+1563,Person,1,4,2
+1564,Accessory,1,4,2
+1565,Person,1,5,2
+1566,Person,1,7,2
+1567,Vehicle Plate,1,6,2
+1568,Person,1,5,1
+1569,Person,1,5,1
+1570,Person,1,5,1
+1571,Person,1,5,1
+1572,Vehicle Plate,1,7,2
+1573,Person,1,7,1
+1574,Clothing,3,4,2
+1575,Toy,3,6,2
+1576,Person,1,7,2
+1577,Person,1,7,2
+1578,Person,1,7,2
+1579,Identity,1,7,1
+1580,Vehicle Plate,1,7,1
+1581,Screen,1,1,1
+1582,Person,1,5,2
+1583,Person,1,4,2
+1584,Paper&Document&Label,2,1,3
+1585,Screen,1,3,1
+1586,Table,3,6,3
+1587,Person,1,5,2
+1588,Person,1,7,2
+1589,Clothing,1,4,2
+1590,Person,1,7,2
+1591,Person,1,7,2
+1592,Identity,3,1,1
+1593,Cigarettes,3,5,2
+1594,Scenery,2,6,2
+1595,Book,3,5,2
+1596,Paper&Document&Label,3,4,2
+1597,Food,3,5,2
+1598,Screen,5,5,2
+1599,Person,1,7,2
+1600,Clothing,3,5,2
+1601,Book,2,5,2
+1602,Accessory,1,5,2
+1603,Person,4,5,2
+1604,Toy,1,4,1
+1605,Clothing,3,1,4
+1606,Musical instrument,3,5,2
+1607,Person,1,4,1
+1608,Person,1,6,1
+1609,Person,1,7,1
+1610,Clothing,3,6,1
+1611,Person,1,7,1
+1612,Person,1,7,1
+1613,Person,1,7,1
+1614,Toy,2,5,2
+1615,Person,1,7,2
+1616,Person,1,6,2
+1617,Clothing,3,5,2
+1618,Person,1,5,2
+1619,Person,1,6,2
+1620,Person,1,6,2
+1621,Person,1,7,2
+1622,Book,2,5,2
+1623,Screen,3,7,1
+1624,Paper&Document&Label,3,5,1
+1625,Table,1,3,1
+1626,Electronic Devices,3,2,2
+1627,Home interior,3,6,2
+1628,Table,3,6,2
+1629,Table,3,5,2
+1630,Scenery,2,4,2
+1631,Person,1,5,2
+1632,Person,1,5,2
+1633,Person,1,5,2
+1634,Person,1,5,2
+1635,Cosmetics,3,5,2
+1636,Person,1,5,2
+1637,Accessory,2,3,2
+1638,Scenery,2,7,2
+1639,Paper&Document&Label,1,7,1
+1640,Person,1,7,2
+1641,Person,1,7,2
+1642,Person,1,2,2
+1643,Person,1,3,2
+1644,Person,1,7,2
+1645,Person,1,1,2
+1646,Person,1,7,2
+1647,Book,3,5,2
+1648,Table,3,5,2
+1649,Person,1,6,2
+1650,Person,1,3,3
+1651,Person,1,4,3
+1652,Clothing,1,4,3
+1653,Person,1,3,3
+1654,Person,1,6,1
+1655,Musical instrument,2,4,1
+1656,Person,1,6,1
+1657,Cosmetics,3,5,1
+1658,Pet,1,3,3
+1659,Scenery,2,2,4
+1660,Person,1,5,1
+1661,Musical instrument,3,3,2
+1662,Clothing,3,3,2
+1663,Person,1,6,1
+1664,Person,1,5,1
+1665,Person,1,6,1
+1666,Vehicle Plate,1,7,2
+1667,Pet,3,3,2
+1668,Home interior,3,5,2
+1669,Cigarettes,3,2,2
+1670,Scenery,2,5,1
+1671,Vehicle Plate,1,4,2
+1672,Paper&Document&Label,3,4,2
+1673,Person,1,5,2
+1674,Screen,1,7,1
+1675,Table,3,5,1
+1676,Screen,2,4,1
+1677,Screen,1,4,1
+1678,Place Identifier,2,2,2
+1679,Person,4,5,2
+1680,Food,2,4,3
+1681,Scenery,2,3,3
+1682,Pet,2,4,3
+1683,Home interior,3,5,2
+1684,Person,2,2,3
+1685,Person,2,2,2
+1686,Clothing,2,2,3
+1687,Person,2,2,3
+1688,Person,2,2,3
+1689,Electronic Devices,3,2,4
+1690,Screen,3,5,3
+1691,Clothing,1,5,2
+1692,Accessory,1,5,2
+1693,Person,1,7,2
+1694,Musical instrument,3,2,3
+1695,Person,3,4,2
+1696,Person,1,5,1
+1697,Food,3,5,1
+1698,Paper&Document&Label,3,4,1
+1699,Food,3,5,1
+1700,Food,3,5,1
+1701,Screen,3,4,2
+1702,Book,3,4,2
+1703,Person,1,6,2
+1704,Person,1,7,2
+1705,Person,1,5,2
+1706,Person,1,5,2
+1707,Person,1,5,2
+1708,Person,1,6,2
+1709,Person,1,7,2
+1710,Screen,2,6,1
+1711,Person,1,7,1
+1712,Vehicle Plate,1,7,1
+1713,Person,1,7,2
+1714,Person,1,2,3
+1715,Person,1,5,3
+1716,Person,1,4,3
+1717,Person,1,6,3
+1718,Paper&Document&Label,1,7,1
+1719,Clothing,4,5,1
+1720,Food,2,3,2
+1721,Accessory,3,1,2
+1722,Vehicle Plate,1,7,2
+1723,Musical instrument,3,6,3
+1724,Pet,4,7,3
+1725,Home interior,2,2,3
+1726,Clothing,3,4,2
+1727,Accessory,1,2,3
+1728,Pet,3,4,1
+1729,Screen,3,4,1
+1730,Pet,3,5,2
+1731,Clothing,3,5,2
+1732,Person,3,4,2
+1733,Person,3,4,2
+1734,Identity,2,4,3
+1735,Paper&Document&Label,3,5,2
+1736,Clothing,2,3,2
+1737,Cigarettes,3,3,2
+1738,Scenery,2,4,2
+1739,Screen,2,4,1
+1740,Toy,2,4,1
+1741,Person,1,6,2
+1742,Accessory,3,4,3
+1743,Electronic Devices,3,4,3
+1744,Home interior,3,4,3
+1745,Person,1,4,2
+1746,Book,3,5,2
+1747,Person,1,6,2
+1748,Scenery,2,5,2
+1749,Clothing,3,5,2
+1750,Person,2,6,2
+1751,Person,1,5,2
+1752,Clothing,3,5,2
+1753,Person,1,5,2
+1754,Person,1,5,2
+1755,Person,3,5,2
+1756,Person,1,6,2
+1757,Person,1,6,2
+1758,Table,1,4,1
+1759,Person,1,7,1
+1760,Person,1,6,1
+1761,Person,1,7,1
+1762,Person,1,6,1
+1763,Person,1,3,1
+1764,Book,3,4,3
+1765,Cosmetics,3,2,3
+1766,Screen,3,5,1
+1767,Table,3,5,2
+1768,Screen,3,5,2
+1769,Cigarettes,3,3,1
+1770,Scenery,2,6,2
+1771,Electronic Devices,2,4,2
+1772,Book,3,5,2
+1773,Screen,5,6,1
+1774,Table,2,1,2
+1775,Scenery,2,2,3
+1776,Place Identifier,2,2,3
+1777,Screen,3,2,1
+1778,Person,4,5,2
+1779,Person,4,5,2
+1780,Screen,3,3,3
+1781,Electronic Devices,3,2,3
+1782,Paper&Document&Label,3,4,1
+1783,Pet,3,7,1
+1784,Vehicle Plate,1,7,1
+1785,Clothing,1,4,2
+1786,Person,1,3,3
+1787,Book,3,5,3
+1788,Person,1,7,2
+1789,Pet,3,2,3
+1790,Screen,3,3,3
+1791,Person,1,7,1
+1792,Person,1,7,1
+1793,Place Identifier,2,7,1
+1794,Person,1,7,2
+1795,Person,1,6,1
+1796,Person,1,6,1
+1797,Accessory,1,5,1
+1798,Person,1,4,2
+1799,Person,1,6,1
+1800,Person,1,5,1
+1801,Person,1,3,3
+1802,Person,1,5,2
+1803,Person,1,6,1
+1804,Paper&Document&Label,5,4,2
+1805,Finger,2,5,1
+1806,Person,4,2,2
+1807,Person,2,3,2
+1808,Person,2,3,2
+1809,Person,1,7,1
+1810,Person,1,7,1
+1811,Accessory,1,6,1
+1812,Person,1,7,1
+1813,Person,1,6,1
+1814,Clothing,1,5,1
+1815,Person,1,5,1
+1816,Person,1,7,1
+1817,Person,1,4,1
+1818,Person,1,5,1
+1819,Person,1,7,1
+1820,Musical instrument,3,3,3
+1821,Accessory,1,3,3
+1822,Place Identifier,2,2,3
+1823,Person,1,5,1
+1824,Identity,1,2,2
+1825,Musical instrument,1,7,1
+1826,Clothing,5,7,1
+1827,Person,1,6,1
+1828,Person,1,7,1
+1829,Book,3,4,3
+1830,Screen,3,4,2
+1831,Person,2,3,3
+1832,Food,3,2,3
+1833,Cigarettes,3,2,1
+1834,Table,2,7,1
+1835,Screen,3,7,1
+1836,Screen,5,7,1
+1837,Machine,3,6,1
+1838,Person,1,4,3
+1839,Person,1,3,3
+1840,Person,1,7,2
+1841,Scenery,2,3,3
+1842,Person,1,7,1
+1843,Clothing,1,3,1
+1844,Person,1,7,1
+1845,Person,1,7,1
+1846,Person,1,3,2
+1847,Person,1,7,1
+1848,Finger,2,2,2
+1849,Clothing,3,2,2
+1850,Person,1,6,1
+1851,Person,1,6,1
+1852,Person,1,7,1
+1853,Musical instrument,3,2,1
+1854,Machine,2,4,3
+1855,Accessory,3,2,2
+1856,Clothing,1,3,2
+1857,Person,1,5,1
+1858,Accessory,1,5,2
+1859,Person,1,4,1
+1860,Book,3,5,3
+1861,Identity,5,5,3
+1862,Vehicle Plate,1,7,1
+1863,Person,1,4,3
+1864,Clothing,1,4,2
+1865,Person,1,6,1
+1866,Person,1,6,1
+1867,Clothing,4,3,2
+1868,Person,1,4,1
+1869,Person,1,4,1
+1870,Person,1,6,1
+1871,Person,1,6,1
+1872,Person,1,6,2
+1873,Person,1,6,2
+1874,Scenery,2,5,3
+1875,Clothing,1,5,2
+1876,Person,1,5,2
+1877,Table,3,5,2
+1878,Person,1,6,2
+1879,Person,1,6,2
+1880,Person,1,4,2
+1881,Person,1,7,2
+1882,Scenery,2,4,3
+1883,Pet,3,5,2
+1884,Person,1,6,2
+1885,Person,1,5,3
+1886,Photo,1,5,3
+1887,Person,1,7,1
+1888,Person,1,7,1
+1889,Person,1,2,2
+1890,Person,1,7,1
+1891,Person,1,2,1
+1892,Person,1,7,1
+1893,Person,1,3,1
+1894,Person,1,7,1
+1895,Clothing,1,2,2
+1896,Accessory,1,1,3
+1897,Person,1,7,1
+1898,Person,1,6,2
+1899,Person,1,6,2
+1900,Home interior,3,2,1
+1901,Screen,3,5,1
+1902,Finger,2,2,2
+1903,Person,1,5,1
+1904,Person,1,7,1
+1905,Person,1,6,1
+1906,Place Identifier,2,6,1
+1907,Person,1,7,2
+1908,Person,1,5,1
+1909,Clothing,1,7,2
+1910,Person,1,7,2
+1911,Person,1,5,1
+1912,Person,1,5,2
+1913,Person,1,6,2
+1914,Person,1,7,2
+1915,Electronic Devices,2,5,2
+1916,Screen,1,7,1
+1917,Scenery,2,7,1
+1918,Screen,3,3,3
+1919,Person,1,7,2
+1920,Screen,3,6,1
+1921,Clothing,3,4,2
+1922,Person,1,5,2
+1923,Screen,3,5,2
+1924,Person,1,5,2
+1925,Person,1,7,1
+1926,Home interior,5,1,3
+1927,Person,1,7,1
+1928,Place Identifier,1,6,1
+1929,Person,1,5,2
+1930,Person,1,7,1
+1931,Clothing,1,5,2
+1932,Person,1,7,1
+1933,Person,1,7,1
+1934,Person,1,7,1
+1935,Person,1,6,2
+1936,Musical instrument,2,5,2
+1937,Vehicle Plate,1,7,1
+1938,Person,1,7,1
+1939,Person,1,5,2
+1940,Person,1,6,2
+1941,Clothing,3,2,3
+1942,Person,1,6,1
+1943,Person,1,7,1
+1944,Person,1,5,2
+1945,Person,1,5,2
+1946,Person,4,7,1
+1947,Person,4,7,1
+1948,Scenery,2,6,1
+1949,Finger,2,3,1
+1950,Table,2,3,1
+1951,Accessory,1,5,2
+1952,Clothing,1,5,2
+1953,Person,1,6,2
+1954,Musical instrument,3,6,3
+1955,Clothing,3,6,2
+1956,Person,1,7,2
+1957,Person,1,7,2
+1958,Food,3,3,2
+1959,Book,3,5,2
+1960,Person,1,6,1
+1961,Musical instrument,1,5,1
+1962,Clothing,3,5,1
+1963,Person,1,6,1
+1964,Person,1,5,1
+1965,Person,1,5,1
+1966,Person,1,5,1
+1967,Person,1,6,1
+1968,Scenery,2,7,2
+1969,Person,1,7,1
+1970,Cigarettes,3,6,1
+1971,Person,1,6,2
+1972,Person,1,7,2
+1973,Person,1,7,2
+1974,Person,1,7,2
+1975,Person,1,5,2
+1976,Clothing,1,4,2
+1977,Person,1,7,2
+1978,Person,1,3,2
+1979,Person,1,7,2
+1980,Place Identifier,2,4,2
+1981,Table,4,5,2
+1982,Vehicle Plate,1,4,1
+1983,Person,1,5,1
+1984,Person,1,5,1
+1985,Place Identifier,2,5,1
+1986,Person,1,6,2
+1987,Person,3,2,3
+1988,Finger,3,4,1
+1989,Table,3,4,1
+1990,Home interior,3,4,1
+1991,Place Identifier,2,5,3
+1992,Screen,3,5,2
+1993,Screen,1,6,2
+1994,Person,1,6,2
+1995,Musical instrument,3,5,2
+1996,Clothing,1,6,2
+1997,Person,1,7,1
+1998,Electronic Devices,3,5,2
+1999,Person,1,7,1
+2000,Clothing,1,5,1
+2001,Person,1,4,1
+2002,Electronic Devices,1,4,1
+2003,Clothing,1,5,2
+2004,Person,1,6,1
+2005,Person,1,5,2
+2006,Person,1,7,1
+2007,Person,1,7,1
+2008,Person,1,7,1
+2009,Person,1,5,3
+2010,Person,1,7,1
+2011,Clothing,4,5,2
+2012,Person,1,5,1
+2013,Person,1,5,1
+2014,Person,4,6,2
+2015,Paper&Document&Label,3,1,3
+2016,Identity,1,2,2
+2017,Place Identifier,2,7,2
+2018,Place Identifier,2,5,3
+2019,Place Identifier,2,5,2
+2020,Musical instrument,3,2,3
+2021,Person,2,5,1
+2022,Person,1,4,1
+2023,Pet,1,5,2
+2024,Accessory,1,2,2
+2025,Accessory,1,2,2
+2026,Paper&Document&Label,2,7,2
+2027,Book,2,6,3
+2028,Screen,1,6,1
+2029,Place Identifier,2,7,3
+2030,Person,1,4,3
+2031,Screen,3,3,2
+2032,Pet,1,5,2
+2033,Accessory,1,1,3
+2034,Person,1,7,2
+2035,Person,1,6,2
+2036,Person,1,7,2
+2037,Person,1,6,2
+2038,Clothing,3,5,3
+2039,Person,1,5,2
+2040,Person,1,7,2
+2041,Person,1,6,2
+2042,Person,1,2,2
+2043,Person,1,6,2
+2044,Screen,3,5,2
+2045,Person,1,3,2
+2046,Person,1,7,2
+2047,Table,2,4,3
+2048,Person,1,6,2
+2049,Person,3,6,2
+2050,Person,1,5,2
+2051,Person,1,5,1
+2052,Clothing,3,3,3
+2053,Person,2,5,2
+2054,Person,1,5,2
+2055,Person,1,3,2
+2056,Person,1,5,1
+2057,Person,1,5,2
+2058,Person,1,5,2
+2059,Person,1,5,2
+2060,Scenery,5,4,3
+2061,Screen,5,5,2
+2062,Person,1,7,2
+2063,Screen,4,5,1
+2064,Machine,3,5,1
+2065,Screen,1,6,1
+2066,Clothing,3,6,1
+2067,Screen,5,4,1
+2068,Screen,5,5,1
+2069,Person,1,6,1
+2070,Person,1,6,1
+2071,Person,1,6,1
+2072,Clothing,1,6,1
+2073,Person,1,6,1
+2074,Person,1,6,1
+2075,Vehicle Plate,1,5,2
+2076,Musical instrument,3,6,3
+2077,Paper&Document&Label,3,5,3
+2078,Scenery,2,7,2
+2079,Place Identifier,2,7,2
+2080,Food,3,1,4
+2081,Person,1,7,1
+2082,Screen,1,4,1
+2083,Book,3,5,1
+2084,Screen,2,7,1
+2085,Pet,1,5,1
+2086,Book,3,5,1
+2087,Person,1,5,3
+2088,Person,1,4,2
+2089,Person,1,5,2
+2090,Person,1,4,2
+2091,Vehicle Plate,1,5,2
+2092,Machine,5,2,1
+2093,Machine,3,7,2
+2094,Person,1,6,1
+2095,Person,1,5,3
+2096,Person,1,5,3
+2097,Screen,1,5,3
+2098,Person,1,5,3
+2099,Person,1,5,3
+2100,Person,1,5,3
+2101,Person,1,5,3
+2102,Person,1,5,3
+2103,Person,1,5,3
+2104,Person,1,6,3
+2105,Accessory,1,4,1
+2106,Screen,5,5,1
+2107,Screen,5,5,1
+2108,Vehicle Plate,1,6,2
+2109,Person,1,5,2
+2110,Accessory,1,5,2
+2111,Person,1,4,2
+2112,Person,1,4,2
+2113,Person,5,4,2
+2114,Vehicle Plate,1,7,1
+2115,Person,1,6,2
+2116,Finger,2,7,1
+2117,Person,1,1,1
+2118,Person,1,7,2
+2119,Clothing,3,7,1
+2120,Person,1,7,1
+2121,Person,1,7,1
+2122,Table,2,7,1
+2123,Person,1,7,1
+2124,Person,1,7,1
+2125,Person,1,7,2
+2126,Food,2,5,2
+2127,Person,1,5,2
+2128,Person,1,5,2
+2129,Person,1,5,2
+2130,Person,2,5,2
+2131,Clothing,2,6,2
+2132,Photo,2,5,2
+2133,Person,2,6,2
+2134,Screen,3,7,1
+2135,Person,1,6,2
+2136,Person,1,6,2
+2137,Pet,3,4,2
+2138,Vehicle Plate,1,4,1
+2139,Place Identifier,4,5,3
+2140,Screen,4,7,2
+2141,Vehicle Plate,1,7,1
+2142,Person,1,6,1
+2143,Person,1,6,2
+2144,Place Identifier,2,4,1
+2145,Person,1,6,3
+2146,Person,1,6,3
+2147,Clothing,1,5,3
+2148,Person,1,5,3
+2149,Person,1,6,3
+2150,Person,1,6,3
+2151,Person,1,6,3
+2152,Pet,3,5,1
+2153,Book,3,2,1
+2154,Finger,2,5,3
+2155,Person,1,6,2
+2156,Paper&Document&Label,2,5,3
+2157,Pet,1,6,2
+2158,Finger,2,5,2
+2159,Cigarettes,1,4,2
+2160,Clothing,1,5,2
+2161,Accessory,2,4,2
+2162,Screen,3,7,1
+2163,Accessory,1,3,3
+2164,Clothing,1,3,2
+2165,Scenery,2,5,2
+2166,Place Identifier,3,5,1
+2167,Person,1,7,1
+2168,Person,1,7,1
+2169,Person,1,7,1
+2170,Person,1,7,1
+2171,Person,1,5,1
+2172,Person,1,7,1
+2173,Person,1,7,1
+2174,Person,1,4,2
+2175,Person,1,7,2
+2176,Person,1,7,2
+2177,Person,1,5,2
+2178,Vehicle Plate,1,7,1
+2179,Pet,1,6,1
+2180,Book,3,5,3
+2181,Identity,1,5,1
+2182,Vehicle Plate,2,5,2
+2183,Person,1,5,1
+2184,Photo,3,7,2
+2185,Person,4,7,2
+2186,Person,4,7,2
+2187,Person,4,7,2
+2188,Toy,4,4,2
+2189,Person,1,5,1
+2190,Person,1,5,1
+2191,Person,1,4,1
+2192,Person,1,4,1
+2193,Accessory,1,5,2
+2194,Vehicle Plate,5,4,2
+2195,Scenery,2,1,2
+2196,Person,1,5,2
+2197,Person,1,5,2
+2198,Person,1,5,2
+2199,Vehicle Plate,1,3,2
+2200,Person,1,7,2
+2201,Person,1,7,2
+2202,Photo,4,6,1
+2203,Pet,4,7,3
+2204,Person,1,6,2
+2205,Person,1,6,2
+2206,Accessory,1,4,2
+2207,Person,1,4,2
+2208,Person,1,6,2
+2209,Clothing,1,5,2
+2210,Person,1,4,2
+2211,Person,1,6,2
+2212,Person,1,6,2
+2213,Person,1,6,2
+2214,Person,1,6,2
+2215,Person,1,4,2
+2216,Person,1,4,2
+2217,Person,1,6,2
+2218,Person,1,4,2
+2219,Vehicle Plate,1,2,1
+2220,Scenery,2,3,3
+2221,Scenery,2,5,1
+2222,Person,1,5,2
+2223,Person,4,5,2
+2224,Clothing,4,6,2
+2225,Person,4,6,2
+2226,Person,4,6,2
+2227,Person,4,6,2
+2228,Person,1,7,2
+2229,Person,1,7,2
+2230,Person,4,5,2
+2231,Person,1,5,2
+2232,Person,1,7,2
+2233,Person,1,7,2
+2234,Person,1,7,2
+2235,Person,1,7,2
+2236,Person,1,5,2
+2237,Person,1,5,2
+2238,Person,4,7,2
+2239,Person,1,7,2
+2240,Screen,1,7,1
+2241,Paper&Document&Label,1,7,1
+2242,Screen,5,6,1
+2243,Scenery,2,5,3
+2244,Vehicle Plate,1,7,1
+2245,Home interior,1,7,2
+2246,Food,2,4,4
+2247,Food,2,1,4
+2248,Food,3,1,3
+2249,Vehicle Plate,1,5,2
+2250,Place Identifier,2,6,3
+2251,Vehicle Plate,1,5,2
+2252,Person,1,4,2
+2253,Person,1,4,2
+2254,Person,1,4,2
+2255,Scenery,2,5,2
+2256,Person,1,7,2
+2257,Person,1,7,2
+2258,Person,1,6,1
+2259,Cosmetics,3,5,1
+2260,Vehicle Plate,5,1,5
+2261,Electronic Devices,3,3,3
+2262,Person,1,6,2
+2263,Paper&Document&Label,3,5,2
+2264,Clothing,5,1,1
+2265,Screen,3,6,1
+2266,Person,1,4,1
+2267,Photo,2,6,1
+2268,Screen,5,4,2
+2269,Clothing,3,4,4
+2270,Person,1,4,2
+2271,Person,1,7,2
+2272,Person,1,1,3
+2273,Person,1,7,2
+2274,Person,1,4,2
+2275,Person,3,5,2
+2276,Person,1,7,2
+2277,Clothing,3,6,2
+2278,Person,1,6,2
+2279,Person,3,6,2
+2280,Person,3,5,2
+2281,Vehicle Plate,1,7,1
+2282,Home interior,2,4,2
+2283,Finger,3,5,4
+2284,Person,3,5,2
+2285,Person,4,6,1
+2286,Clothing,2,5,2
+2287,Person,2,5,2
+2288,Person,2,5,1
+2289,Person,2,5,2
+2290,Person,2,5,1
+2291,Person,3,5,2
+2292,Scenery,2,7,4
+2293,Person,1,6,1
+2294,Person,1,5,1
+2295,Person,1,5,1
+2296,Person,1,6,1
+2297,Clothing,1,4,1
+2298,Screen,5,3,2
+2299,Accessory,3,6,2
+2300,Food,3,6,2
+2301,Accessory,1,7,2
+2302,Book,3,5,2
+2303,Toy,3,5,3
+2304,Paper&Document&Label,1,5,1
+2305,Person,1,4,2
+2306,Person,1,4,2
+2307,Person,1,6,2
+2308,Person,1,5,2
+2309,Person,1,6,2
+2310,Person,1,7,2
+2311,Screen,1,7,1
+2312,Person,1,7,1
+2313,Screen,1,6,3
+2314,Vehicle Plate,1,6,2
+2315,Person,1,7,2
+2316,Clothing,1,5,2
+2317,Person,1,5,2
+2318,Person,1,7,2
+2319,Scenery,2,7,4
+2320,Vehicle Plate,1,7,1
+2321,Vehicle Plate,5,6,2
+2322,Person,1,7,2
+2323,Person,1,3,2
+2324,Person,1,5,2
+2325,Person,1,5,2
+2326,Person,1,6,2
+2327,Person,1,6,2
+2328,Person,1,3,2
+2329,Place Identifier,2,3,2
+2330,Person,1,5,2
+2331,Person,1,7,2
+2332,Screen,1,6,1
+2333,Screen,1,5,2
+2334,Machine,3,1,3
+2335,Clothing,4,4,2
+2336,Paper&Document&Label,1,5,2
+2337,Electronic Devices,3,2,3
+2338,Paper&Document&Label,1,5,2
+2339,Pet,4,5,2
+2340,Vehicle Plate,1,5,2
+2341,Place Identifier,2,5,1
+2342,Place Identifier,2,5,2
+2343,Vehicle Plate,5,1,3
+2344,Person,1,5,2
+2345,Vehicle Plate,5,4,2
+2346,Person,1,7,1
+2347,Paper&Document&Label,1,7,1
+2348,Place Identifier,2,2,3
+2349,Person,1,6,2
+2350,Accessory,1,5,2
+2351,Person,4,5,2
+2352,Person,4,3,2
+2353,Person,1,5,2
+2354,Person,1,5,2
+2355,Person,1,5,2
+2356,Person,1,7,1
+2357,Person,1,6,1
+2358,Clothing,4,7,1
+2359,Person,1,7,1
+2360,Musical instrument,3,2,3
+2361,Person,1,2,3
+2362,Person,1,2,3
+2363,Person,1,2,3
+2364,Place Identifier,2,5,3
+2365,Person,1,4,2
+2366,Person,1,4,2
+2367,Person,1,4,2
+2368,Person,1,4,2
+2369,Person,1,4,2
+2370,Person,1,4,2
+2371,Person,1,4,1
+2372,Person,1,4,2
+2373,Person,1,3,1
+2374,Cigarettes,3,4,2
+2375,Person,3,1,3
+2376,Clothing,5,5,4
+2377,Person,1,5,4
+2378,Vehicle Plate,1,6,2
+2379,Finger,4,1,2
+2380,Paper&Document&Label,2,6,2
+2381,Accessory,1,4,2
+2382,Clothing,3,4,2
+2383,Person,1,4,2
+2384,Person,1,3,3
+2385,Clothing,5,6,1
+2386,Clothing,1,5,2
+2387,Accessory,1,5,3
+2388,Person,1,7,2
+2389,Person,1,7,2
+2390,Clothing,1,6,2
+2391,Person,1,4,2
+2392,Person,1,6,2
+2393,Person,1,6,2
+2394,Person,1,6,2
+2395,Toy,3,5,2
+2396,Paper&Document&Label,3,7,1
+2397,Screen,1,7,1
+2398,Paper&Document&Label,5,2,2
+2399,Person,1,6,3
+2400,Screen,3,5,3
+2401,Person,5,5,1
+2402,Person,1,5,1
+2403,Person,1,5,1
+2404,Screen,1,6,1
+2405,Book,1,6,1
+2406,Machine,1,6,1
+2407,Clothing,3,5,2
+2408,Book,3,5,2
+2409,Person,3,5,2
+2410,Electronic Devices,5,5,4
+2411,Place Identifier,2,4,3
+2412,Table,2,2,1
+2413,Screen,2,4,1
+2414,Book,2,3,1
+2415,Person,1,5,1
+2416,Person,1,5,1
+2417,Clothing,3,5,1
+2418,Person,1,5,1
+2419,Person,1,5,1
+2420,Person,1,5,1
+2421,Person,1,5,1
+2422,Screen,4,6,1
+2423,Screen,4,7,1
+2424,Vehicle Plate,5,6,1
+2425,Person,1,6,2
+2426,Person,1,6,2
+2427,Person,1,5,2
+2428,Person,1,6,2
+2429,Person,1,4,2
+2430,Person,1,4,2
+2431,Person,1,2,3
+2432,Person,1,2,3
+2433,Person,1,4,2
+2434,Identity,1,4,1
+2435,Place Identifier,2,2,2
+2436,Clothing,3,4,4
+2437,Place Identifier,2,3,3
+2438,Place Identifier,2,5,2
+2439,Person,1,7,1
+2440,Person,1,7,1
+2441,Person,1,7,1
+2442,Person,1,7,1
+2443,Screen,1,6,3
+2444,Person,1,5,2
+2445,Person,1,5,2
+2446,Pet,5,5,2
+2447,Accessory,3,4,3
+2448,Cigarettes,3,4,1
+2449,Cigarettes,3,7,1
+2450,Vehicle Plate,1,6,2
+2451,Person,1,7,3
+2452,Person,3,7,3
+2453,Person,3,4,1
+2454,Clothing,3,7,3
+2455,Person,1,4,4
+2456,Person,1,4,1
+2457,Person,1,7,1
+2458,Place Identifier,2,7,1
+2459,Person,1,5,2
+2460,Person,1,5,2
+2461,Person,1,5,2
+2462,Person,1,6,2
+2463,Person,1,7,2
+2464,Clothing,3,6,2
+2465,Person,1,7,2
+2466,Person,1,7,2
+2467,Person,1,7,2
+2468,Person,1,4,1
+2469,Person,1,3,1
+2470,Book,3,5,2
+2471,Screen,2,5,2
+2472,Screen,2,5,2
+2473,Screen,2,4,2
+2474,Pet,1,6,2
+2475,Person,1,2,1
+2476,Clothing,1,1,1
+2477,Person,1,1,1
+2478,Person,1,1,1
+2479,Person,3,2,1
+2480,Person,1,3,1
+2481,Clothing,3,5,3
+2482,Person,1,2,1
+2483,Person,1,7,3
+2484,Person,1,7,3
+2485,Person,1,7,3
+2486,Person,1,7,1
+2487,Screen,1,6,1
+2488,Person,1,7,1
+2489,Cigarettes,3,6,2
+2490,Screen,1,6,1
+2491,Table,3,5,3
+2492,Screen,1,6,1
+2493,Person,1,4,1
+2494,Book,1,5,1
+2495,Book,1,4,1
+2496,Pet,1,3,3
+2497,Person,1,3,2
+2498,Person,1,3,2
+2499,Person,1,3,3
+2500,Person,1,6,2
+2501,Identity,4,3,2
+2502,Person,1,4,2
+2503,Person,1,7,2
+2504,Book,3,7,2
+2505,Vehicle Plate,1,5,2
+2506,Pet,3,7,2
+2507,Home interior,3,7,4
+2508,Screen,3,5,4
+2509,Person,1,6,1
+2510,Musical instrument,2,6,2
+2511,Clothing,1,6,4
+2512,Person,1,6,4
+2513,Person,1,6,4
+2514,Musical instrument,2,5,2
+2515,Book,2,5,2
+2516,Book,2,6,2
+2517,Person,1,7,2
+2518,Person,3,5,2
+2519,Person,1,5,2
+2520,Clothing,3,5,3
+2521,Person,1,5,2
+2522,Person,1,7,2
+2523,Person,3,5,3
+2524,Person,3,5,2
+2525,Person,1,4,3
+2526,Person,1,5,2
+2527,Book,3,3,2
+2528,Person,1,6,2
+2529,Person,1,5,2
+2530,Person,1,5,2
+2531,Person,1,6,2
+2532,Clothing,1,3,2
+2533,Person,1,6,2
+2534,Person,1,6,2
+2535,Person,1,5,2
+2536,Person,1,5,2
+2537,Person,1,6,2
+2538,Toy,3,2,2
+2539,Person,1,5,2
+2540,Vehicle Plate,1,4,1
+2541,Person,1,7,1
+2542,Vehicle Plate,1,7,1
+2543,Vehicle Plate,2,2,3
+2544,Person,1,7,2
+2545,Person,1,5,3
+2546,Person,1,4,1
+2547,Person,1,4,2
+2548,Person,1,7,2
+2549,Person,1,7,1
+2550,Person,1,6,1
+2551,Person,1,7,2
+2552,Paper&Document&Label,1,4,1
+2553,Screen,3,4,3
+2554,Electronic Devices,3,4,2
+2555,Home interior,2,4,2
+2556,Screen,3,6,1
+2557,Musical instrument,3,5,2
+2558,Vehicle Plate,5,5,1
+2559,Screen,2,6,1
+2560,Electronic Devices,5,3,4
+2561,Person,1,2,3
+2562,Person,1,2,3
+2563,Pet,5,2,2
+2564,Person,1,7,2
+2565,Person,1,7,1
+2566,Person,1,3,3
+2567,Paper&Document&Label,3,5,3
+2568,Vehicle Plate,1,5,2
+2569,Vehicle Plate,1,7,1
+2570,Person,1,6,2
+2571,Person,1,7,2
+2572,Person,1,3,2
+2573,Person,1,7,2
+2574,Person,1,4,1
+2575,Person,1,4,1
+2576,Clothing,1,4,2
+2577,Person,1,4,1
+2578,Electronic Devices,4,4,1
+2579,Toy,1,4,2
+2580,Book,3,5,2
+2581,Paper&Document&Label,1,5,3
+2582,Person,1,5,3
+2583,Person,1,5,3
+2584,Person,1,6,3
+2585,Person,1,5,1
+2586,Person,1,4,1
+2587,Person,1,4,1
+2588,Person,1,4,1
+2589,Person,1,4,1
+2590,Person,1,6,3
+2591,Clothing,1,5,3
+2592,Person,1,6,2
+2593,Person,2,5,2
+2594,Person,1,7,1
+2595,Person,1,5,1
+2596,Accessory,1,1,1
+2597,Person,1,7,1
+2598,Person,3,5,1
+2599,Person,3,5,1
+2600,Cosmetics,3,5,2
+2601,Person,1,6,2
+2602,Person,1,7,2
+2603,Vehicle Plate,3,6,1
+2604,Food,4,4,2
+2605,Screen,1,5,1
+2606,Machine,1,4,2
+2607,Scenery,2,3,3
+2608,Person,1,3,3
+2609,Identity,1,3,1
+2610,Vehicle Plate,1,5,2
+2611,Machine,3,4,1
+2612,Clothing,1,5,1
+2613,Person,1,6,1
+2614,Pet,1,5,2
+2615,Person,1,7,2
+2616,Person,1,7,2
+2617,Clothing,1,6,2
+2618,Person,1,7,2
+2619,Person,1,7,2
+2620,Person,1,2,1
+2621,Person,1,7,2
+2622,Pet,3,6,2
+2623,Pet,3,4,3
+2624,Finger,2,6,2
+2625,Place Identifier,2,6,3
+2626,Pet,3,5,2
+2627,Home interior,2,5,2
+2628,Table,3,2,5
+2629,Person,1,7,1
+2630,Vehicle Plate,1,6,1
+2631,Machine,1,4,1
+2632,Screen,1,4,1
+2633,Table,3,4,2
+2634,Screen,3,4,1
+2635,Machine,3,3,2
+2636,Home interior,2,4,4
+2637,Table,3,4,2
+2638,Toy,3,3,2
+2639,Screen,5,4,1
+2640,Screen,2,4,1
+2641,Screen,5,5,2
+2642,Accessory,1,7,2
+2643,Home interior,2,4,2
+2644,Musical instrument,2,4,2
+2645,Person,1,1,3
+2646,Person,1,2,3
+2647,Person,1,3,2
+2648,Person,1,3,2
+2649,Person,1,2,3
+2650,Person,1,7,2
+2651,Person,1,4,2
+2652,Person,1,4,1
+2653,Clothing,3,4,2
+2654,Book,3,1,3
+2655,Clothing,1,5,2
+2656,Home interior,1,6,1
+2657,Table,2,5,1
+2658,Photo,2,5,1
+2659,Vehicle Plate,1,4,1
+2660,Scenery,2,5,1
+2661,Place Identifier,2,5,1
+2662,Person,1,7,1
+2663,Person,1,7,1
+2664,Person,1,6,2
+2665,Person,1,6,2
+2666,Clothing,1,5,2
+2667,Person,1,5,1
+2668,Scenery,2,7,1
+2669,Person,1,5,2
+2670,Scenery,2,5,4
+2671,Vehicle Plate,1,4,1
+2672,Person,1,7,2
+2673,Pet,2,5,2
+2674,Clothing,2,6,1
+2675,Person,2,5,2
+2676,Person,2,5,1
+2677,Accessory,1,6,2
+2678,Clothing,1,5,2
+2679,Clothing,3,4,1
+2680,Person,1,7,1
+2681,Person,1,7,1
+2682,Person,1,6,2
+2683,Person,1,6,2
+2684,Person,1,6,2
+2685,Person,1,4,2
+2686,Person,1,6,1
+2687,Person,1,7,2
+2688,Person,1,6,2
+2689,Paper&Document&Label,1,4,3
+2690,Accessory,1,4,2
+2691,Clothing,1,6,2
+2692,Person,4,5,3
+2693,Accessory,4,5,3
+2694,Person,1,4,3
+2695,Person,4,5,3
+2696,Person,4,6,3
+2697,Person,1,5,3
+2698,Person,4,6,3
+2699,Person,1,4,1
+2700,Cosmetics,1,4,3
+2701,Vehicle Plate,1,7,1
+2702,Accessory,1,6,2
+2703,Cigarettes,3,7,2
+2704,Vehicle Plate,1,6,2
+2705,Machine,3,2,4
+2706,Book,2,3,1
+2707,Electronic Devices,2,3,1
+2708,Book,2,5,1
+2709,Scenery,2,5,2
+2710,Person,1,7,3
+2711,Screen,1,7,1
+2712,Person,1,6,3
+2713,Person,1,4,3
+2714,Person,1,4,3
+2715,Vehicle Plate,1,5,2
+2716,Place Identifier,2,5,3
+2717,Cigarettes,3,5,3
+2718,Person,1,4,1
+2719,Person,1,4,1
+2720,Person,1,6,2
+2721,Person,1,2,2
+2722,Person,1,6,2
+2723,Clothing,1,2,2
+2724,Person,1,3,2
+2725,Book,3,2,2
+2726,Person,1,3,2
+2727,Scenery,2,7,2
+2728,Vehicle Plate,1,6,4
+2729,Vehicle Plate,1,7,1
+2730,Paper&Document&Label,2,5,1
+2731,Screen,1,5,2
+2732,Person,1,4,2
+2733,Vehicle Plate,1,6,1
+2734,Person,4,3,2
+2735,Food,5,2,2
+2736,Person,1,6,2
+2737,Vehicle Plate,5,5,1
+2738,Accessory,5,6,3
+2739,Person,1,6,2
+2740,Person,1,6,2
+2741,Person,1,6,2
+2742,Clothing,1,6,2
+2743,Person,1,5,2
+2744,Person,1,5,2
+2745,Person,1,5,2
+2746,Person,1,5,2
+2747,Person,1,6,2
+2748,Screen,5,5,1
+2749,Person,3,5,2
+2750,Place Identifier,2,6,2
+2751,Person,1,7,1
+2752,Screen,3,2,4
+2753,Place Identifier,2,4,1
+2754,Screen,3,6,1
+2755,Person,1,6,1
+2756,Person,1,5,2
+2757,Clothing,1,5,3
+2758,Book,3,2,4
+2759,Person,1,2,2
+2760,Book,3,4,3
+2761,Home interior,2,2,3
+2762,Screen,3,1,4
+2763,Finger,2,4,3
+2764,Person,3,5,3
+2765,Person,3,4,2
+2766,Person,1,7,2
+2767,Person,1,7,2
+2768,Person,1,5,2
+2769,Person,1,5,2
+2770,Vehicle Plate,1,4,1
+2771,Paper&Document&Label,5,2,3
+2772,Person,1,4,1
+2773,Person,1,2,1
+2774,Clothing,1,3,1
+2775,Person,1,3,1
+2776,Person,1,3,1
+2777,Person,1,3,1
+2778,Person,1,2,1
+2779,Person,1,2,1
+2780,Person,1,2,1
+2781,Person,1,2,1
+2782,Vehicle Plate,1,7,1
+2783,Pet,1,5,3
+2784,Accessory,1,5,3
+2785,Person,1,5,1
+2786,Person,1,4,1
+2787,Person,1,5,1
+2788,Person,1,6,2
+2789,Person,1,4,2
+2790,Person,1,4,2
+2791,Person,1,4,2
+2792,Person,1,4,2
+2793,Person,3,4,2
+2794,Musical instrument,3,4,2
+2795,Person,4,4,2
+2796,Clothing,4,6,3
+2797,Identity,3,3,2
+2798,Paper&Document&Label,1,4,1
+2799,Scenery,2,4,2
+2800,Screen,5,7,1
+2801,Vehicle Plate,1,6,2
+2802,Accessory,1,5,2
+2803,Paper&Document&Label,1,7,1
+2804,Identity,1,6,2
+2805,Screen,3,7,1
+2806,Machine,3,5,2
+2807,Person,1,5,2
+2808,Person,1,4,2
+2809,Person,1,4,2
+2810,Electronic Devices,1,2,3
+2811,Photo,2,3,1
+2812,Finger,2,4,3
+2813,Person,1,6,1
+2814,Person,1,6,2
+2815,Clothing,1,7,1
+2816,Person,1,7,1
+2817,Person,1,6,2
+2818,Person,1,7,1
+2819,Clothing,1,6,2
+2820,Person,1,6,2
+2821,Person,1,5,2
+2822,Clothing,4,2,3
+2823,Person,1,4,2
+2824,Person,1,6,2
+2825,Person,1,5,2
+2826,Person,1,6,1
+2827,Paper&Document&Label,3,5,3
+2828,Person,4,6,2
+2829,Person,4,6,2
+2830,Person,4,6,2
+2831,Person,1,4,1
+2832,Person,1,5,2
+2833,Home interior,2,5,4
+2834,Person,1,7,2
+2835,Musical instrument,3,5,3
+2836,Accessory,1,5,3
+2837,Vehicle Plate,1,4,2
+2838,Person,1,5,1
+2839,Person,1,7,2
+2840,Person,1,5,2
+2841,Person,1,6,2
+2842,Person,1,5,2
+2843,Person,1,7,2
+2844,Cigarettes,3,5,4
+2845,Person,1,3,1
+2846,Person,3,6,1
+2847,Vehicle Plate,1,6,2
+2848,Vehicle Plate,1,4,2
+2849,Vehicle Plate,1,4,1
+2850,Person,1,6,2
+2851,Person,1,6,2
+2852,Person,1,7,2
+2853,Person,1,5,2
+2854,Person,1,5,2
+2855,Person,1,5,2
+2856,Person,1,5,2
+2857,Person,1,7,2
+2858,Person,1,5,2
+2859,Person,1,3,2
+2860,Accessory,4,5,2
+2861,Person,1,3,2
+2862,Person,1,4,2
+2863,Book,3,1,3
+2864,Electronic Devices,2,5,4
+2865,Accessory,1,5,3
+2866,Person,1,5,1
+2867,Finger,3,1,3
+2868,Person,1,6,3
+2869,Scenery,3,5,2
+2870,Person,1,3,4
+2871,Vehicle Plate,1,7,1
+2872,Paper&Document&Label,3,4,1
+2873,Cigarettes,3,5,2
+2874,Table,3,2,2
+2875,Pet,4,2,2
+2876,Paper&Document&Label,3,2,2
+2877,Person,1,7,1
+2878,Person,1,4,1
+2879,Screen,1,7,1
+2880,Person,1,7,1
+2881,Person,1,6,1
+2882,Person,1,7,1
+2883,Person,1,7,1
+2884,Person,1,7,1
+2885,Home interior,3,6,2
+2886,Table,3,6,2
+2887,Table,4,7,2
+2888,Screen,1,5,1
+2889,Screen,2,6,1
+2890,Vehicle Plate,1,4,1
+2891,Person,1,5,2
+2892,Person,1,5,2
+2893,Person,1,6,2
+2894,Clothing,4,2,3
+2895,Person,1,4,2
+2896,Person,1,6,1
+2897,Person,1,4,4
+2898,Person,1,6,2
+2899,Clothing,1,6,2
+2900,Person,1,5,2
+2901,Person,2,5,2
+2902,Person,1,5,2
+2903,Person,1,5,2
+2904,Person,1,5,2
+2905,Clothing,3,3,3
+2906,Person,1,6,2
+2907,Vehicle Plate,1,7,1
+2908,Person,1,7,2
+2909,Person,1,7,2
+2910,Person,1,7,2
+2911,Vehicle Plate,1,1,3
+2912,Scenery,2,6,2
+2913,Person,1,6,2
+2914,Person,1,6,2
+2915,Accessory,1,5,3
+2916,Clothing,3,5,3
+2917,Person,1,6,2
+2918,Person,1,3,3
+2919,Person,1,5,3
+2920,Home interior,5,5,2
+2921,Person,1,7,2
+2922,Person,2,5,1
+2923,Person,2,5,1
+2924,Person,4,1,3
+2925,Clothing,3,2,3
+2926,Pet,3,4,2
+2927,Person,1,4,1
+2928,Paper&Document&Label,5,5,2
+2929,Cigarettes,3,5,3
+2930,Screen,5,5,2
+2931,Person,1,6,2
+2932,Person,1,7,2
+2933,Person,1,7,2
+2934,Person,1,7,2
+2935,Person,2,6,2
+2936,Person,2,5,2
+2937,Vehicle Plate,1,6,1
+2938,Person,1,7,1
+2939,Person,1,5,1
+2940,Food,3,5,2
+2941,Person,1,5,2
+2942,Person,1,5,2
+2943,Person,3,5,1
+2944,Person,1,5,1
+2945,Person,1,5,1
+2946,Place Identifier,2,4,2
+2947,Clothing,3,7,2
+2948,Person,1,6,2
+2949,Table,2,5,2
+2950,Person,1,5,1
+2951,Vehicle Plate,5,3,3
+2952,Person,1,6,2
+2953,Person,1,6,2
+2954,Place Identifier,2,6,2
+2955,Person,1,4,1
+2956,Person,1,5,1
+2957,Person,5,4,1
+2958,Electronic Devices,3,2,3
+2959,Vehicle Plate,1,4,1
+2960,Place Identifier,2,2,3
+2961,Vehicle Plate,4,1,3
+2962,Cosmetics,5,6,1
+2963,Person,1,6,1
+2964,Person,1,3,1
+2965,Person,1,5,1
+2966,Person,1,5,1
+2967,Person,1,5,1
+2968,Person,1,5,1
+2969,Screen,3,4,2
+2970,Person,1,6,1
+2971,Person,1,5,2
+2972,Person,1,5,2
+2973,Person,1,7,1
+2974,Person,1,7,1
+2975,Person,1,6,2
+2976,Person,1,5,3
+2977,Person,1,7,1
+2978,Pet,3,6,2
+2979,Place Identifier,2,3,3
+2980,Screen,4,6,1
+2981,Screen,3,6,1
+2982,Person,1,4,2
+2983,Clothing,1,5,2
+2984,Pet,1,7,2
+2985,Vehicle Plate,1,2,1
+2986,Person,1,2,2
+2987,Vehicle Plate,1,2,1
+2988,Scenery,2,4,1
+2989,Musical instrument,3,2,2
+2990,Person,4,5,3
+2991,Person,4,5,3
+2992,Musical instrument,3,5,3
+2993,Person,4,5,3
+2994,Person,4,5,3
+2995,Clothing,4,5,3
+2996,Person,4,5,3
+2997,Person,4,5,3
+2998,Person,4,5,3
+2999,Person,4,5,3
+3000,Person,3,6,3
+3001,Person,1,7,2
+3002,Person,1,7,2
+3003,Person,1,7,2
+3004,Clothing,1,1,1
+3005,Vehicle Plate,2,7,1
+3006,Person,1,6,2
+3007,Person,1,5,2
+3008,Person,1,6,2
+3009,Person,1,5,2
+3010,Person,1,6,2
+3011,Person,1,7,1
+3012,Person,1,4,1
+3013,Accessory,4,4,2
+3014,Screen,5,6,4
+3015,Cosmetics,3,5,3
+3016,Person,1,5,1
+3017,Pet,4,6,2
+3018,Electronic Devices,2,4,3
+3019,Screen,1,5,1
+3020,Person,1,5,1
+3021,Person,1,3,1
+3022,Person,1,6,2
+3023,Person,1,5,2
+3024,Screen,3,3,2
+3025,Person,1,6,2
+3026,Clothing,2,5,2
+3027,Accessory,1,5,1
+3028,Person,1,6,2
+3029,Person,1,6,2
+3030,Person,1,4,2
+3031,Person,1,5,2
+3032,Book,4,2,1
+3033,Book,3,5,2
+3034,Scenery,2,5,2
+3035,Cosmetics,3,5,3
+3036,Person,1,4,1
+3037,Person,1,4,1
+3038,Paper&Document&Label,3,5,1
+3039,Screen,4,4,3
+3040,Person,1,5,2
+3041,Vehicle Plate,1,7,1
+3042,Clothing,5,6,4
+3043,Machine,5,6,4
+3044,Book,5,4,2
+3045,Person,1,6,2
+3046,Person,1,6,2
+3047,Person,1,5,2
+3048,Vehicle Plate,1,7,2
+3049,Person,1,4,2
+3050,Pet,1,1,3
+3051,Screen,3,5,2
+3052,Vehicle Plate,4,6,2
+3053,Place Identifier,2,4,2
+3054,Person,1,4,2
+3055,Person,1,6,3
+3056,Vehicle Plate,1,4,2
+3057,Screen,1,5,1
+3058,Pet,3,4,2
+3059,Cigarettes,3,6,1
+3060,Paper&Document&Label,1,6,1
+3061,Table,4,6,2
+3062,Person,4,6,2
+3063,Person,1,6,2
+3064,Person,1,3,3
+3065,Person,1,6,2
+3066,Person,1,5,2
+3067,Clothing,1,1,3
+3068,Person,1,5,2
+3069,Person,1,5,2
+3070,Person,1,2,3
+3071,Person,1,3,2
+3072,Person,1,6,2
+3073,Book,3,5,3
+3074,Paper&Document&Label,3,5,3
+3075,Paper&Document&Label,4,6,2
+3076,Screen,1,7,1
+3077,Screen,3,5,3
+3078,Book,2,5,2
+3079,Cigarettes,3,5,2
+3080,Vehicle Plate,4,5,2
+3081,Person,1,6,2
+3082,Person,1,5,2
+3083,Person,1,6,2
+3084,Person,1,6,2
+3085,Pet,1,5,2
+3086,Screen,1,7,1
+3087,Person,1,5,2
+3088,Person,1,5,2
+3089,Person,1,7,2
+3090,Person,1,6,2
+3091,Accessory,1,5,2
+3092,Person,1,6,2
+3093,Person,1,6,2
+3094,Person,1,7,2
+3095,Person,1,6,2
+3096,Person,1,7,2
+3097,Person,1,6,2
+3098,Screen,1,4,1
+3099,Paper&Document&Label,1,4,1
+3100,Table,1,4,1
+3101,Electronic Devices,3,4,1
+3102,Cigarettes,3,6,2
+3103,Pet,1,5,3
+3104,Person,1,6,3
+3105,Person,1,5,4
+3106,Person,1,7,2
+3107,Person,1,7,2
+3108,Person,1,7,2
+3109,Person,1,7,2
+3110,Pet,1,5,2
+3111,Vehicle Plate,1,6,1
+3112,Place Identifier,2,4,4
+3113,Person,1,5,2
+3114,Person,1,6,2
+3115,Person,1,7,2
+3116,Person,1,7,1
+3117,Person,1,7,2
+3118,Person,1,6,2
+3119,Person,1,6,2
+3120,Person,1,5,1
+3121,Person,1,5,1
+3122,Person,1,4,1
+3123,Pet,3,4,3
+3124,Accessory,1,2,2
+3125,Pet,3,7,2
+3126,Person,1,6,2
+3127,Person,3,5,2
+3128,Accessory,3,3,2
+3129,Person,1,5,2
+3130,Clothing,3,5,3
+3131,Person,1,5,2
+3132,Person,1,7,2
+3133,Person,1,6,2
+3134,Person,3,5,3
+3135,Person,1,5,2
+3136,Person,1,5,2
+3137,Person,1,6,2
+3138,Person,1,5,2
+3139,Person,1,4,3
+3140,Musical instrument,3,2,4
+3141,Book,3,1,4
+3142,Place Identifier,1,5,1
+3143,Screen,2,7,1
+3144,Scenery,2,5,2
+3145,Clothing,1,3,3
+3146,Cosmetics,1,1,3
+3147,Vehicle Plate,1,7,1
+3148,Vehicle Plate,1,6,2
+3149,Person,1,5,2
+3150,Person,1,4,2
+3151,Food,3,2,3
+3152,Pet,1,5,2
+3153,Scenery,2,3,2
+3154,Vehicle Plate,1,5,2
+3155,Vehicle Plate,1,7,2
+3156,Machine,3,2,3
+3157,Clothing,3,6,1
+3158,Person,2,6,1
+3159,Musical instrument,2,2,3
+3160,Place Identifier,4,6,3
+3161,Electronic Devices,3,5,2
+3162,Table,2,5,2
+3163,Vehicle Plate,1,6,1
+3164,Person,5,4,3
+3165,Scenery,2,5,3
+3166,Vehicle Plate,1,4,1
+3167,Screen,5,5,1
+3168,Book,3,3,4
+3169,Book,3,3,4

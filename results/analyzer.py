@@ -74,6 +74,10 @@ class analyzer:
         print(self.worker_info)
         print(age)
 
+    def anova_csv_for_r(self)->None:
+
+        pass
+
     def basic_count(self) -> None:
         ## count each original labels' annotations 
         ## generate a list the map image_id to its annotations 
