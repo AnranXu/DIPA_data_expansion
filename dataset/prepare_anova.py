@@ -79,7 +79,6 @@ class anova:
                 used_image = []
                 folder = os.path.join(self.folder,platform,'labels')
                 labels = os.listdir(folder)
-                
                 for label_path in labels:
                     img_id = label_path.split('_')[0]
                     with open(os.path.join(folder,label_path)) as f:
@@ -112,6 +111,7 @@ class anova:
             for key, value in self.label_mycat.items():
                 w.write(str(key)+ ',' + str(value['mycat']) + ',' + str(value['reason']) + ',' + str(value['informativeness']) + ',' + str(value['sharing']) + '\n')
     # remove all triple annotations
+    # This code is already be used
     def filter_dataset(self)->None:
         with open('new_img_annotation_map.json', 'w') as w:
             json.dump(self.img_annotation_map, w)
@@ -125,8 +125,8 @@ class anova:
                 shutil.copyfile(os.path.join(self.folder, platform, 'labels', value[0]), os.path.join(self.new_folder, platform, 'labels', value[0]))
                 shutil.copyfile(os.path.join(self.folder, platform, 'workerinfo', worker_file), os.path.join(self.new_folder, platform, 'workerinfo', worker_file))
                 shutil.copyfile(os.path.join(self.original, original_file), os.path.join(self.new_original, original_file))
+
 if __name__ == '__main__':
     aov = anova()
-    #aov.filter_dataset()
     #print(aov.label_mycat)
     aov.prepare_anova_csv()
