@@ -54,23 +54,6 @@ class anova:
                     for cat in openimages_cats:
                         category_name = self.code_openimage_map[cat]
                         self.openimages_mycat_map[category_name] = row[0]
-            self.openimages_mycat_map['Human eye'] = 'Person'
-            self.openimages_mycat_map['Human beard'] = 'Person'
-            self.openimages_mycat_map['Human mouth'] = 'Person'
-            self.openimages_mycat_map['Human foot'] = 'Person'
-            self.openimages_mycat_map['Human leg'] = 'Person'
-            self.openimages_mycat_map['Human ear'] = 'Person'
-            self.openimages_mycat_map['Human hair'] = 'Person'
-            self.openimages_mycat_map['Human head'] = 'Person'
-            self.openimages_mycat_map['Human face'] = 'Person'
-            self.openimages_mycat_map['Human arm'] = 'Person'
-            self.openimages_mycat_map['Human nose'] = 'Person'
-            self.openimages_mycat_map['Human hand'] = 'Person'
-            self.openimages_mycat_map['Human body'] = 'Person'
-            self.openimages_mycat_map['Man'] = 'Person'
-            self.openimages_mycat_map['Woman'] = 'Person'
-            self.openimages_mycat_map['Boy'] = 'Person'
-            self.openimages_mycat_map['Girl'] = 'Person'
 
             cnt = 0
             not_mycat = 0
