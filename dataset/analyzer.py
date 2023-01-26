@@ -108,4 +108,6 @@ class analyzer:
                         self.mega_table = pd.concat([self.mega_table, entry], ignore_index=True)
 
 if __name__ == '__main__':
-    pass
+    analyze = analyzer()
+    analyze.prepare_mega_table()
+    print(analyze.mega_table)
