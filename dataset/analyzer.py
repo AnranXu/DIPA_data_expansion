@@ -294,12 +294,12 @@ class analyzer:
                 voutputs = model(vinputs)
                 #vlabels = vlabels.squeeze()
                 losses = []
-                for i, output in enumerate(output_channel):
-                    losses.append(loss_fns[i](voutputs[i], vlabels[:, i]))
-                    y_pred, max_indices = torch.max(voutputs[i], dim = 1)
-                    acc[i] += metrics.accuracy_score(vlabels[:, i].detach().numpy(), max_indices.detach().numpy())
-                    pre[i] += metrics.precision_score(vlabels[:, i].detach().numpy(), max_indices.detach().numpy(),average='weighted')
-                    rec[i] += metrics.recall_score(vlabels[:, i].detach().numpy(), max_indices.detach().numpy(),average='weighted')
+                for j, output in enumerate(output_channel):
+                    losses.append(loss_fns[j](voutputs[j], vlabels[:, j]))
+                    y_pred, max_indices = torch.max(voutputs[j], dim = 1)
+                    acc[j] += metrics.accuracy_score(vlabels[:, j].detach().numpy(), max_indices.detach().numpy())
+                    pre[j] += metrics.precision_score(vlabels[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
+                    rec[j] += metrics.recall_score(vlabels[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
                 tot_vloss = 0
                 for loss in losses:
                     tot_vloss += loss
@@ -322,7 +322,7 @@ class analyzer:
                             { 'Training' : avg_loss, 'Validation' : avg_vloss },
                             epoch_number + 1)
             for i, output in enumerate(output_channel):
-                writer.add_scalars('{}\'s Metrics: Accuracy Precision Recall'.format(output),
+                writer.add_scalars('{} Metrics, Accuracy Precision Recall'.format(output),
                                 {'Accuracy' : acc[i], 'Precision' : pre[i], 'Recall': rec[i] },
                                 epoch_number + 1)
             #writer.flush()
