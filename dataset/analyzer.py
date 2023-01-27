@@ -209,8 +209,8 @@ class analyzer:
                 #labels = labels.squeeze()
                 # Compute the loss and its gradients
                 losses = []
-                for i, output in enumerate(output_channel):
-                    losses.append(loss_fns[i](outputs[i], labels[:, i]))
+                for j, output in enumerate(output_channel):
+                    losses.append(loss_fns[j](outputs[j], labels[:, j]))
                 tot_loss = 0
                 for loss in losses:
                     tot_loss += loss
