@@ -230,8 +230,12 @@ class analyzer:
         else:
             self.prepare_mega_table()
 
+
         input_dim  = len(input_channel)
-        output_dim = len(self.mega_table['sharing'].unique())
+        output_dim = 0
+        # the output needs to be one-hot
+        for output in output_channel:
+            output_dim += len(self.mega_table[output].unique())
 
         scaler = StandardScaler()
         encoder = LabelEncoder()
@@ -280,6 +284,7 @@ class analyzer:
             rec = 0.0
             running_vloss = 0.0
             for i, vdata in enumerate(testing_loader):
+                vloss = 0.0
                 vinputs, vlabels = vdata
                 voutputs = model(vinputs)
                 vlabels = vlabels.squeeze()
@@ -329,13 +334,14 @@ if __name__ == '__main__':
     bigfives = ["extraversion", "agreeableness", "conscientiousness",
     "neuroticism", "openness"]
     basic_info = [ "age", "gender", "platform"]
-    privacy_metrics = ['category', 'reason', 'informativeness']
+    category = ['category']
+    privacy_metrics = ['reason', 'informativeness', 'sharing']
     input_channel = []
-    #input_channel.extend(basic_info)
-    input_channel.extend(privacy_metrics)
-    #input_channel.extend(bigfives)
+    input_channel.extend(basic_info)
+    input_channel.extend(category)
+    input_channel.extend(bigfives)
     print(input_channel)
-    output_channel = ['sharing']
+    output_channel = ['reason']
     #analyze.prepare_mega_table(save_csv=True)
     #analyze.svm(input_channel, output_channel, read_csv=True)
     #analyze.anova(True)
