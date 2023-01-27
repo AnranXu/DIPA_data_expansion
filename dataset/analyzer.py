@@ -2,15 +2,25 @@ import os
 import csv
 import json
 import pandas as pd
+import numpy as np
+
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn import svm
+from sklearn.neighbors import KNeighborsClassifier
+
 from sklearn import metrics
+from sklearn.metrics import classification_report
 import statsmodels.api as sm
 from statsmodels.formula.api import ols
+
+from neural_network import  nn_model
+from neural_network import nn_dataset
 import torch
 import torch.nn as nn
+from torch.utils.data import DataLoader
+from torch.utils.tensorboard import SummaryWriter
 
 class analyzer:
     def __init__(self) -> None:
@@ -21,6 +31,7 @@ class analyzer:
         self.code_openimage_map = {}
         self.openimages_mycat_map = {}
         self.lvis_mycat_map = {}
+        self.test_size = 0.2
 
         with open(self.img_annotation_map_path) as f:
             self.img_annotation_map = json.load(f)
@@ -96,9 +107,9 @@ class analyzer:
                                 continue
                         else:
                             category = value['category']
-                        reason = value['reason']
-                        informativeness = value['informativeness']
-                        sharing = value['sharing']
+                        reason = int(value['reason']) - 1
+                        informativeness = int(value['informativeness']) - 1
+                        sharing = int(value['sharing']) - 1
                         entry = pd.DataFrame.from_dict({
                             "category": [category],
                             "reason":  [reason],
@@ -123,21 +134,49 @@ class analyzer:
             self.mega_table = pd.read_csv('./mega_table.csv')
         else:
             self.prepare_mega_table()
+
+        scaler = StandardScaler()
+        encoder = LabelEncoder()
         self.mega_table['category'] = encoder.fit_transform(self.mega_table['category'])
         self.mega_table['gender'] = encoder.fit_transform(self.mega_table['gender'])
         self.mega_table['platform'] = encoder.fit_transform(self.mega_table['platform'])
-        scaler = StandardScaler()
-        encoder = LabelEncoder()
         X = self.mega_table[input_channel].values
         y = self.mega_table[output_channel].values
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.80, random_state=0)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=self.test_size, random_state=0)
         X_train = scaler.fit_transform(X_train)
         X_test = scaler.transform(X_test)
+
         classifier=svm.SVC(kernel='rbf',gamma=0.1,decision_function_shape='ovo',C=0.8)
         classifier.fit(X_train,y_train)
         y_pred = classifier.predict(X_test)
 
         # Print evaluation metrics
+        print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
+        print("Precision:",metrics.precision_score(y_test, y_pred,average='weighted'))
+        print("Recall:",metrics.recall_score(y_test, y_pred,average='weighted'))
+
+    def knn(self,input_channel, output_channel, read_csv = False) -> None:
+        if read_csv:
+            self.mega_table = pd.read_csv('./mega_table.csv')
+        else:
+            self.prepare_mega_table()
+        
+        
+        scaler = StandardScaler()
+        encoder = LabelEncoder()
+        self.mega_table['category'] = encoder.fit_transform(self.mega_table['category'])
+        self.mega_table['gender'] = encoder.fit_transform(self.mega_table['gender'])
+        self.mega_table['platform'] = encoder.fit_transform(self.mega_table['platform'])
+        X = self.mega_table[input_channel].values
+        y = self.mega_table[output_channel].values
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=self.test_size, random_state=0)
+        X_train = scaler.fit_transform(X_train)
+        X_test = scaler.transform(X_test)
+
+        classifier = KNeighborsClassifier(n_neighbors=5)
+        classifier.fit(X_train, np.ravel(y_train,order="c"))
+        y_pred = classifier.predict(X_test)
+
         print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
         print("Precision:",metrics.precision_score(y_test, y_pred,average='weighted'))
         print("Recall:",metrics.recall_score(y_test, y_pred,average='weighted'))
@@ -154,10 +193,152 @@ class analyzer:
         aov_table = sm.stats.anova_lm(model, typ=1)
         print(aov_table)
 
+    def neural_network(self, input_channel, output_channel, read_csv = False) -> None:
+        
+        def train_one_epoch():
+            #running_loss = 0.
+            last_loss = 0.
+            for i, data in enumerate(training_loader):
+                # Every data instance is an input + label pair
+                inputs, labels = data
+                # Zero your gradients for every batch!
+                optimizer.zero_grad()
+                
+                # Make predictions for this batch
+                outputs = model(inputs)
+                labels = labels.squeeze()
+                # Compute the loss and its gradients
+                loss = loss_fn(outputs, labels)
+                loss.backward()
+
+                # Adjust learning weights
+                optimizer.step()
+                last_loss += loss.item()
+                # Gather data and report
+                '''running_loss += loss.item()
+                print('  batch {} loss: {}'.format(i + 1, last_loss))
+                tb_x = epoch_index * len(training_loader) + i + 1
+                tb_writer.add_scalar('Loss/train', last_loss, tb_x)
+                running_loss = 0.'''
+            last_loss = last_loss / (i + 1)
+            return last_loss
+
+        
+        learning_rate = 0.01
+        if read_csv:
+            self.mega_table = pd.read_csv('./mega_table.csv')
+        else:
+            self.prepare_mega_table()
+
+        input_dim  = len(input_channel)
+        output_dim = len(self.mega_table['sharing'].unique())
+
+        scaler = StandardScaler()
+        encoder = LabelEncoder()
+        self.mega_table['category'] = encoder.fit_transform(self.mega_table['category'])
+        self.mega_table['gender'] = encoder.fit_transform(self.mega_table['gender'])
+        self.mega_table['platform'] = encoder.fit_transform(self.mega_table['platform'])
+        # get dataset
+        X = self.mega_table[input_channel].values
+        y = self.mega_table[output_channel].values
+
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=self.test_size, random_state=0)
+        X_train = scaler.fit_transform(X_train)
+        X_test = scaler.transform(X_test) 
+        X_train = torch.FloatTensor(X_train)
+        X_test = torch.FloatTensor(X_test)
+        y_train = torch.LongTensor(y_train)
+        y_test = torch.LongTensor(y_test)
+
+        model = nn_model(input_dim,output_dim)
+        
+        loss_fn = nn.CrossEntropyLoss()
+        optimizer = torch.optim.Adam(model.parameters(),lr=learning_rate)
+        training_dataset = nn_dataset(X_train, y_train)
+        testing_dataset = nn_dataset(X_test, y_test)
+        training_loader = DataLoader(training_dataset, batch_size=64, shuffle=True)
+        testing_loader = DataLoader(testing_dataset, batch_size=64, shuffle=True)
+
+        #start training
+        writer = SummaryWriter()
+        epoch_number = 0
+        EPOCHS = 50
+
+        #best_vloss = 1_000_000.
+
+        for epoch in range(EPOCHS):
+            print('EPOCH {}:'.format(epoch_number + 1))
+
+            # Make sure gradient tracking is on, and do a pass over the data
+            model.train(True)
+            avg_loss = train_one_epoch()
+
+            # We don't need gradients on to do reporting
+            model.train(False)
+            acc = 0.0
+            pre = 0.0
+            rec = 0.0
+            running_vloss = 0.0
+            for i, vdata in enumerate(testing_loader):
+                vinputs, vlabels = vdata
+                voutputs = model(vinputs)
+                vlabels = vlabels.squeeze()
+                y_pred, max_indices = torch.max(voutputs, dim = 1)
+                acc += metrics.accuracy_score(vlabels.detach().numpy(), max_indices.detach().numpy())
+                pre += metrics.precision_score(vlabels.detach().numpy(), max_indices.detach().numpy(),average='weighted')
+                rec += metrics.recall_score(vlabels.detach().numpy(), max_indices.detach().numpy(),average='weighted')
+                vloss = loss_fn(voutputs, vlabels)
+                running_vloss += vloss
+            acc = acc / (i + 1)
+            pre = pre / (i + 1)
+            rec = rec / (i + 1)
+            print("Accuracy:",acc)
+            print("Precision:",pre)
+            print("Recall:",rec)
+            avg_vloss = running_vloss / (i + 1)
+            print('LOSS train {} valid {}'.format(avg_loss, avg_vloss))
+            
+            
+
+            # Log the running loss averaged per batch
+            # for both training and validation
+            writer.add_scalars('Training vs. Validation Loss',
+                            { 'Training' : avg_loss, 'Validation' : avg_vloss },
+                            epoch_number + 1)
+            writer.add_scalar('Accuracy',
+                            acc,
+                            epoch_number + 1)
+            writer.add_scalar('Precision',
+                            pre,
+                            epoch_number + 1)
+            writer.add_scalar('Recall',
+                            rec ,
+                            epoch_number + 1)
+            #writer.flush()
+
+            # Track best performance, and save the model's state
+            '''if avg_vloss < best_vloss:
+                best_vloss = avg_vloss
+                model_path = 'model_{}_{}'.format(timestamp, epoch_number)
+                torch.save(model.state_dict(), model_path)'''
+
+            epoch_number += 1
+        writer.close()
 if __name__ == '__main__':
     analyze = analyzer()
-    input_channel = ['category', 'reason', 'informativeness']
+    bigfives = ["extraversion", "agreeableness", "conscientiousness",
+    "neuroticism", "openness"]
+    basic_info = [ "age", "gender", "platform"]
+    privacy_metrics = ['category', 'reason', 'informativeness']
+    input_channel = []
+    #input_channel.extend(basic_info)
+    input_channel.extend(privacy_metrics)
+    #input_channel.extend(bigfives)
+    print(input_channel)
     output_channel = ['sharing']
+    #analyze.prepare_mega_table(save_csv=True)
     #analyze.svm(input_channel, output_channel, read_csv=True)
     #analyze.anova(True)
+    analyze.neural_network(input_channel, output_channel, read_csv=True)
+    #analyze.knn(input_channel, output_channel, read_csv=True)
     

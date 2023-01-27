@@ -14,6 +14,7 @@ dataset/annotations/*
 dataset/images/*
 dataset/new annotations/*
 dataset/original labels/*
+dataset/runs/*
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 results/CrowdWorks/
 results/Prolific/
@@ -41,3 +42,4 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 *.zip
+*.pyc
