@@ -206,14 +206,19 @@ class analyzer:
                 
                 # Make predictions for this batch
                 outputs = model(inputs)
-                labels = labels.squeeze()
+                #labels = labels.squeeze()
                 # Compute the loss and its gradients
-                loss = loss_fn(outputs, labels)
-                loss.backward()
+                losses = []
+                for i, output in enumerate(output_channel):
+                    losses.append(loss_fns[i](outputs[i], labels[:, i]))
+                tot_loss = 0
+                for loss in losses:
+                    tot_loss += loss
+                tot_loss.backward()
 
                 # Adjust learning weights
                 optimizer.step()
-                last_loss += loss.item()
+                last_loss += tot_loss.item()
                 # Gather data and report
                 '''running_loss += loss.item()
                 print('  batch {} loss: {}'.format(i + 1, last_loss))
@@ -232,10 +237,10 @@ class analyzer:
 
 
         input_dim  = len(input_channel)
-        output_dim = 0
+        output_dims = []
         # the output needs to be one-hot
         for output in output_channel:
-            output_dim += len(self.mega_table[output].unique())
+            output_dims.append(len(self.mega_table[output].unique()))
 
         scaler = StandardScaler()
         encoder = LabelEncoder()
@@ -254,9 +259,9 @@ class analyzer:
         y_train = torch.LongTensor(y_train)
         y_test = torch.LongTensor(y_test)
 
-        model = nn_model(input_dim,output_dim)
+        model = nn_model(input_dim,output_dims)
         
-        loss_fn = nn.CrossEntropyLoss()
+        loss_fns = [nn.CrossEntropyLoss() for output in output_channel]
         optimizer = torch.optim.Adam(model.parameters(),lr=learning_rate)
         training_dataset = nn_dataset(X_train, y_train)
         testing_dataset = nn_dataset(X_test, y_test)
@@ -279,21 +284,27 @@ class analyzer:
 
             # We don't need gradients on to do reporting
             model.train(False)
-            acc = 0.0
-            pre = 0.0
-            rec = 0.0
+            acc = np.zeros(len(output_channel))
+            pre = np.zeros(len(output_channel))
+            rec = np.zeros(len(output_channel))
             running_vloss = 0.0
             for i, vdata in enumerate(testing_loader):
                 vloss = 0.0
                 vinputs, vlabels = vdata
                 voutputs = model(vinputs)
-                vlabels = vlabels.squeeze()
-                y_pred, max_indices = torch.max(voutputs, dim = 1)
-                acc += metrics.accuracy_score(vlabels.detach().numpy(), max_indices.detach().numpy())
-                pre += metrics.precision_score(vlabels.detach().numpy(), max_indices.detach().numpy(),average='weighted')
-                rec += metrics.recall_score(vlabels.detach().numpy(), max_indices.detach().numpy(),average='weighted')
-                vloss = loss_fn(voutputs, vlabels)
-                running_vloss += vloss
+                #vlabels = vlabels.squeeze()
+                losses = []
+                for i, output in enumerate(output_channel):
+                    losses.append(loss_fns[i](voutputs[i], vlabels[:, i]))
+                    y_pred, max_indices = torch.max(voutputs[i], dim = 1)
+                    acc[i] += metrics.accuracy_score(vlabels[:, i].detach().numpy(), max_indices.detach().numpy())
+                    pre[i] += metrics.precision_score(vlabels[:, i].detach().numpy(), max_indices.detach().numpy(),average='weighted')
+                    rec[i] += metrics.recall_score(vlabels[:, i].detach().numpy(), max_indices.detach().numpy(),average='weighted')
+                tot_vloss = 0
+                for loss in losses:
+                    tot_vloss += loss
+                
+                running_vloss += tot_vloss
             acc = acc / (i + 1)
             pre = pre / (i + 1)
             rec = rec / (i + 1)
@@ -310,15 +321,10 @@ class analyzer:
             writer.add_scalars('Training vs. Validation Loss',
                             { 'Training' : avg_loss, 'Validation' : avg_vloss },
                             epoch_number + 1)
-            writer.add_scalar('Accuracy',
-                            acc,
-                            epoch_number + 1)
-            writer.add_scalar('Precision',
-                            pre,
-                            epoch_number + 1)
-            writer.add_scalar('Recall',
-                            rec ,
-                            epoch_number + 1)
+            for i, output in enumerate(output_channel):
+                writer.add_scalars('{}\'s Metrics: Accuracy Precision Recall'.format(output),
+                                {'Accuracy' : acc[i], 'Precision' : pre[i], 'Recall': rec[i] },
+                                epoch_number + 1)
             #writer.flush()
 
             # Track best performance, and save the model's state
@@ -341,7 +347,7 @@ if __name__ == '__main__':
     input_channel.extend(category)
     input_channel.extend(bigfives)
     print(input_channel)
-    output_channel = ['reason']
+    output_channel = privacy_metrics
     #analyze.prepare_mega_table(save_csv=True)
     #analyze.svm(input_channel, output_channel, read_csv=True)
     #analyze.anova(True)
