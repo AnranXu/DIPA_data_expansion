@@ -308,14 +308,16 @@ class analyzer:
             acc = acc / (i + 1)
             pre = pre / (i + 1)
             rec = rec / (i + 1)
-            print("Accuracy:",acc)
-            print("Precision:",pre)
-            print("Recall:",rec)
+            #print("Accuracy:",acc)
+            #print("Precision:",pre)
+            #print("Recall:",rec)
             avg_vloss = running_vloss / (i + 1)
             print('LOSS train {} valid {}'.format(avg_loss, avg_vloss))
             
             
-
+            pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec}
+            df = pd.DataFrame(pandas_data, index=output_channel)
+            print(df)
             # Log the running loss averaged per batch
             # for both training and validation
             writer.add_scalars('Training vs. Validation Loss',
