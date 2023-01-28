@@ -9,7 +9,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn import svm
 from sklearn.neighbors import KNeighborsClassifier
-
+from sklearn.pipeline import Pipeline
+from sklearn.svm import SVC
+from sklearn.multioutput import MultiOutputClassifier
 from sklearn import metrics
 from sklearn.metrics import classification_report
 import statsmodels.api as sm
@@ -146,14 +148,25 @@ class analyzer:
         X_train = scaler.fit_transform(X_train)
         X_test = scaler.transform(X_test)
 
-        classifier=svm.SVC(kernel='rbf',gamma=0.1,decision_function_shape='ovo',C=0.8)
+        svc = svm.SVC(kernel='rbf',gamma=0.1,decision_function_shape='ovo',C=0.8)
+        classifier = MultiOutputClassifier(svc, n_jobs=-1)
         classifier.fit(X_train,y_train)
         y_pred = classifier.predict(X_test)
 
         # Print evaluation metrics
-        print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
-        print("Precision:",metrics.precision_score(y_test, y_pred,average='weighted'))
-        print("Recall:",metrics.recall_score(y_test, y_pred,average='weighted'))
+        acc = np.zeros(len(output_channel))
+        pre = np.zeros(len(output_channel))
+        rec = np.zeros(len(output_channel))
+        f1 = np.zeros(len(output_channel))
+        for j, output in enumerate(output_channel):
+            acc[j] = metrics.accuracy_score(y_test[:, j], y_pred[:, j])
+            pre[j] = metrics.precision_score(y_test[:, j], y_pred[:, j], average='weighted')
+            rec[j] = metrics.recall_score(y_test[:, j], y_pred[:, j], average='weighted')
+            f1[j] = metrics.f1_score(y_test[:, j], y_pred[:, j], average='weighted')
+            
+        pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
+        df = pd.DataFrame(pandas_data, index=output_channel)
+        print(df)
 
     def knn(self,input_channel, output_channel, read_csv = False) -> None:
         if read_csv:
@@ -173,13 +186,26 @@ class analyzer:
         X_train = scaler.fit_transform(X_train)
         X_test = scaler.transform(X_test)
 
-        classifier = KNeighborsClassifier(n_neighbors=5)
-        classifier.fit(X_train, np.ravel(y_train,order="c"))
+        knn = KNeighborsClassifier(n_neighbors=5)
+        #classifier.fit(X_train, np.ravel(y_train,order="c"))
+        classifier = MultiOutputClassifier(knn, n_jobs=-1)
+        classifier.fit(X_train,y_train)
         y_pred = classifier.predict(X_test)
 
-        print("Accuracy:",metrics.accuracy_score(y_test, y_pred))
-        print("Precision:",metrics.precision_score(y_test, y_pred,average='weighted'))
-        print("Recall:",metrics.recall_score(y_test, y_pred,average='weighted'))
+        # Print evaluation metrics
+        acc = np.zeros(len(output_channel))
+        pre = np.zeros(len(output_channel))
+        rec = np.zeros(len(output_channel))
+        f1 = np.zeros(len(output_channel))
+        for j, output in enumerate(output_channel):
+            acc[j] = metrics.accuracy_score(y_test[:, j], y_pred[:, j])
+            pre[j] = metrics.precision_score(y_test[:, j], y_pred[:, j], average='weighted')
+            rec[j] = metrics.recall_score(y_test[:, j], y_pred[:, j], average='weighted')
+            f1[j] = metrics.f1_score(y_test[:, j], y_pred[:, j], average='weighted')
+            
+        pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
+        df = pd.DataFrame(pandas_data, index=output_channel)
+        print(df)
 
     def anova(self,read_csv = False) -> None:
         ## the degree of freedom of "informativeness" is wrong, it should be 6 rather than 1
@@ -287,6 +313,7 @@ class analyzer:
             acc = np.zeros(len(output_channel))
             pre = np.zeros(len(output_channel))
             rec = np.zeros(len(output_channel))
+            f1 = np.zeros(len(output_channel))
             running_vloss = 0.0
             for i, vdata in enumerate(testing_loader):
                 vloss = 0.0
@@ -300,6 +327,7 @@ class analyzer:
                     acc[j] += metrics.accuracy_score(vlabels[:, j].detach().numpy(), max_indices.detach().numpy())
                     pre[j] += metrics.precision_score(vlabels[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
                     rec[j] += metrics.recall_score(vlabels[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
+                    f1[j] += metrics.f1_score(vlabels[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
                 tot_vloss = 0
                 for loss in losses:
                     tot_vloss += loss
@@ -308,6 +336,7 @@ class analyzer:
             acc = acc / (i + 1)
             pre = pre / (i + 1)
             rec = rec / (i + 1)
+            f1 = f1 / (i + 1)
             #print("Accuracy:",acc)
             #print("Precision:",pre)
             #print("Recall:",rec)
@@ -315,7 +344,7 @@ class analyzer:
             print('LOSS train {} valid {}'.format(avg_loss, avg_vloss))
             
             
-            pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec}
+            pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
             df = pd.DataFrame(pandas_data, index=output_channel)
             print(df)
             # Log the running loss averaged per batch
