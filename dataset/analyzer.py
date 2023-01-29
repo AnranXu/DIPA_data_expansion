@@ -16,6 +16,7 @@ from sklearn import metrics
 from sklearn.metrics import classification_report
 import statsmodels.api as sm
 from statsmodels.formula.api import ols
+from statsmodels.stats.anova import AnovaRM
 
 from neural_network import  nn_model
 from neural_network import nn_dataset
@@ -77,7 +78,8 @@ class analyzer:
         for key in self.img_annotation_map.keys():
             for platform, value in self.img_annotation_map[key].items():
                 # now, value[0] is the only availiable index
-                prefix_len = len(value[0].split('_')[0]) + 1
+                image_id = value[0].split('_')[0]
+                prefix_len = len(image_id) + 1
                 worker_file = value[0][prefix_len:]
                 worker_file = worker_file[:-11]
                 worker_file = worker_file + '.json'
@@ -97,6 +99,7 @@ class analyzer:
                     for key, value in label['defaultAnnotation'].items():
                         if value['ifNoPrivacy']:
                             continue
+                        
                         category = ''
                         if mycat_mode:
                             if dataset_name == 'OpenImages':
@@ -109,10 +112,12 @@ class analyzer:
                                 continue
                         else:
                             category = value['category']
+                        id = image_id + '_' + key
                         reason = int(value['reason']) - 1
                         informativeness = int(value['informativeness']) - 1
                         sharing = int(value['sharing']) - 1
                         entry = pd.DataFrame.from_dict({
+                            'id': [id],
                             "category": [category],
                             "reason":  [reason],
                             "informativeness": [informativeness],
@@ -214,8 +219,20 @@ class analyzer:
             self.mega_table = pd.read_csv('./mega_table.csv')
         else:
             self.prepare_mega_table()
-        print(self.mega_table['informativeness'].unique())
-        model = ols('sharing ~ category*informativeness', data=self.mega_table).fit()
+        #agg_data = self.mega_table.groupby(['reason', 'informativeness'])['sharing'].mean()
+        encoder = LabelEncoder()
+        self.mega_table['category'] = encoder.fit_transform(self.mega_table['category'])
+        self.mega_table['gender'] = encoder.fit_transform(self.mega_table['gender'])
+        self.mega_table['platform'] = encoder.fit_transform(self.mega_table['platform'])
+        self.mega_table['reason'] = encoder.fit_transform(self.mega_table['reason'])
+        self.mega_table['informativeness'] = encoder.fit_transform(self.mega_table['informativeness'])
+        self.mega_table['id'] = encoder.fit_transform(self.mega_table['id'])
+        # get dataset
+        #aov = AnovaRM(self.mega_table, depvar='sharing', subject= 'id', within=['reason', 'informativeness'], aggregate_func='mean')
+        #res = aov.fit()
+        #print(res)
+        # Print the results
+        model = ols('sharing ~ reason*informativeness', data=self.mega_table).fit()
         aov_table = sm.stats.anova_lm(model, typ=1)
         print(aov_table)
 
@@ -273,6 +290,7 @@ class analyzer:
         self.mega_table['category'] = encoder.fit_transform(self.mega_table['category'])
         self.mega_table['gender'] = encoder.fit_transform(self.mega_table['gender'])
         self.mega_table['platform'] = encoder.fit_transform(self.mega_table['platform'])
+        self.mega_table['id'] = encoder.fit_transform(self.mega_table['id'])
         # get dataset
         X = self.mega_table[input_channel].values
         y = self.mega_table[output_channel].values
@@ -297,7 +315,7 @@ class analyzer:
         #start training
         writer = SummaryWriter()
         epoch_number = 0
-        EPOCHS = 50
+        EPOCHS = 200
 
         #best_vloss = 1_000_000.
 
