@@ -6,7 +6,9 @@ class nn_model(nn.Module):
     def __init__(self,input_dim,output_dims):
         super(nn_model,self).__init__()
         self.input_layer    = nn.Linear(input_dim,128)
-        self.hidden_layer1  = nn.Linear(128,64)
+        self.hidden_layer1  = nn.Linear(128,256)
+        self.hidden_layer2  = nn.Linear(256,128)
+        self.hidden_layer3  = nn.Linear(128,64)
         self.output_layers = []
         self.output_dims = output_dims
         for i, dim in enumerate(output_dims):
@@ -15,11 +17,13 @@ class nn_model(nn.Module):
     
     
     def forward(self,x):
+        front =  self.relu(self.input_layer(x))
+        front =  self.relu(self.hidden_layer1(front))
+        front =  self.relu(self.hidden_layer2(front))
+        front =  self.relu(self.hidden_layer3(front))
         outs = []
         for i, dim in enumerate(self.output_dims):
-            out =  self.relu(self.input_layer(x))
-            out =  self.relu(self.hidden_layer1(out))
-            out =  self.output_layers[i](out)
+            out =  self.output_layers[i](front)
             outs.append(out)
         return outs
 '''class nn_model(nn.Module):

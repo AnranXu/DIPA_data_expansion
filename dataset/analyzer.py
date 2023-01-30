@@ -3,6 +3,7 @@ import csv
 import json
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
@@ -35,7 +36,12 @@ class analyzer:
         self.openimages_mycat_map = {}
         self.lvis_mycat_map = {}
         self.test_size = 0.2
-
+        self.description = {'reason': ['It tells personal identity.', 'It tells location of shooting.',
+        'It tells personal habits.', 'It tells social circle.', 'Other things it can tell'],
+        'informativeness':['extremely uninformative','moderately uninformative','slightly uninformative','neutral',
+        'slightly informative','moderately informative','extremely informative'],
+        'sharing': ['I won\'t share it', 'Family or friend',
+        'Public', 'Broadcast programme', 'Other recipients']}
         with open(self.img_annotation_map_path) as f:
             self.img_annotation_map = json.load(f)
         with open('./mycat_lvis_map.csv') as f:
@@ -141,7 +147,10 @@ class analyzer:
             self.mega_table = pd.read_csv('./mega_table.csv')
         else:
             self.prepare_mega_table()
-
+        output_dims = []
+        # the output needs to be one-hot
+        for output in output_channel:
+            output_dims.append(len(self.mega_table[output].unique()))
         scaler = StandardScaler()
         encoder = LabelEncoder()
         self.mega_table['category'] = encoder.fit_transform(self.mega_table['category'])
@@ -163,15 +172,23 @@ class analyzer:
         pre = np.zeros(len(output_channel))
         rec = np.zeros(len(output_channel))
         f1 = np.zeros(len(output_channel))
+        conf = []
+        for i, output_dim in enumerate(output_dims):
+            conf.append(np.zeros((output_dim,output_dim)))
         for j, output in enumerate(output_channel):
             acc[j] = metrics.accuracy_score(y_test[:, j], y_pred[:, j])
             pre[j] = metrics.precision_score(y_test[:, j], y_pred[:, j], average='weighted')
             rec[j] = metrics.recall_score(y_test[:, j], y_pred[:, j], average='weighted')
             f1[j] = metrics.f1_score(y_test[:, j], y_pred[:, j], average='weighted')
-            
+            conf[j] += metrics.confusion_matrix(y_test[:, j], y_pred[:, j], labels = self.mega_table[output].unique())
+
         pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
+        
+        for i, output in enumerate(output_channel):
+            print('confusion matrix for {}'.format(output))
+            print(np.round(conf[i], 3))
         df = pd.DataFrame(pandas_data, index=output_channel)
-        print(df)
+        print(df.round(3))
 
     def knn(self,input_channel, output_channel, read_csv = False) -> None:
         if read_csv:
@@ -179,7 +196,10 @@ class analyzer:
         else:
             self.prepare_mega_table()
         
-        
+        output_dims = []
+        # the output needs to be one-hot
+        for output in output_channel:
+            output_dims.append(len(self.mega_table[output].unique()))
         scaler = StandardScaler()
         encoder = LabelEncoder()
         self.mega_table['category'] = encoder.fit_transform(self.mega_table['category'])
@@ -202,15 +222,23 @@ class analyzer:
         pre = np.zeros(len(output_channel))
         rec = np.zeros(len(output_channel))
         f1 = np.zeros(len(output_channel))
+        conf = []
+
+        for i, output_dim in enumerate(output_dims):
+            conf.append(np.zeros((output_dim,output_dim)))
         for j, output in enumerate(output_channel):
             acc[j] = metrics.accuracy_score(y_test[:, j], y_pred[:, j])
             pre[j] = metrics.precision_score(y_test[:, j], y_pred[:, j], average='weighted')
             rec[j] = metrics.recall_score(y_test[:, j], y_pred[:, j], average='weighted')
             f1[j] = metrics.f1_score(y_test[:, j], y_pred[:, j], average='weighted')
+            conf[j] += metrics.confusion_matrix(y_test[:, j], y_pred[:, j], labels = self.mega_table[output].unique())
             
         pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
+        for i, output in enumerate(output_channel):
+            print('confusion matrix for {}'.format(output))
+            print(np.round(conf[i], 3))
         df = pd.DataFrame(pandas_data, index=output_channel)
-        print(df)
+        print(df.round(3))
 
     def anova(self,read_csv = False) -> None:
         ## the degree of freedom of "informativeness" is wrong, it should be 6 rather than 1
@@ -332,6 +360,9 @@ class analyzer:
             pre = np.zeros(len(output_channel))
             rec = np.zeros(len(output_channel))
             f1 = np.zeros(len(output_channel))
+            conf = []
+            for i, output_dim in enumerate(output_dims):
+                conf.append(np.zeros((output_dim,output_dim)))
             running_vloss = 0.0
             for i, vdata in enumerate(testing_loader):
                 vloss = 0.0
@@ -346,6 +377,7 @@ class analyzer:
                     pre[j] += metrics.precision_score(vlabels[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
                     rec[j] += metrics.recall_score(vlabels[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
                     f1[j] += metrics.f1_score(vlabels[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
+                    conf[j] += metrics.confusion_matrix(vlabels[:, j].detach().numpy(), max_indices.detach().numpy(), labels = self.mega_table[output].unique())
                 tot_vloss = 0
                 for loss in losses:
                     tot_vloss += loss
@@ -360,11 +392,26 @@ class analyzer:
             #print("Recall:",rec)
             avg_vloss = running_vloss / (i + 1)
             print('LOSS train {} valid {}'.format(avg_loss, avg_vloss))
-            
+            if epoch == EPOCHS - 1:
+                for i, output in enumerate(output_channel):
+                    conf[i] = conf[i].astype('float') / conf[i].sum(axis=1)[:, np.newaxis]
+                    plt.imshow(conf[i], cmap=plt.cm.Blues)
+                    plt.xticks(np.arange(0, len(self.description[output])), self.description[output], rotation = 45, ha='right')
+                    plt.yticks(np.arange(0, len(self.description[output])), self.description[output])
+                    plt.xlabel("Predicted Label")
+                    plt.ylabel("True Label")
+                    plt.title('confusion matrix for {}'.format(output))
+                    plt.colorbar()
+                    plt.tight_layout()
+
+                    plt.savefig('confusion matrix for {}.png'.format(output), dpi=1200)
+                    plt.clf()
+                    print('confusion matrix for {}'.format(output))
+                    print(np.round(conf[i], 3))
             
             pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
             df = pd.DataFrame(pandas_data, index=output_channel)
-            print(df)
+            print(df.round(3))
             # Log the running loss averaged per batch
             # for both training and validation
             writer.add_scalars('Training vs. Validation Loss',
@@ -400,6 +447,6 @@ if __name__ == '__main__':
     #analyze.prepare_mega_table(save_csv=True)
     #analyze.svm(input_channel, output_channel, read_csv=True)
     #analyze.anova(True)
-    analyze.neural_network(input_channel, output_channel, read_csv=True)
-    #analyze.knn(input_channel, output_channel, read_csv=True)
+    #analyze.neural_network(input_channel, output_channel, read_csv=True)
+    analyze.knn(input_channel, output_channel, read_csv=True)
     
