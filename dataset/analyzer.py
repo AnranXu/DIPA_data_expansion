@@ -352,8 +352,8 @@ class analyzer:
 
             # Make sure gradient tracking is on, and do a pass over the data
             model.train(True)
-            avg_loss = train_one_epoch()
-
+            #avg_loss = train_one_epoch()
+            avg_loss = 0
             # We don't need gradients on to do reporting
             model.train(False)
             acc = np.zeros(len(output_channel))
@@ -439,9 +439,9 @@ if __name__ == '__main__':
     category = ['category']
     privacy_metrics = ['reason', 'informativeness', 'sharing']
     input_channel = []
-    input_channel.extend(basic_info)
-    input_channel.extend(category)
-    #input_channel.extend(bigfives)
+    #input_channel.extend(basic_info)
+    #input_channel.extend(category)
+    input_channel.extend(bigfives)
     print(input_channel)
     output_channel = privacy_metrics
     #analyze.prepare_mega_table(save_csv=True)
