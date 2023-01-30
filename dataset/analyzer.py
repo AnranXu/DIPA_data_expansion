@@ -352,8 +352,8 @@ class analyzer:
 
             # Make sure gradient tracking is on, and do a pass over the data
             model.train(True)
-            #avg_loss = train_one_epoch()
-            avg_loss = 0
+            avg_loss = train_one_epoch()
+            
             # We don't need gradients on to do reporting
             model.train(False)
             acc = np.zeros(len(output_channel))
