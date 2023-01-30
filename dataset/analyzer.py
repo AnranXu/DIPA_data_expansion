@@ -441,12 +441,12 @@ if __name__ == '__main__':
     input_channel = []
     input_channel.extend(basic_info)
     input_channel.extend(category)
-    input_channel.extend(bigfives)
+    #input_channel.extend(bigfives)
     print(input_channel)
     output_channel = privacy_metrics
     #analyze.prepare_mega_table(save_csv=True)
     #analyze.svm(input_channel, output_channel, read_csv=True)
     #analyze.anova(True)
-    #analyze.neural_network(input_channel, output_channel, read_csv=True)
-    analyze.knn(input_channel, output_channel, read_csv=True)
+    analyze.neural_network(input_channel, output_channel, read_csv=True)
+    #analyze.knn(input_channel, output_channel, read_csv=True)
     
