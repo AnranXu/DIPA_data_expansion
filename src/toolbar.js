@@ -70,17 +70,32 @@ class Toolbar extends Component{
             //check question 'what kind of information can this content tell?'
             var reason = document.getElementById('reason-' + category);
             var reason_input = document.getElementById('reasonInput-' + category);
-            if(reason.value === '0' || (reason.value === '5' && reason_input.value === ''))
+            if(reason.value === '0' || (reason.value === '6' && reason_input.value === ''))
                 ifFinished = false;
             var informativeness = document.getElementById('informativeness-' + category);
             console.log(informativeness);
             if(informativeness === 0)
                 ifFinished = false;
             //check question 'to what extent would you share this photo at most?'
-            var sharing = document.getElementById('sharing-' + category);
-            var sharing_input = document.getElementById('sharing-' + category);
-            if(sharing.value === '0' || (sharing.value === '5' && sharing_input.value === ''))
+            var sharingOwner = document.getElementById('sharingOwner-' + category);
+            var sharingOwnerInput = document.getElementById('sharingOwnerInput-' + category);
+            var sharingOwnerResult = sharingOwner.value;
+            console.log(sharingOwnerResult)
+            if(sharingOwnerResult.length === 0)
                 ifFinished = false;
+            else{
+                sharingOwnerResult = JSON.parse(sharingOwnerResult);
+                if(sharingOwnerResult.includes(6) && sharingOwnerInput.value === '')
+                    ifFinished = false;
+                if(sharingOwnerResult.includes(0) && sharingOwnerResult.length > 1)
+                {
+                    ifFinished = false;
+                    if(this.props.language === 'en')
+                        alert('You can not choose other options if you choose I won\'t share it in default label ' + category);
+                    else if(this.props.language === 'jp')
+                        alert('ラベル' + category + 'で「共有しない」を選択した場合、他のオプションは選択できません');
+                }
+            }
             if(!ifFinished)
             {
                 if(this.props.language === 'en')
@@ -100,7 +115,7 @@ class Toolbar extends Component{
                 ifFinished = false;
             var reason = document.getElementById('reason-' + id);
             var reason_input = document.getElementById('reasonInput-' + id);
-            if(reason.value === '0' || (reason.value === '5' && reason_input.value === ''))
+            if(reason.value === '0' || (reason.value === '6' && reason_input.value === ''))
                 ifFinished = false;
             
             var informativeness = document.getElementById('informativeness-' + category);
@@ -108,10 +123,25 @@ class Toolbar extends Component{
             if(informativeness === 0)
                 ifFinished = false;
             //check question 'to what extent would you share this photo at most?'
-            var sharing = document.getElementById('sharing-' + id);
-            var sharing_input = document.getElementById('sharing-' + id);
-            if(sharing.value === '0' || (sharing.value === '5' && sharing_input.value === ''))
+            var sharingOwner = document.getElementById('sharingOwner-' + id);
+            var sharingOwnerInput = document.getElementById('sharingOwnerInput-' + id);
+            var sharingOwnerResult = sharingOwner.value;
+            console.log(sharingOwnerResult)
+            if(sharingOwnerResult.length === 0)
                 ifFinished = false;
+            else{
+                sharingOwnerResult = JSON.parse(sharingOwnerResult);
+                if(sharingOwnerResult.includes(6) && sharingOwnerInput.value === '')
+                    ifFinished = false;
+                if(sharingOwnerResult.includes(0) && sharingOwnerResult.length > 1)
+                {
+                    ifFinished = false;
+                    if(this.props.language === 'en')
+                        alert('You can not choose other options if you choose I won\'t share it in manual label ' + id);
+                    else if(this.props.language === 'jp')
+                        alert('手動ラベル' + id + 'で「共有しない」を選択した場合、他のオプションは選択できません');
+                }
+            }
             if(!ifFinished)
             {
                 if(this.props.language === 'en')
@@ -130,7 +160,7 @@ class Toolbar extends Component{
             
             var category = this.state.labelList[i];
             anns['defaultAnnotation'][category] = {'category': category, 'reason': '', 'reasonInput': '', 'informativeness': 0, 
-            'sharing': '', 'sharingInput': '', 'ifNoPrivacy': false};
+            'sharingOwner': [], 'sharingOwnerInput': '', 'ifNoPrivacy': false};
             var ifNoPrivacy = document.getElementById('privacyButton-' + category).checked;
             if(ifNoPrivacy)
             {
@@ -141,19 +171,20 @@ class Toolbar extends Component{
             var reason_input = document.getElementById('reasonInput-' + category);
             var informativeness = document.getElementById('informativeness-' + category);
             console.log(informativeness);
-            var sharing = document.getElementById('sharing-' + category);
-            var sharing_input = document.getElementById('sharingInput-' + category);
+            var sharingOwner = document.getElementById('sharingOwner-' + category);
+            var sharingOwnerInput = document.getElementById('sharingOwnerInput-' + category);
+            var sharingOwnerResult = JSON.parse(sharingOwner.value);
             anns['defaultAnnotation'][category]['reason'] = reason.value;
             anns['defaultAnnotation'][category]['reasonInput'] = reason_input.value;
             anns['defaultAnnotation'][category]['informativeness'] = informativeness.value;
-            anns['defaultAnnotation'][category]['sharing'] = sharing.value;
-            anns['defaultAnnotation'][category]['sharingInput'] = sharing_input.value;
+            anns['defaultAnnotation'][category]['sharingOwner'] = sharingOwnerResult;
+            anns['defaultAnnotation'][category]['sharingOwnerInput'] = sharingOwnerInput.value;
         }
         for(var i = 0; i < this.props.manualBboxs.length; i++)
         {
             var id = this.props.manualBboxs[i]['id'];
             anns['manualAnnotation'][id] = {'category': '', 'bbox': [], 'reason': '', 'reasonInput': '', 'informativeness': 4, 
-            'sharing': '', 'sharingInput': ''};
+            'sharingOwner': [], 'sharingOwnerInput': ''};
             var category_input = document.getElementById('categoryInput-' + id);
             var bboxs =  this.props.stageRef.current.find('.manualBbox');
             var bbox = [];
@@ -166,13 +197,14 @@ class Toolbar extends Component{
             var reason_input = document.getElementById('reasonInput-' + id);
             var informativeness = document.getElementById('informativeness-' + id);
             console.log(informativeness);
-            var sharing = document.getElementById('sharing-' + id);
-            var sharing_input = document.getElementById('sharingInput-' + id);
+            var sharingOwner = document.getElementById('sharingOwner-' + id);
+            var sharingOwnerInput = document.getElementById('sharingOwnerInput-' + id);
+            var sharingOwnerResult = JSON.parse(sharingOwner.value);
             anns['manualAnnotation'][id]['reason'] = reason.value;
             anns['manualAnnotation'][id]['reasonInput'] = reason_input.value;
             anns['manualAnnotation'][id]['informativeness'] = informativeness.value;
-            anns['manualAnnotation'][id]['sharing'] = sharing.value;
-            anns['manualAnnotation'][id]['sharingInput'] = sharing_input.value;
+            anns['manualAnnotation'][id]['sharingOwner'] = sharingOwnerResult;
+            anns['manualAnnotation'][id]['sharingOwnerInput'] = sharingOwnerInput.value;
         }
         //clear all not privacy button
         for(var i = 0; i < this.state.labelList.length; i++)

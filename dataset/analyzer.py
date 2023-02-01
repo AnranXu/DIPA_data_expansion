@@ -36,7 +36,9 @@ class analyzer:
         self.openimages_mycat_map = {}
         self.lvis_mycat_map = {}
         self.test_size = 0.2
-        self.description = {'reason': ['It tells personal identity.', 'It tells location of shooting.',
+        self.custom_informationType = []
+        self.custom_recipient = []
+        self.description = {'informationType': ['It tells personal identity.', 'It tells location of shooting.',
         'It tells personal habits.', 'It tells social circle.', 'Other things it can tell'],
         'informativeness':['extremely uninformative','moderately uninformative','slightly uninformative','neutral',
         'slightly informative','moderately informative','extremely informative'],
@@ -79,7 +81,7 @@ class analyzer:
         #the mega table includes all privacy annotations with all corresponding info (three metrics, big five, age, gender, platform)
 
         # make sure this sequence is correct.
-        self.mega_table = pd.DataFrame(columns=["category", "reason", "informativeness", "sharing", 'age', 'gender', 
+        self.mega_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharing", 'age', 'gender', 
         'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness'])
         for key in self.img_annotation_map.keys():
             for platform, value in self.img_annotation_map[key].items():
@@ -105,7 +107,6 @@ class analyzer:
                     for key, value in label['defaultAnnotation'].items():
                         if value['ifNoPrivacy']:
                             continue
-                        
                         category = ''
                         if mycat_mode:
                             if dataset_name == 'OpenImages':
@@ -119,13 +120,17 @@ class analyzer:
                         else:
                             category = value['category']
                         id = image_id + '_' + key
-                        reason = int(value['reason']) - 1
+                        informationType = int(value['informationType']) - 1
                         informativeness = int(value['informativeness']) - 1
                         sharing = int(value['sharing']) - 1
+                        if sharing == 4:
+                            self.custom_recipient.append(value['sharingInput'])
+                        if informationType == 4:
+                            self.custom_informationType.append(value['informationTypeInput'])
                         entry = pd.DataFrame.from_dict({
                             'id': [id],
                             "category": [category],
-                            "reason":  [reason],
+                            "informationType":  [informationType],
                             "informativeness": [informativeness],
                             "sharing": [sharing],
                             "age": [age],
@@ -141,6 +146,58 @@ class analyzer:
                         self.mega_table = pd.concat([self.mega_table, entry], ignore_index=True)
         if save_csv:
             self.mega_table.to_csv('./mega_table.csv', index =False)
+    def prepare_manual_label(self, save_csv = False) -> None:
+        self.manual_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharing", 'age', 'gender', 
+        'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness'])
+        for key in self.img_annotation_map.keys():
+            for platform, value in self.img_annotation_map[key].items():
+                # now, value[0] is the only availiable index
+                image_id = value[0].split('_')[0]
+                prefix_len = len(image_id) + 1
+                worker_file = value[0][prefix_len:]
+                worker_file = worker_file[:-11]
+                worker_file = worker_file + '.json'
+                with open(os.path.join(self.annotation_path, platform, 'workerinfo', worker_file)) as f_worker, \
+                open(os.path.join(self.annotation_path, platform, 'labels', value[0])) as f_label:
+                    worker = json.load(f_worker)
+                    label = json.load(f_label)
+                    # we only analyze default annotations
+                    age = worker['age']
+                    gender = worker['gender']
+                    extraversion = worker['bigfives']['Extraversion']
+                    agreeableness = worker['bigfives']['Agreeableness']
+                    conscientiousness = worker['bigfives']['Conscientiousness']
+                    neuroticism = worker['bigfives']['Neuroticism']
+                    openness = worker['bigfives']['Openness to Experience']           
+                    for key, value in label['manualAnnotation'].items():
+                        category = value['category']
+                        id = image_id + '_' + key
+                        informationType = int(value['informationType']) - 1
+                        informativeness = int(value['informativeness']) - 1
+                        sharing = int(value['sharing']) - 1
+                        if sharing == 4:
+                            self.custom_recipient.append(value['sharingInput'])
+                        if informationType == 4:
+                            self.custom_informationType.append(value['informationTypeInput'])
+                        entry = pd.DataFrame.from_dict({
+                            'id': [id],
+                            "category": [category],
+                            "informationType":  [informationType],
+                            "informativeness": [informativeness],
+                            "sharing": [sharing],
+                            "age": [age],
+                            "gender": [gender],
+                            "platform": [platform],
+                            "extraversion": [extraversion],
+                            "agreeableness": [agreeableness],
+                            "conscientiousness": [conscientiousness],
+                            "neuroticism": [neuroticism],
+                            "openness": [openness]
+                        })
+
+                        self.manual_table = pd.concat([self.manual_table, entry], ignore_index=True)
+        if save_csv:
+            self.manual_table.to_csv('./manual_table.csv', index =False)
 
     def svm(self, input_channel, output_channel, read_csv = False) -> None:
         if read_csv:
@@ -247,20 +304,20 @@ class analyzer:
             self.mega_table = pd.read_csv('./mega_table.csv')
         else:
             self.prepare_mega_table()
-        #agg_data = self.mega_table.groupby(['reason', 'informativeness'])['sharing'].mean()
+        #agg_data = self.mega_table.groupby(['informationType', 'informativeness'])['sharing'].mean()
         encoder = LabelEncoder()
         self.mega_table['category'] = encoder.fit_transform(self.mega_table['category'])
         self.mega_table['gender'] = encoder.fit_transform(self.mega_table['gender'])
         self.mega_table['platform'] = encoder.fit_transform(self.mega_table['platform'])
-        self.mega_table['reason'] = encoder.fit_transform(self.mega_table['reason'])
+        self.mega_table['informationType'] = encoder.fit_transform(self.mega_table['informationType'])
         self.mega_table['informativeness'] = encoder.fit_transform(self.mega_table['informativeness'])
         self.mega_table['id'] = encoder.fit_transform(self.mega_table['id'])
         # get dataset
-        #aov = AnovaRM(self.mega_table, depvar='sharing', subject= 'id', within=['reason', 'informativeness'], aggregate_func='mean')
+        #aov = AnovaRM(self.mega_table, depvar='sharing', subject= 'id', within=['informationType', 'informativeness'], aggregate_func='mean')
         #res = aov.fit()
         #print(res)
         # Print the results
-        model = ols('sharing ~ reason*informativeness', data=self.mega_table).fit()
+        model = ols('sharing ~ informationType*informativeness', data=self.mega_table).fit()
         aov_table = sm.stats.anova_lm(model, typ=1)
         print(aov_table)
 
@@ -437,16 +494,21 @@ if __name__ == '__main__':
     "neuroticism", "openness"]
     basic_info = [ "age", "gender", "platform"]
     category = ['category']
-    privacy_metrics = ['reason', 'informativeness', 'sharing']
+    privacy_metrics = ['informationType', 'informativeness', 'sharing']
     input_channel = []
     #input_channel.extend(basic_info)
     #input_channel.extend(category)
     input_channel.extend(bigfives)
     print(input_channel)
     output_channel = privacy_metrics
-    #analyze.prepare_mega_table(save_csv=True)
+    analyze.prepare_mega_table(mycat_mode=True, save_csv=False)
+    #print(analyze.mega_table)
+    #analyze.prepare_manual_label(save_csv=True)
+    #print(analyze.custom_informationType)
+    #print(analyze.custom_recipient)
+    #print(len(analyze.mega_table['id'].unique()))
     #analyze.svm(input_channel, output_channel, read_csv=True)
     #analyze.anova(True)
-    analyze.neural_network(input_channel, output_channel, read_csv=True)
+    #analyze.neural_network(input_channel, output_channel, read_csv=True)
     #analyze.knn(input_channel, output_channel, read_csv=True)
     

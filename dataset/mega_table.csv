@@ -1,4 +1,4 @@
-category,reason,informativeness,sharing,age,gender,platform,extraversion,agreeableness,conscientiousness,neuroticism,openness,id
+category,informationType,informativeness,sharing,age,gender,platform,extraversion,agreeableness,conscientiousness,neuroticism,openness,id
 Screen,4,6,0,36,Female,CrowdWorks,6,5,7,6,10,150599_laptop_computer
 Cigarettes,2,6,0,24,Male,Prolific,6,6,8,4,6,150599_cigarette
 Cosmetics,2,3,1,42,Female,CrowdWorks,5,6,8,5,7,a4ce8204dc010b24_Cosmetics

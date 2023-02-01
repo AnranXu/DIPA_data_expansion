@@ -23,6 +23,7 @@ class App extends Component {
       <div className="App">
           <Intro testMode = {this.testMode} language = {this.lg} display = {this.state.page==='intro'?true:false} toolCallback={this.toolCallback}/>
           <General testMode = {this.testMode} language = {this.lg} display = {this.state.page==='intro'?false:true} workerId = {this.state.workerId} toolCallback={this.toolCallback}/>
+          <div style={{height: '15px'}} />      
       </div>
     );
   }
