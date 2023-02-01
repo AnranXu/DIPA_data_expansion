@@ -54,7 +54,9 @@ class ManualAnnotationCard extends Component{
         星が多いほど、情報量が多いことを意味します（星をクリックして答えをご入力ください）。'},
         'placeHolder': {'en': 'Please input here.', 'jp': 'ここに理由を記入してください。'},
         'sharingOwnerQuestion': {'en': 'Assuming you are the photo owner, who would you like to share this content to (Please select all possible groups)?', 
-        'jp': 'あなたが写真の所有者であると仮定して、このコンテンツを誰にシェアしたいですか(可能なすべてのグループを選択してくださ)?'}};
+        'jp': 'あなたが写真の所有者であると仮定して、このコンテンツを誰にシェアしたいですか(可能なすべてのグループを選択してください)?'},
+        'sharingOthersQuestion': {'en': 'If the privacy-threatening content is related to you and someone else wants to share this content, to what extent would you allow the person to share this content in their relationship (Please select all possible groups)? ',
+        'jp': 'プライバシーを脅かす内容が自分に関係する場合、他の人がこのコンテンツを共有したいと考えた場合、あなたはその人がこのコンテンツをその人の関係者に共有することをどの程度まで許容しますか(可能なすべてのグループを選択してください)？'}};
     }
     toolCallback = (childData) =>{
         console.log(childData);
@@ -180,6 +182,45 @@ class ManualAnnotationCard extends Component{
             />
         );
     }
+    sharing_others = () =>{
+        var options = {'en': [{'name': 'I won\'t allow others to share it', 'value': 0}, {'name': 'Close relationship', 'value': 1},
+        {'name': 'Regular relationship', 'value': 2}, {'name': 'Acquaintances', 'value': 3}, {'name': 'Public', 'value': 4}, 
+        {'name': 'Broadcast program', 'value': 5}, {'name': 'Other recipients (Please input below)', 'value': 6}],
+        'jp': [{'name': '共有することは認めない', 'value': 0}, {'name': '親密な関係', 'value': 1}, {'name': '通常の関係', 'value': 2}, 
+        {'name': '知人', 'value': 3}, {'name': '公開する', 'value': 4}, {'name': '放送番組', 'value': 5}, 
+        {'name': 'その他の方（以下にご記入ください）', 'value': 6}]};
+        var select_function = (selectedList, selectedItem) =>{
+            console.log(selectedList, selectedItem);
+            if(selectedItem['value'] === 6)
+            {
+                var sharing_text = document.getElementsByClassName('sharingOthersInput-' + this.props.manualNum);
+                sharing_text[0].style.display = "";
+                sharing_text[0].required = "required";
+                sharing_text[0].placeholder = this.text['placeHolder'][this.props.language];
+            }
+            document.getElementById('sharingOthers-' + this.props.manualNum).value = JSON.stringify(selectedList.map(x=>x['value']));
+        }
+        var remove_function = (selectedList, removedItem) => {
+            if(removedItem['value'] === 6)
+            {
+                var sharing_text = document.getElementsByClassName('sharingOthersInput-' + this.props.manualNum);
+                sharing_text[0].style.display = "none";
+                sharing_text[0].required = "";
+                sharing_text[0].placeholder = "";
+            }
+            document.getElementById('sharingOthers-' + this.props.manualNum).value = JSON.stringify(selectedList.map(x=>x['value']));
+        }
+        return(
+            <Multiselect
+                showCheckbox
+                options={options[this.props.language]} // Options to display in the dropdown
+                onSelect={select_function} // Function will trigger on select event
+                onRemove={remove_function} // Function will trigger on remove event
+                displayValue="name"
+            />
+        );
+        
+    }
     generateStars = ()=>{
         return this.starArray.map((num)=>(
             <InformativenessStar
@@ -226,10 +267,22 @@ class ManualAnnotationCard extends Component{
                         <strong>{this.text['sharingOwnerQuestion'][this.props.language]}</strong>
                     </Card.Text>
                     {this.sharing_owner()}
-                    <br></br>
                     <input type='text' id={'sharingOwner-' + this.props.manualNum} style={{display: 'none'}}></input>
+                    <br></br>
+                    <br></br>
                     <input style={{width: '18rem', display: 'none'}} type='text' id={'sharingOwnerInput-'+ this.props.manualNum}
                     key={'sharingOwnerInput-'+ this.props.manualNum} className={'sharingOwnerInput-'+ this.props.manualNum}></input>
+                    <Card.Text style={{textAlign: 'left'}}>
+                        <strong>{this.text['sharingOthersQuestion'][this.props.language]}</strong>
+                    </Card.Text>
+                    {this.sharing_others()}
+                    <input type='text' id={'sharingOthers-' + this.props.manualNum} style={{display: 'none'}}></input>
+                    <br></br>
+                    <br></br>
+                    <input style={{display: 'none'}} type='text' key={'sharingOthersInput-'+ this.props.manualNum} 
+                    id={'sharingOthersInput-'+ this.props.manualNum}  className={'sharingOthersInput-'+ this.props.manualNum}></input>
+                    <br></br>
+                    <br></br>
                 </Card.Body>
                 </Card>
             </div>
