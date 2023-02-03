@@ -59,8 +59,9 @@ class ManualAnnotationCard extends Component{
         'jp': 'あなたが写真の所有者であると仮定して、このコンテンツを誰にシェアしたいですか(可能なすべてのグループを選択してください)?'},
         'sharingOthersQuestion': {'en': 'If the privacy-threatening content is related to you and someone else wants to share this content, to what extent would you allow the person to share this content in their relationship (Please select all possible groups)? ',
         'jp': 'プライバシーを脅かす内容が自分に関係する場合、他の人がこのコンテンツを共有したいと考えた場合、あなたはその人がこのコンテンツをその人の関係者に共有することをどの程度まで許容しますか(可能なすべてのグループを選択してください)？'},
-        'next': {'en': 'Next Question', 'jp': '次の質問へ'},
-        'previous': {'en': 'Previous Question', 'jp': '前の質問へ'}};
+        'next': {'en': 'Next', 'jp': '次へ'},
+        'previous': {'en': 'Previous', 'jp': '前へ'},
+        'question': {'en': 'Question', 'jp': '問'}};
     }
     toolCallback = (childData) =>{
         console.log(childData);
@@ -285,6 +286,8 @@ class ManualAnnotationCard extends Component{
                 <Card style={{ width: String(this.props.width) }} border={'none'}>
                 <Card.Body>
                     <Card.Title style={{fontSize: 'large'}}><strong>{this.text['title'][this.props.language]}</strong></Card.Title>
+                    <span style={{display: 'incline'}}>{this.text['question'][this.props.language] + ':    ' + String(this.state.curQuestion + 1) + ' / 3'}</span>
+                    {this.changePage()}
                     <div style={{display: this.state.curQuestion === 0? 'block': 'none'}}>
                         <Card.Text style={{textAlign: 'left'}}>
                             <strong>{this.text['contentQuestion'][this.props.language]}</strong>
@@ -339,7 +342,7 @@ class ManualAnnotationCard extends Component{
                     id={'sharingOthersInput-'+ this.props.manualNum}  className={'sharingOthersInput-'+ this.props.manualNum}></input>
                     <br></br>
                     <br></br>*/}
-                    {this.changePage()}
+                    
                 </Card.Body>
                 </Card>
             </div>

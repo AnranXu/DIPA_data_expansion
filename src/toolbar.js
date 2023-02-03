@@ -80,11 +80,12 @@ class Toolbar extends Component{
             var sharingOwner = document.getElementById('sharingOwner-' + category);
             var sharingOwnerInput = document.getElementById('sharingOwnerInput-' + category);
             var sharingOwnerResult = sharingOwner.value;
-            console.log(sharingOwnerResult)
+            sharingOwnerResult = JSON.parse(sharingOwnerResult);
+            //console.log(Object.keys(sharingOwnerResult).length);
             if(sharingOwnerResult.length === 0)
                 ifFinished = false;
             else{
-                sharingOwnerResult = JSON.parse(sharingOwnerResult);
+                
                 if(sharingOwnerResult.includes(6) && sharingOwnerInput.value === '')
                     ifFinished = false;
                 if(sharingOwnerResult.includes(0) && sharingOwnerResult.length > 1)
@@ -145,11 +146,11 @@ class Toolbar extends Component{
             var sharingOwner = document.getElementById('sharingOwner-' + id);
             var sharingOwnerInput = document.getElementById('sharingOwnerInput-' + id);
             var sharingOwnerResult = sharingOwner.value;
+            sharingOwnerResult = JSON.parse(sharingOwnerResult);
             console.log(sharingOwnerResult)
             if(sharingOwnerResult.length === 0)
                 ifFinished = false;
             else{
-                sharingOwnerResult = JSON.parse(sharingOwnerResult);
                 if(sharingOwnerResult.includes(6) && sharingOwnerInput.value === '')
                     ifFinished = false;
                 if(sharingOwnerResult.includes(0) && sharingOwnerResult.length > 1)

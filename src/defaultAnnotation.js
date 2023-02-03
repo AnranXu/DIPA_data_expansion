@@ -7,6 +7,7 @@ import InformativenessStar from './component/Informativeness/star.js';
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import './defaultAnnotation.css';
+import { ConstructionOutlined } from "@mui/icons-material";
 class DefaultAnnotationCard extends Component{
     constructor(props){
         super(props);
@@ -89,8 +90,9 @@ class DefaultAnnotationCard extends Component{
         'jp': 'あなたが写真の所有者であると仮定して、このコンテンツを誰にシェアしたいですか(可能なすべてのグループを選択してください)?'},
         'sharingOthersQuestion': {'en': 'If the privacy-threatening content is related to you and someone else wants to share this content, to what extent would you allow the person to share this content in their relationship (Please select all possible groups)? ',
         'jp': 'プライバシーを脅かす内容が自分に関係する場合、他の人がこのコンテンツを共有したいと考えた場合、あなたはその人がこのコンテンツをその人の関係者に共有することをどの程度まで許容しますか(可能なすべてのグループを選択してください)？'},
-        'next': {'en': 'Next Question', 'jp': '次の質問へ'},
-        'previous': {'en': 'Previous Question', 'jp': '前の質問へ'}};
+        'next': {'en': 'Next', 'jp': '次へ'},
+        'previous': {'en': 'Previous', 'jp': '前へ'},
+        'question': {'en': 'Question', 'jp': '問'}};
     }
     toolCallback = (childData) =>{
         console.log(childData);
@@ -166,8 +168,10 @@ class DefaultAnnotationCard extends Component{
         {'name': '知人', 'value': 3}, {'name': '公開する', 'value': 4}, {'name': '放送番組', 'value': 5}, 
         {'name': 'その他の方（以下にご記入ください）', 'value': 6}]};
         var select_function = (selectedList, selectedItem) =>{
+            console.log(selectedList.length);
             if(selectedItem['value'] === 6)
             {
+                
                 var sharing_text = document.getElementsByClassName('sharingOwnerInput-' + this.props.category);
                 sharing_text[0].style.display = "";
                 sharing_text[0].required = "required";
@@ -184,6 +188,7 @@ class DefaultAnnotationCard extends Component{
                 sharing_text[0].placeholder = "";
             }
             document.getElementById('sharingOwner-' + this.props.category).value = JSON.stringify(selectedList.map(x=>x['value']));
+            console.log(document.getElementById('sharingOwner-' + this.props.category).value);
         }
         return(
             <Multiselect
@@ -295,6 +300,8 @@ class DefaultAnnotationCard extends Component{
                 <Card style={{ width: String(this.props.width) }} border={'none'} category={this.props.category}>
                 <Card.Body>
                     <Card.Title style={{fontSize: 'large'}}><strong>{this.text['title'][this.props.language]}</strong></Card.Title>
+                    <span style={{display: 'incline'}}>{this.text['question'][this.props.language] + ':    ' + String(this.state.curQuestion + 1) + ' / 3'}</span>
+                    {this.changePage()}
                     <div style={{display: this.state.curQuestion === 0? 'block': 'none'}}>
                         <Card.Text style={{textAlign: 'left'}}>
                         <strong>{this.text['reasonQuestion'][this.props.language]}</strong>
@@ -352,7 +359,7 @@ class DefaultAnnotationCard extends Component{
                         <br></br>
                          */
                     }
-                    {this.changePage()}
+                    
                 </Card.Body>
                 </Card>
             </div>
