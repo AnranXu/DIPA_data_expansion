@@ -73,16 +73,14 @@ class Toolbar extends Component{
             if(reason.value === '0' || (reason.value === '6' && reason_input.value === ''))
                 ifFinished = false;
             var informativeness = document.getElementById('informativeness-' + category);
-            console.log(informativeness);
-            if(informativeness === 0)
+            if(informativeness.value === 0)
                 ifFinished = false;
             //check question 'to what extent would you share this photo at most?'
             var sharingOwner = document.getElementById('sharingOwner-' + category);
             var sharingOwnerInput = document.getElementById('sharingOwnerInput-' + category);
             var sharingOwnerResult = sharingOwner.value;
-            sharingOwnerResult = JSON.parse(sharingOwnerResult);
             //console.log(Object.keys(sharingOwnerResult).length);
-            if(sharingOwnerResult.length === 0)
+            if(sharingOwnerResult.length === 0 || JSON.parse(sharingOwnerResult).length === 0)
                 ifFinished = false;
             else{
                 
@@ -139,16 +137,13 @@ class Toolbar extends Component{
                 ifFinished = false;
             
             var informativeness = document.getElementById('informativeness-' + category);
-            console.log(informativeness);
-            if(informativeness === 0)
+            if(informativeness.value === 0)
                 ifFinished = false;
             //check question 'to what extent would you share this photo at most?'
             var sharingOwner = document.getElementById('sharingOwner-' + id);
             var sharingOwnerInput = document.getElementById('sharingOwnerInput-' + id);
             var sharingOwnerResult = sharingOwner.value;
-            sharingOwnerResult = JSON.parse(sharingOwnerResult);
-            console.log(sharingOwnerResult)
-            if(sharingOwnerResult.length === 0)
+            if(sharingOwnerResult.length === 0 || JSON.parse(sharingOwnerResult).length === 0)
                 ifFinished = false;
             else{
                 if(sharingOwnerResult.includes(6) && sharingOwnerInput.value === '')
