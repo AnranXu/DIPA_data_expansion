@@ -17,16 +17,16 @@ class ManualAnnotationCard extends Component{
             this.starArray.push(i + 1);
         this.state = {mainStyle: {position: 'relative', display: 'block'}, bboxs: [], informativenessValue: 0,
         curQuestion: 0};
-        this.intensity = { 'en': {1: 'negligible source to identify(1 Star)',
-            2: 'minor source to identify (2 Stars)',
-            3: 'moderate source to identify (3 Stars)',
-            4: 'effective source to identify (4 Stars)',
-            5: 'substantial source to identify (5 Stars)'},
-            'jp':{1: 'ほとんど役に立たない情報源です（星1つ）',
-            2: '軽微な情報源です（星2つ）',
-            3: '中程度の情報源です（星3つ）',
-            4: '有効な情報源です（星4つ）',
-            5: '多大な情報源です（星5つ）'}
+        this.intensity = { 'en': {1: 'negligible source to identify',
+            2: 'minor source to identify',
+            3: 'moderate source to identify',
+            4: 'effective source to identify',
+            5: 'substantial source to identify'},
+            'jp':{1: 'ほとんど役に立たない情報源です',
+            2: '軽微な情報源です',
+            3: '中程度の情報源です',
+            4: '有効な情報源です',
+            5: '多大な情報源です'}
         };
         this.marks = { 'en':[
             {value: 1,label: 'slightly'},
