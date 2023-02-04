@@ -182,6 +182,9 @@ class ManualAnnotationCard extends Component{
                 showCheckbox
                 hidePlaceholder
                 showArrow
+                style ={{optionContainer:  { // To change search box element look
+                    maxHeight: '400px',
+                }}}
                 placeholder = {this.text['selectPlaceHolder'][this.props.language]}
                 options={options[this.props.language]} // Options to display in the dropdown
                 onSelect={select_function} // Function will trigger on select event

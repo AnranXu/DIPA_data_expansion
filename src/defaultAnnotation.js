@@ -195,6 +195,9 @@ class DefaultAnnotationCard extends Component{
                 showCheckbox
                 hidePlaceholder
                 showArrow
+                style ={{optionContainer:  { // To change search box element look
+                    maxHeight: '400px',
+                  }}}
                 placeholder = {this.text['selectPlaceHolder'][this.props.language]}
                 options={options[this.props.language]} // Options to display in the dropdown
                 onSelect={select_function} // Function will trigger on select event
@@ -275,8 +278,8 @@ class DefaultAnnotationCard extends Component{
                     <ArrowBackIosNewIcon />
                     <Typography variant="h6">{this.text['previous'][this.props.language]}</Typography>
                 </Stack>
-                </IconButton>
-                <IconButton>
+            </IconButton>
+            <IconButton>
                     <Stack justifyContent="center" alignItems="center" maxWidth="200px" onClick={this.goNext}>
                         <ArrowForwardIosIcon />
                         <Typography variant="h6">{this.text['next'][this.props.language]}</Typography>
@@ -299,7 +302,8 @@ class DefaultAnnotationCard extends Component{
             <div style={this.state.mainStyle}>
                 <Card style={{ width: String(this.props.width) }} border={'none'} category={this.props.category}>
                 <Card.Body>
-                    <Card.Title style={{fontSize: 'large'}}><strong>{this.text['title'][this.props.language]}</strong></Card.Title>
+                    <Card.Title style={{fontSize: 'large'}}><strong>{this.text['title'][this.props.language]}</strong>
+                    </Card.Title>
                     <span style={{display: 'incline'}}>{this.text['question'][this.props.language] + ':    ' + String(this.state.curQuestion + 1) + ' / 3'}</span>
                     {this.changePage()}
                     <div style={{display: this.state.curQuestion === 0? 'block': 'none'}}>
