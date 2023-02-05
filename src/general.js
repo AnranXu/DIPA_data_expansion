@@ -51,7 +51,7 @@ class General extends Component{
     deleteManualBboxWithKey(e){
         if(this.state.manualBboxs.length > 0)
         {
-            if(e.key == 'Backspace' || e.key == 'Delete')
+            if(e.key == 'Delete')
                 document.getElementById('deleteButton').click();
         }
     }

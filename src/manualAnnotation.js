@@ -54,7 +54,7 @@ class ManualAnnotationCard extends Component{
         'jp': 'あなたが選択した上記のものを認識するために、どの程度役立つと思われますか？\
         星が多いほど、情報量が多いことを意味します（星をクリックして答えをご入力ください）。'},
         'placeHolder': {'en': 'Please input here.', 'jp': 'ここに理由を記入してください。'},
-        'selectPlaceHolder': {'en': 'Please select options', 'jp': '選択肢をお選びください'},
+        'selectMultiplePlaceHolder': {'en': 'Please select options', 'jp': '選択肢をお選びください'},
         'sharingOwnerQuestion': {'en': 'Assuming you are the photo owner, who would you like to share this content to (Please select all possible groups)?', 
         'jp': 'あなたが写真の所有者であると仮定して、このコンテンツを誰にシェアしたいですか(可能なすべてのグループを選択してください)?'},
         'sharingOthersQuestion': {'en': 'If the privacy-threatening content is related to you and someone else wants to share this content, to what extent would you allow the person to share this content in their relationship (Please select all possible groups)? ',
@@ -131,12 +131,55 @@ class ManualAnnotationCard extends Component{
         }
     }
     reason = () =>{
-        var options = {'en': ['Please select one option.', 'It tells personal information.', 'It tells location of shooting.',
-        'It tells individual preferences/pastimes', 'It tells social circle.', 'It tells others\' private/confidential information', 
-        'Other things it can tell (Please input below)'],
-        'jp': ['選択肢を一つ選んでください', '個人を特定できる', '撮影場所がわかる', '個人の興味・関心・趣味・生活スタイルが分かる', '社交的な関係がわかる', '他人(組織)の情報がわかる',
-        'その他（以下に入力してください）']};
+        var options = {'en': [{'name': 'It tells personal information', 'value': 1}, 
+        {'name': 'It tells location of shooting', 'value': 2},
+        {'name': 'It tells individual preferences/pastimes', 'value': 3}, 
+        {'name': 'It tells social circle', 'value': 4}, 
+        {'name': 'It tells others\' private/confidential information', 'value': 5}, 
+        {'name': 'Other things it can tell (Please input below)', 'value': 6}],
+        'jp': [{'name': '個人を特定できる', 'value': 1}, 
+        {'name': '撮影場所がわかる', 'value': 2}, 
+        {'name': '社交的な関係がわかる', 'value': 3}, 
+        {'name': '個人の興味・関心・趣味・生活スタイルが分かる', 'value': 4}, 
+        {'name': '他人(組織)の情報が分かる', 'value': 5},
+        {'name': 'その他（以下に入力してください）', 'value': 6}]};
+        
+        var select_function = (selectedList, selectedItem) =>{
+            if(selectedItem['value'] === 6)
+            {
+                var sharing_text = document.getElementsByClassName('reasonInput-' + this.props.manualNum);
+                sharing_text[0].style.display = "";
+                sharing_text[0].required = "required";
+                sharing_text[0].placeholder = this.text['placeHolder'][this.props.language];
+            }
+            document.getElementById('reason-' + this.props.manualNum).value = JSON.stringify(selectedList.map(x=>x['value']));
+        }
+        var remove_function = (selectedList, removedItem) => {
+            if(removedItem['value'] === 6)
+            {
+                var sharing_text = document.getElementsByClassName('reasonInput-' + this.props.manualNum);
+                sharing_text[0].style.display = "none";
+                sharing_text[0].required = "";
+                sharing_text[0].placeholder = "";
+            }
+            document.getElementById('reason-' + this.props.manualNum).value = JSON.stringify(selectedList.map(x=>x['value']));
+        }
         return(
+            <Multiselect
+                showCheckbox
+                hidePlaceholder
+                showArrow
+                style ={{optionContainer:  { // To change search box element look
+                    maxHeight: '400px',
+                  }}}
+                placeholder = {this.text['selectMultiplePlaceHolder'][this.props.language]}
+                options={options[this.props.language]} // Options to display in the dropdown
+                onSelect={select_function} // Function will trigger on select event
+                onRemove={remove_function} // Function will trigger on remove event
+                displayValue="name"
+            />
+        );
+        /*return(
             <Form.Select defaultValue={'0'} key={'reason-'+ this.props.manualNum} 
                     id={'reason-'+ this.props.manualNum} onChange={this.reasonChange} required>
                         <option value='0'>{options[this.props.language][0]}</option>
@@ -147,18 +190,17 @@ class ManualAnnotationCard extends Component{
                         <option value='5'>{options[this.props.language][5]}</option>
                         <option value='6'>{options[this.props.language][6]}</option>
             </Form.Select>
-        );
+        );*/
     }
     sharing_owner = () =>{
-        var options = {'en': [{'name': 'I won\'t share it', 'value': 0}, {'name': 'Close relationship', 'value': 1},
-        {'name': 'Regular relationship', 'value': 2}, {'name': 'Acquaintances', 'value': 3}, {'name': 'Public', 'value': 4}, 
-        {'name': 'Broadcast program', 'value': 5}, {'name': 'Other recipients (Please input below)', 'value': 6}],
-        'jp': [{'name': '共有しない', 'value': 0}, {'name': '親密な関係', 'value': 1}, {'name': '通常の関係', 'value': 2}, 
-        {'name': '知人', 'value': 3}, {'name': '公開する', 'value': 4}, {'name': '放送番組', 'value': 5}, 
-        {'name': 'その他の方（以下にご記入ください）', 'value': 6}]};
+        var options = {'en': [{'name': 'I won\'t share it', 'value': 1}, {'name': 'Close relationship', 'value': 2},
+        {'name': 'Regular relationship', 'value': 3}, {'name': 'Acquaintances', 'value': 4}, {'name': 'Public', 'value': 5}, 
+        {'name': 'Broadcast program', 'value': 6}, {'name': 'Other recipients (Please input below)', 'value': 7}],
+        'jp': [{'name': '共有しない', 'value': 1}, {'name': '親密な関係', 'value': 2}, {'name': '通常の関係', 'value': 3}, 
+        {'name': '知人', 'value': 4}, {'name': '公開する', 'value': 5}, {'name': '放送番組', 'value': 6}, 
+        {'name': 'その他の方（以下にご記入ください）', 'value': 7}]};
         var select_function = (selectedList, selectedItem) =>{
-            console.log(selectedList, selectedItem);
-            if(selectedItem['value'] === 6)
+            if(selectedItem['value'] === 7)
             {
                 var sharing_text = document.getElementsByClassName('sharingOwnerInput-' + this.props.manualNum);
                 sharing_text[0].style.display = "";
@@ -168,7 +210,7 @@ class ManualAnnotationCard extends Component{
             document.getElementById('sharingOwner-' + this.props.manualNum).value = JSON.stringify(selectedList.map(x=>x['value']));
         }
         var remove_function = (selectedList, removedItem) => {
-            if(removedItem['value'] === 6)
+            if(removedItem['value'] === 7)
             {
                 var sharing_text = document.getElementsByClassName('sharingOwnerInput-' + this.props.manualNum);
                 sharing_text[0].style.display = "none";
@@ -185,7 +227,7 @@ class ManualAnnotationCard extends Component{
                 style ={{optionContainer:  { // To change search box element look
                     maxHeight: '400px',
                 }}}
-                placeholder = {this.text['selectPlaceHolder'][this.props.language]}
+                placeholder = {this.text['selectMultiplePlaceHolder'][this.props.language]}
                 options={options[this.props.language]} // Options to display in the dropdown
                 onSelect={select_function} // Function will trigger on select event
                 onRemove={remove_function} // Function will trigger on remove event
@@ -194,14 +236,14 @@ class ManualAnnotationCard extends Component{
         );
     }
     sharing_others = () =>{
-        var options = {'en': [{'name': 'I won\'t allow others to share it', 'value': 0}, {'name': 'Close relationship', 'value': 1},
-        {'name': 'Regular relationship', 'value': 2}, {'name': 'Acquaintances', 'value': 3}, {'name': 'Public', 'value': 4}, 
-        {'name': 'Broadcast program', 'value': 5}, {'name': 'Other recipients (Please input below)', 'value': 6}],
-        'jp': [{'name': '共有することは認めない', 'value': 0}, {'name': '親密な関係', 'value': 1}, {'name': '通常の関係', 'value': 2}, 
-        {'name': '知人', 'value': 3}, {'name': '公開する', 'value': 4}, {'name': '放送番組', 'value': 5}, 
-        {'name': 'その他の方（以下にご記入ください）', 'value': 6}]};
+        var options = {'en': [{'name': 'I won\'t allow others to share it', 'value': 1}, {'name': 'Close relationship', 'value': 2},
+        {'name': 'Regular relationship', 'value': 3}, {'name': 'Acquaintances', 'value': 4}, {'name': 'Public', 'value': 5}, 
+        {'name': 'Broadcast program', 'value': 6}, {'name': 'Other recipients (Please input below)', 'value': 7}],
+        'jp': [{'name': '共有することは認めない', 'value': 1}, {'name': '親密な関係', 'value': 2}, {'name': '通常の関係', 'value': 3}, 
+        {'name': '知人', 'value': 4}, {'name': '公開する', 'value': 5}, {'name': '放送番組', 'value': 6}, 
+        {'name': 'その他の方（以下にご記入ください）', 'value': 7}]};
         var select_function = (selectedList, selectedItem) =>{
-            if(selectedItem['value'] === 6)
+            if(selectedItem['value'] === 7)
             {
                 var sharing_text = document.getElementsByClassName('sharingOthersInput-' + this.props.manualNum);
                 sharing_text[0].style.display = "";
@@ -211,7 +253,7 @@ class ManualAnnotationCard extends Component{
             document.getElementById('sharingOthers-' + this.props.manualNum).value = JSON.stringify(selectedList.map(x=>x['value']));
         }
         var remove_function = (selectedList, removedItem) => {
-            if(removedItem['value'] === 6)
+            if(removedItem['value'] === 7)
             {
                 var sharing_text = document.getElementsByClassName('sharingOthersInput-' + this.props.manualNum);
                 sharing_text[0].style.display = "none";
@@ -225,7 +267,10 @@ class ManualAnnotationCard extends Component{
                 showCheckbox
                 hidePlaceholder
                 showArrow
-                placeholder = {this.text['selectPlaceHolder'][this.props.language]}
+                style ={{optionContainer:  { // To change search box element look
+                    maxHeight: '400px',
+                }}}
+                placeholder = {this.text['selectMultiplePlaceHolder'][this.props.language]}
                 options={options[this.props.language]} // Options to display in the dropdown
                 onSelect={select_function} // Function will trigger on select event
                 onRemove={remove_function} // Function will trigger on remove event
@@ -303,8 +348,10 @@ class ManualAnnotationCard extends Component{
                             <strong>{this.text['reasonQuestion'][this.props.language]}</strong>
                         </Card.Text>
                         {this.reason()}
+                        <input type='text' id={'reason-' + this.props.manualNum} style={{display: 'none'}}></input>
                         <br></br>
-                        <input style={{width: '18rem', display: 'none'}} type='text' id={'reasonInput-'+ this.props.manualNum}
+                        <br></br>
+                        <input style={{width: '100%', display: 'none'}} type='text' id={'reasonInput-'+ this.props.manualNum}
                         key={'reasonInput-'+ this.props.manualNum} className={'reasonInput-'+ this.props.manualNum}></input>
                     </div>
                     <div style={{display: this.state.curQuestion === 1? 'block': 'none'}}>
@@ -329,7 +376,7 @@ class ManualAnnotationCard extends Component{
                         <input type='text' id={'sharingOwner-' + this.props.manualNum} style={{display: 'none'}}></input>
                         <br></br>
                         <br></br>
-                        <input style={{width: '18rem', display: 'none'}} type='text' id={'sharingOwnerInput-'+ this.props.manualNum}
+                        <input style={{width: '100%', display: 'none'}} type='text' id={'sharingOwnerInput-'+ this.props.manualNum}
                         key={'sharingOwnerInput-'+ this.props.manualNum} className={'sharingOwnerInput-'+ this.props.manualNum}></input>
                     </div>
                     
