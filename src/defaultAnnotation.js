@@ -321,13 +321,13 @@ class DefaultAnnotationCard extends Component{
             <IconButton>
                 <Stack justifyContent="center" alignItems="center" maxWidth="200px" onClick={this.goPrevious}>
                     <ArrowBackIosNewIcon />
-                    <Typography variant="h6">{this.text['previous'][this.props.language]}</Typography>
+                    <Typography style={{color: 'black'}} variant="h6">{this.text['previous'][this.props.language]}</Typography>
                 </Stack>
             </IconButton>
             <IconButton>
                     <Stack justifyContent="center" alignItems="center" maxWidth="200px" onClick={this.goNext}>
                         <ArrowForwardIosIcon />
-                        <Typography variant="h6">{this.text['next'][this.props.language]}</Typography>
+                        <Typography style={{color: 'black'}} variant="h6">{this.text['next'][this.props.language]}</Typography>
                 </Stack>
             </IconButton>
         </div>);
