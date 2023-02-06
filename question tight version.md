@@ -6,7 +6,7 @@ English: Assuming you want to seek privacy of the photo owner, what kind of info
 
 Japanese: 写真の所有者のプライバシーを得ようとする場合、このコンテンツからはどのような情報を読み取れますか？
 
-**Option choices:**
+**Multiple Option choices:**
 
 - personal information
 - location of shooting
@@ -23,9 +23,9 @@ Japanese: 写真の所有者のプライバシーを得ようとする場合、�
 
 **Description**:
 
-English: How informative do you think about this privacy information to identify the above thing you selected? More stars mean the more informative the content is (Please click the star to input your answer).
+English: How informative do you think about this privacy information to identify the above thing you selected? Higher scores mean the more informative the content is.
 
-Japanese: あなたが選択した上記の情報を認識するために、どの程度役立つと思われますか？星が多いほど、情報量が多いことを意味します（星をクリックして答えをご入力ください）。
+Japanese: あなたが選択した上記のものについては、どの程度考えていますか？スコアが高いほど、情報量が多いことを意味します。
 
 **Option choices:**
 
@@ -42,13 +42,23 @@ Japanese: あなたが選択した上記の情報を認識するために、ど�
 
 
 
+## Two subjective questions
+
+**Instruction:**
+
+English: Please assume it is a photo related to you, and answer the following questions
+
+Japanese: あなたがこの写真と関連のあると仮定して、以下の質問にお答えください
+
+
+
 ## Maximum sharing scope
 
 **Description**:
 
-English: Assuming you are the photo owner, who would you like to share this content to (Please select all possible groups)?
+English: Q1: Who would you like to share this content to (Please select all possible groups)?
 
-Japanese: あなたが写真の所有者であると仮定して、このコンテンツを誰にシェアしたいですか（可能なすべてのグループを選択してください）？
+Japanese: 問1: このコンテンツを誰にシェアしたいですか(可能なすべてのグループを選択してください)?
 
 
 
@@ -58,6 +68,28 @@ Japanese: あなたが写真の所有者であると仮定して、このコン�
 - Close relationship (親密な関係)
 - Regular relationship (通常の関係)
 - Acquaintances (知人)
+- Public
+- Broadcast program
+- Others
+
+
+
+## Permission to others' sharing 
+
+**Description**:
+
+English: Q2: Would you allow the group you selected above to share this content (Please select all possible groups)? 
+
+Japanese: 問2: 前問で選択したグループがこのコンテンツをシェアすることをどの程度まで許容しますか(可能なすべてのグループを選択してください)？
+
+
+
+**Option choices (Multiple choices):**
+
+- I won't allow them to share it.
+- Their close relationship (親密な関係)
+- Their regular relationship (通常の関係)
+- Their acquaintances (知人)
 - Public
 - Broadcast program
 - Others

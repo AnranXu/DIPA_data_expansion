@@ -17,16 +17,16 @@ class ManualAnnotationCard extends Component{
             this.starArray.push(i + 1);
         this.state = {mainStyle: {position: 'relative', display: 'block'}, bboxs: [], informativenessValue: 0,
         curQuestion: 0};
-        this.intensity = { 'en': {1: 'negligible source to identify',
-            2: 'minor source to identify',
-            3: 'moderate source to identify',
-            4: 'effective source to identify',
-            5: 'substantial source to identify'},
-            'jp':{1: 'ほとんど役に立たない情報源です',
-            2: '軽微な情報源です',
-            3: '中程度の情報源です',
-            4: '有効な情報源です',
-            5: '多大な情報源です'}
+        this.intensity = { 'en': {1: 'negligible source to identify (Score: 1)',
+            2: 'minor source to identify (Score: 2)',
+            3: 'moderate source to identify (Score: 3)',
+            4: 'effective source to identify (Score: 4)',
+            5: 'substantial source to identify (Score: 5)'},
+            'jp':{1: 'ほとんど役に立たない情報源です (スコア:1)',
+            2: '軽微な情報源です (スコア:2)',
+            3: '中程度の情報源です (スコア:3)',
+            4: '有効な情報源です (スコア:4)',
+            5: '多大な情報源です (スコア:5)'}
         };
         this.marks = { 'en':[
             {value: 1,label: 'slightly'},
@@ -50,18 +50,19 @@ class ManualAnnotationCard extends Component{
         'reasonQuestion': {'en': 'Assuming you want to seek privacy of the photo owner, what kind of information can this content tell?',
         'jp': '写真の所有者のプライバシーを得ようとする場合、このコンテンツからはどのような情報を読み取れますか？'},
         'informativeQuestion': {'en': 'How informative do you think about this privacy information to identify the above thing you selected?\
-        More stars mean the more informative the content is (Please click the star to input your answer).', 
-        'jp': 'あなたが選択した上記のものを認識するために、どの程度役立つと思われますか？\
-        星が多いほど、情報量が多いことを意味します（星をクリックして答えをご入力ください）。'},
+        Higher scores mean the more informative the content is.', 
+        'jp': 'あなたが選択した上記のものについては、どの程度考えていますか？\
+        スコアが高いほど、情報量が多いことを意味します。'},
         'placeHolder': {'en': 'Please input here.', 'jp': 'ここに理由を記入してください。'},
         'selectMultiplePlaceHolder': {'en': 'Please select options', 'jp': '選択肢をお選びください'},
-        'sharingOwnerQuestion': {'en': 'Assuming you are the photo owner, who would you like to share this content to (Please select all possible groups)?', 
-        'jp': 'あなたが写真の所有者であると仮定して、このコンテンツを誰にシェアしたいですか(可能なすべてのグループを選択してください)?'},
-        'sharingOthersQuestion': {'en': 'If the privacy-threatening content is related to you and someone else wants to share this content, to what extent would you allow the person to share this content in their relationship (Please select all possible groups)? ',
-        'jp': 'プライバシーを脅かす内容が自分に関係する場合、他の人がこのコンテンツを共有したいと考えた場合、あなたはその人がこのコンテンツをその人の関係者に共有することをどの程度まで許容しますか(可能なすべてのグループを選択してください)？'},
+        'assumption': {'en': 'Please assume you are the photo owner, and answer the following questions', 'jp': 'あなたが写真の所有者であると仮定して、以下の質問にお答えください'},
+        'sharingOwnerQuestion': {'en': 'Q1: Who would you like to share this content to (Please select all possible groups)?', 
+        'jp': '問1: このコンテンツを誰にシェアしたいですか(可能なすべてのグループを選択してください)?'},
+        'sharingOthersQuestion': {'en': 'Would you allow others to share this content in their relationship (Please select all possible groups)? ',
+        'jp': '他の人がこのコンテンツをその人の関係者に共有することをどの程度まで許容しますか(可能なすべてのグループを選択してください)？'},
         'next': {'en': 'Next', 'jp': '次へ'},
         'previous': {'en': 'Previous', 'jp': '前へ'},
-        'question': {'en': 'Question', 'jp': '問'}};
+        'question': {'en': 'Page', 'jp': 'ページ'}};
     }
     toolCallback = (childData) =>{
         console.log(childData);
@@ -370,8 +371,11 @@ class ManualAnnotationCard extends Component{
                     {/*<input key = {'importance-' + this.props.category} type='range' max={'7'} min={'1'} step={'1'} defaultValue={'4'} onChange={(e)=>{this.setState({importanceValue: e.target.value})}}/> */}
                     <div style={{display: this.state.curQuestion === 2? 'block': 'none'}}>
                     <Card.Text style={{textAlign: 'left'}}>
+                        <strong>{this.text['assumption'][this.props.language]}</strong>
+                    </Card.Text>
+                    <Card.Text style={{textAlign: 'left'}}>
                         <strong>{this.text['sharingOwnerQuestion'][this.props.language]}</strong>
-                        </Card.Text>
+                    </Card.Text>
                         {this.sharing_owner()}
                         <input type='text' id={'sharingOwner-' + this.props.manualNum} style={{display: 'none'}}></input>
                         <br></br>
