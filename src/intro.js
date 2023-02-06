@@ -11,6 +11,7 @@ class Intro extends Component{
         this.bigfiveRef = [];
         this.bigfiveAns = new Array(10).fill('0');
         this.gender = '';
+        this.frequency = '';
         //this.name = React.createRef();
         this.age = React.createRef();
         this.nationality = React.createRef();
@@ -21,6 +22,10 @@ class Intro extends Component{
             this.bigfiveRef[i] = React.createRef();
         this.platform = {'en': 'Prolific/',
             'jp': 'CrowdWorks/'};
+        this.frequencyText = {'en':['Never', 'Less than once a month', 'Once or more per month', 
+        'Once or more per week', 'Once or more per day'],
+        'jp':['一度もない', '月1回以下', '月1回以上', '週1回以上', '1日1回以上']
+        }
         this.text = {'instruction': {'en': 'Instruction', 'jp': '手順'},
         'skipButton': {'en': 'Directly try the task (You are in the test mode now)', 'jp': 'タスクを直接試す（現在、テストモードになっています）'},
         'task': {'en': 'Task', 'jp': '作業'},
@@ -32,6 +37,7 @@ class Intro extends Component{
         'nationality': {'en': 'Nationality:', 'jp': '国籍:'},
         'workerId': {'en': 'Worker\'s ID:', 
         'jp': 'ワーカーズID:'},
+        'frequency': {'en': 'How often do you share pictures taken by you on social media?', 'jp': '自分で撮った写真をどれくらいの頻度でSNSでシェアしていますか？'},
         'bigfiveTitle': {'en': 'Please answer the following questions.', 'jp': '以下の質問にお答えください。'},
         'confirmText0': {'en': 'I fully understand the study and want to do this task with my consent.', 'jp': '私はこの研究を十分に理解し、同意の上でこの作業を行いたいです。'},
         'confirmText1': {'en': '(You may back to read the instruction later if you need)', 'jp': '（（必要であれば、後で説明書を読み返すことができます）'}};
@@ -51,6 +57,7 @@ class Intro extends Component{
         'ageFormat': {'en': 'Please fill in your age in Arabic numerals', 'jp':'年齢をアラビア数字でご記入ください'},
         'nationality': {'en': 'Please fill out your nationality', 'jp': '国籍をご記入ください'},
         'workerId': {'en': 'Please fill out your worker ID', 'jp': 'ワーカーズIDをご記入ください'},
+        'frequency': {'en': 'Please fill out the question of your photo sharing' , 'jp': '写真共有のご質問をご記入ください'},
         'bigfive': {'en': 'Please fill out all questions', 'jp': 'すべての質問をご記入ください' }};
         // check workerid
         if(this.workerId.current.value == '')
@@ -78,6 +85,13 @@ class Intro extends Component{
             alert(alertText['gender'][this.props.language]);
             return;
         }
+        // check frequency
+        if(this.frequency === '')
+        {
+            console.log('false');
+            alert(alertText['frequency'][this.props.language]);
+            return;
+        }
         // check nationality
         if(this.nationality.current.value == '')
         {
@@ -101,6 +115,7 @@ class Intro extends Component{
             console.log('uploading worker info');
             var anws = {'age': this.age.current.value,
             'gender': this.gender, 'nationality': this.nationality.current.value,
+            'frequency': this.frequency,
             'workerId': this.workerId.current.value, 'bigfives': this.bigfiveAns};
             this.awsHandler.updateQuestionnaire(anws, this.workerId.current.value);
             //exist bugs when back to intro then go to the interface
@@ -115,6 +130,9 @@ class Intro extends Component{
     }
     selectGender = (e) =>{
         this.gender = e.target.value;
+    }
+    selectFrequency = (e)=>{
+        this.frequency = e.target.value;
     }
     generateBigfive = () =>{
         var questions = {'en':['Q1: I see myself as someone who is reserved.',
@@ -163,6 +181,9 @@ class Intro extends Component{
     taskIntroEn = (e) =>{
         var loading = require('./img/demo_en.png');
         var finishPop = require('./img/finish_en.png');
+        var q1 = require('./img/q1_en.png');
+        var q2 = require('./img/q2_en.png');
+        var q3 = require('./img/q3_en.png');
         return(
             <div>
                 <Card.Text text={'dark'}>
@@ -189,8 +210,6 @@ class Intro extends Component{
                         <br></br>
                         <br></br>
                         <img src = {loading} style = {{maxHeight: '100%', maxWidth: '100%'}}/>
-                        <br></br>
-                        <br></br>   
                         {/*In the task page, click the button '<strong>Load the next image</strong>' to get the next image you need to annotate.
                         <br></br>
                         <br></br>*/}
@@ -201,6 +220,17 @@ class Intro extends Component{
                         <br></br>
                         <br></br>
                         If you think this content is privacy-threatening, please answer the questions folded in the label.
+                        <br></br>
+                        <br></br>
+                        Questions include what type of data this content show, how informative this content is, and your perspectives on sharing if the photo is related to you.
+                        <br></br>
+                        <br></br>
+                        Examples of questions are shown below. Questions are always the same whatever the content you choose.
+                        <div style={{display: 'incline-block', justifyContent:'center'}}> 
+                            <img src={q1} style={{maxWidth: '30%', maxHeight: '30%', margin: '10px'}} />  
+                            <img src={q2} style={{maxWidth: '30%', maxHeight: '30%', margin: '10px'}} /> 
+                            <img src={q3} style={{maxWidth: '30%', maxHeight: '30%', margin: '10px'}} />
+                        </div>
                         <br></br>
                         <br></br>
                         If you think this content is <strong>not</strong> privacy-threatening, please check the box 'The above content is not privacy-threatening' to <strong>skip the annotation</strong>.
@@ -246,6 +276,9 @@ class Intro extends Component{
     taskIntroJp = (e) =>{
         var loading = require('./img/demo_jp.png');
         var finishPop = require('./img/finish_jp.png');
+        var q1 = require('./img/q1_jp.png');
+        var q2 = require('./img/q2_jp.png');
+        var q3 = require('./img/q3_jp.png');
         return(
             <div>
                 <Card.Text text={'dark'}>
@@ -283,6 +316,12 @@ class Intro extends Component{
                         これらが<strong>プライバシーを脅かすもの</strong>と考えた場合、クリックしてください。また、その場合ラベルに折りたたまれている質問にも答えてください。
                         <br></br>
                         <br></br>
+                        質問の例を以下に示します。どのような内容であっても、質問は常に同じです。
+                        <div style={{display: 'incline-block', justifyContent:'center'}}> 
+                            <img src={q1} style={{maxWidth: '30%', maxHeight: '30%', margin: '10px'}} />  
+                            <img src={q2} style={{maxWidth: '30%', maxHeight: '30%', margin: '10px'}} /> 
+                            <img src={q3} style={{maxWidth: '30%', maxHeight: '30%', margin: '10px'}} />
+                        </div>
                         このコンテンツがプライバシーを脅かすもの<strong>ではない</strong>と考える場合は、「<strong>上記の内容はプライバシーを脅かすものではありません</strong>」とうボックスにチェックを入れて、<strong>アノテーションをスキップしてください</strong>。
                         <br></br>
                         <br></br>
@@ -388,6 +427,14 @@ class Intro extends Component{
                         </div>
                         <span  style={{ textAlign: 'left'}}><h3>{this.text['nationality'][this.props.language]}</h3></span>
                         <input type="text" id="particpant-nationality" ref={this.nationality} /><br/>
+                        <span  style={{ textAlign: 'left'}}><h3>{this.text['frequency'][this.props.language]}</h3></span>
+                        <div id ={'frequency'} onChange={this.selectFrequency}>
+                            <input type="radio" value={0} name="frequency" /> {this.frequencyText[this.props.language][0]}
+                            <input type="radio" value={1} name="frequency" /> {this.frequencyText[this.props.language][1]}
+                            <input type="radio" value={2} name="frequency" /> {this.frequencyText[this.props.language][2]}
+                            <input type="radio" value={3} name="frequency" /> {this.frequencyText[this.props.language][3]}
+                            <input type="radio" value={4} name="frequency" /> {this.frequencyText[this.props.language][4]}
+                        </div>
                         <br></br>
                         <Card.Text style={{ textAlign: 'left'}}>
                             <h3>{this.text['bigfiveTitle'][this.props.language]}</h3>
