@@ -64,9 +64,9 @@ class ManualAnnotationCard extends Component{
         'contentPlaceHolder': {'en': 'Please input here.', 'jp': 'ここにコンテンツを記入してください。'},
         'reasonQuestion': {'en': 'Assuming you want to seek the privacy of the photo owner, what kind of information can this content tell  (please select all that apply)?',
         'jp': '写真の所有者のプライバシーを得ようとする場合、このコンテンツからはどのような情報を読み取れますか(該当する選択肢をすべてお選びください)？'},
-        'informativeQuestion': {'en': 'How informative do you think about this privacy information to identify the above thing you selected?\
+        'informativeQuestion': {'en': 'How informative do you think about this content to identify the thing you selected in the previous question?\
         Higher scores mean the more informative the content is.', 
-        'jp': 'あなたが選択した上記のものについては、どの程度考えていますか？\
+        'jp': '前問で選択したものを特定するために、このコンテンツはどの程度情報量があると思いますか？\
         スコアが高いほど、情報量が多いことを意味します。'},
         'placeHolder': {'en': 'Please input here.', 'jp': 'ここに理由を記入してください。'},
         'selectMultiplePlaceHolder': {'en': 'Please select options', 'jp': '選択肢をお選びください'},
