@@ -6,7 +6,11 @@ import Multiselect from 'multiselect-react-dropdown';
 import InformativenessStar from './component/Informativeness/star.js';
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import './defaultAnnotation.css';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 import { ConstructionOutlined } from "@mui/icons-material";
 class DefaultAnnotationCard extends Component{
     constructor(props){
@@ -50,16 +54,27 @@ class DefaultAnnotationCard extends Component{
             {value: 6,label: ''},
             {value: 7,label: '情報量が多い'}]
         };*/
-        this.intensity = { 'en': {1: 'negligible source to identify (Score: 1)',
-            2: 'minor source to identify (Score: 2)',
-            3: 'moderate source to identify (Score: 3)',
-            4: 'effective source to identify (Score: 4)',
-            5: 'substantial source to identify (Score: 5)'},
-            'jp':{1: 'ほとんど役に立たない情報源です (スコア:1)',
-            2: '軽微な情報源です (スコア:2)',
-            3: '中程度の情報源です (スコア:3)',
-            4: '有効な情報源です (スコア:4)',
-            5: '多大な情報源です (スコア:5)'}
+        this.intensity = { 'en': {1: 'negligible source to identify',
+            2: 'minor source to identify',
+            3: 'moderate source to identify',
+            4: 'effective source to identify ',
+            5: 'substantial source to identify'},
+            'jp':{1: 'ほとんど役に立たない情報源です',
+            2: '軽微な情報源です',
+            3: '中程度の情報源です',
+            4: '有効な情報源です',
+            5: '多大な情報源です'}
+        };
+        this.score = { 'en': {1: '1',
+            2: '2',
+            3: '3',
+            4: '4',
+            5: '5'},
+            'jp':{1: '1',
+            2: '2',
+            3: '3',
+            4: '4',
+            5: '5'}
         };
         this.marks = { 'en':[
             {value: 1,label: 'slightly'},
@@ -306,14 +321,21 @@ class DefaultAnnotationCard extends Component{
     }
     generateRadio = () => {
         return (
-        <div defaultValue={'0'} key = {'informativenessRadioGroip' + this.props.category} 
-        className={'radioButton'} onChange={(e)=>this.setState({informativenessValue: Number(e.target.value)})}>
-                <input type="radio" value="1" name={this.props.category + '-informativeness'} /> {this.intensity[this.props.language][1]}
-                <input type="radio" value="2" name={this.props.category + '-informativeness'} /> {this.intensity[this.props.language][2]}
-                <input type="radio" value="3" name={this.props.category + '-informativeness'} /> {this.intensity[this.props.language][3]}
-                <input type="radio" value="4" name={this.props.category + '-informativeness'} /> {this.intensity[this.props.language][4]}
-                <input type="radio" value="5" name={this.props.category + '-informativeness'} /> {this.intensity[this.props.language][5]}
-        </div>)
+        <FormControl>
+            <RadioGroup
+                row
+                key = {'informativenessRadioGroup' + this.props.category} 
+                defaultValue={'0'}
+                onChange={(e)=>this.setState({informativenessValue: Number(e.target.value)})}
+            >
+                <FormControlLabel value="1" control={<Radio />} labelPlacement="bottom" label={this.score[this.props.language][1]} />
+                <FormControlLabel value="2" control={<Radio />} labelPlacement="bottom" label={this.score[this.props.language][2]} />
+                <FormControlLabel value="3" control={<Radio />} labelPlacement="bottom" label={this.score[this.props.language][3]} />
+                <FormControlLabel value="4" control={<Radio />} labelPlacement="bottom" label={this.score[this.props.language][4]} />
+                <FormControlLabel value="5" control={<Radio />} labelPlacement="bottom" label={this.score[this.props.language][5]} />
+            </RadioGroup>
+        </FormControl>
+        )
     }
     changePage = () =>{
         return(
@@ -368,7 +390,7 @@ class DefaultAnnotationCard extends Component{
                         <strong>{this.text['informativeQuestion'][this.props.language]}</strong>
                         </Card.Text>
                         <Card.Text style={{textAlign: 'center'}}>
-                        {/*<strong> {this.intensity[this.props.language][this.state.informativenessValue]} </strong>*/}
+                        {<strong> {this.intensity[this.props.language][this.state.informativenessValue]} </strong>}
                         </Card.Text>
                         {this.generateRadio()}
                         <input defaultValue={0} id={'informativeness-' + this.props.category} style={{display: 'none'}}></input>
