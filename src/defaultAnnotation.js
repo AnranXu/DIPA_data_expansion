@@ -78,8 +78,8 @@ class DefaultAnnotationCard extends Component{
             {value: 7,label: '情報量が多い'}]
         };
         this.text = {'title': {'en': 'Annotation Box', 'jp': 'アノテーションボックス'},
-        'reasonQuestion': {'en': 'Assuming you want to seek privacy of the photo owner, what kind of information can this content tell?',
-        'jp': '写真の所有者のプライバシーを得ようとする場合、このコンテンツからはどのような情報を読み取れますか？'},
+        'reasonQuestion': {'en': 'Assuming you want to seek the privacy of the photo owner, what kind of information can this content tell (please select all that apply)?',
+        'jp': '写真の所有者のプライバシーを得ようとする場合、このコンテンツからはどのような情報を読み取れますか(該当する選択肢をすべてお選びください)？'},
         'informativeQuestion': {'en': 'How informative do you think about this privacy information to identify the above thing you selected?\
         Higher scores mean the more informative the content is.', 
         'jp': 'あなたが選択した上記のものについては、どの程度考えていますか？\
@@ -88,10 +88,10 @@ class DefaultAnnotationCard extends Component{
         'selectMultiplePlaceHolder': {'en': 'Please select options', 'jp': '選択肢をお選びください'},
         'assumption': {'en': 'Please assume it is a photo related to you, and answer the following questions', 
         'jp': 'あなたがこの写真と関連のあると仮定して、以下の質問にお答えください'},
-        'sharingOwnerQuestion': {'en': 'Q1: Who would you like to share this content to (Please select all possible groups)?', 
-        'jp': '問1: このコンテンツを誰にシェアしたいですか(可能なすべてのグループを選択してください)?'},
-        'sharingOthersQuestion': {'en': 'Q2: Would you allow the group you selected above to share this content (Please select all possible groups)? ',
-        'jp': '問2: 前問で選択したグループがこのコンテンツをシェアすることをどの程度まで許容しますか(可能なすべてのグループを選択してください)？'},
+        'sharingOwnerQuestion': {'en': 'Q1: Who would you like to share this content to (please select all that apply)?', 
+        'jp': '問1: このコンテンツを誰にシェアしたいですか(該当する選択肢をすべてお選びください)?'},
+        'sharingOthersQuestion': {'en': 'Q2: Would you allow the group you selected above to repost this content (please select all that apply)? ',
+        'jp': '問2: 前問で選択したグループがこのコンテンツを再投稿することをどの程度まで許容しますか(該当する選択肢をすべてお選びください)？'},
         'next': {'en': 'Next', 'jp': '次へ'},
         'previous': {'en': 'Previous', 'jp': '前へ'},
         'question': {'en': 'PagePage', 'jp': 'ページ'}};

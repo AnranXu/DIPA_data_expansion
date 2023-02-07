@@ -107,7 +107,7 @@ class Toolbar extends Component{
                         alert('ラベル' + category + 'で「共有しない」を選択した場合、他のオプションは選択できません');
                 }
             }
-            /*var sharingOthers = document.getElementById('sharingOthers-' + category);
+            var sharingOthers = document.getElementById('sharingOthers-' + category);
             var sharingOthersInput = document.getElementById('sharingOthersInput-' + category);
             var sharingOthersResult = sharingOthers.value;
             console.log(sharingOthersResult)
@@ -115,9 +115,9 @@ class Toolbar extends Component{
                 ifFinished = false;
             else{
                 sharingOthersResult = JSON.parse(sharingOthersResult);
-                if(sharingOthersResult.includes(6) && sharingOthersInput.value === '')
+                if(sharingOthersResult.includes(7) && sharingOthersInput.value === '')
                     ifFinished = false;
-                if(sharingOthersResult.includes(0) && sharingOthersResult.length > 1)
+                if(sharingOthersResult.includes(1) && sharingOthersResult.length > 1)
                 {
                     ifFinished = false;
                     if(this.props.language === 'en')
@@ -125,7 +125,7 @@ class Toolbar extends Component{
                     else if(this.props.language === 'jp')
                         alert('ラベル' + category + 'で「共有することは認めない」を選択した場合、他のオプションは選択できません');
                 }
-            }*/
+            }
             if(!ifFinished)
             {
                 if(this.props.language === 'en')
@@ -176,7 +176,7 @@ class Toolbar extends Component{
                         alert('手動ラベル' + id + 'で「共有しない」を選択した場合、他のオプションは選択できません');
                 }
             }
-            /*var sharingOthers = document.getElementById('sharingOthers-' + id);
+            var sharingOthers = document.getElementById('sharingOthers-' + id);
             var sharingOthersInput = document.getElementById('sharingOthersInput-' + id);
             var sharingOthersResult = sharingOthers.value;
             console.log(sharingOthersResult)
@@ -184,9 +184,9 @@ class Toolbar extends Component{
                 ifFinished = false;
             else{
                 sharingOthersResult = JSON.parse(sharingOthersResult);
-                if(sharingOthersResult.includes(6) && sharingOthersInput.value === '')
+                if(sharingOthersResult.includes(7) && sharingOthersInput.value === '')
                     ifFinished = false;
-                if(sharingOthersResult.includes(0) && sharingOthersResult.length > 1)
+                if(sharingOthersResult.includes(1) && sharingOthersResult.length > 1)
                 {
                     ifFinished = false;
                     if(this.props.language === 'en')
@@ -194,7 +194,7 @@ class Toolbar extends Component{
                     else if(this.props.language === 'jp')
                         alert('手動ラベル' + id + 'で「共有することは認めない」を選択した場合、他のオプションは選択できません');
                 }
-            }*/
+            }
             if(!ifFinished)
             {
                 if(this.props.language === 'en')
@@ -213,7 +213,7 @@ class Toolbar extends Component{
             
             var category = this.state.labelList[i];
             anns['defaultAnnotation'][category] = {'category': category, 'informationType': '', 'informationTypeInput': '', 'informativeness': 0, 
-            'sharingOwner': [], 'sharingOwnerInput': '','ifNoPrivacy': false};
+            'sharingOwner': [], 'sharingOwnerInput': '','sharingOthers': [], 'sharingOthersInput': '','ifNoPrivacy': false};
             var ifNoPrivacy = document.getElementById('privacyButton-' + category).checked;
             if(ifNoPrivacy)
             {
@@ -234,22 +234,25 @@ class Toolbar extends Component{
             var sharingOwnerOnehot = [0,0,0,0,0,0,0];
             for(var i = 0; i < sharingOwnerResult.length; i++)
                 sharingOwnerOnehot[sharingOwnerResult[i] - 1] = 1;
-            //var sharingOthers = document.getElementById('sharingOthers-' + category);
-            //var sharingOthersInput = document.getElementById('sharingOthersInput-' + category);
-            //var sharingOthersResult = JSON.parse(sharingOthers.value);
+            var sharingOthers = document.getElementById('sharingOthers-' + category);
+            var sharingOthersInput = document.getElementById('sharingOthersInput-' + category);
+            var sharingOthersResult = JSON.parse(sharingOthers.value);
+            var sharingOthersOnehot = [0,0,0,0,0,0,0];
+            for(var i = 0; i < sharingOthersResult.length; i++)
+                sharingOthersOnehot[sharingOthersResult[i] - 1] = 1;
             anns['defaultAnnotation'][category]['informationType'] = reasonOnehot;
             anns['defaultAnnotation'][category]['informationTypeInput'] = reason_input.value;
             anns['defaultAnnotation'][category]['informativeness'] = informativeness.value;
             anns['defaultAnnotation'][category]['sharingOwner'] = sharingOwnerOnehot;
             anns['defaultAnnotation'][category]['sharingOwnerInput'] = sharingOwnerInput.value;
-            //anns['defaultAnnotation'][category]['sharingOthers'] = sharingOthersResult;
-            //anns['defaultAnnotation'][category]['sharingOthersInput'] = sharingOthersInput.value;
+            anns['defaultAnnotation'][category]['sharingOthers'] = sharingOthersOnehot;
+            anns['defaultAnnotation'][category]['sharingOthersInput'] = sharingOthersInput.value;
         }
         for(var i = 0; i < this.props.manualBboxs.length; i++)
         {
             var id = this.props.manualBboxs[i]['id'];
             anns['manualAnnotation'][id] = {'category': '', 'bbox': [], 'informationType': '', 'informationTypeInput': '', 'informativeness': 4, 
-            'sharingOwner': [], 'sharingOwnerInput': ''};
+            'sharingOwner': [], 'sharingOwnerInput': '','sharingOthers': [], 'sharingOthersInput': ''};
             var category_input = document.getElementById('categoryInput-' + id);
             var bboxs =  this.props.stageRef.current.find('.manualBbox');
             var bbox = [];
@@ -272,16 +275,19 @@ class Toolbar extends Component{
             var sharingOwnerOnehot = [0,0,0,0,0,0,0];
             for(var i = 0; i < sharingOwnerResult.length; i++)
                 sharingOwnerOnehot[sharingOwnerResult[i] - 1] = 1;
-            //var sharingOthers = document.getElementById('sharingOthers-' + id);
-            //var sharingOthersInput = document.getElementById('sharingOthersInput-' + id);
-            //var sharingOthersResult = JSON.parse(sharingOthers.value);
+            var sharingOthers = document.getElementById('sharingOthers-' + id);
+            var sharingOthersInput = document.getElementById('sharingOthersInput-' + id);
+            var sharingOthersResult = JSON.parse(sharingOthers.value);
+            var sharingOthersOnehot = [0,0,0,0,0,0,0];
+            for(var i = 0; i < sharingOthersResult.length; i++)
+                sharingOthersOnehot[sharingOthersResult[i] - 1] = 1;
             anns['manualAnnotation'][id]['informationType'] = reasonOnehot;
             anns['manualAnnotation'][id]['informationTypeInput'] = reason_input.value;
             anns['manualAnnotation'][id]['informativeness'] = informativeness.value;
             anns['manualAnnotation'][id]['sharingOwner'] = sharingOwnerOnehot;
             anns['manualAnnotation'][id]['sharingOwnerInput'] = sharingOwnerInput.value;
-            //anns['manualAnnotation'][id]['sharingOthers'] = sharingOthersResult;
-            //anns['manualAnnotation'][id]['sharingOthersInput'] = sharingOthersInput.value;
+            anns['manualAnnotation'][id]['sharingOthers'] = sharingOthersOnehot;
+            anns['manualAnnotation'][id]['sharingOthersInput'] = sharingOthersInput.value;
         }
         //clear all not privacy button
         for(var i = 0; i < this.state.labelList.length; i++)

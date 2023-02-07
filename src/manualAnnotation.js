@@ -47,8 +47,8 @@ class ManualAnnotationCard extends Component{
         this.text = {'title': {'en': 'Annotation Box', 'jp': 'アノテーションボックス'},
         'contentQuestion': {'en': 'What is the content in the bounding box?', 'jp': '枠囲み内のコンテンツは何ですか？'},
         'contentPlaceHolder': {'en': 'Please input here.', 'jp': 'ここにコンテンツを記入してください。'},
-        'reasonQuestion': {'en': 'Assuming you want to seek privacy of the photo owner, what kind of information can this content tell?',
-        'jp': '写真の所有者のプライバシーを得ようとする場合、このコンテンツからはどのような情報を読み取れますか？'},
+        'reasonQuestion': {'en': 'Assuming you want to seek the privacy of the photo owner, what kind of information can this content tell  (please select all that apply)?',
+        'jp': '写真の所有者のプライバシーを得ようとする場合、このコンテンツからはどのような情報を読み取れますか(該当する選択肢をすべてお選びください)？'},
         'informativeQuestion': {'en': 'How informative do you think about this privacy information to identify the above thing you selected?\
         Higher scores mean the more informative the content is.', 
         'jp': 'あなたが選択した上記のものについては、どの程度考えていますか？\
@@ -56,10 +56,10 @@ class ManualAnnotationCard extends Component{
         'placeHolder': {'en': 'Please input here.', 'jp': 'ここに理由を記入してください。'},
         'selectMultiplePlaceHolder': {'en': 'Please select options', 'jp': '選択肢をお選びください'},
         'assumption': {'en': 'Please assume you are the photo owner, and answer the following questions', 'jp': 'あなたが写真の所有者であると仮定して、以下の質問にお答えください'},
-        'sharingOwnerQuestion': {'en': 'Q1: Who would you like to share this content to (Please select all possible groups)?', 
-        'jp': '問1: このコンテンツを誰にシェアしたいですか(可能なすべてのグループを選択してください)?'},
-        'sharingOthersQuestion': {'en': 'Would you allow others to share this content in their relationship (Please select all possible groups)? ',
-        'jp': '他の人がこのコンテンツをその人の関係者に共有することをどの程度まで許容しますか(可能なすべてのグループを選択してください)？'},
+        'sharingOwnerQuestion': {'en': 'Q1: Who would you like to repost this content to (please select all that apply)?', 
+        'jp': '問1: このコンテンツを誰にシェアしたいですか(該当する選択肢をすべてお選びください)?'},
+        'sharingOthersQuestion': {'en': 'Q2: Would you allow the group you selected above to repost this content (please select all that apply)?',
+        'jp': '問2: 前問で選択したグループがこのコンテンツを再投稿することをどの程度まで許容しますか(該当する選択肢をすべてお選びください)？'},
         'next': {'en': 'Next', 'jp': '次へ'},
         'previous': {'en': 'Previous', 'jp': '前へ'},
         'question': {'en': 'Page', 'jp': 'ページ'}};
@@ -382,6 +382,15 @@ class ManualAnnotationCard extends Component{
                         <br></br>
                         <input style={{width: '100%', display: 'none'}} type='text' id={'sharingOwnerInput-'+ this.props.manualNum}
                         key={'sharingOwnerInput-'+ this.props.manualNum} className={'sharingOwnerInput-'+ this.props.manualNum}></input>
+                        <Card.Text style={{textAlign: 'left'}}>
+                        <strong>{this.text['sharingOthersQuestion'][this.props.language]}</strong>
+                        </Card.Text>
+                        {this.sharing_others()}
+                        <input type='text' id={'sharingOthers-' + this.props.manualNum} style={{display: 'none'}}></input>
+                        <br></br>
+                        <br></br>
+                        <input style={{display: 'none'}} type='text' key={'sharingOthersInput-'+ this.props.manualNum} 
+                        id={'sharingOthersInput-'+ this.props.manualNum}  className={'sharingOthersInput-'+ this.props.manualNum}></input>
                     </div>
                     
                    
