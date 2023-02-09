@@ -18,6 +18,8 @@ from sklearn.metrics import classification_report
 import statsmodels.api as sm
 from statsmodels.formula.api import ols
 from statsmodels.stats.anova import AnovaRM
+from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import LinearRegression
 
 from neural_network import  nn_model
 from neural_network import nn_dataset
@@ -77,7 +79,7 @@ class analyzer:
                     self.openimages_mycat_map[category_name] = row[0]
 
     def prepare_mega_table(self, mycat_mode = True, save_csv = False)->None:
-        #mycat_mode: only aggregate annotations that can be summarized in mycat (also store them in mycat in mega_table).
+        #mycat_mode: only aggregate annotations that can be summarized in mycat (also score them in mycat in mega_table).
         #the mega table includes all privacy annotations with all corresponding info (three metrics, big five, age, gender, platform)
 
         # make sure this sequence is correct.
@@ -198,6 +200,41 @@ class analyzer:
                         self.manual_table = pd.concat([self.manual_table, entry], ignore_index=True)
         if save_csv:
             self.manual_table.to_csv('./manual_table.csv', index =False)
+    def regression_model(self, input_channel, output_channel, read_csv = False)->None:
+        if read_csv:
+            self.mega_table = pd.read_csv('./mega_table.csv')
+        else:
+            self.prepare_mega_table()
+        output_dims = []
+        # the output needs to be one-hot
+        for output in output_channel:
+            output_dims.append(len(self.mega_table[output].unique()))
+        scaler = StandardScaler()
+        encoder = LabelEncoder()
+        self.mega_table['category'] = encoder.fit_transform(self.mega_table['category'])
+        self.mega_table['gender'] = encoder.fit_transform(self.mega_table['gender'])
+        self.mega_table['platform'] = encoder.fit_transform(self.mega_table['platform'])
+        self.mega_table['id'] = encoder.fit_transform(self.mega_table['id'])
+        X = self.mega_table[input_channel].astype(int)
+        y = self.mega_table[output_channel].astype(int)
+        reg = LinearRegression().fit(X, y)
+
+        # Get the coefficients
+        coefficients = reg.coef_
+        intercept = reg.intercept_
+
+        # Add a constant to the independent variables to calculate the p-values
+        X = sm.add_constant(X)
+
+        # Fit the regression model using statsmodels
+        model = sm.OLS(y, X).fit()
+
+        # Get the p-values
+        p_values = model.pvalues
+
+        print('Coefficients:', coefficients)
+        print('Intercept:', intercept)
+        print('P-Values:', p_values)
 
     def svm(self, input_channel, output_channel, read_csv = False) -> None:
         if read_csv:
@@ -213,6 +250,7 @@ class analyzer:
         self.mega_table['category'] = encoder.fit_transform(self.mega_table['category'])
         self.mega_table['gender'] = encoder.fit_transform(self.mega_table['gender'])
         self.mega_table['platform'] = encoder.fit_transform(self.mega_table['platform'])
+        print(self.mega_table[input_channel])
         X = self.mega_table[input_channel].values
         y = self.mega_table[output_channel].values
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=self.test_size, random_state=0)
@@ -322,7 +360,13 @@ class analyzer:
         print(aov_table)
 
     def neural_network(self, input_channel, output_channel, read_csv = False) -> None:
-        
+        def l1_distance_loss(prediction, target):
+            loss = np.abs(prediction - target)
+            return np.mean(loss)
+        def l2_distance_loss(prediction, target):
+            target = target.float()
+            loss = (prediction - target) ** 2
+            return loss.mean()
         def train_one_epoch():
             #running_loss = 0.
             last_loss = 0.
@@ -389,8 +433,13 @@ class analyzer:
         y_test = torch.LongTensor(y_test)
 
         model = nn_model(input_dim,output_dims)
-        
-        loss_fns = [nn.CrossEntropyLoss() for output in output_channel]
+        loss_fns = []
+        for output in output_channel:
+            if output == 'informativeness':
+                loss_fns.append(nn.CrossEntropyLoss())
+                #loss_fns.append(l1_distance_loss)
+            else:
+                loss_fns.append(nn.CrossEntropyLoss())
         optimizer = torch.optim.Adam(model.parameters(),lr=learning_rate)
         training_dataset = nn_dataset(X_train, y_train)
         testing_dataset = nn_dataset(X_test, y_test)
@@ -417,6 +466,7 @@ class analyzer:
             pre = np.zeros(len(output_channel))
             rec = np.zeros(len(output_channel))
             f1 = np.zeros(len(output_channel))
+            distance = 0.0
             conf = []
             for i, output_dim in enumerate(output_dims):
                 conf.append(np.zeros((output_dim,output_dim)))
@@ -435,6 +485,8 @@ class analyzer:
                     rec[j] += metrics.recall_score(vlabels[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
                     f1[j] += metrics.f1_score(vlabels[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
                     conf[j] += metrics.confusion_matrix(vlabels[:, j].detach().numpy(), max_indices.detach().numpy(), labels = self.mega_table[output].unique())
+                    if output == 'informativeness':
+                        distance += l1_distance_loss(vlabels[:, j].detach().numpy(), max_indices.detach().numpy())
                 tot_vloss = 0
                 for loss in losses:
                     tot_vloss += loss
@@ -444,6 +496,7 @@ class analyzer:
             pre = pre / (i + 1)
             rec = rec / (i + 1)
             f1 = f1 / (i + 1)
+            distance = distance / (i + 1)
             #print("Accuracy:",acc)
             #print("Precision:",pre)
             #print("Recall:",rec)
@@ -469,6 +522,8 @@ class analyzer:
             pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
             df = pd.DataFrame(pandas_data, index=output_channel)
             print(df.round(3))
+            if 'informativeness' in output_channel:
+                print('informativenss distance: ', distance)
             # Log the running loss averaged per batch
             # for both training and validation
             writer.add_scalars('Training vs. Validation Loss',
@@ -499,9 +554,12 @@ if __name__ == '__main__':
     #input_channel.extend(basic_info)
     #input_channel.extend(category)
     input_channel.extend(bigfives)
-    print(input_channel)
+    #input_channel.extend(['informationType', 'informativeness'])
+    print(['informativeness'])
     output_channel = privacy_metrics
-    analyze.prepare_mega_table(mycat_mode=True, save_csv=False)
+    #output_channel = ['sharing']
+    #analyze.prepare_mega_table(mycat_mode=True, save_csv=False)
+    #analyze.regression_model(input_channel, output_channel)
     #print(analyze.mega_table)
     #analyze.prepare_manual_label(save_csv=True)
     #print(analyze.custom_informationType)
@@ -509,6 +567,6 @@ if __name__ == '__main__':
     #print(len(analyze.mega_table['id'].unique()))
     #analyze.svm(input_channel, output_channel, read_csv=True)
     #analyze.anova(True)
-    #analyze.neural_network(input_channel, output_channel, read_csv=True)
+    analyze.neural_network(input_channel, output_channel, read_csv=True)
     #analyze.knn(input_channel, output_channel, read_csv=True)
     

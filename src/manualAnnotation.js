@@ -21,27 +21,16 @@ class ManualAnnotationCard extends Component{
             this.starArray.push(i + 1);
         this.state = {mainStyle: {position: 'relative', display: 'block'}, bboxs: [], informativenessValue: 0,
         curQuestion: 0};
-        this.intensity = { 'en': {1: 'negligible source to identify',
-            2: 'minor source to identify',
-            3: 'moderate source to identify',
-            4: 'effective source to identify ',
-            5: 'substantial source to identify'},
-            'jp':{1: 'ほとんど役に立たない情報源です',
-            2: '軽微な情報源です',
-            3: '中程度の情報源です',
-            4: '有効な情報源です',
-            5: '多大な情報源です'}
-        };
-        this.score = { 'en': {1: '1',
-            2: '2',
-            3: '3',
-            4: '4',
-            5: '5'},
-            'jp':{1: '1',
-            2: '2',
-            3: '3',
-            4: '4',
-            5: '5'}
+        this.intensity = { 'en': {1: '1: negligible source to identify',
+            2: '2: minor source to identify',
+            3: '3: moderate source to identify',
+            4: '4: effective source to identify ',
+            5: '5: substantial source to identify'},
+            'jp':{1: '1: ほとんど役に立たない情報源です',
+            2: '2: 軽微な情報源です',
+            3: '3: 中程度の情報源です',
+            4: '4: 有効な情報源です',
+            5: '5: 多大な情報源です'}
         };
         this.marks = { 'en':[
             {value: 1,label: 'slightly'},
@@ -314,11 +303,11 @@ class ManualAnnotationCard extends Component{
             key = {'informativenessRadioGroup' + this.props.manualNum} 
             defaultValue={'0'}
             onChange={(e)=>this.setState({informativenessValue: Number(e.target.value)})}
-        >   <FormControlLabel value="1" control={<Radio />} labelPlacement="bottom" label={this.score[this.props.language][1]} />
-            <FormControlLabel value="2" control={<Radio />} labelPlacement="bottom" label={this.score[this.props.language][2]} />
-            <FormControlLabel value="3" control={<Radio />} labelPlacement="bottom" label={this.score[this.props.language][3]} />
-            <FormControlLabel value="4" control={<Radio />} labelPlacement="bottom" label={this.score[this.props.language][4]} />
-            <FormControlLabel value="5" control={<Radio />} labelPlacement="bottom" label={this.score[this.props.language][5]} />
+        >   <FormControlLabel value="1" control={<Radio />} labelPlacement="right" label={this.intensity[this.props.language][1]} />
+            <FormControlLabel value="2" control={<Radio />} labelPlacement="right" label={this.intensity[this.props.language][2]} />
+            <FormControlLabel value="3" control={<Radio />} labelPlacement="right" label={this.intensity[this.props.language][3]} />
+            <FormControlLabel value="4" control={<Radio />} labelPlacement="right" label={this.intensity[this.props.language][4]} />
+            <FormControlLabel value="5" control={<Radio />} labelPlacement="right" label={this.intensity[this.props.language][5]} />
         </RadioGroup>
         </FormControl>
         )
@@ -381,7 +370,7 @@ class ManualAnnotationCard extends Component{
                         <strong>{this.text['informativeQuestion'][this.props.language]}</strong>
                         </Card.Text>
                         <Card.Text style={{textAlign: 'center'}}>
-                        {<strong> {this.intensity[this.props.language][this.state.informativenessValue]} </strong>}
+                        {/*<strong> {this.intensity[this.props.language][this.state.informativenessValue]} </strong>*/}
                         </Card.Text>
                         {this.generateRadio()}
                         <input defaultValue={0} id={'informativeness-' + this.props.manualNum} style={{display: 'none'}}></input>

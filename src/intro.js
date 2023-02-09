@@ -46,7 +46,7 @@ class Intro extends Component{
         'bigfiveTitle': {'en': 'Please answer the following questions.', 'jp': '以下の質問にお答えください。'},
         'confirmText0': {'en': 'I fully understand the study and want to do this task with my consent.', 'jp': '私はこの研究を十分に理解し、同意の上でこの作業を行いたいです。'},
         'confirmText1': {'en': '(You may back to read the instruction later if you need)', 'jp': '（（必要であれば、後で説明書を読み返すことができます）'},
-        'next': {'en': 'Go to questionnaire', 'jp': 'アンケートのページへ'},
+        'next': {'en': 'Go to questionnaire', 'jp': 'アンケートへ'},
         'previous': {'en': 'Back to instruction', 'jp': '手順の説明に戻る'}};
     }
     submit = () =>{
@@ -210,32 +210,40 @@ class Intro extends Component{
                 <Card.Title><h1><strong>How to use the interface</strong></h1></Card.Title>
                 <Card.Text>
                     <h3>
-                        <br></br>
-                        Please finish the questionnaire first and click the button "I fully understand the study and want to do this task with my consent." at the bottom to go to the task page.
-                        <br></br>
-                        <br></br>
-                        The figure below is an example of the interface.
-                        <br></br>
-                        <br></br>
-                        <img src = {loading} alt='' style = {{maxHeight: '100%', maxWidth: '100%'}}/>
+                        <Row>
+                            <Col>
+                            <br></br>
+                            Please finish the questionnaire first and click the button "I fully understand the study and want to do this task with my consent." at the bottom to go to the task page.
+                            <br></br>
+                            <br></br>
+                            The right figure is an example of the interface.
+                            <br></br>
+                            <br></br>
+                            You will see a list of labels after you load an image. 
+                            <br></br>
+                            <br></br>
+                            You need to click each of them to answer if you regard this content as <strong>privacy-threatening</strong>.
+                            <br></br>
+                            <br></br>
+                            If you think this content is privacy-threatening, please answer the questions folded in the label.
+                            <br></br>
+                            <br></br>
+                            Questions include what type of data this content show, how informative this content is, and your perspectives on sharing if the photo is related to you.
+                            <br></br>
+                            <br></br>
+                            Examples of questions are shown below. Questions are always the same whatever the content you choose.
+                            <br></br>
+                            <br></br>
+                            </Col>
+                            <Col>
+                                <img src = {loading} alt='' style = {{maxHeight: '100%', maxWidth: '100%'}}/>
+                            </Col>
+                        </Row>
+                        
                         {/*In the task page, click the button '<strong>Load the next image</strong>' to get the next image you need to annotate.
                         <br></br>
                         <br></br>*/}
-                        You will see a list of labels after you load an image. 
-                        <br></br>
-                        <br></br>
-                        You need to click each of them to answer if you regard this content as <strong>privacy-threatening</strong>.
-                        <br></br>
-                        <br></br>
-                        If you think this content is privacy-threatening, please answer the questions folded in the label.
-                        <br></br>
-                        <br></br>
-                        Questions include what type of data this content show, how informative this content is, and your perspectives on sharing if the photo is related to you.
-                        <br></br>
-                        <br></br>
-                        Examples of questions are shown below. Questions are always the same whatever the content you choose.
-                        <br></br>
-                        <br></br>
+                        
                         <Row>
                             <Col>
                                 <Figure>
@@ -351,28 +359,33 @@ class Intro extends Component{
                 <Card.Title><h1><strong>インターフェイスの使い方</strong></h1></Card.Title>
                 <Card.Text>
                     <h3>
-                        <br></br>
-                        まずはアンケートに答えていただき、一番下の「私はこの研究を十分に理解し、同意の上でこの作業を行いたいです」というボタンをクリックし、タスクのページに進んでください。
-                        <br></br>
-                        <br></br>
-                        下図はインターフェースの一例です。
-                        <br></br>
-                        <br></br>
-                        <img src = {loading} alt='' style = {{maxHeight: '100%', maxWidth: '100%'}}/>
-                        <br></br>
-                        <br></br>   
-                        {/*ボタン 「<strong>次の画像を読み込む</strong>」をクリックすると、次にアノテーションする画像が表示されます。 
-                        <br></br>
-                        <br></br>*/}
-                        画像が読み込まれると、ラベルのリストが表示されます。
-                        <br></br>
-                        <br></br>   
-                        これらが<strong>プライバシーを脅かすもの</strong>と考えた場合、クリックしてください。また、その場合ラベルに折りたたまれている質問にも答えてください。
-                        <br></br>
-                        <br></br>
-                        質問の例を以下に示します。どのようなコンテンツであっても、質問は常に同じです。
-                        <br></br>
-                        <br></br>
+                        <Row>
+                            <Col>
+                            <br></br>
+                            まずはアンケートに答えていただき、一番下の「私はこの研究を十分に理解し、同意の上でこの作業を行いたいです」というボタンをクリックし、タスクのページに進んでください。
+                            <br></br>
+                            <br></br>
+                            右図はインターフェースの一例です。
+                            <br></br>
+                            <br></br>   
+                            {/*ボタン 「<strong>次の画像を読み込む</strong>」をクリックすると、次にアノテーションする画像が表示されます。 
+                            <br></br>
+                            <br></br>*/}
+                            画像が読み込まれると、ラベルのリストが表示されます。
+                            <br></br>
+                            <br></br>   
+                            これらが<strong>プライバシーを脅かすもの</strong>と考えた場合、クリックしてください。また、その場合ラベルに折りたたまれている質問にも答えてください。
+                            <br></br>
+                            <br></br>
+                            質問の例を以下に示します。どのようなコンテンツであっても、質問は常に同じです。
+                            <br></br>
+                            <br></br>
+                            </Col>
+                            <Col>
+                                <img src = {loading} alt='' style = {{maxHeight: '100%', maxWidth: '100%'}}/>
+                            </Col>
+                        </Row>
+                       
                         <Row>
                             <Col>
                                 <Figure>
@@ -568,7 +581,6 @@ class Intro extends Component{
                         <h3>{this.text['bigfiveTitle'][this.props.language]}</h3>
                     </Card.Text>
                     {this.generateBigfive()}
-                    {this.changePage()}
                     <Button onClick = {this.submit} variant="outline-dark" style={{cursor: 'pointer', width: '80%', margin: 'auto'}}>
                         <h2 style={{textAlign: "center"}}>{this.text['confirmText0'][this.props.language]}</h2>
                         <h2 style={{textAlign: "center"}}>{this.text['confirmText1'][this.props.language]}</h2>
