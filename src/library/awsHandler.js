@@ -45,6 +45,98 @@ class awsHandler{
             else     console.log(data);           // successful response
           });
     }
+    dbgetAllValidWorker(){
+        const params = {
+            // Specify which items in the results are returned.
+            FilterExpression: "progress >= :tasknum",
+            // Define the expression attribute value, which are substitutes for the values you want to compare.
+            ExpressionAttributeValues: {
+            ":tasknum": {N: "20"},
+            },
+            // Set the projection expression, which are the attributes that you want.
+            ProjectionExpression: "workerId, taskId, progress",
+            TableName: "DIPAWorkerRecords",
+        };
+        this.db.scan(params, (err, data) => {
+            if (err)
+            {
+               console.log('error occur');
+               console.log(err, err.stack); 
+            }// an error occurred
+            else     
+            {
+                var workers = data['Items'];
+                var workerNames = [];
+                console.log(workers.length);
+                for(var i = 0; i < workers.length; i++)
+                    workerNames.push(workers[i]['workerId']['S']);   
+                var res = JSON.stringify(workerNames);
+                var name = this.platform[this.language] + 'valid_workers.json';
+                var textBlob = new Blob([res], {
+                    type: 'text/plain'
+                });
+                this.s3.upload({
+                    Bucket: this.bucketName,
+                    Key: name,
+                    Body: textBlob,
+                    ContentType: 'text/plain',
+                    ACL: 'bucket-owner-full-control'
+                }, function(err, data) {
+                    if(err) {
+                        console.log(err);
+                    }
+                    }).on('httpUploadProgress', function (progress) {
+                    var uploaded = parseInt((progress.loaded * 100) / progress.total);
+                    $("progress").attr('value', uploaded);
+                });
+            }
+       // successful response
+       });
+        
+    }
+    async dbScanUncompleteRecord (){
+        const params = {
+            // Specify which items in the results are returned.
+            FilterExpression: "progress < :tasknum",
+            // Define the expression attribute value, which are substitutes for the values you want to compare.
+            ExpressionAttributeValues: {
+            ":tasknum": {N: "20"},
+            },
+            // Set the projection expression, which are the attributes that you want.
+            ProjectionExpression: "workerId, taskId, progress",
+            TableName: "DIPAWorkerRecords",
+        };
+        try{
+            var data = await this.db.scan(params).promise();
+            return data;
+        }
+        catch (err){
+            console.log(err);
+            return false;
+        }
+    }
+    async dbdeleteWorkerRecord(){
+
+    }
+    dbCleanUncompleteRecord (){
+        // scan uncomplete task, delete worker record, reset task record, update uncomplete list in general controller
+        // Step1: scan
+
+        this.dbScanUncompleteRecord().then((data)=>{
+            console.log(data['Items']);
+            var workers = data['Items'];
+            //delete worker record
+            for(var i = 0; i < workers.length; i++)
+            {
+
+            }
+           
+
+            //reset task record
+
+            //update uncomplete list
+        });
+    }
     dbPreparation () {
         //create initial table, task_record.json will only be used here in this dynamodb version.
         var task_URL = "https://dipa-data-expansion.s3.ap-northeast-1.amazonaws.com/sources/task_record.json";

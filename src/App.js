@@ -13,11 +13,13 @@ class App extends Component {
     this.testMode = new URLSearchParams(window.location.search).get("test") === 'true';
     document.title = "privacy-oriented image annotation";
     this.state = {page: 'intro', workerId: ''};
+    var test = new awsHandler(this.lg, this.testMode);
+    test.dbCleanUncompleteRecord();
   }
   toolCallback = (childData) =>{
     console.log(childData);
     this.setState(childData);
-}
+  }
   render(){
     return (
       <div className="App">

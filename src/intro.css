@@ -4,3 +4,6 @@ input[type=radio] {
     height: 3em;
     font-size: 15px;
 }
+input[type=text] {
+   margin: 0 10px;
+}
