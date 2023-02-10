@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/DIPA_data_expansion/static/css/main.cafd7af8.css",
-    "main.js": "/DIPA_data_expansion/static/js/main.291a8038.js",
+    "main.css": "/DIPA_data_expansion/static/css/main.84b5798e.css",
+    "main.js": "/DIPA_data_expansion/static/js/main.b18cf669.js",
     "static/js/787.cf02b623.chunk.js": "/DIPA_data_expansion/static/js/787.cf02b623.chunk.js",
     "static/media/demo_en.png": "/DIPA_data_expansion/static/media/demo_en.7938f671b81cc58f6f29.png",
     "static/media/demo_jp.png": "/DIPA_data_expansion/static/media/demo_jp.ab4f987cd8b3ba4f5eb8.png",
@@ -14,12 +14,12 @@
     "static/media/finish_en.png": "/DIPA_data_expansion/static/media/finish_en.3220507478a0394e951f.png",
     "static/media/finish_jp.png": "/DIPA_data_expansion/static/media/finish_jp.467af7893690ae985e2a.png",
     "index.html": "/DIPA_data_expansion/index.html",
-    "main.cafd7af8.css.map": "/DIPA_data_expansion/static/css/main.cafd7af8.css.map",
-    "main.291a8038.js.map": "/DIPA_data_expansion/static/js/main.291a8038.js.map",
+    "main.84b5798e.css.map": "/DIPA_data_expansion/static/css/main.84b5798e.css.map",
+    "main.b18cf669.js.map": "/DIPA_data_expansion/static/js/main.b18cf669.js.map",
     "787.cf02b623.chunk.js.map": "/DIPA_data_expansion/static/js/787.cf02b623.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cafd7af8.css",
-    "static/js/main.291a8038.js"
+    "static/css/main.84b5798e.css",
+    "static/js/main.b18cf669.js"
   ]
 }
