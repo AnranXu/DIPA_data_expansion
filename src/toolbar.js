@@ -415,6 +415,7 @@ class Toolbar extends Component{
         {
             generalRecords = generalRecords['Item'];
             var workerList = generalRecords['workerList']['SS'];
+            var uncompletedTask = generalRecords['uncompletedAssignedTask']['NS'];
             var cur_progress = 0;
             if(workerList.includes(this.props.workerId))
             {
@@ -450,7 +451,24 @@ class Toolbar extends Component{
                 //create new worker record to database
                 //first read the tasklist
                 console.log('new worker in');
-                this.awsHandler.dbReadTaskTable(generalRecords['nextTask']['N']).then((taskRecord)=>{
+                var nextTask = -1;
+                var ifUseUncompletedTask = false;
+                // find if there are remain task throwed by previous workers
+                if(uncompletedTask.length > 1){
+                    ifUseUncompletedTask = true;
+                    for(var i = 0; i < uncompletedTask.length; i++)
+                    {
+                        //-1 is the placeholder of this param
+                        if(Number(uncompletedTask[i]) === -1)
+                            continue;
+                        nextTask = uncompletedTask[i];
+                        uncompletedTask.splice(i, 1);
+                        break;
+                    }
+                }
+                else
+                    nextTask = generalRecords['nextTask']['N'];
+                this.awsHandler.dbReadTaskTable(nextTask).then((taskRecord)=>{
                     taskRecord = taskRecord['Item'];
                     var taskList = taskRecord['taskList']['SS'];
                     //to task Table
@@ -474,7 +492,7 @@ class Toolbar extends Component{
                                 "N": String(0)
                             },
                             "taskId":{
-                                "N": generalRecords['nextTask']['N']
+                                "N": nextTask
                             },
                             "taskNum":{
                                 "N": String(20)
@@ -489,7 +507,13 @@ class Toolbar extends Component{
                     //to general records
                     generalRecords['workerList']['SS'].push(this.props.workerId);
                     generalRecords['totalWorker']['N'] = Number(generalRecords['totalWorker']['N']) + 1;
-                    generalRecords['nextTask']['N'] = Number(generalRecords['nextTask']['N']) + 1;
+                    if(ifUseUncompletedTask)
+                    {
+                        generalRecords['uncompletedAssignedTask']['NS'] = uncompletedTask;
+                    }
+                    else{
+                        generalRecords['nextTask']['N'] = Number(generalRecords['nextTask']['N']) + 1;  
+                    }
                     if(generalRecords['nextTask']['N'] >= Number(generalRecords['totalTask']['N'])){
                         generalRecords['round']['N'] = Number(generalRecords['round']['N']) + 1;
                         generalRecords['nextTask']['N'] = 0;

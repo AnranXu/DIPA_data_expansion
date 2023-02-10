@@ -2,7 +2,7 @@ import $ from "jquery";
 import AWS from 'aws-sdk';
 
 class awsHandler{
-    constructor(language, testMode)
+    constructor(language='en', testMode=true)
     {
         AWS.config.region = 'ap-northeast-1'; 
         AWS.config.credentials = new AWS.CognitoIdentityCredentials({
@@ -67,7 +67,6 @@ class awsHandler{
             {
                 var workers = data['Items'];
                 var workerNames = [];
-                console.log(workers.length);
                 for(var i = 0; i < workers.length; i++)
                     workerNames.push(workers[i]['workerId']['S']);   
                 var res = JSON.stringify(workerNames);
@@ -115,8 +114,75 @@ class awsHandler{
             return false;
         }
     }
-    async dbdeleteWorkerRecord(){
+    async dbDeleteWorkerRecord(workerid){
+        var params = {
+            TableName: 'DIPAWorkerRecords',
+            Key: {
+            'workerId': {S: workerid}
+            }
+        };
+        
+        // Call DynamoDB to delete the item from the table
+        this.db.deleteItem(params, function(err, data) {
+            if (err) {
+            console.log("Error", err);
+            } else {
+            console.log("Success", data);
+            }
+        });
+    }
+    async dbResetTaskRecord(taskid){
+        this.dbReadTaskTable(taskid).then((taskRecord)=>{
+            taskRecord = taskRecord['Item'];
+            var taskRecordsParams = {
+                Item: {
+                    ...taskRecord,
+                    "assigned":{
+                        "N": String(Number(taskRecord['assigned']["N"]) - 1)
+                    }
+                },
+                ReturnConsumedCapacity: "TOTAL", 
+                TableName: "DIPATaskRecords"
+            };
+            this.dbUpdateTable(taskRecordsParams);
+        });
+        
+    }
+    async dbUpdateGeneralController(workerList, taskList){
+        this.dbReadGeneralController().then((generalRecords)=>{
+            generalRecords = generalRecords['Item'];
+            var uncompletedTask = generalRecords['uncompletedAssignedTask']['NS'];
+            var newWorkerList = generalRecords['workerList']['SS'];
+            for(var i = 0; i < taskList.length; i++)
+            {
+                uncompletedTask.push(String(taskList[i]));
+            }
+            for(var i = 0; i < workerList.length; i++)
+            {
+                var indexToRemove = newWorkerList.indexOf(workerList[i]);
 
+                if (indexToRemove !== -1) {
+                    newWorkerList.splice(indexToRemove, 1);
+                }
+            }
+            var GeneralControllerParams = {
+                Item: {
+                    ...generalRecords,
+                    "uncompletedAssignedTask":{
+                        "NS": uncompletedTask
+                    },
+                    "totalWorker":{
+                        "N": String(Number(generalRecords['totalWorker']['N']) - taskList.length)
+                    },
+                    "workerList":{
+                        "SS": newWorkerList
+                    }
+                },
+                ReturnConsumedCapacity: "TOTAL", 
+                TableName: "DIPAGeneralController"
+            };
+            this.dbUpdateTable(GeneralControllerParams);
+        });
     }
     dbCleanUncompleteRecord (){
         // scan uncomplete task, delete worker record, reset task record, update uncomplete list in general controller
@@ -125,16 +191,27 @@ class awsHandler{
         this.dbScanUncompleteRecord().then((data)=>{
             console.log(data['Items']);
             var workers = data['Items'];
+            var taskList = [];
+            var workerList = [];
             //delete worker record
+            if(workers.length === 0)
+                return;
             for(var i = 0; i < workers.length; i++)
             {
-
-            }
-           
-
+                this.dbDeleteWorkerRecord(workers[i]['workerId']['S']);
+                taskList.push(workers[i]['taskId']['N']);
+                workerList.push(workers[i]['workerId']['S']);
+            }   
             //reset task record
-
+            console.log(workerList);
+            for(var i = 0; i < workers.length; i++)
+            {
+                this.dbResetTaskRecord(workers[i]['taskId']['N']);
+            }
             //update uncomplete list
+            this.dbUpdateGeneralController(workerList, taskList);
+            //update valid list
+            this.dbgetAllValidWorker();
         });
     }
     dbPreparation () {

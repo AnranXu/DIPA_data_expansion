@@ -49,6 +49,13 @@ class Intro extends Component{
         'next': {'en': 'Go to questionnaire', 'jp': 'アンケートへ'},
         'previous': {'en': 'Back to instruction', 'jp': '手順の説明に戻る'}};
     }
+    toHalfWidth = (str) => {
+        var halfWidth = str.replace(/[\uFF01-\uFF5E]/g,
+          function(c) {
+            return String.fromCharCode(c.charCodeAt(0) - 0xfee0);
+          });
+        return halfWidth;
+    }
     submit = () =>{
         var ifFinished = true;
         /*check name
@@ -123,7 +130,7 @@ class Intro extends Component{
             var anws = {'age': this.age.current.value,
             'gender': this.gender, 'nationality': this.nationality.current.value,
             'frequency': this.frequency,
-            'workerId': this.workerId.current.value, 'bigfives': this.bigfiveAns};
+            'workerId': this.toHalfWidth(this.workerId.current.value), 'bigfives': this.bigfiveAns};
             this.awsHandler.updateQuestionnaire(anws, this.workerId.current.value);
             //exist bugs when back to intro then go to the interface
             if(this.ifFirstLoad)
