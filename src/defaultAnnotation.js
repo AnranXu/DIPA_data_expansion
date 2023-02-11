@@ -320,13 +320,13 @@ class DefaultAnnotationCard extends Component{
                 defaultValue={'0'}
                 onChange={(e)=>this.setState({informativenessValue: Number(e.target.value)})}
             >
-                <FormControlLabel value="1" control={<Radio />} labelPlacement="right" label={this.intensity[this.props.language][1]} />
-                <FormControlLabel value="2" control={<Radio />} labelPlacement="right" label={this.intensity[this.props.language][2]} />
-                <FormControlLabel value="3" control={<Radio />} labelPlacement="right" label={this.intensity[this.props.language][3]} />
-                <FormControlLabel value="4" control={<Radio />} labelPlacement="right" label={this.intensity[this.props.language][4]} />
-                <FormControlLabel value="5" control={<Radio />} labelPlacement="right" label={this.intensity[this.props.language][5]} />
-                <FormControlLabel value="6" control={<Radio />} labelPlacement="right" label={this.intensity[this.props.language][6]} />
-                <FormControlLabel value="7" control={<Radio />} labelPlacement="right" label={this.intensity[this.props.language][7]} />
+                <FormControlLabel value="1" control={<Radio />} labelPlacement="end" label={this.intensity[this.props.language][1]} />
+                <FormControlLabel value="2" control={<Radio />} labelPlacement="end" label={this.intensity[this.props.language][2]} />
+                <FormControlLabel value="3" control={<Radio />} labelPlacement="end" label={this.intensity[this.props.language][3]} />
+                <FormControlLabel value="4" control={<Radio />} labelPlacement="end" label={this.intensity[this.props.language][4]} />
+                <FormControlLabel value="5" control={<Radio />} labelPlacement="end" label={this.intensity[this.props.language][5]} />
+                <FormControlLabel value="6" control={<Radio />} labelPlacement="end" label={this.intensity[this.props.language][6]} />
+                <FormControlLabel value="7" control={<Radio />} labelPlacement="end" label={this.intensity[this.props.language][7]} />
             </RadioGroup>
         </FormControl>
         )
@@ -365,7 +365,7 @@ class DefaultAnnotationCard extends Component{
                 <Card.Body>
                     <Card.Title style={{fontSize: 'large'}}><strong>{this.text['title'][this.props.language]}</strong>
                     </Card.Title>
-                    <span style={{display: 'incline'}}>{this.text['question'][this.props.language] + ':    ' + String(this.state.curQuestion + 1) + ' / 3'}</span>
+                    <span style={{display: 'incline', color: 'red'}}>{this.text['question'][this.props.language] + ':    ' + String(this.state.curQuestion + 1) + ' / 3'}</span>
                     {this.changePage()}
                     <div style={{display: this.state.curQuestion === 0? 'block': 'none'}}>
                         <Card.Text style={{textAlign: 'left'}}>
