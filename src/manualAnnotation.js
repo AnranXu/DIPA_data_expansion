@@ -23,14 +23,18 @@ class ManualAnnotationCard extends Component{
         curQuestion: 0};
         this.intensity = { 'en': {1: '1: negligible source to identify',
             2: '2: minor source to identify',
-            3: '3: moderate source to identify',
-            4: '4: effective source to identify ',
-            5: '5: substantial source to identify'},
+            3: '3: slight source to identify',
+            4: '4: moderate source to identify',
+            5: '5: effective source to identify ',
+            6: '6: substantial source to identify',
+            7: '7: maximum source to identity'},
             'jp':{1: '1: ほとんど役に立たない情報源です',
             2: '2: 軽微な情報源です',
-            3: '3: 中程度の情報源です',
-            4: '4: 有効な情報源です',
-            5: '5: 多大な情報源です'}
+            3: '3: やや不足な情報源です',
+            4: '4: 中程度の情報源です',
+            5: '5: 有効な情報源です',
+            6: '6: 多大な情報源です',
+            7: '7: 最大な情報源です'}
         };
         this.marks = { 'en':[
             {value: 1,label: 'slightly'},
@@ -308,6 +312,8 @@ class ManualAnnotationCard extends Component{
             <FormControlLabel value="3" control={<Radio />} labelPlacement="right" label={this.intensity[this.props.language][3]} />
             <FormControlLabel value="4" control={<Radio />} labelPlacement="right" label={this.intensity[this.props.language][4]} />
             <FormControlLabel value="5" control={<Radio />} labelPlacement="right" label={this.intensity[this.props.language][5]} />
+            <FormControlLabel value="6" control={<Radio />} labelPlacement="right" label={this.intensity[this.props.language][6]} />
+            <FormControlLabel value="7" control={<Radio />} labelPlacement="right" label={this.intensity[this.props.language][7]} />
         </RadioGroup>
         </FormControl>
         )
