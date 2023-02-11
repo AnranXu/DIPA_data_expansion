@@ -204,7 +204,7 @@ class Intro extends Component{
                 
                 <h3>
                     <Card.Text text={'dark'}>
-                    Your task is to annotate all privacy-threatening content in given images (Normally there are 20 images). 
+                    Your task is to annotate all privacy-threatening content in given images (Normally there are 10 images). 
                     <br></br>
                     <br></br>
                     Please first input your basic information and fill out a small questionnaire. 
@@ -361,7 +361,7 @@ class Intro extends Component{
             <div>
                 <h3>
                     <Card.Text text={'dark'}>
-                        この作業は、与えられた画像（通常20枚の画像があります）の中で、プライバシーを脅かすすべてのコンテンツにアノテーションを行う（注釈を付ける）ことです。 
+                        この作業は、与えられた画像（通常10枚の画像があります）の中で、プライバシーを脅かすすべてのコンテンツにアノテーションを行う（注釈を付ける）ことです。 
                         <br></br>
                         <br></br>
                         まず、あなたの基本情報を入力し、簡単なアンケートに答えてください。 
