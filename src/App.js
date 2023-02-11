@@ -12,7 +12,7 @@ class App extends Component {
     this.lg = new URLSearchParams(window.location.search).get("lg");
     this.testMode = new URLSearchParams(window.location.search).get("test") === 'true';
     this.admin = new URLSearchParams(window.location.search).get("admin") === 'true';
-    document.title = "privacy-oriented image annotation";
+    document.title = "DIPA data expansion";
     this.state = {page: 'intro', workerId: ''};
   }
   toolCallback = (childData) =>{
@@ -22,7 +22,6 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-          <meta httpEquiv="Permissions-Policy" content="interest-cohort=()"></meta>
           <Intro testMode = {this.testMode} language = {this.lg} display = {this.state.page==='intro'?true:false} toolCallback={this.toolCallback}/>
           <General testMode = {this.testMode} language = {this.lg} display = {this.state.page==='intro'?false:true} workerId = {this.state.workerId} toolCallback={this.toolCallback}/>
           <button style={{display: this.admin? 'block': 'none'}} onClick={()=>{var test = new awsHandler(this.lg, this.testMode);test.dbCleanUncompleteRecord();}}>Clear database</button> 
