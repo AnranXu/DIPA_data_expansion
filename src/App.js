@@ -22,6 +22,7 @@ class App extends Component {
   render(){
     return (
       <div className="App">
+          <meta httpEquiv="Permissions-Policy" content="interest-cohort=()"></meta>
           <Intro testMode = {this.testMode} language = {this.lg} display = {this.state.page==='intro'?true:false} toolCallback={this.toolCallback}/>
           <General testMode = {this.testMode} language = {this.lg} display = {this.state.page==='intro'?false:true} workerId = {this.state.workerId} toolCallback={this.toolCallback}/>
           <button style={{display: this.admin? 'block': 'none'}} onClick={()=>{var test = new awsHandler(this.lg, this.testMode);test.dbCleanUncompleteRecord();}}>Clear database</button> 
