@@ -64,7 +64,7 @@ class unify_annotation:
         #name_list = np.array(name_list)
         np.random.seed(0)
         np.random.shuffle(name_list)
-        task_per_worker = 20
+        task_per_worker = 10
         task_record = dict()
         for i in range(int(len(name_list) / task_per_worker) + 1):
             start = i*task_per_worker
@@ -76,5 +76,5 @@ class unify_annotation:
             w.write(json.dumps(task_record))
 if __name__ == '__main__':
     unifier = unify_annotation()
-    unifier.unifying()
-    #unifier.generate_task_json()
+    #unifier.unifying()
+    unifier.generate_task_json()

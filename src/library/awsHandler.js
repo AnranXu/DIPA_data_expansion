@@ -51,7 +51,7 @@ class awsHandler{
             FilterExpression: "progress >= :tasknum",
             // Define the expression attribute value, which are substitutes for the values you want to compare.
             ExpressionAttributeValues: {
-            ":tasknum": {N: "20"},
+            ":tasknum": {N: "10"},
             },
             // Set the projection expression, which are the attributes that you want.
             ProjectionExpression: "workerId, taskId, progress",
@@ -99,7 +99,7 @@ class awsHandler{
             FilterExpression: "progress < :tasknum",
             // Define the expression attribute value, which are substitutes for the values you want to compare.
             ExpressionAttributeValues: {
-            ":tasknum": {N: "20"},
+            ":tasknum": {N: "10"},
             },
             // Set the projection expression, which are the attributes that you want.
             ProjectionExpression: "workerId, taskId, progress",

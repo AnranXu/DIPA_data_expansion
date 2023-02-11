@@ -178,11 +178,11 @@ class Intro extends Component{
         <div>
             <Card.Text style={{ textAlign: 'left'}}><h4>{question}</h4></Card.Text>
             <div defaultValue={'0'} key = {'question-' + String(i)} ref={this.bigfiveRef[i]} className={'radioButton'} onChange={this.getBigfive}>
-                <input type="radio" value="1" name={'question-' + String(i)} /> {answer[this.props.language][0]}
-                <input type="radio" value="2" name={'question-' + String(i)} /> {answer[this.props.language][1]}
-                <input type="radio" value="3" name={'question-' + String(i)} /> {answer[this.props.language][2]}
-                <input type="radio" value="4" name={'question-' + String(i)} /> {answer[this.props.language][3]}
-                <input type="radio" value="5" name={'question-' + String(i)} /> {answer[this.props.language][4]}
+                <input type="radio" value="1" key={'question-' + String(i) + '-1'} name={'question-' + String(i)} /> {answer[this.props.language][0]}
+                <input type="radio" value="2" key={'question-' + String(i) + '-2'} name={'question-' + String(i)} /> {answer[this.props.language][1]}
+                <input type="radio" value="3" key={'question-' + String(i) + '-3'} name={'question-' + String(i)} /> {answer[this.props.language][2]}
+                <input type="radio" value="4" key={'question-' + String(i) + '-4'} name={'question-' + String(i)} /> {answer[this.props.language][3]}
+                <input type="radio" value="5" key={'question-' + String(i) + '-5'} name={'question-' + String(i)} /> {answer[this.props.language][4]}
             </div>
             <br></br>
         </div>
@@ -201,8 +201,9 @@ class Intro extends Component{
         var q3 = require('./img/q3_en.png');
         return(
             <div>
-                <Card.Text text={'dark'}>
-                    <h3>
+                
+                <h3>
+                    <Card.Text text={'dark'}>
                     Your task is to annotate all privacy-threatening content in given images (Normally there are 20 images). 
                     <br></br>
                     <br></br>
@@ -212,35 +213,39 @@ class Intro extends Component{
                     After you click the bottommost button, you will go to the annotation interface (You may back to read the instruction later if you need).
                     <br></br>
                     <br></br>
-                    </h3>
-                </Card.Text>
+                    </Card.Text>
+                </h3>
+                
                 <Card.Title><h1><strong>How to use the interface</strong></h1></Card.Title>
-                <Card.Text>
-                    <h3>
+                   
                         <Row>
                             <Col>
-                            <br></br>
-                            Please finish the questionnaire first and click the button "I fully understand the study and want to do this task with my consent." at the bottom to go to the task page.
-                            <br></br>
-                            <br></br>
-                            The right figure is an example of the interface.
-                            <br></br>
-                            <br></br>
-                            You will see a list of labels after you load an image. 
-                            <br></br>
-                            <br></br>
-                            You need to click each of them to answer if you regard this content as <strong>privacy-threatening</strong>.
-                            <br></br>
-                            <br></br>
-                            If you think this content is privacy-threatening, please answer the questions folded in the label.
-                            <br></br>
-                            <br></br>
-                            Questions include what type of data this content show, how informative this content is, and your perspectives on sharing if the photo is related to you.
-                            <br></br>
-                            <br></br>
-                            Examples of questions are shown below. Questions are always the same whatever the content you choose.
-                            <br></br>
-                            <br></br>
+                            <h3>
+                            <Card.Text>
+                                <br></br>
+                                Please finish the questionnaire first and click the button "I fully understand the study and want to do this task with my consent." at the bottom to go to the task page.
+                                <br></br>
+                                <br></br>
+                                The right figure is an example of the interface.
+                                <br></br>
+                                <br></br>
+                                You will see a list of labels after you load an image. 
+                                <br></br>
+                                <br></br>
+                                You need to click each of them to answer if you regard this content as <strong>privacy-threatening</strong>.
+                                <br></br>
+                                <br></br>
+                                If you think this content is privacy-threatening, please answer the questions folded in the label.
+                                <br></br>
+                                <br></br>
+                                Questions include what type of data this content show, how informative this content is, and your perspectives on sharing if the photo is related to you.
+                                <br></br>
+                                <br></br>
+                                Examples of questions are shown below. Questions are always the same whatever the content you choose.
+                                <br></br>
+                                <br></br>
+                            </Card.Text>
+                            </h3>
                             </Col>
                             <Col>
                                 <img src = {loading} alt='' style = {{maxHeight: '100%', maxWidth: '100%'}}/>
@@ -254,11 +259,11 @@ class Intro extends Component{
                         <Row>
                             <Col>
                                 <Figure>
-                                    <Figure.Caption style={{textAlign: 'center', color: 'black'}}>
-                                        <h2>
-                                        Question 1
-                                        </h2>
-                                    </Figure.Caption>
+                                    <h2>
+                                        <Figure.Caption style={{textAlign: 'center', color: 'black'}}>
+                                            Question 1
+                                        </Figure.Caption>
+                                    </h2>
                                     <br></br>
                                     <Figure.Image
                                         src={q1}
@@ -267,11 +272,11 @@ class Intro extends Component{
                             </Col>
                             <Col>
                                 <Figure>
-                                    <Figure.Caption style={{textAlign: 'center', color: 'black'}}>
-                                        <h2>
-                                        Question 2
-                                        </h2>
-                                    </Figure.Caption>
+                                    <h2>
+                                        <Figure.Caption style={{textAlign: 'center', color: 'black'}}>
+                                            Question 2
+                                        </Figure.Caption>
+                                    </h2>
                                     <br></br>
                                     <Figure.Image
                                         src={q2}
@@ -280,11 +285,11 @@ class Intro extends Component{
                             </Col>
                             <Col>
                                 <Figure>
-                                    <Figure.Caption style={{textAlign: 'center', color: 'black'}}>
-                                        <h2>
-                                        Question 3
-                                        </h2>
-                                    </Figure.Caption>
+                                    <h2>
+                                        <Figure.Caption style={{textAlign: 'center', color: 'black'}}>
+                                            Question 3
+                                        </Figure.Caption>
+                                    </h2>
                                     <br></br>
                                     <Figure.Image
                                         src={q3}
@@ -292,23 +297,27 @@ class Intro extends Component{
                                 </Figure>
                             </Col>
                         </Row>
-                        If you think this content is <strong>not</strong> privacy-threatening, please check the box 'The above content is not privacy-threatening' to <strong>skip the annotation</strong>.
-                        <br></br>
-                        <br></br>
-                        You may mark other objects by the button 'Create bounding box' if you find something privacy-threatening but <strong>is not given in the default annotations</strong>. 
-                        <br></br>
-                        <br></br>
-                        After you click it, please move your mouse to the image and create a bounding box by mouse down and mouse up.
-                        <br></br>
-                        <br></br>
-                        Please also tell us why you create extra bounding boxes.
-                        <br></br>
-                        <br></br>
-                        Once you finish all the annotations, please click '<strong>Load the next image</strong>' to annotate the next image.
-                        <br></br>
-                        <br></br>
-                    </h3>
-                </Card.Text>
+                        <h3>
+                            <Card.Text>
+                            If you think this content is <strong>not</strong> privacy-threatening, please check the box 'The above content is not privacy-threatening' to <strong>skip the annotation</strong>.
+                            <br></br>
+                            <br></br>
+                            You may mark other objects by the button 'Create bounding box' if you find something privacy-threatening but <strong>is not given in the default annotations</strong>. 
+                            <br></br>
+                            <br></br>
+                            After you click it, please move your mouse to the image and create a bounding box by mouse down and mouse up.
+                            <br></br>
+                            <br></br>
+                            Please also tell us why you create extra bounding boxes.
+                            <br></br>
+                            <br></br>
+                            Once you finish all the annotations, please click '<strong>Load the next image</strong>' to annotate the next image.
+                            <br></br>
+                            <br></br>
+                            </Card.Text>
+                        </h3>
+                    
+                
                 <Card.Title><h1><strong>How to know if I finish the task?</strong></h1></Card.Title>
                 <Card.Text>
                     <h3>
@@ -350,57 +359,63 @@ class Intro extends Component{
         var q3 = require('./img/q3_jp.png');
         return(
             <div>
-                <Card.Text text={'dark'}>
-                    <h3>
-                    この作業は、与えられた画像（通常20枚の画像があります）の中で、プライバシーを脅かすすべてのコンテンツにアノテーションを行う（注釈を付ける）ことです。 
-                    <br></br>
-                    <br></br>
-                    まず、あなたの基本情報を入力し、簡単なアンケートに答えてください。 
-                    <br></br>
-                    <br></br>
-                    一番下のボタンをクリックすると、作業用の画面に移ります（必要であれば、後で説明書を読み返すことができます）。
-                    <br></br>
-                    <br></br>
-                    </h3>
-                </Card.Text>
+                <h3>
+                    <Card.Text text={'dark'}>
+                        この作業は、与えられた画像（通常20枚の画像があります）の中で、プライバシーを脅かすすべてのコンテンツにアノテーションを行う（注釈を付ける）ことです。 
+                        <br></br>
+                        <br></br>
+                        まず、あなたの基本情報を入力し、簡単なアンケートに答えてください。 
+                        <br></br>
+                        <br></br>
+                        一番下のボタンをクリックすると、作業用の画面に移ります（必要であれば、後で説明書を読み返すことができます）。
+                        <br></br>
+                        <br></br>
+
+                    </Card.Text>
+                </h3>
                 <Card.Title><h1><strong>インターフェイスの使い方</strong></h1></Card.Title>
-                <Card.Text>
-                    <h3>
+                
+                    
                         <Row>
                             <Col>
-                            <br></br>
-                            まずはアンケートに答えていただき、一番下の「私はこの研究を十分に理解し、同意の上でこの作業を行いたいです」というボタンをクリックし、タスクのページに進んでください。
-                            <br></br>
-                            <br></br>
-                            右図はインターフェースの一例です。
-                            <br></br>
-                            <br></br>   
-                            {/*ボタン 「<strong>次の画像を読み込む</strong>」をクリックすると、次にアノテーションする画像が表示されます。 
-                            <br></br>
-                            <br></br>*/}
-                            画像が読み込まれると、ラベルのリストが表示されます。
-                            <br></br>
-                            <br></br>   
-                            これらが<strong>プライバシーを脅かすもの</strong>と考えた場合、クリックしてください。また、その場合ラベルに折りたたまれている質問にも答えてください。
-                            <br></br>
-                            <br></br>
-                            質問の例を以下に示します。どのようなコンテンツであっても、質問は常に同じです。
-                            <br></br>
-                            <br></br>
+                            <h3>
+                            <Card.Text>
+                                <br></br>
+                                まずはアンケートに答えていただき、一番下の「私はこの研究を十分に理解し、同意の上でこの作業を行いたいです」というボタンをクリックし、タスクのページに進んでください。
+                                <br></br>
+                                <br></br>
+                                右図はインターフェースの一例です。
+                                <br></br>
+                                <br></br>   
+                                {/*ボタン 「<strong>次の画像を読み込む</strong>」をクリックすると、次にアノテーションする画像が表示されます。 
+                                <br></br>
+                                <br></br>*/}
+                                画像が読み込まれると、ラベルのリストが表示されます。
+                                <br></br>
+                                <br></br>   
+                                これらが<strong>プライバシーを脅かすもの</strong>と考えた場合、クリックしてください。また、その場合ラベルに折りたたまれている質問にも答えてください。
+                                <br></br>
+                                <br></br>
+                                質問の例を以下に示します。どのようなコンテンツであっても、質問は常に同じです。
+                                <br></br>
+                                <br></br>
+                            </Card.Text>
+                            </h3>
                             </Col>
                             <Col>
                                 <img src = {loading} alt='' style = {{maxHeight: '100%', maxWidth: '100%'}}/>
                             </Col>
+                            
                         </Row>
                        
                         <Row>
                             <Col>
                                 <Figure>
-                                    <Figure.Caption style={{textAlign: 'center', color: 'black'}}>
-                                        <h2>
-                                        問1
-                                        </h2>
-                                    </Figure.Caption>
+                                    <h2>
+                                        <Figure.Caption style={{textAlign: 'center', color: 'black'}}>
+                                            問1
+                                        </Figure.Caption>
+                                    </h2>
                                     <br></br>
                                     <Figure.Image
                                         src={q1}
@@ -409,11 +424,12 @@ class Intro extends Component{
                             </Col>
                             <Col>
                                 <Figure>
-                                    <Figure.Caption style={{textAlign: 'center', color: 'black'}}>
-                                        <h2>
-                                        問2
-                                        </h2>
-                                    </Figure.Caption>
+                                    <h2>
+                                        <Figure.Caption style={{textAlign: 'center', color: 'black'}}>
+                                            問2
+                                        </Figure.Caption>
+                                    </h2>
+
                                     <br></br>
                                     <Figure.Image
                                         src={q2}
@@ -422,11 +438,11 @@ class Intro extends Component{
                             </Col>
                             <Col>
                                 <Figure>
-                                    <Figure.Caption style={{textAlign: 'center', color: 'black'}}>
-                                        <h2>
-                                        問3
-                                        </h2>
-                                    </Figure.Caption>
+                                    <h2>
+                                        <Figure.Caption style={{textAlign: 'center', color: 'black'}}>
+                                            問3
+                                        </Figure.Caption>
+                                    </h2>
                                     <br></br>
                                     <Figure.Image
                                         src={q3}
@@ -434,63 +450,62 @@ class Intro extends Component{
                                 </Figure>
                             </Col>
                         </Row>
-                        このコンテンツがプライバシーを脅かすもの<strong>ではない</strong>と考える場合は、「<strong>上記の内容はプライバシーを脅かすものではありません</strong>」とうボックスにチェックを入れて、<strong>アノテーションをスキップしてください</strong>。
-                        <br></br>
-                        <br></br>
-                        プライバシーを脅かすが、<strong>デフォルトの枠囲みが付与されていない</strong>ものを見つけた場合、「<strong>バウンディングボックスの作成</strong>」ボタンで追加のボックスを追加することができます。
-                        <br></br>
-                        <br></br>
-                        クリックした後、画像にマウスを移動し、マウスダウン、マウスアップでバウンディングボックスを作成してください。
-                        <br></br>
-                        <br></br>
-                        また、追加のバウンディングボックスを作成した理由も教えてください。
-                        <br></br>
-                        <br></br>
-                        全てのアノテーションが終了したら、「<strong>次の画像を読み込む</strong>」をクリックして、次の画像にアノテーションを付けてください。 
-                        <br></br>
-                        <br></br>
-                    </h3>
-                </Card.Text>
+                        <h3>
+                            <Card.Text>
+                            このコンテンツがプライバシーを脅かすもの<strong>ではない</strong>と考える場合は、「<strong>上記の内容はプライバシーを脅かすものではありません</strong>」とうボックスにチェックを入れて、<strong>アノテーションをスキップしてください</strong>。
+                            <br></br>
+                            <br></br>
+                            プライバシーを脅かすが、<strong>デフォルトの枠囲みが付与されていない</strong>ものを見つけた場合、「<strong>バウンディングボックスの作成</strong>」ボタンで追加のボックスを追加することができます。
+                            <br></br>
+                            <br></br>
+                            クリックした後、画像にマウスを移動し、マウスダウン、マウスアップでバウンディングボックスを作成してください。
+                            <br></br>
+                            <br></br>
+                            また、追加のバウンディングボックスを作成した理由も教えてください。
+                            <br></br>
+                            <br></br>
+                            全てのアノテーションが終了したら、「<strong>次の画像を読み込む</strong>」をクリックして、次の画像にアノテーションを付けてください。 
+                            <br></br>
+                            <br></br>
+                            </Card.Text>
+                        </h3>
+                        
+                    
                 <Card.Title><h1><strong>タスクが完了したかどうかを知るには？</strong></h1></Card.Title>
-                <Card.Text>
-                    <h3>
-                        <br></br>
-                        すべてのアノテーション作業が終わると、ポップアップで情報が提示されます。
-                        <br></br>
-                        <br></br>
-                        <img src = {finishPop} alt='' style = {{maxHeight: '100%', maxWidth: '100%'}}/>
-                        <br></br>
-                        <br></br>
-                        その後、画面から離れて、クラウドワークスで必要な情報を記入し、提出が完了するのを確認してください。
-                        <br></br>
-                        <br></br>
-                        もしすべてのタスクを完了する前に離れたい場合は、同じ情報（特に、<strong>クラウドワークスのID</strong>）を入力してください。それにより、途中から再開することができます。
-                        <br></br>
-                        <br></br>
-                        タスクの途中でIDを変更する必要がある場合は、このページを再読み込みしてください。  
-                        <br></br>
-                        <br></br>
-                    </h3>
-                </Card.Text>
+                <h3>
+                    <Card.Text>
+                    <br></br>
+                    すべてのアノテーション作業が終わると、ポップアップで情報が提示されます。
+                    <br></br>
+                    <br></br>
+                    <img src = {finishPop} alt='' style = {{maxHeight: '100%', maxWidth: '100%'}}/>
+                    <br></br>
+                    <br></br>
+                    その後、画面から離れて、クラウドワークスで必要な情報を記入し、提出が完了するのを確認してください。
+                    <br></br>
+                    <br></br>
+                    もしすべてのタスクを完了する前に離れたい場合は、同じ情報（特に、<strong>クラウドワークスのID</strong>）を入力してください。それにより、途中から再開することができます。
+                    <br></br>
+                    <br></br>
+                    タスクの途中でIDを変更する必要がある場合は、このページを再読み込みしてください。  
+                    <br></br>
+                    <br></br>
+                    </Card.Text>
+                </h3>
+                
                 <Card.Title><h1><strong>追記</strong></h1></Card.Title>
-                <Card.Text>
-                    <br></br>
-                    <br></br>
-                    <h3>
-                    データ形式の制約により、対象物のラベルは英語で表記されています。
-                    </h3>
-                    <br></br>
-                    <br></br>
-                    <h3>
-                    枠囲みの中に書いてあることがわからない場合は、<a href="https://www.deepl.com/translator" rel="noreferrer">
-                    https://www.deepl.com/translator</a>で翻訳して意味を調べてください。
-                    </h3>
-                    <br></br>
-                    <br></br>
-                    <h3>
-                    お手数をおかけして申し訳ございません。
-                    </h3>
-                </Card.Text>
+                <h3>
+                    <Card.Text>
+                        データ形式の制約により、対象物のラベルは英語で表記されています。
+                        <br></br>
+                        <br></br>
+                        枠囲みの中に書いてあることがわからない場合は、<a href="https://www.deepl.com/translator" rel="noreferrer">
+                        https://www.deepl.com/translator</a>で翻訳して意味を調べてください。
+                        <br></br>
+                        <br></br>
+                        お手数をおかけして申し訳ございません。
+                    </Card.Text>
+                </h3>
 
             </div>
             
@@ -512,16 +527,16 @@ class Intro extends Component{
     changePage = () =>{
         return(
         <div>
-            <IconButton>
-                <Stack justifyContent="center" alignItems="center" maxWidth="500px" onClick={this.goPrevious}>
+            <IconButton  onClick={this.goPrevious}>
+                <Stack justifyContent="center" alignItems="center" maxWidth="500px">
                     <ArrowBackIosNewIcon />
-                    <Typography style={{color: 'blue'}} variant="h5">{this.text['previous'][this.props.language]}</Typography>
+                    <Typography component={'span'} style={{color: 'blue'}} variant="h5">{this.text['previous'][this.props.language]}</Typography>
                 </Stack>
             </IconButton>
-            <IconButton>
-                    <Stack justifyContent="center" alignItems="center" maxWidth="500px" onClick={this.goNext}>
+            <IconButton  onClick={this.goNext}>
+                    <Stack justifyContent="center" alignItems="center" maxWidth="500px">
                         <ArrowForwardIosIcon />
-                        <Typography style={{color: 'blue'}} variant="h5">{this.text['next'][this.props.language]}</Typography>
+                        <Typography component={'span'} style={{color: 'blue'}} variant="h5">{this.text['next'][this.props.language]}</Typography>
                 </Stack>
             </IconButton>
         </div>);
@@ -569,19 +584,19 @@ class Intro extends Component{
                     <input type="text" id="particpant-age" ref={this.age}/><br/>
                     <span  style={{ textAlign: 'left'}}><h3>{this.text['gender'][this.props.language]}</h3></span>
                     <div id ={'gender'} onChange={this.selectGender}>
-                        <input type="radio" value="Male" name="gender" /> {this.text['male'][this.props.language]}
-                        <input type="radio" value="Female" name="gender" /> {this.text['female'][this.props.language]}
-                        <input type="radio" value="Other" name="gender" /> {this.text['not mention'][this.props.language]}
+                        <input type="radio" value="Male" name="gender" key={'gender-male'}/> {this.text['male'][this.props.language]}
+                        <input type="radio" value="Female" name="gender" key={'gender-female'}/> {this.text['female'][this.props.language]}
+                        <input type="radio" value="Other" name="gender" key={'gender-other'}/> {this.text['not mention'][this.props.language]}
                     </div>
                     <span  style={{ textAlign: 'left'}}><h3>{this.text['nationality'][this.props.language]}</h3></span>
                     <input type="text" id="particpant-nationality" ref={this.nationality} /><br/>
                     <span  style={{ textAlign: 'left'}}><h3>{this.text['frequency'][this.props.language]}</h3></span>
                     <div id ={'frequency'} onChange={this.selectFrequency}>
-                        <input type="radio" value={0} name="frequency" /> {this.frequencyText[this.props.language][0]}
-                        <input type="radio" value={1} name="frequency" /> {this.frequencyText[this.props.language][1]}
-                        <input type="radio" value={2} name="frequency" /> {this.frequencyText[this.props.language][2]}
-                        <input type="radio" value={3} name="frequency" /> {this.frequencyText[this.props.language][3]}
-                        <input type="radio" value={4} name="frequency" /> {this.frequencyText[this.props.language][4]}
+                        <input type="radio" value={0} name="frequency" key={'frequency-1'}/> {this.frequencyText[this.props.language][0]}
+                        <input type="radio" value={1} name="frequency" key={'frequency-2'}/> {this.frequencyText[this.props.language][1]}
+                        <input type="radio" value={2} name="frequency" key={'frequency-3'}/> {this.frequencyText[this.props.language][2]}
+                        <input type="radio" value={3} name="frequency" key={'frequency-4'}/> {this.frequencyText[this.props.language][3]}
+                        <input type="radio" value={4} name="frequency" key={'frequency-5'}/> {this.frequencyText[this.props.language][4]}
                     </div>
                     <br></br>
                     <Card.Text style={{ textAlign: 'left'}}>

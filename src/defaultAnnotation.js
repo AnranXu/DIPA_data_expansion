@@ -328,16 +328,16 @@ class DefaultAnnotationCard extends Component{
     changePage = () =>{
         return(
         <div>
-            <IconButton>
-                <Stack justifyContent="center" alignItems="center" maxWidth="200px" onClick={this.goPrevious}>
+            <IconButton onClick={this.goPrevious}>
+                <Stack justifyContent="center" alignItems="center" maxWidth="200px" >
                     <ArrowBackIosNewIcon />
-                    <Typography style={{color: 'black'}} variant="h6">{this.text['previous'][this.props.language]}</Typography>
+                    <Typography component={'span'} style={{color: 'black'}} variant="h6">{this.text['previous'][this.props.language]}</Typography>
                 </Stack>
             </IconButton>
-            <IconButton>
-                    <Stack justifyContent="center" alignItems="center" maxWidth="200px" onClick={this.goNext}>
+            <IconButton  onClick={this.goNext}>
+                    <Stack justifyContent="center" alignItems="center" maxWidth="200px">
                         <ArrowForwardIosIcon />
-                        <Typography style={{color: 'black'}} variant="h6">{this.text['next'][this.props.language]}</Typography>
+                        <Typography component={'span'} style={{color: 'black'}} variant="h6">{this.text['next'][this.props.language]}</Typography>
                 </Stack>
             </IconButton>
         </div>);

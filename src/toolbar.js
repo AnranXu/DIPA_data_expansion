@@ -20,7 +20,8 @@ class Toolbar extends Component{
         super(props);
         this.state = {bboxs: [], labelList: [], 
         curCat: '', curManualBbox: '', prevCat: '', defaultLabelClickCnt: 0,
-        manualLabelClickCnt: 0, currentProgress: 0, taskNum: 20};
+        manualLabelClickCnt: 0, currentProgress: 0};
+        this.taskNum = 10;
         this.first_loading = true;
         this.image_ID = '';
         this.cur_source = '';
@@ -492,10 +493,10 @@ class Toolbar extends Component{
                                 "N": String(0)
                             },
                             "taskId":{
-                                "N": nextTask
+                                "N": String(nextTask)
                             },
                             "taskNum":{
-                                "N": String(20)
+                                "N": String(this.taskNum)
                             },
                             "taskList":{
                                 "SS": taskList
@@ -711,7 +712,7 @@ class Toolbar extends Component{
                         }}
                         >
                             {this.text['progress'][this.props.language] + ':    ' + 
-                            this.state.currentProgress + ' / ' + this.state.taskNum}
+                            this.state.currentProgress + ' / ' + this.taskNum}
                     </Button>
                     <Button
                         id={"loadButton"} onClick = {() => this.loadData()}
