@@ -30,9 +30,13 @@ class unify_annotation:
             anns = {'annotations': {}, 'width': 0, 'height': 0, 'source': ""}
             for platform_name, annotation_names in value.items():
                 # copy workerinfo
+                used_category = []
                 for annotation_name in annotation_names:
                     label_name = annotation_name.split('_')[0] + '_label'
-                    worker_id = annotation_name.split('_')[1] + '.json'
+                    prefix_len = len(annotation_name.split('_')[0]) + 1
+                    worker_id = annotation_name[prefix_len:]
+                    worker_id = worker_id[:-11]
+                    worker_id = worker_id + '.json'
                     if os.path.exists(os.path.join(self.annotation_folder, platform_name, 'workerinfo', worker_id)):
                         shutil.copyfile(os.path.join(self.annotation_folder, platform_name, 'workerinfo', worker_id), 
                     os.path.join(self.output_folder, 'workerinfo', worker_id))
@@ -44,16 +48,23 @@ class unify_annotation:
                         source = ori_ann['source']
                         anns['source'] = source
                         cnt = 0
+                        manualCnt = 0
+                        anns['width'] = ori_label[0]['width']
+                        anns['height'] = ori_label[0]['height']
                         for object, ann in ori_ann['defaultAnnotation'].items():
-                            if not ann['ifNoPrivacy'] and object not in anns.keys():
+                            if not ann['ifNoPrivacy'] and object not in used_category:
                                 #find all corresponding bboxes
+                                used_category.append(object)
                                 for label in ori_label:
                                     if label['category'] == object:
                                         anns['annotations'][str(cnt)] = {'category': object, 'bbox': []}
                                         anns['annotations'][str(cnt)]['bbox'] = label['bbox']
-                                        anns['width'] = label['width']
-                                        anns['height'] = label['height']
                                         cnt += 1
+                        for object, ann in ori_ann['manualAnnotation'].items():
+                            anns['annotations'][str(cnt)] = {'category': 'Object {}'.format(manualCnt), 'bbox': []}
+                            anns['annotations'][str(cnt)]['bbox'] = ann['bbox']
+                            manualCnt += 1
+                            cnt += 1
             #print(anns)
             with open(os.path.join(self.output_folder, 'annotations', new_label), 'w') as w:
                 w.write(json.dumps(anns))
@@ -76,5 +87,5 @@ class unify_annotation:
             w.write(json.dumps(task_record))
 if __name__ == '__main__':
     unifier = unify_annotation()
-    #unifier.unifying()
-    unifier.generate_task_json()
+    unifier.unifying()
+    #unifier.generate_task_json()

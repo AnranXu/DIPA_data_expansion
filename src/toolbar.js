@@ -445,6 +445,8 @@ class Toolbar extends Component{
                         alert(this.text['finishPopUp'][this.props.language]);
                         if(this.props.language === 'en' && this.props.testMode === false)
                             window.location.replace('https://www.anranxu.com');//need new prolific link 
+                        else if(this.props.language === 'jp' && this.props.testMode === false)
+                            window.location.replace('https://sites.google.com/iis-lab.org/dipafinishpage-jp');
                     }
                 });
             }
