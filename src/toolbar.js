@@ -311,9 +311,10 @@ class Toolbar extends Component{
             var json = text.replaceAll("\'", "\"");
             var cur_ann = JSON.parse(json); // parse each row as json file
             var keys = Object.keys(cur_ann['annotations']);
+            this.cur_source = cur_ann['source'];
             for(var i = 0; i < keys.length; i++)
             {
-                this.cur_source = cur_ann['source'];
+                //this.cur_source = cur_ann['source'];
                 ori_bboxs.push({'bbox': cur_ann['annotations'][keys[i]]['bbox'], 'category': cur_ann['annotations'][keys[i]]['category'], 
                 'width': cur_ann['width'], 'height': cur_ann['height']}); //get bbox (x, y, w, h), width, height of the image (for unknown reasons, the scale of bboxs and real image sometimes are not identical), and category
                 //create list of category, we just need to know that this image contain those categories.
