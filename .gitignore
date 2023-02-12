@@ -16,11 +16,11 @@ dataset/new annotations/*
 dataset/new annotations (no manuallabel)/*
 dataset/original labels/*
 dataset/runs/*
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-results/CrowdWorks/
-results/Prolific/
-results/Anonymous/
-results/dataset/
+results/annotations/*
+results/dataset/*
+results/images/*
 # dependencies
 /node_modules
 /.pnp

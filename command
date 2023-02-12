@@ -1,4 +1,4 @@
 For getting CrowdWorks' data:
-aws s3 cp s3://iui-privacy-dataset/CrowdWorks/ ./results/CrowdWorks/ --recursive
+aws s3 cp s3://dipa-data-expansion/CrowdWorks/ ./results/annotations/CrowdWorks/ --recursive
 For getting Prolific' data:
-aws s3 cp s3://iui-privacy-dataset/Prolific/ ./results/Prolific/ --recursive
+aws s3 cp s3://dipa-data-expansion/Prolific/ ./results/annotations/Prolific/ --recursive
