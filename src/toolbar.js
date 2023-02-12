@@ -309,7 +309,7 @@ class Toolbar extends Component{
         fetch(label_URL).then( (res) => res.text() ) //read new label as text
         .then( (text) => {
             var json = text.replaceAll("\'", "\"");
-            var cur_ann = JSON.parse(json); // parse each row as json file
+            var cur_ann = JSON.parse(json); 
             var keys = Object.keys(cur_ann['annotations']);
             this.cur_source = cur_ann['source'];
             for(var i = 0; i < keys.length; i++)
