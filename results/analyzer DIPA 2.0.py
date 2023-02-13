@@ -37,7 +37,8 @@ class analyzer:
         self.lvis_mycat_map = {}
         self.test_size = 0.2
         self.custom_informationType = []
-        self.custom_recipient = []
+        self.custom_recipient_owner = []
+        self.custom_recipient_others = []
         self.description = {'informationType': ['personal information', 'location of shooting',
         'individual preferences/pastimes', 'social circle', 'others\' private/confidential information', 'Other things'],
         'informativeness':['negligible source','minor source','slight source','moderate source',
@@ -84,10 +85,18 @@ class analyzer:
         #label: the original label from OpenImages or LVIS 
         #annotation: the privacy-oriented annotations from our study
         img_annotation_map = {}
+        valid_workers = []
         crowdworks_labels = os.listdir(os.path.join(self.annotation_path, 'CrowdWorks', 'crowdscouringlabel'))
+        with open(os.path.join(self.annotation_path, 'CrowdWorks', 'valid_workers.json')) as f:
+            valid_workers = json.load(f)
         #prolific_labels = os.listdir(os.path.join(self.annotation_path, 'Prolific', 'crowdscouringlabel'))
         for label_path in crowdworks_labels:
             img_name = label_path.split('_')[0]
+            prefix_len = len(img_name) + 1
+            worker_name = label_path[prefix_len:]
+            worker_name = worker_name[:-11]
+            if worker_name not in valid_workers:
+                continue
             if img_name != '':
                 if img_name not in img_annotation_map.keys():
                     img_annotation_map[img_name] = {}
@@ -153,19 +162,23 @@ class analyzer:
                         else:
                             category = value['category']
                         id = image_id + '_' + key
-                        informationType = int(value['informationType']) - 1
+                        informationType = value['informationType']
                         informativeness = int(value['informativeness']) - 1
-                        sharing = int(value['sharing']) - 1
-                        if sharing == 4:
-                            self.custom_recipient.append(value['sharingInput'])
-                        if informationType == 4:
+                        sharingOwner = value['sharingOwner']
+                        sharingOthers = value['sharingOthers']
+                        if informationType[5] == 1:
                             self.custom_informationType.append(value['informationTypeInput'])
+                        if sharingOwner[6] == 1:
+                            self.custom_recipient_owner.append(value['sharingOwenerInput'])
+                        if sharingOthers[6] == 1:
+                            self.custom_recipient_others.append(value['sharingOthersInput'])
                         entry = pd.DataFrame.from_dict({
                             'id': [id],
                             "category": [category],
                             "informationType":  [informationType],
                             "informativeness": [informativeness],
-                            "sharing": [sharing],
+                            "sharingOwner": [sharingOwner],
+                            "sharingOthers": [sharingOthers],
                             "age": [age],
                             "gender": [gender],
                             "platform": [platform],
@@ -206,19 +219,23 @@ class analyzer:
                     for key, value in label['manualAnnotation'].items():
                         category = value['category']
                         id = image_id + '_' + key
-                        informationType = int(value['informationType']) - 1
+                        informationType = value['informationType']
                         informativeness = int(value['informativeness']) - 1
-                        sharing = int(value['sharing']) - 1
-                        if sharing == 4:
-                            self.custom_recipient.append(value['sharingInput'])
-                        if informationType == 4:
+                        sharingOwner = value['sharingOwner']
+                        sharingOthers = value['sharingOthers']
+                        if informationType[5] == 1:
                             self.custom_informationType.append(value['informationTypeInput'])
+                        if sharingOwner[6] == 1:
+                            self.custom_recipient_owner.append(value['sharingOwenerInput'])
+                        if sharingOthers[6] == 1:
+                            self.custom_recipient_others.append(value['sharingOthersInput'])
                         entry = pd.DataFrame.from_dict({
                             'id': [id],
                             "category": [category],
                             "informationType":  [informationType],
                             "informativeness": [informativeness],
-                            "sharing": [sharing],
+                            "sharingOwner": [sharingOwner],
+                            "sharingOthers": [sharingOthers],
                             "age": [age],
                             "gender": [gender],
                             "platform": [platform],
@@ -584,6 +601,6 @@ if __name__ == '__main__':
     basic_info = [ "age", "gender", "platform"]
     category = ['category']
     privacy_metrics = ['informationType', 'informativeness', 'sharingOwner', 'sharingOthers']
-    #analyze.prepare_mega_table()
+    analyze.prepare_mega_table(save_csv=True)
     #analyze.basic_count()
     

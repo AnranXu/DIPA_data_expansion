@@ -41,7 +41,7 @@ class Intro extends Component{
         'age': {'en': 'Age (in Arabic Number):', 'jp': '年齢 (アラビア数字で表記):'},
         'nationality': {'en': 'Nationality:', 'jp': '国籍:'},
         'workerId': {'en': 'Worker\'s ID:', 
-        'jp': 'ワーカーズID:'},
+        'jp': 'ユーザ名:'},
         'frequency': {'en': 'How often do you share pictures taken by you on social media?', 'jp': '自分で撮った写真をどれくらいの頻度でSNSでシェアしていますか？'},
         'bigfiveTitle': {'en': 'Please answer the following questions.', 'jp': '以下の質問にお答えください。'},
         'confirmText0': {'en': 'I fully understand the study and want to do this task with my consent.', 'jp': '私はこの研究を十分に理解し、同意の上でこの作業を行いたいです。'},

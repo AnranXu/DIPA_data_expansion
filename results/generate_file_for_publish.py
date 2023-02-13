@@ -29,7 +29,6 @@ if __name__ == '__main__':
                         worker_info['bigfives']['Conscientiousness'] = 6 - int(ori_bigfive[2]) + int(ori_bigfive[7])
                         worker_info['bigfives']['Neuroticism'] = 6 - int(ori_bigfive[3]) + int(ori_bigfive[8])
                         worker_info['bigfives']['Openness to Experience'] = 6 - int(ori_bigfive[4]) + int(ori_bigfive[9])
-                        del worker_info['name']
 
-                    with open(os.path.join(dirname, platform, 'workerinfo', worker_file), 'w') as w:
+                    with open(os.path.join(dirname, 'tmp', 'workerinfo', worker_file), 'w') as w:
                         json.dump(worker_info, w)
