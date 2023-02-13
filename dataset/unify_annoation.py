@@ -28,14 +28,19 @@ class unify_annotation:
             new_label = key[:-4] + '_label.json'
             shutil.copyfile(os.path.join(self.img_folder, key), os.path.join(self.output_folder, 'images', key))
             anns = {'annotations': {}, 'width': 0, 'height': 0, 'source': ""}
+            used_category = []
+            cnt = 0
+            manualCnt = 0
             for platform_name, annotation_names in value.items():
                 # copy workerinfo
-                used_category = []
                 for annotation_name in annotation_names:
                     label_name = annotation_name.split('_')[0] + '_label'
                     prefix_len = len(annotation_name.split('_')[0]) + 1
                     worker_id = annotation_name[prefix_len:]
                     worker_id = worker_id[:-11]
+                    # I accidentally added some record during my test, there are 7 record that should not exist, although the influence to whole results is minor
+                    if worker_id == 'test':
+                        continue
                     worker_id = worker_id + '.json'
                     if os.path.exists(os.path.join(self.annotation_folder, platform_name, 'workerinfo', worker_id)):
                         shutil.copyfile(os.path.join(self.annotation_folder, platform_name, 'workerinfo', worker_id), 
@@ -47,8 +52,6 @@ class unify_annotation:
                         # we only choose default annotations
                         source = ori_ann['source']
                         anns['source'] = source
-                        cnt = 0
-                        manualCnt = 0
                         anns['width'] = ori_label[0]['width']
                         anns['height'] = ori_label[0]['height']
                         for object, ann in ori_ann['defaultAnnotation'].items():

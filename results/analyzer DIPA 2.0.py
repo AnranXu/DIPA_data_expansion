@@ -46,7 +46,9 @@ class analyzer:
         'sharingOwner': ['I won\'t share it', 'Close relationship',
         'Regular relationship', 'Acquaintances', 'Public', 'Broadcast program', 'Other recipients'], 
         'sharingOthers':['I won\'t allow others to share it', 'Close relationship',
-        'Regular relationship', 'Acquaintances', 'Public', 'Broadcast program', 'Other recipients']}
+        'Regular relationship', 'Acquaintances', 'Public', 'Broadcast program', 'Other recipients'],
+        'frequency': ['Never', 'Less than once a month', 'Once or more per month', 
+        'Once or more per week', 'Once or more per day']}
         if not os.path.exists(self.img_annotation_map_path):
             self.generate_img_annotation_map()
         with open(self.img_annotation_map_path) as f:
@@ -123,8 +125,8 @@ class analyzer:
         #the mega table includes all privacy annotations with all corresponding info (three metrics, big five, age, gender, platform)
 
         # make sure this sequence is correct.
-        self.mega_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharing", 'age', 'gender', 
-        'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness'])
+        self.mega_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharingOwner", "sharingOthers", 'age', 'gender', 
+        'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'frequency'])
         for key in self.img_annotation_map.keys():
             for platform, value in self.img_annotation_map[key].items():
                 # now, value[0] is the only availiable index
@@ -145,7 +147,8 @@ class analyzer:
                     conscientiousness = worker['bigfives']['Conscientiousness']
                     neuroticism = worker['bigfives']['Neuroticism']
                     openness = worker['bigfives']['Openness to Experience']
-                    dataset_name = label['source']             
+                    dataset_name = label['source']     
+                    frequency = worker['frequency']         
                     for key, value in label['defaultAnnotation'].items():
                         if value['ifNoPrivacy']:
                             continue
@@ -186,7 +189,8 @@ class analyzer:
                             "agreeableness": [agreeableness],
                             "conscientiousness": [conscientiousness],
                             "neuroticism": [neuroticism],
-                            "openness": [openness]
+                            "openness": [openness],
+                            'frequency': [frequency]
                         })
 
                         self.mega_table = pd.concat([self.mega_table, entry], ignore_index=True)
@@ -195,7 +199,7 @@ class analyzer:
 
     def prepare_manual_label(self, save_csv = False) -> None:
         self.manual_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharingOwner", "sharingOthers", 'age', 'gender', 
-        'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'frequency'])
+        'platform', 'frequency', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness'])
         for key in self.img_annotation_map.keys():
             for platform, value in self.img_annotation_map[key].items():
                 # now, value[0] is the only availiable index
@@ -215,7 +219,8 @@ class analyzer:
                     agreeableness = worker['bigfives']['Agreeableness']
                     conscientiousness = worker['bigfives']['Conscientiousness']
                     neuroticism = worker['bigfives']['Neuroticism']
-                    openness = worker['bigfives']['Openness to Experience']           
+                    openness = worker['bigfives']['Openness to Experience']     
+                    frequency = worker['frequency']      
                     for key, value in label['manualAnnotation'].items():
                         category = value['category']
                         id = image_id + '_' + key
@@ -243,14 +248,50 @@ class analyzer:
                             "agreeableness": [agreeableness],
                             "conscientiousness": [conscientiousness],
                             "neuroticism": [neuroticism],
-                            "openness": [openness]
+                            "openness": [openness],
+                            'frequency': [frequency]
                         })
 
                         self.manual_table = pd.concat([self.manual_table, entry], ignore_index=True)
         if save_csv:
             self.manual_table.to_csv('./manual_table.csv', index =False)
-    def basic_count(self) -> None:
-        pass
+    def basic_count(self, read_csv = False) -> None:
+
+        def calculate_array(input_array, option_num):
+            res = np.zeros(option_num, dtype='int')
+            for i in range(input_array.shape[0]):
+                res += np.array(input_array[i])
+            return res
+        if read_csv:
+            self.mega_table = pd.read_csv('./mega_table.csv')
+        else:
+            self.prepare_mega_table()
+
+        frequency = self.mega_table['frequency'].value_counts()
+        frequency = frequency.sort_index().values
+        frequency = pd.DataFrame([frequency], columns=self.description['frequency'][:4])
+        informationType = calculate_array(self.mega_table['informationType'].values, 6)
+        informationType = pd.DataFrame([informationType], columns=self.description['informationType'])
+        informativeness = self.mega_table['informativeness'].value_counts()
+        informativeness = informativeness.sort_index().values
+        informativeness = pd.DataFrame([informativeness], columns=self.description['informativeness'])
+
+        #informativeness = pd.DataFrame([informativeness], columns=self.description['informativeness'])
+        sharingOwner = calculate_array(self.mega_table['sharingOwner'].values, 7)
+        sharingOwner = pd.DataFrame([sharingOwner], columns=self.description['sharingOwner'])
+        sharingOthers = calculate_array(self.mega_table['sharingOthers'].values, 7)
+        sharingOthers = pd.DataFrame([sharingOthers], columns=self.description['sharingOthers'])
+
+        print('----------{}----------'.format('frequency'))
+        print(frequency)
+        print('----------{}----------'.format('informationType'))
+        print(informationType)
+        print('----------{}----------'.format('informativeness'))
+        print(informativeness)
+        print('----------{}----------'.format('sharingOwner'))
+        print(sharingOwner)
+        print('----------{}----------'.format('sharingOthers'))
+        print(sharingOthers)
     def regression_model(self, input_channel, output_channel, read_csv = False)->None:
         if read_csv:
             self.mega_table = pd.read_csv('./mega_table.csv')
@@ -601,6 +642,6 @@ if __name__ == '__main__':
     basic_info = [ "age", "gender", "platform"]
     category = ['category']
     privacy_metrics = ['informationType', 'informativeness', 'sharingOwner', 'sharingOthers']
-    analyze.prepare_mega_table(save_csv=True)
-    #analyze.basic_count()
+    #analyze.prepare_mega_table(save_csv=True)
+    analyze.basic_count()
     

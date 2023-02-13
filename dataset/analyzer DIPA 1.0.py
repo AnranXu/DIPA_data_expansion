@@ -84,17 +84,17 @@ class analyzer:
 
         # make sure this sequence is correct.
         self.mega_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharing", 'age', 'gender', 
-        'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness'])
-        for key in self.img_annotation_map.keys():
-            for platform, value in self.img_annotation_map[key].items():
+        'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'imagePath', 'originCategory'])
+        for image_name in self.img_annotation_map.keys():
+            for platform, annotation_name in self.img_annotation_map[image_name].items():
                 # now, value[0] is the only availiable index
-                image_id = value[0].split('_')[0]
+                image_id = annotation_name[0].split('_')[0]
                 prefix_len = len(image_id) + 1
-                worker_file = value[0][prefix_len:]
+                worker_file = annotation_name[0][prefix_len:]
                 worker_file = worker_file[:-11]
                 worker_file = worker_file + '.json'
                 with open(os.path.join(self.annotation_path, platform, 'workerinfo', worker_file)) as f_worker, \
-                open(os.path.join(self.annotation_path, platform, 'labels', value[0])) as f_label:
+                open(os.path.join(self.annotation_path, platform, 'labels', annotation_name[0])) as f_label:
                     worker = json.load(f_worker)
                     label = json.load(f_label)
                     # we only analyze default annotations
@@ -142,7 +142,9 @@ class analyzer:
                             "agreeableness": [agreeableness],
                             "conscientiousness": [conscientiousness],
                             "neuroticism": [neuroticism],
-                            "openness": [openness]
+                            "openness": [openness],
+                            'imagePath': [image_name + '.jpg'],
+                            'originCategory': value['category']
                         })
 
                         self.mega_table = pd.concat([self.mega_table, entry], ignore_index=True)
@@ -152,15 +154,15 @@ class analyzer:
         self.manual_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharing", 'age', 'gender', 
         'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness'])
         for key in self.img_annotation_map.keys():
-            for platform, value in self.img_annotation_map[key].items():
+            for platform, annotation_name in self.img_annotation_map[key].items():
                 # now, value[0] is the only availiable index
-                image_id = value[0].split('_')[0]
+                image_id = annotation_name[0].split('_')[0]
                 prefix_len = len(image_id) + 1
-                worker_file = value[0][prefix_len:]
+                worker_file = annotation_name[0][prefix_len:]
                 worker_file = worker_file[:-11]
                 worker_file = worker_file + '.json'
                 with open(os.path.join(self.annotation_path, platform, 'workerinfo', worker_file)) as f_worker, \
-                open(os.path.join(self.annotation_path, platform, 'labels', value[0])) as f_label:
+                open(os.path.join(self.annotation_path, platform, 'labels', annotation_name[0])) as f_label:
                     worker = json.load(f_worker)
                     label = json.load(f_label)
                     # we only analyze default annotations
@@ -194,7 +196,8 @@ class analyzer:
                             "agreeableness": [agreeableness],
                             "conscientiousness": [conscientiousness],
                             "neuroticism": [neuroticism],
-                            "openness": [openness]
+                            "openness": [openness],
+                            'imagePath': [annotation_name[0]]
                         })
 
                         self.manual_table = pd.concat([self.manual_table, entry], ignore_index=True)
@@ -558,7 +561,7 @@ if __name__ == '__main__':
     print(['informativeness'])
     output_channel = privacy_metrics
     #output_channel = ['sharing']
-    #analyze.prepare_mega_table(mycat_mode=True, save_csv=False)
+    analyze.prepare_mega_table(mycat_mode=True, save_csv=True)
     #analyze.regression_model(input_channel, output_channel)
     #print(analyze.mega_table)
     #analyze.prepare_manual_label(save_csv=True)
@@ -567,6 +570,6 @@ if __name__ == '__main__':
     #print(len(analyze.mega_table['id'].unique()))
     #analyze.svm(input_channel, output_channel, read_csv=True)
     #analyze.anova(True)
-    analyze.neural_network(input_channel, output_channel, read_csv=True)
+    #analyze.neural_network(input_channel, output_channel, read_csv=True)
     #analyze.knn(input_channel, output_channel, read_csv=True)
     
