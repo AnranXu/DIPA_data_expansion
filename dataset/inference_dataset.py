@@ -60,8 +60,11 @@ class ImageMaskDataset(Dataset):
         #label
         label = self.mega_table[self.output_vector].iloc[idx].values
         label = torch.from_numpy(label)
-
-        return image, mask, input_vector, label
+        x = {}
+        x['image'] = image
+        x['mask'] = mask
+        x['input_vector'] = input_vector
+        return x, label
 
 
 if __name__ == '__main__':
@@ -79,13 +82,13 @@ if __name__ == '__main__':
     # Print some sample data from the dataset
     for i in range(1):
         sample = dataset[i]
-        image, mask, input_vector, label = sample
-        print('Sample', i, 'image shape:', image.shape)
-        print('Sample', i, 'label shape:', mask)
-        print('Sample', i, 'image shape:', input_vector.shape)
+        x, label = sample
+        print('Sample', i, 'image shape:', x['image'].shape)
+        print('Sample', i, 'label shape:', x['mask'].shape)
+        print('Sample', i, 'image shape:', x['input_vector'].shape)
         print('Sample', i, 'label shape:', label.shape)
         plt.subplot(1, 2, 1)
-        plt.imshow(TF.to_pil_image(image))
+        plt.imshow(TF.to_pil_image(x['image']))
         plt.subplot(1, 2, 2)
-        plt.imshow(mask, cmap='gray', vmin=0, vmax=1)
+        plt.imshow(x['mask'], cmap='gray', vmin=0, vmax=1)
         plt.show()
