@@ -43,13 +43,13 @@ class ImageMaskDataset(Dataset):
         for key, value in labels['annotations'].items():
             if value['category'] == category:
                 x, y, w, h = value['bbox']
-                x = x * ratio + self.image_size[1] - new_w
-                y = y * ratio + self.image_size[0] - new_h
+                x = x * ratio
+                y = y * ratio
                 w = w * ratio
                 h = h * ratio
-                bboxes.append(value['bbox'])
+                bboxes.append([x,y,w,h])
 
-        
+        print(bboxes)
         mask = torch.zeros((self.image_size[0], self.image_size[1]), dtype=torch.uint8)
         for x, y, w, h in bboxes:
             x, y, w, h = int(x), int(y), int(w), int(h)
