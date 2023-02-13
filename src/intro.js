@@ -70,7 +70,7 @@ class Intro extends Component{
         'gender': {'en': 'Please fill out your gender', 'jp': '性別をご記入ください'},
         'ageFormat': {'en': 'Please fill in your age in Arabic numerals', 'jp':'年齢をアラビア数字でご記入ください'},
         'nationality': {'en': 'Please fill out your nationality', 'jp': '国籍をご記入ください'},
-        'workerId': {'en': 'Please fill out your worker ID', 'jp': 'ワーカーズIDをご記入ください'},
+        'workerId': {'en': 'Please fill out your worker ID', 'jp': 'ユーザ名をご記入ください'},
         'frequency': {'en': 'Please fill out the question of your photo sharing' , 'jp': '写真共有のご質問をご記入ください'},
         'bigfive': {'en': 'Please fill out all questions', 'jp': 'すべての質問をご記入ください' }};
         // check workerid
@@ -484,7 +484,7 @@ class Intro extends Component{
                     その後、画面から離れて、クラウドワークスで必要な情報を記入し、提出が完了するのを確認してください。
                     <br></br>
                     <br></br>
-                    もしすべてのタスクを完了する前に離れたい場合は、同じ情報（特に、<strong>クラウドワークスのID</strong>）を入力してください。それにより、途中から再開することができます。
+                    もしすべてのタスクを完了する前に離れたい場合は、同じ情報（特に、<strong>ユーザ名</strong>）を入力してください。それにより、途中から再開することができます。
                     <br></br>
                     <br></br>
                     タスクの途中でIDを変更する必要がある場合は、このページを再読み込みしてください。  
