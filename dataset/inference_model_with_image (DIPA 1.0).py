@@ -14,7 +14,7 @@ from sklearn import metrics
 def l1_distance_loss(prediction, target):
     loss = np.abs(prediction - target)
     return np.mean(loss)
-
+torch.set_default_tensor_type('torch.cuda.FloatTensor')
 if __name__ == '__main__':
     bigfives = ["extraversion", "agreeableness", "conscientiousness",
     "neuroticism", "openness"]
