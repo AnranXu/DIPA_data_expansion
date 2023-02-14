@@ -48,7 +48,7 @@ class BaseModel(pl.LightningModule):
         
 
     def configure_optimizers(self):
-        optimizer = torch.optim.Adam(self.net.parameters(), lr=1e-2)
+        optimizer = torch.optim.Adam(self.net.parameters(), lr=1e-4)
         return optimizer
 
     def get_loss(self, image, mask, input_vector, y):
@@ -58,7 +58,7 @@ class BaseModel(pl.LightningModule):
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             if output_name == 'informativeness':
                 # map label 0~6 to 0~1
-                losses += self.reg_loss(torch.round(y_preds[i]).squeeze(1), y[:, i] / 6.0)
+                losses += self.reg_loss(torch.round(y_preds[i]).squeeze(1), y[:, i])
             else:
                 losses += self.entropy_loss(y_preds[i], y[:,i])
         return losses
@@ -73,7 +73,6 @@ class BaseModel(pl.LightningModule):
             loss = np.abs(prediction - target)
             return np.mean(loss)
 
-        print(self.output_channel)
         image, mask, input_vector, y = val_batch
         y_preds = self(image, mask, input_vector)
         acc = np.zeros(len(self.output_channel))
@@ -85,14 +84,17 @@ class BaseModel(pl.LightningModule):
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             conf.append(np.zeros((output_dim,output_dim)))
         for j, (output_name, output_dim) in enumerate(self.output_channel.items()):
-            _, max_indices = torch.max(y_preds[j], dim = 1)
-            acc[j] += metrics.accuracy_score(y[:,j].detach().numpy(), max_indices.detach().numpy())
-            pre[j] += metrics.precision_score(y[:,j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
-            rec[j] += metrics.recall_score(y[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
-            f1[j] += metrics.f1_score(y[:,j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
-            conf[j] += metrics.confusion_matrix(y[:,j].detach().numpy(), max_indices.detach().numpy(), labels = np.arange(0,output_dim))
+            
             if output_name == 'informativeness':
-                distance += l1_distance_loss(y[:, j].detach().numpy(), max_indices.detach().numpy())
+                distance += l1_distance_loss(y[:, j].detach().numpy(), y_preds[j].detach().numpy())
+            else:
+                _, max_indices = torch.max(y_preds[j], dim = 1)
+                acc[j] += metrics.accuracy_score(y[:,j].detach().numpy(), max_indices.detach().numpy())
+                pre[j] += metrics.precision_score(y[:,j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
+                rec[j] += metrics.recall_score(y[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
+                f1[j] += metrics.f1_score(y[:,j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
+                conf[j] += metrics.confusion_matrix(y[:,j].detach().numpy(), max_indices.detach().numpy(), labels = np.arange(0,output_dim))
+                
         pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
         df = pd.DataFrame(pandas_data, index=self.output_channel.keys())
         print(df.round(3))

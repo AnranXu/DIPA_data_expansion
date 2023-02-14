@@ -29,6 +29,7 @@ if __name__ == '__main__':
     mega_table['gender'] = encoder.fit_transform(mega_table['gender'])
     mega_table['platform'] = encoder.fit_transform(mega_table['platform'])
     mega_table['id'] = encoder.fit_transform(mega_table['id'])
+    mega_table['informativeness'] = mega_table['informativeness']
 
     input_channel = []
     input_channel.extend(basic_info)
@@ -58,9 +59,9 @@ if __name__ == '__main__':
     val_dataset = ImageMaskDataset(test_df, image_folder, label_folder, input_channel, output_name, image_size)    
 
     train_loader = DataLoader(train_dataset, batch_size=32)
-    val_loader = DataLoader(val_dataset, batch_size=1)
+    val_loader = DataLoader(val_dataset, batch_size=32)
     
-    trainer = pl.Trainer(max_epochs=1)
+    trainer = pl.Trainer()
     trainer.fit(model, train_loader, val_loader)
     
     # validation. 
@@ -74,6 +75,7 @@ if __name__ == '__main__':
     conf = []
     for i, (output_name, output_dim) in enumerate(output_channel.items()):
         conf.append(np.zeros((output_dim,output_dim)))
+    val_loader = DataLoader(val_dataset, batch_size=32)
     for i, vdata in enumerate(val_loader):
         image, mask, input_vector, y = vdata
         y_preds = model(image, mask, input_vector)
