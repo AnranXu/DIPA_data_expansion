@@ -61,7 +61,7 @@ class BaseModel(pl.LightningModule):
                 # map label 0~6 to 0~1
                 losses += self.reg_loss(torch.round(y_preds[i]).squeeze(1), y[:, i])
             else:
-                losses += self.entropy_loss(y_preds[i], y[:,i].type(torch.LongTensor))
+                losses += self.entropy_loss(y_preds[i], y[:,i])
         return losses
 
     def training_step(self, batch, batch_idx):
@@ -87,14 +87,14 @@ class BaseModel(pl.LightningModule):
         for j, (output_name, output_dim) in enumerate(self.output_channel.items()):
             
             if output_name == 'informativeness':
-                distance += l1_distance_loss(y[:, j].detach().numpy(), y_preds[j].detach().numpy())
+                distance += l1_distance_loss(y[:, j].detach().cpu().numpy(), y_preds[j].detach().cpu().numpy())
             else:
                 _, max_indices = torch.max(y_preds[j], dim = 1)
-                acc[j] += metrics.accuracy_score(y[:,j].detach().numpy(), max_indices.detach().numpy())
-                pre[j] += metrics.precision_score(y[:,j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
-                rec[j] += metrics.recall_score(y[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
-                f1[j] += metrics.f1_score(y[:,j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
-                conf[j] += metrics.confusion_matrix(y[:,j].detach().numpy(), max_indices.detach().numpy(), labels = np.arange(0,output_dim))
+                acc[j] += metrics.accuracy_score(y[:,j].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
+                pre[j] += metrics.precision_score(y[:,j].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
+                rec[j] += metrics.recall_score(y[:, j].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
+                f1[j] += metrics.f1_score(y[:,j].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
+                conf[j] += metrics.confusion_matrix(y[:,j].detach().cpu().numpy(), max_indices.detach().cpu().numpy(), labels = np.arange(0,output_dim))
                 
         pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
         df = pd.DataFrame(pandas_data, index=self.output_channel.keys())
