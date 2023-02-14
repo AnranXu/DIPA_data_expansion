@@ -16,7 +16,7 @@ dataset/new annotations/*
 dataset/new annotations (no manuallabel)/*
 dataset/original labels/*
 dataset/runs/*
-
+dataset/lightning_logs/*
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 results/annotations/*
 results/dataset/*

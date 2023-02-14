@@ -18,21 +18,21 @@ class BaseModel(pl.LightningModule):
         self.fc2 = nn.Linear(256, 64)
         self.fc3 = nn.Linear(64, 32)
         self.output_layers = []
-        self.output_dims = output_channel
+        self.output_channel = output_channel
         for output_name, output_dim in self.output_channel.items():
-            self.output_layers.append(nn.Linear(32,output_dim))
+            if output_name == 'informativeness':
+                self.output_layers.append(nn.Linear(32,1))
+            else:
+                self.output_layers.append(nn.Linear(32,output_dim))
         self.act = nn.SiLU()
         self.reg_loss = nn.L1Loss()
         self.entropy_loss = nn.CrossEntropyLoss()
 
-    def forward(self, x):
+    def forward(self, image, mask, input_vector):
         # x: [bs, 4, imgsize, imgsize]
         # addition: [bs, featurelength]
-        image = x['image']
-        mask = x['mask']
-        input_vector = x['input_vector']
-
-        x = self.net(torch.cat(image, mask))
+        print(mask.shape, image.shape)
+        x = self.net(torch.cat((image, mask), dim = 1))
         x = torch.cat([x, input_vector], dim=1)
         x = self.act(self.fc1(x))
         x = self.act(self.fc2(x))
@@ -48,20 +48,21 @@ class BaseModel(pl.LightningModule):
         optimizer = torch.optim.Adam(self.net.parameters(), lr=1e-2)
         return optimizer
 
-    def get_loss(self, x, y):
-        y_preds = self(x)
+    def get_loss(self, image, mask, input_vector, y):
+        print('--get loss--')
+        y_preds = self(image, mask, input_vector)
+        
         losses = 0
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             if output_name == 'informativeness':
-                _, max_indices = torch.max(y_preds[i])
-                losses += self.reg_loss(max_indices, y[i])
+                losses += self.reg_loss(torch.round(y_preds[i]), y[:, i])
             else:
-                losses += self.entropy_loss(y_preds[i], y[i])
+                losses += self.entropy_loss(y_preds[i], y[:,i])
         return losses
 
     def training_step(self, batch, batch_idx):
-        x, y = batch
-        loss = self.get_loss(x, y)
+        image, mask, input_vector, y = batch
+        loss = self.get_loss(image, mask, input_vector, y)
         return loss
 
     '''def validation_step(self, data, batch_idx):

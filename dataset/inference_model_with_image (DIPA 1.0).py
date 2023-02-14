@@ -27,9 +27,7 @@ if __name__ == '__main__':
     input_channel.extend(basic_info)
     input_channel.extend(category)
     input_channel.extend(bigfives)
-    input_dim = 0
-    for input_name in input_channel:
-        input_dim += len(mega_table[input_name].unique())
+    input_dim = len(input_channel)
     output_name = privacy_metrics
     output_channel = {}
     for output in output_name:
@@ -37,10 +35,9 @@ if __name__ == '__main__':
     model = BaseModel(input_dim= input_dim, output_channel = output_channel)
 
     image_size = (300, 300)
-    mega_table_path = './mega_table.csv'
     label_folder = './new annotations/annotations/'
     image_folder = './new annotations/images/'
-    dataset = ImageMaskDataset(mega_table_path, image_folder, label_folder, input_channel, output_name, image_size)
+    dataset = ImageMaskDataset(mega_table, image_folder, label_folder, input_channel, output_name, image_size)
 
     train_loader = DataLoader(dataset, batch_size=32)
 

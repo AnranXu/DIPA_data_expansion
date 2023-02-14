@@ -11,8 +11,8 @@ import json
 
 
 class ImageMaskDataset(Dataset):
-    def __init__(self, mega_table_path, image_folder, label_folder, input_vector, output_vector, image_size):
-        self.mega_table = pd.read_csv(mega_table_path)
+    def __init__(self, mega_table, image_folder, label_folder, input_vector, output_vector, image_size):
+        self.mega_table = mega_table
         self.image_folder = image_folder
         self.label_folder = label_folder
         self.input_vector = input_vector
@@ -49,22 +49,18 @@ class ImageMaskDataset(Dataset):
                 h = h * ratio
                 bboxes.append([x,y,w,h])
 
-        print(bboxes)
         mask = torch.zeros((self.image_size[0], self.image_size[1]), dtype=torch.uint8)
         for x, y, w, h in bboxes:
             x, y, w, h = int(x), int(y), int(w), int(h)
             mask[y:y+h, x:x+w] = 1
         #input vector
+        mask = mask.unsqueeze(0)
         input_vector = self.mega_table[self.input_vector].iloc[idx].values
         input_vector = torch.from_numpy(input_vector)
         #label
         label = self.mega_table[self.output_vector].iloc[idx].values
         label = torch.from_numpy(label)
-        x = {}
-        x['image'] = image
-        x['mask'] = mask
-        x['input_vector'] = input_vector
-        return x, label
+        return image, mask, input_vector, label
 
 
 if __name__ == '__main__':
@@ -82,13 +78,13 @@ if __name__ == '__main__':
     # Print some sample data from the dataset
     for i in range(1):
         sample = dataset[i]
-        x, label = sample
-        print('Sample', i, 'image shape:', x['image'].shape)
-        print('Sample', i, 'label shape:', x['mask'].shape)
-        print('Sample', i, 'image shape:', x['input_vector'].shape)
+        image, mask, input_vector, label = sample
+        print('Sample', i, 'image shape:', image.shape)
+        print('Sample', i, 'label shape:', mask.shape)
+        print('Sample', i, 'image shape:', input_vector.shape)
         print('Sample', i, 'label shape:', label.shape)
         plt.subplot(1, 2, 1)
-        plt.imshow(TF.to_pil_image(x['image']))
+        plt.imshow(TF.to_pil_image(image))
         plt.subplot(1, 2, 2)
-        plt.imshow(x['mask'], cmap='gray', vmin=0, vmax=1)
+        plt.imshow(mask, cmap='gray', vmin=0, vmax=1)
         plt.show()
