@@ -3,10 +3,17 @@ import torch.nn as nn
 from torch.utils.data import DataLoader
 from inference_dataset import ImageMaskDataset
 from inference_model import BaseModel
+
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from torch.utils.data import DataLoader
 import pytorch_lightning as pl
+import numpy as np
+from sklearn import metrics
+
+def l1_distance_loss(prediction, target):
+    loss = np.abs(prediction - target)
+    return np.mean(loss)
 
 if __name__ == '__main__':
     bigfives = ["extraversion", "agreeableness", "conscientiousness",
@@ -51,7 +58,45 @@ if __name__ == '__main__':
     val_dataset = ImageMaskDataset(test_df, image_folder, label_folder, input_channel, output_name, image_size)    
 
     train_loader = DataLoader(train_dataset, batch_size=32)
-    val_loader = DataLoader(val_dataset, batch_size=32)
+    val_loader = DataLoader(val_dataset, batch_size=1)
     
-    trainer = pl.Trainer()
+    trainer = pl.Trainer(max_epochs=1)
     trainer.fit(model, train_loader, val_loader)
+    
+    # validation. 
+    # I am confused about how the validation_step work on saving all valid result (rather than just a batch)
+    # So I wrote this traditional one
+    acc = np.zeros(len(output_channel))
+    pre = np.zeros(len(output_channel))
+    rec = np.zeros(len(output_channel))
+    f1 = np.zeros(len(output_channel))
+    distance = 0.0
+    conf = []
+    for i, (output_name, output_dim) in enumerate(output_channel.items()):
+        conf.append(np.zeros((output_dim,output_dim)))
+    for i, vdata in enumerate(val_loader):
+        image, mask, input_vector, y = vdata
+        y_preds = model(image, mask, input_vector)
+        for j, (output_name, output_dim) in enumerate(output_channel.items()):
+            _, max_indices = torch.max(y_preds[j], dim = 1)
+            acc[j] += metrics.accuracy_score(y[:,j].detach().numpy(), max_indices.detach().numpy())
+            pre[j] += metrics.precision_score(y[:,j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
+            rec[j] += metrics.recall_score(y[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
+            f1[j] += metrics.f1_score(y[:,j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
+            conf[j] += metrics.confusion_matrix(y[:,j].detach().numpy(), max_indices.detach().numpy(), labels = mega_table[output_name].unique())
+            if output_name == 'informativeness':
+                distance += l1_distance_loss(y[:, j].detach().numpy(), max_indices.detach().numpy())
+    
+    ## save result
+    length = len(val_dataset)
+    acc = acc / length
+    pre = pre / length
+    rec = rec / length
+    f1 = f1 / length
+    distance = distance / length
+
+    pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
+    df = pd.DataFrame(pandas_data, index=output_channel)
+    print(df.round(3))
+    if 'informativeness' in output_channel.keys():
+        print('informativenss distance: ', distance)

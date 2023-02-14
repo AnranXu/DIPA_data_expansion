@@ -9,15 +9,16 @@ class BaseModel(pl.LightningModule):
     def __init__(self, input_dim, output_channel):
         ## output_channel: key: output_name value: output_dim
         super().__init__()
-        self.net = torch.hub.load('pytorch/vision:v0.14.1', 'mobilenet_v3_large', pretrained=MobileNet_V3_Large_Weights.DEFAULT)
-        self.net.classifier[3] = nn.Identity()
-        w0 = self.net.features[0][0].weight.data.clone()
-        self.net.features[0][0] = nn.Conv2d(4, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-        self.net.features[0][0].weight.data[:,:3,:,:] = w0
+        self.net = torch.hub.load('pytorch/vision:v0.14.1', 'resnet18', pretrained=ResNet18_Weights.DEFAULT)
+        self.net.fc = nn.Identity()
+        w0 = self.net.conv1.weight.data.clone()
+        self.net.conv1 = nn.Conv2d(4, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+        self.net.conv1.weight.data[:,:3,:,:] = w0
 
-        self.fc1 = nn.Linear(1280 , 100)
-        self.fc2 = nn.Linear(100 + input_dim, 64)
-        self.fc3 = nn.Linear(64, 32)
+        self.fc1 = nn.Linear(512, 100)
+        self.fc2 = nn.Linear(100 + input_dim, 256)
+        self.fc3 = nn.Linear(256, 64)
+        self.fc4 = nn.Linear(64, 32)
         self.output_layers = []
         self.output_channel = output_channel
         for output_name, output_dim in self.output_channel.items():
@@ -37,6 +38,7 @@ class BaseModel(pl.LightningModule):
         x = torch.cat([x, input_vector], dim=1)
         x = self.act(self.fc2(x))
         x = self.act(self.fc3(x))
+        x = self.act(self.fc4(x))
         outs = []
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             out =  self.output_layers[i](x)
@@ -54,7 +56,7 @@ class BaseModel(pl.LightningModule):
         losses = 0
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             if output_name == 'informativeness':
-                losses += self.reg_loss(torch.round(y_preds[i]), y[:, i])
+                losses += self.reg_loss(torch.round(y_preds[i]).squeeze(1), y[:, i])
             else:
                 losses += self.entropy_loss(y_preds[i], y[:,i])
         return losses
@@ -64,7 +66,7 @@ class BaseModel(pl.LightningModule):
         loss = self.get_loss(image, mask, input_vector, y)
         return loss
 
-    def validation_step (self, val_batch, batch_idx):
+    '''def validation_step (self, val_batch, batch_idx):
         def l1_distance_loss(prediction, target):
             loss = np.abs(prediction - target)
             return np.mean(loss)
@@ -89,7 +91,7 @@ class BaseModel(pl.LightningModule):
             conf[j] += metrics.confusion_matrix(y[:,j].detach().numpy(), max_indices.detach().numpy(), labels = np.arange(0,output_dim))
             if output_name == 'informativeness':
                 distance += l1_distance_loss(y[:, j].detach().numpy(), max_indices.detach().numpy())
-        '''self.log('acc', acc)
+        self.log('acc', acc)
         self.log('pre', pre)
         self.log('rec', rec)
         self.log('f1', f1)
