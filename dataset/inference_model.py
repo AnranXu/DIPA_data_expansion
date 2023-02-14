@@ -3,6 +3,7 @@ from torch import nn
 from torchvision.models import VGG16_Weights, ResNet18_Weights, MobileNet_V3_Large_Weights
 import pytorch_lightning as pl
 import numpy as np
+from sklearn import metrics
 
 class BaseModel(pl.LightningModule):
     def __init__(self, input_dim, output_channel):
@@ -14,8 +15,8 @@ class BaseModel(pl.LightningModule):
         self.net.features[0][0] = nn.Conv2d(4, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
         self.net.features[0][0].weight.data[:,:3,:,:] = w0
 
-        self.fc1 = nn.Linear(1280 + input_dim, 256)
-        self.fc2 = nn.Linear(256, 64)
+        self.fc1 = nn.Linear(1280 , 100)
+        self.fc2 = nn.Linear(100 + input_dim, 64)
         self.fc3 = nn.Linear(64, 32)
         self.output_layers = []
         self.output_channel = output_channel
@@ -32,8 +33,8 @@ class BaseModel(pl.LightningModule):
         # x: [bs, 4, imgsize, imgsize]
         # addition: [bs, featurelength]
         x = self.net(torch.cat((image, mask), dim = 1))
-        x = torch.cat([x, input_vector], dim=1)
         x = self.act(self.fc1(x))
+        x = torch.cat([x, input_vector], dim=1)
         x = self.act(self.fc2(x))
         x = self.act(self.fc3(x))
         outs = []
@@ -63,11 +64,35 @@ class BaseModel(pl.LightningModule):
         loss = self.get_loss(image, mask, input_vector, y)
         return loss
 
-    '''def validation_step(self, data, batch_idx):
-        img = data['image+mask']
-        y = data['label']
-        loss = self.get_loss(img, y)
-        # self.visualize(data, quat, state)
+    def validation_step (self, val_batch, batch_idx):
+        def l1_distance_loss(prediction, target):
+            loss = np.abs(prediction - target)
+            return np.mean(loss)
 
-        return loss'''
+        print(self.output_channel)
+        image, mask, input_vector, y = val_batch
+        y_preds = self(image, mask, input_vector)
+        acc = np.zeros(len(self.output_channel))
+        pre = np.zeros(len(self.output_channel))
+        rec = np.zeros(len(self.output_channel))
+        f1 = np.zeros(len(self.output_channel))
+        distance = 0.0
+        conf = []
+        for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
+            conf.append(np.zeros((output_dim,output_dim)))
+        for j, (output_name, output_dim) in enumerate(self.output_channel.items()):
+            _, max_indices = torch.max(y_preds[j], dim = 1)
+            acc[j] += metrics.accuracy_score(y[:,j].detach().numpy(), max_indices.detach().numpy())
+            pre[j] += metrics.precision_score(y[:,j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
+            rec[j] += metrics.recall_score(y[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
+            f1[j] += metrics.f1_score(y[:,j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
+            conf[j] += metrics.confusion_matrix(y[:,j].detach().numpy(), max_indices.detach().numpy(), labels = np.arange(0,output_dim))
+            if output_name == 'informativeness':
+                distance += l1_distance_loss(y[:, j].detach().numpy(), max_indices.detach().numpy())
+        '''self.log('acc', acc)
+        self.log('pre', pre)
+        self.log('rec', rec)
+        self.log('f1', f1)
+        self.log('conf', conf)
+        self.log('distance', distance)'''
 

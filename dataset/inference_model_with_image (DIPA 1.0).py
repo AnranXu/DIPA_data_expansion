@@ -32,14 +32,26 @@ if __name__ == '__main__':
     output_channel = {}
     for output in output_name:
         output_channel[output] = len(mega_table[output].unique())
+    
     model = BaseModel(input_dim= input_dim, output_channel = output_channel)
 
     image_size = (300, 300)
     label_folder = './new annotations/annotations/'
     image_folder = './new annotations/images/'
-    dataset = ImageMaskDataset(mega_table, image_folder, label_folder, input_channel, output_name, image_size)
 
-    train_loader = DataLoader(dataset, batch_size=32)
+    num_rows = len(mega_table)
+    train_size = int(0.8 * num_rows)
+    test_size = num_rows - train_size
 
+    # Split the dataframe into two
+    train_df = mega_table.sample(n=train_size, random_state=42)
+    test_df = mega_table.drop(train_df.index)
+
+    train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, output_name, image_size)
+    val_dataset = ImageMaskDataset(test_df, image_folder, label_folder, input_channel, output_name, image_size)    
+
+    train_loader = DataLoader(train_dataset, batch_size=32)
+    val_loader = DataLoader(val_dataset, batch_size=32)
+    
     trainer = pl.Trainer()
-    trainer.fit(model, train_loader)
+    trainer.fit(model, train_loader, val_loader)
