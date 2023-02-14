@@ -61,7 +61,7 @@ class BaseModel(pl.LightningModule):
                 # map label 0~6 to 0~1
                 losses += self.reg_loss(torch.round(y_preds[i]).squeeze(1), y[:, i])
             else:
-                losses += self.entropy_loss(y_preds[i], y[:,i])
+                losses += self.entropy_loss(y_preds[i], y[:,i].type(torch.LongTensor))
         return losses
 
     def training_step(self, batch, batch_idx):
