@@ -62,7 +62,7 @@ if __name__ == '__main__':
     train_loader = DataLoader(train_dataset, batch_size=32)
     val_loader = DataLoader(val_dataset, batch_size=32)
     
-    trainer = pl.Trainer(accelerator='gpu', devices=[1])
+    trainer = pl.Trainer(accelerator='gpu', devices=[0])
     trainer.fit(model, train_loader, val_loader)
     
     # validation. 
