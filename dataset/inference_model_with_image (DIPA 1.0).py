@@ -96,7 +96,7 @@ if __name__ == '__main__':
     distance = distance / length
 
     pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
-    df = pd.DataFrame(pandas_data, index=output_channel)
+    df = pd.DataFrame(pandas_data, index=output_channel.keys())
     print(df.round(3))
     if 'informativeness' in output_channel.keys():
         print('informativenss distance: ', distance)

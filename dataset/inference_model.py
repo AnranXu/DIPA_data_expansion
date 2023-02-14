@@ -3,6 +3,7 @@ from torch import nn
 from torchvision.models import VGG16_Weights, ResNet18_Weights, MobileNet_V3_Large_Weights
 import pytorch_lightning as pl
 import numpy as np
+import pandas as pd
 from sklearn import metrics
 
 class BaseModel(pl.LightningModule):
@@ -56,7 +57,8 @@ class BaseModel(pl.LightningModule):
         losses = 0
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             if output_name == 'informativeness':
-                losses += self.reg_loss(torch.round(y_preds[i]).squeeze(1), y[:, i])
+                # map label 0~6 to 0~1
+                losses += self.reg_loss(torch.round(y_preds[i]).squeeze(1), y[:, i] / 6.0)
             else:
                 losses += self.entropy_loss(y_preds[i], y[:,i])
         return losses
@@ -66,7 +68,7 @@ class BaseModel(pl.LightningModule):
         loss = self.get_loss(image, mask, input_vector, y)
         return loss
 
-    '''def validation_step (self, val_batch, batch_idx):
+    def validation_step (self, val_batch, batch_idx):
         def l1_distance_loss(prediction, target):
             loss = np.abs(prediction - target)
             return np.mean(loss)
@@ -91,10 +93,8 @@ class BaseModel(pl.LightningModule):
             conf[j] += metrics.confusion_matrix(y[:,j].detach().numpy(), max_indices.detach().numpy(), labels = np.arange(0,output_dim))
             if output_name == 'informativeness':
                 distance += l1_distance_loss(y[:, j].detach().numpy(), max_indices.detach().numpy())
-        self.log('acc', acc)
-        self.log('pre', pre)
-        self.log('rec', rec)
-        self.log('f1', f1)
-        self.log('conf', conf)
-        self.log('distance', distance)'''
-
+        pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
+        df = pd.DataFrame(pandas_data, index=self.output_channel.keys())
+        print(df.round(3))
+        if 'informativeness' in self.output_channel.keys():
+            print('informativenss distance: ', distance)
