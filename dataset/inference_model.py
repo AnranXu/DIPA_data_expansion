@@ -31,7 +31,6 @@ class BaseModel(pl.LightningModule):
     def forward(self, image, mask, input_vector):
         # x: [bs, 4, imgsize, imgsize]
         # addition: [bs, featurelength]
-        print(mask.shape, image.shape)
         x = self.net(torch.cat((image, mask), dim = 1))
         x = torch.cat([x, input_vector], dim=1)
         x = self.act(self.fc1(x))
@@ -51,7 +50,6 @@ class BaseModel(pl.LightningModule):
     def get_loss(self, image, mask, input_vector, y):
         print('--get loss--')
         y_preds = self(image, mask, input_vector)
-        
         losses = 0
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             if output_name == 'informativeness':
