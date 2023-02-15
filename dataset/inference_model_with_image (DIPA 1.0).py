@@ -44,7 +44,7 @@ if __name__ == '__main__':
     for output in output_name:
         output_channel[output] = len(mega_table[output].unique())
     
-    model = BaseModel(input_dim= input_dim, output_channel = output_channel)
+    model = BaseModel(learning_rate = '1e-4',input_dim= input_dim, output_channel = output_channel)
 
     image_size = (512, 512)
     label_folder = './new annotations/annotations/'
