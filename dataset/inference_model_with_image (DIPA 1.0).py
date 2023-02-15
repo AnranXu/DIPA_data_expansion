@@ -59,7 +59,7 @@ if __name__ == '__main__':
     train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, output_name, image_size)
     val_dataset = ImageMaskDataset(test_df, image_folder, label_folder, input_channel, output_name, image_size)    
 
-    train_loader = DataLoader(train_dataset, batch_size=32)
+    train_loader = DataLoader(train_dataset, batch_size=64)
     val_loader = DataLoader(val_dataset, batch_size=32)
     
     trainer = pl.Trainer(accelerator='gpu', devices=[0])
