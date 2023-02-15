@@ -13,7 +13,7 @@ dataset/OpenImages/selected_label
 dataset/annotations/*
 dataset/images/*
 dataset/new annotations/*
-dataset/new annotations (wrong one)/*
+dataset/new annotations(wrong one)/*
 dataset/new annotations (no manuallabel)/*
 dataset/original labels/*
 dataset/runs/*

@@ -54,20 +54,20 @@ class DefaultAnnotationCard extends Component{
             {value: 6,label: ''},
             {value: 7,label: '情報量が多い'}]
         };*/
-        this.intensity = { 'en': {1: '1: negligible source to identify',
-            2: '2: minor source to identify',
-            3: '3: slight source to identify',
-            4: '4: moderate source to identify',
-            5: '5: effective source to identify ',
-            6: '6: substantial source to identify',
-            7: '7: maximum source to identity'},
-            'jp':{1: '1: ほとんど役に立たない情報源です',
-            2: '2: 軽微な情報源です',
-            3: '3: やや不足な情報源です',
-            4: '4: 中程度の情報源です',
-            5: '5: 有効な情報源です',
-            6: '6: 多大な情報源です',
-            7: '7: 最大な情報源です'}
+        this.intensity = { 'en': {1: '1: Strongly disagree',
+            2: '2: Disagree',
+            3: '3: Slightly disagree',
+            4: '4: Neither',
+            5: '5: Slightly agree',
+            6: '6: Agree',
+            7: '7: Strongly agree'},
+            'jp':{1: '1: 強く思わない',
+            2: '2: そう思わない',
+            3: '3: ややそう思わない',
+            4: '4: どちらともいえない',
+            5: '5: 少しそう思う',
+            6: '6: そう思う',
+            7: '7: 強くそう思う'}
         };
         this.marks = { 'en':[
             {value: 1,label: 'slightly'},
@@ -88,9 +88,9 @@ class DefaultAnnotationCard extends Component{
         this.text = {'title': {'en': 'Annotation Box', 'jp': 'アノテーションボックス'},
         'reasonQuestion': {'en': 'Assuming you want to seek the privacy of the photo owner, what kind of information can this content tell (please select all that apply)?',
         'jp': '写真の所有者のプライバシーを得ようとする場合、このコンテンツからはどのような情報を読み取れますか(該当する選択肢をすべてお選びください)？'},
-        'informativeQuestion': {'en': 'How informative do you think about this content to identify the thing you selected in the previous question?\
+        'informativeQuestion': {'en': 'How much do you agree that this content would describe or suggest the people associated with this photo (e.g., the owner of this photo or the person in the photo) in respect of what you chose in the previous question.\
         Higher scores mean the more informative the content is.', 
-        'jp': '前問で選択したものを特定するために、このコンテンツはどの程度情報量があると思いますか？\
+        'jp': '前問で選択した情報種類について、この写真に関連する人物（例えば、この写真の所有者や写真の中の人物）を描写または暗示することに、どの程度同意されますか？\
         スコアが高いほど、情報量が多いことを意味します。'},
         'placeHolder': {'en': 'Please input here.', 'jp': 'ここに理由を記入してください。'},
         'selectMultiplePlaceHolder': {'en': 'Please select options', 'jp': '選択肢をお選びください'},
