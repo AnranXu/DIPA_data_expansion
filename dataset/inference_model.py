@@ -92,7 +92,6 @@ class BaseModel(pl.LightningModule):
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             conf.append(np.zeros((output_dim,output_dim)))
         for j, (output_name, output_dim) in enumerate(self.output_channel.items()):
-            
             if output_name == 'informativeness':
                 distance += l1_distance_loss(y[:, j].detach().cpu().numpy(), y_preds[j].detach().cpu().numpy())
             else:
@@ -108,3 +107,17 @@ class BaseModel(pl.LightningModule):
         print(df.round(3))
         if 'informativeness' in self.output_channel.keys():
             print('informativenss distance: ', distance)
+        length = val_batch.shape[0]
+        print('length:', length)
+        acc = acc / length
+        pre = pre / length
+        rec = rec / length
+        f1 = f1 / length
+        distance = distance / length
+        for i, (output_name, output_dim) in enumerate(self.output_channel.items()): 
+            self.log("val/acc for {}".format(output_name), acc[i])
+            self.log("val/pre for {}".format(output_name), pre[i])
+            self.log("val/rec for {}".format(output_name), rec[i])
+            self.log("val/f1 for {}".format(output_name), f1[i])
+            if output_name == 'informativeness':
+                self.log("val/distance for {}".format(output_name), distance)

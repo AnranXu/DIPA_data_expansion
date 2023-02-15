@@ -11,6 +11,9 @@ import pytorch_lightning as pl
 import numpy as np
 from sklearn import metrics
 
+from pytorch_lightning.loggers import WandbLogger
+
+
 def l1_distance_loss(prediction, target):
     loss = np.abs(prediction - target)
     return np.mean(loss)
@@ -62,7 +65,9 @@ if __name__ == '__main__':
     train_loader = DataLoader(train_dataset, batch_size=16)
     val_loader = DataLoader(val_dataset, batch_size=16)
     
-    trainer = pl.Trainer(accelerator='gpu', devices=[0])
+    wandb_logger = WandbLogger(project="resnet50-DIPA-inference")
+
+    trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger)
     trainer.fit(model, train_loader, val_loader)
     
     # validation. 
