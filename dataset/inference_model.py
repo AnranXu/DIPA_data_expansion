@@ -76,7 +76,7 @@ class BaseModel(pl.LightningModule):
         loss = self.get_loss(image, mask, input_vector, y)
         return loss
 
-    '''def validation_step (self, val_batch, batch_idx):
+    def validation_step (self, val_batch, batch_idx):
         def l1_distance_loss(prediction, target):
             loss = np.abs(prediction - target)
             return np.mean(loss)
@@ -107,4 +107,4 @@ class BaseModel(pl.LightningModule):
         df = pd.DataFrame(pandas_data, index=self.output_channel.keys())
         print(df.round(3))
         if 'informativeness' in self.output_channel.keys():
-            print('informativenss distance: ', distance)'''
+            print('informativenss distance: ', distance)
