@@ -64,7 +64,7 @@ if __name__ == '__main__':
     train_loader = DataLoader(train_dataset, batch_size=16)
     val_loader = DataLoader(val_dataset, batch_size=16)
     
-    wandb_logger = WandbLogger(project="resnet50-DIPA-inference")
+    wandb_logger = WandbLogger(project="resnet50-DIPA-inference", name = 'test all cross entropy (resnet50)')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, auto_lr_find=True)
     trainer.fit(model, train_loader, val_loader)
