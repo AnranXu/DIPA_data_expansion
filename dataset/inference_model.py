@@ -1,6 +1,6 @@
 import torch
 from torch import nn
-from torchvision.models import VGG16_Weights, ResNet18_Weights, MobileNet_V3_Large_Weights
+from torchvision.models import VGG16_Weights, ResNet50_Weights, MobileNet_V3_Large_Weights
 import pytorch_lightning as pl
 import numpy as np
 import pandas as pd
@@ -10,14 +10,14 @@ class BaseModel(pl.LightningModule):
     def __init__(self, input_dim, output_channel):
         ## output_channel: key: output_name value: output_dim
         super().__init__()
-        self.net = torch.hub.load('pytorch/vision:v0.14.1', 'resnet18', pretrained=ResNet18_Weights.DEFAULT)
+        self.net = torch.hub.load('pytorch/vision:v0.14.1', 'resnet50', pretrained=ResNet50_Weights.DEFAULT)
         self.net.fc = nn.Identity()
         w0 = self.net.conv1.weight.data.clone()
         self.net.conv1 = nn.Conv2d(4, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
         self.net.conv1.weight.data[:,:3,:,:] = w0
 
-        self.fc1 = nn.Linear(512, 100)
-        self.fc2 = nn.Linear(100 + input_dim, 256)
+        self.fc1 = nn.Linear(2048, 100)
+        self.fc2 = nn.Linear(1000 + input_dim, 256)
         self.fc3 = nn.Linear(256, 64)
         self.fc4 = nn.Linear(64, 32)
         self.output_layers = []
