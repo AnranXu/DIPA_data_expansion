@@ -97,7 +97,7 @@ class BaseModel(pl.LightningModule):
             conf.append(np.zeros((output_dim,output_dim)))
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             if output_name == 'informativeness':
-                distance += l1_distance_loss(y[:, i].detach().cpu().numpy(), max_indices.detach().numpy())
+                distance += l1_distance_loss(y[:, i].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
             _, max_indices = torch.max(y_preds[i], dim = 1)
             acc[i] = metrics.accuracy_score(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
             pre[i] = metrics.precision_score(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
