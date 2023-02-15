@@ -67,7 +67,7 @@ if __name__ == '__main__':
     
     wandb_logger = WandbLogger(project="resnet50-DIPA-inference")
 
-    trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger)
+    trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, auto_lr_find=True)
     trainer.fit(model, train_loader, val_loader)
     
     # validation. 
