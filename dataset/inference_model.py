@@ -7,9 +7,10 @@ import pandas as pd
 from sklearn import metrics
 
 class BaseModel(pl.LightningModule):
-    def __init__(self, input_dim, output_channel):
+    def __init__(self, learning_rate, input_dim, output_channel):
         ## output_channel: key: output_name value: output_dim
         super().__init__()
+        self.learning_rate = learning_rate
         self.net = torch.hub.load('pytorch/vision:v0.14.1', 'resnet50', pretrained=ResNet50_Weights.DEFAULT)
         self.net.fc = nn.Identity()
         w0 = self.net.conv1.weight.data.clone()
@@ -53,7 +54,7 @@ class BaseModel(pl.LightningModule):
         
 
     def configure_optimizers(self):
-        optimizer = torch.optim.Adam(self.parameters(), lr=(self.lr or self.learning_rate))
+        optimizer = torch.optim.Adam(self.parameters(), lr= self.learning_rate)
         return optimizer
 
     def get_loss(self, image, mask, input_vector, y):
