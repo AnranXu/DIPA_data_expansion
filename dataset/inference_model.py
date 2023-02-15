@@ -66,6 +66,10 @@ class BaseModel(pl.LightningModule):
 
     def training_step(self, batch, batch_idx):
         image, mask, input_vector, y = batch
+        image = image.to('cuda')
+        mask = mask.to('cuda')
+        input_vector = input_vector.to('cuda')
+        y = y.to('cuda')
         loss = self.get_loss(image, mask, input_vector, y)
         return loss
 
