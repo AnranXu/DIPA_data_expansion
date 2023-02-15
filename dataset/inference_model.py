@@ -91,33 +91,27 @@ class BaseModel(pl.LightningModule):
         conf = []
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             conf.append(np.zeros((output_dim,output_dim)))
-        for j, (output_name, output_dim) in enumerate(self.output_channel.items()):
+        for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             if output_name == 'informativeness':
-                distance += l1_distance_loss(y[:, j].detach().cpu().numpy(), y_preds[j].detach().cpu().numpy())
+                distance += l1_distance_loss(y[:, i].detach().cpu().numpy(), y_preds[i].detach().cpu().numpy())
             else:
-                _, max_indices = torch.max(y_preds[j], dim = 1)
-                acc[j] += metrics.accuracy_score(y[:,j].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
-                pre[j] += metrics.precision_score(y[:,j].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
-                rec[j] += metrics.recall_score(y[:, j].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
-                f1[j] += metrics.f1_score(y[:,j].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
-                conf[j] += metrics.confusion_matrix(y[:,j].detach().cpu().numpy(), max_indices.detach().cpu().numpy(), labels = np.arange(0,output_dim))
+                _, max_indices = torch.max(y_preds[i], dim = 1)
+                acc[i] = metrics.accuracy_score(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
+                pre[i] = metrics.precision_score(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
+                rec[i] = metrics.recall_score(y[:, i].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
+                f1[i] = metrics.f1_score(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
+                conf[i] = metrics.confusion_matrix(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy(), labels = np.arange(0,output_dim))
                 
         pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
         df = pd.DataFrame(pandas_data, index=self.output_channel.keys())
         print(df.round(3))
         if 'informativeness' in self.output_channel.keys():
-            print('informativenss distance: ', distance)
-        length = val_batch.shape[0]
-        print('length:', length)
-        acc = acc / length
-        pre = pre / length
-        rec = rec / length
-        f1 = f1 / length
-        distance = distance / length
+            print('informativenss distance: ', distance * 6)
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()): 
-            self.log("val/acc for {}".format(output_name), acc[i])
-            self.log("val/pre for {}".format(output_name), pre[i])
-            self.log("val/rec for {}".format(output_name), rec[i])
-            self.log("val/f1 for {}".format(output_name), f1[i])
             if output_name == 'informativeness':
                 self.log("val/distance for {}".format(output_name), distance)
+            else:
+                self.log("val/acc for {}".format(output_name), acc[i])
+                self.log("val/pre for {}".format(output_name), pre[i])
+                self.log("val/rec for {}".format(output_name), rec[i])
+                self.log("val/f1 for {}".format(output_name), f1[i])
