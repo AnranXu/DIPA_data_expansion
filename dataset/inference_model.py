@@ -53,7 +53,7 @@ class BaseModel(pl.LightningModule):
         
 
     def configure_optimizers(self):
-        optimizer = torch.optim.Adam(self.net.parameters())
+        optimizer = torch.optim.Adam(self.parameters(), lr=(self.lr or self.learning_rate))
         return optimizer
 
     def get_loss(self, image, mask, input_vector, y):
