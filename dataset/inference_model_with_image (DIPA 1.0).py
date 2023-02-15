@@ -44,7 +44,7 @@ if __name__ == '__main__':
     
     model = BaseModel(input_dim= input_dim, output_channel = output_channel)
 
-    image_size = (600, 600)
+    image_size = (512, 512)
     label_folder = './new annotations/annotations/'
     image_folder = './new annotations/images/'
 
