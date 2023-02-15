@@ -27,7 +27,7 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
-
+from torchmetrics import Accuracy, Precision, Recall, F1Score, ConfusionMatrix, CalibrationError
 class analyzer:
     def __init__(self) -> None:
         self.annotation_path = './annotations/'
@@ -465,10 +465,11 @@ class analyzer:
             
             # We don't need gradients on to do reporting
             model.train(False)
-            acc = np.zeros(len(output_channel))
-            pre = np.zeros(len(output_channel))
-            rec = np.zeros(len(output_channel))
-            f1 = np.zeros(len(output_channel))
+            acc = [Accuracy(task="multiclass", num_classes=output_dim) for output_dim in output_dims]
+            pre = [Precision(task="multiclass", num_classes=output_dim, average='weighted') for output_dim in output_dims]
+            rec = [Recall(task="multiclass", num_classes=output_dim, average='weighted') for output_dim in output_dims]
+            f1 = [F1Score(task="multiclass", num_classes=output_dim, average='weighted') for output_dim in output_dims]
+            confusion = [ConfusionMatrix(task="multiclass", num_classes=output_dim, normalize = 'true') for output_dim in output_dims]
             distance = 0.0
             conf = []
             for i, output_dim in enumerate(output_dims):
@@ -483,11 +484,11 @@ class analyzer:
                 for j, output in enumerate(output_channel):
                     losses.append(loss_fns[j](voutputs[j], vlabels[:, j]))
                     y_pred, max_indices = torch.max(voutputs[j], dim = 1)
-                    acc[j] += metrics.accuracy_score(vlabels[:, j].detach().numpy(), max_indices.detach().numpy())
-                    pre[j] += metrics.precision_score(vlabels[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
-                    rec[j] += metrics.recall_score(vlabels[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
-                    f1[j] += metrics.f1_score(vlabels[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
-                    conf[j] += metrics.confusion_matrix(vlabels[:, j].detach().numpy(), max_indices.detach().numpy(), labels = self.mega_table[output].unique())
+                    acc[j].update(max_indices, vlabels[:, j])
+                    pre[j].update(max_indices, vlabels[:, j])
+                    rec[j].update(max_indices, vlabels[:, j])
+                    f1[j].update(max_indices, vlabels[:, j])
+                    confusion[j].update(voutputs[j], vlabels[:, j])
                     if output == 'informativeness':
                         distance += l1_distance_loss(vlabels[:, j].detach().numpy(), max_indices.detach().numpy())
                 tot_vloss = 0
@@ -495,10 +496,6 @@ class analyzer:
                     tot_vloss += loss
                 
                 running_vloss += tot_vloss
-            acc = acc / (i + 1)
-            pre = pre / (i + 1)
-            rec = rec / (i + 1)
-            f1 = f1 / (i + 1)
             distance = distance / (i + 1)
             #print("Accuracy:",acc)
             #print("Precision:",pre)
@@ -506,8 +503,9 @@ class analyzer:
             avg_vloss = running_vloss / (i + 1)
             print('LOSS train {} valid {}'.format(avg_loss, avg_vloss))
             if epoch == EPOCHS - 1:
+                conf = [confusion[i].compute().detach().numpy() for i, output_dim in enumerate(output_dims)]
                 for i, output in enumerate(output_channel):
-                    conf[i] = conf[i].astype('float') / conf[i].sum(axis=1)[:, np.newaxis]
+                    #conf[i] = conf[i].astype('float') / conf[i].sum(axis=1)[:, np.newaxis]
                     plt.imshow(conf[i], cmap=plt.cm.Blues)
                     plt.xticks(np.arange(0, len(self.description[output])), self.description[output], rotation = 45, ha='right')
                     plt.yticks(np.arange(0, len(self.description[output])), self.description[output])
@@ -521,8 +519,16 @@ class analyzer:
                     plt.clf()
                     print('confusion matrix for {}'.format(output))
                     print(np.round(conf[i], 3))
-            
-            pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
+            print(acc[0].compute())
+            print(acc[1].compute())
+            print(acc[2].compute())
+            print(pre[0].compute())
+            print(pre[1].compute())
+            print(pre[2].compute())
+            pandas_data = {'Accuracy' : [acc[i].compute().detach().numpy() for i, output_dim in enumerate(output_dims)], 
+            'Precision' : [pre[i].compute().detach().numpy() for i, output_dim in enumerate(output_dims)], 
+            'Recall': [rec[i].compute().detach().numpy() for i, output_dim in enumerate(output_dims)], 
+            'f1': [f1[i].compute().detach().numpy() for i, output_dim in enumerate(output_dims)]}
             df = pd.DataFrame(pandas_data, index=output_channel)
             print(df.round(3))
             if 'informativeness' in output_channel:
@@ -532,12 +538,17 @@ class analyzer:
             writer.add_scalars('Training vs. Validation Loss',
                             { 'Training' : avg_loss, 'Validation' : avg_vloss },
                             epoch_number + 1)
-            for i, output in enumerate(output_channel):
+            '''for i, output in enumerate(output_channel):
                 writer.add_scalars('{} Metrics, Accuracy Precision Recall'.format(output),
                                 {'Accuracy' : acc[i], 'Precision' : pre[i], 'Recall': rec[i] },
-                                epoch_number + 1)
+                                epoch_number + 1)'''
             #writer.flush()
-
+            for i, output_dim in enumerate(output_dims):
+                acc[i].reset()
+                pre[i].reset()
+                rec[i].reset()
+                f1[i].reset()
+                confusion[i].reset()
             # Track best performance, and save the model's state
             '''if avg_vloss < best_vloss:
                 best_vloss = avg_vloss
@@ -554,14 +565,14 @@ if __name__ == '__main__':
     category = ['category']
     privacy_metrics = ['informationType', 'informativeness', 'sharing']
     input_channel = []
-    #input_channel.extend(basic_info)
-    #input_channel.extend(category)
+    input_channel.extend(basic_info)
+    input_channel.extend(category)
     input_channel.extend(bigfives)
     #input_channel.extend(['informationType', 'informativeness'])
     print(['informativeness'])
     output_channel = privacy_metrics
     #output_channel = ['sharing']
-    analyze.prepare_mega_table(mycat_mode=True, save_csv=True)
+    #analyze.prepare_mega_table(mycat_mode=True, save_csv=True)
     #analyze.regression_model(input_channel, output_channel)
     #print(analyze.mega_table)
     #analyze.prepare_manual_label(save_csv=True)
@@ -570,6 +581,6 @@ if __name__ == '__main__':
     #print(len(analyze.mega_table['id'].unique()))
     #analyze.svm(input_channel, output_channel, read_csv=True)
     #analyze.anova(True)
-    #analyze.neural_network(input_channel, output_channel, read_csv=True)
+    analyze.neural_network(input_channel, output_channel, read_csv=True)
     #analyze.knn(input_channel, output_channel, read_csv=True)
     

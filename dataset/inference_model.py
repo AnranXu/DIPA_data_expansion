@@ -102,9 +102,9 @@ class BaseModel(pl.LightningModule):
                 self.log("val/distance for {}".format(output_name), distance)
 
             accuracy = Accuracy(task="multiclass", num_classes=output_dim)
-            precision = Precision(task="multiclass", num_classes=output_dim)
-            recall = Recall(task="multiclass", num_classes=output_dim)
-            f1score = F1Score(task="multiclass", num_classes=output_dim)
+            precision = Precision(task="multiclass", num_classes=output_dim, average='weighted')
+            recall = Recall(task="multiclass", num_classes=output_dim, average='weighted')
+            f1score = F1Score(task="multiclass", num_classes=output_dim, average='weighted')
             confusion = ConfusionMatrix(task="multiclass", num_classes=output_dim)
 
             accuracy(max_indices, y[:,i])
