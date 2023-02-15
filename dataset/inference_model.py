@@ -98,9 +98,8 @@ class BaseModel(pl.LightningModule):
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             _, max_indices = torch.max(y_preds[i], dim = 1)
             if output_name == 'informativeness':
-                l1 = CalibrationError(task="multiclass", num_classes=output_dim)
-                l1(max_indices.double(), y[:, i])
-                self.log("val/distance for {}".format(output_name), l1.compute())
+                distance = l1_distance_loss(y[:, i].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
+                self.log("val/distance for {}".format(output_name), distance)
 
             accuracy = Accuracy(task="multiclass", num_classes=output_dim)
             precision = Precision(task="multiclass", num_classes=output_dim)
