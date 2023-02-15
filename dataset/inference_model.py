@@ -98,7 +98,8 @@ class BaseModel(pl.LightningModule):
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             if output_name == 'informativeness':
                 l1 = CalibrationError(task="multiclass", num_classes=output_dim)
-                distance = l1(y[:, i], max_indices).compute()
+                distance = l1(y[:, i], max_indices)
+                self.log("val/distance for {}".format(output_name), l1)
             _, max_indices = torch.max(y_preds[i], dim = 1)
             accuracy = Accuracy(task="multiclass", num_classes=output_dim)
             precision = Precision(task="multiclass", num_classes=output_dim)
@@ -106,16 +107,22 @@ class BaseModel(pl.LightningModule):
             f1score = F1Score(task="multiclass", num_classes=output_dim)
             confusion = ConfusionMatrix(task="multiclass", num_classes=output_dim)
 
+            self.log("val/acc for {}".format(output_name), accuracy)
+            self.log("val/pre for {}".format(output_name), precision)
+            self.log("val/rec for {}".format(output_name), recall)
+            self.log("val/f1 for {}".format(output_name), f1score)
+            self.log("val/confusion for {}".format(output_name), confusion)
+            '''
             acc[i] = accuracy(y[:,i], max_indices).compute()
             pre[i] = precision(y[:,i], max_indices).compute()
             rec[i] = recall(y[:,i], max_indices).compute()
             f1[i] = f1score(y[:,i], max_indices).compute()
-            conf[i] = confusion(y[:,i], max_indices).compute()
+            conf[i] = confusion(y[:,i], max_indices).compute()'''
                 
-        pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
+        '''pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
         df = pd.DataFrame(pandas_data, index=self.output_channel.keys())
         print(df.round(3))
-        '''if 'informativeness' in self.output_channel.keys():
+        if 'informativeness' in self.output_channel.keys():
             print('informativenss distance: ', distance)
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()): 
             if output_name == 'informativeness':
