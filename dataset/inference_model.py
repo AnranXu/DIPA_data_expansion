@@ -5,7 +5,7 @@ import pytorch_lightning as pl
 import numpy as np
 import pandas as pd
 from sklearn import metrics
-
+from torchmetrics import Accuracy, Precision, Recall, F1Score, ConfusionMatrix, CalibrationError
 class BaseModel(pl.LightningModule):
     def __init__(self, input_dim, output_channel):
         ## output_channel: key: output_name value: output_dim
@@ -97,24 +97,32 @@ class BaseModel(pl.LightningModule):
             conf.append(np.zeros((output_dim,output_dim)))
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             if output_name == 'informativeness':
-                distance += l1_distance_loss(y[:, i].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
+                l1 = CalibrationError(task="multiclass", num_classes=output_dim)
+                distance = l1(y[:, i], max_indices).compute()
             _, max_indices = torch.max(y_preds[i], dim = 1)
-            acc[i] = metrics.accuracy_score(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
-            pre[i] = metrics.precision_score(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
-            rec[i] = metrics.recall_score(y[:, i].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
-            f1[i] = metrics.f1_score(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
-            conf[i] = metrics.confusion_matrix(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy(), labels = np.arange(0,output_dim))
+            accuracy = Accuracy(task="multiclass", num_classes=output_dim)
+            precision = Precision(task="multiclass", num_classes=output_dim)
+            recall = Recall(task="multiclass", num_classes=output_dim)
+            f1score = F1Score(task="multiclass", num_classes=output_dim)
+            confusion = ConfusionMatrix(task="multiclass", num_classes=output_dim)
+
+            acc[i] = accuracy(y[:,i], max_indices).compute()
+            pre[i] = precision(y[:,i], max_indices).compute()
+            rec[i] = recall(y[:,i], max_indices).compute()
+            f1[i] = f1score(y[:,i], max_indices).compute()
+            conf[i] = confusion(y[:,i], max_indices).compute()
                 
         pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
         df = pd.DataFrame(pandas_data, index=self.output_channel.keys())
         print(df.round(3))
-        if 'informativeness' in self.output_channel.keys():
+        '''if 'informativeness' in self.output_channel.keys():
             print('informativenss distance: ', distance)
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()): 
             if output_name == 'informativeness':
                 self.log("val/distance for {}".format(output_name), distance)
             else:
-                self.log("val/acc for {}".format(output_name), acc[i])
-                self.log("val/pre for {}".format(output_name), pre[i])
-                self.log("val/rec for {}".format(output_name), rec[i])
-                self.log("val/f1 for {}".format(output_name), f1[i])
+                self.log("val/acc for {}".format(output_name), accuracy)
+                self.log("val/pre for {}".format(output_name), precision)
+                self.log("val/rec for {}".format(output_name), recall)
+                self.log("val/f1 for {}".format(output_name), f1)
+                self.log("val/confusion for {}".format(output_name), confusion)'''
