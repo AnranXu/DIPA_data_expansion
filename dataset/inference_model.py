@@ -107,7 +107,7 @@ class BaseModel(pl.LightningModule):
             f1score = F1Score(task="multiclass", num_classes=output_dim)
             confusion = ConfusionMatrix(task="multiclass", num_classes=output_dim)
 
-            self.log("val/acc for {}".format(output_name), accuracy)
+            self.log("val/acc for {}".format(output_name), accuracy.compute())
             self.log("val/pre for {}".format(output_name), precision)
             self.log("val/rec for {}".format(output_name), recall)
             self.log("val/f1 for {}".format(output_name), f1score)
