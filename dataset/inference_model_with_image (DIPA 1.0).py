@@ -59,8 +59,8 @@ if __name__ == '__main__':
     train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, output_name, image_size)
     val_dataset = ImageMaskDataset(test_df, image_folder, label_folder, input_channel, output_name, image_size)    
 
-    train_loader = DataLoader(train_dataset, batch_size=32, num_workers=4, pin_memory=True)
-    val_loader = DataLoader(val_dataset, batch_size=32, num_workers=4, pin_memory=True)
+    train_loader = DataLoader(train_dataset, batch_size=32)
+    val_loader = DataLoader(val_dataset, batch_size=32)
     
     trainer = pl.Trainer(accelerator='gpu', devices=[0])
     trainer.fit(model, train_loader)
@@ -82,13 +82,13 @@ if __name__ == '__main__':
         y_preds = model(image, mask, input_vector)
         for j, (output_name, output_dim) in enumerate(output_channel.items()):
             _, max_indices = torch.max(y_preds[j], dim = 1)
-            acc[j] += metrics.accuracy_score(y[:,j].detach().numpy(), max_indices.detach().numpy())
-            pre[j] += metrics.precision_score(y[:,j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
-            rec[j] += metrics.recall_score(y[:, j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
-            f1[j] += metrics.f1_score(y[:,j].detach().numpy(), max_indices.detach().numpy(),average='weighted')
-            conf[j] += metrics.confusion_matrix(y[:,j].detach().numpy(), max_indices.detach().numpy(), labels = mega_table[output_name].unique())
+            acc[j] += metrics.accuracy_score(y[:,j].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
+            pre[j] += metrics.precision_score(y[:,j].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
+            rec[j] += metrics.recall_score(y[:, j].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
+            f1[j] += metrics.f1_score(y[:,j].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
+            conf[j] += metrics.confusion_matrix(y[:,j].detach().cpu().numpy(), max_indices.detach().cpu().numpy(), labels = mega_table[output_name].unique())
             if output_name == 'informativeness':
-                distance += l1_distance_loss(y[:, j].detach().numpy(), max_indices.detach().numpy())
+                distance += l1_distance_loss(y[:, j].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
     
     ## save result
     length = len(val_dataset)
