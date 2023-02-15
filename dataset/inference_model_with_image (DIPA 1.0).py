@@ -63,7 +63,7 @@ if __name__ == '__main__':
     val_loader = DataLoader(val_dataset, batch_size=32)
     
     trainer = pl.Trainer(accelerator='gpu', devices=[0])
-    trainer.fit(model, train_loader, val_loader)
+    trainer.fit(model, train_loader)
     
     # validation. 
     # I am confused about how the validation_step work on saving all valid result (rather than just a batch)
