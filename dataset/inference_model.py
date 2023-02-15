@@ -61,7 +61,7 @@ class BaseModel(pl.LightningModule):
         y_preds = self(image, mask, input_vector)
         losses = 0
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
-            print(output_name)
+            #print(output_name)
             '''
             if output_name == 'informativeness':
                 # map label 0~6 to 0~1
