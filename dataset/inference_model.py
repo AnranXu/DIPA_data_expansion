@@ -108,16 +108,10 @@ class BaseModel(pl.LightningModule):
             confusion = ConfusionMatrix(task="multiclass", num_classes=output_dim)
 
             self.log("val/acc for {}".format(output_name), accuracy.compute())
-            self.log("val/pre for {}".format(output_name), precision)
-            self.log("val/rec for {}".format(output_name), recall)
-            self.log("val/f1 for {}".format(output_name), f1score)
-            self.log("val/confusion for {}".format(output_name), confusion)
-            '''
-            acc[i] = accuracy(y[:,i], max_indices).compute()
-            pre[i] = precision(y[:,i], max_indices).compute()
-            rec[i] = recall(y[:,i], max_indices).compute()
-            f1[i] = f1score(y[:,i], max_indices).compute()
-            conf[i] = confusion(y[:,i], max_indices).compute()'''
+            self.log("val/pre for {}".format(output_name), precision.compute())
+            self.log("val/rec for {}".format(output_name), recall.compute())
+            self.log("val/f1 for {}".format(output_name), f1score.compute())
+            #self.log("val/confusion for {}".format(output_name), confusion.compute())
                 
         '''pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
         df = pd.DataFrame(pandas_data, index=self.output_channel.keys())
