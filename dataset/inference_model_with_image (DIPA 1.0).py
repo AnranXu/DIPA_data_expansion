@@ -34,7 +34,6 @@ if __name__ == '__main__':
     mega_table['id'] = encoder.fit_transform(mega_table['id'])
     mega_table['informativeness'] = mega_table['informativeness']
 
-    print(mega_table['informativeness'].unique)
     input_channel = []
     input_channel.extend(basic_info)
     input_channel.extend(category)
