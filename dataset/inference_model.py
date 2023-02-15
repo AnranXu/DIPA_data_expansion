@@ -30,6 +30,9 @@ class BaseModel(pl.LightningModule):
         self.act = nn.SiLU()
         self.reg_loss = nn.L1Loss()
         self.entropy_loss = nn.CrossEntropyLoss()
+        for name, param in self.net.named_parameters():
+            if not param.requires_grad:
+                print(f'Parameter {name} does not require gradients')
 
     def forward(self, image, mask, input_vector):
         # x: [bs, 4, imgsize, imgsize]
