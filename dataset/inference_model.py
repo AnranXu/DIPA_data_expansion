@@ -99,14 +99,20 @@ class BaseModel(pl.LightningModule):
             _, max_indices = torch.max(y_preds[i], dim = 1)
             if output_name == 'informativeness':
                 l1 = CalibrationError(task="multiclass", num_classes=output_dim)
-                distance = l1(y[:, i].double(), max_indices)
-                self.log("val/distance for {}".format(output_name), l1)
+                l1(max_indices.double(), y[:, i])
+                self.log("val/distance for {}".format(output_name), l1.compute())
 
             accuracy = Accuracy(task="multiclass", num_classes=output_dim)
             precision = Precision(task="multiclass", num_classes=output_dim)
             recall = Recall(task="multiclass", num_classes=output_dim)
             f1score = F1Score(task="multiclass", num_classes=output_dim)
             confusion = ConfusionMatrix(task="multiclass", num_classes=output_dim)
+
+            accuracy(max_indices, y[:,i])
+            precision(max_indices, y[:,i])
+            recall(max_indices, y[:,i])
+            f1score(max_indices, y[:,i])
+            #confusion(max_indices, y[:,i])
 
             self.log("val/acc for {}".format(output_name), accuracy.compute())
             self.log("val/pre for {}".format(output_name), precision.compute())
