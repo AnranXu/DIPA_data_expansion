@@ -16,7 +16,7 @@ class BaseModel(pl.LightningModule):
         self.net.conv1 = nn.Conv2d(4, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
         self.net.conv1.weight.data[:,:3,:,:] = w0
 
-        self.fc1 = nn.Linear(2048, 100)
+        self.fc1 = nn.Linear(2048, 1000)
         self.fc2 = nn.Linear(1000 + input_dim, 256)
         self.fc3 = nn.Linear(256, 64)
         self.fc4 = nn.Linear(64, 32)
