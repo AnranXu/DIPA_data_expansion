@@ -16,15 +16,16 @@ class BaseModel(pl.LightningModule):
         self.net.conv1 = nn.Conv2d(4, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
         self.net.conv1.weight.data[:,:3,:,:] = w0
 
-        self.fc1 = nn.Linear(2048, 1000)
-        self.fc2 = nn.Linear(1000 + input_dim, 256)
-        self.fc3 = nn.Linear(256, 64)
-        self.fc4 = nn.Linear(64, 32)
+        self.fc1 = nn.Linear(2048, 1024)
+        self.fc2 = nn.Linear(1024, 256)
+        self.fc3 = nn.Linear(256 + input_dim, 128)
+        self.fc4 = nn.Linear(128, 64)
+        self.fc5 = nn.Linear(64, 32)
         self.output_layers = []
         self.output_channel = output_channel
         for output_name, output_dim in self.output_channel.items():
             if output_name == 'informativeness':
-                self.output_layers.append(nn.Linear(32,1))
+                self.output_layers.append(nn.Linear(32,output_dim))
             else:
                 self.output_layers.append(nn.Linear(32,output_dim))
         self.act = nn.SiLU()
@@ -39,10 +40,11 @@ class BaseModel(pl.LightningModule):
         # addition: [bs, featurelength]
         x = self.net(torch.cat((image, mask), dim = 1))
         x = self.act(self.fc1(x))
-        x = torch.cat([x, input_vector], dim=1)
         x = self.act(self.fc2(x))
+        x = torch.cat([x, input_vector], dim=1)
         x = self.act(self.fc3(x))
         x = self.act(self.fc4(x))
+        x = self.act(self.fc5(x))
         outs = []
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             out =  self.output_layers[i](x)
@@ -51,7 +53,7 @@ class BaseModel(pl.LightningModule):
         
 
     def configure_optimizers(self):
-        optimizer = torch.optim.Adam(self.net.parameters(), lr=1e-4)
+        optimizer = torch.optim.Adam(self.net.parameters())
         return optimizer
 
     def get_loss(self, image, mask, input_vector, y):
@@ -60,11 +62,13 @@ class BaseModel(pl.LightningModule):
         losses = 0
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             print(output_name)
+            '''
             if output_name == 'informativeness':
                 # map label 0~6 to 0~1
                 losses += self.reg_loss(torch.round(y_preds[i]).squeeze(1), y[:, i])
             else:
-                losses += self.entropy_loss(y_preds[i], y[:,i].type(torch.LongTensor).to('cuda'))
+                losses += self.entropy_loss(y_preds[i], y[:,i].type(torch.LongTensor).to('cuda'))'''
+            losses += self.entropy_loss(y_preds[i], y[:,i])
         return losses
 
     def training_step(self, batch, batch_idx):
@@ -94,13 +98,12 @@ class BaseModel(pl.LightningModule):
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             if output_name == 'informativeness':
                 distance += l1_distance_loss(y[:, i].detach().cpu().numpy(), y_preds[i].detach().cpu().numpy())
-            else:
-                _, max_indices = torch.max(y_preds[i], dim = 1)
-                acc[i] = metrics.accuracy_score(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
-                pre[i] = metrics.precision_score(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
-                rec[i] = metrics.recall_score(y[:, i].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
-                f1[i] = metrics.f1_score(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
-                conf[i] = metrics.confusion_matrix(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy(), labels = np.arange(0,output_dim))
+            _, max_indices = torch.max(y_preds[i], dim = 1)
+            acc[i] = metrics.accuracy_score(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
+            pre[i] = metrics.precision_score(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
+            rec[i] = metrics.recall_score(y[:, i].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
+            f1[i] = metrics.f1_score(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
+            conf[i] = metrics.confusion_matrix(y[:,i].detach().cpu().numpy(), max_indices.detach().cpu().numpy(), labels = np.arange(0,output_dim))
                 
         pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
         df = pd.DataFrame(pandas_data, index=self.output_channel.keys())

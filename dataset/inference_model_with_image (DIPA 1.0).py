@@ -32,7 +32,7 @@ if __name__ == '__main__':
     mega_table['gender'] = encoder.fit_transform(mega_table['gender'])
     mega_table['platform'] = encoder.fit_transform(mega_table['platform'])
     mega_table['id'] = encoder.fit_transform(mega_table['id'])
-    mega_table['informativeness'] = mega_table['informativeness'] / 6.0
+    mega_table['informativeness'] = mega_table['informativeness']
 
     print(mega_table['informativeness'].unique)
     input_channel = []
@@ -56,11 +56,11 @@ if __name__ == '__main__':
     test_size = num_rows - train_size
 
     # Split the dataframe into two
-    train_df = mega_table.sample(n=train_size, random_state=42)
-    test_df = mega_table.drop(train_df.index)
+    train_df = mega_table.sample(n=train_size, random_state=0)
+    val_df = mega_table.drop(train_df.index)
 
     train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, output_name, image_size)
-    val_dataset = ImageMaskDataset(test_df, image_folder, label_folder, input_channel, output_name, image_size)    
+    val_dataset = ImageMaskDataset(val_df, image_folder, label_folder, input_channel, output_name, image_size)    
 
     train_loader = DataLoader(train_dataset, batch_size=16)
     val_loader = DataLoader(val_dataset, batch_size=16)
