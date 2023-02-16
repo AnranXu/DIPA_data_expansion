@@ -120,6 +120,7 @@ class BaseModel(pl.LightningModule):
             confusion = ConfusionMatrix(task="multiclass", num_classes=output_dim)
 
             if output_name == 'informativeness':
+                print(y_preds[i].shape)
                 distance = l1_distance_loss(y[:, i].detach().cpu().numpy(), y_preds[i].detach().cpu().numpy())
                 self.log("val/distance for {}".format(output_name), distance * 6)
                 accuracy(torch.round(y_preds[i] * 6), (y[:,i] * 6).type(torch.LongTensor))
