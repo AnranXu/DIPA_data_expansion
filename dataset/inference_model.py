@@ -66,7 +66,6 @@ class BaseModel(pl.LightningModule):
     def get_loss(self, image, mask, input_vector, y, text='train'):
         print('--get loss--')
         y_preds = self(image, mask, input_vector)
-        print(y_preds.shape, y.shape)
         #0 ~4: type 5: informativeness 6~10: sharing
         TypeLoss = self.entropy_loss(y_preds[:, :5], y[:,0].type(torch.LongTensor).to('cuda'))
         informativenessLosses = self.reg_loss(y_preds[:,5], y[:, 1])
