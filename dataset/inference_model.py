@@ -112,7 +112,7 @@ class BaseModel(pl.LightningModule):
             _, max_indices = torch.max(y_preds[i], dim = 1)
             if output_name == 'informativeness':
                 distance = l1_distance_loss(y[:, i].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
-                self.log("val/distance for {}".format(output_name), distance)
+                self.log("val/distance for {}".format(output_name), distance * 6)
 
             accuracy = Accuracy(task="multiclass", num_classes=output_dim)
             precision = Precision(task="multiclass", num_classes=output_dim, average='weighted')
