@@ -54,10 +54,10 @@ class ImageMaskDataset(Dataset):
                 h = h * ratio
                 bboxes.append([x,y,w,h])
 
-        mask = torch.zeros((self.image_size[0], self.image_size[1]), dtype=torch.uint8)
+        mask = torch.zeros((self.image_size[0], self.image_size[1]))
         for x, y, w, h in bboxes:
             x, y, w, h = int(x), int(y), int(w), int(h)
-            mask[y:y+h, x:x+w] = 255
+            mask[y:y+h, x:x+w] = 10 * self.mega_table['category'].iloc[idx] / 255.0
         #input vector
         if torch.rand(1) < self.flip_prob:
             image = TF.hflip(image)
