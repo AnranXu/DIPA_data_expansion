@@ -120,12 +120,12 @@ class BaseModel(pl.LightningModule):
             confusion = ConfusionMatrix(task="multiclass", num_classes=output_dim)
 
             if output_name == 'informativeness':
-                distance = l1_distance_loss(y[:, i].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
+                distance = l1_distance_loss(y[:, i].detach().cpu().numpy(), y_preds[i].detach().cpu().numpy())
                 self.log("val/distance for {}".format(output_name), distance * 6)
-                accuracy(max_indices, y[:,i])
-                precision(max_indices, y[:,i])
-                recall(max_indices, y[:,i])
-                f1score(max_indices, y[:,i])
+                accuracy(y_preds[i], y[:,i])
+                precision(y_preds[i], y[:,i])
+                recall(y_preds[i], y[:,i])
+                f1score(y_preds[i], y[:,i])
             else:
                 accuracy(max_indices, y[:,i])
                 precision(max_indices, y[:,i])
