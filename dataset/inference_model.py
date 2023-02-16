@@ -155,7 +155,7 @@ class BaseModel(pl.LightningModule):
         return vloss  
 
     def validation_epoch_end(self, validation_step_outputs):
-        w  = self.fc4.parameters().data
+        w  = self.fc4.weight.detach().numpy()
         print(w)
         with open('./fc4_param', 'w') as f:
             f.write(str(w))
