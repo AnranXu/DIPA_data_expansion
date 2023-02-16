@@ -65,7 +65,7 @@ class BaseModel(pl.LightningModule):
         y_preds = self(image, mask, input_vector)
         print(y_preds.shape, y.shape)
         TypeLoss = self.entropy_loss(y_preds[:, :5], y[:,0].type(torch.LongTensor).to('cuda'))
-        informativenessLosses = self.reg_loss(y_preds[:,5].squeeze(1), y[:, 1])
+        informativenessLosses = self.reg_loss(y_preds[:,5], y[:, 1])
         sharingLoss = self.entropy_loss(y_preds[:,6:11], y[:,2].type(torch.LongTensor).to('cuda'))
         # losses = 0
         # for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
