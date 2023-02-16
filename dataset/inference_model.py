@@ -87,6 +87,7 @@ class BaseModel(pl.LightningModule):
         self.log(f'{text} type loss', TypeLoss)
         self.log(f'{text} informativeness loss', informativenessLosses)
         self.log(f'{text} sharing loss', sharingLoss)
+        self.save_metrics(y_preds, y, text=text)
         return loss
 
     def training_step(self, batch, batch_idx):
@@ -96,19 +97,29 @@ class BaseModel(pl.LightningModule):
         input_vector = input_vector.to('cuda')
         y = y.to('cuda')'''
         loss = self.get_loss(image, mask, input_vector, y)
-        self.log("trainloss", loss)
-        return loss
+        
 
+        return loss
+    
     def validation_step (self, val_batch, batch_idx):
-        def l1_distance_loss(prediction, target):
-            loss = np.abs(prediction - target)
-            return np.mean(loss)
 
         image, mask, input_vector, y = val_batch
         y_preds = self(image, mask, input_vector)
         vloss = self.get_loss(image, mask, input_vector, y, text='val')
-
         #Type
+        #self.log("val/confusion for {}".format(output_name), confusion.compute())
+        return vloss  
+
+    def validation_epoch_end(self, validation_step_outputs):
+        print(self.fc4.weight.detach().cpu().numpy())
+        with open('./fc4_param', 'w') as f:
+            f.write(str(self.fc4.weight.detach().cpu().numpy()))
+    
+    def save_metrics(self, y_preds, y, text='val'):
+        def l1_distance_loss(prediction, target):
+            loss = np.abs(prediction - target)
+            return np.mean(loss)
+
         accuracy = Accuracy(task="multiclass", num_classes=5)
         precision = Precision(task="multiclass", num_classes=5, average='weighted')
         recall = Recall(task="multiclass", num_classes=5, average='weighted')
@@ -120,10 +131,10 @@ class BaseModel(pl.LightningModule):
         recall(max_indices, y[:,0])
         f1score(max_indices, y[:,0])
 
-        self.log("val/acc for {}".format('information type'), accuracy.compute())
-        self.log("val/pre for {}".format('information type'), precision.compute())
-        self.log("val/rec for {}".format('information type'), recall.compute())
-        self.log("val/f1 for {}".format('information type'), f1score.compute())
+        self.log(f"{text}/acc for information type", accuracy.compute())
+        self.log(f"{text}/acc for information type", precision.compute())
+        self.log(f"{text}/acc for information type", recall.compute())
+        self.log(f"{text}/acc for information type", f1score.compute())
 
         accuracy.reset()
         precision.reset()
@@ -133,7 +144,7 @@ class BaseModel(pl.LightningModule):
         
         distance = l1_distance_loss(y[:, 1].detach().cpu().numpy(), y_preds[:,5].detach().cpu().numpy()) * 6
 
-        self.log("distance for {}".format('informativeness'), distance)
+        self.log(f"{text}/distance for informativeness", distance)
 
         _, max_indices = torch.max(y_preds[:,6:11], dim = 1)
         accuracy(max_indices, y[:,2])
@@ -141,23 +152,15 @@ class BaseModel(pl.LightningModule):
         recall(max_indices, y[:,2])
         f1score(max_indices, y[:,2])
 
-        self.log("val/acc for {}".format('sharing'), accuracy.compute())
-        self.log("val/pre for {}".format('sharing'), precision.compute())
-        self.log("val/rec for {}".format('sharing'), recall.compute())
-        self.log("val/f1 for {}".format('sharing'), f1score.compute())
+        self.log(f"{text}/acc for sharing", accuracy.compute())
+        self.log(f"{text}/pre for sharing", precision.compute())
+        self.log(f"{text}/rec for sharing", recall.compute())
+        self.log(f"{text}/f1 for sharing", f1score.compute())
 
         accuracy.reset()
         precision.reset()
         recall.reset()
         f1score.reset()
-           
-            #self.log("val/confusion for {}".format(output_name), confusion.compute())
-        return vloss  
-
-    def validation_epoch_end(self, validation_step_outputs):
-        print(self.fc4.weight.detach().cpu().numpy())
-        with open('./fc4_param', 'w') as f:
-            f.write(str(self.fc4.weight.detach().cpu().numpy()))
     # def validation_step (self, val_batch, batch_idx):
     #     def l1_distance_loss(prediction, target):
     #         loss = np.abs(prediction - target)

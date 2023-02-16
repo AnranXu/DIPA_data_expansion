@@ -13,6 +13,7 @@ from sklearn import metrics
 
 from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.callbacks import ModelCheckpoint
+from pytorch_lightning.callbacks.early_stopping import EarlyStopping
 
 def l1_distance_loss(prediction, target):
     loss = np.abs(prediction - target)
@@ -65,9 +66,11 @@ if __name__ == '__main__':
     val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=20)
     
     wandb_logger = WandbLogger(project="DIPA-inference", name = 'mix losses without dropout (resnet50)')
-    checkpoint_callback = ModelCheckpoint(dirpath='./models/test mix losses with augmentation (resnet50)/', save_last=True)
+    checkpoint_callback = ModelCheckpoint(dirpath='./models/test mix losses with augmentation (resnet50)/', save_last=True, monitor='val loss')
 
-    trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, auto_lr_find=True, max_epochs = 300, callbacks=[checkpoint_callback])
+    trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, 
+    auto_lr_find=True, max_epochs = 300, callbacks=[checkpoint_callback],
+    callbacks=[EarlyStopping(monitor="val_loss", mode="min")])
     lr_finder = trainer.tuner.lr_find(model, train_loader)
     model.hparams.learning_rate = lr_finder.suggestion()
     print(f'lr auto: {lr_finder.suggestion()}')
