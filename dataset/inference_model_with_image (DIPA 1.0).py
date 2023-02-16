@@ -64,7 +64,7 @@ if __name__ == '__main__':
     train_loader = DataLoader(train_dataset, batch_size=20, generator=torch.Generator(device='cuda'), shuffle=True)
     val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=20)
     
-    wandb_logger = WandbLogger(project="resnet50-DIPA-inference", name = 'test mix losses with augmentation (resnet50)')
+    wandb_logger = WandbLogger(project="DIPA-inference", name = 'mix losses without dropout (resnet50)')
     checkpoint_callback = ModelCheckpoint(dirpath='./models/test mix losses with augmentation (resnet50)/', save_last=True)
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, auto_lr_find=True, max_epochs = 300, callbacks=[checkpoint_callback])

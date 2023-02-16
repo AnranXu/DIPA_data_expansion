@@ -42,22 +42,14 @@ class BaseModel(pl.LightningModule):
         # x: [bs, 4, imgsize, imgsize]
         # addition: [bs, featurelength]
         x = self.net(torch.cat((image, mask), dim = 1))
-        x = self.dropout(x)
         x = self.act(self.fc1(x))
-        x = self.dropout(x)
         x = self.act(self.fc2(x))
-        x = self.dropout(x)
         x = self.act(self.fc3(x))
-        x = self.dropout(x)
         x = torch.cat([x, input_vector], dim=1)
         x = self.act(self.fc4(x))
-        x = self.dropout(x)
         x = self.act(self.fc5(x))
-        x = self.dropout(x)
         x = self.act(self.fc6(x))
-        x = self.dropout(x)
         x = self.act(self.fc7(x))
-        x = self.dropout(x)
         outs = []
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             out =  self.output_layers[i](x)
