@@ -32,7 +32,7 @@ if __name__ == '__main__':
     mega_table['gender'] = encoder.fit_transform(mega_table['gender'])
     mega_table['platform'] = encoder.fit_transform(mega_table['platform'])
     mega_table['id'] = encoder.fit_transform(mega_table['id'])
-    mega_table['informativeness'] = mega_table['informativeness']
+    mega_table['informativeness'] = mega_table['informativeness'] / 6.0
 
     input_channel = []
     input_channel.extend(basic_info)
@@ -64,7 +64,7 @@ if __name__ == '__main__':
     train_loader = DataLoader(train_dataset, batch_size=16)
     val_loader = DataLoader(val_dataset, batch_size=16)
     
-    wandb_logger = WandbLogger(project="resnet50-DIPA-inference", name = 'test all cross entropy (resnet50)')
+    wandb_logger = WandbLogger(project="resnet50-DIPA-inference", name = 'test mix losses (resnet50)')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, auto_lr_find=True)
     trainer.fit(model, train_loader, val_loader)

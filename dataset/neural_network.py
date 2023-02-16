@@ -13,7 +13,7 @@ class nn_model(nn.Module):
         self.output_dims = output_dims
         for i, dim in enumerate(output_dims):
             self.output_layers.append(nn.Linear(64,dim))
-        self.relu = nn.ReLU()
+        self.relu = nn.SiLU()
     
     
     def forward(self,x):

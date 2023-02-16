@@ -16,18 +16,20 @@ class BaseModel(pl.LightningModule):
         self.net.conv1 = nn.Conv2d(4, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
         self.net.conv1.weight.data[:,:3,:,:] = w0
 
-        self.fc1 = nn.Linear(2048, 1024)
-        self.fc2 = nn.Linear(1024, 256)
-        self.fc3 = nn.Linear(256 + input_dim, 128)
-        self.fc4 = nn.Linear(128, 64)
-        self.fc5 = nn.Linear(64, 32)
+        self.fc1 = nn.Linear(2048, 512)
+        self.fc2 = nn.Linear(512, 128)
+        self.fc3 = nn.Linear(128, input_dim)
+        self.fc4 = nn.Linear(2 * input_dim, 128)
+        self.fc5 = nn.Linear(128, 256)
+        self.fc6 = nn.Linear(256, 128)
+        self.fc7 = nn.Linear(128, 64)
         self.output_layers = []
         self.output_channel = output_channel
         for output_name, output_dim in self.output_channel.items():
             if output_name == 'informativeness':
-                self.output_layers.append(nn.Linear(32,output_dim))
+                self.output_layers.append(nn.Linear(64,1))
             else:
-                self.output_layers.append(nn.Linear(32,output_dim))
+                self.output_layers.append(nn.Linear(64,output_dim))
         self.act = nn.SiLU()
         self.reg_loss = nn.L1Loss()
         self.entropy_loss = nn.CrossEntropyLoss()
@@ -41,10 +43,12 @@ class BaseModel(pl.LightningModule):
         x = self.net(torch.cat((image, mask), dim = 1))
         x = self.act(self.fc1(x))
         x = self.act(self.fc2(x))
-        x = torch.cat([x, input_vector], dim=1)
         x = self.act(self.fc3(x))
+        x = torch.cat([x, input_vector], dim=1)
         x = self.act(self.fc4(x))
         x = self.act(self.fc5(x))
+        x = self.act(self.fc6(x))
+        x = self.act(self.fc7(x))
         outs = []
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             out =  self.output_layers[i](x)
@@ -53,7 +57,7 @@ class BaseModel(pl.LightningModule):
         
 
     def configure_optimizers(self):
-        optimizer = torch.optim.Adam(self.parameters(), lr=0.0001)
+        optimizer = torch.optim.Adam(self.parameters(), lr=1e-4)
         return optimizer
 
     def get_loss(self, image, mask, input_vector, y):
@@ -62,13 +66,13 @@ class BaseModel(pl.LightningModule):
         losses = 0
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             #print(output_name)
-            '''
+            
             if output_name == 'informativeness':
                 # map label 0~6 to 0~1
-                losses += self.reg_loss(torch.round(y_preds[i]).squeeze(1), y[:, i])
+                losses += self.reg_loss(y_preds[i].squeeze(1), y[:, i])
             else:
-                losses += self.entropy_loss(y_preds[i], y[:,i].type(torch.LongTensor).to('cuda'))'''
-            losses += self.entropy_loss(y_preds[i], y[:,i])
+                losses += self.entropy_loss(y_preds[i], y[:,i].type(torch.LongTensor).to('cuda'))
+            #losses += self.entropy_loss(y_preds[i], y[:,i])
         return losses
 
     def training_step(self, batch, batch_idx):
