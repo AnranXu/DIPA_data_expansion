@@ -126,6 +126,11 @@ class BaseModel(pl.LightningModule):
         recall.reset()
         f1score.reset()
 
+        accuracy = Accuracy(task="multiclass", num_classes=6)
+        precision = Precision(task="multiclass", num_classes=6, average='weighted')
+        recall = Recall(task="multiclass", num_classes=6, average='weighted')
+        f1score = F1Score(task="multiclass", num_classes=6, average='weighted')
+
         accuracy(torch.round(y_preds[:,5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
         precision(torch.round(y_preds[:,5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
         recall(torch.round(y_preds[:,5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
@@ -142,6 +147,11 @@ class BaseModel(pl.LightningModule):
         precision.reset()
         recall.reset()
         f1score.reset()
+
+        accuracy = Accuracy(task="multiclass", num_classes=5)
+        precision = Precision(task="multiclass", num_classes=5, average='weighted')
+        recall = Recall(task="multiclass", num_classes=5, average='weighted')
+        f1score = F1Score(task="multiclass", num_classes=5, average='weighted')
 
         _, max_indices = torch.max(y_preds[:,6:11], dim = 1)
         accuracy(max_indices, y[:,2])
