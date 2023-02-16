@@ -1,6 +1,6 @@
 import torch
 from torch import nn
-from torchvision.models import VGG16_Weights, ResNet50_Weights, MobileNet_V3_Large_Weights
+from torchvision.models import VGG16_Weights, ResNet18_Weights, ResNet50_Weights, MobileNet_V3_Large_Weights
 import pytorch_lightning as pl
 import numpy as np
 import pandas as pd
@@ -10,14 +10,14 @@ class BaseModel(pl.LightningModule):
     def __init__(self, input_dim, output_channel, dropout_prob=0.2):
         ## output_channel: key: output_name value: output_dim
         super().__init__()
-        self.net = torch.hub.load('pytorch/vision:v0.14.1', 'resnet50', pretrained=ResNet50_Weights.DEFAULT)
+        self.net = torch.hub.load('pytorch/vision:v0.14.1', 'resnet18', pretrained=ResNet18_Weights.DEFAULT)
         self.net.fc = nn.Identity()
         w0 = self.net.conv1.weight.data.clone()
         self.net.conv1 = nn.Conv2d(4, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
         self.net.conv1.weight.data[:,:3,:,:] = w0
 
-        self.fc1 = nn.Linear(2048, 512)
-        self.fc2 = nn.Linear(512, 128)
+        self.fc1 = nn.Linear(512, 256)
+        self.fc2 = nn.Linear(256, 128)
         self.fc3 = nn.Linear(128, input_dim)
         self.fc4 = nn.Linear(2 * input_dim, 11)
         self.dropout = nn.Dropout(p=dropout_prob)
@@ -128,7 +128,7 @@ class BaseModel(pl.LightningModule):
         f1score.reset()
 
         
-        distance = l1_distance_loss(y[:, 1].detach().cpu().numpy(), y_preds[:,5].detach().cpu().numpy())
+        distance = l1_distance_loss(y[:, 1].detach().cpu().numpy(), y_preds[:,5].detach().cpu().numpy()) * 6
 
         self.log("distance for {}".format('informativeness'), distance)
 
