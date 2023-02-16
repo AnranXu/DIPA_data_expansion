@@ -57,7 +57,7 @@ class ImageMaskDataset(Dataset):
         mask = torch.zeros((self.image_size[0], self.image_size[1]), dtype=torch.uint8)
         for x, y, w, h in bboxes:
             x, y, w, h = int(x), int(y), int(w), int(h)
-            mask[y:y+h, x:x+w] = 1
+            mask[y:y+h, x:x+w] = 255
         #input vector
         if torch.rand(1) < self.flip_prob:
             image = TF.hflip(image)
@@ -72,7 +72,7 @@ class ImageMaskDataset(Dataset):
 
 
 if __name__ == '__main__':
-    image_size = (300, 300)
+    image_size = (512, 512)
     mega_table = pd.read_csv('./mega_table.csv')
     label_folder = './new annotations/annotations/'
     image_folder = './new annotations/images/'
@@ -94,5 +94,5 @@ if __name__ == '__main__':
         plt.subplot(1, 2, 1)
         plt.imshow(TF.to_pil_image(image))
         plt.subplot(1, 2, 2)
-        plt.imshow(TF.to_pil_image(mask), cmap='gray', vmin=0, vmax=1)
+        plt.imshow(TF.to_pil_image(mask), cmap='gray', vmin=0, vmax=255)
         plt.show()
