@@ -12,7 +12,7 @@ import numpy as np
 from sklearn import metrics
 
 from pytorch_lightning.loggers import WandbLogger
-
+from pytorch_lightning.callbacks import ModelCheckpoint
 
 def l1_distance_loss(prediction, target):
     loss = np.abs(prediction - target)
@@ -65,8 +65,9 @@ if __name__ == '__main__':
     val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=20)
     
     wandb_logger = WandbLogger(project="resnet50-DIPA-inference", name = 'test mix losses with augmentation (resnet50)')
+    checkpoint_callback = ModelCheckpoint(dirpath='./models/test mix losses with augmentation (resnet50)/', save_last=True)
 
-    trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, auto_lr_find=True, max_epochs = 300)
+    trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, auto_lr_find=True, max_epochs = 300, callbacks=[checkpoint_callback])
     trainer.fit(model, train_loader, val_loader)
     
     # validation. 

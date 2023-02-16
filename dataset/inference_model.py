@@ -106,13 +106,12 @@ class BaseModel(pl.LightningModule):
         f1 = np.zeros(len(self.output_channel))
         distance = 0.0
         conf = []
+        vloss = self.get_loss(image, mask, input_vector, y)
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             conf.append(np.zeros((output_dim,output_dim)))
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             _, max_indices = torch.max(y_preds[i], dim = 1)
-            if output_name == 'informativeness':
-                distance = l1_distance_loss(y[:, i].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
-                self.log("val/distance for {}".format(output_name), distance * 6)
+            
 
             accuracy = Accuracy(task="multiclass", num_classes=output_dim)
             precision = Precision(task="multiclass", num_classes=output_dim, average='weighted')
@@ -120,18 +119,27 @@ class BaseModel(pl.LightningModule):
             f1score = F1Score(task="multiclass", num_classes=output_dim, average='weighted')
             confusion = ConfusionMatrix(task="multiclass", num_classes=output_dim)
 
-            accuracy(max_indices, y[:,i])
-            precision(max_indices, y[:,i])
-            recall(max_indices, y[:,i])
-            f1score(max_indices, y[:,i])
-            #confusion(max_indices, y[:,i])
+            if output_name == 'informativeness':
+                distance = l1_distance_loss(y[:, i].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
+                self.log("val/distance for {}".format(output_name), distance * 6)
+                accuracy(max_indices, y[:,i])
+                precision(max_indices, y[:,i])
+                recall(max_indices, y[:,i])
+                f1score(max_indices, y[:,i])
+            else:
+                accuracy(max_indices, y[:,i])
+                precision(max_indices, y[:,i])
+                recall(max_indices, y[:,i])
+                f1score(max_indices, y[:,i])
+                #confusion(max_indices, y[:,i])
 
             self.log("val/acc for {}".format(output_name), accuracy.compute())
             self.log("val/pre for {}".format(output_name), precision.compute())
             self.log("val/rec for {}".format(output_name), recall.compute())
             self.log("val/f1 for {}".format(output_name), f1score.compute())
             #self.log("val/confusion for {}".format(output_name), confusion.compute())
-                
+        self.log("vloss", vloss)
+        return vloss  
         '''pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
         df = pd.DataFrame(pandas_data, index=self.output_channel.keys())
         print(df.round(3))
