@@ -60,8 +60,8 @@ class ImageMaskDataset(Dataset):
             mask[y:y+h, x:x+w] = 1
         #input vector
         if torch.rand(1) < self.flip_prob:
-            x = TF.hflip(x)
-            m = TF.hflip(m)
+            image = TF.hflip(image)
+            mask = TF.hflip(mask)
         mask = mask.unsqueeze(0)
         input_vector = self.mega_table[self.input_vector].iloc[idx].values
         input_vector = torch.from_numpy(input_vector)
