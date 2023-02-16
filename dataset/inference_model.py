@@ -122,10 +122,10 @@ class BaseModel(pl.LightningModule):
             if output_name == 'informativeness':
                 distance = l1_distance_loss(y[:, i].detach().cpu().numpy(), y_preds[i].detach().cpu().numpy())
                 self.log("val/distance for {}".format(output_name), distance * 6)
-                accuracy(y_preds[i], y[:,i])
-                precision(y_preds[i], y[:,i])
-                recall(y_preds[i], y[:,i])
-                f1score(y_preds[i], y[:,i])
+                accuracy(torch.round(y_preds[i] * 6), (y[:,i] * 6).type(torch.LongTensor))
+                precision(torch.round(y_preds[i] * 6), (y[:,i] * 6).type(torch.LongTensor))
+                recall(torch.round(y_preds[i] * 6), (y[:,i] * 6).type(torch.LongTensor))
+                f1score(torch.round(y_preds[i] * 6), (y[:,i] * 6).type(torch.LongTensor))
             else:
                 accuracy(max_indices, y[:,i])
                 precision(max_indices, y[:,i])
