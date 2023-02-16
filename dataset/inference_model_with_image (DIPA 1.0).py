@@ -61,12 +61,12 @@ if __name__ == '__main__':
     train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, output_name, image_size)
     val_dataset = ImageMaskDataset(val_df, image_folder, label_folder, input_channel, output_name, image_size)    
 
-    train_loader = DataLoader(train_dataset, batch_size=16)
-    val_loader = DataLoader(val_dataset, batch_size=16)
+    train_loader = DataLoader(train_dataset, batch_size=20, shuffle=True)
+    val_loader = DataLoader(val_dataset, batch_size=20)
     
-    wandb_logger = WandbLogger(project="resnet50-DIPA-inference", name = 'test mix losses (resnet50)')
+    wandb_logger = WandbLogger(project="resnet50-DIPA-inference", name = 'test mix losses with augmentation (resnet50)')
 
-    trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, auto_lr_find=True)
+    trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, auto_lr_find=True, max_epochs = 300)
     trainer.fit(model, train_loader, val_loader)
     
     # validation. 

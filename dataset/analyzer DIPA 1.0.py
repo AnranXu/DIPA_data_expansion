@@ -447,7 +447,7 @@ class analyzer:
         training_dataset = nn_dataset(X_train, y_train)
         testing_dataset = nn_dataset(X_test, y_test)
         training_loader = DataLoader(training_dataset, batch_size=64, shuffle=True)
-        testing_loader = DataLoader(testing_dataset, batch_size=64, shuffle=True)
+        testing_loader = DataLoader(testing_dataset, batch_size=64)
 
         #start training
         writer = SummaryWriter()

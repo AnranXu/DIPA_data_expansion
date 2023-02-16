@@ -7,7 +7,7 @@ import pandas as pd
 from sklearn import metrics
 from torchmetrics import Accuracy, Precision, Recall, F1Score, ConfusionMatrix, CalibrationError
 class BaseModel(pl.LightningModule):
-    def __init__(self, input_dim, output_channel):
+    def __init__(self, input_dim, output_channel, dropout_prob=0.2):
         ## output_channel: key: output_name value: output_dim
         super().__init__()
         self.net = torch.hub.load('pytorch/vision:v0.14.1', 'resnet50', pretrained=ResNet50_Weights.DEFAULT)
@@ -23,6 +23,7 @@ class BaseModel(pl.LightningModule):
         self.fc5 = nn.Linear(128, 256)
         self.fc6 = nn.Linear(256, 128)
         self.fc7 = nn.Linear(128, 64)
+        self.dropout = nn.Dropout(p=dropout_prob)
         self.output_layers = []
         self.output_channel = output_channel
         for output_name, output_dim in self.output_channel.items():
@@ -41,14 +42,22 @@ class BaseModel(pl.LightningModule):
         # x: [bs, 4, imgsize, imgsize]
         # addition: [bs, featurelength]
         x = self.net(torch.cat((image, mask), dim = 1))
+        x = self.dropout(x)
         x = self.act(self.fc1(x))
+        x = self.dropout(x)
         x = self.act(self.fc2(x))
+        x = self.dropout(x)
         x = self.act(self.fc3(x))
+        x = self.dropout(x)
         x = torch.cat([x, input_vector], dim=1)
         x = self.act(self.fc4(x))
+        x = self.dropout(x)
         x = self.act(self.fc5(x))
+        x = self.dropout(x)
         x = self.act(self.fc6(x))
+        x = self.dropout(x)
         x = self.act(self.fc7(x))
+        x = self.dropout(x)
         outs = []
         for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
             out =  self.output_layers[i](x)
@@ -57,7 +66,7 @@ class BaseModel(pl.LightningModule):
         
 
     def configure_optimizers(self):
-        optimizer = torch.optim.Adam(self.parameters(), lr=1e-4)
+        optimizer = torch.optim.Adam(self.parameters(), lr=1e-4, weight_decay=0.01) # weight_decay is the L2 regularization parameter
         return optimizer
 
     def get_loss(self, image, mask, input_vector, y):

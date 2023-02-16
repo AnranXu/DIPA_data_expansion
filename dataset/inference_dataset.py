@@ -11,13 +11,14 @@ import json
 
 
 class ImageMaskDataset(Dataset):
-    def __init__(self, mega_table, image_folder, label_folder, input_vector, output_vector, image_size):
+    def __init__(self, mega_table, image_folder, label_folder, input_vector, output_vector, image_size, flip_prob = 0.5):
         self.mega_table = mega_table
         self.image_folder = image_folder
         self.label_folder = label_folder
         self.input_vector = input_vector
         self.output_vector = output_vector
         self.image_size = image_size
+        self.flip_prob = flip_prob
         self.padding_color = (0, 0, 0)
 
     def __len__(self):
@@ -58,6 +59,9 @@ class ImageMaskDataset(Dataset):
             x, y, w, h = int(x), int(y), int(w), int(h)
             mask[y:y+h, x:x+w] = 1
         #input vector
+        if torch.rand(1) < self.flip_prob:
+            x = TF.hflip(x)
+            m = TF.hflip(m)
         mask = mask.unsqueeze(0)
         input_vector = self.mega_table[self.input_vector].iloc[idx].values
         input_vector = torch.from_numpy(input_vector)
