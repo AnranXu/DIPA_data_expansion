@@ -132,9 +132,9 @@ class BaseModel(pl.LightningModule):
         f1score(max_indices, y[:,0])
 
         self.log(f"{text}/acc for information type", accuracy.compute())
-        self.log(f"{text}/acc for information type", precision.compute())
-        self.log(f"{text}/acc for information type", recall.compute())
-        self.log(f"{text}/acc for information type", f1score.compute())
+        self.log(f"{text}/pre for information type", precision.compute())
+        self.log(f"{text}/rec for information type", recall.compute())
+        self.log(f"{text}/f1 for information type", f1score.compute())
 
         accuracy.reset()
         precision.reset()
