@@ -151,7 +151,6 @@ class BaseModel(pl.LightningModule):
         f1score.reset()
            
             #self.log("val/confusion for {}".format(output_name), confusion.compute())
-        self.log("vloss", vloss)
         return vloss  
 
     def validation_epoch_end(self, validation_step_outputs):
