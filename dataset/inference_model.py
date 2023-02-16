@@ -6,6 +6,8 @@ import numpy as np
 import pandas as pd
 from sklearn import metrics
 from torchmetrics import Accuracy, Precision, Recall, F1Score, ConfusionMatrix, CalibrationError
+import json
+
 class BaseModel(pl.LightningModule):
     def __init__(self, input_dim, output_channel, dropout_prob=0.2):
         ## output_channel: key: output_name value: output_dim
@@ -152,6 +154,10 @@ class BaseModel(pl.LightningModule):
         self.log("vloss", vloss)
         return vloss  
 
+    def validation_epoch_end(self, validation_step_outputs):
+        print(self.fc4.weight)
+        with open('./fc4_param.json', 'w') as f:
+            json.dump(self.fc4.state_dict(), f)
     # def validation_step (self, val_batch, batch_idx):
     #     def l1_distance_loss(prediction, target):
     #         loss = np.abs(prediction - target)
