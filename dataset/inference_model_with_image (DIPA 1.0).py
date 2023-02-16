@@ -68,6 +68,7 @@ if __name__ == '__main__':
     checkpoint_callback = ModelCheckpoint(dirpath='./models/test mix losses with augmentation (resnet50)/', save_last=True)
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, auto_lr_find=True, max_epochs = 300, callbacks=[checkpoint_callback])
+    trainer.tune(model)
     trainer.fit(model, train_loader, val_loader)
     
     # validation. 

@@ -9,9 +9,10 @@ from torchmetrics import Accuracy, Precision, Recall, F1Score, ConfusionMatrix, 
 import json
 
 class BaseModel(pl.LightningModule):
-    def __init__(self, input_dim, output_channel, dropout_prob=0.2):
+    def __init__(self, input_dim, output_channel, learning_rate, dropout_prob=0.2):
         ## output_channel: key: output_name value: output_dim
         super().__init__()
+        self.learning_rate = learning_rate
         self.net = torch.hub.load('pytorch/vision:v0.14.1', 'resnet18', pretrained=ResNet18_Weights.DEFAULT)
         self.net.fc = nn.Identity()
         w0 = self.net.conv1.weight.data.clone()
@@ -59,7 +60,7 @@ class BaseModel(pl.LightningModule):
         
 
     def configure_optimizers(self):
-        optimizer = torch.optim.Adam(self.parameters(), lr=1e-4) # weight_decay is the L2 regularization parameter
+        optimizer = torch.optim.Adam(self.parameters(), lr=self.learning_rate) # weight_decay is the L2 regularization parameter
         return optimizer
 
     def get_loss(self, image, mask, input_vector, y, text='train'):
