@@ -126,11 +126,11 @@ class BaseModel(pl.LightningModule):
         recall.reset()
         f1score.reset()
 
-        accuracy(torch.round(y_preds[5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
-        precision(torch.round(y_preds[5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
-        recall(torch.round(y_preds[5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
-        f1score(torch.round(y_preds[5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
-        distance = l1_distance_loss(y[:, 1].detach().cpu().numpy(), y_preds[5].detach().cpu().numpy())
+        accuracy(torch.round(y_preds[:,5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
+        precision(torch.round(y_preds[:,5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
+        recall(torch.round(y_preds[:,5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
+        f1score(torch.round(y_preds[:,5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
+        distance = l1_distance_loss(y[:, 1].detach().cpu().numpy(), y_preds[:,5].detach().cpu().numpy())
 
         self.log("val/acc for {}".format('informativeness'), accuracy.compute())
         self.log("val/pre for {}".format('informativeness'), precision.compute())
