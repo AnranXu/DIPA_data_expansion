@@ -64,6 +64,7 @@ class BaseModel(pl.LightningModule):
         print('--get loss--')
         y_preds = self(image, mask, input_vector)
         print(y_preds.shape, y.shape)
+        #0 ~4: type 5: informativeness 6~10: sharing
         TypeLoss = self.entropy_loss(y_preds[:, :5], y[:,0].type(torch.LongTensor).to('cuda'))
         informativenessLosses = self.reg_loss(y_preds[:,5], y[:, 1])
         sharingLoss = self.entropy_loss(y_preds[:,6:11], y[:,2].type(torch.LongTensor).to('cuda'))
@@ -126,32 +127,10 @@ class BaseModel(pl.LightningModule):
         recall.reset()
         f1score.reset()
 
-        accuracy = Accuracy(task="multiclass", num_classes=6)
-        precision = Precision(task="multiclass", num_classes=6, average='weighted')
-        recall = Recall(task="multiclass", num_classes=6, average='weighted')
-        f1score = F1Score(task="multiclass", num_classes=6, average='weighted')
-
-        accuracy(torch.round(y_preds[:,5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
-        precision(torch.round(y_preds[:,5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
-        recall(torch.round(y_preds[:,5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
-        f1score(torch.round(y_preds[:,5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
+        
         distance = l1_distance_loss(y[:, 1].detach().cpu().numpy(), y_preds[:,5].detach().cpu().numpy())
 
-        self.log("val/acc for {}".format('informativeness'), accuracy.compute())
-        self.log("val/pre for {}".format('informativeness'), precision.compute())
-        self.log("val/rec for {}".format('informativeness'), recall.compute())
-        self.log("val/f1 for {}".format('informativeness'), f1score.compute())
         self.log("distance for {}".format('informativeness'), distance)
-
-        accuracy.reset()
-        precision.reset()
-        recall.reset()
-        f1score.reset()
-
-        accuracy = Accuracy(task="multiclass", num_classes=5)
-        precision = Precision(task="multiclass", num_classes=5, average='weighted')
-        recall = Recall(task="multiclass", num_classes=5, average='weighted')
-        f1score = F1Score(task="multiclass", num_classes=5, average='weighted')
 
         _, max_indices = torch.max(y_preds[:,6:11], dim = 1)
         accuracy(max_indices, y[:,2])
