@@ -19,18 +19,15 @@ class BaseModel(pl.LightningModule):
         self.fc1 = nn.Linear(2048, 512)
         self.fc2 = nn.Linear(512, 128)
         self.fc3 = nn.Linear(128, input_dim)
-        self.fc4 = nn.Linear(2 * input_dim, 128)
-        self.fc5 = nn.Linear(128, 256)
-        self.fc6 = nn.Linear(256, 128)
-        self.fc7 = nn.Linear(128, 64)
+        self.fc4 = nn.Linear(2 * input_dim, 11)
         self.dropout = nn.Dropout(p=dropout_prob)
-        self.output_layers = []
+        '''self.output_layers = []
         self.output_channel = output_channel
         for output_name, output_dim in self.output_channel.items():
             if output_name == 'informativeness':
                 self.output_layers.append(nn.Linear(64,1))
             else:
-                self.output_layers.append(nn.Linear(64,output_dim))
+                self.output_layers.append(nn.Linear(64,output_dim))'''
         self.act = nn.SiLU()
         self.reg_loss = nn.L1Loss()
         self.entropy_loss = nn.CrossEntropyLoss()
@@ -46,35 +43,46 @@ class BaseModel(pl.LightningModule):
         x = self.act(self.fc2(x))
         x = self.act(self.fc3(x))
         x = torch.cat([x, input_vector], dim=1)
-        x = self.act(self.fc4(x))
-        x = self.act(self.fc5(x))
-        x = self.act(self.fc6(x))
-        x = self.act(self.fc7(x))
-        outs = []
-        for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
-            out =  self.output_layers[i](x)
-            outs.append(out)
-        return outs
+        x = self.dropout(x)
+        x = self.fc4(x)
+        # x = self.act(self.fc5(x))
+        # x = self.act(self.fc6(x))
+        # x = self.act(self.fc7(x))
+        # outs = []
+        # for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
+        #     out =  self.output_layers[i](x)
+        #     outs.append(out)
+        # return outs
+        return x
         
 
     def configure_optimizers(self):
-        optimizer = torch.optim.Adam(self.parameters(), lr=1e-4, weight_decay=0.01) # weight_decay is the L2 regularization parameter
+        optimizer = torch.optim.Adam(self.parameters(), lr=1e-4) # weight_decay is the L2 regularization parameter
         return optimizer
 
-    def get_loss(self, image, mask, input_vector, y):
+    def get_loss(self, image, mask, input_vector, y, text='train'):
         print('--get loss--')
         y_preds = self(image, mask, input_vector)
-        losses = 0
-        for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
-            #print(output_name)
+        TypeLoss = self.entropy_loss(y_preds[:5], y[:,:5].type(torch.LongTensor).to('cuda'))
+        informativenessLosses = self.reg_loss(y_preds[5].squeeze(1), y[:, 5])
+        sharingLoss = self.entropy_loss(y_preds[6:11], y[:,6:11].type(torch.LongTensor).to('cuda'))
+        # losses = 0
+        # for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
+        #     #print(output_name)
             
-            if output_name == 'informativeness':
-                # map label 0~6 to 0~1
-                losses += self.reg_loss(y_preds[i].squeeze(1), y[:, i])
-            else:
-                losses += self.entropy_loss(y_preds[i], y[:,i].type(torch.LongTensor).to('cuda'))
-            #losses += self.entropy_loss(y_preds[i], y[:,i])
-        return losses
+        #     if output_name == 'informativeness':
+        #         # map label 0~6 to 0~1
+        #         losses += self.reg_loss(y_preds[i].squeeze(1), y[:, i])
+        #     else:
+        #         losses += self.entropy_loss(y_preds[i], y[:,i].type(torch.LongTensor).to('cuda'))
+        #     #losses += self.entropy_loss(y_preds[i], y[:,i])
+        # return losses
+        loss = TypeLoss + informativenessLosses + sharingLoss
+        self.log(f'{text} loss', loss)
+        self.log(f'{text} type loss', TypeLoss)
+        self.log(f'{text} informativeness loss', informativenessLosses)
+        self.log(f'{text} sharing loss', sharingLoss)
+        return loss
 
     def training_step(self, batch, batch_idx):
         image, mask, input_vector, y = batch
@@ -93,47 +101,115 @@ class BaseModel(pl.LightningModule):
 
         image, mask, input_vector, y = val_batch
         y_preds = self(image, mask, input_vector)
-        acc = np.zeros(len(self.output_channel))
-        pre = np.zeros(len(self.output_channel))
-        rec = np.zeros(len(self.output_channel))
-        f1 = np.zeros(len(self.output_channel))
-        distance = 0.0
-        conf = []
-        vloss = self.get_loss(image, mask, input_vector, y)
-        for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
-            conf.append(np.zeros((output_dim,output_dim)))
-        for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
-            _, max_indices = torch.max(y_preds[i], dim = 1)
-            
+        vloss = self.get_loss(image, mask, input_vector, y, text='val')
 
-            accuracy = Accuracy(task="multiclass", num_classes=output_dim)
-            precision = Precision(task="multiclass", num_classes=output_dim, average='weighted')
-            recall = Recall(task="multiclass", num_classes=output_dim, average='weighted')
-            f1score = F1Score(task="multiclass", num_classes=output_dim, average='weighted')
-            confusion = ConfusionMatrix(task="multiclass", num_classes=output_dim)
+        #Type
+        accuracy = Accuracy(task="multiclass", num_classes=5)
+        precision = Precision(task="multiclass", num_classes=5, average='weighted')
+        recall = Recall(task="multiclass", num_classes=5, average='weighted')
+        f1score = F1Score(task="multiclass", num_classes=5, average='weighted')
 
-            if output_name == 'informativeness':
-                y_preds[i] = y_preds[i].squeeze(1)
-                distance = l1_distance_loss(y[:, i].detach().cpu().numpy(), y_preds[i].detach().cpu().numpy())
-                self.log("val/distance for {}".format(output_name), distance * 6)
-                accuracy(torch.round(y_preds[i] * 6).type(torch.LongTensor).to('cuda'), (y[:,i] * 6).type(torch.LongTensor).to('cuda'))
-                precision(torch.round(y_preds[i] * 6).type(torch.LongTensor).to('cuda'), (y[:,i] * 6).type(torch.LongTensor).to('cuda'))
-                recall(torch.round(y_preds[i] * 6).type(torch.LongTensor).to('cuda'), (y[:,i] * 6).type(torch.LongTensor).to('cuda'))
-                f1score(torch.round(y_preds[i] * 6).type(torch.LongTensor).to('cuda'), (y[:,i] * 6).type(torch.LongTensor).to('cuda'))
-            else:
-                accuracy(max_indices, y[:,i])
-                precision(max_indices, y[:,i])
-                recall(max_indices, y[:,i])
-                f1score(max_indices, y[:,i])
-                #confusion(max_indices, y[:,i])
+        _, max_indices = torch.max(y_preds[:5], dim = 1)
+        accuracy(max_indices, y[:,0])
+        precision(max_indices, y[:,0])
+        recall(max_indices, y[:,0])
+        f1score(max_indices, y[:,0])
 
-            self.log("val/acc for {}".format(output_name), accuracy.compute())
-            self.log("val/pre for {}".format(output_name), precision.compute())
-            self.log("val/rec for {}".format(output_name), recall.compute())
-            self.log("val/f1 for {}".format(output_name), f1score.compute())
+        self.log("val/acc for {}".format('information type'), accuracy.compute())
+        self.log("val/pre for {}".format('information type'), precision.compute())
+        self.log("val/rec for {}".format('information type'), recall.compute())
+        self.log("val/f1 for {}".format('information type'), f1score.compute())
+
+        accuracy.reset()
+        precision.reset()
+        recall.reset()
+        f1score.reset()
+
+        accuracy(torch.round(y_preds[5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
+        precision(torch.round(y_preds[5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
+        recall(torch.round(y_preds[5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
+        f1score(torch.round(y_preds[5] * 6).type(torch.LongTensor).to('cuda'), (y[:,1] * 6).type(torch.LongTensor).to('cuda'))
+        distance = l1_distance_loss(y[:, 1].detach().cpu().numpy(), y_preds[5].detach().cpu().numpy())
+
+        self.log("val/acc for {}".format('informativeness'), accuracy.compute())
+        self.log("val/pre for {}".format('informativeness'), precision.compute())
+        self.log("val/rec for {}".format('informativeness'), recall.compute())
+        self.log("val/f1 for {}".format('informativeness'), f1score.compute())
+        self.log("distance for {}".format('informativeness'), distance)
+
+        accuracy.reset()
+        precision.reset()
+        recall.reset()
+        f1score.reset()
+
+        _, max_indices = torch.max(y_preds[6:11], dim = 1)
+        accuracy(max_indices, y[:,2])
+        precision(max_indices, y[:,2])
+        recall(max_indices, y[:,2])
+        f1score(max_indices, y[:,2])
+
+        self.log("val/acc for {}".format('sharing'), accuracy.compute())
+        self.log("val/pre for {}".format('sharing'), precision.compute())
+        self.log("val/rec for {}".format('sharing'), recall.compute())
+        self.log("val/f1 for {}".format('sharing'), f1score.compute())
+
+        accuracy.reset()
+        precision.reset()
+        recall.reset()
+        f1score.reset()
+           
             #self.log("val/confusion for {}".format(output_name), confusion.compute())
         self.log("vloss", vloss)
         return vloss  
+
+    # def validation_step (self, val_batch, batch_idx):
+    #     def l1_distance_loss(prediction, target):
+    #         loss = np.abs(prediction - target)
+    #         return np.mean(loss)
+
+    #     image, mask, input_vector, y = val_batch
+    #     y_preds = self(image, mask, input_vector)
+    #     acc = np.zeros(len(self.output_channel))
+    #     pre = np.zeros(len(self.output_channel))
+    #     rec = np.zeros(len(self.output_channel))
+    #     f1 = np.zeros(len(self.output_channel))
+    #     distance = 0.0
+    #     conf = []
+    #     vloss = self.get_loss(image, mask, input_vector, y)
+    #     for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
+    #         conf.append(np.zeros((output_dim,output_dim)))
+    #     for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
+    #         _, max_indices = torch.max(y_preds[i], dim = 1)
+            
+
+    #         accuracy = Accuracy(task="multiclass", num_classes=output_dim)
+    #         precision = Precision(task="multiclass", num_classes=output_dim, average='weighted')
+    #         recall = Recall(task="multiclass", num_classes=output_dim, average='weighted')
+    #         f1score = F1Score(task="multiclass", num_classes=output_dim, average='weighted')
+    #         confusion = ConfusionMatrix(task="multiclass", num_classes=output_dim)
+
+    #         if output_name == 'informativeness':
+    #             y_preds[i] = y_preds[i].squeeze(1)
+    #             distance = l1_distance_loss(y[:, i].detach().cpu().numpy(), y_preds[i].detach().cpu().numpy())
+    #             self.log("val/distance for {}".format(output_name), distance * 6)
+    #             accuracy(torch.round(y_preds[i] * 6).type(torch.LongTensor).to('cuda'), (y[:,i] * 6).type(torch.LongTensor).to('cuda'))
+    #             precision(torch.round(y_preds[i] * 6).type(torch.LongTensor).to('cuda'), (y[:,i] * 6).type(torch.LongTensor).to('cuda'))
+    #             recall(torch.round(y_preds[i] * 6).type(torch.LongTensor).to('cuda'), (y[:,i] * 6).type(torch.LongTensor).to('cuda'))
+    #             f1score(torch.round(y_preds[i] * 6).type(torch.LongTensor).to('cuda'), (y[:,i] * 6).type(torch.LongTensor).to('cuda'))
+    #         else:
+    #             accuracy(max_indices, y[:,i])
+    #             precision(max_indices, y[:,i])
+    #             recall(max_indices, y[:,i])
+    #             f1score(max_indices, y[:,i])
+    #             #confusion(max_indices, y[:,i])
+
+    #         self.log("val/acc for {}".format(output_name), accuracy.compute())
+    #         self.log("val/pre for {}".format(output_name), precision.compute())
+    #         self.log("val/rec for {}".format(output_name), recall.compute())
+    #         self.log("val/f1 for {}".format(output_name), f1score.compute())
+    #         #self.log("val/confusion for {}".format(output_name), confusion.compute())
+    #     self.log("vloss", vloss)
+    #     return vloss  
         '''pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
         df = pd.DataFrame(pandas_data, index=self.output_channel.keys())
         print(df.round(3))
