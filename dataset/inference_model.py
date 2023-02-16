@@ -155,9 +155,10 @@ class BaseModel(pl.LightningModule):
         return vloss  
 
     def validation_epoch_end(self, validation_step_outputs):
-        w  = self.fc4.weight.detach().cpu().numpy()
+        w  = self.fc4.parameters()
+        print(w)
         with open('./fc4_param.json', 'w') as f:
-            f.write(str(w), f)
+            f.write(str(w))
     # def validation_step (self, val_batch, batch_idx):
     #     def l1_distance_loss(prediction, target):
     #         loss = np.abs(prediction - target)
