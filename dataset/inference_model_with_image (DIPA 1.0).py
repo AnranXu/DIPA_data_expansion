@@ -69,7 +69,7 @@ if __name__ == '__main__':
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, auto_lr_find=True, max_epochs = 300, callbacks=[checkpoint_callback])
     trainer.tune(model)
-    trainer.fit(model, train_loader, val_loader)
+    trainer.fit(model, train_dataloaders = train_loader, val_dataloaders = val_loader)
     
     # validation. 
     # I am confused about how the validation_step work on saving all valid result (rather than just a batch)
