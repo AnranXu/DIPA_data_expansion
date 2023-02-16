@@ -91,6 +91,7 @@ class BaseModel(pl.LightningModule):
         input_vector = input_vector.to('cuda')
         y = y.to('cuda')'''
         loss = self.get_loss(image, mask, input_vector, y)
+        self.log("trainloss", loss)
         return loss
 
     def validation_step (self, val_batch, batch_idx):
