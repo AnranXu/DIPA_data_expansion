@@ -110,7 +110,7 @@ class BaseModel(pl.LightningModule):
         recall = Recall(task="multiclass", num_classes=5, average='weighted')
         f1score = F1Score(task="multiclass", num_classes=5, average='weighted')
 
-        _, max_indices = torch.max(y_preds[:5], dim = 1)
+        _, max_indices = torch.max(y_preds[:, :5], dim = 1)
         accuracy(max_indices, y[:,0])
         precision(max_indices, y[:,0])
         recall(max_indices, y[:,0])
@@ -143,7 +143,7 @@ class BaseModel(pl.LightningModule):
         recall.reset()
         f1score.reset()
 
-        _, max_indices = torch.max(y_preds[6:11], dim = 1)
+        _, max_indices = torch.max(y_preds[:,6:11], dim = 1)
         accuracy(max_indices, y[:,2])
         precision(max_indices, y[:,2])
         recall(max_indices, y[:,2])
