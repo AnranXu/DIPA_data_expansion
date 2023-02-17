@@ -404,7 +404,7 @@ class analyzer:
             return last_loss
 
         
-        learning_rate = 0.01
+        learning_rate = 1e-4
         if read_csv:
             self.mega_table = pd.read_csv('./mega_table.csv')
         else:
@@ -446,8 +446,8 @@ class analyzer:
         optimizer = torch.optim.Adam(model.parameters(),lr=learning_rate)
         training_dataset = nn_dataset(X_train, y_train)
         testing_dataset = nn_dataset(X_test, y_test)
-        training_loader = DataLoader(training_dataset, batch_size=64, shuffle=True)
-        testing_loader = DataLoader(testing_dataset, batch_size=64)
+        training_loader = DataLoader(training_dataset, batch_size=20, shuffle=True)
+        testing_loader = DataLoader(testing_dataset, batch_size=20)
 
         #start training
         writer = SummaryWriter()

@@ -47,7 +47,7 @@ if __name__ == '__main__':
     
     model = BaseModel(input_dim= input_dim, output_channel = output_channel)
 
-    image_size = (512, 512)
+    image_size = (300, 300)
     label_folder = './new annotations/annotations/'
     image_folder = './new annotations/images/'
 
@@ -62,14 +62,14 @@ if __name__ == '__main__':
     train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, output_name, image_size, flip = True)
     val_dataset = ImageMaskDataset(val_df, image_folder, label_folder, input_channel, output_name, image_size)    
 
-    train_loader = DataLoader(train_dataset, batch_size=20, generator=torch.Generator(device='cuda'), shuffle=True)
-    val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=20)
+    train_loader = DataLoader(train_dataset, batch_size=128, generator=torch.Generator(device='cuda'), shuffle=True)
+    val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=64)
     
-    wandb_logger = WandbLogger(project="DIPA-inference", name = 'mix losses with original labels (mobilenet v3 large)')
-    checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses with original labels (mobilenet v3 large)/', save_last=True, monitor='val loss')
+    wandb_logger = WandbLogger(project="DIPA-inference", name = 'mix losses with large batchsize (mobilenet v3 large)')
+    checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses with large batchsize (mobilenet v3 large)/', save_last=True, monitor='val loss')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, 
-    auto_lr_find=True, max_epochs = 300, callbacks=[checkpoint_callback])
+    auto_lr_find=True, max_epochs = 100, callbacks=[checkpoint_callback])
     lr_finder = trainer.tuner.lr_find(model, train_loader)
     model.hparams.learning_rate = lr_finder.suggestion()
     print(f'lr auto: {lr_finder.suggestion()}')

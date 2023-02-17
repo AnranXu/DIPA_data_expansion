@@ -19,10 +19,10 @@ class BaseModel(pl.LightningModule):
         self.net.features[0][0] = nn.Conv2d(4, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
         self.net.features[0][0].weight.data[:,:3,:,:] = w0
 
-        self.fc1 = nn.Linear(1280, 256)
+        self.fc1 = nn.Linear(1280 + input_dim, 256)
         self.fc2 = nn.Linear(256, 128)
-        self.fc3 = nn.Linear(128, input_dim)
-        self.fc4 = nn.Linear(2 * input_dim, 11)
+        self.fc3 = nn.Linear(128, 32)
+        self.fc4 = nn.Linear(32, 11)
         self.dropout = nn.Dropout(p=dropout_prob)
         '''self.output_layers = []
         self.output_channel = output_channel
@@ -42,10 +42,13 @@ class BaseModel(pl.LightningModule):
         # x: [bs, 4, imgsize, imgsize]
         # addition: [bs, featurelength]
         x = self.net(torch.cat((image, mask), dim = 1))
-        x = self.act(self.fc1(x))
-        x = self.act(self.fc2(x))
-        x = self.act(self.fc3(x))
         x = torch.cat([x, input_vector], dim=1)
+        x = self.dropout(x)
+        x = self.act(self.fc1(x))
+        x = self.dropout(x)
+        x = self.act(self.fc2(x))
+        x = self.dropout(x)
+        x = self.act(self.fc3(x))
         x = self.dropout(x)
         x = self.fc4(x)
         # x = self.act(self.fc5(x))
