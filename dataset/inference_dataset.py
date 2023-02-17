@@ -61,7 +61,7 @@ class ImageMaskDataset(Dataset):
             x, y, w, h = int(x), int(y), int(w), int(h)
             mask[y:y+h, x:x+w] = self.mega_table['category'].iloc[idx] / self.category_num
         #input vector
-        print(mask)
+        print('mask', mask.nonzero())
         if self.flip and torch.rand(1) < self.flip_prob:
             image = TF.hflip(image)
             mask = TF.hflip(mask)
