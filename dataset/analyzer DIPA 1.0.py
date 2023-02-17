@@ -518,12 +518,6 @@ class analyzer:
                     plt.clf()
                     print('confusion matrix for {}'.format(output))
                     print(np.round(conf[i], 3))
-            print(acc[0].compute())
-            print(acc[1].compute())
-            print(acc[2].compute())
-            print(pre[0].compute())
-            print(pre[1].compute())
-            print(pre[2].compute())
             pandas_data = {'Accuracy' : [acc[i].compute().detach().numpy() for i, output_dim in enumerate(output_dims)], 
             'Precision' : [pre[i].compute().detach().numpy() for i, output_dim in enumerate(output_dims)], 
             'Recall': [rec[i].compute().detach().numpy() for i, output_dim in enumerate(output_dims)], 
