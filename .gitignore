@@ -11,6 +11,7 @@ dataset/OpenImages/data
 dataset/OpenImages/selected_img
 dataset/OpenImages/selected_label
 dataset/annotations/*
+dataset/annotations (old)/*
 dataset/images/*
 dataset/new annotations/*
 dataset/new annotations(wrong one)/*

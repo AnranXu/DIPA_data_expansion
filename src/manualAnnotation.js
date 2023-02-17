@@ -303,7 +303,6 @@ class ManualAnnotationCard extends Component{
         return (
         <FormControl>
         <RadioGroup
-            row
             key = {'informativenessRadioGroup' + this.props.manualNum} 
             defaultValue={'0'}
             onChange={(e)=>this.setState({informativenessValue: Number(e.target.value)})}

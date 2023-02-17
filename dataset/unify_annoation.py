@@ -11,7 +11,7 @@ class unify_annotation:
     def __init__(self) -> None:
         self.img_annotation_map_path = './img_annotation_map.json'
         self.img_folder = './images/'
-        self.annotation_folder = './annotations/'
+        self.annotation_folder = './annotations (old)/'
         self.output_folder = './new annotations/'
         self.original_label = './original labels/'
         self.code_category_map = {}
@@ -39,8 +39,6 @@ class unify_annotation:
                     worker_id = annotation_name[prefix_len:]
                     worker_id = worker_id[:-11]
                     # I accidentally added some record during my test, there are 7 record that should not exist, although the influence to whole results is minor
-                    if worker_id == 'test':
-                        continue
                     worker_id = worker_id + '.json'
                     if os.path.exists(os.path.join(self.annotation_folder, platform_name, 'workerinfo', worker_id)):
                         shutil.copyfile(os.path.join(self.annotation_folder, platform_name, 'workerinfo', worker_id), 
@@ -69,6 +67,8 @@ class unify_annotation:
                             manualCnt += 1
                             cnt += 1
             #print(anns)
+            if cnt == 0:
+                print(key[:-4])
             with open(os.path.join(self.output_folder, 'annotations', new_label), 'w') as w:
                 w.write(json.dumps(anns))
     

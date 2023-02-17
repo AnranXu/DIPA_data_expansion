@@ -60,7 +60,7 @@ class BaseModel(pl.LightningModule):
         
 
     def configure_optimizers(self):
-        optimizer = torch.optim.Adam(self.parameters(), lr=self.learning_rate) # weight_decay is the L2 regularization parameter
+        optimizer = torch.optim.Adam(self.parameters(), lr=self.learning_rate)
         return optimizer
 
     def get_loss(self, image, mask, input_vector, y, text='train'):
