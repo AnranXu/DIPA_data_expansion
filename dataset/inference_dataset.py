@@ -13,7 +13,7 @@ import json
 class ImageMaskDataset(Dataset):
     def __init__(self, mega_table, image_folder, label_folder, input_vector, output_vector, image_size, flip = False, flip_prob = 0.5):
         self.mega_table = mega_table
-        self.category_num = len(mega_table['category'].unqiue())
+        self.category_num = len(mega_table['category'].unique())
         self.image_folder = image_folder
         self.label_folder = label_folder
         self.input_vector = input_vector
