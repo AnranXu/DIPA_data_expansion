@@ -15,9 +15,9 @@ class BaseModel(pl.LightningModule):
         self.learning_rate = learning_rate
         self.net = torch.hub.load('pytorch/vision:v0.14.1', 'mobilenet_v3_large', pretrained=MobileNet_V3_Large_Weights.DEFAULT)
         self.net.classifier[3] = nn.Identity()
-        w0 = self.net.conv1.weight.data.clone()
+        w0 = self.net.features[0][0].weight.data.clone()
         self.net.features[0][0] = nn.Conv2d(4, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
-        self.net.conv1.weight.data[:,:3,:,:] = w0
+        self.net.features[0][0].weight.data[:,:3,:,:] = w0
 
         self.fc1 = nn.Linear(1280, 256)
         self.fc2 = nn.Linear(256, 128)
