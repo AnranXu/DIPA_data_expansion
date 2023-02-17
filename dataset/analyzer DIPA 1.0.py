@@ -452,8 +452,7 @@ class analyzer:
         #start training
         writer = SummaryWriter()
         epoch_number = 0
-        EPOCHS = 200
-
+        EPOCHS = 300
         #best_vloss = 1_000_000.
 
         for epoch in range(EPOCHS):
@@ -573,9 +572,9 @@ if __name__ == '__main__':
     output_channel = privacy_metrics
     
     #output_channel = ['sharing']
-    analyze.prepare_mega_table(mycat_mode=True, save_csv=False)
-    print(analyze.mega_table['informationType'].unique())
-    print(analyze.mega_table['sharing'].unique())
+    #analyze.prepare_mega_table(mycat_mode=False, save_csv=True)
+    #print(analyze.mega_table['informationType'].unique())
+    #print(analyze.mega_table['sharing'].unique())
     #analyze.regression_model(input_channel, output_channel)
     #print(analyze.mega_table)
     #analyze.prepare_manual_label(save_csv=True)
@@ -584,6 +583,6 @@ if __name__ == '__main__':
     #print(len(analyze.mega_table['id'].unique()))
     #analyze.svm(input_channel, output_channel, read_csv=True)
     #analyze.anova(True)
-    #analyze.neural_network(input_channel, output_channel, read_csv=True)
+    analyze.neural_network(input_channel, output_channel, read_csv=True)
     #analyze.knn(input_channel, output_channel, read_csv=True)
     

@@ -11,14 +11,16 @@ import json
 
 
 class ImageMaskDataset(Dataset):
-    def __init__(self, mega_table, image_folder, label_folder, input_vector, output_vector, image_size, flip_prob = 0.5):
+    def __init__(self, mega_table, image_folder, label_folder, input_vector, output_vector, image_size, flip = False, flip_prob = 0.5):
         self.mega_table = mega_table
+        self.category_num = len(mega_table['category'].unqiue())
         self.image_folder = image_folder
         self.label_folder = label_folder
         self.input_vector = input_vector
         self.output_vector = output_vector
         self.image_size = image_size
         self.flip_prob = flip_prob
+        self.flip = flip
         self.padding_color = (0, 0, 0)
 
     def __len__(self):
@@ -57,9 +59,10 @@ class ImageMaskDataset(Dataset):
         mask = torch.zeros((self.image_size[0], self.image_size[1]))
         for x, y, w, h in bboxes:
             x, y, w, h = int(x), int(y), int(w), int(h)
-            mask[y:y+h, x:x+w] = 10 * self.mega_table['category'].iloc[idx] / 255.0
+            mask[y:y+h, x:x+w] = self.mega_table['category'].iloc[idx] / self.category_num
         #input vector
-        if torch.rand(1) < self.flip_prob:
+        print(mask)
+        if self.flip and torch.rand(1) < self.flip_prob:
             image = TF.hflip(image)
             mask = TF.hflip(mask)
         mask = mask.unsqueeze(0)

@@ -59,7 +59,7 @@ if __name__ == '__main__':
     train_df = mega_table.sample(n=train_size, random_state=0)
     val_df = mega_table.drop(train_df.index)
 
-    train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, output_name, image_size)
+    train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, output_name, image_size, flip = True)
     val_dataset = ImageMaskDataset(val_df, image_folder, label_folder, input_channel, output_name, image_size)    
 
     train_loader = DataLoader(train_dataset, batch_size=20, generator=torch.Generator(device='cuda'), shuffle=True)
