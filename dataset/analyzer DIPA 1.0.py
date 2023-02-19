@@ -37,7 +37,7 @@ class analyzer:
         self.code_openimage_map = {}
         self.openimages_mycat_map = {}
         self.lvis_mycat_map = {}
-        self.test_size = 0.2
+        self.test_size = 0.1
         self.custom_informationType = []
         self.custom_recipient = []
         self.description = {'informationType': ['It tells personal identity.', 'It tells location of shooting.',

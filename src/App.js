@@ -25,7 +25,10 @@ class App extends Component {
           <Intro testMode = {this.testMode} language = {this.lg} display = {this.state.page==='intro'?true:false} toolCallback={this.toolCallback}/>
           <General testMode = {this.testMode} language = {this.lg} display = {this.state.page==='intro'?false:true} workerId = {this.state.workerId} toolCallback={this.toolCallback}/>
           <button style={{display: this.admin? 'block': 'none'}} onClick={()=>{var test = new awsHandler(this.lg, this.testMode);test.dbCleanUncompleteRecord();}}>Clear database</button> 
-          <button style={{display: this.admin? 'block': 'none'}} onClick={()=>{var test = new awsHandler(this.lg, this.testMode);test.dbPreparation();}}>Prepare database</button>   
+          <br></br>
+          <br></br>
+          <br></br>
+          <button style={{display: this.admin? 'block': 'none'}} onClick={()=>{if (confirm("Press to confirm") == true) {var test = new awsHandler(this.lg, this.testMode);test.dbPreparation();}}}>Prepare database</button>   
           <div style={{height: '15px'}} />        
       </div>
     );
