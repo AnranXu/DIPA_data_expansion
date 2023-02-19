@@ -28,7 +28,7 @@ class App extends Component {
           <br></br>
           <br></br>
           <br></br>
-          <button style={{display: this.admin? 'block': 'none'}} onClick={()=>{if (confirm("Press to confirm") == true) {var test = new awsHandler(this.lg, this.testMode);test.dbPreparation();}}}>Prepare database</button>   
+          <button style={{display: this.admin? 'block': 'none'}} onClick={()=>{if (window.confirm("Press to confirm") == true) {var test = new awsHandler(this.lg, this.testMode);test.dbPreparation();}}}>Prepare database</button>   
           <div style={{height: '15px'}} />        
       </div>
     );
