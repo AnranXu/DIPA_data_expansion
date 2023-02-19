@@ -24,7 +24,7 @@ class App extends Component {
       <div className="App">
           <Intro testMode = {this.testMode} language = {this.lg} display = {this.state.page==='intro'?true:false} toolCallback={this.toolCallback}/>
           <General testMode = {this.testMode} language = {this.lg} display = {this.state.page==='intro'?false:true} workerId = {this.state.workerId} toolCallback={this.toolCallback}/>
-          <button style={{display: this.admin? 'block': 'none'}} onClick={()=>{var test = new awsHandler(this.lg, this.testMode);test.dbCleanUncompleteRecord();}}>Clear database</button> 
+          <button style={{display: this.admin? 'block': 'none'}} onClick={()=>{if (window.confirm("Press to confirm") == true){var test = new awsHandler(this.lg, this.testMode);test.dbCleanUncompleteRecord();}}}>Clear database</button> 
           <br></br>
           <br></br>
           <br></br>
