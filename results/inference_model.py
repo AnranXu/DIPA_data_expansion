@@ -9,11 +9,11 @@ from torchmetrics import Accuracy, Precision, Recall, F1Score, ConfusionMatrix, 
 import json
 
 class BaseModel(pl.LightningModule):
-    def __init__(self, input_dim, output_channel, learning_rate = 1e-4, dropout_prob=0.2):
+    def __init__(self, input_dim, output_channel, learning_rate = 1e-5, dropout_prob=0.2):
         ## output_channel: key: output_name value: output_dim
         super().__init__()
         self.learning_rate = learning_rate
-        self.net = torch.hub.load('pytorch/vision:v0.14.1', 'mobilenet_v3_small', pretrained=MobileNet_V3_Small_Weights.DEFAULT)
+        self.net = torch.hub.load('pytorch/vision:v0.14.1', 'mobilenet_v3_large', pretrained=MobileNet_V3_Large_Weights.DEFAULT)
         self.net.classifier[3] = nn.Identity()
         w0 = self.net.features[0][0].weight.data.clone()
         self.net.features[0][0] = nn.Conv2d(3 + input_dim, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
