@@ -20,36 +20,19 @@ class BaseModel(pl.LightningModule):
         self.net.features[0][0].weight.data[:,:3,:,:] = w0
 
         self.fc1 = nn.Linear(1024, 128)
-        self.fc2 = nn.Linear(128, 11)
+        self.fc2 = nn.Linear(128, 21)
         self.dropout = nn.Dropout(p=dropout_prob)
-        '''self.output_layers = []
-        self.output_channel = output_channel
-        for output_name, output_dim in self.output_channel.items():
-            if output_name == 'informativeness':
-                self.output_layers.append(nn.Linear(64,1))
-            else:
-                self.output_layers.append(nn.Linear(64,output_dim))'''
         self.act = nn.SiLU()
         self.reg_loss = nn.L1Loss()
-        self.entropy_loss = nn.CrossEntropyLoss()
+        self.entropy_loss = nn.BCEWithLogitsLoss()
 
     def forward(self, image, mask):
-        # x: [bs, 4, imgsize, imgsize]
-        # addition: [bs, featurelength]
         x = self.net(torch.cat((image, mask), dim = 1))
         x = self.dropout(x)
         x = self.act(self.fc1(x))
         x = self.dropout(x)
         x = self.act(self.fc2(x))
 
-        # x = self.act(self.fc5(x))
-        # x = self.act(self.fc6(x))
-        # x = self.act(self.fc7(x))
-        # outs = []
-        # for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
-        #     out =  self.output_layers[i](x)
-        #     outs.append(out)
-        # return outs
         return x
         
 
@@ -57,97 +40,95 @@ class BaseModel(pl.LightningModule):
         optimizer = torch.optim.Adam(self.parameters(), lr=self.learning_rate)
         return optimizer
 
-    def get_loss(self, image, mask, y, text='train'):
+    def get_loss(self, image, mask, information, informativeness, sharingOwner, sharingOthers, text='train'):
         y_preds = self(image, mask)
-        #0 ~4: type 5: informativeness 6~10: sharing
-        TypeLoss = self.entropy_loss(y_preds[:, :5], y[:,0].type(torch.LongTensor).to('cuda'))
-        informativenessLosses = self.reg_loss(y_preds[:,5], y[:, 1])
-        sharingLoss = self.entropy_loss(y_preds[:,6:11], y[:,2].type(torch.LongTensor).to('cuda'))
-        # losses = 0
-        # for i, (output_name, output_dim) in enumerate(self.output_channel.items()):
-        #     #print(output_name)
-            
-        #     if output_name == 'informativeness':
-        #         # map label 0~6 to 0~1
-        #         losses += self.reg_loss(y_preds[i].squeeze(1), y[:, i])
-        #     else:
-        #         losses += self.entropy_loss(y_preds[i], y[:,i].type(torch.LongTensor).to('cuda'))
-        #     #losses += self.entropy_loss(y_preds[i], y[:,i])
-        # return losses
-        loss = TypeLoss + informativenessLosses + sharingLoss
+        #0 ~5: type 6: informativeness 7~13: sharingOwners 14~20: sharingOthers
+        TypeLoss = self.entropy_loss(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+        informativenessLosses = self.reg_loss(y_preds[:,6], informativeness)
+        sharingOwenerLoss = self.entropy_loss(y_preds[:,7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        sharingOthersLoss = self.entropy_loss(y_preds[:,14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        loss = TypeLoss + informativenessLosses + sharingOwenerLoss + sharingOthersLoss
         self.log(f'{text} loss', loss)
         self.log(f'{text} type loss', TypeLoss)
         self.log(f'{text} informativeness loss', informativenessLosses)
-        self.log(f'{text} sharing loss', sharingLoss)
-        self.save_metrics(y_preds, y, text=text)
+        self.log(f'{text} sharingOwnerloss', sharingOwenerLoss)
+        self.log(f'{text} sharingOthersloss', sharingOthersLoss)
+        self.save_metrics(y_preds, information, informativeness, sharingOwner, sharingOthers, text=text)
         return loss
 
     def training_step(self, batch, batch_idx):
-        image, mask, y = batch
-        '''image = image.to('cuda')
-        mask = mask.to('cuda')
-        input_vector = input_vector.to('cuda')
-        y = y.to('cuda')'''
-        loss = self.get_loss(image, mask, y)
-        
-
+        image, mask, information, informativeness, sharingOwner, sharingOthers = batch
+        loss = self.get_loss(image, mask, information, informativeness, sharingOwner, sharingOthers)
+    
         return loss
     
     def validation_step (self, val_batch, batch_idx):
 
-        image, mask, y = val_batch
-        y_preds = self(image, mask)
-        vloss = self.get_loss(image, mask, y, text='val')
-        #Type
-        #self.log("val/confusion for {}".format(output_name), confusion.compute())
+        image, mask, information, informativeness, sharingOwner, sharingOthers = val_batch
+        vloss = self.get_loss(image, mask, information, informativeness, sharingOwner, sharingOthers, text='val')
+
         return vloss  
     
-    def save_metrics(self, y_preds, y, text='val'):
+    def save_metrics(self, y_preds, information, informativeness, sharingOwner, sharingOthers, text='val'):
         def l1_distance_loss(prediction, target):
             loss = np.abs(prediction - target)
             return np.mean(loss)
 
-        accuracy = Accuracy(task="multiclass", num_classes=5)
-        precision = Precision(task="multiclass", num_classes=5, average='weighted')
-        recall = Recall(task="multiclass", num_classes=5, average='weighted')
-        f1score = F1Score(task="multiclass", num_classes=5, average='weighted')
+        accuracy = Accuracy(task="multilabel", num_labels=6, average='weighted')
+        precision = Precision(task="multilabel", num_labels=6, average='weighted')
+        recall = Recall(task="multilabel", num_labels=6, average='weighted')
+        f1score = F1Score(task="multilabel", num_labels=6, average='weighted')
 
-        _, max_indices = torch.max(y_preds[:, :5], dim = 1)
-        accuracy(max_indices, y[:,0])
-        precision(max_indices, y[:,0])
-        recall(max_indices, y[:,0])
-        f1score(max_indices, y[:,0])
+        accuracy(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+        precision(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+        recall(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+        f1score(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
 
         self.log(f"{text}/acc for information type", accuracy.compute())
         self.log(f"{text}/pre for information type", precision.compute())
         self.log(f"{text}/rec for information type", recall.compute())
         self.log(f"{text}/f1 for information type", f1score.compute())
 
-        accuracy.reset()
-        precision.reset()
-        recall.reset()
-        f1score.reset()
+        # accuracy.reset()
+        # precision.reset()
+        # recall.reset()
+        # f1score.reset()
 
         
-        distance = l1_distance_loss(y[:, 1].detach().cpu().numpy(), y_preds[:,5].detach().cpu().numpy())
+        distance = l1_distance_loss(informativeness.detach().cpu().numpy(), y_preds[:,6].detach().cpu().numpy())
 
         self.log(f"{text}/distance for informativeness", distance)
 
-        _, max_indices = torch.max(y_preds[:,6:11], dim = 1)
-        accuracy(max_indices, y[:,2])
-        precision(max_indices, y[:,2])
-        recall(max_indices, y[:,2])
-        f1score(max_indices, y[:,2])
+        accuracy = Accuracy(task="multilabel", num_labels=7, average='weighted')
+        precision = Precision(task="multilabel", num_labels=7, average='weighted')
+        recall = Recall(task="multilabel", num_labels=7, average='weighted')
+        f1score = F1Score(task="multilabel", num_labels=7, average='weighted')
 
-        self.log(f"{text}/acc for sharing", accuracy.compute())
-        self.log(f"{text}/pre for sharing", precision.compute())
-        self.log(f"{text}/rec for sharing", recall.compute())
-        self.log(f"{text}/f1 for sharing", f1score.compute())
+        accuracy(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        accuracy(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        accuracy(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        accuracy(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
 
+        self.log(f"{text}/acc for sharing as owner", accuracy.compute())
+        self.log(f"{text}/pre for sharing as owner", precision.compute())
+        self.log(f"{text}/rec for sharing as owner", recall.compute())
+        self.log(f"{text}/f1 for sharing as owner", f1score.compute())
+        
         accuracy.reset()
         precision.reset()
         recall.reset()
         f1score.reset()
+
+        accuracy(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        accuracy(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        accuracy(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        accuracy(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+
+        self.log(f"{text}/acc for sharing by others", accuracy.compute())
+        self.log(f"{text}/pre for sharing by others", precision.compute())
+        self.log(f"{text}/rec for sharing by others", recall.compute())
+        self.log(f"{text}/f1 for sharing by others", f1score.compute())
+       
     # def validation_step (self, val_batch, batch_idx):
     #     def l1_distance_loss(prediction, target):
     #         loss = np.abs(prediction - target)

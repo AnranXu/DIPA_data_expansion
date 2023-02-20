@@ -18,13 +18,13 @@ from pytorch_lightning.callbacks.early_stopping import EarlyStopping
 def l1_distance_loss(prediction, target):
     loss = np.abs(prediction - target)
     return np.mean(loss)
-torch.set_default_tensor_type('torch.cuda.FloatTensor')
+#torch.set_default_tensor_type('torch.cuda.FloatTensor')
 if __name__ == '__main__':
     bigfives = ["extraversion", "agreeableness", "conscientiousness",
     "neuroticism", "openness"]
-    basic_info = [ "age", "gender", "platform", 'datasetName']
+    basic_info = [ "age", "gender", "platform", 'datasetName', 'frequency']
     category = ['category']
-    privacy_metrics = ['informationType', 'informativeness', 'sharing']
+    privacy_metrics = ['informationType', 'informativeness', 'sharingOwner', 'sharingOthers']
 
     mega_table = pd.read_csv('./mega_table.csv')
 
@@ -34,7 +34,6 @@ if __name__ == '__main__':
     mega_table['platform'] = encoder.fit_transform(mega_table['platform'])
     mega_table['id'] = encoder.fit_transform(mega_table['id'])
     mega_table['datasetName'] = encoder.fit_transform(mega_table['datasetName'])
-    mega_table['informativeness'] = mega_table['informativeness']
 
     input_channel = []
     input_channel.extend(basic_info)
@@ -60,13 +59,13 @@ if __name__ == '__main__':
     train_df = mega_table.sample(n=train_size, random_state=0)
     val_df = mega_table.drop(train_df.index)
 
-    train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, output_name, image_size, flip = True)
-    val_dataset = ImageMaskDataset(val_df, image_folder, label_folder, input_channel, output_name, image_size)    
+    train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, image_size, flip = True)
+    val_dataset = ImageMaskDataset(val_df, image_folder, label_folder, input_channel, image_size)    
 
-    train_loader = DataLoader(train_dataset, batch_size=192, generator=torch.Generator(device='cuda'), shuffle=True)
+    train_loader = DataLoader(train_dataset, batch_size=128, generator=torch.Generator(device='cuda'), shuffle=True)
     val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=64)
     
-    wandb_logger = WandbLogger(project="DIPA-inference", name = 'mix losses all as masks normal distrance (mobilenet v3 small)')
+    wandb_logger = WandbLogger(project="DIPA2.0-inference test (uncompleted collection)", name = 'mix losses all as masks normal distrance (mobilenet v3 small)')
     checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses all as normal distrance (mobilenet v3 small)/', save_last=True, monitor='val loss')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, 
@@ -85,6 +84,7 @@ if __name__ == '__main__':
     f1 = np.zeros(len(output_channel))
     distance = 0.0
     conf = []
+    '''
     for i, (output_name, output_dim) in enumerate(output_channel.items()):
         conf.append(np.zeros((output_dim,output_dim)))
 
@@ -113,4 +113,4 @@ if __name__ == '__main__':
     df = pd.DataFrame(pandas_data, index=output_channel.keys())
     print(df.round(3))
     if 'informativeness' in output_channel.keys():
-        print('informativenss distance: ', distance)
+        print('informativenss distance: ', distance)'''

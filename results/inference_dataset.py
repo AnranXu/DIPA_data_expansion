@@ -11,14 +11,13 @@ import json
 
 
 class ImageMaskDataset(Dataset):
-    def __init__(self, mega_table, image_folder, label_folder, input_vector, output_vector, image_size, flip = False, flip_prob = 0.5):
+    def __init__(self, mega_table, image_folder, label_folder, input_vector, image_size, flip = False, flip_prob = 0.5):
         self.mega_table = mega_table
         self.category_num = len(mega_table['category'].unique())
         self.input_dim = len(input_vector)
         self.image_folder = image_folder
         self.label_folder = label_folder
         self.input_vector = input_vector
-        self.output_vector = output_vector
         self.image_size = image_size
         self.flip_prob = flip_prob
         self.flip = flip
@@ -74,10 +73,23 @@ class ImageMaskDataset(Dataset):
         #mask = mask.unsqueeze(0)
         input_vector = self.mega_table[self.input_vector].iloc[idx].values
         input_vector = torch.from_numpy(input_vector)
-        #label
-        label = self.mega_table[self.output_vector].iloc[idx].values
-        label = torch.from_numpy(label)
-        return image, mask, label
+
+        information = self.mega_table['informationType'].iloc[idx]
+        information = np.array(json.loads(information))
+        information = torch.from_numpy(information)
+
+        informativeness = self.mega_table['informativeness'].iloc[idx]
+        informativeness = torch.tensor(int(informativeness))
+
+        sharingOwner = self.mega_table['sharingOwner'].iloc[idx]
+        sharingOwner = np.array(json.loads(sharingOwner))
+        sharingOwner = torch.from_numpy(sharingOwner)
+
+        sharingOthers = self.mega_table['sharingOthers'].iloc[idx]
+        sharingOthers = np.array(json.loads(sharingOthers))
+        sharingOthers = torch.from_numpy(sharingOthers)
+
+        return image, mask, information, informativeness, sharingOwner, sharingOthers
 
 
 if __name__ == '__main__':
@@ -86,8 +98,7 @@ if __name__ == '__main__':
     label_folder = './new annotations/annotations/'
     image_folder = './new annotations/images/'
     input_vector =  ['informationType', 'informativeness']
-    output_vector = ['sharing']
-    dataset = ImageMaskDataset(mega_table, image_folder, label_folder, input_vector, output_vector, image_size)
+    dataset = ImageMaskDataset(mega_table, image_folder, label_folder, input_vector, image_size)
 
     # Print the length of the dataset
     print('Dataset length:', len(dataset))

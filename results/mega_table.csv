@@ -1,351 +1,605 @@
 category,informationType,informativeness,sharingOwner,sharingOthers,age,gender,platform,extraversion,agreeableness,conscientiousness,neuroticism,openness,frequency,imagePath,originCategory,datasetName,id
-Person,"[1, 0, 0, 1, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,66368d8f0c538ba7.jpg,Human head,OpenImages,66368d8f0c538ba7_Human head
-Screen,"[0, 0, 0, 1, 0, 0]",0,"[0, 1, 1, 1, 1, 1, 0]","[0, 0, 1, 1, 1, 1, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,126696.jpg,laptop_computer,LVIS,126696_laptop_computer
-Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",27,Male,CrowdWorks,6,5,8,5,8,1,45a98c6eb828a0c9.jpg,Human face,OpenImages,45a98c6eb828a0c9_Human face
-Vehicle Plate,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Male,CrowdWorks,3,5,3,7,4,1,0d6ca8553971fefd.jpg,Vehicle registration plate,OpenImages,0d6ca8553971fefd_Vehicle registration plate
-Pet,"[0, 1, 0, 0, 0, 0]",2,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",41,Male,CrowdWorks,4,5,4,7,4,0,121783.jpg,cat,LVIS,121783_cat
+Human head,"[1, 0, 0, 1, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,66368d8f0c538ba7.jpg,Human head,OpenImages,66368d8f0c538ba7_Human head
+laptop_computer,"[0, 0, 0, 1, 0, 0]",0,"[0, 1, 1, 1, 1, 1, 0]","[0, 0, 1, 1, 1, 1, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,126696.jpg,laptop_computer,LVIS,126696_laptop_computer
+boat,"[1, 1, 0, 1, 1, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,139150.jpg,boat,LVIS,139150_boat
+Human face,"[1, 0, 0, 0, 0, 0]",1,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",27,Male,CrowdWorks,6,5,8,5,8,1,45a98c6eb828a0c9.jpg,Human face,OpenImages,45a98c6eb828a0c9_Human face
+Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",27,Male,CrowdWorks,6,5,8,5,8,1,45a98c6eb828a0c9.jpg,Person,OpenImages,45a98c6eb828a0c9_Person
+Car,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",41,Male,CrowdWorks,3,5,3,7,4,1,0d6ca8553971fefd.jpg,Car,OpenImages,0d6ca8553971fefd_Car
+Land vehicle,"[0, 1, 0, 0, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",41,Male,CrowdWorks,3,5,3,7,4,1,0d6ca8553971fefd.jpg,Land vehicle,OpenImages,0d6ca8553971fefd_Land vehicle
+Vehicle registration plate,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Male,CrowdWorks,3,5,3,7,4,1,0d6ca8553971fefd.jpg,Vehicle registration plate,OpenImages,0d6ca8553971fefd_Vehicle registration plate
+cat,"[0, 1, 0, 0, 0, 0]",2,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",41,Male,CrowdWorks,4,5,4,7,4,0,121783.jpg,cat,LVIS,121783_cat
+Dress,"[1, 0, 0, 0, 1, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,4a197f10b93d99d8.jpg,Dress,OpenImages,4a197f10b93d99d8_Dress
 Clothing,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,4a197f10b93d99d8.jpg,Clothing,OpenImages,4a197f10b93d99d8_Clothing
-Person,"[1, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,4a197f10b93d99d8.jpg,Human body,OpenImages,4a197f10b93d99d8_Human body
-Person,"[1, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,4a197f10b93d99d8.jpg,Woman,OpenImages,4a197f10b93d99d8_Woman
-Person,"[1, 0, 0, 1, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,4a197f10b93d99d8.jpg,Man,OpenImages,4a197f10b93d99d8_Man
-Place Identifier,"[0, 0, 0, 0, 1, 0]",6,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",54,Male,CrowdWorks,4,6,4,8,6,1,117993.jpg,banner,LVIS,117993_banner
-Pet,"[1, 0, 0, 1, 0, 0]",1,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,168134.jpg,pet,LVIS,168134_pet
-Place Identifier,"[0, 1, 0, 0, 0, 0]",2,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",54,Male,CrowdWorks,4,6,4,8,6,1,100503.jpg,signboard,LVIS,100503_signboard
-Vehicle Plate,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",41,Female,CrowdWorks,2,7,5,9,6,0,129462.jpg,license_plate,LVIS,129462_license_plate
-Accessory,"[0, 0, 0, 1, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,2,7,5,9,6,0,129462.jpg,ring,LVIS,129462_ring
-Pet,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,108718.jpg,dog,LVIS,108718_dog
-Home interior,"[1, 1, 0, 1, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,131665.jpg,bed,LVIS,131665_bed
-Person,"[1, 0, 0, 0, 1, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,0ee147db8a6b3908.jpg,Human hair,OpenImages,0ee147db8a6b3908_Human hair
-Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,0ee147db8a6b3908.jpg,Human body,OpenImages,0ee147db8a6b3908_Human body
-Person,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,0ee147db8a6b3908.jpg,Human head,OpenImages,0ee147db8a6b3908_Human head
-Person,"[0, 0, 0, 0, 1, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,0ee147db8a6b3908.jpg,Human arm,OpenImages,0ee147db8a6b3908_Human arm
-Person,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,0ee147db8a6b3908.jpg,Man,OpenImages,0ee147db8a6b3908_Man
-Person,"[1, 0, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,0ee147db8a6b3908.jpg,Woman,OpenImages,0ee147db8a6b3908_Woman
-Person,"[1, 0, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,124d86a6d3953a13.jpg,Human face,OpenImages,124d86a6d3953a13_Human face
-Person,"[1, 0, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,124d86a6d3953a13.jpg,Girl,OpenImages,124d86a6d3953a13_Girl
-Person,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,124d86a6d3953a13.jpg,Human body,OpenImages,124d86a6d3953a13_Human body
-Vehicle Plate,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",48,Male,CrowdWorks,3,6,6,5,8,1,0170ea8e1a33375a.jpg,Vehicle registration plate,OpenImages,0170ea8e1a33375a_Vehicle registration plate
-Musical instrument,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,434511.jpg,guitar,LVIS,434511_guitar
-Person,"[1, 0, 0, 0, 1, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Male,CrowdWorks,2,2,2,7,6,1,333452abf04d1b2b.jpg,Human face,OpenImages,333452abf04d1b2b_Human face
-Person,"[1, 1, 1, 0, 1, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Male,CrowdWorks,2,2,2,7,6,1,333452abf04d1b2b.jpg,Girl,OpenImages,333452abf04d1b2b_Girl
-Place Identifier,"[0, 1, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",57,Male,CrowdWorks,2,6,10,8,5,0,278796.jpg,signboard,LVIS,278796_signboard
-Person,"[1, 0, 0, 1, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,1b0366e125f4e3db.jpg,Human face,OpenImages,1b0366e125f4e3db_Human face
-Person,"[1, 0, 0, 1, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,1b0366e125f4e3db.jpg,Human hair,OpenImages,1b0366e125f4e3db_Human hair
+Human body,"[1, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,4a197f10b93d99d8.jpg,Human body,OpenImages,4a197f10b93d99d8_Human body
+Woman,"[1, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,4a197f10b93d99d8.jpg,Woman,OpenImages,4a197f10b93d99d8_Woman
+Man,"[1, 0, 0, 1, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,4a197f10b93d99d8.jpg,Man,OpenImages,4a197f10b93d99d8_Man
+flag,"[0, 0, 0, 0, 1, 0]",5,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",54,Male,CrowdWorks,4,6,4,8,6,1,117993.jpg,flag,LVIS,117993_flag
+banner,"[0, 0, 0, 0, 1, 0]",6,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",54,Male,CrowdWorks,4,6,4,8,6,1,117993.jpg,banner,LVIS,117993_banner
+Object 0,"[0, 1, 0, 0, 0, 0]",2,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",54,Male,CrowdWorks,4,6,4,8,6,1,117993.jpg,Object 0,LVIS,117993_Object 0
+saltshaker,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,118811.jpg,saltshaker,LVIS,118811_saltshaker
+napkin,"[1, 1, 1, 1, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,118811.jpg,napkin,LVIS,118811_napkin
+pet,"[1, 0, 0, 1, 0, 0]",1,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,168134.jpg,pet,LVIS,168134_pet
+identity,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,0628900953b60130.jpg,identity,OpenImages,0628900953b60130_identity
+signboard,"[0, 1, 0, 0, 0, 0]",2,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",54,Male,CrowdWorks,4,6,4,8,6,1,100503.jpg,signboard,LVIS,100503_signboard
+license_plate,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",41,Female,CrowdWorks,2,7,5,9,6,0,129462.jpg,license_plate,LVIS,129462_license_plate
+ring,"[0, 0, 0, 1, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,2,7,5,9,6,0,129462.jpg,ring,LVIS,129462_ring
+identity,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,8,5,7,5,4,2,2276d4d8af668ca8.jpg,identity,OpenImages,2276d4d8af668ca8_identity
+dog_collar,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,108718.jpg,dog_collar,LVIS,108718_dog_collar
+dog,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,108718.jpg,dog,LVIS,108718_dog
+bed,"[1, 1, 0, 1, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,131665.jpg,bed,LVIS,131665_bed
+headboard,"[1, 1, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,131665.jpg,headboard,LVIS,131665_headboard
+Human hair,"[1, 0, 0, 0, 1, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,0ee147db8a6b3908.jpg,Human hair,OpenImages,0ee147db8a6b3908_Human hair
+Human body,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,0ee147db8a6b3908.jpg,Human body,OpenImages,0ee147db8a6b3908_Human body
+Human head,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,0ee147db8a6b3908.jpg,Human head,OpenImages,0ee147db8a6b3908_Human head
+Mammal,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,0ee147db8a6b3908.jpg,Mammal,OpenImages,0ee147db8a6b3908_Mammal
+Human arm,"[0, 0, 0, 0, 1, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,0ee147db8a6b3908.jpg,Human arm,OpenImages,0ee147db8a6b3908_Human arm
+Man,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,0ee147db8a6b3908.jpg,Man,OpenImages,0ee147db8a6b3908_Man
+Woman,"[1, 0, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,0ee147db8a6b3908.jpg,Woman,OpenImages,0ee147db8a6b3908_Woman
+Human face,"[1, 0, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,124d86a6d3953a13.jpg,Human face,OpenImages,124d86a6d3953a13_Human face
+Girl,"[1, 0, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,124d86a6d3953a13.jpg,Girl,OpenImages,124d86a6d3953a13_Girl
+Person,"[1, 0, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,124d86a6d3953a13.jpg,Person,OpenImages,124d86a6d3953a13_Person
+Human body,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,124d86a6d3953a13.jpg,Human body,OpenImages,124d86a6d3953a13_Human body
+Vehicle registration plate,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",48,Male,CrowdWorks,3,6,6,5,8,1,0170ea8e1a33375a.jpg,Vehicle registration plate,OpenImages,0170ea8e1a33375a_Vehicle registration plate
+Car,"[1, 0, 0, 1, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",48,Male,CrowdWorks,3,6,6,5,8,1,0170ea8e1a33375a.jpg,Car,OpenImages,0170ea8e1a33375a_Car
+table,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,434511.jpg,table,LVIS,434511_table
+cup,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,434511.jpg,cup,LVIS,434511_cup
+guitar,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,434511.jpg,guitar,LVIS,434511_guitar
+mouse_(computer_equipment),"[0, 0, 0, 1, 0, 0]",0,"[0, 0, 0, 0, 1, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,434511.jpg,mouse_(computer_equipment),LVIS,434511_mouse_(computer_equipment)
+cellular_telephone,"[0, 0, 0, 1, 0, 0]",1,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,434511.jpg,cellular_telephone,LVIS,434511_cellular_telephone
+Human face,"[1, 0, 0, 0, 1, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Male,CrowdWorks,2,2,2,7,6,1,333452abf04d1b2b.jpg,Human face,OpenImages,333452abf04d1b2b_Human face
+Girl,"[1, 1, 1, 0, 1, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Male,CrowdWorks,2,2,2,7,6,1,333452abf04d1b2b.jpg,Girl,OpenImages,333452abf04d1b2b_Girl
+Object 0,"[1, 1, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",57,Male,CrowdWorks,2,6,10,8,5,0,278796.jpg,Object 0,LVIS,278796_Object 0
+signboard,"[0, 1, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",57,Male,CrowdWorks,2,6,10,8,5,0,278796.jpg,signboard,LVIS,278796_signboard
+Human face,"[1, 0, 0, 1, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,1b0366e125f4e3db.jpg,Human face,OpenImages,1b0366e125f4e3db_Human face
+Human hair,"[1, 0, 0, 1, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,1b0366e125f4e3db.jpg,Human hair,OpenImages,1b0366e125f4e3db_Human hair
+Person,"[1, 0, 1, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,40d7e990368a8098.jpg,Person,OpenImages,40d7e990368a8098_Person
 Clothing,"[0, 0, 0, 0, 1, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,40d7e990368a8098.jpg,Clothing,OpenImages,40d7e990368a8098_Clothing
-Person,"[1, 0, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,40d7e990368a8098.jpg,Man,OpenImages,40d7e990368a8098_Man
-Place Identifier,"[0, 1, 0, 0, 0, 0]",3,"[0, 1, 1, 1, 1, 1, 0]","[0, 1, 1, 1, 1, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,1011.jpg,signboard,LVIS,1011_signboard
-Person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",48,Male,CrowdWorks,3,6,6,5,8,1,15956.jpg,person,LVIS,15956_person
-Screen,"[0, 0, 0, 0, 0, 1]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,108688.jpg,monitor_(computer_equipment) computer_monitor,LVIS,108688_monitor_(computer_equipment) computer_monitor
-Screen,"[0, 0, 0, 0, 0, 1]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,16bb316c7c76b5a5.jpg,Computer monitor,OpenImages,16bb316c7c76b5a5_Computer monitor
-Person,"[1, 0, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,3e40cab2517ace8d.jpg,Human body,OpenImages,3e40cab2517ace8d_Human body
-Person,"[1, 0, 0, 1, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,3e40cab2517ace8d.jpg,Boy,OpenImages,3e40cab2517ace8d_Boy
-Person,"[1, 0, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,3e40cab2517ace8d.jpg,Man,OpenImages,3e40cab2517ace8d_Man
+Man,"[1, 0, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,40d7e990368a8098.jpg,Man,OpenImages,40d7e990368a8098_Man
+House,"[0, 1, 0, 1, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,2b2c4fe6d63a13e4.jpg,House,OpenImages,2b2c4fe6d63a13e4_House
+Object 1,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",21,Female,CrowdWorks,4,5,8,8,7,2,13844.jpg,Object 1,LVIS,13844_Object 1
+Object 2,"[1, 0, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",21,Female,CrowdWorks,4,5,8,8,7,2,13844.jpg,Object 2,LVIS,13844_Object 2
+suitcase,"[0, 0, 1, 1, 0, 0]",0,"[0, 1, 1, 1, 1, 1, 0]","[0, 1, 1, 1, 1, 1, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,1011.jpg,suitcase,LVIS,1011_suitcase
+handbag,"[0, 0, 0, 1, 0, 0]",0,"[0, 1, 1, 1, 1, 1, 0]","[0, 1, 1, 1, 1, 1, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,1011.jpg,handbag,LVIS,1011_handbag
+signboard,"[0, 1, 0, 0, 0, 0]",3,"[0, 1, 1, 1, 1, 1, 0]","[0, 1, 1, 1, 1, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,1011.jpg,signboard,LVIS,1011_signboard
+Object 0,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",67,Male,CrowdWorks,4,7,6,6,6,1,146190.jpg,Object 0,LVIS,146190_Object 0
+Object 1,"[1, 0, 0, 1, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",67,Male,CrowdWorks,4,7,6,6,6,1,146190.jpg,Object 1,LVIS,146190_Object 1
+Object 0,"[0, 0, 0, 0, 1, 0]",5,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,448623e2387b0341.jpg,Object 0,OpenImages,448623e2387b0341_Object 0
+person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",48,Male,CrowdWorks,3,6,6,5,8,1,15956.jpg,person,LVIS,15956_person
+Person,"[1, 1, 0, 1, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,15e2134bf1363429.jpg,Person,OpenImages,15e2134bf1363429_Person
+monitor_(computer_equipment) computer_monitor,"[0, 0, 0, 0, 0, 1]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,108688.jpg,monitor_(computer_equipment) computer_monitor,LVIS,108688_monitor_(computer_equipment) computer_monitor
+cellular_telephone,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,108688.jpg,cellular_telephone,LVIS,108688_cellular_telephone
+Object 0,"[1, 1, 0, 0, 1, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,151327.jpg,Object 0,LVIS,151327_Object 0
+Object 1,"[1, 1, 1, 1, 1, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,151327.jpg,Object 1,LVIS,151327_Object 1
+Building,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",40,Female,CrowdWorks,6,6,7,9,8,0,03d9eaadefad5eaf.jpg,Building,OpenImages,03d9eaadefad5eaf_Building
+House,"[1, 1, 1, 1, 1, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Male,CrowdWorks,2,2,2,7,6,1,0e5613a5e521f5c5.jpg,House,OpenImages,0e5613a5e521f5c5_House
+Computer monitor,"[0, 0, 0, 0, 0, 1]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,16bb316c7c76b5a5.jpg,Computer monitor,OpenImages,16bb316c7c76b5a5_Computer monitor
+Human body,"[1, 0, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,3e40cab2517ace8d.jpg,Human body,OpenImages,3e40cab2517ace8d_Human body
+Mammal,"[1, 0, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,3e40cab2517ace8d.jpg,Mammal,OpenImages,3e40cab2517ace8d_Mammal
+Boy,"[1, 0, 0, 1, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,3e40cab2517ace8d.jpg,Boy,OpenImages,3e40cab2517ace8d_Boy
+Man,"[1, 0, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,3e40cab2517ace8d.jpg,Man,OpenImages,3e40cab2517ace8d_Man
 Musical instrument,"[1, 0, 0, 1, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,3e40cab2517ace8d.jpg,Musical instrument,OpenImages,3e40cab2517ace8d_Musical instrument
-Person,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0319faa662ff5d06.jpg,Human face,OpenImages,0319faa662ff5d06_Human face
-Person,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0319faa662ff5d06.jpg,Human hair,OpenImages,0319faa662ff5d06_Human hair
-Person,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0319faa662ff5d06.jpg,Girl,OpenImages,0319faa662ff5d06_Girl
-Person,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0319faa662ff5d06.jpg,Human body,OpenImages,0319faa662ff5d06_Human body
-Person,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0319faa662ff5d06.jpg,Human head,OpenImages,0319faa662ff5d06_Human head
-Person,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0319faa662ff5d06.jpg,Boy,OpenImages,0319faa662ff5d06_Boy
-Person,"[1, 0, 0, 1, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0319faa662ff5d06.jpg,Woman,OpenImages,0319faa662ff5d06_Woman
-Person,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0319faa662ff5d06.jpg,Man,OpenImages,0319faa662ff5d06_Man
-Person,"[1, 0, 0, 1, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",40,Male,CrowdWorks,7,6,8,5,5,1,00c9616a917be867.jpg,Girl,OpenImages,00c9616a917be867_Girl
-Food,"[0, 1, 0, 1, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,13729.jpg,beer_bottle,LVIS,13729_beer_bottle
-Photo,"[0, 1, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,efad8f80fa7a7c79.jpg,Picture frame,OpenImages,efad8f80fa7a7c79_Picture frame
-Person,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",41,Male,CrowdWorks,4,5,4,7,4,0,4be14bf34cb9607f.jpg,Human body,OpenImages,4be14bf34cb9607f_Human body
-Printed Material,"[0, 1, 0, 1, 0, 0]",1,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,200952.jpg,tag,LVIS,200952_tag
+Object 1,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,152501.jpg,Object 1,LVIS,152501_Object 1
+Human face,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0319faa662ff5d06.jpg,Human face,OpenImages,0319faa662ff5d06_Human face
+Human hair,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0319faa662ff5d06.jpg,Human hair,OpenImages,0319faa662ff5d06_Human hair
+Girl,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0319faa662ff5d06.jpg,Girl,OpenImages,0319faa662ff5d06_Girl
+Human body,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0319faa662ff5d06.jpg,Human body,OpenImages,0319faa662ff5d06_Human body
+Human head,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0319faa662ff5d06.jpg,Human head,OpenImages,0319faa662ff5d06_Human head
+Mammal,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0319faa662ff5d06.jpg,Mammal,OpenImages,0319faa662ff5d06_Mammal
+Boy,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0319faa662ff5d06.jpg,Boy,OpenImages,0319faa662ff5d06_Boy
+Woman,"[1, 0, 0, 1, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0319faa662ff5d06.jpg,Woman,OpenImages,0319faa662ff5d06_Woman
+Man,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0319faa662ff5d06.jpg,Man,OpenImages,0319faa662ff5d06_Man
+Girl,"[1, 0, 0, 1, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",40,Male,CrowdWorks,7,6,8,5,5,1,00c9616a917be867.jpg,Girl,OpenImages,00c9616a917be867_Girl
+identity,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,8,5,7,5,4,2,17307a08bb47ea84.jpg,identity,OpenImages,17307a08bb47ea84_identity
+television_set,"[0, 0, 0, 1, 0, 0]",1,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,494913.jpg,television_set,LVIS,494913_television_set
+basket,"[0, 1, 0, 1, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,13729.jpg,basket,LVIS,13729_basket
+beer_bottle,"[0, 1, 0, 1, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,13729.jpg,beer_bottle,LVIS,13729_beer_bottle
+painting,"[1, 1, 0, 1, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,13729.jpg,painting,LVIS,13729_painting
+watch,"[1, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,13729.jpg,watch,LVIS,13729_watch
+House,"[0, 1, 0, 1, 0, 0]",4,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,efad8f80fa7a7c79.jpg,House,OpenImages,efad8f80fa7a7c79_House
+Picture frame,"[0, 1, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,efad8f80fa7a7c79.jpg,Picture frame,OpenImages,efad8f80fa7a7c79_Picture frame
+Person,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",41,Male,CrowdWorks,4,5,4,7,4,0,4be14bf34cb9607f.jpg,Person,OpenImages,4be14bf34cb9607f_Person
+Human body,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",41,Male,CrowdWorks,4,5,4,7,4,0,4be14bf34cb9607f.jpg,Human body,OpenImages,4be14bf34cb9607f_Human body
+tag,"[0, 1, 0, 1, 0, 0]",1,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,200952.jpg,tag,LVIS,200952_tag
+Person,"[1, 0, 1, 0, 1, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,2652af185a59196c.jpg,Person,OpenImages,2652af185a59196c_Person
 Clothing,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,2652af185a59196c.jpg,Clothing,OpenImages,2652af185a59196c_Clothing
-Place Identifier,"[1, 1, 0, 0, 1, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,2652af185a59196c.jpg,Office building,OpenImages,2652af185a59196c_Office building
-Person,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,2652af185a59196c.jpg,Man,OpenImages,2652af185a59196c_Man
+Office building,"[1, 1, 0, 0, 1, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,2652af185a59196c.jpg,Office building,OpenImages,2652af185a59196c_Office building
+Man,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,2652af185a59196c.jpg,Man,OpenImages,2652af185a59196c_Man
 Clothing,"[0, 0, 0, 1, 0, 0]",4,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",66,Male,CrowdWorks,4,6,8,7,8,2,a09ff3a4b88d6f97.jpg,Clothing,OpenImages,a09ff3a4b88d6f97_Clothing
 Book,"[0, 0, 0, 1, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",66,Male,CrowdWorks,4,6,8,7,8,2,a09ff3a4b88d6f97.jpg,Book,OpenImages,a09ff3a4b88d6f97_Book
-Person,"[0, 1, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",66,Male,CrowdWorks,4,6,8,7,8,2,a09ff3a4b88d6f97.jpg,Woman,OpenImages,a09ff3a4b88d6f97_Woman
-Person,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 1, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,00ec4ba83d648c33.jpg,Human face,OpenImages,00ec4ba83d648c33_Human face
-Screen,"[0, 0, 0, 1, 1, 0]",3,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,00ec4ba83d648c33.jpg,Television,OpenImages,00ec4ba83d648c33_Television
-Person,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,6e38935a10c37c78.jpg,Human hair,OpenImages,6e38935a10c37c78_Human hair
-Place Identifier,"[0, 1, 0, 0, 1, 0]",4,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,6e38935a10c37c78.jpg,Office building,OpenImages,6e38935a10c37c78_Office building
-Book,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,192651.jpg,book,LVIS,192651_book
-Screen,"[0, 0, 0, 1, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,192651.jpg,laptop_computer,LVIS,192651_laptop_computer
-Person,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Male,CrowdWorks,2,2,2,7,6,1,27ba6189609ff436.jpg,Man,OpenImages,27ba6189609ff436_Man
-Person,"[1, 0, 0, 1, 0, 0]",1,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",27,Male,CrowdWorks,6,5,8,5,8,1,5f69c551dcb4a8eb.jpg,Human body,OpenImages,5f69c551dcb4a8eb_Human body
-Person,"[1, 0, 0, 1, 0, 0]",1,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",27,Male,CrowdWorks,6,5,8,5,8,1,5f69c551dcb4a8eb.jpg,Man,OpenImages,5f69c551dcb4a8eb_Man
-Screen,"[0, 1, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,12991.jpg,laptop_computer,LVIS,12991_laptop_computer
-Person,"[1, 0, 0, 0, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",32,Female,CrowdWorks,5,7,5,5,7,4,140d247f79fc0516.jpg,Human face,OpenImages,140d247f79fc0516_Human face
-Pet,"[1, 0, 0, 0, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,126110.jpg,dog,LVIS,126110_dog
-Screen,"[1, 0, 0, 0, 1, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,149222.jpg,monitor_(computer_equipment) computer_monitor,LVIS,149222_monitor_(computer_equipment) computer_monitor
-Place Identifier,"[0, 1, 0, 0, 0, 0]",2,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,5e0a138b32ed3dbf.jpg,Traffic sign,OpenImages,5e0a138b32ed3dbf_Traffic sign
-Person,"[1, 1, 0, 0, 0, 0]",2,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",21,Female,CrowdWorks,4,5,8,8,7,2,119516.jpg,person,LVIS,119516_person
-Finger,"[0, 1, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,23c9df7f5d2945cd.jpg,Chair,OpenImages,23c9df7f5d2945cd_Chair
-Person,"[1, 0, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,42c05e6f790f4ef6.jpg,Man,OpenImages,42c05e6f790f4ef6_Man
-Person,"[1, 0, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Male,CrowdWorks,6,8,7,6,8,1,04833bdaa8c68594.jpg,Human face,OpenImages,04833bdaa8c68594_Human face
-Vehicle Plate,"[0, 1, 0, 0, 0, 0]",2,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",41,Male,CrowdWorks,4,5,4,7,4,0,11197.jpg,license_plate,LVIS,11197_license_plate
-Pet,"[1, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,17936.jpg,cat,LVIS,17936_cat
-Person,"[1, 0, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",37,Male,CrowdWorks,4,4,9,8,4,3,2110e5d8ca7e5a99.jpg,Human face,OpenImages,2110e5d8ca7e5a99_Human face
-Person,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",37,Male,CrowdWorks,4,4,9,8,4,3,2110e5d8ca7e5a99.jpg,Human body,OpenImages,2110e5d8ca7e5a99_Human body
-Person,"[1, 0, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",37,Male,CrowdWorks,4,4,9,8,4,3,2110e5d8ca7e5a99.jpg,Human head,OpenImages,2110e5d8ca7e5a99_Human head
-Place Identifier,"[0, 1, 0, 0, 0, 0]",1,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",42,Female,CrowdWorks,8,5,7,5,4,2,110042.jpg,banner,LVIS,110042_banner
-Identity,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",40,Female,CrowdWorks,6,6,7,9,8,0,111171.jpg,passport,LVIS,111171_passport
-Person,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,014d85b26445629d.jpg,Girl,OpenImages,014d85b26445629d_Girl
-Person,"[1, 0, 0, 1, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,014d85b26445629d.jpg,Woman,OpenImages,014d85b26445629d_Woman
-Person,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,014d85b26445629d.jpg,Man,OpenImages,014d85b26445629d_Man
-Home interior,"[0, 1, 0, 1, 0, 0]",5,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,113836.jpg,bed,LVIS,113836_bed
-Person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",40,Female,CrowdWorks,6,6,7,9,8,0,146467.jpg,person,LVIS,146467_person
-Person,"[1, 0, 1, 0, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,0d16c88ec322340f.jpg,Human face,OpenImages,0d16c88ec322340f_Human face
-Person,"[1, 0, 1, 0, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,0d16c88ec322340f.jpg,Human head,OpenImages,0d16c88ec322340f_Human head
-Person,"[1, 0, 1, 0, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,0d16c88ec322340f.jpg,Man,OpenImages,0d16c88ec322340f_Man
-Person,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,0d16c88ec322340f.jpg,Human hair,OpenImages,0d16c88ec322340f_Human hair
+Woman,"[0, 1, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",66,Male,CrowdWorks,4,6,8,7,8,2,a09ff3a4b88d6f97.jpg,Woman,OpenImages,a09ff3a4b88d6f97_Woman
+Human face,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 1, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,00ec4ba83d648c33.jpg,Human face,OpenImages,00ec4ba83d648c33_Human face
+Television,"[0, 0, 0, 1, 1, 0]",3,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,00ec4ba83d648c33.jpg,Television,OpenImages,00ec4ba83d648c33_Television
+Person,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 0, 1, 0, 0, 0]","[0, 1, 0, 1, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,00ec4ba83d648c33.jpg,Person,OpenImages,00ec4ba83d648c33_Person
+identity,"[1, 0, 0, 1, 1, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,04f90c7bbd46cb4b.jpg,identity,OpenImages,04f90c7bbd46cb4b_identity
+Human hair,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,6e38935a10c37c78.jpg,Human hair,OpenImages,6e38935a10c37c78_Human hair
+Poster,"[0, 1, 0, 0, 0, 0]",2,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,6e38935a10c37c78.jpg,Poster,OpenImages,6e38935a10c37c78_Poster
+Person,"[1, 1, 1, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,6e38935a10c37c78.jpg,Person,OpenImages,6e38935a10c37c78_Person
+Office building,"[0, 1, 0, 0, 1, 0]",4,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,6e38935a10c37c78.jpg,Office building,OpenImages,6e38935a10c37c78_Office building
+book,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,192651.jpg,book,LVIS,192651_book
+laptop_computer,"[0, 0, 0, 1, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,192651.jpg,laptop_computer,LVIS,192651_laptop_computer
+Object 0,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,140481.jpg,Object 0,LVIS,140481_Object 0
+Person,"[1, 1, 0, 0, 1, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Male,CrowdWorks,2,2,2,7,6,1,27ba6189609ff436.jpg,Person,OpenImages,27ba6189609ff436_Person
+Man,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Male,CrowdWorks,2,2,2,7,6,1,27ba6189609ff436.jpg,Man,OpenImages,27ba6189609ff436_Man
+Human body,"[1, 0, 0, 1, 0, 0]",1,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",27,Male,CrowdWorks,6,5,8,5,8,1,5f69c551dcb4a8eb.jpg,Human body,OpenImages,5f69c551dcb4a8eb_Human body
+Man,"[1, 0, 0, 1, 0, 0]",1,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",27,Male,CrowdWorks,6,5,8,5,8,1,5f69c551dcb4a8eb.jpg,Man,OpenImages,5f69c551dcb4a8eb_Man
+laptop_computer,"[0, 1, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,12991.jpg,laptop_computer,LVIS,12991_laptop_computer
+Object 0,"[1, 1, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,12991.jpg,Object 0,LVIS,12991_Object 0
+Object 0,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,117222.jpg,Object 0,LVIS,117222_Object 0
+Object 0,"[0, 1, 0, 0, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",42,Female,CrowdWorks,8,5,7,5,4,2,154451.jpg,Object 0,LVIS,154451_Object 0
+Building,"[0, 0, 0, 1, 0, 0]",3,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,5dfb1f03dcffaa36.jpg,Building,OpenImages,5dfb1f03dcffaa36_Building
+Human face,"[1, 0, 0, 0, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",32,Female,CrowdWorks,5,7,5,5,7,4,140d247f79fc0516.jpg,Human face,OpenImages,140d247f79fc0516_Human face
+dog,"[1, 0, 0, 0, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,126110.jpg,dog,LVIS,126110_dog
+monitor_(computer_equipment) computer_monitor,"[1, 0, 0, 0, 1, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,149222.jpg,monitor_(computer_equipment) computer_monitor,LVIS,149222_monitor_(computer_equipment) computer_monitor
+Traffic sign,"[0, 1, 0, 0, 0, 0]",2,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,5e0a138b32ed3dbf.jpg,Traffic sign,OpenImages,5e0a138b32ed3dbf_Traffic sign
+Car,"[1, 0, 0, 1, 1, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,5e0a138b32ed3dbf.jpg,Car,OpenImages,5e0a138b32ed3dbf_Car
+Person,"[1, 0, 0, 1, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,5e0a138b32ed3dbf.jpg,Person,OpenImages,5e0a138b32ed3dbf_Person
+person,"[1, 1, 0, 0, 0, 0]",2,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",21,Female,CrowdWorks,4,5,8,8,7,2,119516.jpg,person,LVIS,119516_person
+Chair,"[0, 1, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,23c9df7f5d2945cd.jpg,Chair,OpenImages,23c9df7f5d2945cd_Chair
+Furniture,"[0, 1, 0, 0, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,23c9df7f5d2945cd.jpg,Furniture,OpenImages,23c9df7f5d2945cd_Furniture
+Person,"[1, 1, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,42c05e6f790f4ef6.jpg,Person,OpenImages,42c05e6f790f4ef6_Person
+Man,"[1, 0, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,42c05e6f790f4ef6.jpg,Man,OpenImages,42c05e6f790f4ef6_Man
+Human face,"[1, 0, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Male,CrowdWorks,6,8,7,6,8,1,04833bdaa8c68594.jpg,Human face,OpenImages,04833bdaa8c68594_Human face
+license_plate,"[0, 1, 0, 0, 0, 0]",2,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",41,Male,CrowdWorks,4,5,4,7,4,0,11197.jpg,license_plate,LVIS,11197_license_plate
+cat,"[1, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,17936.jpg,cat,LVIS,17936_cat
+Human face,"[1, 0, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",37,Male,CrowdWorks,4,4,9,8,4,3,2110e5d8ca7e5a99.jpg,Human face,OpenImages,2110e5d8ca7e5a99_Human face
+Human body,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",37,Male,CrowdWorks,4,4,9,8,4,3,2110e5d8ca7e5a99.jpg,Human body,OpenImages,2110e5d8ca7e5a99_Human body
+Human head,"[1, 0, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",37,Male,CrowdWorks,4,4,9,8,4,3,2110e5d8ca7e5a99.jpg,Human head,OpenImages,2110e5d8ca7e5a99_Human head
+Tree,"[0, 1, 0, 0, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,71c3eb3687efa946.jpg,Tree,OpenImages,71c3eb3687efa946_Tree
+banner,"[0, 1, 0, 0, 0, 0]",1,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",42,Female,CrowdWorks,8,5,7,5,4,2,110042.jpg,banner,LVIS,110042_banner
+passport,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",40,Female,CrowdWorks,6,6,7,9,8,0,111171.jpg,passport,LVIS,111171_passport
+Girl,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,014d85b26445629d.jpg,Girl,OpenImages,014d85b26445629d_Girl
+Person,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,014d85b26445629d.jpg,Person,OpenImages,014d85b26445629d_Person
+Woman,"[1, 0, 0, 1, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,014d85b26445629d.jpg,Woman,OpenImages,014d85b26445629d_Woman
+Man,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,014d85b26445629d.jpg,Man,OpenImages,014d85b26445629d_Man
+bed,"[0, 1, 0, 1, 0, 0]",5,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,113836.jpg,bed,LVIS,113836_bed
+lampshade,"[0, 1, 0, 1, 0, 0]",5,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,113836.jpg,lampshade,LVIS,113836_lampshade
+person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",40,Female,CrowdWorks,6,6,7,9,8,0,146467.jpg,person,LVIS,146467_person
+Human face,"[1, 0, 1, 0, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,0d16c88ec322340f.jpg,Human face,OpenImages,0d16c88ec322340f_Human face
+Human head,"[1, 0, 1, 0, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,0d16c88ec322340f.jpg,Human head,OpenImages,0d16c88ec322340f_Human head
+Mammal,"[1, 0, 1, 0, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,0d16c88ec322340f.jpg,Mammal,OpenImages,0d16c88ec322340f_Mammal
+Man,"[1, 0, 1, 0, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,0d16c88ec322340f.jpg,Man,OpenImages,0d16c88ec322340f_Man
+Human hair,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,0d16c88ec322340f.jpg,Human hair,OpenImages,0d16c88ec322340f_Human hair
 Clothing,"[0, 1, 0, 1, 0, 0]",5,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,0d16c88ec322340f.jpg,Clothing,OpenImages,0d16c88ec322340f_Clothing
-Person,"[1, 0, 1, 0, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,0d16c88ec322340f.jpg,Human body,OpenImages,0d16c88ec322340f_Human body
-Cigarettes,"[0, 0, 0, 1, 0, 0]",3,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,259345.jpg,cigarette,LVIS,259345_cigarette
-Clothing,"[0, 0, 0, 1, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,259345.jpg,dress,LVIS,259345_dress
-Accessory,"[0, 0, 0, 1, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,259345.jpg,necklace,LVIS,259345_necklace
-Place Identifier,"[0, 1, 0, 1, 1, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",48,Male,CrowdWorks,3,6,6,5,8,1,2995bebb788ad1ba.jpg,Office building,OpenImages,2995bebb788ad1ba_Office building
-Table,"[0, 1, 1, 1, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,160201.jpg,desk,LVIS,160201_desk
-Book,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,176415.jpg,book,LVIS,176415_book
-Book,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 1, 0, 0, 0, 0]","[0, 0, 1, 1, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,176415.jpg,magazine,LVIS,176415_magazine
-Screen,"[0, 0, 0, 1, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,387098.jpg,monitor_(computer_equipment) computer_monitor,LVIS,387098_monitor_(computer_equipment) computer_monitor
-Vehicle Plate,"[1, 0, 0, 0, 0, 0]",1,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",27,Male,CrowdWorks,6,5,8,5,8,1,0ee91c4938b6e7ee.jpg,Vehicle registration plate,OpenImages,0ee91c4938b6e7ee_Vehicle registration plate
-Person,"[1, 0, 0, 0, 0, 0]",3,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",30,Male,CrowdWorks,7,3,8,7,10,2,315977d3a6ee6802.jpg,Human hair,OpenImages,315977d3a6ee6802_Human hair
-Person,"[1, 0, 0, 0, 0, 0]",2,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",30,Male,CrowdWorks,7,3,8,7,10,2,315977d3a6ee6802.jpg,Woman,OpenImages,315977d3a6ee6802_Woman
-Person,"[0, 0, 0, 1, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,022c1f420446d118.jpg,Human leg,OpenImages,022c1f420446d118_Human leg
-Person,"[1, 0, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,022c1f420446d118.jpg,Girl,OpenImages,022c1f420446d118_Girl
+Human body,"[1, 0, 1, 0, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,0d16c88ec322340f.jpg,Human body,OpenImages,0d16c88ec322340f_Human body
+cigarette,"[0, 0, 0, 1, 0, 0]",3,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,259345.jpg,cigarette,LVIS,259345_cigarette
+dress,"[0, 0, 0, 1, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,259345.jpg,dress,LVIS,259345_dress
+necklace,"[0, 0, 0, 1, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,259345.jpg,necklace,LVIS,259345_necklace
+bracelet,"[0, 0, 0, 1, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,259345.jpg,bracelet,LVIS,259345_bracelet
+Medical equipment,"[0, 1, 0, 0, 1, 0]",3,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",48,Male,CrowdWorks,3,6,6,5,8,1,2995bebb788ad1ba.jpg,Medical equipment,OpenImages,2995bebb788ad1ba_Medical equipment
+Desk,"[0, 0, 0, 1, 1, 0]",3,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",48,Male,CrowdWorks,3,6,6,5,8,1,2995bebb788ad1ba.jpg,Desk,OpenImages,2995bebb788ad1ba_Desk
+Office building,"[0, 1, 0, 1, 1, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",48,Male,CrowdWorks,3,6,6,5,8,1,2995bebb788ad1ba.jpg,Office building,OpenImages,2995bebb788ad1ba_Office building
+cow,"[0, 1, 0, 1, 1, 0]",4,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,137576.jpg,cow,LVIS,137576_cow
+Building,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,00f3dbbbf5bdf2cf.jpg,Building,OpenImages,00f3dbbbf5bdf2cf_Building
+House,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,00f3dbbbf5bdf2cf.jpg,House,OpenImages,00f3dbbbf5bdf2cf_House
+Swimming pool,"[0, 1, 0, 0, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,00f3dbbbf5bdf2cf.jpg,Swimming pool,OpenImages,00f3dbbbf5bdf2cf_Swimming pool
+mask,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,119994.jpg,mask,LVIS,119994_mask
+desk,"[0, 1, 1, 1, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,160201.jpg,desk,LVIS,160201_desk
+book,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,176415.jpg,book,LVIS,176415_book
+magazine,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 1, 0, 0, 0, 0]","[0, 0, 1, 1, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,176415.jpg,magazine,LVIS,176415_magazine
+Object 0,"[0, 0, 0, 0, 1, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,176415.jpg,Object 0,LVIS,176415_Object 0
+Person,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Male,CrowdWorks,2,2,2,7,6,1,0b3445eeb72b3803.jpg,Person,OpenImages,0b3445eeb72b3803_Person
+Building,"[0, 0, 0, 1, 0, 0]",3,"[0, 0, 1, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,CrowdWorks,3,4,6,7,6,0,1f2fa43cd79182ba.jpg,Building,OpenImages,1f2fa43cd79182ba_Building
+monitor_(computer_equipment) computer_monitor,"[0, 0, 0, 1, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,387098.jpg,monitor_(computer_equipment) computer_monitor,LVIS,387098_monitor_(computer_equipment) computer_monitor
+identity,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,1ef56c389d343cf2.jpg,identity,OpenImages,1ef56c389d343cf2_identity
+Vehicle registration plate,"[1, 0, 0, 0, 0, 0]",1,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",27,Male,CrowdWorks,6,5,8,5,8,1,0ee91c4938b6e7ee.jpg,Vehicle registration plate,OpenImages,0ee91c4938b6e7ee_Vehicle registration plate
+identity,"[1, 0, 0, 1, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,07e97f11ebe3c2aa.jpg,identity,OpenImages,07e97f11ebe3c2aa_identity
+bullet_train,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",22,Female,CrowdWorks,4,8,8,8,4,1,177922.jpg,bullet_train,LVIS,177922_bullet_train
+Human hair,"[1, 0, 0, 0, 0, 0]",3,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",30,Male,CrowdWorks,7,3,8,7,10,2,315977d3a6ee6802.jpg,Human hair,OpenImages,315977d3a6ee6802_Human hair
+Woman,"[1, 0, 0, 0, 0, 0]",2,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",30,Male,CrowdWorks,7,3,8,7,10,2,315977d3a6ee6802.jpg,Woman,OpenImages,315977d3a6ee6802_Woman
+Human leg,"[0, 0, 0, 1, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,022c1f420446d118.jpg,Human leg,OpenImages,022c1f420446d118_Human leg
+Girl,"[1, 0, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,022c1f420446d118.jpg,Girl,OpenImages,022c1f420446d118_Girl
 Clothing,"[0, 0, 0, 1, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,022c1f420446d118.jpg,Clothing,OpenImages,022c1f420446d118_Clothing
-Person,"[1, 0, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,022c1f420446d118.jpg,Human body,OpenImages,022c1f420446d118_Human body
-Person,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,022c1f420446d118.jpg,Human head,OpenImages,022c1f420446d118_Human head
-Person,"[0, 0, 0, 1, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,022c1f420446d118.jpg,Human arm,OpenImages,022c1f420446d118_Human arm
-Person,"[1, 0, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,022c1f420446d118.jpg,Woman,OpenImages,022c1f420446d118_Woman
-Person,"[1, 1, 0, 1, 1, 0]",5,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,44525445d18bc4e9.jpg,Human face,OpenImages,44525445d18bc4e9_Human face
-Person,"[1, 0, 0, 0, 0, 0]",4,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,44525445d18bc4e9.jpg,Human ear,OpenImages,44525445d18bc4e9_Human ear
-Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",42,Male,CrowdWorks,6,8,7,6,8,1,177bf73e23ce2913.jpg,Woman,OpenImages,177bf73e23ce2913_Woman
-Person,"[1, 0, 1, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,5feb53a3d3a241a8.jpg,Human face,OpenImages,5feb53a3d3a241a8_Human face
-Person,"[1, 0, 1, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,5feb53a3d3a241a8.jpg,Woman,OpenImages,5feb53a3d3a241a8_Woman
-Person,"[1, 0, 1, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,5feb53a3d3a241a8.jpg,Man,OpenImages,5feb53a3d3a241a8_Man
-Vehicle Plate,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,0443efb101717113.jpg,Vehicle registration plate,OpenImages,0443efb101717113_Vehicle registration plate
-Vehicle Plate,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,107641.jpg,license_plate,LVIS,107641_license_plate
-Vehicle Plate,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",40,Female,CrowdWorks,6,6,7,9,8,0,03b7b71e1ffcb7a8.jpg,Vehicle registration plate,OpenImages,03b7b71e1ffcb7a8_Vehicle registration plate
-Person,"[1, 1, 1, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,283dafebe225590d.jpg,Human leg,OpenImages,283dafebe225590d_Human leg
+Human body,"[1, 0, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,022c1f420446d118.jpg,Human body,OpenImages,022c1f420446d118_Human body
+Roller skates,"[0, 0, 0, 1, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,022c1f420446d118.jpg,Roller skates,OpenImages,022c1f420446d118_Roller skates
+Human head,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,022c1f420446d118.jpg,Human head,OpenImages,022c1f420446d118_Human head
+Mammal,"[1, 0, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,022c1f420446d118.jpg,Mammal,OpenImages,022c1f420446d118_Mammal
+Footwear,"[0, 0, 0, 1, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,022c1f420446d118.jpg,Footwear,OpenImages,022c1f420446d118_Footwear
+Sports equipment,"[1, 0, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,022c1f420446d118.jpg,Sports equipment,OpenImages,022c1f420446d118_Sports equipment
+Human arm,"[0, 0, 0, 1, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,022c1f420446d118.jpg,Human arm,OpenImages,022c1f420446d118_Human arm
+Woman,"[1, 0, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,022c1f420446d118.jpg,Woman,OpenImages,022c1f420446d118_Woman
+Human face,"[1, 1, 0, 1, 1, 0]",5,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,44525445d18bc4e9.jpg,Human face,OpenImages,44525445d18bc4e9_Human face
+Human ear,"[1, 0, 0, 0, 0, 0]",4,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,44525445d18bc4e9.jpg,Human ear,OpenImages,44525445d18bc4e9_Human ear
+Object 0,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",32,Female,CrowdWorks,5,7,7,7,8,1,284651.jpg,Object 0,LVIS,284651_Object 0
+Car,"[0, 1, 0, 1, 0, 0]",0,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",40,Male,CrowdWorks,6,5,6,3,6,2,008637722500f239.jpg,Car,OpenImages,008637722500f239_Car
+Woman,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",42,Male,CrowdWorks,6,8,7,6,8,1,177bf73e23ce2913.jpg,Woman,OpenImages,177bf73e23ce2913_Woman
+House,"[1, 1, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,091af8d4a3c6c6f1.jpg,House,OpenImages,091af8d4a3c6c6f1_House
+Window,"[1, 1, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,091af8d4a3c6c6f1.jpg,Window,OpenImages,091af8d4a3c6c6f1_Window
+Person,"[1, 1, 1, 1, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,79ca3f2ab67af190.jpg,Person,OpenImages,79ca3f2ab67af190_Person
+Musical keyboard,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,79ca3f2ab67af190.jpg,Musical keyboard,OpenImages,79ca3f2ab67af190_Musical keyboard
+Human face,"[1, 0, 1, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,5feb53a3d3a241a8.jpg,Human face,OpenImages,5feb53a3d3a241a8_Human face
+Woman,"[1, 0, 1, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,5feb53a3d3a241a8.jpg,Woman,OpenImages,5feb53a3d3a241a8_Woman
+Man,"[1, 0, 1, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,5feb53a3d3a241a8.jpg,Man,OpenImages,5feb53a3d3a241a8_Man
+Vehicle registration plate,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,0443efb101717113.jpg,Vehicle registration plate,OpenImages,0443efb101717113_Vehicle registration plate
+Parrot,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 1, 1, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",41,Male,CrowdWorks,3,5,3,7,4,1,6e58d8b2c269091b.jpg,Parrot,OpenImages,6e58d8b2c269091b_Parrot
+Object 0,"[1, 1, 0, 1, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,176359.jpg,Object 0,LVIS,176359_Object 0
+Object 1,"[1, 1, 0, 1, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,176359.jpg,Object 1,LVIS,176359_Object 1
+license_plate,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,107641.jpg,license_plate,LVIS,107641_license_plate
+Vehicle registration plate,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",40,Female,CrowdWorks,6,6,7,9,8,0,03b7b71e1ffcb7a8.jpg,Vehicle registration plate,OpenImages,03b7b71e1ffcb7a8_Vehicle registration plate
+Sunglasses,"[1, 1, 0, 1, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,030c5a10124e6252.jpg,Sunglasses,OpenImages,030c5a10124e6252_Sunglasses
+Human leg,"[1, 1, 1, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,283dafebe225590d.jpg,Human leg,OpenImages,283dafebe225590d_Human leg
+Building,"[0, 1, 0, 0, 0, 0]",2,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,283dafebe225590d.jpg,Building,OpenImages,283dafebe225590d_Building
+Person,"[1, 1, 1, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,283dafebe225590d.jpg,Person,OpenImages,283dafebe225590d_Person
 Clothing,"[0, 0, 0, 1, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,283dafebe225590d.jpg,Clothing,OpenImages,283dafebe225590d_Clothing
-Pet,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,04d49a245f13b536.jpg,Dog,OpenImages,04d49a245f13b536_Dog
-Person,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Human face,OpenImages,231f3e437626f792_Human face
-Person,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Human hair,OpenImages,231f3e437626f792_Human hair
-Accessory,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Glasses,OpenImages,231f3e437626f792_Glasses
-Person,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Girl,OpenImages,231f3e437626f792_Girl
-Person,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Human nose,OpenImages,231f3e437626f792_Human nose
-Person,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Human body,OpenImages,231f3e437626f792_Human body
-Person,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Human head,OpenImages,231f3e437626f792_Human head
-Person,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Human mouth,OpenImages,231f3e437626f792_Human mouth
-Person,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Woman,OpenImages,231f3e437626f792_Woman
-Person,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",21,Female,CrowdWorks,4,5,8,8,7,2,7067a5ad51482da6.jpg,Human face,OpenImages,7067a5ad51482da6_Human face
-Person,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",21,Female,CrowdWorks,4,5,8,8,7,2,7067a5ad51482da6.jpg,Man,OpenImages,7067a5ad51482da6_Man
-Place Identifier,"[0, 0, 0, 0, 1, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",28,Female,CrowdWorks,8,6,4,8,8,3,126137.jpg,banner,LVIS,126137_banner
-Finger,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,29def08271143710.jpg,Chair,OpenImages,29def08271143710_Chair
+Dog,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,04d49a245f13b536.jpg,Dog,OpenImages,04d49a245f13b536_Dog
+identity,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,0e434121f4d725a5.jpg,identity,OpenImages,0e434121f4d725a5_identity
+Human face,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Human face,OpenImages,231f3e437626f792_Human face
+Human hair,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Human hair,OpenImages,231f3e437626f792_Human hair
+Glasses,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Glasses,OpenImages,231f3e437626f792_Glasses
+Girl,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Girl,OpenImages,231f3e437626f792_Girl
+Human nose,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Human nose,OpenImages,231f3e437626f792_Human nose
+Human body,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Human body,OpenImages,231f3e437626f792_Human body
+Human head,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Human head,OpenImages,231f3e437626f792_Human head
+Mammal,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Mammal,OpenImages,231f3e437626f792_Mammal
+Human mouth,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Human mouth,OpenImages,231f3e437626f792_Human mouth
+Woman,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,231f3e437626f792.jpg,Woman,OpenImages,231f3e437626f792_Woman
+identity,"[1, 1, 0, 0, 1, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,01ead89d32a58f87.jpg,identity,OpenImages,01ead89d32a58f87_identity
+Building,"[0, 1, 0, 0, 0, 0]",2,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",46,Female,CrowdWorks,6,5,7,6,6,1,922d30b8769c19a1.jpg,Building,OpenImages,922d30b8769c19a1_Building
+Human face,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",21,Female,CrowdWorks,4,5,8,8,7,2,7067a5ad51482da6.jpg,Human face,OpenImages,7067a5ad51482da6_Human face
+Man,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",21,Female,CrowdWorks,4,5,8,8,7,2,7067a5ad51482da6.jpg,Man,OpenImages,7067a5ad51482da6_Man
+goggles,"[1, 0, 0, 0, 0, 0]",3,"[0, 0, 1, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,CrowdWorks,3,4,6,7,6,0,112708.jpg,goggles,LVIS,112708_goggles
+Object 0,"[1, 0, 0, 1, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",28,Female,CrowdWorks,8,6,4,8,8,3,126137.jpg,Object 0,LVIS,126137_Object 0
+banner,"[0, 0, 0, 0, 1, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",28,Female,CrowdWorks,8,6,4,8,8,3,126137.jpg,banner,LVIS,126137_banner
+Person,"[0, 1, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,3cf84110ea52ff43.jpg,Person,OpenImages,3cf84110ea52ff43_Person
+Mammal,"[1, 0, 1, 1, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,3cf84110ea52ff43.jpg,Mammal,OpenImages,3cf84110ea52ff43_Mammal
+Chair,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,29def08271143710.jpg,Chair,OpenImages,29def08271143710_Chair
+Furniture,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,29def08271143710.jpg,Furniture,OpenImages,29def08271143710_Furniture
+Building,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,29def08271143710.jpg,Building,OpenImages,29def08271143710_Building
 Table,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,29def08271143710.jpg,Table,OpenImages,29def08271143710_Table
-Vehicle Plate,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",54,Male,CrowdWorks,4,6,4,8,6,1,0f0596b1c511e071.jpg,Vehicle registration plate,OpenImages,0f0596b1c511e071_Vehicle registration plate
-Accessory,"[0, 0, 1, 1, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,107169.jpg,ring,LVIS,107169_ring
-Printed Material,"[0, 0, 0, 1, 0, 0]",4,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",32,Female,CrowdWorks,5,7,7,7,8,1,217704.jpg,newspaper,LVIS,217704_newspaper
-Book,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",40,Female,CrowdWorks,6,6,7,9,8,0,179392.jpg,book,LVIS,179392_book
-Vehicle Plate,"[0, 1, 0, 1, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,145645.jpg,license_plate,LVIS,145645_license_plate
-Place Identifier,"[0, 1, 0, 0, 0, 0]",1,"[0, 1, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",67,Male,CrowdWorks,4,7,6,6,6,1,252244.jpg,signboard,LVIS,252244_signboard
-Person,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,20af1d21449acdce.jpg,Human face,OpenImages,20af1d21449acdce_Human face
-Person,"[1, 0, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,20af1d21449acdce.jpg,Human body,OpenImages,20af1d21449acdce_Human body
-Person,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,20af1d21449acdce.jpg,Human eye,OpenImages,20af1d21449acdce_Human eye
-Vehicle Plate,"[0, 0, 0, 0, 1, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,145873.jpg,license_plate,LVIS,145873_license_plate
-Vehicle Plate,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",28,Female,CrowdWorks,8,6,4,8,8,3,057569768fd6303e.jpg,Vehicle registration plate,OpenImages,057569768fd6303e_Vehicle registration plate
-Screen,"[0, 0, 0, 1, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,7408fef212a5d3bc.jpg,Computer monitor,OpenImages,7408fef212a5d3bc_Computer monitor
-Screen,"[0, 0, 0, 0, 1, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,7408fef212a5d3bc.jpg,Laptop,OpenImages,7408fef212a5d3bc_Laptop
+Vehicle registration plate,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",54,Male,CrowdWorks,4,6,4,8,6,1,0f0596b1c511e071.jpg,Vehicle registration plate,OpenImages,0f0596b1c511e071_Vehicle registration plate
+ring,"[0, 0, 1, 1, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,107169.jpg,ring,LVIS,107169_ring
+newspaper,"[0, 0, 0, 1, 0, 0]",4,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",32,Female,CrowdWorks,5,7,7,7,8,1,217704.jpg,newspaper,LVIS,217704_newspaper
+book,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",40,Female,CrowdWorks,6,6,7,9,8,0,179392.jpg,book,LVIS,179392_book
+Object 0,"[1, 1, 1, 1, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,334941.jpg,Object 0,LVIS,334941_Object 0
+license_plate,"[0, 1, 0, 1, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,145645.jpg,license_plate,LVIS,145645_license_plate
+Object 0,"[1, 0, 0, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,145645.jpg,Object 0,LVIS,145645_Object 0
+bus_(vehicle),"[0, 1, 0, 0, 0, 0]",2,"[0, 0, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",46,Female,CrowdWorks,6,5,7,6,6,1,104935.jpg,bus_(vehicle),LVIS,104935_bus_(vehicle)
+signboard,"[0, 1, 0, 0, 0, 0]",1,"[0, 1, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",67,Male,CrowdWorks,4,7,6,6,6,1,252244.jpg,signboard,LVIS,252244_signboard
+identity,"[0, 1, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",40,Female,CrowdWorks,6,6,7,9,8,0,06284d94e5969535.jpg,identity,OpenImages,06284d94e5969535_identity
+Object 0,"[1, 0, 0, 0, 0, 0]",3,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Male,CrowdWorks,7,3,8,7,10,2,274724.jpg,Object 0,LVIS,274724_Object 0
+Building,"[0, 1, 0, 1, 0, 0]",1,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,273121f76dc580cb.jpg,Building,OpenImages,273121f76dc580cb_Building
+identity,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",32,Female,CrowdWorks,5,7,5,5,7,4,02f4ebb9043ee62a.jpg,identity,OpenImages,02f4ebb9043ee62a_identity
+Object 0,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",32,Female,CrowdWorks,5,7,5,5,7,4,02f4ebb9043ee62a.jpg,Object 0,OpenImages,02f4ebb9043ee62a_Object 0
+flag,"[0, 1, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,10566.jpg,flag,LVIS,10566_flag
+Human face,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,20af1d21449acdce.jpg,Human face,OpenImages,20af1d21449acdce_Human face
+Person,"[1, 0, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,20af1d21449acdce.jpg,Person,OpenImages,20af1d21449acdce_Person
+Human body,"[1, 0, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,20af1d21449acdce.jpg,Human body,OpenImages,20af1d21449acdce_Human body
+Human eye,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,20af1d21449acdce.jpg,Human eye,OpenImages,20af1d21449acdce_Human eye
+Person,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,12527a39a5152a59.jpg,Person,OpenImages,12527a39a5152a59_Person
+identity,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",48,Male,CrowdWorks,3,6,6,5,8,1,0f399ca1789c8087.jpg,identity,OpenImages,0f399ca1789c8087_identity
+identity,"[1, 0, 0, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Male,CrowdWorks,4,5,4,7,4,0,226de4149b840256.jpg,identity,OpenImages,226de4149b840256_identity
+identity,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,1ab7ee05996182cd.jpg,identity,OpenImages,1ab7ee05996182cd_identity
+street_sign,"[0, 1, 0, 0, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,145873.jpg,street_sign,LVIS,145873_street_sign
+license_plate,"[0, 0, 0, 0, 1, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,145873.jpg,license_plate,LVIS,145873_license_plate
+Object 1,"[0, 1, 0, 0, 0, 0]",6,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,145873.jpg,Object 1,LVIS,145873_Object 1
+Vehicle registration plate,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",28,Female,CrowdWorks,8,6,4,8,8,3,057569768fd6303e.jpg,Vehicle registration plate,OpenImages,057569768fd6303e_Vehicle registration plate
+Computer monitor,"[0, 0, 0, 1, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,7408fef212a5d3bc.jpg,Computer monitor,OpenImages,7408fef212a5d3bc_Computer monitor
+Laptop,"[0, 0, 0, 0, 1, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,7408fef212a5d3bc.jpg,Laptop,OpenImages,7408fef212a5d3bc_Laptop
+Person,"[1, 1, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,00dc0530e6779ca6.jpg,Person,OpenImages,00dc0530e6779ca6_Person
 Clothing,"[1, 0, 0, 1, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,00dc0530e6779ca6.jpg,Clothing,OpenImages,00dc0530e6779ca6_Clothing
-Finger,"[0, 1, 0, 0, 0, 0]",2,"[0, 0, 0, 0, 1, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,0dd09cf15ce15412.jpg,Chair,OpenImages,0dd09cf15ce15412_Chair
-Screen,"[1, 1, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,337490.jpg,monitor_(computer_equipment) computer_monitor,LVIS,337490_monitor_(computer_equipment) computer_monitor
-Person,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,337c8bda1d64f472.jpg,Human face,OpenImages,337c8bda1d64f472_Human face
-Person,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,337c8bda1d64f472.jpg,Human head,OpenImages,337c8bda1d64f472_Human head
-Person,"[0, 0, 0, 1, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,05798ca4c1946ae1.jpg,Human hand,OpenImages,05798ca4c1946ae1_Human hand
-Pet,"[0, 0, 0, 1, 0, 0]",5,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",40,Female,CrowdWorks,6,6,7,9,8,0,0022d0ab1e1347ab.jpg,Dog,OpenImages,0022d0ab1e1347ab_Dog
-Pet,"[1, 0, 0, 1, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,124926.jpg,cat,LVIS,124926_cat
-Person,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,24b14dbf64eeced1.jpg,Human face,OpenImages,24b14dbf64eeced1_Human face
-Person,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,24b14dbf64eeced1.jpg,Human head,OpenImages,24b14dbf64eeced1_Human head
-Person,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,24b14dbf64eeced1.jpg,Boy,OpenImages,24b14dbf64eeced1_Boy
-Cigarettes,"[0, 0, 0, 1, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,255375.jpg,cigarette,LVIS,255375_cigarette
-Accessory,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,255375.jpg,ring,LVIS,255375_ring
-Accessory,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,255375.jpg,necklace,LVIS,255375_necklace
-Screen,"[0, 0, 0, 1, 0, 0]",4,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",54,Male,CrowdWorks,4,6,4,8,6,1,132573.jpg,monitor_(computer_equipment) computer_monitor,LVIS,132573_monitor_(computer_equipment) computer_monitor
-Person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,0a8657e8b5c9d7bb.jpg,Human face,OpenImages,0a8657e8b5c9d7bb_Human face
-Person,"[1, 1, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,0a8657e8b5c9d7bb.jpg,Human body,OpenImages,0a8657e8b5c9d7bb_Human body
-Person,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,0a8657e8b5c9d7bb.jpg,Human head,OpenImages,0a8657e8b5c9d7bb_Human head
-Screen,"[0, 0, 0, 1, 0, 0]",1,"[0, 1, 1, 1, 1, 1, 0]","[0, 1, 1, 1, 1, 1, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,135872.jpg,monitor_(computer_equipment) computer_monitor,LVIS,135872_monitor_(computer_equipment) computer_monitor
-Person,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,34b65dafe328d39e.jpg,Human face,OpenImages,34b65dafe328d39e_Human face
-Person,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,34b65dafe328d39e.jpg,Human body,OpenImages,34b65dafe328d39e_Human body
-Person,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,34b65dafe328d39e.jpg,Human head,OpenImages,34b65dafe328d39e_Human head
-Place Identifier,"[0, 1, 0, 1, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,34b65dafe328d39e.jpg,Office building,OpenImages,34b65dafe328d39e_Office building
+Land vehicle,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,00dc0530e6779ca6.jpg,Land vehicle,OpenImages,00dc0530e6779ca6_Land vehicle
+Mammal,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,00dc0530e6779ca6.jpg,Mammal,OpenImages,00dc0530e6779ca6_Mammal
+Vehicle,"[1, 0, 1, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,00dc0530e6779ca6.jpg,Vehicle,OpenImages,00dc0530e6779ca6_Vehicle
+identity,"[1, 1, 0, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,069261fc14e56fcf.jpg,identity,OpenImages,069261fc14e56fcf_identity
+Chair,"[0, 1, 0, 0, 0, 0]",2,"[0, 0, 0, 0, 1, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,0dd09cf15ce15412.jpg,Chair,OpenImages,0dd09cf15ce15412_Chair
+poster,"[0, 1, 1, 1, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,337490.jpg,poster,LVIS,337490_poster
+monitor_(computer_equipment) computer_monitor,"[1, 1, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,337490.jpg,monitor_(computer_equipment) computer_monitor,LVIS,337490_monitor_(computer_equipment) computer_monitor
+Human face,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,337c8bda1d64f472.jpg,Human face,OpenImages,337c8bda1d64f472_Human face
+Human head,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,337c8bda1d64f472.jpg,Human head,OpenImages,337c8bda1d64f472_Human head
+Person,"[0, 1, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,05798ca4c1946ae1.jpg,Person,OpenImages,05798ca4c1946ae1_Person
+Human hand,"[0, 0, 0, 1, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,05798ca4c1946ae1.jpg,Human hand,OpenImages,05798ca4c1946ae1_Human hand
+Dog,"[0, 0, 0, 1, 0, 0]",5,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",40,Female,CrowdWorks,6,6,7,9,8,0,0022d0ab1e1347ab.jpg,Dog,OpenImages,0022d0ab1e1347ab_Dog
+cat,"[1, 0, 0, 1, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,124926.jpg,cat,LVIS,124926_cat
+Human face,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,24b14dbf64eeced1.jpg,Human face,OpenImages,24b14dbf64eeced1_Human face
+Furniture,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,24b14dbf64eeced1.jpg,Furniture,OpenImages,24b14dbf64eeced1_Furniture
+Building,"[0, 1, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,24b14dbf64eeced1.jpg,Building,OpenImages,24b14dbf64eeced1_Building
+Human head,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,24b14dbf64eeced1.jpg,Human head,OpenImages,24b14dbf64eeced1_Human head
+Mammal,"[1, 0, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,24b14dbf64eeced1.jpg,Mammal,OpenImages,24b14dbf64eeced1_Mammal
+Boy,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,24b14dbf64eeced1.jpg,Boy,OpenImages,24b14dbf64eeced1_Boy
+cigarette,"[0, 0, 0, 1, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,255375.jpg,cigarette,LVIS,255375_cigarette
+earring,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,255375.jpg,earring,LVIS,255375_earring
+ring,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,255375.jpg,ring,LVIS,255375_ring
+necklace,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,255375.jpg,necklace,LVIS,255375_necklace
+monitor_(computer_equipment) computer_monitor,"[0, 0, 0, 1, 0, 0]",4,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",54,Male,CrowdWorks,4,6,4,8,6,1,132573.jpg,monitor_(computer_equipment) computer_monitor,LVIS,132573_monitor_(computer_equipment) computer_monitor
+Poster,"[0, 1, 0, 0, 1, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,19b9a87786eb4c85.jpg,Poster,OpenImages,19b9a87786eb4c85_Poster
+Human face,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,0a8657e8b5c9d7bb.jpg,Human face,OpenImages,0a8657e8b5c9d7bb_Human face
+Human body,"[1, 1, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,0a8657e8b5c9d7bb.jpg,Human body,OpenImages,0a8657e8b5c9d7bb_Human body
+Human head,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,0a8657e8b5c9d7bb.jpg,Human head,OpenImages,0a8657e8b5c9d7bb_Human head
+monitor_(computer_equipment) computer_monitor,"[0, 0, 0, 1, 0, 0]",1,"[0, 1, 1, 1, 1, 1, 0]","[0, 1, 1, 1, 1, 1, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,135872.jpg,monitor_(computer_equipment) computer_monitor,LVIS,135872_monitor_(computer_equipment) computer_monitor
+Human face,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,34b65dafe328d39e.jpg,Human face,OpenImages,34b65dafe328d39e_Human face
+Human body,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,34b65dafe328d39e.jpg,Human body,OpenImages,34b65dafe328d39e_Human body
+Human head,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,34b65dafe328d39e.jpg,Human head,OpenImages,34b65dafe328d39e_Human head
+Office building,"[0, 1, 0, 1, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,34b65dafe328d39e.jpg,Office building,OpenImages,34b65dafe328d39e_Office building
+Person,"[1, 0, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,34b65dafe328d39e.jpg,Person,OpenImages,34b65dafe328d39e_Person
 Clothing,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,34b65dafe328d39e.jpg,Clothing,OpenImages,34b65dafe328d39e_Clothing
-Vehicle Plate,"[1, 1, 0, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,0787b0fa95f545a5.jpg,Vehicle registration plate,OpenImages,0787b0fa95f545a5_Vehicle registration plate
-Screen,"[0, 0, 0, 0, 1, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",25,Male,CrowdWorks,8,8,9,4,9,1,334813.jpg,monitor_(computer_equipment) computer_monitor,LVIS,334813_monitor_(computer_equipment) computer_monitor
+Desk,"[0, 1, 0, 0, 1, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,34b65dafe328d39e.jpg,Desk,OpenImages,34b65dafe328d39e_Desk
+Car,"[1, 1, 0, 1, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,0787b0fa95f545a5.jpg,Car,OpenImages,0787b0fa95f545a5_Car
+Land vehicle,"[1, 1, 0, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,0787b0fa95f545a5.jpg,Land vehicle,OpenImages,0787b0fa95f545a5_Land vehicle
+Vehicle,"[1, 1, 0, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,0787b0fa95f545a5.jpg,Vehicle,OpenImages,0787b0fa95f545a5_Vehicle
+Vehicle registration plate,"[1, 1, 0, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,0787b0fa95f545a5.jpg,Vehicle registration plate,OpenImages,0787b0fa95f545a5_Vehicle registration plate
+monitor_(computer_equipment) computer_monitor,"[0, 0, 0, 0, 1, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",25,Male,CrowdWorks,8,8,9,4,9,1,334813.jpg,monitor_(computer_equipment) computer_monitor,LVIS,334813_monitor_(computer_equipment) computer_monitor
+Object 0,"[1, 0, 0, 0, 0, 0]",1,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",25,Male,CrowdWorks,8,8,9,4,9,1,334813.jpg,Object 0,LVIS,334813_Object 0
+Person,"[1, 0, 1, 0, 0, 0]",3,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,02b85aaf5e24630e.jpg,Person,OpenImages,02b85aaf5e24630e_Person
 Clothing,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,02b85aaf5e24630e.jpg,Clothing,OpenImages,02b85aaf5e24630e_Clothing
-Person,"[1, 0, 0, 0, 0, 0]",2,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",21,Female,CrowdWorks,4,5,8,8,7,2,06d8b17bbd94dc09.jpg,Human face,OpenImages,06d8b17bbd94dc09_Human face
-Person,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Female,CrowdWorks,6,5,7,6,6,1,01b4f093f795747b.jpg,Girl,OpenImages,01b4f093f795747b_Girl
-Person,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Female,CrowdWorks,6,5,7,6,6,1,01b4f093f795747b.jpg,Woman,OpenImages,01b4f093f795747b_Woman
-Person,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Female,CrowdWorks,6,5,7,6,6,1,01b4f093f795747b.jpg,Man,OpenImages,01b4f093f795747b_Man
+Sports equipment,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,02b85aaf5e24630e.jpg,Sports equipment,OpenImages,02b85aaf5e24630e_Sports equipment
+Human face,"[1, 0, 0, 0, 0, 0]",2,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",21,Female,CrowdWorks,4,5,8,8,7,2,06d8b17bbd94dc09.jpg,Human face,OpenImages,06d8b17bbd94dc09_Human face
+Girl,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Female,CrowdWorks,6,5,7,6,6,1,01b4f093f795747b.jpg,Girl,OpenImages,01b4f093f795747b_Girl
+Woman,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Female,CrowdWorks,6,5,7,6,6,1,01b4f093f795747b.jpg,Woman,OpenImages,01b4f093f795747b_Woman
+Man,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Female,CrowdWorks,6,5,7,6,6,1,01b4f093f795747b.jpg,Man,OpenImages,01b4f093f795747b_Man
 Book,"[0, 0, 1, 1, 1, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,505b4f9c1d24d83b.jpg,Book,OpenImages,505b4f9c1d24d83b_Book
-Vehicle Plate,"[1, 1, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,119604.jpg,license_plate,LVIS,119604_license_plate
-Place Identifier,"[0, 1, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,119604.jpg,traffic_light,LVIS,119604_traffic_light
-Accessory,"[0, 0, 0, 1, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,227734.jpg,ring,LVIS,227734_ring
-Vehicle Plate,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",40,Male,CrowdWorks,7,6,8,5,5,1,1523.jpg,license_plate,LVIS,1523_license_plate
-Scenery,"[0, 1, 0, 0, 0, 0]",1,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 1, 0, 0]",32,Female,CrowdWorks,5,7,5,5,7,4,9e3b268c8f585dbc.jpg,Skyscraper,OpenImages,9e3b268c8f585dbc_Skyscraper
-Person,"[1, 0, 0, 0, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,000a1249af2bc5f0.jpg,Human body,OpenImages,000a1249af2bc5f0_Human body
-Person,"[1, 0, 0, 1, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,000a1249af2bc5f0.jpg,Human hand,OpenImages,000a1249af2bc5f0_Human hand
-Person,"[0, 0, 1, 0, 0, 0]",3,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,000a1249af2bc5f0.jpg,Human arm,OpenImages,000a1249af2bc5f0_Human arm
-Person,"[0, 0, 1, 0, 0, 0]",5,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,000a1249af2bc5f0.jpg,Woman,OpenImages,000a1249af2bc5f0_Woman
-Person,"[0, 0, 1, 0, 0, 0]",5,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,000a1249af2bc5f0.jpg,Man,OpenImages,000a1249af2bc5f0_Man
-Person,"[1, 0, 0, 1, 0, 0]",2,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,1076753c4c6ddb22.jpg,Human face,OpenImages,1076753c4c6ddb22_Human face
-Accessory,"[1, 0, 0, 1, 0, 0]",3,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,1076753c4c6ddb22.jpg,Glasses,OpenImages,1076753c4c6ddb22_Glasses
-Person,"[1, 0, 0, 0, 0, 0]",2,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,1076753c4c6ddb22.jpg,Human nose,OpenImages,1076753c4c6ddb22_Human nose
-Person,"[1, 0, 0, 1, 0, 0]",1,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,1076753c4c6ddb22.jpg,Human head,OpenImages,1076753c4c6ddb22_Human head
-Person,"[1, 0, 1, 1, 0, 0]",1,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,1076753c4c6ddb22.jpg,Man,OpenImages,1076753c4c6ddb22_Man
-Book,"[0, 1, 0, 1, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,498997.jpg,book,LVIS,498997_book
-Vehicle Plate,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",40,Male,CrowdWorks,7,6,8,5,5,1,138022.jpg,license_plate,LVIS,138022_license_plate
-Person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,1e7b2a58768e328c.jpg,Human face,OpenImages,1e7b2a58768e328c_Human face
-Person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,1e7b2a58768e328c.jpg,Girl,OpenImages,1e7b2a58768e328c_Girl
-Person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,1e7b2a58768e328c.jpg,Human body,OpenImages,1e7b2a58768e328c_Human body
-Person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,1e7b2a58768e328c.jpg,Human head,OpenImages,1e7b2a58768e328c_Human head
-Person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,1e7b2a58768e328c.jpg,Woman,OpenImages,1e7b2a58768e328c_Woman
-Home interior,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,173825.jpg,sofa,LVIS,173825_sofa
-Scenery,"[0, 1, 0, 0, 0, 0]",2,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",54,Male,CrowdWorks,4,6,4,8,6,1,208b5dac144c51b6.jpg,Skyscraper,OpenImages,208b5dac144c51b6_Skyscraper
-Clothing,"[0, 0, 0, 1, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,114535.jpg,jersey,LVIS,114535_jersey
-Person,"[1, 1, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,40a05ea0282d5897.jpg,Human face,OpenImages,40a05ea0282d5897_Human face
-Person,"[1, 0, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,40a05ea0282d5897.jpg,Girl,OpenImages,40a05ea0282d5897_Girl
-Place Identifier,"[1, 1, 0, 1, 1, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,40a05ea0282d5897.jpg,Office building,OpenImages,40a05ea0282d5897_Office building
-Person,"[1, 0, 1, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,40a05ea0282d5897.jpg,Woman,OpenImages,40a05ea0282d5897_Woman
-Book,"[1, 1, 0, 1, 1, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,118113.jpg,book,LVIS,118113_book
-Person,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,36f8e72cc0c8a851.jpg,Human body,OpenImages,36f8e72cc0c8a851_Human body
-Person,"[1, 0, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,36f8e72cc0c8a851.jpg,Human head,OpenImages,36f8e72cc0c8a851_Human head
-Person,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,36f8e72cc0c8a851.jpg,Man,OpenImages,36f8e72cc0c8a851_Man
-Person,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,30aa53f05602d3ec.jpg,Human face,OpenImages,30aa53f05602d3ec_Human face
-Person,"[1, 0, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,30aa53f05602d3ec.jpg,Girl,OpenImages,30aa53f05602d3ec_Girl
-Person,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,30aa53f05602d3ec.jpg,Human eye,OpenImages,30aa53f05602d3ec_Human eye
-Person,"[1, 0, 0, 1, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,4afc9fce9b1398c0.jpg,Woman,OpenImages,4afc9fce9b1398c0_Woman
-Screen,"[1, 0, 0, 1, 1, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",40,Male,CrowdWorks,7,6,8,5,5,1,572495.jpg,monitor_(computer_equipment) computer_monitor,LVIS,572495_monitor_(computer_equipment) computer_monitor
-Person,"[1, 1, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,11511.jpg,person,LVIS,11511_person
-Scenery,"[0, 1, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,d74fdc4b64b21978.jpg,Skyscraper,OpenImages,d74fdc4b64b21978_Skyscraper
-Vehicle Plate,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,081f5a6bc61b9c48.jpg,Vehicle registration plate,OpenImages,081f5a6bc61b9c48_Vehicle registration plate
-Scenery,"[0, 1, 0, 0, 0, 0]",1,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,e35623bbfca05b41.jpg,Skyscraper,OpenImages,e35623bbfca05b41_Skyscraper
-Vehicle Plate,"[0, 0, 0, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,0e360a4689ac06e8.jpg,Vehicle registration plate,OpenImages,0e360a4689ac06e8_Vehicle registration plate
-Person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,0bb8c226cb97b705.jpg,Human face,OpenImages,0bb8c226cb97b705_Human face
-Accessory,"[0, 0, 0, 1, 0, 0]",2,"[0, 0, 1, 1, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,0bb8c226cb97b705.jpg,Glasses,OpenImages,0bb8c226cb97b705_Glasses
-Person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,0bb8c226cb97b705.jpg,Girl,OpenImages,0bb8c226cb97b705_Girl
-Person,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,0bb8c226cb97b705.jpg,Human head,OpenImages,0bb8c226cb97b705_Human head
-Person,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,0bb8c226cb97b705.jpg,Human ear,OpenImages,0bb8c226cb97b705_Human ear
-Person,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,0bb8c226cb97b705.jpg,Woman,OpenImages,0bb8c226cb97b705_Woman
-Vehicle Plate,"[1, 0, 0, 1, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,13815.jpg,license_plate,LVIS,13815_license_plate
-Pet,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,02ef01f6d6a665ac.jpg,Dog,OpenImages,02ef01f6d6a665ac_Dog
-Person,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,282ffaca54c71954.jpg,Human face,OpenImages,282ffaca54c71954_Human face
-Person,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,282ffaca54c71954.jpg,Human head,OpenImages,282ffaca54c71954_Human head
-Person,"[1, 1, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,282ffaca54c71954.jpg,Man,OpenImages,282ffaca54c71954_Man
-Clothing,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,7,3,8,7,10,2,200764.jpg,bib,LVIS,200764_bib
-Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,CrowdWorks,3,4,6,7,6,0,00c710176e9c2996.jpg,Human body,OpenImages,00c710176e9c2996_Human body
-Person,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,CrowdWorks,3,4,6,7,6,0,00c710176e9c2996.jpg,Human head,OpenImages,00c710176e9c2996_Human head
-Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,CrowdWorks,3,4,6,7,6,0,00c710176e9c2996.jpg,Man,OpenImages,00c710176e9c2996_Man
+license_plate,"[1, 1, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,119604.jpg,license_plate,LVIS,119604_license_plate
+traffic_light,"[0, 1, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,119604.jpg,traffic_light,LVIS,119604_traffic_light
+Object 0,"[1, 0, 0, 0, 1, 0]",5,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,117156.jpg,Object 0,LVIS,117156_Object 0
+ring,"[0, 0, 0, 1, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,227734.jpg,ring,LVIS,227734_ring
+apron,"[1, 0, 0, 1, 1, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,227734.jpg,apron,LVIS,227734_apron
+license_plate,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",40,Male,CrowdWorks,7,6,8,5,5,1,1523.jpg,license_plate,LVIS,1523_license_plate
+identity,"[1, 0, 0, 1, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",32,Female,CrowdWorks,5,7,7,7,8,1,17ef06ab2c9e5e0c.jpg,identity,OpenImages,17ef06ab2c9e5e0c_identity
+Building,"[0, 1, 0, 0, 0, 0]",1,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 1, 0, 0]",32,Female,CrowdWorks,5,7,5,5,7,4,9e3b268c8f585dbc.jpg,Building,OpenImages,9e3b268c8f585dbc_Building
+Tower,"[0, 1, 0, 0, 0, 0]",2,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 1, 0, 0]",32,Female,CrowdWorks,5,7,5,5,7,4,9e3b268c8f585dbc.jpg,Tower,OpenImages,9e3b268c8f585dbc_Tower
+Skyscraper,"[0, 1, 0, 0, 0, 0]",1,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 1, 0, 0]",32,Female,CrowdWorks,5,7,5,5,7,4,9e3b268c8f585dbc.jpg,Skyscraper,OpenImages,9e3b268c8f585dbc_Skyscraper
+Person,"[1, 0, 0, 1, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,000a1249af2bc5f0.jpg,Person,OpenImages,000a1249af2bc5f0_Person
+Human body,"[1, 0, 0, 0, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,000a1249af2bc5f0.jpg,Human body,OpenImages,000a1249af2bc5f0_Human body
+Human hand,"[1, 0, 0, 1, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,000a1249af2bc5f0.jpg,Human hand,OpenImages,000a1249af2bc5f0_Human hand
+Human arm,"[0, 0, 1, 0, 0, 0]",3,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,000a1249af2bc5f0.jpg,Human arm,OpenImages,000a1249af2bc5f0_Human arm
+Woman,"[0, 0, 1, 0, 0, 0]",5,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,000a1249af2bc5f0.jpg,Woman,OpenImages,000a1249af2bc5f0_Woman
+Man,"[0, 0, 1, 0, 0, 0]",5,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",23,Female,CrowdWorks,5,8,5,10,10,2,000a1249af2bc5f0.jpg,Man,OpenImages,000a1249af2bc5f0_Man
+identity,"[0, 0, 0, 0, 0, 1]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,12e3b493707841ab.jpg,identity,OpenImages,12e3b493707841ab_identity
+spectacles,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,10130.jpg,spectacles,LVIS,10130_spectacles
+cellular_telephone,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,10130.jpg,cellular_telephone,LVIS,10130_cellular_telephone
+Human face,"[1, 0, 0, 1, 0, 0]",2,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,1076753c4c6ddb22.jpg,Human face,OpenImages,1076753c4c6ddb22_Human face
+Glasses,"[1, 0, 0, 1, 0, 0]",3,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,1076753c4c6ddb22.jpg,Glasses,OpenImages,1076753c4c6ddb22_Glasses
+Sunglasses,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,1076753c4c6ddb22.jpg,Sunglasses,OpenImages,1076753c4c6ddb22_Sunglasses
+Person,"[1, 0, 0, 1, 0, 0]",1,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,1076753c4c6ddb22.jpg,Person,OpenImages,1076753c4c6ddb22_Person
+Human nose,"[1, 0, 0, 0, 0, 0]",2,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,1076753c4c6ddb22.jpg,Human nose,OpenImages,1076753c4c6ddb22_Human nose
+Human head,"[1, 0, 0, 1, 0, 0]",1,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,1076753c4c6ddb22.jpg,Human head,OpenImages,1076753c4c6ddb22_Human head
+Man,"[1, 0, 1, 1, 0, 0]",1,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,1076753c4c6ddb22.jpg,Man,OpenImages,1076753c4c6ddb22_Man
+Sun hat,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,1076753c4c6ddb22.jpg,Sun hat,OpenImages,1076753c4c6ddb22_Sun hat
+book,"[0, 1, 0, 1, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,498997.jpg,book,LVIS,498997_book
+license_plate,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",40,Male,CrowdWorks,7,6,8,5,5,1,138022.jpg,license_plate,LVIS,138022_license_plate
+Human face,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,1e7b2a58768e328c.jpg,Human face,OpenImages,1e7b2a58768e328c_Human face
+Girl,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,1e7b2a58768e328c.jpg,Girl,OpenImages,1e7b2a58768e328c_Girl
+Human body,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,1e7b2a58768e328c.jpg,Human body,OpenImages,1e7b2a58768e328c_Human body
+Human head,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,1e7b2a58768e328c.jpg,Human head,OpenImages,1e7b2a58768e328c_Human head
+Woman,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,1e7b2a58768e328c.jpg,Woman,OpenImages,1e7b2a58768e328c_Woman
+cup,"[1, 1, 0, 1, 0, 0]",5,"[0, 1, 1, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,140987.jpg,cup,LVIS,140987_cup
+Object 0,"[1, 1, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",32,Female,CrowdWorks,5,7,5,5,7,4,186720.jpg,Object 0,LVIS,186720_Object 0
+spectacles,"[0, 0, 0, 1, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,283548.jpg,spectacles,LVIS,283548_spectacles
+sofa,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,173825.jpg,sofa,LVIS,173825_sofa
+identity,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",48,Male,CrowdWorks,3,6,6,5,8,1,034143ae71047bbc.jpg,identity,OpenImages,034143ae71047bbc_identity
+Object 0,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",48,Male,CrowdWorks,3,6,6,5,8,1,034143ae71047bbc.jpg,Object 0,OpenImages,034143ae71047bbc_Object 0
+Skyscraper,"[0, 1, 0, 0, 0, 0]",2,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",54,Male,CrowdWorks,4,6,4,8,6,1,208b5dac144c51b6.jpg,Skyscraper,OpenImages,208b5dac144c51b6_Skyscraper
+Tower,"[0, 1, 0, 0, 0, 0]",2,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",54,Male,CrowdWorks,4,6,4,8,6,1,208b5dac144c51b6.jpg,Tower,OpenImages,208b5dac144c51b6_Tower
+jersey,"[0, 0, 0, 1, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,114535.jpg,jersey,LVIS,114535_jersey
+boot,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,114535.jpg,boot,LVIS,114535_boot
+choker,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,115885.jpg,choker,LVIS,115885_choker
+Human face,"[1, 1, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,40a05ea0282d5897.jpg,Human face,OpenImages,40a05ea0282d5897_Human face
+Girl,"[1, 0, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,40a05ea0282d5897.jpg,Girl,OpenImages,40a05ea0282d5897_Girl
+Person,"[1, 1, 0, 1, 1, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,40a05ea0282d5897.jpg,Person,OpenImages,40a05ea0282d5897_Person
+Mammal,"[1, 1, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,40a05ea0282d5897.jpg,Mammal,OpenImages,40a05ea0282d5897_Mammal
+Office building,"[1, 1, 0, 1, 1, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,40a05ea0282d5897.jpg,Office building,OpenImages,40a05ea0282d5897_Office building
+Woman,"[1, 0, 1, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,40a05ea0282d5897.jpg,Woman,OpenImages,40a05ea0282d5897_Woman
+swimsuit,"[0, 0, 0, 1, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,235933.jpg,swimsuit,LVIS,235933_swimsuit
+Person,"[1, 1, 0, 1, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Male,CrowdWorks,4,5,4,7,4,0,038ee0bf31929792.jpg,Person,OpenImages,038ee0bf31929792_Person
+Object 0,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,197807.jpg,Object 0,LVIS,197807_Object 0
+Object 0,"[0, 0, 1, 1, 0, 0]",4,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",32,Female,CrowdWorks,5,7,7,7,8,1,361670.jpg,Object 0,LVIS,361670_Object 0
+Flowerpot,"[0, 0, 0, 1, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,50202badfd6b50fe.jpg,Flowerpot,OpenImages,50202badfd6b50fe_Flowerpot
+House,"[0, 1, 0, 1, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,50202badfd6b50fe.jpg,House,OpenImages,50202badfd6b50fe_House
+identity,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,054f3a08aadf794d.jpg,identity,OpenImages,054f3a08aadf794d_identity
+bucket,"[1, 1, 0, 1, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,118113.jpg,bucket,LVIS,118113_bucket
+book,"[1, 1, 0, 1, 1, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,118113.jpg,book,LVIS,118113_book
+Human body,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,36f8e72cc0c8a851.jpg,Human body,OpenImages,36f8e72cc0c8a851_Human body
+Human head,"[1, 0, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,36f8e72cc0c8a851.jpg,Human head,OpenImages,36f8e72cc0c8a851_Human head
+Man,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,36f8e72cc0c8a851.jpg,Man,OpenImages,36f8e72cc0c8a851_Man
+Human face,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,30aa53f05602d3ec.jpg,Human face,OpenImages,30aa53f05602d3ec_Human face
+Girl,"[1, 0, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,30aa53f05602d3ec.jpg,Girl,OpenImages,30aa53f05602d3ec_Girl
+Human eye,"[1, 0, 0, 0, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,30aa53f05602d3ec.jpg,Human eye,OpenImages,30aa53f05602d3ec_Human eye
+apron,"[1, 0, 0, 1, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,128127.jpg,apron,LVIS,128127_apron
+Object 0,"[1, 1, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,128127.jpg,Object 0,LVIS,128127_Object 0
+Desk,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,4afc9fce9b1398c0.jpg,Desk,OpenImages,4afc9fce9b1398c0_Desk
+Woman,"[1, 0, 0, 1, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,4afc9fce9b1398c0.jpg,Woman,OpenImages,4afc9fce9b1398c0_Woman
+monitor_(computer_equipment) computer_monitor,"[1, 0, 0, 1, 1, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",40,Male,CrowdWorks,7,6,8,5,5,1,572495.jpg,monitor_(computer_equipment) computer_monitor,LVIS,572495_monitor_(computer_equipment) computer_monitor
+identity,"[1, 0, 0, 1, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,183d324e540ba20f.jpg,identity,OpenImages,183d324e540ba20f_identity
+Object 0,"[1, 0, 0, 0, 0, 0]",1,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",25,Male,CrowdWorks,8,8,9,4,9,1,140263.jpg,Object 0,LVIS,140263_Object 0
+person,"[1, 1, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,11511.jpg,person,LVIS,11511_person
+bench,"[0, 1, 0, 0, 0, 0]",1,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,11511.jpg,bench,LVIS,11511_bench
+Skyscraper,"[0, 1, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,d74fdc4b64b21978.jpg,Skyscraper,OpenImages,d74fdc4b64b21978_Skyscraper
+Building,"[0, 1, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,d74fdc4b64b21978.jpg,Building,OpenImages,d74fdc4b64b21978_Building
+Window,"[1, 1, 0, 1, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,d74fdc4b64b21978.jpg,Window,OpenImages,d74fdc4b64b21978_Window
+Vehicle registration plate,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,081f5a6bc61b9c48.jpg,Vehicle registration plate,OpenImages,081f5a6bc61b9c48_Vehicle registration plate
+identity,"[1, 0, 1, 1, 0, 0]",3,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,00018457a4aafe75.jpg,identity,OpenImages,00018457a4aafe75_identity
+identity,"[1, 0, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Male,CrowdWorks,6,8,7,6,8,1,12a8cf399d440a92.jpg,identity,OpenImages,12a8cf399d440a92_identity
+Skyscraper,"[0, 1, 0, 0, 0, 0]",1,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,e35623bbfca05b41.jpg,Skyscraper,OpenImages,e35623bbfca05b41_Skyscraper
+Building,"[0, 1, 0, 0, 0, 0]",1,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,e35623bbfca05b41.jpg,Building,OpenImages,e35623bbfca05b41_Building
+Window,"[0, 0, 0, 0, 1, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,e35623bbfca05b41.jpg,Window,OpenImages,e35623bbfca05b41_Window
+Object 0,"[1, 0, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,221246.jpg,Object 0,LVIS,221246_Object 0
+Sink,"[1, 0, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,0e2868759e7a615c.jpg,Sink,OpenImages,0e2868759e7a615c_Sink
+Vehicle registration plate,"[0, 0, 0, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,0e360a4689ac06e8.jpg,Vehicle registration plate,OpenImages,0e360a4689ac06e8_Vehicle registration plate
+Object 0,"[1, 0, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,170048.jpg,Object 0,LVIS,170048_Object 0
+Human face,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,0bb8c226cb97b705.jpg,Human face,OpenImages,0bb8c226cb97b705_Human face
+Glasses,"[0, 0, 0, 1, 0, 0]",2,"[0, 0, 1, 1, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,0bb8c226cb97b705.jpg,Glasses,OpenImages,0bb8c226cb97b705_Glasses
+Girl,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,0bb8c226cb97b705.jpg,Girl,OpenImages,0bb8c226cb97b705_Girl
+Human head,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,0bb8c226cb97b705.jpg,Human head,OpenImages,0bb8c226cb97b705_Human head
+Human ear,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,0bb8c226cb97b705.jpg,Human ear,OpenImages,0bb8c226cb97b705_Human ear
+Woman,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,0bb8c226cb97b705.jpg,Woman,OpenImages,0bb8c226cb97b705_Woman
+license_plate,"[1, 0, 0, 1, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,13815.jpg,license_plate,LVIS,13815_license_plate
+pipe,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,13815.jpg,pipe,LVIS,13815_pipe
+identity,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,6,6,6,7,6,1,08291533e355af39.jpg,identity,OpenImages,08291533e355af39_identity
+Dog,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,02ef01f6d6a665ac.jpg,Dog,OpenImages,02ef01f6d6a665ac_Dog
+Chest of drawers,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,3f65d9a5db068b25.jpg,Chest of drawers,OpenImages,3f65d9a5db068b25_Chest of drawers
+Human face,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,282ffaca54c71954.jpg,Human face,OpenImages,282ffaca54c71954_Human face
+Human head,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,282ffaca54c71954.jpg,Human head,OpenImages,282ffaca54c71954_Human head
+Man,"[1, 1, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,4,5,5,9,8,2,282ffaca54c71954.jpg,Man,OpenImages,282ffaca54c71954_Man
+identity,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Male,CrowdWorks,4,5,4,7,4,0,0a0b75fa124a65c3.jpg,identity,OpenImages,0a0b75fa124a65c3_identity
+bib,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,7,3,8,7,10,2,200764.jpg,bib,LVIS,200764_bib
+Human body,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,CrowdWorks,3,4,6,7,6,0,00c710176e9c2996.jpg,Human body,OpenImages,00c710176e9c2996_Human body
+Human head,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,CrowdWorks,3,4,6,7,6,0,00c710176e9c2996.jpg,Human head,OpenImages,00c710176e9c2996_Human head
+Man,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,CrowdWorks,3,4,6,7,6,0,00c710176e9c2996.jpg,Man,OpenImages,00c710176e9c2996_Man
+Person,"[1, 1, 0, 1, 1, 0]",5,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,01ab773186c630c4.jpg,Person,OpenImages,01ab773186c630c4_Person
 Clothing,"[0, 0, 0, 1, 1, 0]",4,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,01ab773186c630c4.jpg,Clothing,OpenImages,01ab773186c630c4_Clothing
-Person,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,01ab773186c630c4.jpg,Woman,OpenImages,01ab773186c630c4_Woman
-Person,"[1, 1, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,1fe277f5abfc7d74.jpg,Human face,OpenImages,1fe277f5abfc7d74_Human face
-Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,1fe277f5abfc7d74.jpg,Girl,OpenImages,1fe277f5abfc7d74_Girl
-Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,1fe277f5abfc7d74.jpg,Human nose,OpenImages,1fe277f5abfc7d74_Human nose
-Person,"[1, 1, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,1fe277f5abfc7d74.jpg,Human eye,OpenImages,1fe277f5abfc7d74_Human eye
-Person,"[1, 1, 0, 1, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,1fe277f5abfc7d74.jpg,Woman,OpenImages,1fe277f5abfc7d74_Woman
-Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,1fe277f5abfc7d74.jpg,Human head,OpenImages,1fe277f5abfc7d74_Human head
-Vehicle Plate,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,124786.jpg,license_plate,LVIS,124786_license_plate
-Person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,1ea0b813513a3a40.jpg,Human face,OpenImages,1ea0b813513a3a40_Human face
+Footwear,"[0, 0, 0, 1, 0, 0]",1,"[0, 1, 1, 1, 1, 1, 0]","[0, 1, 1, 1, 1, 1, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,01ab773186c630c4.jpg,Footwear,OpenImages,01ab773186c630c4_Footwear
+Woman,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,01ab773186c630c4.jpg,Woman,OpenImages,01ab773186c630c4_Woman
+Human face,"[1, 1, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,1fe277f5abfc7d74.jpg,Human face,OpenImages,1fe277f5abfc7d74_Human face
+Girl,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,1fe277f5abfc7d74.jpg,Girl,OpenImages,1fe277f5abfc7d74_Girl
+Human nose,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,1fe277f5abfc7d74.jpg,Human nose,OpenImages,1fe277f5abfc7d74_Human nose
+Human eye,"[1, 1, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,1fe277f5abfc7d74.jpg,Human eye,OpenImages,1fe277f5abfc7d74_Human eye
+Woman,"[1, 1, 0, 1, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,1fe277f5abfc7d74.jpg,Woman,OpenImages,1fe277f5abfc7d74_Woman
+Human head,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,1fe277f5abfc7d74.jpg,Human head,OpenImages,1fe277f5abfc7d74_Human head
+license_plate,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,124786.jpg,license_plate,LVIS,124786_license_plate
+Object 0,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,124786.jpg,Object 0,LVIS,124786_Object 0
+Human face,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,1ea0b813513a3a40.jpg,Human face,OpenImages,1ea0b813513a3a40_Human face
+Person,"[1, 1, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,1ea0b813513a3a40.jpg,Person,OpenImages,1ea0b813513a3a40_Person
 Clothing,"[0, 1, 1, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,1ea0b813513a3a40.jpg,Clothing,OpenImages,1ea0b813513a3a40_Clothing
-Person,"[1, 1, 1, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,1ea0b813513a3a40.jpg,Human body,OpenImages,1ea0b813513a3a40_Human body
-Person,"[1, 1, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,1ea0b813513a3a40.jpg,Woman,OpenImages,1ea0b813513a3a40_Woman
-Scenery,"[0, 1, 0, 0, 0, 0]",1,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 1, 0, 0]",46,Female,CrowdWorks,6,5,7,6,6,1,d01d43bf0d8dc8e5.jpg,Skyscraper,OpenImages,d01d43bf0d8dc8e5_Skyscraper
-Screen,"[0, 0, 0, 1, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,0e09767b7dab9237.jpg,Laptop,OpenImages,0e09767b7dab9237_Laptop
-Person,"[1, 1, 0, 0, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,2a3513ff487baa5e.jpg,Human face,OpenImages,2a3513ff487baa5e_Human face
-Person,"[1, 1, 0, 1, 0, 0]",5,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,2a3513ff487baa5e.jpg,Human hair,OpenImages,2a3513ff487baa5e_Human hair
-Person,"[0, 1, 0, 0, 0, 0]",3,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,2a3513ff487baa5e.jpg,Human body,OpenImages,2a3513ff487baa5e_Human body
-Person,"[1, 1, 0, 1, 0, 0]",5,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,2a3513ff487baa5e.jpg,Human head,OpenImages,2a3513ff487baa5e_Human head
-Person,"[1, 1, 1, 1, 0, 0]",5,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,2a3513ff487baa5e.jpg,Woman,OpenImages,2a3513ff487baa5e_Woman
-Vehicle Plate,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",54,Male,CrowdWorks,4,6,4,8,6,1,0f4bfc46402a9f52.jpg,Vehicle registration plate,OpenImages,0f4bfc46402a9f52_Vehicle registration plate
-Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,0b8b9d6b70643ef1.jpg,Human body,OpenImages,0b8b9d6b70643ef1_Human body
-Person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,86a6366f57093823.jpg,Human hair,OpenImages,86a6366f57093823_Human hair
-Person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,86a6366f57093823.jpg,Boy,OpenImages,86a6366f57093823_Boy
-Person,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,86a6366f57093823.jpg,Man,OpenImages,86a6366f57093823_Man
-Person,"[1, 0, 0, 1, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,123137.jpg,person,LVIS,123137_person
-Home interior,"[0, 0, 0, 1, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",28,Female,CrowdWorks,8,6,4,8,8,3,274687.jpg,bed,LVIS,274687_bed
-Person,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,130586.jpg,person,LVIS,130586_person
+Human body,"[1, 1, 1, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,1ea0b813513a3a40.jpg,Human body,OpenImages,1ea0b813513a3a40_Human body
+Woman,"[1, 1, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,CrowdWorks,4,4,5,10,8,1,1ea0b813513a3a40.jpg,Woman,OpenImages,1ea0b813513a3a40_Woman
+Skyscraper,"[0, 1, 0, 0, 0, 0]",1,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 1, 0, 0]",46,Female,CrowdWorks,6,5,7,6,6,1,d01d43bf0d8dc8e5.jpg,Skyscraper,OpenImages,d01d43bf0d8dc8e5_Skyscraper
+Building,"[0, 1, 0, 0, 0, 0]",2,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",46,Female,CrowdWorks,6,5,7,6,6,1,d01d43bf0d8dc8e5.jpg,Building,OpenImages,d01d43bf0d8dc8e5_Building
+Watercraft,"[0, 1, 0, 0, 0, 0]",1,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 1, 0, 0]",46,Female,CrowdWorks,6,5,7,6,6,1,d01d43bf0d8dc8e5.jpg,Watercraft,OpenImages,d01d43bf0d8dc8e5_Watercraft
+Laptop,"[0, 0, 0, 1, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,5,9,6,8,1,0e09767b7dab9237.jpg,Laptop,OpenImages,0e09767b7dab9237_Laptop
+Human face,"[1, 1, 0, 0, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,2a3513ff487baa5e.jpg,Human face,OpenImages,2a3513ff487baa5e_Human face
+Human hair,"[1, 1, 0, 1, 0, 0]",5,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,2a3513ff487baa5e.jpg,Human hair,OpenImages,2a3513ff487baa5e_Human hair
+Human body,"[0, 1, 0, 0, 0, 0]",3,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,2a3513ff487baa5e.jpg,Human body,OpenImages,2a3513ff487baa5e_Human body
+Human head,"[1, 1, 0, 1, 0, 0]",5,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,2a3513ff487baa5e.jpg,Human head,OpenImages,2a3513ff487baa5e_Human head
+Mammal,"[1, 1, 0, 1, 0, 0]",5,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,2a3513ff487baa5e.jpg,Mammal,OpenImages,2a3513ff487baa5e_Mammal
+Woman,"[1, 1, 1, 1, 0, 0]",5,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,2a3513ff487baa5e.jpg,Woman,OpenImages,2a3513ff487baa5e_Woman
+Furniture,"[1, 1, 0, 1, 0, 0]",5,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,2a3513ff487baa5e.jpg,Furniture,OpenImages,2a3513ff487baa5e_Furniture
+Vehicle registration plate,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",54,Male,CrowdWorks,4,6,4,8,6,1,0f4bfc46402a9f52.jpg,Vehicle registration plate,OpenImages,0f4bfc46402a9f52_Vehicle registration plate
+Car,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",54,Male,CrowdWorks,4,6,4,8,6,1,0f4bfc46402a9f52.jpg,Car,OpenImages,0f4bfc46402a9f52_Car
+Object 0,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,17068.jpg,Object 0,LVIS,17068_Object 0
+Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,0b8b9d6b70643ef1.jpg,Person,OpenImages,0b8b9d6b70643ef1_Person
+Object 0,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,0b8b9d6b70643ef1.jpg,Object 0,OpenImages,0b8b9d6b70643ef1_Object 0
+Human body,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,0b8b9d6b70643ef1.jpg,Human body,OpenImages,0b8b9d6b70643ef1_Human body
+Object 0,"[1, 0, 0, 0, 1, 0]",4,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,10056.jpg,Object 0,LVIS,10056_Object 0
+Human hair,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,86a6366f57093823.jpg,Human hair,OpenImages,86a6366f57093823_Human hair
+Person,"[1, 1, 1, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,86a6366f57093823.jpg,Person,OpenImages,86a6366f57093823_Person
+Boy,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,86a6366f57093823.jpg,Boy,OpenImages,86a6366f57093823_Boy
+Man,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,7,9,7,7,1,86a6366f57093823.jpg,Man,OpenImages,86a6366f57093823_Man
+person,"[1, 0, 0, 1, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,123137.jpg,person,LVIS,123137_person
+key,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,201151.jpg,key,LVIS,201151_key
+television_set,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,316336.jpg,television_set,LVIS,316336_television_set
+cash_register,"[0, 0, 0, 0, 1, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,316336.jpg,cash_register,LVIS,316336_cash_register
+drawer,"[0, 0, 0, 0, 1, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,316336.jpg,drawer,LVIS,316336_drawer
+bed,"[0, 0, 0, 1, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",28,Female,CrowdWorks,8,6,4,8,8,3,274687.jpg,bed,LVIS,274687_bed
+bicycle,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",28,Female,CrowdWorks,8,6,4,8,8,3,274687.jpg,bicycle,LVIS,274687_bicycle
+handle,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",28,Female,CrowdWorks,8,6,4,8,8,3,274687.jpg,handle,LVIS,274687_handle
+person,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,130586.jpg,person,LVIS,130586_person
+clock_tower,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,153782.jpg,clock_tower,LVIS,153782_clock_tower
+Car,"[1, 0, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0822a13549844948.jpg,Car,OpenImages,0822a13549844948_Car
 Clothing,"[1, 0, 0, 1, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0822a13549844948.jpg,Clothing,OpenImages,0822a13549844948_Clothing
-Vehicle Plate,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0822a13549844948.jpg,Vehicle registration plate,OpenImages,0822a13549844948_Vehicle registration plate
-Screen,"[1, 0, 1, 1, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Female,CrowdWorks,6,5,7,6,6,1,117447.jpg,monitor_(computer_equipment) computer_monitor,LVIS,117447_monitor_(computer_equipment) computer_monitor
-Screen,"[1, 0, 0, 1, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,143186.jpg,laptop_computer,LVIS,143186_laptop_computer
-Person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,6d8134e58999658b.jpg,Human face,OpenImages,6d8134e58999658b_Human face
-Person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,6d8134e58999658b.jpg,Man,OpenImages,6d8134e58999658b_Man
-Identity,"[0, 0, 0, 0, 0, 1]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,10851.jpg,passport,LVIS,10851_passport
-Place Identifier,"[0, 1, 0, 0, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",35,Female,CrowdWorks,6,6,6,7,6,1,590f63eb87ae3901.jpg,Office building,OpenImages,590f63eb87ae3901_Office building
-Screen,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,130183.jpg,laptop_computer,LVIS,130183_laptop_computer
-Scenery,"[0, 1, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,177060.jpg,streetlight,LVIS,177060_streetlight
-Place Identifier,"[0, 1, 0, 0, 0, 0]",4,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,2e969144f13eb1dc.jpg,Traffic sign,OpenImages,2e969144f13eb1dc_Traffic sign
-Person,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,2eb849114cbb18d9.jpg,Human hair,OpenImages,2eb849114cbb18d9_Human hair
+Vehicle registration plate,"[1, 0, 0, 0, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,0822a13549844948.jpg,Vehicle registration plate,OpenImages,0822a13549844948_Vehicle registration plate
+monitor_(computer_equipment) computer_monitor,"[1, 0, 1, 1, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Female,CrowdWorks,6,5,7,6,6,1,117447.jpg,monitor_(computer_equipment) computer_monitor,LVIS,117447_monitor_(computer_equipment) computer_monitor
+laptop_computer,"[1, 0, 0, 1, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,143186.jpg,laptop_computer,LVIS,143186_laptop_computer
+Human face,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,6d8134e58999658b.jpg,Human face,OpenImages,6d8134e58999658b_Human face
+Man,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,6d8134e58999658b.jpg,Man,OpenImages,6d8134e58999658b_Man
+Person,"[1, 1, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Female,CrowdWorks,6,6,6,5,7,1,171c2848e3ad670e.jpg,Person,OpenImages,171c2848e3ad670e_Person
+House,"[0, 1, 0, 1, 0, 0]",1,"[0, 1, 1, 1, 0, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",42,Female,CrowdWorks,8,5,7,5,4,2,5ea13fbbd1a1474f.jpg,House,OpenImages,5ea13fbbd1a1474f_House
+receipt,"[1, 0, 0, 1, 1, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,10851.jpg,receipt,LVIS,10851_receipt
+passport,"[0, 0, 0, 0, 0, 1]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,10851.jpg,passport,LVIS,10851_passport
+Office building,"[0, 1, 0, 0, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",35,Female,CrowdWorks,6,6,6,7,6,1,590f63eb87ae3901.jpg,Office building,OpenImages,590f63eb87ae3901_Office building
+bracelet,"[0, 0, 0, 1, 0, 0]",1,"[0, 0, 0, 0, 1, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,130183.jpg,bracelet,LVIS,130183_bracelet
+laptop_computer,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,130183.jpg,laptop_computer,LVIS,130183_laptop_computer
+computer_keyboard,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,130183.jpg,computer_keyboard,LVIS,130183_computer_keyboard
+Object 0,"[1, 1, 0, 0, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",35,Female,CrowdWorks,6,6,6,7,6,1,213829.jpg,Object 0,LVIS,213829_Object 0
+bus_(vehicle),"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,177060.jpg,bus_(vehicle),LVIS,177060_bus_(vehicle)
+streetlight,"[0, 1, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,177060.jpg,streetlight,LVIS,177060_streetlight
+Traffic sign,"[0, 1, 0, 0, 0, 0]",4,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,2e969144f13eb1dc.jpg,Traffic sign,OpenImages,2e969144f13eb1dc_Traffic sign
+House,"[0, 1, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,2e969144f13eb1dc.jpg,House,OpenImages,2e969144f13eb1dc_House
+Tree,"[0, 1, 0, 0, 0, 0]",2,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",46,Male,CrowdWorks,3,5,8,6,7,0,2e969144f13eb1dc.jpg,Tree,OpenImages,2e969144f13eb1dc_Tree
+Human hair,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,2eb849114cbb18d9.jpg,Human hair,OpenImages,2eb849114cbb18d9_Human hair
 Clothing,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,2eb849114cbb18d9.jpg,Clothing,OpenImages,2eb849114cbb18d9_Clothing
-Person,"[1, 0, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,2eb849114cbb18d9.jpg,Human body,OpenImages,2eb849114cbb18d9_Human body
-Person,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,2eb849114cbb18d9.jpg,Man,OpenImages,2eb849114cbb18d9_Man
-Person,"[1, 1, 0, 1, 0, 0]",2,"[0, 1, 1, 1, 1, 1, 0]","[0, 1, 1, 1, 1, 1, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,020feca9b536f1fe.jpg,Woman,OpenImages,020feca9b536f1fe_Woman
-Person,"[1, 1, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,160535.jpg,person,LVIS,160535_person
-Person,"[1, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,3fefc0feb476ed7e.jpg,Human body,OpenImages,3fefc0feb476ed7e_Human body
-Person,"[1, 0, 0, 1, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,3fefc0feb476ed7e.jpg,Man,OpenImages,3fefc0feb476ed7e_Man
-Screen,"[1, 0, 0, 1, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,3fefc0feb476ed7e.jpg,Laptop,OpenImages,3fefc0feb476ed7e_Laptop
-Person,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,1fb9783df691b0ad.jpg,Human face,OpenImages,1fb9783df691b0ad_Human face
-Person,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,1fb9783df691b0ad.jpg,Human hair,OpenImages,1fb9783df691b0ad_Human hair
-Person,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,1fb9783df691b0ad.jpg,Human nose,OpenImages,1fb9783df691b0ad_Human nose
-Person,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,1fb9783df691b0ad.jpg,Human head,OpenImages,1fb9783df691b0ad_Human head
-Person,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,1fb9783df691b0ad.jpg,Human eye,OpenImages,1fb9783df691b0ad_Human eye
-Person,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,1fb9783df691b0ad.jpg,Human mouth,OpenImages,1fb9783df691b0ad_Human mouth
-Person,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,1fb9783df691b0ad.jpg,Human beard,OpenImages,1fb9783df691b0ad_Human beard
-Person,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,1fb9783df691b0ad.jpg,Man,OpenImages,1fb9783df691b0ad_Man
-Screen,"[0, 0, 0, 1, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,195918.jpg,monitor_(computer_equipment) computer_monitor,LVIS,195918_monitor_(computer_equipment) computer_monitor
-Person,"[1, 0, 0, 0, 1, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,7,3,8,7,10,2,17582.jpg,person,LVIS,17582_person
-Person,"[1, 1, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,03006368ed61dbea.jpg,Human face,OpenImages,03006368ed61dbea_Human face
-Person,"[1, 1, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,03006368ed61dbea.jpg,Human body,OpenImages,03006368ed61dbea_Human body
-Person,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,03006368ed61dbea.jpg,Human head,OpenImages,03006368ed61dbea_Human head
-Person,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,03006368ed61dbea.jpg,Human hand,OpenImages,03006368ed61dbea_Human hand
-Person,"[1, 1, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,03006368ed61dbea.jpg,Human arm,OpenImages,03006368ed61dbea_Human arm
-Person,"[1, 1, 0, 1, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,03006368ed61dbea.jpg,Man,OpenImages,03006368ed61dbea_Man
-Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,CrowdWorks,3,4,6,7,6,0,0e50ea14c4fc1353.jpg,Human face,OpenImages,0e50ea14c4fc1353_Human face
-Vehicle Plate,"[0, 0, 0, 0, 0, 1]",2,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,CrowdWorks,3,4,6,7,6,0,0e50ea14c4fc1353.jpg,Vehicle registration plate,OpenImages,0e50ea14c4fc1353_Vehicle registration plate
-Person,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Human face,OpenImages,5b5f5c5c05f700b3_Human face
-Finger,"[0, 1, 0, 1, 0, 0]",3,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Chair,OpenImages,5b5f5c5c05f700b3_Chair
-Person,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Human hair,OpenImages,5b5f5c5c05f700b3_Human hair
-Person,"[1, 1, 0, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Human body,OpenImages,5b5f5c5c05f700b3_Human body
-Person,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Human head,OpenImages,5b5f5c5c05f700b3_Human head
-Person,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Human eye,OpenImages,5b5f5c5c05f700b3_Human eye
-Person,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Human arm,OpenImages,5b5f5c5c05f700b3_Human arm
-Person,"[1, 0, 0, 1, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Woman,OpenImages,5b5f5c5c05f700b3_Woman
-Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Man,OpenImages,5b5f5c5c05f700b3_Man
-Person,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",42,Male,CrowdWorks,6,8,7,6,8,1,0f0c237588553730.jpg,Woman,OpenImages,0f0c237588553730_Woman
-Home interior,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",37,Male,CrowdWorks,4,4,9,8,4,3,104188.jpg,sofa,LVIS,104188_sofa
-Screen,"[0, 0, 0, 1, 1, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,1503.jpg,laptop_computer,LVIS,1503_laptop_computer
-Screen,"[0, 0, 0, 1, 1, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,1503.jpg,monitor_(computer_equipment) computer_monitor,LVIS,1503_monitor_(computer_equipment) computer_monitor
-Screen,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,131011.jpg,laptop_computer,LVIS,131011_laptop_computer
-Person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,27c41bbdb49d6f5f.jpg,Human face,OpenImages,27c41bbdb49d6f5f_Human face
-Person,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,27c41bbdb49d6f5f.jpg,Human head,OpenImages,27c41bbdb49d6f5f_Human head
-Person,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,27c41bbdb49d6f5f.jpg,Human eye,OpenImages,27c41bbdb49d6f5f_Human eye
-Place Identifier,"[0, 1, 0, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,27c41bbdb49d6f5f.jpg,Office building,OpenImages,27c41bbdb49d6f5f_Office building
-Person,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,27c41bbdb49d6f5f.jpg,Man,OpenImages,27c41bbdb49d6f5f_Man
-Person,"[1, 0, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,19e3ac5e567dbd8a.jpg,Human face,OpenImages,19e3ac5e567dbd8a_Human face
-Person,"[1, 0, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,19e3ac5e567dbd8a.jpg,Human head,OpenImages,19e3ac5e567dbd8a_Human head
-Person,"[1, 1, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human face,OpenImages,248b5f914b325928_Human face
-Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human hair,OpenImages,248b5f914b325928_Human hair
-Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human nose,OpenImages,248b5f914b325928_Human nose
-Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human body,OpenImages,248b5f914b325928_Human body
-Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human head,OpenImages,248b5f914b325928_Human head
-Person,"[1, 1, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human eye,OpenImages,248b5f914b325928_Human eye
-Person,"[0, 1, 0, 1, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human hand,OpenImages,248b5f914b325928_Human hand
-Person,"[1, 1, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human ear,OpenImages,248b5f914b325928_Human ear
-Person,"[1, 0, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human mouth,OpenImages,248b5f914b325928_Human mouth
-Person,"[1, 1, 1, 1, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Boy,OpenImages,248b5f914b325928_Boy
-Person,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human beard,OpenImages,248b5f914b325928_Human beard
-Person,"[1, 1, 1, 1, 1, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Man,OpenImages,248b5f914b325928_Man
-Home interior,"[1, 1, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Male,CrowdWorks,4,5,4,7,4,0,107339.jpg,sofa,LVIS,107339_sofa
-Place Identifier,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 1, 0, 0]",32,Female,CrowdWorks,5,7,7,7,8,1,7099ff7cb69fc7fd.jpg,Office building,OpenImages,7099ff7cb69fc7fd_Office building
-Screen,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,55709f00b158ee38.jpg,Laptop,OpenImages,55709f00b158ee38_Laptop
-Screen,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",41,Male,CrowdWorks,3,5,3,7,4,1,136600.jpg,laptop_computer,LVIS,136600_laptop_computer
-Person,"[1, 0, 0, 0, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",41,Male,CrowdWorks,3,5,3,7,4,1,10651d2876cd50d8.jpg,Human hair,OpenImages,10651d2876cd50d8_Human hair
-Person,"[1, 0, 0, 0, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",41,Male,CrowdWorks,3,5,3,7,4,1,10651d2876cd50d8.jpg,Human body,OpenImages,10651d2876cd50d8_Human body
-Scenery,"[0, 1, 0, 0, 0, 0]",1,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,9b8ea23f201cd401.jpg,Skyscraper,OpenImages,9b8ea23f201cd401_Skyscraper
+Human body,"[1, 0, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,2eb849114cbb18d9.jpg,Human body,OpenImages,2eb849114cbb18d9_Human body
+Mammal,"[1, 0, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,2eb849114cbb18d9.jpg,Mammal,OpenImages,2eb849114cbb18d9_Mammal
+Man,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,2eb849114cbb18d9.jpg,Man,OpenImages,2eb849114cbb18d9_Man
+Person,"[1, 1, 0, 1, 1, 0]",0,"[0, 1, 1, 1, 1, 1, 0]","[0, 1, 1, 1, 1, 1, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,020feca9b536f1fe.jpg,Person,OpenImages,020feca9b536f1fe_Person
+Woman,"[1, 1, 0, 1, 0, 0]",2,"[0, 1, 1, 1, 1, 1, 0]","[0, 1, 1, 1, 1, 1, 0]",50,Male,CrowdWorks,8,3,6,7,7,0,020feca9b536f1fe.jpg,Woman,OpenImages,020feca9b536f1fe_Woman
+Object 0,"[0, 1, 0, 0, 1, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,22487.jpg,Object 0,LVIS,22487_Object 0
+awning,"[0, 1, 0, 0, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,160535.jpg,awning,LVIS,160535_awning
+hat,"[0, 1, 0, 0, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,160535.jpg,hat,LVIS,160535_hat
+pole,"[0, 1, 0, 0, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,160535.jpg,pole,LVIS,160535_pole
+person,"[1, 1, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,160535.jpg,person,LVIS,160535_person
+baby_buggy,"[1, 1, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,CrowdWorks,4,8,7,6,4,2,160535.jpg,baby_buggy,LVIS,160535_baby_buggy
+Human body,"[1, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,3fefc0feb476ed7e.jpg,Human body,OpenImages,3fefc0feb476ed7e_Human body
+Man,"[1, 0, 0, 1, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,3fefc0feb476ed7e.jpg,Man,OpenImages,3fefc0feb476ed7e_Man
+Laptop,"[1, 0, 0, 1, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,9,5,8,4,6,2,3fefc0feb476ed7e.jpg,Laptop,OpenImages,3fefc0feb476ed7e_Laptop
+Human face,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,1fb9783df691b0ad.jpg,Human face,OpenImages,1fb9783df691b0ad_Human face
+Human hair,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,1fb9783df691b0ad.jpg,Human hair,OpenImages,1fb9783df691b0ad_Human hair
+Human nose,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,1fb9783df691b0ad.jpg,Human nose,OpenImages,1fb9783df691b0ad_Human nose
+Human head,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,1fb9783df691b0ad.jpg,Human head,OpenImages,1fb9783df691b0ad_Human head
+Human eye,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,1fb9783df691b0ad.jpg,Human eye,OpenImages,1fb9783df691b0ad_Human eye
+Mammal,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,1fb9783df691b0ad.jpg,Mammal,OpenImages,1fb9783df691b0ad_Mammal
+Human mouth,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,1fb9783df691b0ad.jpg,Human mouth,OpenImages,1fb9783df691b0ad_Human mouth
+Human beard,"[0, 0, 0, 0, 0, 1]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,1fb9783df691b0ad.jpg,Human beard,OpenImages,1fb9783df691b0ad_Human beard
+Man,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,CrowdWorks,4,4,6,9,6,1,1fb9783df691b0ad.jpg,Man,OpenImages,1fb9783df691b0ad_Man
+Object 0,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,13659.jpg,Object 0,LVIS,13659_Object 0
+Object 1,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,CrowdWorks,6,4,5,6,7,0,13659.jpg,Object 1,LVIS,13659_Object 1
+Object 0,"[1, 1, 1, 1, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,CrowdWorks,6,6,6,7,6,0,115870.jpg,Object 0,LVIS,115870_Object 0
+monitor_(computer_equipment) computer_monitor,"[0, 0, 0, 1, 0, 0]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,CrowdWorks,5,7,5,6,8,1,195918.jpg,monitor_(computer_equipment) computer_monitor,LVIS,195918_monitor_(computer_equipment) computer_monitor
+person,"[1, 0, 0, 0, 1, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,7,3,8,7,10,2,17582.jpg,person,LVIS,17582_person
+Human face,"[1, 1, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,03006368ed61dbea.jpg,Human face,OpenImages,03006368ed61dbea_Human face
+Person,"[1, 1, 0, 1, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,03006368ed61dbea.jpg,Person,OpenImages,03006368ed61dbea_Person
+Human body,"[1, 1, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,03006368ed61dbea.jpg,Human body,OpenImages,03006368ed61dbea_Human body
+Human head,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,03006368ed61dbea.jpg,Human head,OpenImages,03006368ed61dbea_Human head
+Human hand,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,03006368ed61dbea.jpg,Human hand,OpenImages,03006368ed61dbea_Human hand
+Human arm,"[1, 1, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,03006368ed61dbea.jpg,Human arm,OpenImages,03006368ed61dbea_Human arm
+Man,"[1, 1, 0, 1, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",47,Female,CrowdWorks,6,7,8,5,9,3,03006368ed61dbea.jpg,Man,OpenImages,03006368ed61dbea_Man
+identity,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,CrowdWorks,7,3,8,7,10,2,07b75881c1ffc059.jpg,identity,OpenImages,07b75881c1ffc059_identity
+Human face,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,CrowdWorks,3,4,6,7,6,0,0e50ea14c4fc1353.jpg,Human face,OpenImages,0e50ea14c4fc1353_Human face
+Car,"[1, 0, 0, 0, 0, 1]",2,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,CrowdWorks,3,4,6,7,6,0,0e50ea14c4fc1353.jpg,Car,OpenImages,0e50ea14c4fc1353_Car
+Person,"[1, 0, 0, 0, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,CrowdWorks,3,4,6,7,6,0,0e50ea14c4fc1353.jpg,Person,OpenImages,0e50ea14c4fc1353_Person
+Vehicle registration plate,"[0, 0, 0, 0, 0, 1]",2,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,CrowdWorks,3,4,6,7,6,0,0e50ea14c4fc1353.jpg,Vehicle registration plate,OpenImages,0e50ea14c4fc1353_Vehicle registration plate
+Human face,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Human face,OpenImages,5b5f5c5c05f700b3_Human face
+Dress,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Dress,OpenImages,5b5f5c5c05f700b3_Dress
+Chair,"[0, 1, 0, 1, 0, 0]",3,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Chair,OpenImages,5b5f5c5c05f700b3_Chair
+Human hair,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Human hair,OpenImages,5b5f5c5c05f700b3_Human hair
+Furniture,"[0, 1, 0, 0, 0, 0]",3,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Furniture,OpenImages,5b5f5c5c05f700b3_Furniture
+Human body,"[1, 1, 0, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Human body,OpenImages,5b5f5c5c05f700b3_Human body
+Human head,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Human head,OpenImages,5b5f5c5c05f700b3_Human head
+Human eye,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Human eye,OpenImages,5b5f5c5c05f700b3_Human eye
+Footwear,"[0, 0, 0, 1, 0, 0]",1,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Footwear,OpenImages,5b5f5c5c05f700b3_Footwear
+Human arm,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Human arm,OpenImages,5b5f5c5c05f700b3_Human arm
+Woman,"[1, 0, 0, 1, 0, 0]",6,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Woman,OpenImages,5b5f5c5c05f700b3_Woman
+Man,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,5b5f5c5c05f700b3.jpg,Man,OpenImages,5b5f5c5c05f700b3_Man
+Person,"[1, 0, 0, 1, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",67,Male,CrowdWorks,4,7,6,6,6,1,62e2f86f8228662b.jpg,Person,OpenImages,62e2f86f8228662b_Person
+skateboard,"[0, 0, 0, 1, 0, 0]",1,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 1, 0, 0]",48,Male,CrowdWorks,3,6,6,5,8,1,129397.jpg,skateboard,LVIS,129397_skateboard
+Woman,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",42,Male,CrowdWorks,6,8,7,6,8,1,0f0c237588553730.jpg,Woman,OpenImages,0f0c237588553730_Woman
+sofa,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",37,Male,CrowdWorks,4,4,9,8,4,3,104188.jpg,sofa,LVIS,104188_sofa
+Object 0,"[1, 0, 1, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",37,Male,CrowdWorks,4,4,9,8,4,3,104188.jpg,Object 0,LVIS,104188_Object 0
+laptop_computer,"[0, 0, 0, 1, 1, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,1503.jpg,laptop_computer,LVIS,1503_laptop_computer
+monitor_(computer_equipment) computer_monitor,"[0, 0, 0, 1, 1, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,1503.jpg,monitor_(computer_equipment) computer_monitor,LVIS,1503_monitor_(computer_equipment) computer_monitor
+Object 0,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,1503.jpg,Object 0,LVIS,1503_Object 0
+Cabinetry,"[0, 0, 0, 0, 1, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,CrowdWorks,5,5,6,8,7,1,06349831cbcb8f2c.jpg,Cabinetry,OpenImages,06349831cbcb8f2c_Cabinetry
+spectacles,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",48,Male,CrowdWorks,3,6,6,5,8,1,334609.jpg,spectacles,LVIS,334609_spectacles
+globe,"[0, 0, 0, 1, 0, 0]",1,"[0, 0, 0, 0, 1, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,131011.jpg,globe,LVIS,131011_globe
+laptop_computer,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,131011.jpg,laptop_computer,LVIS,131011_laptop_computer
+candle,"[0, 0, 0, 1, 0, 0]",1,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Female,CrowdWorks,4,5,6,10,5,0,131011.jpg,candle,LVIS,131011_candle
+Human face,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,27c41bbdb49d6f5f.jpg,Human face,OpenImages,27c41bbdb49d6f5f_Human face
+Human head,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,27c41bbdb49d6f5f.jpg,Human head,OpenImages,27c41bbdb49d6f5f_Human head
+Human eye,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,27c41bbdb49d6f5f.jpg,Human eye,OpenImages,27c41bbdb49d6f5f_Human eye
+Desk,"[0, 1, 0, 1, 1, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,27c41bbdb49d6f5f.jpg,Desk,OpenImages,27c41bbdb49d6f5f_Desk
+Office building,"[0, 1, 0, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,27c41bbdb49d6f5f.jpg,Office building,OpenImages,27c41bbdb49d6f5f_Office building
+Man,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,27c41bbdb49d6f5f.jpg,Man,OpenImages,27c41bbdb49d6f5f_Man
+Furniture,"[0, 0, 0, 0, 1, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",39,Female,CrowdWorks,3,5,10,10,8,1,27c41bbdb49d6f5f.jpg,Furniture,OpenImages,27c41bbdb49d6f5f_Furniture
+identity,"[1, 1, 1, 1, 1, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,1b5d7772b9350086.jpg,identity,OpenImages,1b5d7772b9350086_identity
+Human face,"[1, 0, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,19e3ac5e567dbd8a.jpg,Human face,OpenImages,19e3ac5e567dbd8a_Human face
+Human head,"[1, 0, 0, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",30,Female,CrowdWorks,2,3,7,10,9,0,19e3ac5e567dbd8a.jpg,Human head,OpenImages,19e3ac5e567dbd8a_Human head
+Human face,"[1, 1, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human face,OpenImages,248b5f914b325928_Human face
+Human hair,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human hair,OpenImages,248b5f914b325928_Human hair
+Furniture,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Furniture,OpenImages,248b5f914b325928_Furniture
+Human nose,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human nose,OpenImages,248b5f914b325928_Human nose
+Human body,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human body,OpenImages,248b5f914b325928_Human body
+Human head,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human head,OpenImages,248b5f914b325928_Human head
+Human eye,"[1, 1, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human eye,OpenImages,248b5f914b325928_Human eye
+Human hand,"[0, 1, 0, 1, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human hand,OpenImages,248b5f914b325928_Human hand
+Human ear,"[1, 1, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human ear,OpenImages,248b5f914b325928_Human ear
+Human mouth,"[1, 0, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human mouth,OpenImages,248b5f914b325928_Human mouth
+Boy,"[1, 1, 1, 1, 0, 0]",0,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Boy,OpenImages,248b5f914b325928_Boy
+Human beard,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Human beard,OpenImages,248b5f914b325928_Human beard
+Man,"[1, 1, 1, 1, 1, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,CrowdWorks,7,7,6,7,6,1,248b5f914b325928.jpg,Man,OpenImages,248b5f914b325928_Man
+sofa,"[1, 1, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Male,CrowdWorks,4,5,4,7,4,0,107339.jpg,sofa,LVIS,107339_sofa
+Office building,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 1, 0, 0]",32,Female,CrowdWorks,5,7,7,7,8,1,7099ff7cb69fc7fd.jpg,Office building,OpenImages,7099ff7cb69fc7fd_Office building
+Laptop,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Female,CrowdWorks,2,6,5,9,8,0,55709f00b158ee38.jpg,Laptop,OpenImages,55709f00b158ee38_Laptop
+laptop_computer,"[0, 0, 0, 1, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",41,Male,CrowdWorks,3,5,3,7,4,1,136600.jpg,laptop_computer,LVIS,136600_laptop_computer
+Human hair,"[1, 0, 0, 0, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",41,Male,CrowdWorks,3,5,3,7,4,1,10651d2876cd50d8.jpg,Human hair,OpenImages,10651d2876cd50d8_Human hair
+Person,"[1, 0, 0, 1, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",41,Male,CrowdWorks,3,5,3,7,4,1,10651d2876cd50d8.jpg,Person,OpenImages,10651d2876cd50d8_Person
+Human body,"[1, 0, 0, 0, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",41,Male,CrowdWorks,3,5,3,7,4,1,10651d2876cd50d8.jpg,Human body,OpenImages,10651d2876cd50d8_Human body
+Skyscraper,"[0, 1, 0, 0, 0, 0]",1,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,9b8ea23f201cd401.jpg,Skyscraper,OpenImages,9b8ea23f201cd401_Skyscraper
+Building,"[0, 1, 0, 0, 0, 0]",1,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,9b8ea23f201cd401.jpg,Building,OpenImages,9b8ea23f201cd401_Building
+Person,"[1, 0, 0, 0, 1, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,CrowdWorks,9,7,6,3,9,3,9b8ea23f201cd401.jpg,Person,OpenImages,9b8ea23f201cd401_Person

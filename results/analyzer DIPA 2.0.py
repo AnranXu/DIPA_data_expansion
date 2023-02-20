@@ -643,10 +643,10 @@ if __name__ == '__main__':
     analyze = analyzer()
     bigfives = ["extraversion", "agreeableness", "conscientiousness",
     "neuroticism", "openness"]
-    basic_info = [ "age", "gender", "platform"]
+    basic_info = [ "age", "gender", "platform", 'frequency']
     category = ['category']
     privacy_metrics = ['informationType', 'informativeness', 'sharingOwner', 'sharingOthers']
     #analyze.generate_img_annotation_map()
-    analyze.prepare_mega_table(save_csv=True)
+    analyze.prepare_mega_table(mycat_mode = False, save_csv=True)
     analyze.basic_count()
     
