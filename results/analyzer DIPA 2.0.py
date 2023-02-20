@@ -88,7 +88,7 @@ class analyzer:
         #annotation: the privacy-oriented annotations from our study
         img_annotation_map = {}
         valid_workers = []
-        crowdworks_labels = os.listdir(os.path.join(self.annotation_path, 'CrowdWorks', 'crowdscouringlabel'))
+        crowdworks_labels = os.listdir(os.path.join(self.annotation_path, 'CrowdWorks', 'labels'))
         with open(os.path.join(self.annotation_path, 'CrowdWorks', 'valid_workers.json')) as f:
             valid_workers = json.load(f)
         #prolific_labels = os.listdir(os.path.join(self.annotation_path, 'Prolific', 'crowdscouringlabel'))
