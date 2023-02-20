@@ -148,7 +148,7 @@ class analyzer:
                     neuroticism = worker['bigfives']['Neuroticism']
                     openness = worker['bigfives']['Openness to Experience']
                     dataset_name = label['source']     
-                    frequency = worker['frequency']         
+                    frequency = worker['frequency']
                     for key, value in label['defaultAnnotation'].items():
                         if value['ifNoPrivacy']:
                             continue
