@@ -19,7 +19,7 @@ class BaseModel(pl.LightningModule):
         self.net.features[0][0] = nn.Conv2d(3 + input_dim, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
         self.net.features[0][0].weight.data[:,:3,:,:] = w0
 
-        self.fc1 = nn.Linear(1024, 128)
+        self.fc1 = nn.Linear(1280, 128)
         self.fc2 = nn.Linear(128, 21)
         self.dropout = nn.Dropout(p=dropout_prob)
         self.act = nn.SiLU()
