@@ -59,7 +59,6 @@ class ImageMaskDataset(Dataset):
 
         mask = torch.zeros((self.input_dim, self.image_size[0], self.image_size[1]))
         for i, input_name in enumerate(self.input_vector):
-            print(self.mega_table[input_name].values.shape)
             tot_num = np.amax(self.mega_table[input_name].values)
             for x, y, w, h in bboxes:
                 x, y, w, h = int(x), int(y), int(w), int(h)
