@@ -126,9 +126,9 @@ class analyzer:
 
         # make sure this sequence is correct.
         self.mega_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharingOwner", "sharingOthers", 'age', 'gender', 
-        'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'frequency'])
-        for key in self.img_annotation_map.keys():
-            for platform, value in self.img_annotation_map[key].items():
+        'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'frequency', 'imagePath', 'originCategory', 'datasetName'])
+        for image_name in self.img_annotation_map.keys():
+            for platform, value in self.img_annotation_map[image_name].items():
                 # now, value[0] is the only availiable index
                 image_id = value[0].split('_')[0]
                 prefix_len = len(image_id) + 1
@@ -190,7 +190,10 @@ class analyzer:
                             "conscientiousness": [conscientiousness],
                             "neuroticism": [neuroticism],
                             "openness": [openness],
-                            'frequency': [frequency]
+                            'frequency': [frequency],
+                            'imagePath': [image_name + '.jpg'],
+                            'originCategory': value['category'],
+                            'datasetName': [dataset_name]
                         })
 
                         self.mega_table = pd.concat([self.mega_table, entry], ignore_index=True)
@@ -269,10 +272,11 @@ class analyzer:
 
         frequency = self.mega_table['frequency'].value_counts()
         frequency = frequency.sort_index().values
-        frequency = pd.DataFrame([frequency], columns=self.description['frequency'][:4])
+        frequency = pd.DataFrame([frequency], columns=self.description['frequency'])
         informationType = calculate_array(self.mega_table['informationType'].values, 6)
         informationType = pd.DataFrame([informationType], columns=self.description['informationType'])
         informativeness = self.mega_table['informativeness'].value_counts()
+        print(informativeness)
         informativeness = informativeness.sort_index().values
         informativeness = pd.DataFrame([informativeness], columns=self.description['informativeness'])
 
@@ -642,6 +646,7 @@ if __name__ == '__main__':
     basic_info = [ "age", "gender", "platform"]
     category = ['category']
     privacy_metrics = ['informationType', 'informativeness', 'sharingOwner', 'sharingOthers']
+    #analyze.generate_img_annotation_map()
     analyze.prepare_mega_table(save_csv=True)
-    #analyze.basic_count()
+    analyze.basic_count()
     

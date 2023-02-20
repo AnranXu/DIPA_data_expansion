@@ -85,7 +85,7 @@ class Toolbar extends Component{
                     ifFinished = false;
             }
             var informativeness = document.getElementById('informativeness-' + category);
-            if(informativeness.value === 0)
+            if(Number(informativeness.value) === 0)
                 ifFinished = false;
             //check question 'to what extent would you share this photo at most?'
             var sharingOwner = document.getElementById('sharingOwner-' + category);
@@ -156,7 +156,7 @@ class Toolbar extends Component{
                     ifFinished = false;
             }
             var informativeness = document.getElementById('informativeness-' + id);
-            if(informativeness.value === 0)
+            if(Number(informativeness.value) === 0)
                 ifFinished = false;
             //check question 'to what extent would you share this photo at most?'
             var sharingOwner = document.getElementById('sharingOwner-' + id);
