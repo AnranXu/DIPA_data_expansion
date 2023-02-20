@@ -646,7 +646,7 @@ if __name__ == '__main__':
     basic_info = [ "age", "gender", "platform", 'frequency']
     category = ['category']
     privacy_metrics = ['informationType', 'informativeness', 'sharingOwner', 'sharingOthers']
-    #analyze.generate_img_annotation_map()
+    analyze.generate_img_annotation_map()
     analyze.prepare_mega_table(mycat_mode = False, save_csv=True)
     analyze.basic_count()
     
