@@ -59,7 +59,7 @@ class ImageMaskDataset(Dataset):
 
         mask = torch.zeros((self.input_dim, self.image_size[0], self.image_size[1]))
         for i, input_name in enumerate(self.input_vector):
-            tot_num = len(mega_table[input_name].unique())
+            tot_num = len(self.mega_table[input_name].unique())
             for x, y, w, h in bboxes:
                 x, y, w, h = int(x), int(y), int(w), int(h)
                 mask[i, y:y+h, x:x+w] = self.mega_table[input_name].iloc[idx] / tot_num
