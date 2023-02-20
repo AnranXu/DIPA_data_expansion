@@ -16,10 +16,10 @@ class BaseModel(pl.LightningModule):
         self.net = torch.hub.load('pytorch/vision:v0.14.1', 'mobilenet_v3_large', pretrained=MobileNet_V3_Large_Weights.DEFAULT)
         self.net.classifier[3] = nn.Identity()
         w0 = self.net.features[0][0].weight.data.clone()
-        self.net.features[0][0] = nn.Conv2d(4, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        self.net.features[0][0] = nn.Conv2d(3 + input_dim, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
         self.net.features[0][0].weight.data[:,:3,:,:] = w0
 
-        self.fc1 = nn.Linear(1280 + input_dim, 256)
+        self.fc1 = nn.Linear(1280, 256)
         self.fc2 = nn.Linear(256, 128)
         self.fc3 = nn.Linear(128, 32)
         self.fc4 = nn.Linear(32, 11)
@@ -38,11 +38,10 @@ class BaseModel(pl.LightningModule):
             if not param.requires_grad:
                 print(f'Parameter {name} does not require gradients')
 
-    def forward(self, image, mask, input_vector):
+    def forward(self, image, mask):
         # x: [bs, 4, imgsize, imgsize]
         # addition: [bs, featurelength]
         x = self.net(torch.cat((image, mask), dim = 1))
-        x = torch.cat([x, input_vector], dim=1)
         x = self.dropout(x)
         x = self.act(self.fc1(x))
         x = self.dropout(x)
@@ -66,9 +65,9 @@ class BaseModel(pl.LightningModule):
         optimizer = torch.optim.Adam(self.parameters(), lr=self.learning_rate)
         return optimizer
 
-    def get_loss(self, image, mask, input_vector, y, text='train'):
+    def get_loss(self, image, mask, y, text='train'):
         print('--get loss--')
-        y_preds = self(image, mask, input_vector)
+        y_preds = self(image, mask)
         #0 ~4: type 5: informativeness 6~10: sharing
         TypeLoss = self.entropy_loss(y_preds[:, :5], y[:,0].type(torch.LongTensor).to('cuda'))
         informativenessLosses = self.reg_loss(y_preds[:,5], y[:, 1])
@@ -93,21 +92,21 @@ class BaseModel(pl.LightningModule):
         return loss
 
     def training_step(self, batch, batch_idx):
-        image, mask, input_vector, y = batch
+        image, mask, y = batch
         '''image = image.to('cuda')
         mask = mask.to('cuda')
         input_vector = input_vector.to('cuda')
         y = y.to('cuda')'''
-        loss = self.get_loss(image, mask, input_vector, y)
+        loss = self.get_loss(image, mask, y)
         
 
         return loss
     
     def validation_step (self, val_batch, batch_idx):
 
-        image, mask, input_vector, y = val_batch
-        y_preds = self(image, mask, input_vector)
-        vloss = self.get_loss(image, mask, input_vector, y, text='val')
+        image, mask, y = val_batch
+        y_preds = self(image, mask)
+        vloss = self.get_loss(image, mask, y, text='val')
         #Type
         #self.log("val/confusion for {}".format(output_name), confusion.compute())
         return vloss  

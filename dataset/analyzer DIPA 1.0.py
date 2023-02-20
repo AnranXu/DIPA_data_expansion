@@ -84,7 +84,7 @@ class analyzer:
 
         # make sure this sequence is correct.
         self.mega_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharing", 'age', 'gender', 
-        'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'imagePath', 'originCategory'])
+        'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'imagePath', 'originCategory', 'datasetName'])
         for image_name in self.img_annotation_map.keys():
             for platform, annotation_name in self.img_annotation_map[image_name].items():
                 # now, value[0] is the only availiable index
@@ -144,7 +144,8 @@ class analyzer:
                             "neuroticism": [neuroticism],
                             "openness": [openness],
                             'imagePath': [image_name + '.jpg'],
-                            'originCategory': value['category']
+                            'originCategory': value['category'],
+                            'datasetName': [dataset_name]
                         })
 
                         self.mega_table = pd.concat([self.mega_table, entry], ignore_index=True)
@@ -566,7 +567,7 @@ if __name__ == '__main__':
     output_channel = privacy_metrics
     
     #output_channel = ['sharing']
-    #analyze.prepare_mega_table(mycat_mode=False, save_csv=True)
+    analyze.prepare_mega_table(mycat_mode=False, save_csv=True)
     #print(analyze.mega_table['informationType'].unique())
     #print(analyze.mega_table['sharing'].unique())
     #analyze.regression_model(input_channel, output_channel)
@@ -577,6 +578,6 @@ if __name__ == '__main__':
     #print(len(analyze.mega_table['id'].unique()))
     #analyze.svm(input_channel, output_channel, read_csv=True)
     #analyze.anova(True)
-    analyze.neural_network(input_channel, output_channel, read_csv=True)
+    #analyze.neural_network(input_channel, output_channel, read_csv=True)
     #analyze.knn(input_channel, output_channel, read_csv=True)
     

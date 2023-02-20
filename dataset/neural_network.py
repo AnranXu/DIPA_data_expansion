@@ -8,11 +8,11 @@ class nn_model(nn.Module):
         self.input_layer    = nn.Linear(input_dim,128)
         self.hidden_layer1  = nn.Linear(128,256)
         self.hidden_layer2  = nn.Linear(256,128)
-        self.hidden_layer3  = nn.Linear(128,64)
+        self.hidden_layer3  = nn.Linear(128,32)
         self.output_layers = []
         self.output_dims = output_dims
         for i, dim in enumerate(output_dims):
-            self.output_layers.append(nn.Linear(64,dim))
+            self.output_layers.append(nn.Linear(32,dim))
         self.relu = nn.SiLU()
     
     

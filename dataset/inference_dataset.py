@@ -14,6 +14,7 @@ class ImageMaskDataset(Dataset):
     def __init__(self, mega_table, image_folder, label_folder, input_vector, output_vector, image_size, flip = False, flip_prob = 0.5):
         self.mega_table = mega_table
         self.category_num = len(mega_table['category'].unique())
+        self.input_dim = len(input_vector)
         self.image_folder = image_folder
         self.label_folder = label_folder
         self.input_vector = input_vector
@@ -56,23 +57,25 @@ class ImageMaskDataset(Dataset):
                 h = h * ratio
                 bboxes.append([x,y,w,h])
 
-        mask = torch.zeros((self.image_size[0], self.image_size[1]))
-        for x, y, w, h in bboxes:
-            x, y, w, h = int(x), int(y), int(w), int(h)
-            mask[y:y+h, x:x+w] = self.mega_table['category'].iloc[idx] / self.category_num
+        mask = torch.zeros((self.input_dim, self.image_size[0], self.image_size[1]))
+        for i, input_name in enumerate(input_vector):
+            tot_num = len(mega_table[input_name].unique())
+            for x, y, w, h in bboxes:
+                x, y, w, h = int(x), int(y), int(w), int(h)
+                mask[i, y:y+h, x:x+w] = self.mega_table[input_name].iloc[idx] / tot_num
         #input vector
         if mask.nonzero().shape[0] == 0:
             print('non mask')
         if self.flip and torch.rand(1) < self.flip_prob:
             image = TF.hflip(image)
             mask = TF.hflip(mask)
-        mask = mask.unsqueeze(0)
+        #mask = mask.unsqueeze(0)
         input_vector = self.mega_table[self.input_vector].iloc[idx].values
         input_vector = torch.from_numpy(input_vector)
         #label
         label = self.mega_table[self.output_vector].iloc[idx].values
         label = torch.from_numpy(label)
-        return image, mask, input_vector, label
+        return image, mask, label
 
 
 if __name__ == '__main__':

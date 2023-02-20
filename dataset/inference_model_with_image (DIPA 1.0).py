@@ -22,7 +22,7 @@ torch.set_default_tensor_type('torch.cuda.FloatTensor')
 if __name__ == '__main__':
     bigfives = ["extraversion", "agreeableness", "conscientiousness",
     "neuroticism", "openness"]
-    basic_info = [ "age", "gender", "platform"]
+    basic_info = [ "age", "gender", "platform", 'datasetName']
     category = ['category']
     privacy_metrics = ['informationType', 'informativeness', 'sharing']
 
@@ -33,6 +33,7 @@ if __name__ == '__main__':
     mega_table['gender'] = encoder.fit_transform(mega_table['gender'])
     mega_table['platform'] = encoder.fit_transform(mega_table['platform'])
     mega_table['id'] = encoder.fit_transform(mega_table['id'])
+    mega_table['datasetName'] = encoder.fit_transform(mega_table['datasetName'])
     mega_table['informativeness'] = mega_table['informativeness'] / 6.0
 
     input_channel = []
@@ -65,8 +66,8 @@ if __name__ == '__main__':
     train_loader = DataLoader(train_dataset, batch_size=128, generator=torch.Generator(device='cuda'), shuffle=True)
     val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=64)
     
-    wandb_logger = WandbLogger(project="DIPA-inference", name = 'mix losses with large batchsize (mobilenet v3 large)')
-    checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses with large batchsize (mobilenet v3 large)/', save_last=True, monitor='val loss')
+    wandb_logger = WandbLogger(project="DIPA-inference", name = 'mix losses all as masks (mobilenet v3 large)')
+    checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses all as masks (mobilenet v3 large)/', save_last=True, monitor='val loss')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, 
     auto_lr_find=True, max_epochs = 100, callbacks=[checkpoint_callback])
@@ -89,6 +90,10 @@ if __name__ == '__main__':
     val_loader = DataLoader(val_dataset, batch_size=32)
     for i, vdata in enumerate(val_loader):
         image, mask, input_vector, y = vdata
+        image = image.to('cuda')
+        mask = mask.to('cuda')
+        input_vector = input_vector.to('cuda')
+        y = y.to('cuda')
         y_preds = model(image, mask, input_vector)
         for j, (output_name, output_dim) in enumerate(output_channel.items()):
             _, max_indices = torch.max(y_preds[j], dim = 1)
