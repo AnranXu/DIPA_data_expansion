@@ -1,6 +1,6 @@
 import torch
 from torch import nn
-from torchvision.models import VGG16_Weights, ResNet18_Weights, ResNet50_Weights, MobileNet_V3_Large_Weights
+from torchvision.models import VGG16_Weights, ResNet18_Weights, ResNet50_Weights, MobileNet_V3_Large_Weights, MobileNet_V3_Small_Weights
 import pytorch_lightning as pl
 import numpy as np
 import pandas as pd
@@ -13,16 +13,14 @@ class BaseModel(pl.LightningModule):
         ## output_channel: key: output_name value: output_dim
         super().__init__()
         self.learning_rate = learning_rate
-        self.net = torch.hub.load('pytorch/vision:v0.14.1', 'mobilenet_v3_large', pretrained=MobileNet_V3_Large_Weights.DEFAULT)
+        self.net = torch.hub.load('pytorch/vision:v0.14.1', 'mobilenet_v3_small', pretrained=MobileNet_V3_Small_Weights.DEFAULT)
         self.net.classifier[3] = nn.Identity()
         w0 = self.net.features[0][0].weight.data.clone()
         self.net.features[0][0] = nn.Conv2d(3 + input_dim, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
         self.net.features[0][0].weight.data[:,:3,:,:] = w0
 
-        self.fc1 = nn.Linear(1280, 256)
-        self.fc2 = nn.Linear(256, 128)
-        self.fc3 = nn.Linear(128, 32)
-        self.fc4 = nn.Linear(32, 11)
+        self.fc1 = nn.Linear(1024, 128)
+        self.fc2 = nn.Linear(128, 11)
         self.dropout = nn.Dropout(p=dropout_prob)
         '''self.output_layers = []
         self.output_channel = output_channel
@@ -43,10 +41,7 @@ class BaseModel(pl.LightningModule):
         x = self.act(self.fc1(x))
         x = self.dropout(x)
         x = self.act(self.fc2(x))
-        x = self.dropout(x)
-        x = self.act(self.fc3(x))
-        x = self.dropout(x)
-        x = self.fc4(x)
+
         # x = self.act(self.fc5(x))
         # x = self.act(self.fc6(x))
         # x = self.act(self.fc7(x))
@@ -138,7 +133,7 @@ class BaseModel(pl.LightningModule):
         f1score.reset()
 
         
-        distance = l1_distance_loss(y[:, 1].detach().cpu().numpy(), y_preds[:,5].detach().cpu().numpy()) * 6
+        distance = l1_distance_loss(y[:, 1].detach().cpu().numpy(), y_preds[:,5].detach().cpu().numpy())
 
         self.log(f"{text}/distance for informativeness", distance)
 

@@ -642,6 +642,6 @@ if __name__ == '__main__':
     basic_info = [ "age", "gender", "platform"]
     category = ['category']
     privacy_metrics = ['informationType', 'informativeness', 'sharingOwner', 'sharingOthers']
-    #analyze.prepare_mega_table(save_csv=True)
-    analyze.basic_count()
+    analyze.prepare_mega_table(save_csv=True)
+    #analyze.basic_count()
     
