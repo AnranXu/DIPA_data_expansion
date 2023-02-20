@@ -58,7 +58,7 @@ class ImageMaskDataset(Dataset):
                 bboxes.append([x,y,w,h])
 
         mask = torch.zeros((self.input_dim, self.image_size[0], self.image_size[1]))
-        for i, input_name in enumerate(input_vector):
+        for i, input_name in enumerate(self.input_vector):
             tot_num = len(mega_table[input_name].unique())
             for x, y, w, h in bboxes:
                 x, y, w, h = int(x), int(y), int(w), int(h)
