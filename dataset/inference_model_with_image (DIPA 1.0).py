@@ -63,8 +63,8 @@ if __name__ == '__main__':
     train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, output_name, image_size, flip = True)
     val_dataset = ImageMaskDataset(val_df, image_folder, label_folder, input_channel, output_name, image_size)    
 
-    train_loader = DataLoader(train_dataset, batch_size=96, generator=torch.Generator(device='cuda'), shuffle=True, num_workers=10)
-    val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=64, num_workers=10)
+    train_loader = DataLoader(train_dataset, batch_size=96, generator=torch.Generator(device='cuda'), shuffle=True)
+    val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=64)
     
     wandb_logger = WandbLogger(project="DIPA-inference", name = 'mix losses all as masks normal distrance (mobilenet v3 small)')
     checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses all as normal distrance (mobilenet v3 small)/', save_last=True, monitor='val loss')
