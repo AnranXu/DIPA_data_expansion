@@ -63,8 +63,8 @@ if __name__ == '__main__':
     train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, output_name, image_size, flip = True)
     val_dataset = ImageMaskDataset(val_df, image_folder, label_folder, input_channel, output_name, image_size)    
 
-    train_loader = DataLoader(train_dataset, batch_size=128, generator=torch.Generator(device='cuda'), shuffle=True)
-    val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=64)
+    train_loader = DataLoader(train_dataset, batch_size=32, generator=torch.Generator(device='cuda'), shuffle=True)
+    val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=32)
     
     wandb_logger = WandbLogger(project="DIPA-inference", name = 'mix losses all as masks (mobilenet v3 large)')
     checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses all as masks (mobilenet v3 large)/', save_last=True, monitor='val loss')
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     conf = []
     for i, (output_name, output_dim) in enumerate(output_channel.items()):
         conf.append(np.zeros((output_dim,output_dim)))
-    val_loader = DataLoader(val_dataset, batch_size=32)
+
     for i, vdata in enumerate(val_loader):
         image, mask, input_vector, y = vdata
         image = image.to('cuda')
