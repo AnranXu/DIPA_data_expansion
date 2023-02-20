@@ -34,9 +34,6 @@ class BaseModel(pl.LightningModule):
         self.act = nn.SiLU()
         self.reg_loss = nn.L1Loss()
         self.entropy_loss = nn.CrossEntropyLoss()
-        for name, param in self.net.named_parameters():
-            if not param.requires_grad:
-                print(f'Parameter {name} does not require gradients')
 
     def forward(self, image, mask):
         # x: [bs, 4, imgsize, imgsize]
@@ -66,7 +63,6 @@ class BaseModel(pl.LightningModule):
         return optimizer
 
     def get_loss(self, image, mask, y, text='train'):
-        print('--get loss--')
         y_preds = self(image, mask)
         #0 ~4: type 5: informativeness 6~10: sharing
         TypeLoss = self.entropy_loss(y_preds[:, :5], y[:,0].type(torch.LongTensor).to('cuda'))
@@ -112,7 +108,6 @@ class BaseModel(pl.LightningModule):
         return vloss  
 
     def validation_epoch_end(self, validation_step_outputs):
-        print(self.fc4.weight.detach().cpu().numpy())
         with open('./fc4_param', 'w') as f:
             f.write(str(self.fc4.weight.detach().cpu().numpy()))
     

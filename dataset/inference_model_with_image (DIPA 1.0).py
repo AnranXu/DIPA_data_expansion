@@ -63,8 +63,8 @@ if __name__ == '__main__':
     train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, output_name, image_size, flip = True)
     val_dataset = ImageMaskDataset(val_df, image_folder, label_folder, input_channel, output_name, image_size)    
 
-    train_loader = DataLoader(train_dataset, batch_size=32, generator=torch.Generator(device='cuda'), shuffle=True)
-    val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=32)
+    train_loader = DataLoader(train_dataset, batch_size=96, generator=torch.Generator(device='cuda'), shuffle=True)
+    val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=64)
     
     wandb_logger = WandbLogger(project="DIPA-inference", name = 'mix losses all as masks (mobilenet v3 large)')
     checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses all as masks (mobilenet v3 large)/', save_last=True, monitor='val loss')
@@ -90,10 +90,6 @@ if __name__ == '__main__':
 
     for i, vdata in enumerate(val_loader):
         image, mask, input_vector, y = vdata
-        image = image.to('cuda')
-        mask = mask.to('cuda')
-        input_vector = input_vector.to('cuda')
-        y = y.to('cuda')
         y_preds = model(image, mask, input_vector)
         for j, (output_name, output_dim) in enumerate(output_channel.items()):
             _, max_indices = torch.max(y_preds[j], dim = 1)
