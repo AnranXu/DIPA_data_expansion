@@ -9,7 +9,7 @@ from torchmetrics import Accuracy, Precision, Recall, F1Score, ConfusionMatrix, 
 import json
 
 class BaseModel(pl.LightningModule):
-    def __init__(self, input_dim, output_channel, learning_rate = 1e-5, dropout_prob=0.2):
+    def __init__(self, input_dim, output_channel, learning_rate = 1e-4, dropout_prob=0.2):
         ## output_channel: key: output_name value: output_dim
         super().__init__()
         self.learning_rate = learning_rate
@@ -69,15 +69,15 @@ class BaseModel(pl.LightningModule):
 
         return vloss  
     
-    def save_metrics(self, y_preds, information, informativeness, sharingOwner, sharingOthers, text='val'):
+    def save_metrics(self, y_preds, information, informativeness, sharingOwner, sharingOthers, text='val', average_method = 'micro'):
         def l1_distance_loss(prediction, target):
             loss = np.abs(prediction - target)
             return np.mean(loss)
 
-        accuracy = Accuracy(task="multilabel", num_labels=6, average='weighted')
-        precision = Precision(task="multilabel", num_labels=6, average='weighted')
-        recall = Recall(task="multilabel", num_labels=6, average='weighted')
-        f1score = F1Score(task="multilabel", num_labels=6, average='weighted')
+        accuracy = Accuracy(task="multilabel", num_labels=6, average=average_method, ignore_index = 5)
+        precision = Precision(task="multilabel", num_labels=6, average=average_method, ignore_index = 5)
+        recall = Recall(task="multilabel", num_labels=6, average=average_method, ignore_index = 5)
+        f1score = F1Score(task="multilabel", num_labels=6, average=average_method, ignore_index = 5)
 
         accuracy(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
         precision(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
@@ -99,10 +99,10 @@ class BaseModel(pl.LightningModule):
 
         self.log(f"{text}/distance for informativeness", distance)
 
-        accuracy = Accuracy(task="multilabel", num_labels=7, average='weighted')
-        precision = Precision(task="multilabel", num_labels=7, average='weighted')
-        recall = Recall(task="multilabel", num_labels=7, average='weighted')
-        f1score = F1Score(task="multilabel", num_labels=7, average='weighted')
+        accuracy = Accuracy(task="multilabel", num_labels=7, average=average_method, ignore_index = 6)
+        precision = Precision(task="multilabel", num_labels=7, average=average_method, ignore_index = 6)
+        recall = Recall(task="multilabel", num_labels=7, average=average_method, ignore_index = 6)
+        f1score = F1Score(task="multilabel", num_labels=7, average=average_method, ignore_index = 6)
 
         accuracy(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
         precision(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
