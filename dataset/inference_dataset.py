@@ -64,6 +64,7 @@ class ImageMaskDataset(Dataset):
                 x, y, w, h = int(x), int(y), int(w), int(h)
                 mask[i, y:y+h, x:x+w] = self.mega_table[input_name].iloc[idx] / tot_num
         #input vector
+        mask = TF.to_tensor(mask)
         if mask.nonzero().shape[0] == 0:
             print('non mask')
         if (mask > 1).any():
