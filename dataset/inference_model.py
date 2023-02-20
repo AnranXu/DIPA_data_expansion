@@ -101,10 +101,6 @@ class BaseModel(pl.LightningModule):
         #Type
         #self.log("val/confusion for {}".format(output_name), confusion.compute())
         return vloss  
-
-    def validation_epoch_end(self, validation_step_outputs):
-        with open('./fc4_param', 'w') as f:
-            f.write(str(self.fc4.weight.detach().cpu().numpy()))
     
     def save_metrics(self, y_preds, y, text='val'):
         def l1_distance_loss(prediction, target):
