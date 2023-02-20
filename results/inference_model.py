@@ -105,9 +105,9 @@ class BaseModel(pl.LightningModule):
         f1score = F1Score(task="multilabel", num_labels=7, average='weighted')
 
         accuracy(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
-        accuracy(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
-        accuracy(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
-        accuracy(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        precision(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        recall(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        f1score(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
 
         self.log(f"{text}/acc for sharing as owner", accuracy.compute())
         self.log(f"{text}/pre for sharing as owner", precision.compute())
@@ -120,9 +120,9 @@ class BaseModel(pl.LightningModule):
         f1score.reset()
 
         accuracy(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
-        accuracy(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
-        accuracy(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
-        accuracy(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        precision(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        recall(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        f1score(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
 
         self.log(f"{text}/acc for sharing by others", accuracy.compute())
         self.log(f"{text}/pre for sharing by others", precision.compute())
