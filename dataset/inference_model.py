@@ -40,7 +40,7 @@ class BaseModel(pl.LightningModule):
                 self.output_layers.append(nn.Linear(64,output_dim))'''
         self.act = nn.SiLU()
         self.reg_loss = nn.L1Loss()
-        self.entropy_loss = nn.CrossEntropyLoss(weight=[1.,1.,1.,1.,0.])
+        self.entropy_loss = nn.CrossEntropyLoss(weight=torch.tensor([1.,1.,1.,1.,0.]))
 
     def forward(self, image, mask):
         # x: [bs, 4, imgsize, imgsize]
