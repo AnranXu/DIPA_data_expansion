@@ -565,7 +565,7 @@ if __name__ == '__main__':
     #analyze.prepare_mega_table(mycat_mode=False, save_csv=True)
     #print(analyze.mega_table['informationType'].unique())
     #print(analyze.mega_table['sharing'].unique())
-    analyze.regression_model(input_channel, output_channel)
+    #analyze.regression_model(input_channel, output_channel)
     #print(analyze.mega_table)
     #analyze.prepare_manual_label(save_csv=True)
     #print(analyze.custom_informationType)
@@ -573,6 +573,6 @@ if __name__ == '__main__':
     #print(len(analyze.mega_table['id'].unique()))
     #analyze.svm(input_channel, output_channel, read_csv=True)
     #analyze.anova(True)
-    #analyze.neural_network(input_channel, output_channel, read_csv=True)
+    analyze.neural_network(input_channel, output_channel, read_csv=True)
     #analyze.knn(input_channel, output_channel, read_csv=True)
     
