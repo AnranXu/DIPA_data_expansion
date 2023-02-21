@@ -443,7 +443,7 @@ class analyzer:
                 loss_fns.append(nn.CrossEntropyLoss())
                 #loss_fns.append(l1_distance_loss)
             else:
-                loss_fns.append(nn.CrossEntropyLoss())
+                loss_fns.append(nn.CrossEntropyLoss(weight=torch.tensor([1.,1.,1.,1.,0.])))
         optimizer = torch.optim.Adam(model.parameters(),lr=learning_rate)
         training_dataset = nn_dataset(X_train, y_train)
         testing_dataset = nn_dataset(X_test, y_test)
@@ -465,10 +465,10 @@ class analyzer:
             
             # We don't need gradients on to do reporting
             model.train(False)
-            acc = [Accuracy(task="multiclass", num_classes=output_dim) for output_dim in output_dims]
-            pre = [Precision(task="multiclass", num_classes=output_dim, average='weighted') for output_dim in output_dims]
-            rec = [Recall(task="multiclass", num_classes=output_dim, average='weighted') for output_dim in output_dims]
-            f1 = [F1Score(task="multiclass", num_classes=output_dim, average='weighted') for output_dim in output_dims]
+            acc = [Accuracy(task="multiclass", num_classes=output_dim, average='weighted', ignore_index = output_dim - 1) for output_dim in output_dims]
+            pre = [Precision(task="multiclass", num_classes=output_dim, average='weighted', ignore_index = output_dim - 1) for output_dim in output_dims]
+            rec = [Recall(task="multiclass", num_classes=output_dim, average='weighted', ignore_index = output_dim - 1) for output_dim in output_dims]
+            f1 = [F1Score(task="multiclass", num_classes=output_dim, average='weighted', ignore_index = output_dim - 1) for output_dim in output_dims]
             confusion = [ConfusionMatrix(task="multiclass", num_classes=output_dim, normalize = 'true') for output_dim in output_dims]
             distance = 0.0
             conf = []
@@ -567,7 +567,7 @@ if __name__ == '__main__':
     output_channel = privacy_metrics
     
     #output_channel = ['sharing']
-    analyze.prepare_mega_table(mycat_mode=False, save_csv=True)
+    #analyze.prepare_mega_table(mycat_mode=False, save_csv=True)
     #print(analyze.mega_table['informationType'].unique())
     #print(analyze.mega_table['sharing'].unique())
     #analyze.regression_model(input_channel, output_channel)
@@ -578,6 +578,6 @@ if __name__ == '__main__':
     #print(len(analyze.mega_table['id'].unique()))
     #analyze.svm(input_channel, output_channel, read_csv=True)
     #analyze.anova(True)
-    #analyze.neural_network(input_channel, output_channel, read_csv=True)
+    analyze.neural_network(input_channel, output_channel, read_csv=True)
     #analyze.knn(input_channel, output_channel, read_csv=True)
     
