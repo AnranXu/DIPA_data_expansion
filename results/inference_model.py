@@ -31,7 +31,7 @@ class BaseModel(pl.LightningModule):
         self.fc2 = nn.Linear(256, 21)
         self.dropout = nn.Dropout(p=dropout_prob)
         self.act = nn.SiLU()
-        self.reg_loss = nn.L1Loss()
+        self.reg_loss = nn.L2Loss()
         #for information type
         self.entropy_loss1 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,0.]))
         self.entropy_loss2 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
