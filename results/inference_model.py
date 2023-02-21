@@ -13,14 +13,22 @@ class BaseModel(pl.LightningModule):
         ## output_channel: key: output_name value: output_dim
         super().__init__()
         self.learning_rate = learning_rate
+        '''
+        mobilenet v3 
         self.net = torch.hub.load('pytorch/vision:v0.14.1', 'mobilenet_v3_large', pretrained=MobileNet_V3_Large_Weights.DEFAULT)
         self.net.classifier[3] = nn.Identity()
         w0 = self.net.features[0][0].weight.data.clone()
         self.net.features[0][0] = nn.Conv2d(3 + input_dim, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
         self.net.features[0][0].weight.data[:,:3,:,:] = w0
-
-        self.fc1 = nn.Linear(1280, 128)
-        self.fc2 = nn.Linear(128, 21)
+        self.fc1 = nn.Linear(1280, 256)'''
+        #resnet 50
+        self.net = torch.hub.load('pytorch/vision:v0.14.1', 'resnet50', pretrained=ResNet50_Weights.DEFAULT)
+        self.net.fc = nn.Identity()
+        w0 = self.net.conv1.weight.data.clone()
+        self.net.conv1 = nn.Conv2d(4, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+        self.net.conv1.weight.data[:,:3,:,:] = w0
+        self.fc1 = nn.Linear(2048, 256)
+        self.fc2 = nn.Linear(256, 21)
         self.dropout = nn.Dropout(p=dropout_prob)
         self.act = nn.SiLU()
         self.reg_loss = nn.L1Loss()
@@ -69,7 +77,7 @@ class BaseModel(pl.LightningModule):
 
         return vloss  
     
-    def save_metrics(self, y_preds, information, informativeness, sharingOwner, sharingOthers, text='val', average_method = 'macro'):
+    def save_metrics(self, y_preds, information, informativeness, sharingOwner, sharingOthers, text='val', average_method = 'micro'):
         def l1_distance_loss(prediction, target):
             loss = np.abs(prediction - target)
             return np.mean(loss)
