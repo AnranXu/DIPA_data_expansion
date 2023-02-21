@@ -671,6 +671,6 @@ if __name__ == '__main__':
 
     #analyze.generate_img_annotation_map()
     #analyze.prepare_mega_table(mycat_mode = False, save_csv=True)
-    #analyze.basic_count()
-    analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
+    analyze.basic_count()
+    #analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
     

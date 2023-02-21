@@ -63,7 +63,7 @@ if __name__ == '__main__':
     val_dataset = ImageMaskDataset(val_df, image_folder, label_folder, input_channel, image_size)    
 
     train_loader = DataLoader(train_dataset, batch_size=96, generator=torch.Generator(device='cuda'), shuffle=True)
-    val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=40)
+    val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=96)
     
     wandb_logger = WandbLogger(project="DIPA2.0-inference test (uncompleted collection)", name = 'mix losses weighted metrics (Resnet 50)')
     checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses weighted metrics (Resnet 50)/', save_last=True, monitor='val loss')
