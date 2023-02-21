@@ -80,7 +80,7 @@ class BaseModel(pl.LightningModule):
 
         return vloss  
     
-    def save_metrics(self, y_preds, information, informativeness, sharingOwner, sharingOthers, text='val', average_method = 'micro'):
+    def save_metrics(self, y_preds, information, informativeness, sharingOwner, sharingOthers, text='val', average_method = 'weighted'):
         def l1_distance_loss(prediction, target):
             loss = np.abs(prediction - target)
             return np.mean(loss)

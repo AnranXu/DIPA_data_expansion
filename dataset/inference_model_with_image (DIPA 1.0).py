@@ -48,7 +48,7 @@ if __name__ == '__main__':
     
     model = BaseModel(input_dim= input_dim, output_channel = output_channel)
 
-    image_size = (300, 300)
+    image_size = (224, 224)
     label_folder = './new annotations/annotations/'
     image_folder = './new annotations/images/'
 
@@ -63,11 +63,11 @@ if __name__ == '__main__':
     train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, output_name, image_size, flip = True)
     val_dataset = ImageMaskDataset(val_df, image_folder, label_folder, input_channel, output_name, image_size)    
 
-    train_loader = DataLoader(train_dataset, batch_size=64, generator=torch.Generator(device='cuda'), shuffle=True)
+    train_loader = DataLoader(train_dataset, batch_size=96, generator=torch.Generator(device='cuda'), shuffle=True)
     val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=64)
     
-    wandb_logger = WandbLogger(project="DIPA-inference", name = 'mix losses ignore custom (mobilenet v3 small)')
-    checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses ignore custom (mobilenet v3 small)/', save_last=True, monitor='val loss')
+    wandb_logger = WandbLogger(project="DIPA-inference", name = 'mix losses weighted metrics (resnet 50)')
+    checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses weighted metrics (resnet)/', save_last=True, monitor='val loss')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[1],logger=wandb_logger, 
     auto_lr_find=True, max_epochs = 300, callbacks=[checkpoint_callback])
