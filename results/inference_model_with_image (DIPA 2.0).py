@@ -47,7 +47,7 @@ if __name__ == '__main__':
     
     model = BaseModel(input_dim= input_dim, output_channel = output_channel)
 
-    image_size = (300, 300)
+    image_size = (224, 224)
     label_folder = './new annotations/annotations/'
     image_folder = './new annotations/images/'
 
@@ -62,7 +62,7 @@ if __name__ == '__main__':
     train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, image_size, flip = True)
     val_dataset = ImageMaskDataset(val_df, image_folder, label_folder, input_channel, image_size)    
 
-    train_loader = DataLoader(train_dataset, batch_size=40, generator=torch.Generator(device='cuda'), shuffle=True)
+    train_loader = DataLoader(train_dataset, batch_size=96, generator=torch.Generator(device='cuda'), shuffle=True)
     val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=40)
     
     wandb_logger = WandbLogger(project="DIPA2.0-inference test (uncompleted collection)", name = 'mix losses micro metrics (Resnet 50)')

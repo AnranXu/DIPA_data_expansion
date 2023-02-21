@@ -297,7 +297,8 @@ class analyzer:
         print(sharingOwner)
         print('----------{}----------'.format('sharingOthers'))
         print(sharingOthers)
-    def regression_model(self, input_channel, output_channel, read_csv = False)->None:
+
+    def regression_csv_for_r(self, input_channel, output_channel, read_csv = False)->None:
         if read_csv:
             self.mega_table = pd.read_csv('./mega_table.csv')
         else:
@@ -312,26 +313,35 @@ class analyzer:
         self.mega_table['gender'] = encoder.fit_transform(self.mega_table['gender'])
         self.mega_table['platform'] = encoder.fit_transform(self.mega_table['platform'])
         self.mega_table['id'] = encoder.fit_transform(self.mega_table['id'])
-        X = self.mega_table[input_channel].astype(int)
-        y = self.mega_table[output_channel].astype(int)
-        reg = LinearRegression().fit(X, y)
+        self.mega_table['datasetName'] = encoder.fit_transform(self.mega_table['datasetName'])
+        X = self.mega_table[input_channel].values
+        y = []
+        for idx in range(len(self.mega_table)):
+            information = self.mega_table['informationType'].iloc[idx]
+            information = np.array(json.loads(information))
 
-        # Get the coefficients
-        coefficients = reg.coef_
-        intercept = reg.intercept_
+            informativeness_num = self.mega_table['informativeness'].iloc[idx]
+            informativeness = np.zeros(7)
+            informativeness[informativeness_num] = 1.
 
-        # Add a constant to the independent variables to calculate the p-values
-        X = sm.add_constant(X)
+            sharingOwner = self.mega_table['sharingOwner'].iloc[idx]
+            sharingOwner = np.array(json.loads(sharingOwner))
 
-        # Fit the regression model using statsmodels
-        model = sm.OLS(y, X).fit()
+            sharingOthers = self.mega_table['sharingOthers'].iloc[idx]
+            sharingOthers = np.array(json.loads(sharingOthers))
 
-        # Get the p-values
-        p_values = model.pvalues
+            label = np.concatenate((information, informativeness, sharingOwner, sharingOthers))
 
-        print('Coefficients:', coefficients)
-        print('Intercept:', intercept)
-        print('P-Values:', p_values)
+            y.append(label)
+
+        model = sm.OLS(y, X)
+        results = model.fit()
+
+        # print the intercept, coefficient, and p-value of each variable
+        print('Intercept:', results.params[0])
+        print('Coefficients:', results.params[1:])
+        print('P-values:', results.pvalues)
+
 
     def svm(self, input_channel, output_channel, read_csv = False) -> None:
         if read_csv:
@@ -647,7 +657,17 @@ if __name__ == '__main__':
     basic_info = [ "age", "gender", "platform", 'frequency']
     category = ['category']
     privacy_metrics = ['informationType', 'informativeness', 'sharingOwner', 'sharingOthers']
-    analyze.generate_img_annotation_map()
-    analyze.prepare_mega_table(mycat_mode = False, save_csv=True)
-    analyze.basic_count()
+
+    input_channel = []
+    output_channel = []
+
+    input_channel.extend(bigfives)
+    input_channel.extend(basic_info)
+    input_channel.extend(category)
+    output_channel = privacy_metrics
+
+    #analyze.generate_img_annotation_map()
+    #analyze.prepare_mega_table(mycat_mode = False, save_csv=True)
+    #analyze.basic_count()
+    analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
     
