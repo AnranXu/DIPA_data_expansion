@@ -66,8 +66,8 @@ if __name__ == '__main__':
     train_loader = DataLoader(train_dataset, batch_size=192, generator=torch.Generator(device='cuda'), shuffle=True)
     val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=64)
     
-    wandb_logger = WandbLogger(project="DIPA-inference", name = 'mix losses all as masks normal distrance (mobilenet v3 small)')
-    checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses all as normal distrance (mobilenet v3 small)/', save_last=True, monitor='val loss')
+    wandb_logger = WandbLogger(project="DIPA-inference", name = 'mix losses ignore custom (mobilenet v3 small)')
+    checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses ignore custom (mobilenet v3 small)/', save_last=True, monitor='val loss')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, 
     auto_lr_find=True, max_epochs = 100, callbacks=[checkpoint_callback])
