@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+from scipy.stats import ttest_ind
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
@@ -220,25 +221,19 @@ class analyzer:
         self.mega_table['platform'] = encoder.fit_transform(self.mega_table['platform'])
         self.mega_table['id'] = encoder.fit_transform(self.mega_table['id'])
         X = self.mega_table[input_channel].astype(int)
-        y = self.mega_table[output_channel].astype(int)
-        reg = LinearRegression().fit(X, y)
-
+        y = self.mega_table['informativeness'].astype(int)
+        #reg = LinearRegression().fit(X, y)
+        model = LogisticRegression(random_state=0, multi_class='multinomial', penalty='none', solver='newton-cg').fit(X, y)
         # Get the coefficients
-        coefficients = reg.coef_
-        intercept = reg.intercept_
+        coefficients = model.coef_
 
-        # Add a constant to the independent variables to calculate the p-values
-        X = sm.add_constant(X)
+        # Perform a t-test on the coefficients
+        t_stats, p_values = ttest_ind(coefficients[0], coefficients[1])
 
-        # Fit the regression model using statsmodels
-        model = sm.OLS(y, X).fit()
-
-        # Get the p-values
-        p_values = model.pvalues
-
-        print('Coefficients:', coefficients)
-        print('Intercept:', intercept)
-        print('P-Values:', p_values)
+        # Print the results of the t-test
+        print("t-statistic:", t_stats)
+        print("p-value:", p_values)
+        print("summary:", model.summary())
 
     def svm(self, input_channel, output_channel, read_csv = False) -> None:
         if read_csv:
@@ -570,7 +565,7 @@ if __name__ == '__main__':
     #analyze.prepare_mega_table(mycat_mode=False, save_csv=True)
     #print(analyze.mega_table['informationType'].unique())
     #print(analyze.mega_table['sharing'].unique())
-    #analyze.regression_model(input_channel, output_channel)
+    analyze.regression_model(input_channel, output_channel)
     #print(analyze.mega_table)
     #analyze.prepare_manual_label(save_csv=True)
     #print(analyze.custom_informationType)
@@ -578,6 +573,6 @@ if __name__ == '__main__':
     #print(len(analyze.mega_table['id'].unique()))
     #analyze.svm(input_channel, output_channel, read_csv=True)
     #analyze.anova(True)
-    analyze.neural_network(input_channel, output_channel, read_csv=True)
+    #analyze.neural_network(input_channel, output_channel, read_csv=True)
     #analyze.knn(input_channel, output_channel, read_csv=True)
     

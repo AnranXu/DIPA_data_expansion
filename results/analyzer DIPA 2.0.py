@@ -298,13 +298,15 @@ class analyzer:
         print('----------{}----------'.format('sharingOthers'))
         print(sharingOthers)
 
-    def regression_csv_for_r(self, input_channel, output_channel, read_csv = False)->None:
+    def regression_model(self, input_channel, output_channel, read_csv = False)->None:
         if read_csv:
             self.mega_table = pd.read_csv('./mega_table.csv')
         else:
             self.prepare_mega_table()
         output_dims = []
         # the output needs to be one-hot
+        
+
         for output in output_channel:
             output_dims.append(len(self.mega_table[output].unique()))
         scaler = StandardScaler()
@@ -314,6 +316,7 @@ class analyzer:
         self.mega_table['platform'] = encoder.fit_transform(self.mega_table['platform'])
         self.mega_table['id'] = encoder.fit_transform(self.mega_table['id'])
         self.mega_table['datasetName'] = encoder.fit_transform(self.mega_table['datasetName'])
+
         X = self.mega_table[input_channel].values
         y = []
         for idx in range(len(self.mega_table)):
@@ -340,7 +343,7 @@ class analyzer:
         # print the intercept, coefficient, and p-value of each variable
         print('Intercept:', results.params[0])
         print('Coefficients:', results.params[1:])
-        print('P-values:', results.pvalues)
+        print('P-values:', results.rsquared)
 
 
     def svm(self, input_channel, output_channel, read_csv = False) -> None:
