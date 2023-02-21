@@ -91,6 +91,7 @@ class analyzer:
         crowdworks_labels = os.listdir(os.path.join(self.annotation_path, 'CrowdWorks', 'labels'))
         with open(os.path.join(self.annotation_path, 'CrowdWorks', 'valid_workers.json')) as f:
             valid_workers = json.load(f)
+        print('val len:', len(valid_workers))
         #prolific_labels = os.listdir(os.path.join(self.annotation_path, 'Prolific', 'crowdscouringlabel'))
         for label_path in crowdworks_labels:
             img_name = label_path.split('_')[0]
