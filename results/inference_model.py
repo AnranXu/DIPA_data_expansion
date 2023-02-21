@@ -33,9 +33,9 @@ class BaseModel(pl.LightningModule):
         self.act = nn.SiLU()
         self.reg_loss = nn.L1Loss()
         #for information type
-        self.entropy_loss1 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,0.]))
-        self.entropy_loss2 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
-        self.entropy_loss3 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
+        self.entropy_loss1 = nn.BCEWithLogitsLoss(reduction = 'mean', pos_weight = torch.tensor([1.,1.,1.,1.,1.,0.]))
+        self.entropy_loss2 = nn.BCEWithLogitsLoss(reduction = 'mean', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
+        self.entropy_loss3 = nn.BCEWithLogitsLoss(reduction = 'mean', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
 
     def forward(self, image, mask):
         x = self.net(torch.cat((image, mask), dim = 1))
