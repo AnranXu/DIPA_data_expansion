@@ -31,7 +31,7 @@ class BaseModel(pl.LightningModule):
         self.fc2 = nn.Linear(256, 21)
         self.dropout = nn.Dropout(p=dropout_prob)
         self.act = nn.SiLU()
-        self.reg_loss = nn.MSELoss()
+        self.reg_loss = nn.L1Loss()
         #for information type
         self.entropy_loss1 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,0.]))
         self.entropy_loss2 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
@@ -55,7 +55,7 @@ class BaseModel(pl.LightningModule):
         y_preds = self(image, mask)
         #0 ~5: type 6: informativeness 7~13: sharingOwners 14~20: sharingOthers
         TypeLoss = self.entropy_loss1(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
-        informativenessLosses = self.reg_loss(y_preds[:,6] * 10, informativeness.type(torch.FloatTensor).to('cuda') * 10) 
+        informativenessLosses = self.reg_loss(y_preds[:,6] * 100, informativeness.type(torch.FloatTensor).to('cuda') * 100) 
         sharingOwenerLoss = self.entropy_loss2(y_preds[:,7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
         sharingOthersLoss = self.entropy_loss3(y_preds[:,14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
         loss = TypeLoss + informativenessLosses + sharingOwenerLoss + sharingOthersLoss
