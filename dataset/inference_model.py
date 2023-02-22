@@ -116,10 +116,10 @@ class BaseModel(pl.LightningModule):
             loss = np.abs(prediction - target)
             return np.mean(loss)
 
-        accuracy = Accuracy(task="multiclass", num_classes=5, average='weighted', ignore_index = 4)
-        precision = Precision(task="multiclass", num_classes=5, average='weighted', ignore_index = 4)
-        recall = Recall(task="multiclass", num_classes=5, average='weighted', ignore_index = 4)
-        f1score = F1Score(task="multiclass", num_classes=5, average='weighted', ignore_index = 4)
+        accuracy = Accuracy(task="multiclass", num_classes=5, average='macro', ignore_index = 4)
+        precision = Precision(task="multiclass", num_classes=5, average='macro', ignore_index = 4)
+        recall = Recall(task="multiclass", num_classes=5, average='macro', ignore_index = 4)
+        f1score = F1Score(task="multiclass", num_classes=5, average='macro', ignore_index = 4)
 
         _, max_indices = torch.max(y_preds[:, :5], dim = 1)
         accuracy(max_indices, y[:,0])
