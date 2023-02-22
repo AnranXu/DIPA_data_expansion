@@ -169,6 +169,8 @@ class analyzer:
                                     continue
                             else:
                                 category = value['category']
+                            if category.startswith('Object'):
+                                continue
                             id = image_id + '_' + key
                             informationType = value['informationType']
                             informativeness = int(value['informativeness']) - 1
@@ -692,7 +694,7 @@ if __name__ == '__main__':
     analyze = analyzer()
     bigfives = ["extraversion", "agreeableness", "conscientiousness",
     "neuroticism", "openness"]
-    basic_info = [ "age", "gender", "platform", 'frequency']
+    basic_info = [ "age", "gender", "platform", 'frequency', 'privacyNum']
     category = ['category']
     privacy_metrics = ['informationType', 'informativeness', 'sharingOwner', 'sharingOthers']
 
@@ -705,8 +707,8 @@ if __name__ == '__main__':
     output_channel = privacy_metrics
 
     #analyze.generate_img_annotation_map()
-    #analyze.count_worker_privacy_num()
+    analyze.count_worker_privacy_num()
     analyze.prepare_mega_table(mycat_mode = False, save_csv=True)
-    analyze.basic_count()
+    #analyze.basic_count()
     #analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
     
