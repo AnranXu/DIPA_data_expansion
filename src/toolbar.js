@@ -426,7 +426,7 @@ class Toolbar extends Component{
                     workerRecord = workerRecord['Item'];
                     cur_progress = Number(workerRecord['progress']['N']);
                     this.setState({currentProgress: cur_progress, taskNum: Number(workerRecord['taskNum']['N'])});
-                    if(cur_progress >= Number(workerRecord['taskNum']['N']))
+                    if(cur_progress >= Number(workerRecord['taskNum']['N']) || (Number(workerRecord['taskId']['N']) === 149 && cur_progress >= 5))
                     {
                         return false;
                     }

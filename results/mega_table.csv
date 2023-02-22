@@ -1226,9 +1226,6 @@ identity,"[0, 1, 0, 1, 0, 0]",4,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",
 jersey,"[0, 0, 0, 1, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,114535.jpg,jersey,LVIS,114535_jersey
 boot,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,CrowdWorks,5,6,6,8,6,1,114535.jpg,boot,LVIS,114535_boot
 refrigerator,"[1, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",39,Male,CrowdWorks,3,3,10,6,7,1,117788.jpg,refrigerator,LVIS,117788_refrigerator
-book,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",45,Male,CrowdWorks,5,6,5,8,6,2,undefined.jpg,book,LVIS,undefined_book
-wine_bottle,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",45,Male,CrowdWorks,5,6,5,8,6,2,undefined.jpg,wine_bottle,LVIS,undefined_wine_bottle
-piano,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",45,Male,CrowdWorks,5,6,5,8,6,2,undefined.jpg,piano,LVIS,undefined_piano
 Kitchen appliance,"[0, 0, 0, 1, 0, 0]",1,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Female,CrowdWorks,6,6,6,9,9,1,3e5b15d6fbdb70d2.jpg,Kitchen appliance,OpenImages,3e5b15d6fbdb70d2_Kitchen appliance
 bus_(vehicle),"[0, 1, 0, 0, 0, 0]",1,"[0, 1, 1, 1, 1, 1, 0]","[0, 1, 1, 1, 1, 1, 0]",33,Female,CrowdWorks,8,3,4,8,8,3,138979.jpg,bus_(vehicle),LVIS,138979_bus_(vehicle)
 choker,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",42,Female,CrowdWorks,4,3,5,10,8,1,115885.jpg,choker,LVIS,115885_choker
