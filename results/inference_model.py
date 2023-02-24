@@ -46,13 +46,11 @@ class BaseModel(pl.LightningModule):
         x = self.dropout(x)
         x = self.act(self.fc1(x))
         x = self.dropout(x)
-        type = self.act(self.fc_type(x))
-        type = self.sigmoid(type)
-        informativeness = self.act(self.fc_informativeness(x))
-        sharingOwner = self.act(self.fc_sharingOwner(x))
-        sharingOwner = self.sigmoid(sharingOwner)
-        sharingOthers = self.act(self.fc_sharingOthers(x))
-        sharingOthers = self.sigmoid(sharingOthers)
+        type = self.sigmoid(self.fc_type(x))
+        informativeness = self.fc_informativeness(x)
+        sharingOwner = self.sigmoid(self.fc_sharingOwner(x))
+        sharingOthers = self.sigmoid(self.fc_sharingOthers(x))
+
         return type, informativeness, sharingOwner, sharingOthers
 
         
