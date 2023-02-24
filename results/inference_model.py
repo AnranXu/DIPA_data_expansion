@@ -28,14 +28,11 @@ class BaseModel(pl.LightningModule):
         self.net.conv1 = nn.Conv2d(3 + input_dim, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
         self.net.conv1.weight.data[:,:3,:,:] = w0
         self.fc1 = nn.Linear(2048, 256)
-        self.fc_type = nn.Linear(256, 6)
-        self.fc_informativeness = nn.Linear(256, 1)
-        self.fc_sharingOwner = nn.Linear(256, 7)
-        self.fc_sharingOthers = nn.Linear(256, 7)
+        self.fc2 = nn.Linear(256, 21)
         self.dropout = nn.Dropout(p=dropout_prob)
         self.act = nn.SiLU()
         self.reg_loss = nn.L1Loss()
-        self.softmax = nn.Softmax(dim=1)
+        
         #for information type
         self.entropy_loss1 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,0.]))
         self.entropy_loss2 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
@@ -46,14 +43,9 @@ class BaseModel(pl.LightningModule):
         x = self.dropout(x)
         x = self.act(self.fc1(x))
         x = self.dropout(x)
-        type = self.act(self.fc_type(x))
-        type = self.softmax(type)
-        informativeness = self.act(self.fc_informativeness(x))
-        sharingOwner = self.act(self.fc_sharingOwner(x))
-        sharingOwner = self.softmax(sharingOwner)
-        sharingOthers = self.act(self.fc_sharingOthers(x))
-        sharingOthers = self.softmax(sharingOthers)
-        return type, informativeness, sharingOwner, sharingOthers
+        x = self.act(self.fc2(x))
+
+        return x
         
 
     def configure_optimizers(self):
@@ -61,20 +53,19 @@ class BaseModel(pl.LightningModule):
         return optimizer
 
     def get_loss(self, image, mask, information, informativeness, sharingOwner, sharingOthers, text='train'):
-        type_pred, informativeness_pred, sharingOwner_pred, sharingOthers_pred = self(image, mask)
+        y_preds = self(image, mask)
         #0 ~5: type 6: informativeness 7~13: sharingOwners 14~20: sharingOthers
-        TypeLoss = self.entropy_loss1(type_pred, information.type(torch.FloatTensor).to('cuda'))
-        informativenessLosses = self.reg_loss(informativeness_pred* 100, informativeness.type(torch.FloatTensor).to('cuda') * 100) 
-        sharingOwenerLoss = self.entropy_loss2(sharingOwner_pred, sharingOwner.type(torch.FloatTensor).to('cuda'))
-        sharingOthersLoss = self.entropy_loss3(sharingOthers_pred, sharingOthers.type(torch.FloatTensor).to('cuda'))
+        TypeLoss = self.entropy_loss1(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+        informativenessLosses = self.reg_loss(y_preds[:,6] * 100, informativeness.type(torch.FloatTensor).to('cuda') * 100) 
+        sharingOwenerLoss = self.entropy_loss2(y_preds[:,7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        sharingOthersLoss = self.entropy_loss3(y_preds[:,14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
         loss = TypeLoss + informativenessLosses + sharingOwenerLoss + sharingOthersLoss
         self.log(f'{text} loss', loss)
         self.log(f'{text} type loss', TypeLoss)
         self.log(f'{text} informativeness loss', informativenessLosses)
         self.log(f'{text} sharingOwnerloss', sharingOwenerLoss)
         self.log(f'{text} sharingOthersloss', sharingOthersLoss)
-        self.save_metrics(type_pred, informativeness_pred, sharingOwner_pred, sharingOthers_pred,
-                           information, informativeness, sharingOwner, sharingOthers, text=text)
+        self.save_metrics(y_preds, information, informativeness, sharingOwner, sharingOthers, text=text)
         return loss
 
     def training_step(self, batch, batch_idx):
@@ -90,9 +81,7 @@ class BaseModel(pl.LightningModule):
 
         return vloss  
     
-    def save_metrics(self, type_pred, informativeness_pred, sharingOwner_pred, sharingOthers_pred,
-                      information, informativeness, sharingOwner, sharingOthers, text='val', 
-                      average_method = 'weighted', threshold = 0.5):
+    def save_metrics(self, y_preds, information, informativeness, sharingOwner, sharingOthers, text='val', average_method = 'weighted', threshold = 0.5):
         def l1_distance_loss(prediction, target):
             loss = np.abs(prediction - target)
             return np.mean(loss)
@@ -102,10 +91,10 @@ class BaseModel(pl.LightningModule):
         recall = Recall(task="multilabel", num_labels=6,threshold = threshold,average=average_method, ignore_index = 5)
         f1score = F1Score(task="multilabel", num_labels=6, threshold = threshold,average=average_method, ignore_index = 5)
 
-        accuracy(type_pred, information.type(torch.FloatTensor).to('cuda'))
-        precision(type_pred, information.type(torch.FloatTensor).to('cuda'))
-        recall(type_pred, information.type(torch.FloatTensor).to('cuda'))
-        f1score(type_pred, information.type(torch.FloatTensor).to('cuda'))
+        accuracy(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+        precision(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+        recall(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+        f1score(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
 
         self.log(f"{text}/acc for information type", accuracy.compute())
         self.log(f"{text}/pre for information type", precision.compute())
@@ -118,7 +107,7 @@ class BaseModel(pl.LightningModule):
         # f1score.reset()
 
         
-        distance = l1_distance_loss(informativeness.detach().cpu().numpy(), informativeness_pred.detach().cpu().numpy())
+        distance = l1_distance_loss(informativeness.detach().cpu().numpy(), y_preds[:,6].detach().cpu().numpy())
 
         self.log(f"{text}/distance for informativeness", distance)
 
@@ -127,10 +116,10 @@ class BaseModel(pl.LightningModule):
         recall = Recall(task="multilabel", num_labels=7, threshold = threshold,average=average_method, ignore_index = 6)
         f1score = F1Score(task="multilabel", num_labels=7, threshold = threshold,average=average_method, ignore_index = 6)
 
-        accuracy(sharingOwner_pred, sharingOwner.type(torch.FloatTensor).to('cuda'))
-        precision(sharingOwner_pred, sharingOwner.type(torch.FloatTensor).to('cuda'))
-        recall(sharingOwner_pred, sharingOwner.type(torch.FloatTensor).to('cuda'))
-        f1score(sharingOwner_pred, sharingOwner.type(torch.FloatTensor).to('cuda'))
+        accuracy(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        precision(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        recall(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        f1score(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
 
         self.log(f"{text}/acc for sharing as owner", accuracy.compute())
         self.log(f"{text}/pre for sharing as owner", precision.compute())
@@ -142,10 +131,10 @@ class BaseModel(pl.LightningModule):
         recall.reset()
         f1score.reset()
 
-        accuracy(sharingOthers_pred, sharingOthers.type(torch.FloatTensor).to('cuda'))
-        precision(sharingOthers_pred, sharingOthers.type(torch.FloatTensor).to('cuda'))
-        recall(sharingOthers_pred, sharingOthers.type(torch.FloatTensor).to('cuda'))
-        f1score(sharingOthers_pred, sharingOthers.type(torch.FloatTensor).to('cuda'))
+        accuracy(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        precision(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        recall(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        f1score(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
 
         self.log(f"{text}/acc for sharing by others", accuracy.compute())
         self.log(f"{text}/pre for sharing by others", precision.compute())
