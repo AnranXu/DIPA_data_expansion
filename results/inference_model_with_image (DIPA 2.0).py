@@ -47,7 +47,7 @@ if __name__ == '__main__':
     
     model = BaseModel(input_dim= input_dim, output_channel = output_channel)
 
-    image_size = (224, 224)
+    image_size = (300, 300)
     label_folder = './new annotations/annotations/'
     image_folder = './new annotations/images/'
 
@@ -56,17 +56,17 @@ if __name__ == '__main__':
     test_size = num_rows - train_size
 
     # Split the dataframe into two
-    train_df = mega_table.sample(n=train_size, random_state=0)
+    train_df = mega_table.sample(n=train_size)
     val_df = mega_table.drop(train_df.index)
 
     train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, image_size, flip = True)
     val_dataset = ImageMaskDataset(val_df, image_folder, label_folder, input_channel, image_size)    
 
-    train_loader = DataLoader(train_dataset, batch_size=96, generator=torch.Generator(device='cuda'), shuffle=True)
-    val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=64)
+    train_loader = DataLoader(train_dataset, batch_size=64, generator=torch.Generator(device='cuda'), shuffle=True)
+    val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=32)
     
-    wandb_logger = WandbLogger(project="DIPA2.0-inference test (uncompleted collection)", name = 'mix losses 300 workers (Resnet 50)')
-    checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses 300 workers (Resnet 50)/', save_last=True, monitor='val loss')
+    wandb_logger = WandbLogger(project="DIPA2.0-inference test (uncompleted collection)", name = 'mix losses add softmax (Resnet 50)')
+    checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses add softmax (Resnet 50)/', save_last=True, monitor='val loss')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, 
     auto_lr_find=True, max_epochs = 300, callbacks=[checkpoint_callback])
