@@ -36,6 +36,7 @@ class BaseModel(pl.LightningModule):
         self.act = nn.SiLU()
         self.reg_loss = nn.L1Loss()
         self.sigmoid = nn.Sigmoid()
+        self.relu = nn.ReLU()
         #for information type
         self.entropy_loss1 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,0.]))
         self.entropy_loss2 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
@@ -47,7 +48,7 @@ class BaseModel(pl.LightningModule):
         x = self.act(self.fc1(x))
         x = self.dropout(x)
         type = self.sigmoid(self.fc_type(x))
-        informativeness = self.fc_informativeness(x)
+        informativeness = self.relu(self.fc_informativeness(x))
         sharingOwner = self.sigmoid(self.fc_sharingOwner(x))
         sharingOthers = self.sigmoid(self.fc_sharingOthers(x))
 
