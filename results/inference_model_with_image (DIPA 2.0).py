@@ -102,7 +102,7 @@ if __name__ == '__main__':
             for i, (output_name, output_dim) in enumerate(output_channel.items())]
     f1 = [F1Score(task="multilabel", num_labels=output_dim, threshold = threshold, average=average_method, ignore_index = output_dim - 1) \
             for i, (output_name, output_dim) in enumerate(output_channel.items())]
-    conf = [ConfusionMatrix(task="multilabel", num_labels=output_dim, ignore_index = output_dim - 1) \
+    conf = [ConfusionMatrix(task="multilabel", num_labels=output_dim) \
             for i, (output_name, output_dim) in enumerate(output_channel.items())]
     distance = 0.0
     
