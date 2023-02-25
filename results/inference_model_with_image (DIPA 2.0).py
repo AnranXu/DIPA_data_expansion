@@ -83,7 +83,7 @@ if __name__ == '__main__':
     checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses sigmoid (Resnet 50)/', save_last=True, monitor='val loss')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, 
-    auto_lr_find=True, max_epochs = 1, callbacks=[checkpoint_callback])
+    auto_lr_find=True, max_epochs = 300, callbacks=[checkpoint_callback])
     lr_finder = trainer.tuner.lr_find(model, train_loader)
     model.hparams.learning_rate = lr_finder.suggestion()
     print(f'lr auto: {lr_finder.suggestion()}')
