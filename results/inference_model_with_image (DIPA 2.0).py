@@ -103,7 +103,6 @@ if __name__ == '__main__':
     conf = [ConfusionMatrix(task="multilabel", num_labels=output_dim, ignore_index = output_dim - 1) \
             for i, (output_name, output_dim) in enumerate(output_channel.items())]
     distance = 0.0
-    val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cpu'), batch_size=64)
     
     for i, (output_name, output_dim) in enumerate(output_channel.items()):
         conf.append(np.zeros((output_dim,output_dim)))
