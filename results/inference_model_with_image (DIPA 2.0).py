@@ -23,7 +23,7 @@ from pytorch_lightning.callbacks.early_stopping import EarlyStopping
 def l1_distance_loss(prediction, target):
     loss = np.abs(prediction - target)
     return np.mean(loss)
-torch.set_default_tensor_type('torch.FloatTensor')
+torch.set_default_tensor_type('torch.cuda.FloatTensor')
 if __name__ == '__main__':
     bigfives = ["extraversion", "agreeableness", "conscientiousness",
     "neuroticism", "openness"]
@@ -106,7 +106,6 @@ if __name__ == '__main__':
     
     for i, (output_name, output_dim) in enumerate(output_channel.items()):
         conf.append(np.zeros((output_dim,output_dim)))
-    val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cpu'), batch_size=64)
 
     for i, vdata in enumerate(val_loader):
         image, mask, information, informativeness, sharingOwner, sharingOthers = vdata
