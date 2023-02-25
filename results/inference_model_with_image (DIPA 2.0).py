@@ -4,13 +4,18 @@ from torch.utils.data import DataLoader
 from inference_dataset import ImageMaskDataset
 from inference_model import BaseModel
 
-import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 from torch.utils.data import DataLoader
 import pytorch_lightning as pl
-import numpy as np
-from sklearn import metrics
+from torchmetrics import Accuracy, Precision, Recall, F1Score, ConfusionMatrix, CalibrationError
 
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import io
+from PIL import Image
+
+import wandb
 from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning.callbacks.early_stopping import EarlyStopping
@@ -28,6 +33,13 @@ if __name__ == '__main__':
 
     mega_table = pd.read_csv('./mega_table.csv')
 
+    description = {'informationType': ['It tells personal identity.', 'It tells location of shooting.',
+        'It tells personal habits.', 'It tells social circle.', 'Other things it can tell'],
+        'informativeness':['extremely uninformative','moderately uninformative','slightly uninformative','neutral',
+        'slightly informative','moderately informative','extremely informative'],
+        'sharing': ['I won\'t share it', 'Family or friend',
+        'Public', 'Broadcast programme', 'Other recipients']}
+    
     encoder = LabelEncoder()
     mega_table['category'] = encoder.fit_transform(mega_table['category'])
     mega_table['gender'] = encoder.fit_transform(mega_table['gender'])
@@ -69,7 +81,7 @@ if __name__ == '__main__':
     checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses sigmoid (Resnet 50)/', save_last=True, monitor='val loss')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, 
-    auto_lr_find=True, max_epochs = 300, callbacks=[checkpoint_callback])
+    auto_lr_find=True, max_epochs = 1, callbacks=[checkpoint_callback])
     lr_finder = trainer.tuner.lr_find(model, train_loader)
     model.hparams.learning_rate = lr_finder.suggestion()
     print(f'lr auto: {lr_finder.suggestion()}')
@@ -78,39 +90,85 @@ if __name__ == '__main__':
     # validation. 
     # I am confused about how the validation_step work on saving all valid result (rather than just a batch)
     # So I wrote this traditional one
-    acc = np.zeros(len(output_channel))
-    pre = np.zeros(len(output_channel))
-    rec = np.zeros(len(output_channel))
-    f1 = np.zeros(len(output_channel))
+    acc = [Accuracy(task="multilabel", num_labels=output_dim, threshold = threshold, average=average_method, ignore_index = output_dim - 1) \
+            for i, (output_name, output_dim) in enumerate(output_channel.items())]
+    pre = [Precision(task="multilabel", num_labels=output_dim, threshold = threshold, average=average_method, ignore_index = output_dim - 1) \
+            for i, (output_name, output_dim) in enumerate(output_channel.items())]
+    rec = [Recall(task="multilabel", num_labels=output_dim, threshold = threshold, average=average_method, ignore_index = output_dim - 1) \
+            for i, (output_name, output_dim) in enumerate(output_channel.items())]
+    f1 = [F1Score(task="multilabel", num_labels=output_dim, threshold = threshold, average=average_method, ignore_index = output_dim - 1) \
+            for i, (output_name, output_dim) in enumerate(output_channel.items())]
+    conf = [ConfusionMatrix(task="multilabel", num_labels=output_dim, ignore_index = output_dim - 1) \
+            for i, (output_name, output_dim) in enumerate(output_channel.items())]
     distance = 0.0
     conf = []
-    '''
+    threshold = 0.5
+    average_method = 'weighted'
     for i, (output_name, output_dim) in enumerate(output_channel.items()):
         conf.append(np.zeros((output_dim,output_dim)))
 
     for i, vdata in enumerate(val_loader):
-        image, mask, input_vector, y = vdata
-        y_preds = model(image, mask, input_vector)
-        for j, (output_name, output_dim) in enumerate(output_channel.items()):
-            _, max_indices = torch.max(y_preds[j], dim = 1)
-            acc[j] += metrics.accuracy_score(y[:,j].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
-            pre[j] += metrics.precision_score(y[:,j].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
-            rec[j] += metrics.recall_score(y[:, j].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
-            f1[j] += metrics.f1_score(y[:,j].detach().cpu().numpy(), max_indices.detach().cpu().numpy(),average='weighted')
-            conf[j] += metrics.confusion_matrix(y[:,j].detach().cpu().numpy(), max_indices.detach().cpu().numpy(), labels = mega_table[output_name].unique())
-            if output_name == 'informativeness':
-                distance += l1_distance_loss(y[:, j].detach().cpu().numpy(), max_indices.detach().cpu().numpy())
-    
-    ## save result
-    length = len(val_dataset)
-    acc = acc / length
-    pre = pre / length
-    rec = rec / length
-    f1 = f1 / length
-    distance = distance / length
+        image, mask, information, informativeness, sharingOwner, sharingOthers = vdata
+        y_preds = model(image, mask)
 
-    pandas_data = {'Accuracy' : acc, 'Precision' : pre, 'Recall': rec, 'f1': f1}
+        acc[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+        pre[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+        rec[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+        f1[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+        conf[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+
+        distance += l1_distance_loss(informativeness.detach().cpu().numpy(), y_preds[:,6].detach().cpu().numpy())
+        # acc[1](y_preds[:, 6], informativeness.type(torch.FloatTensor).to('cuda'))
+        # pre[1](y_preds[:, 6], informativeness.type(torch.FloatTensor).to('cuda'))
+        # rec[1](y_preds[:, 6], informativeness.type(torch.FloatTensor).to('cuda'))
+        # f1[1](y_preds[:, 6], informativeness.type(torch.FloatTensor).to('cuda'))
+        # conf[1](y_preds[:, 6], informativeness.type(torch.FloatTensor).to('cuda'))
+
+        acc[2].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        pre[2].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        rec[2].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        f1[2].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        conf[2].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+
+        acc[3].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        pre[3].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        rec[3].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        f1[3].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        conf[3].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+
+
+
+    distance = distance / len(val_loader)
+
+    pandas_data = {'Accuracy' : [i.compute().detach().cpu().numpy() for i in acc], 
+                   'Precision' : [i.compute().detach().cpu().numpy() for i in pre], 
+                   'Recall': [i.compute().detach().cpu().numpy() for i in rec], 
+                   'f1': [i.compute().detach().cpu().numpy() for i in f1]}
+    
+    for i, (output_name, output_dim) in enumerate(output_channel.items()):
+        #conf[i] = conf[i].astype('float') / conf[i].sum(axis=1)[:, np.newaxis]
+        if output_name == 'informativeness':
+            continue
+        plt.imshow(conf[i].compute().detach().cpu().numpy(), cmap=plt.cm.Blues)
+        plt.xticks(np.arange(0, len(description[output_name])), description[output_name], rotation = 45, ha='right')
+        plt.yticks(np.arange(0, len(description[output_name])), description[output_name])
+        plt.xlabel("Predicted Label")
+        plt.ylabel("True Label")
+        plt.title('confusion matrix for {}'.format(output_name))
+        plt.colorbar()
+        plt.tight_layout()
+
+        #plt.savefig('confusion matrix for {}.png'.format(output_name), dpi=1200)
+        img_buf = io.BytesIO()
+        plt.savefig(img_buf, format='png', dpi=1200)
+        im = Image.open(img_buf)
+        image = wandb.Image(im, caption='confusion matrix for {}'.format(output_name))
+        wandb.log({'confusion matrix for {}'.format(output_name): image})
+        plt.clf()
+        print('confusion matrix for {}'.format(output_name))
+        print(np.round(conf[i], 3))
+
     df = pd.DataFrame(pandas_data, index=output_channel.keys())
     print(df.round(3))
     if 'informativeness' in output_channel.keys():
-        print('informativenss distance: ', distance)'''
+        print('informativenss distance: ', distance)

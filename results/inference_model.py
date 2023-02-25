@@ -84,14 +84,17 @@ class BaseModel(pl.LightningModule):
         def l1_distance_loss(prediction, target):
             loss = np.abs(prediction - target)
             return np.mean(loss)
+        
         accuracy = Accuracy(task="multilabel", num_labels=6, threshold = threshold, average=average_method, ignore_index = 5)
         precision = Precision(task="multilabel", num_labels=6, threshold = threshold,average=average_method, ignore_index = 5)
         recall = Recall(task="multilabel", num_labels=6,threshold = threshold,average=average_method, ignore_index = 5)
         f1score = F1Score(task="multilabel", num_labels=6, threshold = threshold,average=average_method, ignore_index = 5)
-        accuracy(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
-        precision(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
-        recall(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
-        f1score(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+
+        accuracy.update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+        precision.update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+        recall.update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+        f1score.update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+        
         self.log(f"{text}/acc for information type", accuracy.compute())
         self.log(f"{text}/pre for information type", precision.compute())
         self.log(f"{text}/rec for information type", recall.compute())
@@ -109,10 +112,10 @@ class BaseModel(pl.LightningModule):
         recall = Recall(task="multilabel", num_labels=7, threshold = threshold,average=average_method, ignore_index = 6)
         f1score = F1Score(task="multilabel", num_labels=7, threshold = threshold,average=average_method, ignore_index = 6)
 
-        accuracy(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
-        precision(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
-        recall(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
-        f1score(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        accuracy.update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        precision.update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        recall.update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        f1score.update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
 
         self.log(f"{text}/acc for sharing as owner", accuracy.compute())
         self.log(f"{text}/pre for sharing as owner", precision.compute())
@@ -124,10 +127,10 @@ class BaseModel(pl.LightningModule):
         recall.reset()
         f1score.reset()
 
-        accuracy(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
-        precision(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
-        recall(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
-        f1score(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        accuracy.update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        precision.update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        recall.update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        f1score.update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
 
         self.log(f"{text}/acc for sharing by others", accuracy.compute())
         self.log(f"{text}/pre for sharing by others", precision.compute())
