@@ -30,7 +30,7 @@ class BaseModel(pl.LightningModule):
         self.fc1 = nn.Linear(2048, 256)
         self.fc2 = nn.Linear(256,32)
         self.fc_type = nn.Linear(32, 6)
-        self.fc_informativeness = nn.Linear(32, 1)
+        self.fc_informativeness = nn.Linear(32, 7)
         self.fc_sharingOwner = nn.Linear(32, 7)
         self.fc_sharingOthers = nn.Linear(32, 7)
         self.dropout = nn.Dropout(p=dropout_prob)
@@ -39,9 +39,9 @@ class BaseModel(pl.LightningModule):
         self.sigmoid = nn.Sigmoid()
         self.relu = nn.ReLU()
         #for information type
-        self.entropy_loss1 = nn.BCEWithLogitsLoss(reduction = 'mean', pos_weight = torch.tensor([1.,1.,1.,1.,1.,0.]))
-        self.entropy_loss2 = nn.BCEWithLogitsLoss(reduction = 'mean', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
-        self.entropy_loss3 = nn.BCEWithLogitsLoss(reduction = 'mean', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
+        self.entropy_loss1 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,0.]))
+        self.entropy_loss2 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
+        self.entropy_loss3 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
 
     def forward(self, image, mask):
         x = self.net(torch.cat((image, mask), dim = 1))
@@ -67,7 +67,8 @@ class BaseModel(pl.LightningModule):
         type_pred, informativeness_pred, sharingOwner_pred, sharingOthers_pred = self(image, mask)
         #0 ~5: type 6: informativeness 7~13: sharingOwners 14~20: sharingOthers
         TypeLoss = self.entropy_loss1(type_pred, information.type(torch.FloatTensor).to('cuda'))
-        informativenessLosses = self.reg_loss(informativeness_pred, informativeness.type(torch.FloatTensor).to('cuda')) 
+        _, max_indices = torch.max(informativeness_pred, dim = 1)
+        informativenessLosses = self.reg_loss(max_indices * 100, informativeness.type(torch.FloatTensor).to('cuda') * 100) 
         sharingOwenerLoss = self.entropy_loss2(sharingOwner_pred, sharingOwner.type(torch.FloatTensor).to('cuda'))
         sharingOthersLoss = self.entropy_loss3(sharingOthers_pred, sharingOthers.type(torch.FloatTensor).to('cuda'))
         loss = TypeLoss + informativenessLosses + sharingOwenerLoss + sharingOthersLoss
@@ -121,8 +122,8 @@ class BaseModel(pl.LightningModule):
         # recall.reset()
         # f1score.reset()
 
-        
-        distance = l1_distance_loss(informativeness.detach().cpu().numpy(), informativeness_pred.detach().cpu().numpy())
+        _, max_indices = torch.max(informativeness_pred, dim = 1)
+        distance = l1_distance_loss(max_indices.detach().cpu().numpy(), informativeness_pred.detach().cpu().numpy())
 
         self.log(f"{text}/distance for informativeness", distance)
 
