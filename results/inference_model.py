@@ -28,24 +28,27 @@ class BaseModel(pl.LightningModule):
         self.net.conv1 = nn.Conv2d(3 + input_dim, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
         self.net.conv1.weight.data[:,:3,:,:] = w0
         self.fc1 = nn.Linear(2048, 256)
-        self.fc_type = nn.Linear(256, 6)
-        self.fc_informativeness = nn.Linear(256, 1)
-        self.fc_sharingOwner = nn.Linear(256, 7)
-        self.fc_sharingOthers = nn.Linear(256, 7)
+        self.fc2 = nn.Linear(256,32)
+        self.fc_type = nn.Linear(32, 6)
+        self.fc_informativeness = nn.Linear(32, 1)
+        self.fc_sharingOwner = nn.Linear(32, 7)
+        self.fc_sharingOthers = nn.Linear(32, 7)
         self.dropout = nn.Dropout(p=dropout_prob)
         self.act = nn.SiLU()
         self.reg_loss = nn.L1Loss()
         self.sigmoid = nn.Sigmoid()
         self.relu = nn.ReLU()
         #for information type
-        self.entropy_loss1 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,0.]))
-        self.entropy_loss2 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
-        self.entropy_loss3 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
+        self.entropy_loss1 = nn.BCEWithLogitsLoss(reduction = 'mean', pos_weight = torch.tensor([1.,1.,1.,1.,1.,0.]))
+        self.entropy_loss2 = nn.BCEWithLogitsLoss(reduction = 'mean', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
+        self.entropy_loss3 = nn.BCEWithLogitsLoss(reduction = 'mean', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
 
     def forward(self, image, mask):
         x = self.net(torch.cat((image, mask), dim = 1))
         x = self.dropout(x)
         x = self.act(self.fc1(x))
+        x = self.dropout(x)
+        x = self.act(self.fc2(x))
         x = self.dropout(x)
         type = self.sigmoid(self.fc_type(x))
         informativeness = self.relu(self.fc_informativeness(x))
@@ -64,7 +67,7 @@ class BaseModel(pl.LightningModule):
         type_pred, informativeness_pred, sharingOwner_pred, sharingOthers_pred = self(image, mask)
         #0 ~5: type 6: informativeness 7~13: sharingOwners 14~20: sharingOthers
         TypeLoss = self.entropy_loss1(type_pred, information.type(torch.FloatTensor).to('cuda'))
-        informativenessLosses = self.reg_loss(informativeness_pred* 100, informativeness.type(torch.FloatTensor).to('cuda') * 100) 
+        informativenessLosses = self.reg_loss(informativeness_pred, informativeness.type(torch.FloatTensor).to('cuda')) 
         sharingOwenerLoss = self.entropy_loss2(sharingOwner_pred, sharingOwner.type(torch.FloatTensor).to('cuda'))
         sharingOthersLoss = self.entropy_loss3(sharingOthers_pred, sharingOthers.type(torch.FloatTensor).to('cuda'))
         loss = TypeLoss + informativenessLosses + sharingOwenerLoss + sharingOthersLoss
