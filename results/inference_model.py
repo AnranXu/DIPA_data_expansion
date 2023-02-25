@@ -43,6 +43,7 @@ class BaseModel(pl.LightningModule):
         self.entropy_loss2 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
         self.entropy_loss3 = nn.BCEWithLogitsLoss(reduction = 'sum', pos_weight = torch.tensor([1.,1.,1.,1.,1.,1.,0.]))
 
+
     def forward(self, image, mask):
         x = self.net(torch.cat((image, mask), dim = 1))
         x = self.dropout(x)
@@ -123,7 +124,7 @@ class BaseModel(pl.LightningModule):
         # f1score.reset()
 
         _, max_indices = torch.max(informativeness_pred, dim = 1)
-        distance = l1_distance_loss(max_indices.detach().cpu().numpy(), informativeness_pred.detach().cpu().numpy())
+        distance = l1_distance_loss(max_indices.detach().cpu().numpy(), informativeness.detach().cpu().numpy())
 
         self.log(f"{text}/distance for informativeness", distance)
 
