@@ -106,8 +106,6 @@ if __name__ == '__main__':
             for i, (output_name, output_dim) in enumerate(output_channel.items())]
     distance = 0.0
     
-    for i, (output_name, output_dim) in enumerate(output_channel.items()):
-        conf.append(np.zeros((output_dim,output_dim)))
     model.to('cuda')
     for i, vdata in enumerate(val_loader):
         image, mask, information, informativeness, sharingOwner, sharingOthers = vdata
@@ -147,29 +145,28 @@ if __name__ == '__main__':
                    'Precision' : [i.compute().detach().cpu().numpy() for i in pre], 
                    'Recall': [i.compute().detach().cpu().numpy() for i in rec], 
                    'f1': [i.compute().detach().cpu().numpy() for i in f1]}
-    print(conf)
-    # for i, (output_name, output_dim) in enumerate(output_channel.items()):
-    #     #conf[i] = conf[i].astype('float') / conf[i].sum(axis=1)[:, np.newaxis]
-    #     if output_name == 'informativeness':
-    #         continue
-    #     plt.imshow(conf[i].compute().detach().cpu().numpy(), cmap=plt.cm.Blues)
-    #     plt.xticks(np.arange(0, len(description[output_name])), description[output_name], rotation = 45, ha='right')
-    #     plt.yticks(np.arange(0, len(description[output_name])), description[output_name])
-    #     plt.xlabel("Predicted Label")
-    #     plt.ylabel("True Label")
-    #     plt.title('confusion matrix for {}'.format(output_name))
-    #     plt.colorbar()
-    #     plt.tight_layout()
 
-    #     #plt.savefig('confusion matrix for {}.png'.format(output_name), dpi=1200)
-    #     img_buf = io.BytesIO()
-    #     plt.savefig(img_buf, format='png', dpi=1200)
-    #     im = Image.open(img_buf)
-    #     image = wandb.Image(im, caption='confusion matrix for {}'.format(output_name))
-    #     wandb_logger.log({'confusion matrix for {}'.format(output_name): image})
-    #     plt.clf()
-    #     print('confusion matrix for {}'.format(output_name))
-    #     print(np.round(conf[i].compute().detach().cpu().numpy(), 3))
+    for i, (output_name, output_dim) in enumerate(output_channel.items()):
+        #conf[i] = conf[i].astype('float') / conf[i].sum(axis=1)[:, np.newaxis]
+        print(conf[i].compute().detach().cpu().numpy())
+        plt.imshow(conf[i].compute().detach().cpu().numpy(), cmap=plt.cm.Blues)
+        plt.xticks(np.arange(0, len(description[output_name])), description[output_name], rotation = 45, ha='right')
+        plt.yticks(np.arange(0, len(description[output_name])), description[output_name])
+        plt.xlabel("Predicted Label")
+        plt.ylabel("True Label")
+        plt.title('confusion matrix for {}'.format(output_name))
+        plt.colorbar()
+        plt.tight_layout()
+
+        #plt.savefig('confusion matrix for {}.png'.format(output_name), dpi=1200)
+        img_buf = io.BytesIO()
+        plt.savefig(img_buf, format='png', dpi=1200)
+        im = Image.open(img_buf)
+        image = wandb.Image(im, caption='confusion matrix for {}'.format(output_name))
+        wandb_logger.log({'confusion matrix for {}'.format(output_name): image})
+        plt.clf()
+        print('confusion matrix for {}'.format(output_name))
+        print(np.round(conf[i].compute().detach().cpu().numpy(), 3))
 
     df = pd.DataFrame(pandas_data, index=output_channel.keys())
     print(df.round(3))
