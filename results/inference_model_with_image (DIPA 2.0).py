@@ -56,6 +56,7 @@ if __name__ == '__main__':
     output_channel = {}
     for output in output_name:
         output_channel[output] = len(mega_table[output].unique())
+    print(output_channel)
     
     model = BaseModel(input_dim= input_dim, output_channel = output_channel)
 
