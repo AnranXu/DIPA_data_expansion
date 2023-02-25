@@ -106,6 +106,7 @@ if __name__ == '__main__':
     
     for i, (output_name, output_dim) in enumerate(output_channel.items()):
         conf.append(np.zeros((output_dim,output_dim)))
+    val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cpu'), batch_size=64)
 
     for i, vdata in enumerate(val_loader):
         image, mask, information, informativeness, sharingOwner, sharingOthers = vdata
