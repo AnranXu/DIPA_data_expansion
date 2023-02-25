@@ -69,7 +69,7 @@ class BaseModel(pl.LightningModule):
         type_pred, informativeness_pred, sharingOwner_pred, sharingOthers_pred = self(image, mask)
         #0 ~5: type 6: informativeness 7~13: sharingOwners 14~20: sharingOthers
         TypeLoss = self.entropy_loss1(type_pred, information.type(torch.FloatTensor).to('cuda'))
-        informativenessLosses = self.entropy_loss4(informativeness_pred, informativeness.type(torch.FloatTensor).to('cuda')) * 100 
+        informativenessLosses = self.entropy_loss4(informativeness_pred, informativeness) * 100 
         sharingOwenerLoss = self.entropy_loss2(sharingOwner_pred, sharingOwner.type(torch.FloatTensor).to('cuda'))
         sharingOthersLoss = self.entropy_loss3(sharingOthers_pred, sharingOthers.type(torch.FloatTensor).to('cuda'))
         loss = TypeLoss + informativenessLosses + sharingOwenerLoss + sharingOthersLoss
