@@ -106,12 +106,12 @@ if __name__ == '__main__':
     
     for i, (output_name, output_dim) in enumerate(output_channel.items()):
         conf.append(np.zeros((output_dim,output_dim)))
-        
+
     model.to('cuda')
     for i, vdata in enumerate(val_loader):
         image, mask, information, informativeness, sharingOwner, sharingOthers = vdata
-        y_preds = model(image.to('cuda'), mask.to('cuda'))
-
+        y_preds = model(image, mask)
+        print(information.shape)
         acc[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
         pre[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
         rec[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))

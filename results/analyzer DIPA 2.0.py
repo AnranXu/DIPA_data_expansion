@@ -128,6 +128,7 @@ class analyzer:
         # make sure this sequence is correct.
         with open('worker_privacy_num.json', encoding="utf-8") as f:
             worker_privacy_num = json.load(f)
+        
         self.mega_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharingOwner", "sharingOthers", 'age', 'gender', 'privacyNum',
         'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'frequency', 'imagePath', 'originCategory', 'datasetName'])
         for image_name in self.img_annotation_map.keys():
