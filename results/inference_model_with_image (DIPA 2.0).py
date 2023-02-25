@@ -109,9 +109,7 @@ if __name__ == '__main__':
 
     for i, vdata in enumerate(val_loader):
         image, mask, information, informativeness, sharingOwner, sharingOthers = vdata
-        image, mask, information, informativeness, sharingOwner, sharingOthers = \
-        image.to('cuda:0'), mask.to('cuda:0'), information.to('cuda:0'), informativeness.to('cuda:0'), sharingOwner.to('cuda:0'), sharingOthers.to('cuda:0')
-        y_preds = model(image, mask)
+        y_preds = model(image.to('cuda'), mask.to('cuda'))
 
         acc[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
         pre[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
