@@ -163,10 +163,10 @@ if __name__ == '__main__':
         plt.savefig(img_buf, format='png', dpi=1200)
         im = Image.open(img_buf)
         image = wandb.Image(im, caption='confusion matrix for {}'.format(output_name))
-        wandb.log({'confusion matrix for {}'.format(output_name): image})
+        wandb_logger.log({'confusion matrix for {}'.format(output_name): image})
         plt.clf()
         print('confusion matrix for {}'.format(output_name))
-        print(np.round(conf[i], 3))
+        print(np.round(conf[i].compute().detach().cpu().numpy(), 3))
 
     df = pd.DataFrame(pandas_data, index=output_channel.keys())
     print(df.round(3))
