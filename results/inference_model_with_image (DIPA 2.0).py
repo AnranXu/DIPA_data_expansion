@@ -118,7 +118,7 @@ if __name__ == '__main__':
         pre[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
         rec[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
         f1[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
-        conf[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
+        conf[0].update(y_preds[:, :6], information.to('cuda'))
 
         distance += l1_distance_loss(informativeness.detach().cpu().numpy(), y_preds[:,6].detach().cpu().numpy())
         # acc[1](y_preds[:, 6], informativeness.type(torch.FloatTensor).to('cuda'))
@@ -127,17 +127,17 @@ if __name__ == '__main__':
         # f1[1](y_preds[:, 6], informativeness.type(torch.FloatTensor).to('cuda'))
         # conf[1](y_preds[:, 6], informativeness.type(torch.FloatTensor).to('cuda'))
 
-        acc[1].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        acc[1].update(y_preds[:, 7:14], sharingOwner.to('cuda'))
         pre[1].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
         rec[1].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
         f1[1].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
-        conf[1].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        conf[1].update(y_preds[:, 7:14], sharingOwner.to('cuda'))
 
-        acc[2].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        acc[2].update(y_preds[:, 14:21], sharingOthers.to('cuda'))
         pre[2].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
         rec[2].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
         f1[2].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
-        conf[2].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        conf[2].update(y_preds[:, 14:21], sharingOthers.to('cuda'))
 
 
 
