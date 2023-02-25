@@ -9,7 +9,7 @@ from torchmetrics import Accuracy, Precision, Recall, F1Score, ConfusionMatrix, 
 import json
 
 class BaseModel(pl.LightningModule):
-    def __init__(self, input_dim, output_channel, learning_rate = 1e-4, dropout_prob=0.2):
+    def __init__(self, input_dim, learning_rate = 1e-4, dropout_prob=0.2):
         ## output_channel: key: output_name value: output_dim
         super().__init__()
         self.learning_rate = learning_rate
@@ -94,7 +94,7 @@ class BaseModel(pl.LightningModule):
         precision.update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
         recall.update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
         f1score.update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
-        
+
         self.log(f"{text}/acc for information type", accuracy.compute())
         self.log(f"{text}/pre for information type", precision.compute())
         self.log(f"{text}/rec for information type", recall.compute())

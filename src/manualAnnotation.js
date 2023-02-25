@@ -202,7 +202,7 @@ class ManualAnnotationCard extends Component{
         );*/
     }
     sharing_owner = () =>{
-        var options = {'en': [{'name': 'I won\'t share it', 'value': 1}, {'name': 'Close relationship', 'value': 2},
+        var options = {'en': [{'name': I won'\'t share it', 'value': 1}, {'name': 'Close relationship', 'value': 2},
         {'name': 'Regular relationship', 'value': 3}, {'name': 'Acquaintances', 'value': 4}, {'name': 'Public', 'value': 5}, 
         {'name': 'Broadcast program', 'value': 6}, {'name': 'Other recipients (Please input below)', 'value': 7}],
         'jp': [{'name': '共有しない', 'value': 1}, {'name': '親密な関係', 'value': 2}, {'name': '通常の関係', 'value': 3}, 

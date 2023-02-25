@@ -33,12 +33,15 @@ if __name__ == '__main__':
 
     mega_table = pd.read_csv('./mega_table.csv')
 
-    description = {'informationType': ['It tells personal identity.', 'It tells location of shooting.',
-        'It tells personal habits.', 'It tells social circle.', 'Other things it can tell'],
-        'informativeness':['extremely uninformative','moderately uninformative','slightly uninformative','neutral',
-        'slightly informative','moderately informative','extremely informative'],
-        'sharing': ['I won\'t share it', 'Family or friend',
-        'Public', 'Broadcast programme', 'Other recipients']}
+    description = {'informationType': ['It tells personal information', 'It tells location of shooting',
+        'It tells individual preferences/pastimes', 'It tells social circle', 
+        'It tells others\' private/confidential information', 'Other things'],
+        'informativeness':['Strongly disagree','Disagree','Slightly disagree','Neither',
+        'Slightly agree','Agree','Strongly agree'],
+        'sharingOwner': ['I won\'t share it', 'Close relationship',
+        'Regular relationship', 'Acquaintances', 'Public', 'Broadcast program', 'Other recipients'],
+        'sharingOthers': ['I won\'t allow others to share it', 'Close relationship',
+        'Regular relationship', 'Acquaintances', 'Public', 'Broadcast program', 'Other recipients']}
     
     encoder = LabelEncoder()
     mega_table['category'] = encoder.fit_transform(mega_table['category'])
@@ -53,12 +56,10 @@ if __name__ == '__main__':
     input_channel.extend(bigfives)
     input_dim = len(input_channel)
     output_name = privacy_metrics
-    output_channel = {}
-    for output in output_name:
-        output_channel[output] = len(mega_table[output].unique())
-    print(output_channel)
-    
-    model = BaseModel(input_dim= input_dim, output_channel = output_channel)
+    output_channel = {'informationType': 6, 'sharingOwner': 7, 'sharingOthers': 7}
+
+
+    model = BaseModel(input_dim= input_dim)
 
     image_size = (224, 224)
     label_folder = './new annotations/annotations/'
@@ -126,17 +127,17 @@ if __name__ == '__main__':
         # f1[1](y_preds[:, 6], informativeness.type(torch.FloatTensor).to('cuda'))
         # conf[1](y_preds[:, 6], informativeness.type(torch.FloatTensor).to('cuda'))
 
-        acc[2].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
-        pre[2].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
-        rec[2].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
-        f1[2].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
-        conf[2].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        acc[1].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        pre[1].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        rec[1].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        f1[1].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        conf[1].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
 
-        acc[3].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
-        pre[3].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
-        rec[3].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
-        f1[3].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
-        conf[3].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        acc[2].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        pre[2].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        rec[2].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        f1[2].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
+        conf[2].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
 
 
 
