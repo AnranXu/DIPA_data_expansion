@@ -103,6 +103,9 @@ class BaseModel(pl.LightningModule):
         
         distance = l1_distance_loss(informativeness.detach().cpu().numpy(), y_preds[:,6].detach().cpu().numpy())
         self.log(f"{text}/distance for informativeness", distance)
+
+        accuracy = Accuracy(task="multilabel", num_labels=7, threshold = threshold,average=average_method, ignore_index = 6)
+        precision = Precision(task="multilabel", num_labels=7, threshold = threshold,average=average_method, ignore_index = 6)
         recall = Recall(task="multilabel", num_labels=7, threshold = threshold,average=average_method, ignore_index = 6)
         f1score = F1Score(task="multilabel", num_labels=7, threshold = threshold,average=average_method, ignore_index = 6)
 
