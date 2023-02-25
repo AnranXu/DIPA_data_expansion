@@ -109,6 +109,8 @@ if __name__ == '__main__':
 
     for i, vdata in enumerate(val_loader):
         image, mask, information, informativeness, sharingOwner, sharingOthers = vdata
+        image, mask, information, informativeness, sharingOwner, sharingOthers = \
+        image.to('cuda'), mask.to('cuda'), information.to('cuda'), informativeness.to('cuda'), sharingOwner.to('cuda'), sharingOthers.to('cuda')
         y_preds = model(image, mask)
 
         acc[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
