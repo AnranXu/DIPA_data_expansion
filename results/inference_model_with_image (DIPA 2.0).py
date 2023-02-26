@@ -8,13 +8,13 @@ from sklearn.preprocessing import LabelEncoder
 from torch.utils.data import DataLoader
 import pytorch_lightning as pl
 from torchmetrics import Accuracy, Precision, Recall, F1Score, ConfusionMatrix, CalibrationError
-from sklearn import metrics
 
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import io
 from PIL import Image
+import json
 
 import wandb
 from pytorch_lightning.loggers import WandbLogger
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses sigmoid (Resnet 50)/', save_last=True, monitor='val loss')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, 
-    auto_lr_find=True, max_epochs = 1, callbacks=[checkpoint_callback])
+    auto_lr_find=True, max_epochs = 300, callbacks=[checkpoint_callback])
     lr_finder = trainer.tuner.lr_find(model, train_loader)
     model.hparams.learning_rate = lr_finder.suggestion()
     print(f'lr auto: {lr_finder.suggestion()}')
@@ -103,14 +103,10 @@ if __name__ == '__main__':
             for i, (output_name, output_dim) in enumerate(output_channel.items())]
     f1 = [F1Score(task="multilabel", num_labels=output_dim, threshold = threshold, average=average_method, ignore_index = output_dim - 1) \
             for i, (output_name, output_dim) in enumerate(output_channel.items())]
-    # conf = [ConfusionMatrix(task="multilabel", num_labels=output_dim) \
-    #         for i, (output_name, output_dim) in enumerate(output_channel.items())]
+    conf = [ConfusionMatrix(task="multilabel", num_labels=output_dim) \
+            for i, (output_name, output_dim) in enumerate(output_channel.items())]
     distance = 0.0
-    conf = []
-    for i, (output_name, output_dim) in enumerate(output_channel.items()):
-        if output_name == 'informativeness':
-            continue
-        conf.append(np.zeros((output_dim,output_dim)))
+    
     model.to('cuda')
     for i, vdata in enumerate(val_loader):
         image, mask, information, informativeness, sharingOwner, sharingOthers = vdata
@@ -121,10 +117,7 @@ if __name__ == '__main__':
         pre[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
         rec[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
         f1[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
-        #conf[0].update(y_preds[:, :6], information.to('cuda'))
-        pred = (y_preds[:, :6] > 0.5) 
-        conf[0] += metrics.confusion_matrix(pred.detach().cpu().numpy(), 
-        information, labels = description['informationType'])
+        conf[0].update(y_preds[:, :6], information.to('cuda'))
 
         distance += l1_distance_loss(informativeness.detach().cpu().numpy(), y_preds[:,6].detach().cpu().numpy())
         # acc[1](y_preds[:, 6], informativeness.type(torch.FloatTensor).to('cuda'))
@@ -137,17 +130,13 @@ if __name__ == '__main__':
         pre[1].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
         rec[1].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
         f1[1].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
-        pred = (y_preds[:, 7:14] > 0.5) 
-        conf[1] += metrics.confusion_matrix(pred.detach().cpu().numpy(), 
-        sharingOwner, labels = description['sharingOwner'])
+        conf[1].update(y_preds[:, 7:14], sharingOwner.to('cuda'))
 
         acc[2].update(y_preds[:, 14:21], sharingOthers.to('cuda'))
         pre[2].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
         rec[2].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
         f1[2].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
-        pred = (y_preds[:, 14:21] > 0.5) 
-        conf[2] += metrics.confusion_matrix(pred.detach().cpu().numpy(), 
-        sharingOthers, labels = description['sharingOthers'])
+        conf[2].update(y_preds[:, 14:21], sharingOthers.to('cuda'))
 
 
     distance = distance / len(val_loader)
@@ -158,31 +147,34 @@ if __name__ == '__main__':
                    'f1': [i.compute().detach().cpu().numpy() for i in f1]}
 
     for i, (output_name, output_dim) in enumerate(output_channel.items()):
-        conf[i] = conf[i].astype('float') / conf[i].sum(axis=1)[:, np.newaxis]
-        print(conf[i].compute().detach().cpu().numpy())
-        plt.imshow(conf[i].compute().detach().cpu().numpy(), cmap=plt.cm.Blues)
-        plt.xticks(np.arange(0, len(description[output_name])), description[output_name], rotation = 45, ha='right')
-        plt.yticks(np.arange(0, len(description[output_name])), description[output_name])
-        plt.xlabel("Predicted Label")
-        plt.ylabel("True Label")
-        plt.title('confusion matrix for {}'.format(output_name))
-        plt.colorbar()
-        plt.tight_layout()
+        with open('./confusion {}'.format(output_name), 'w') as w:
+            json.dump(conf[i].compute().detach().cpu().numpy(), w)
+    #     #conf[i] = conf[i].astype('float') / conf[i].sum(axis=1)[:, np.newaxis]
+    #     print(conf[i].compute().detach().cpu().numpy())
+    #     plt.imshow(conf[i].compute().detach().cpu().numpy(), cmap=plt.cm.Blues)
+    #     plt.xticks(np.arange(0, len(description[output_name])), description[output_name], rotation = 45, ha='right')
+    #     plt.yticks(np.arange(0, len(description[output_name])), description[output_name])
+    #     plt.xlabel("Predicted Label")
+    #     plt.ylabel("True Label")
+    #     plt.title('confusion matrix for {}'.format(output_name))
+    #     plt.colorbar()
+    #     plt.tight_layout()
 
-        #plt.savefig('confusion matrix for {}.png'.format(output_name), dpi=1200)
-        img_buf = io.BytesIO()
-        plt.savefig(img_buf, format='png', dpi=1200)
-        im = Image.open(img_buf)
-        image = wandb.Image(im, caption='confusion matrix for {}'.format(output_name))
-        wandb_logger.log({'confusion matrix for {}'.format(output_name): image})
-        plt.clf()
-        print('confusion matrix for {}'.format(output_name))
-        print(np.round(conf[i].compute().detach().cpu().numpy(), 3))
+    #     #plt.savefig('confusion matrix for {}.png'.format(output_name), dpi=1200)
+    #     img_buf = io.BytesIO()
+    #     plt.savefig(img_buf, format='png', dpi=1200)
+    #     im = Image.open(img_buf)
+    #     image = wandb.Image(im, caption='confusion matrix for {}'.format(output_name))
+    #     wandb_logger.log({'confusion matrix for {}'.format(output_name): image})
+    #     plt.clf()
+    #     print('confusion matrix for {}'.format(output_name))
+    #     print(np.round(conf[i].compute().detach().cpu().numpy(), 3))
 
     df = pd.DataFrame(pandas_data, index=output_channel.keys())
     print(df.round(3))
     df.to_csv('./result.csv', index =False)
     with open('./distance', 'w') as w:
         w.write(str(distance))
+    
     if 'informativeness' in output_channel.keys():
         print('informativenss distance: ', distance)
