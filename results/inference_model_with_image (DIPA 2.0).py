@@ -122,7 +122,8 @@ if __name__ == '__main__':
         rec[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
         f1[0].update(y_preds[:, :6], information.type(torch.FloatTensor).to('cuda'))
         #conf[0].update(y_preds[:, :6], information.to('cuda'))
-        conf[0] += metrics.confusion_matrix(y_preds[:, :6].detach().cpu().numpy(), 
+        pred = (y_preds[:, :6] > 0.5) 
+        conf[0] += metrics.confusion_matrix(pred[:, :6].detach().cpu().numpy(), 
         information, labels = description['informationType'])
 
         distance += l1_distance_loss(informativeness.detach().cpu().numpy(), y_preds[:,6].detach().cpu().numpy())
@@ -136,14 +137,16 @@ if __name__ == '__main__':
         pre[1].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
         rec[1].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
         f1[1].update(y_preds[:, 7:14], sharingOwner.type(torch.FloatTensor).to('cuda'))
-        conf[1] += metrics.confusion_matrix(y_preds[:, 7:14].detach().cpu().numpy(), 
+        pred = (y_preds[:, 7:14] > 0.5) 
+        conf[1] += metrics.confusion_matrix(pred[:, 7:14].detach().cpu().numpy(), 
         sharingOwner, labels = description['sharingOwner'])
 
         acc[2].update(y_preds[:, 14:21], sharingOthers.to('cuda'))
         pre[2].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
         rec[2].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
         f1[2].update(y_preds[:, 14:21], sharingOthers.type(torch.FloatTensor).to('cuda'))
-        conf[2] += metrics.confusion_matrix(y_preds[:, 14:21].detach().cpu().numpy(), 
+        pred = (y_preds[:, 14:21] > 0.5) 
+        conf[2] += metrics.confusion_matrix(pred[:, 14:21].detach().cpu().numpy(), 
         sharingOthers, labels = description['sharingOthers'])
 
 
