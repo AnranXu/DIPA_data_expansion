@@ -148,7 +148,7 @@ if __name__ == '__main__':
 
     for i, (output_name, output_dim) in enumerate(output_channel.items()):
         with open('./confusion {}'.format(output_name), 'w') as w:
-            w.write(str(conf[i].compute().detach().cpu().numpy()), w)
+            w.write(str(conf[i].compute().detach().cpu().numpy()))
     #     #conf[i] = conf[i].astype('float') / conf[i].sum(axis=1)[:, np.newaxis]
     #     print(conf[i].compute().detach().cpu().numpy())
     #     plt.imshow(conf[i].compute().detach().cpu().numpy(), cmap=plt.cm.Blues)
