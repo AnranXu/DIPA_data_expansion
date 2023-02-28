@@ -33,7 +33,7 @@ class analyzer:
     def __init__(self) -> None:
         self.annotation_path = './annotations/'
         self.platforms = ['CrowdWorks', 'Prolific']
-        self.img_annotation_map_path = './img_annotation_map.json'
+        self.img_annotation_map_path = './img_annotation_map (2 for each).json'
         self.img_annotation_map = {}
         self.code_openimage_map = {}
         self.openimages_mycat_map = {}
@@ -205,6 +205,59 @@ class analyzer:
                         self.manual_table = pd.concat([self.manual_table, entry], ignore_index=True)
         if save_csv:
             self.manual_table.to_csv('./manual_table.csv', index =False)
+    def prepare_regression_model_table(self, read_csv = False)->None:
+        #we change running regression model to R
+        #Two table: image_wise_regression_table.csv
+        #           annotation_wise_regression_table.csv
+        if read_csv:
+            self.mega_table = pd.read_csv('./mega_table.csv')
+        else:
+            self.prepare_mega_table()
+
+        # image_wise_regression_table.csv
+        image_wise_regression_table = pd.DataFrame(columns=['age', "gender", "platform", 'ifPrivacy'])
+        for image_name in self.img_annotation_map.keys():
+            for platform, annotations in self.img_annotation_map[image_name].items():
+                for annotation in annotations:
+                    image_id = annotation.split('_')[0]
+                    prefix_len = len(image_id) + 1
+                    worker_file = annotation[prefix_len:]
+                    worker_id = worker_file[:-11]
+                    worker_file = worker_id + '.json'
+                    
+                    with open(os.path.join(self.annotation_path, platform, 'workerinfo', worker_file), encoding="utf-8") as f_worker, \
+                    open(os.path.join(self.annotation_path, platform, 'labels', annotation), encoding="utf-8") as f_label:
+                        worker = json.load(f_worker)
+                        label = json.load(f_label)
+                        # we only analyze default annotations
+                        ifPrivacy = False
+                        year = int(worker['age'])
+                        if 18 <= year <= 24:
+                            age = 1
+                        elif 25 <= year <= 34:
+                            age = 2
+                        elif 35 <= year <= 44:
+                            age = 3
+                        elif 45 <= year <= 54:
+                            age = 4
+                        elif 55 <= year:
+                            age = 5
+                        gender = worker['gender']
+                        if len(label['manualAnnotation']) > 0:
+                            ifPrivacy = True
+                        for key, value in label['defaultAnnotation'].items():
+                            if not value['ifNoPrivacy']:
+                                ifPrivacy = True
+                        entry = pd.DataFrame.from_dict({
+                                "age": [age],
+                                "gender": [gender],
+                                "platform": [platform],
+                                'ifPrivacy': [1 if ifPrivacy else 0],
+                            })
+
+                        image_wise_regression_table = pd.concat([image_wise_regression_table, entry], ignore_index=True)
+
+        image_wise_regression_table.to_csv('./image_wise_regression_table.csv', index =False)  
     def regression_model(self, input_channel, output_channel, read_csv = False)->None:
         if read_csv:
             self.mega_table = pd.read_csv('./mega_table.csv')
@@ -573,6 +626,7 @@ if __name__ == '__main__':
     #print(len(analyze.mega_table['id'].unique()))
     #analyze.svm(input_channel, output_channel, read_csv=True)
     #analyze.anova(True)
-    analyze.neural_network(input_channel, output_channel, read_csv=True)
+    #analyze.neural_network(input_channel, output_channel, read_csv=True)
     #analyze.knn(input_channel, output_channel, read_csv=True)
+    analyze.prepare_regression_model_table(read_csv=True)
     

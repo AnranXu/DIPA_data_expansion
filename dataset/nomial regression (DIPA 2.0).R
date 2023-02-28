@@ -1,0 +1,17 @@
+library(nnet)
+library(rstatix)
+library(dplyr)
+# reference https://rpubs.com/malshe/214303
+data <- read.csv(file = './image_wise_regression_table.csv')
+data <- data %>% convert_as_factor(age, gender, platform)
+data$gender_female <- as.numeric(data$gender == 'Female')
+data$gender_other <- as.numeric(data$gender == 'Other')
+data$age_2 <- as.numeric(data$age == 2)
+data$age_3 <- as.numeric(data$age == 3)
+data$age_4 <- as.numeric(data$age == 4)
+data$age_5 <- as.numeric(data$age == 5)
+data$platform_UK<- as.numeric(data$platform == 'Prolific')
+formula <- "ifPrivacy ~ platform_UK + gender_female + gender_other + age_2 + age_3 + age_4 + age_5"
+logit <- glm(formula, data = data)
+output <- summary(logit)
+print(output)
