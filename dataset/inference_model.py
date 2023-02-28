@@ -49,7 +49,7 @@ class BaseModel(pl.LightningModule):
         x = self.dropout(x)
         x = self.act(self.fc1(x))
         x = self.dropout(x)
-        x = self.act(self.fc2(x))
+        x = self.fc2(x)
 
         # x = self.act(self.fc5(x))
         # x = self.act(self.fc6(x))

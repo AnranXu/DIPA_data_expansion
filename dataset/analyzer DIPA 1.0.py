@@ -88,8 +88,6 @@ class analyzer:
         'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'imagePath', 'originCategory', 'datasetName'])
         for image_name in self.img_annotation_map.keys():
             for platform, annotation_name in self.img_annotation_map[image_name].items():
-                if platform == 'Prolific': 
-                    continue
                 # now, value[0] is the only availiable index
                 image_id = annotation_name[0].split('_')[0]
                 prefix_len = len(image_id) + 1

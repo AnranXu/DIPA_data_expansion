@@ -14,4 +14,7 @@ data$platform_UK<- as.numeric(data$platform == 'Prolific')
 formula <- "ifPrivacy ~ platform_UK + gender_female + gender_other + age_2 + age_3 + age_4 + age_5"
 logit <- glm(formula, data = data)
 output <- summary(logit)
+odds_ratios <- exp(coef(logit))
+odds_ci <- exp(confint(logit))
 print(output)
+print(cbind(odds_ratios, odds_ci))
