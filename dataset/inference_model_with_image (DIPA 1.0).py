@@ -22,7 +22,7 @@ torch.set_default_tensor_type('torch.cuda.FloatTensor')
 if __name__ == '__main__':
     bigfives = ["extraversion", "agreeableness", "conscientiousness",
     "neuroticism", "openness"]
-    basic_info = [ "age", "gender", 'platform', 'datasetName']
+    basic_info = [ "age", "gender", 'datasetName']
     category = ['category']
     privacy_metrics = ['informationType', 'informativeness', 'sharing']
 
@@ -64,9 +64,6 @@ if __name__ == '__main__':
 
     train_df = Crowdworks_data
     val_df = prolific_data.sample(n = int(0.2 * len(train_df)), random_state=0)
-
-    
-    print(val_df)
 
     train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, output_name, image_size, flip = True)
     val_dataset = ImageMaskDataset(val_df, image_folder, label_folder, input_channel, output_name, image_size)    
