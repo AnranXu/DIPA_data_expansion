@@ -55,8 +55,7 @@ if __name__ == '__main__':
     num_rows = len(mega_table)
     train_size = int(0.8 * num_rows)
     test_size = num_rows - train_size
-    print(mega_table['platform'].unique())
-
+    print(mega_table.iloc[0], mega_table.iloc[1])
     prolific_data = mega_table[mega_table['platform'] == 'Prolific']
     Crowdworks_data = mega_table[mega_table['platform'] == 'CrowdWorks']
     # Split the dataframe into two
