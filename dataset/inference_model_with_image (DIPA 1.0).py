@@ -55,10 +55,10 @@ if __name__ == '__main__':
     num_rows = len(mega_table)
     train_size = int(0.8 * num_rows)
     test_size = num_rows - train_size
-    print(mega_table)
+    print(mega_table['platform'] == 'Prolific')
 
-    prolific_data = mega_table.loc[mega_table['platform'] == 'Prolific']
-    Crowdworks_data = mega_table.loc[mega_table['platform'] == 'CrowdWorks']
+    prolific_data = mega_table[mega_table['platform'] == 'Prolific']
+    Crowdworks_data = mega_table[mega_table['platform'] == 'CrowdWorks']
     # Split the dataframe into two
     train_df = mega_table.sample(n=train_size, random_state=0)
     val_df = mega_table.drop(train_df.index)
