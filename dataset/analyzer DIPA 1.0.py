@@ -88,6 +88,8 @@ class analyzer:
         'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'imagePath', 'originCategory', 'datasetName'])
         for image_name in self.img_annotation_map.keys():
             for platform, annotation_name in self.img_annotation_map[image_name].items():
+                if platform == 'Prolific': 
+                    continue
                 # now, value[0] is the only availiable index
                 image_id = annotation_name[0].split('_')[0]
                 prefix_len = len(image_id) + 1
@@ -615,7 +617,7 @@ if __name__ == '__main__':
     output_channel = privacy_metrics
     
     #output_channel = ['sharing']
-    #analyze.prepare_mega_table(mycat_mode=False, save_csv=True)
+    analyze.prepare_mega_table(mycat_mode=False, save_csv=True)
     #print(analyze.mega_table['informationType'].unique())
     #print(analyze.mega_table['sharing'].unique())
     #analyze.regression_model(input_channel, output_channel)
@@ -628,5 +630,5 @@ if __name__ == '__main__':
     #analyze.anova(True)
     #analyze.neural_network(input_channel, output_channel, read_csv=True)
     #analyze.knn(input_channel, output_channel, read_csv=True)
-    analyze.prepare_regression_model_table(read_csv=True)
+    #analyze.prepare_regression_model_table(read_csv=True)
     
