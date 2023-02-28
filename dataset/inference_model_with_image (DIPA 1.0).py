@@ -56,17 +56,19 @@ if __name__ == '__main__':
     train_size = int(0.8 * num_rows)
     test_size = num_rows - train_size
     print(mega_table)
-    
+
     prolific_data = mega_table.loc[mega_table['platform'] == 'Prolific']
     Crowdworks_data = mega_table.loc[mega_table['platform'] == 'CrowdWorks']
     # Split the dataframe into two
     train_df = mega_table.sample(n=train_size, random_state=0)
     val_df = mega_table.drop(train_df.index)
 
+    print(prolific_data)
+    print(Crowdworks_data)
     train_df = Crowdworks_data
     val_df = prolific_data.sample(n = int(0.2 * len(train_df)), random_state=0)
 
-    print(train_df)
+    
     print(val_df)
 
     train_dataset = ImageMaskDataset(train_df, image_folder, label_folder, input_channel, output_name, image_size, flip = True)
