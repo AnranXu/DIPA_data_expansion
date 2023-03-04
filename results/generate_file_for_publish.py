@@ -10,6 +10,8 @@ if __name__ == '__main__':
         for img_name, annotations in img_annotation_map.items():
             label_num = 0
             for platform, labels in annotations.items():
+                if platform == 'CrowdWorks':
+                    continue
                 for label in labels:
                     image_id = label.split('_')[0]
                     prefix_len = len(image_id) + 1

@@ -92,7 +92,7 @@ class analyzer:
         with open(os.path.join(self.annotation_path, 'CrowdWorks', 'valid_workers.json')) as f:
             valid_workers = json.load(f)
         print('val len:', len(valid_workers))
-        #prolific_labels = os.listdir(os.path.join(self.annotation_path, 'Prolific', 'crowdscouringlabel'))
+        
         for label_path in crowdworks_labels:
             img_name = label_path.split('_')[0]
             prefix_len = len(img_name) + 1
@@ -108,15 +108,24 @@ class analyzer:
                 else:
                     img_annotation_map[img_name]['CrowdWorks'].append(label_path)
 
-        '''for label_path in prolific_labels:
+        prolific_labels = os.listdir(os.path.join(self.annotation_path, 'Prolific', 'labels'))
+        with open(os.path.join(self.annotation_path, 'Prolific', 'valid_workers.json')) as f:
+            valid_workers = json.load(f)
+        print('val len:', len(valid_workers))
+        for label_path in prolific_labels:
             img_name = label_path.split('_')[0]
+            prefix_len = len(img_name) + 1
+            worker_name = label_path[prefix_len:]
+            worker_name = worker_name[:-11]
+            if worker_name not in valid_workers:
+                continue
             if img_name != '':
                 if img_name not in img_annotation_map.keys():
                     img_annotation_map[img_name] = {}
                 if 'Prolific' not in img_annotation_map[img_name].keys():
                     img_annotation_map[img_name]['Prolific'] = [label_path]
                 else:
-                    img_annotation_map[img_name]['Prolific'].append(label_path)'''
+                    img_annotation_map[img_name]['Prolific'].append(label_path)
 
         with open('img_annotation_map.json', 'w') as w:
             json.dump(img_annotation_map, w)
@@ -155,6 +164,7 @@ class analyzer:
                         openness = worker['bigfives']['Openness to Experience']
                         dataset_name = label['source']     
                         frequency = worker['frequency']
+                        nationality = worker['nationality']
                         for key, value in label['defaultAnnotation'].items():
                             if value['ifNoPrivacy']:
                                 continue
@@ -193,6 +203,7 @@ class analyzer:
                                 "age": [age],
                                 "gender": [gender],
                                 "platform": [platform],
+                                "nationality": [nationality],
                                 "extraversion": [extraversion],
                                 "agreeableness": [agreeableness],
                                 "conscientiousness": [conscientiousness],
