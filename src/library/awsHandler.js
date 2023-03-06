@@ -21,6 +21,9 @@ class awsHandler{
         'jp': 'CrowdWorks/'};
         //var len = 0;
     }
+    uniqueArr(arr){
+        return arr.filter((item, index) => arr.indexOf(item) === index);
+    }
     isEmpty(obj) {
         return Object.keys(obj).length === 0;
     }
@@ -169,7 +172,7 @@ class awsHandler{
                 Item: {
                     ...generalRecords,
                     "uncompletedAssignedTask":{
-                        "NS": uncompletedTask
+                        "NS": this.uniqueArr(uncompletedTask)
                     },
                     "totalWorker":{
                         "N": String(Number(generalRecords['totalWorker']['N']) - taskList.length)
