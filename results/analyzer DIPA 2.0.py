@@ -130,7 +130,7 @@ class analyzer:
         with open('img_annotation_map.json', 'w') as w:
             json.dump(img_annotation_map, w)
 
-    def prepare_mega_table(self, mycat_mode = True, save_csv = False, strict_mode = False, strict_num = 2)->None:
+    def prepare_mega_table(self, mycat_mode = True, save_csv = False, strict_mode = False, ignore_prev_manual_anns=True, strict_num = 2)->None:
         #mycat_mode: only aggregate annotations that can be summarized in mycat (also score them in mycat in mega_table).
         #the mega table includes all privacy annotations with all corresponding info (three metrics, big five, age, gender, platform)
 
@@ -183,7 +183,7 @@ class analyzer:
                                     continue
                             else:
                                 category = value['category']
-                            if category.startswith('Object'):
+                            if ignore_prev_manual_anns and category.startswith('Object'):
                                 continue
                             id = image_id + '_' + key
                             informationType = value['informationType']
