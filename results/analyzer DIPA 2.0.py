@@ -190,7 +190,7 @@ class analyzer:
                             if informationType[5] == 1:
                                 self.custom_informationType.append(value['informationTypeInput'])
                             if sharingOwner[6] == 1:
-                                self.custom_recipient_owner.append(value['sharingOwenerInput'])
+                                self.custom_recipient_owner.append(value['sharingOwnerInput'])
                             if sharingOthers[6] == 1:
                                 self.custom_recipient_others.append(value['sharingOthersInput'])
                             entry = pd.DataFrame.from_dict({
