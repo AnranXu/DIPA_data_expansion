@@ -130,7 +130,7 @@ class analyzer:
         with open('img_annotation_map.json', 'w') as w:
             json.dump(img_annotation_map, w)
 
-    def prepare_mega_table(self, mycat_mode = True, save_csv = False)->None:
+    def prepare_mega_table(self, mycat_mode = True, save_csv = False, strict_mode = False, strict_num = 2)->None:
         #mycat_mode: only aggregate annotations that can be summarized in mycat (also score them in mycat in mega_table).
         #the mega table includes all privacy annotations with all corresponding info (three metrics, big five, age, gender, platform)
 
@@ -143,7 +143,10 @@ class analyzer:
         for image_name in self.img_annotation_map.keys():
             for platform, annotations in self.img_annotation_map[image_name].items():
                 # now, value[0] is the only availiable index
-                for annotation in annotations:
+                for i, annotation in enumerate(annotations):
+                    # stop to record exceed annotations
+                    if strict_mode and i >= strict_num:
+                        break
                     image_id = annotation.split('_')[0]
                     prefix_len = len(image_id) + 1
                     worker_file = annotation[prefix_len:]
@@ -777,7 +780,7 @@ if __name__ == '__main__':
 
     analyze.generate_img_annotation_map()
     analyze.count_worker_privacy_num()
-    analyze.prepare_mega_table(mycat_mode = False, save_csv=True)
+    analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=False)
     #analyze.basic_count()
     #analyze.prepare_regression_model_table(read_csv=True)
     #analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
