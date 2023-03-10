@@ -32,7 +32,7 @@ if __name__ == '__main__':
     category = ['category']
     privacy_metrics = ['informationType', 'informativeness', 'sharingOwner', 'sharingOthers']
 
-    mega_table = pd.read_csv('./mega_table.csv')
+    mega_table = pd.read_csv('./mega_table (strict).csv')
 
     description = {'informationType': ['It tells personal information', 'It tells location of shooting',
         'It tells individual preferences/pastimes', 'It tells social circle', 
@@ -80,11 +80,11 @@ if __name__ == '__main__':
     train_loader = DataLoader(train_dataset, batch_size=96, generator=torch.Generator(device='cuda'), shuffle=True)
     val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=32)
     
-    wandb_logger = WandbLogger(project="DIPA2.0-inference test (uncompleted collection)", name = 'all annotations (Resnet 50)')
-    checkpoint_callback = ModelCheckpoint(dirpath='./models/all annotations (Resnet 50)/', save_last=True, monitor='val loss')
+    wandb_logger = WandbLogger(project="DIPA2.0-inference test", name = 'final layer with sigmoid (mobilenet v3 large)')
+    checkpoint_callback = ModelCheckpoint(dirpath='./models/final layer with sigmoid (mobilenet v3 large)/', save_last=True, monitor='val loss')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, 
-    auto_lr_find=True, max_epochs = 150, callbacks=[checkpoint_callback])
+    auto_lr_find=True, max_epochs = 100, callbacks=[checkpoint_callback])
     lr_finder = trainer.tuner.lr_find(model, train_loader)
     model.hparams.learning_rate = lr_finder.suggestion()
     print(f'lr auto: {lr_finder.suggestion()}')
