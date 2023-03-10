@@ -49,6 +49,7 @@ class analyzer:
         'Regular relationship', 'Acquaintances', 'Public', 'Broadcast program', 'Other recipients'],
         'frequency': ['Never', 'Less than once a month', 'Once or more per month', 
         'Once or more per week', 'Once or more per day']}
+        self.mega_table_path = './mega_table (strict).csv'
         if not os.path.exists(self.img_annotation_map_path):
             self.generate_img_annotation_map()
         with open(self.img_annotation_map_path) as f:
@@ -221,7 +222,7 @@ class analyzer:
 
                             self.mega_table = pd.concat([self.mega_table, entry], ignore_index=True)
         if save_csv:
-            self.mega_table.to_csv('./mega_table.csv', index =False)
+            self.mega_table.to_csv(self.mega_table_path, index =False)
 
     def prepare_manual_label(self, save_csv = False) -> None:
         self.manual_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharingOwner", "sharingOthers", 'age', 'gender', 
@@ -288,7 +289,7 @@ class analyzer:
                 res += np.array(input_array[i])
             return res
         if read_csv:
-            self.mega_table = pd.read_csv('./mega_table.csv')
+            self.mega_table = pd.read_csv(self.mega_table_path)
         else:
             self.prepare_mega_table()
 
@@ -353,7 +354,7 @@ class analyzer:
         #Two table: image_wise_regression_table.csv
         #           annotation_wise_regression_table.csv
         if read_csv:
-            self.mega_table = pd.read_csv('./mega_table.csv')
+            self.mega_table = pd.read_csv(self.mega_table_path)
         else:
             self.prepare_mega_table()
         with open('worker_privacy_num.json', encoding="utf-8") as f:
@@ -409,7 +410,7 @@ class analyzer:
         
     def regression_model(self, input_channel, output_channel, read_csv = False)->None:
         if read_csv:
-            self.mega_table = pd.read_csv('./mega_table.csv')
+            self.mega_table = pd.read_csv(self.mega_table_path)
         else:
             self.prepare_mega_table()
         output_dims = []
@@ -457,7 +458,7 @@ class analyzer:
 
     def svm(self, input_channel, output_channel, read_csv = False) -> None:
         if read_csv:
-            self.mega_table = pd.read_csv('./mega_table.csv')
+            self.mega_table = pd.read_csv(self.mega_table_path)
         else:
             self.prepare_mega_table()
         output_dims = []
@@ -506,7 +507,7 @@ class analyzer:
 
     def knn(self,input_channel, output_channel, read_csv = False) -> None:
         if read_csv:
-            self.mega_table = pd.read_csv('./mega_table.csv')
+            self.mega_table = pd.read_csv(self.mega_table_path)
         else:
             self.prepare_mega_table()
         
@@ -558,7 +559,7 @@ class analyzer:
         ## the degree of freedom of "informativeness" is wrong, it should be 6 rather than 1
         ## I am using R to perform this
         if read_csv:
-            self.mega_table = pd.read_csv('./mega_table.csv')
+            self.mega_table = pd.read_csv(self.mega_table_path)
         else:
             self.prepare_mega_table()
         #agg_data = self.mega_table.groupby(['informationType', 'informativeness'])['sharing'].mean()
@@ -622,7 +623,7 @@ class analyzer:
         
         learning_rate = 0.01
         if read_csv:
-            self.mega_table = pd.read_csv('./mega_table.csv')
+            self.mega_table = pd.read_csv(self.mega_table_path)
         else:
             self.prepare_mega_table()
 
