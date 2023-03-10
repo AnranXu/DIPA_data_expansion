@@ -28,7 +28,8 @@ class BaseModel(pl.LightningModule):
         # self.net.conv1 = nn.Conv2d(3 + input_dim, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
         # self.net.conv1.weight.data[:,:3,:,:] = w0
         # self.fc1 = nn.Linear(2048, 256)
-        self.fc2 = nn.Linear(256, 21)
+        self.fc2 = nn.Linear(256, 64)
+        self.fc3 = nn.Linear(64, 21)
         self.dropout = nn.Dropout(p=dropout_prob)
         self.act = nn.SiLU()
         self.reg_loss = nn.L1Loss()
@@ -42,10 +43,11 @@ class BaseModel(pl.LightningModule):
         x = self.dropout(x)
         x = self.act(self.fc1(x))
         x = self.dropout(x)
-        x = self.fc2(x)
-        x[:6] = self.sigmoid(x[:6])
-        x[6] = self.sigmoid(x[6]) * 6
-        x[7:21] = self.sigmoid(x[7:21])
+        x = self.act(self.fc2(x))
+        x = self.fc3(x)
+        # x[:6] = self.sigmoid(x[:6])
+        # x[6] = self.sigmoid(x[6]) * 6
+        # x[7:21] = self.sigmoid(x[7:21])
         return x
 
         

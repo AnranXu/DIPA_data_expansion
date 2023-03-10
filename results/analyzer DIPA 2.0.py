@@ -224,16 +224,24 @@ class analyzer:
         if save_csv:
             self.mega_table.to_csv(self.mega_table_path, index =False)
 
-    def prepare_manual_label(self, save_csv = False) -> None:
-        self.manual_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharingOwner", "sharingOthers", 'age', 'gender', 
-        'platform', 'frequency', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness'])
-        for key in self.img_annotation_map.keys():
-            for platform, value in self.img_annotation_map[key].items():
-                image_id = value[0].split('_')[0]
-                prefix_len = len(image_id) + 1
-                worker_file = value[0][prefix_len:]
-                worker_file = worker_file[:-11]
-                worker_file = worker_file + '.json'
+    def prepare_manual_label(self, save_csv = False, strict_mode = False, ignore_prev_manual_anns=True, strict_num = 2) -> None:
+        self.manual_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharingOwner", "sharingOthers", 'age', 'gender', 'privacyNum',
+        'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'frequency', 'imagePath', 'originCategory', 'datasetName'])
+        with open('worker_privacy_num.json', encoding="utf-8") as f:
+            worker_privacy_num = json.load(f)
+        for image_name in self.img_annotation_map.keys():
+            for platform, annotations in self.img_annotation_map[image_name].items():
+                # now, value[0] is the only availiable index
+                for i, annotation in enumerate(annotations):
+                    # stop to record exceed annotations
+                    if strict_mode and i >= strict_num:
+                        break
+                    image_id = annotation.split('_')[0]
+                    prefix_len = len(image_id) + 1
+                    worker_file = annotation[prefix_len:]
+                    worker_id = worker_file[:-11]
+                    worker_file = worker_id + '.json'
+                    privacy_num = worker_privacy_num[worker_id]
                 with open(os.path.join(self.annotation_path, platform, 'workerinfo', worker_file), encoding="utf-8") as f_worker, \
                 open(os.path.join(self.annotation_path, platform, 'labels', value[0]), encoding="utf-8") as f_label:
                     worker = json.load(f_worker)
@@ -246,7 +254,9 @@ class analyzer:
                     conscientiousness = worker['bigfives']['Conscientiousness']
                     neuroticism = worker['bigfives']['Neuroticism']
                     openness = worker['bigfives']['Openness to Experience']     
-                    frequency = worker['frequency']      
+                    frequency = worker['frequency']     
+                    dataset_name = label['source']  
+                    nationality = worker['nationality']  
                     for key, value in label['manualAnnotation'].items():
                         category = value['category']
                         id = image_id + '_' + key
@@ -262,20 +272,25 @@ class analyzer:
                             self.custom_recipient_others.append(value['sharingOthersInput'])
                         entry = pd.DataFrame.from_dict({
                             'id': [id],
-                            "category": [category],
-                            "informationType":  [informationType],
-                            "informativeness": [informativeness],
-                            "sharingOwner": [sharingOwner],
-                            "sharingOthers": [sharingOthers],
-                            "age": [age],
-                            "gender": [gender],
-                            "platform": [platform],
-                            "extraversion": [extraversion],
-                            "agreeableness": [agreeableness],
-                            "conscientiousness": [conscientiousness],
-                            "neuroticism": [neuroticism],
-                            "openness": [openness],
-                            'frequency': [frequency]
+                                "category": [category],
+                                "informationType":  [informationType],
+                                "informativeness": [informativeness],
+                                "sharingOwner": [sharingOwner],
+                                "sharingOthers": [sharingOthers],
+                                "age": [age],
+                                "gender": [gender],
+                                "platform": [platform],
+                                "nationality": [nationality],
+                                "extraversion": [extraversion],
+                                "agreeableness": [agreeableness],
+                                "conscientiousness": [conscientiousness],
+                                "neuroticism": [neuroticism],
+                                "openness": [openness],
+                                'frequency': [frequency],
+                                'imagePath': [image_name + '.jpg'],
+                                'originCategory': value['category'],
+                                'datasetName': [dataset_name],
+                                'privacyNum': [privacy_num]
                         })
 
                         self.manual_table = pd.concat([self.manual_table, entry], ignore_index=True)
