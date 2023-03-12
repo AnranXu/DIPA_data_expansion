@@ -80,8 +80,8 @@ if __name__ == '__main__':
     train_loader = DataLoader(train_dataset, batch_size=160, generator=torch.Generator(device='cuda'), shuffle=True)
     val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=32)
     
-    wandb_logger = WandbLogger(project="DIPA2.0-inference test", name = 'final layer with sigmoid (mobilenet v3 large)')
-    checkpoint_callback = ModelCheckpoint(dirpath='./models/final layer with sigmoid (mobilenet v3 large)/', save_last=True, monitor='val loss')
+    wandb_logger = WandbLogger(project="DIPA2.0-inference test", name = 'Include prev manual label (mobilenet v3 large)')
+    checkpoint_callback = ModelCheckpoint(dirpath='./models/Include prev manual label (mobilenet v3 large)/', save_last=True, monitor='val loss')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, 
     auto_lr_find=True, max_epochs = 100, callbacks=[checkpoint_callback])

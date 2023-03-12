@@ -1,0 +1,224 @@
+category,informationType,informativeness,sharingOwner,sharingOthers,age,gender,privacyNum,platform,extraversion,agreeableness,conscientiousness,neuroticism,openness,frequency,imagePath,originCategory,datasetName,id,nationality
+女性の顔と男性の後ろ姿,"[1, 0, 1, 0, 0, 0]",1,"[0, 1, 1, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,10,CrowdWorks,4,6,4,9,10,1,139150.jpg,女性の顔と男性の後ろ姿,LVIS,139150_0,Japan
+ナンバープレート,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",23,Male,2,CrowdWorks,3,5,5,8,8,0,0d6ca8553971fefd.jpg,ナンバープレート,OpenImages,0d6ca8553971fefd_0,Japan
+Cat,"[1, 0, 1, 0, 1, 0]",1,"[0, 1, 1, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",20,Male,6,Prolific,2,7,3,10,6,1,189806.jpg,Cat,LVIS,189806_0,British
+Person's face,"[1, 0, 0, 0, 0, 0]",4,"[0, 0, 0, 0, 1, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",29,Female,3,Prolific,5,9,3,7,8,1,107339.jpg,Person's face,LVIS,107339_0,British
+顔,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,5,CrowdWorks,3,4,5,9,8,1,118811.jpg,顔,LVIS,118811_0,Japan
+Face,"[1, 0, 0, 0, 0, 0]",5,"[0, 0, 1, 1, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",31,Male,9,Prolific,4,4,5,8,10,1,118811.jpg,Face,LVIS,118811_0,White British
+犬のリード,"[0, 0, 0, 1, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,7,CrowdWorks,4,6,7,7,10,1,04a27da7e880ddcd.jpg,犬のリード,OpenImages,04a27da7e880ddcd_0,Japan
+男性,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",39,Female,9,CrowdWorks,4,7,6,7,8,2,56a690f5c282c6a4.jpg,男性,OpenImages,56a690f5c282c6a4_0,Japan
+DOG OWNERS,"[0, 0, 1, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",31,Male,9,CrowdWorks,4,6,6,9,9,1,049e7e84b7055f7f.jpg,DOG OWNERS,OpenImages,049e7e84b7055f7f_0,Japan
+outside view through window,"[0, 1, 0, 0, 0, 0]",2,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",52,Female,8,Prolific,4,7,9,6,6,1,121316.jpg,outside view through window,LVIS,121316_0,British
+催し物,"[0, 1, 0, 0, 0, 0]",2,"[0, 1, 0, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Male,4,CrowdWorks,2,5,4,10,3,0,107226.jpg,催し物,LVIS,107226_0,Japan
+人,"[0, 0, 0, 0, 1, 0]",2,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",33,Male,9,CrowdWorks,4,4,6,8,8,1,7ae56b9a673b49cb.jpg,人,OpenImages,7ae56b9a673b49cb_0,Japan
+男性の顔,"[1, 0, 1, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Male,8,CrowdWorks,5,6,6,8,6,1,202099.jpg,男性の顔,LVIS,202099_0,Japan
+name of child,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Female,9,Prolific,4,8,8,10,6,3,014d85b26445629d.jpg,name of child,OpenImages,014d85b26445629d_0,welsh
+人,"[1, 0, 0, 0, 1, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,9,CrowdWorks,4,4,6,8,8,1,160407.jpg,人,LVIS,160407_0,Japan
+人,"[1, 0, 0, 0, 1, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,9,CrowdWorks,4,4,6,8,8,1,160407.jpg,人,LVIS,160407_1,Japan
+人,"[1, 0, 0, 0, 1, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,9,CrowdWorks,4,4,6,8,8,1,160407.jpg,人,LVIS,160407_2,Japan
+人,"[1, 0, 0, 0, 1, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,9,CrowdWorks,4,4,6,8,8,1,160407.jpg,人,LVIS,160407_3,Japan
+人,"[1, 0, 0, 0, 1, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,9,CrowdWorks,4,4,6,8,8,1,160407.jpg,人,LVIS,160407_4,Japan
+パートナー,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,9,CrowdWorks,4,4,5,10,8,1,124786.jpg,パートナー,LVIS,124786_0,Japan
+カップル,"[1, 0, 1, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,9,CrowdWorks,4,4,5,10,8,1,124786.jpg,カップル,LVIS,124786_1,Japan
+Face,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",24,Female,5,CrowdWorks,4,6,5,8,7,1,140640.jpg,Face,LVIS,140640_0,Japan
+face2,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",24,Female,5,CrowdWorks,4,6,5,8,7,1,140640.jpg,face2,LVIS,140640_1,Japan
+face2,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",24,Female,5,CrowdWorks,4,6,5,8,7,1,140640.jpg,face2,LVIS,140640_2,Japan
+Man,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",36,Male,8,Prolific,3,6,8,5,7,1,191342.jpg,Man,LVIS,191342_0,English
+顔,"[1, 0, 0, 0, 0, 0]",4,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 1, 1, 0, 0, 0]",42,Male,4,CrowdWorks,5,4,7,10,5,1,124803.jpg,顔,LVIS,124803_0,Japan
+顏,"[1, 0, 1, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,6,CrowdWorks,4,6,6,9,10,3,102757.jpg,顏,LVIS,102757_0,Japan
+Documents,"[1, 0, 0, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",28,Male,7,Prolific,7,5,6,6,9,2,334813.jpg,Documents,LVIS,334813_0,United Kingdom
+顔,"[1, 0, 0, 0, 0, 0]",6,"[0, 0, 1, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",22,Female,6,CrowdWorks,8,7,7,4,8,2,152650.jpg,顔,LVIS,152650_0,Japan
+name,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",33,Female,1,Prolific,6,4,7,8,9,1,104564.jpg,name,LVIS,104564_0,british
+写真,"[0, 0, 0, 1, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,9,CrowdWorks,4,7,6,7,8,2,137967.jpg,写真,LVIS,137967_0,Japan
+オブジェクト,"[0, 0, 0, 0, 1, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,9,CrowdWorks,4,7,6,7,8,2,137967.jpg,オブジェクト,LVIS,137967_1,Japan
+オブジェクト,"[0, 0, 0, 0, 1, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,9,CrowdWorks,4,7,6,7,8,2,137967.jpg,オブジェクト,LVIS,137967_2,Japan
+オブジェクト,"[0, 0, 0, 0, 1, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",39,Female,9,CrowdWorks,4,7,6,7,8,2,137967.jpg,オブジェクト,LVIS,137967_3,Japan
+Potential location logo,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 1, 1, 1, 1, 0]","[0, 1, 1, 1, 1, 1, 0]",29,Male,9,Prolific,3,6,7,8,8,4,731173d27e06b210.jpg,Potential location logo,OpenImages,731173d27e06b210_0,British
+University Logo,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 1, 1, 1, 1, 0]","[0, 1, 1, 1, 1, 1, 0]",29,Male,9,Prolific,3,6,7,8,8,4,731173d27e06b210.jpg,University Logo,OpenImages,731173d27e06b210_1,British
+name of pet,"[0, 0, 0, 0, 1, 0]",4,"[0, 0, 0, 0, 0, 0, 1]","[0, 0, 0, 0, 0, 0, 1]",26,Female,3,Prolific,3,8,5,4,3,1,128522.jpg,name of pet,LVIS,128522_0,british
+Person,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 1, 0, 0]",38,Male,6,Prolific,6,8,7,8,7,3,170048.jpg,Person,LVIS,170048_0,United Kingdom
+ガス管,"[1, 1, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",41,Female,4,CrowdWorks,5,6,10,4,6,1,13ae232e3bf907fd.jpg,ガス管,OpenImages,13ae232e3bf907fd_0,Japan
+Beer crate,"[1, 1, 1, 0, 0, 1]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",60,Male,8,Prolific,2,4,9,3,4,1,148620.jpg,Beer crate,LVIS,148620_0,United Kingdom
+Face picture,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 1, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",22,Male,6,Prolific,3,7,7,8,9,1,20291.jpg,Face picture,LVIS,20291_0,English
+Back of a Person,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Male,8,Prolific,4,6,6,10,10,2,222702.jpg,Back of a Person,LVIS,222702_0,United Kingdom
+Window,"[0, 1, 0, 0, 0, 0]",5,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Male,8,Prolific,4,6,6,10,10,2,222702.jpg,Window,LVIS,222702_1,United Kingdom
+女性の顔,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",55,Female,5,CrowdWorks,2,5,5,9,7,0,3567f456130c4ec2.jpg,女性の顔,OpenImages,3567f456130c4ec2_0,Japan
+人,"[1, 0, 0, 0, 0, 0]",5,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",35,Female,5,CrowdWorks,6,6,6,7,6,1,12224.jpg,人,LVIS,12224_0,Japan
+Cinema/Seat Location,"[0, 1, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",24,Male,2,Prolific,3,6,5,9,9,3,0dafda2d460a3354.jpg,Cinema/Seat Location,OpenImages,0dafda2d460a3354_0,British
+Location behind the bear,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",21,Female,4,Prolific,10,4,4,8,7,2,153710.jpg,Location behind the bear,LVIS,153710_0,British
+It is a bit blurred but possibly mentioning the company car this is for? Like a taxi company,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",27,Male,8,Prolific,5,7,9,6,8,2,08481c03daf6f35d.jpg,It is a bit blurred but possibly mentioning the company car this is for? Like a taxi company,OpenImages,08481c03daf6f35d_0,British
+車,"[1, 1, 0, 1, 0, 0]",5,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",36,Male,9,CrowdWorks,4,4,7,7,9,3,091c033b2a7df15b.jpg,車,OpenImages,091c033b2a7df15b_0,Japan
+Person,"[1, 0, 1, 1, 1, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",43,Male,9,Prolific,6,10,7,9,9,1,123944.jpg,Person,LVIS,123944_0,United Kingdom
+Person,"[1, 0, 1, 1, 1, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",43,Male,9,Prolific,6,10,7,9,9,1,123944.jpg,Person,LVIS,123944_1,United Kingdom
+Children,"[1, 0, 1, 1, 1, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",43,Male,9,Prolific,6,10,7,9,9,1,123944.jpg,Children,LVIS,123944_2,United Kingdom
+Surfboard,"[1, 0, 1, 0, 1, 0]",1,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",43,Male,9,Prolific,6,10,7,9,9,1,123944.jpg,Surfboard,LVIS,123944_3,United Kingdom
+Name,"[1, 0, 0, 0, 0, 0]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",20,Male,4,Prolific,7,6,6,9,10,2,276476.jpg,Name,LVIS,276476_0,British
+A shop,"[0, 1, 0, 0, 0, 0]",2,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",28,Male,7,Prolific,3,7,6,9,6,0,205808.jpg,A shop,LVIS,205808_0,British
+顔,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,8,CrowdWorks,4,8,7,6,4,2,128127.jpg,顔,LVIS,128127_0,Japan
+Face,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,5,CrowdWorks,7,3,8,7,10,2,07b75881c1ffc059.jpg,Face,OpenImages,07b75881c1ffc059_0,Japan
+travel history,"[0, 0, 0, 0, 0, 1]",1,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",37,Male,6,Prolific,3,7,7,7,8,0,011aa924ac37f130.jpg,travel history,OpenImages,011aa924ac37f130_0,Scottish
+Violins ,"[0, 0, 1, 0, 0, 0]",4,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 1, 0, 0]",21,Female,4,Prolific,10,4,4,8,7,2,167e73349f96c0e2.jpg,Violins ,OpenImages,167e73349f96c0e2_0,British
+人物,"[1, 0, 0, 0, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",43,Male,6,CrowdWorks,3,6,4,8,5,1,494913.jpg,人物,LVIS,494913_0,Japan
+４人の人物の横顔、後ろ姿,"[1, 0, 1, 1, 0, 0]",1,"[0, 1, 1, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,10,CrowdWorks,4,6,4,9,10,1,13729.jpg,４人の人物の横顔、後ろ姿,LVIS,13729_0,Japan
+faces,"[1, 0, 0, 1, 0, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",59,Female,6,Prolific,6,8,10,5,7,3,13729.jpg,faces,LVIS,13729_0,English
+人物,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",26,Male,9,CrowdWorks,3,4,6,6,6,1,211141.jpg,人物,LVIS,211141_0,Japan
+Person,"[1, 0, 0, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",43,Male,9,Prolific,6,10,7,9,9,1,211141.jpg,Person,LVIS,211141_0,United Kingdom
+人物の顔,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",53,Female,9,CrowdWorks,4,6,6,9,9,3,166478.jpg,人物の顔,LVIS,166478_0,Japan
+A human,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",64,Male,9,Prolific,4,4,7,3,4,0,166478.jpg,A human,LVIS,166478_0,British
+女性,"[1, 0, 1, 0, 1, 0]",5,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",32,Male,10,CrowdWorks,3,7,7,4,8,1,272741.jpg,女性,LVIS,272741_0,Japan
+Vehicle registration,"[0, 0, 0, 0, 1, 1]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",31,Male,6,Prolific,3,7,6,4,5,1,134886.jpg,Vehicle registration,LVIS,134886_0,British
+人物,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",26,Male,9,CrowdWorks,3,4,6,6,6,1,136915.jpg,人物,LVIS,136915_0,Japan
+人物,"[1, 0, 0, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",26,Male,9,CrowdWorks,3,4,6,6,6,1,136915.jpg,人物,LVIS,136915_1,Japan
+人物,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",26,Male,9,CrowdWorks,3,4,6,6,6,1,136915.jpg,人物,LVIS,136915_2,Japan
+Person,"[1, 0, 0, 1, 1, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",43,Male,9,Prolific,6,10,7,9,9,1,136915.jpg,Person,LVIS,136915_0,United Kingdom
+People,"[1, 0, 1, 1, 1, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",43,Male,9,Prolific,6,10,7,9,9,1,136915.jpg,People,LVIS,136915_1,United Kingdom
+スキーウェア,"[0, 0, 0, 1, 0, 0]",5,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",57,Female,7,CrowdWorks,4,5,9,8,7,0,103935.jpg,スキーウェア,LVIS,103935_0,Japan
+passport,"[0, 0, 0, 0, 1, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",62,Male,2,Prolific,2,2,6,6,10,2,473069.jpg,passport,LVIS,473069_0,british
+Location of ID Holders,"[1, 0, 0, 0, 0, 1]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",29,Male,9,Prolific,3,6,7,8,8,4,165624613ce0b10a.jpg,Location of ID Holders,OpenImages,165624613ce0b10a_0,British
+Partial Barcode,"[0, 0, 0, 0, 0, 1]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",29,Male,9,Prolific,3,6,7,8,8,4,165624613ce0b10a.jpg,Partial Barcode,OpenImages,165624613ce0b10a_1,British
+number plate,"[0, 0, 0, 0, 1, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",62,Male,2,Prolific,2,2,6,6,10,2,0cacb08195a3e2d7.jpg,number plate,OpenImages,0cacb08195a3e2d7_0,british
+Dog,"[1, 0, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",56,Female,0,Prolific,6,5,9,5,5,1,126110.jpg,Dog,LVIS,126110_0,white british
+Person,"[0, 0, 0, 0, 1, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",56,Female,0,Prolific,6,5,9,5,5,1,126110.jpg,Person,LVIS,126110_1,white british
+人物,"[1, 0, 1, 1, 1, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Female,7,CrowdWorks,8,6,8,4,7,1,146316cdeb2aef2a.jpg,人物,OpenImages,146316cdeb2aef2a_0,Japan
+Buildings,"[0, 1, 0, 0, 0, 0]",5,"[0, 0, 1, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,8,Prolific,5,6,5,8,7,2,119516.jpg,Buildings,LVIS,119516_0,british
+Personal documents,"[0, 0, 1, 0, 1, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Male,6,Prolific,9,4,9,5,9,1,366683.jpg,Personal documents,LVIS,366683_0,British
+Food and drink,"[0, 0, 1, 0, 0, 0]",5,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",46,Male,6,Prolific,9,4,9,5,9,1,366683.jpg,Food and drink,LVIS,366683_1,British
+顔,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",37,Female,7,CrowdWorks,7,6,6,9,8,2,13856.jpg,顔,LVIS,13856_0,Japan
+Potential prescription medicines,"[0, 0, 0, 0, 1, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",29,Male,9,Prolific,3,6,7,8,8,4,8d77172370c2d4b2.jpg,Potential prescription medicines,OpenImages,8d77172370c2d4b2_0,British
+Boy,"[1, 0, 0, 0, 0, 0]",3,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",56,Female,0,Prolific,6,5,9,5,5,1,283548.jpg,Boy,LVIS,283548_0,white british
+Passport,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Male,4,Prolific,8,6,7,6,5,3,251016.jpg,Passport,LVIS,251016_0,British
+メール,"[0, 0, 0, 0, 1, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,6,CrowdWorks,9,10,10,3,7,2,155591.jpg,メール,LVIS,155591_0,Japan
+name badge,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 1, 0, 0]",22,Female,2,Prolific,9,7,5,9,8,2,010d9a7f0d2e0622.jpg,name badge,OpenImages,010d9a7f0d2e0622_0,british
+location ,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 1, 1, 0, 0, 0]","[0, 0, 0, 1, 1, 1, 0]",22,Female,2,Prolific,9,7,5,9,8,2,010d9a7f0d2e0622.jpg,location ,OpenImages,010d9a7f0d2e0622_1,british
+国旗,"[0, 1, 0, 1, 0, 0]",1,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 1, 0, 0]",32,Male,10,CrowdWorks,3,7,7,4,8,1,09453a7c716a9ef3.jpg,国旗,OpenImages,09453a7c716a9ef3_0,Japan
+ man's face,"[1, 1, 1, 1, 0, 0]",6,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",33,Female,9,CrowdWorks,8,3,4,8,8,3,120778.jpg, man's face,LVIS,120778_0,Japan
+Face,"[1, 0, 0, 1, 0, 0]",5,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",31,Male,6,Prolific,3,7,6,4,5,1,120778.jpg,Face,LVIS,120778_0,British
+Human faces,"[1, 0, 0, 1, 0, 0]",5,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",39,Female,3,Prolific,5,7,9,7,9,1,146358.jpg,Human faces,LVIS,146358_0,British
+人物,"[1, 0, 0, 0, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Female,10,CrowdWorks,6,6,6,9,9,1,102205.jpg,人物,LVIS,102205_0,Japan
+車両と風景,"[0, 1, 0, 1, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Female,10,CrowdWorks,6,6,6,9,9,1,102205.jpg,車両と風景,LVIS,102205_1,Japan
+Laptop screen,"[1, 0, 0, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,6,Prolific,6,10,9,2,9,0,6f03523065fa0ea5.jpg,Laptop screen,OpenImages,6f03523065fa0ea5_0,British
+人間,"[0, 0, 0, 0, 0, 1]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",25,Female,5,CrowdWorks,3,4,8,8,10,1,101115.jpg,人間,LVIS,101115_0,Japan
+顔,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",54,Female,5,CrowdWorks,5,8,9,3,10,1,122166.jpg,顔,LVIS,122166_0,Japan
+Company name or logo,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Male,4,Prolific,5,8,10,4,8,1,04efbfa009755571.jpg,Company name or logo,OpenImages,04efbfa009755571_0,British
+メモ？書類？,"[1, 0, 0, 1, 1, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,7,CrowdWorks,3,2,4,7,10,3,105804.jpg,メモ？書類？,LVIS,105804_0,Japan
+Letters,"[0, 0, 0, 0, 1, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",51,Male,2,Prolific,2,7,8,9,5,1,105804.jpg,Letters,LVIS,105804_0,UK
+person,"[0, 0, 0, 0, 0, 1]",5,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,8,Prolific,5,6,5,8,7,2,134206.jpg,person,LVIS,134206_0,british
+Person,"[0, 0, 0, 0, 0, 1]",5,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,8,Prolific,5,6,5,8,7,2,134206.jpg,Person,LVIS,134206_1,british
+Person,"[0, 0, 0, 0, 0, 1]",5,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,8,Prolific,5,6,5,8,7,2,134206.jpg,Person,LVIS,134206_2,british
+Person,"[0, 0, 0, 0, 0, 1]",5,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,8,Prolific,5,6,5,8,7,2,134206.jpg,Person,LVIS,134206_3,british
+Person,"[0, 0, 0, 0, 0, 1]",5,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,8,Prolific,5,6,5,8,7,2,134206.jpg,Person,LVIS,134206_4,british
+Person,"[0, 0, 0, 0, 0, 1]",5,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,8,Prolific,5,6,5,8,7,2,134206.jpg,Person,LVIS,134206_5,british
+Person,"[0, 0, 0, 0, 0, 1]",5,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,8,Prolific,5,6,5,8,7,2,134206.jpg,Person,LVIS,134206_6,british
+Person,"[0, 0, 0, 0, 0, 1]",5,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,8,Prolific,5,6,5,8,7,2,134206.jpg,Person,LVIS,134206_7,british
+person,"[0, 0, 0, 0, 0, 1]",5,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,8,Prolific,5,6,5,8,7,2,134206.jpg,person,LVIS,134206_8,british
+人が写った写真,"[1, 0, 0, 0, 0, 0]",3,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",59,Male,7,CrowdWorks,4,4,6,9,6,1,4b523b5b89444fcf.jpg,人が写った写真,OpenImages,4b523b5b89444fcf_0,Japan
+Laptop,"[1, 1, 0, 0, 0, 0]",2,"[0, 0, 0, 1, 0, 0, 0]","[0, 0, 0, 1, 0, 0, 0]",31,Male,9,Prolific,4,4,5,8,10,1,160201.jpg,Laptop,LVIS,160201_0,White British
+POSTER,"[0, 1, 0, 0, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",30,Female,7,CrowdWorks,9,5,7,7,9,2,0b3445eeb72b3803.jpg,POSTER,OpenImages,0b3445eeb72b3803_0,Japan
+face,"[1, 0, 0, 0, 0, 0]",2,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",20,Male,4,Prolific,4,6,10,6,6,1,117156.jpg,face,LVIS,117156_0,British 
+person,"[1, 0, 0, 0, 0, 0]",6,"[0, 0, 1, 1, 1, 0, 0]","[0, 0, 1, 1, 1, 0, 0]",37,Male,5,Prolific,6,6,5,6,6,1,284651.jpg,person,LVIS,284651_0,United Kingdom
+id tag,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",31,Male,4,Prolific,3,5,8,7,6,1,151820.jpg,id tag,LVIS,151820_0,English
+顔,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",54,Female,5,CrowdWorks,5,8,9,3,10,1,182637.jpg,顔,LVIS,182637_0,Japan
+窓,"[0, 1, 0, 1, 0, 0]",0,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",32,Male,10,CrowdWorks,3,7,7,4,8,1,193042.jpg,窓,LVIS,193042_0,Japan
+新郎と新婦,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",30,Female,2,CrowdWorks,4,6,8,8,9,4,31620.jpg,新郎と新婦,LVIS,31620_0,Japan
+Child,"[0, 0, 0, 0, 0, 1]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",37,Male,1,Prolific,6,4,7,6,6,3,221000.jpg,Child,LVIS,221000_0,British
+人物,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",26,Male,9,CrowdWorks,3,4,6,6,6,1,109277.jpg,人物,LVIS,109277_0,Japan
+人物,"[1, 0, 0, 0, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",26,Male,9,CrowdWorks,3,4,6,6,6,1,109277.jpg,人物,LVIS,109277_1,Japan
+Person,"[1, 0, 1, 1, 1, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",43,Male,9,Prolific,6,10,7,9,9,1,109277.jpg,Person,LVIS,109277_0,United Kingdom
+Person,"[1, 0, 1, 1, 1, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",43,Male,9,Prolific,6,10,7,9,9,1,109277.jpg,Person,LVIS,109277_1,United Kingdom
+bus route,"[0, 1, 0, 0, 0, 0]",5,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",22,Female,2,Prolific,9,7,5,9,8,2,18006.jpg,bus route,LVIS,18006_0,british
+新婚カップル,"[1, 0, 1, 1, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,9,CrowdWorks,4,4,5,10,8,1,119492.jpg,新婚カップル,LVIS,119492_0,Japan
+従業員,"[1, 0, 0, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",45,Male,9,CrowdWorks,4,4,5,10,8,1,119492.jpg,従業員,LVIS,119492_1,Japan
+CAT,"[1, 1, 0, 1, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Female,9,CrowdWorks,9,5,8,4,6,2,201151.jpg,CAT,LVIS,201151_0,Japan
+建物,"[0, 1, 0, 1, 0, 0]",1,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",50,Male,7,CrowdWorks,8,3,6,7,7,0,273121f76dc580cb.jpg,建物,OpenImages,273121f76dc580cb_0,Japan
+Instrument,"[0, 0, 1, 0, 0, 0]",3,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 1, 1, 0]",35,Female,5,Prolific,5,4,8,9,8,1,3cf84110ea52ff43.jpg,Instrument,OpenImages,3cf84110ea52ff43_0,British
+テレビ,"[0, 0, 0, 1, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",45,Male,9,CrowdWorks,4,4,5,10,8,1,6e2ea48a2474adf1.jpg,テレビ,OpenImages,6e2ea48a2474adf1_0,Japan
+パソコン,"[1, 0, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,4,CrowdWorks,5,6,10,4,6,1,178469.jpg,パソコン,LVIS,178469_0,Japan
+男性の顔,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Female,5,CrowdWorks,4,7,8,6,8,1,101088.jpg,男性の顔,LVIS,101088_0,Japan
+Face,"[1, 1, 0, 0, 0, 0]",4,"[0, 1, 1, 1, 1, 1, 0]","[0, 1, 1, 1, 1, 0, 0]",22,Male,6,Prolific,4,6,7,8,10,0,117321.jpg,Face,LVIS,117321_0,British
+Face of Person,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,8,Prolific,4,6,6,10,10,2,119647.jpg,Face of Person,LVIS,119647_0,United Kingdom
+車体,"[1, 1, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,10,CrowdWorks,5,5,6,8,7,1,081f5a6bc61b9c48.jpg,車体,OpenImages,081f5a6bc61b9c48_0,Japan
+ビル群,"[0, 1, 0, 0, 0, 0]",3,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",38,Male,9,CrowdWorks,6,5,6,9,6,1,10566.jpg,ビル群,LVIS,10566_0,Japan
+Car registration plate,"[1, 1, 0, 0, 0, 1]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",27,Male,8,Prolific,5,7,9,6,8,2,0727983dd5f9e4e6.jpg,Car registration plate,OpenImages,0727983dd5f9e4e6_0,British
+Name of a store,"[0, 1, 0, 0, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",27,Male,8,Prolific,5,7,9,6,8,2,0727983dd5f9e4e6.jpg,Name of a store,OpenImages,0727983dd5f9e4e6_1,British
+baby's face,"[1, 0, 0, 0, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",43,Female,3,Prolific,7,5,10,6,7,1,20af1d21449acdce.jpg,baby's face,OpenImages,20af1d21449acdce_0,British
+女性,"[1, 0, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Female,10,CrowdWorks,6,6,6,9,9,1,10192.jpg,女性,LVIS,10192_0,Japan
+Person's face,"[1, 0, 0, 0, 0, 1]",6,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",34,Male,10,Prolific,2,8,6,7,8,0,10192.jpg,Person's face,LVIS,10192_0,British
+Place Name,"[0, 1, 0, 0, 0, 0]",3,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",37,Male,4,Prolific,4,8,6,8,9,3,057569768fd6303e.jpg,Place Name,OpenImages,057569768fd6303e_0,United Kingdom
+男性の横顔、上半身,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 1, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Female,10,CrowdWorks,4,6,4,9,10,1,337490.jpg,男性の横顔、上半身,LVIS,337490_0,Japan
+Face,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",30,Male,5,CrowdWorks,7,3,8,7,10,2,200764.jpg,Face,LVIS,200764_0,Japan
+map,"[0, 1, 0, 0, 0, 0]",0,"[0, 1, 1, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Male,3,Prolific,6,7,7,4,7,2,3a71be7ae113e593.jpg,map,OpenImages,3a71be7ae113e593_0,British 
+room number,"[0, 1, 0, 0, 0, 0]",1,"[0, 1, 1, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",42,Male,3,Prolific,6,7,7,4,7,2,3a71be7ae113e593.jpg,room number,OpenImages,3a71be7ae113e593_1,British 
+人の列,"[1, 1, 0, 1, 1, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,8,CrowdWorks,4,8,7,6,4,2,22487.jpg,人の列,LVIS,22487_0,Japan
+楽団,"[1, 0, 0, 0, 1, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,8,CrowdWorks,4,8,7,6,4,2,22487.jpg,楽団,LVIS,22487_1,Japan
+Photographs,"[1, 0, 1, 1, 0, 0]",3,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",43,Male,3,Prolific,6,5,7,6,6,2,2ed000d799794d71.jpg,Photographs,OpenImages,2ed000d799794d71_0,British
+顔がわかる、袋のようなものがあることに違和感がある。,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,7,CrowdWorks,8,6,8,4,7,1,110982.jpg,顔がわかる、袋のようなものがあることに違和感がある。,LVIS,110982_0,Japan
+景観,"[0, 1, 0, 0, 0, 0]",3,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",38,Male,9,CrowdWorks,6,5,6,9,6,1,106003.jpg,景観,LVIS,106003_0,Japan
+人物の顔,"[1, 0, 1, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",55,Female,5,CrowdWorks,2,5,5,9,7,0,397303.jpg,人物の顔,LVIS,397303_0,Japan
+ man's face,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",33,Female,9,CrowdWorks,8,3,4,8,8,3,12614.jpg, man's face,LVIS,12614_0,Japan
+Face,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",34,Male,8,Prolific,9,6,6,8,9,3,12614.jpg,Face,LVIS,12614_0,British
+人,"[1, 0, 0, 0, 0, 0]",6,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",35,Female,5,CrowdWorks,6,6,6,7,6,1,122046.jpg,人,LVIS,122046_0,Japan
+face,"[0, 0, 0, 0, 0, 1]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",57,Female,1,Prolific,4,6,6,6,6,0,122046.jpg,face,LVIS,122046_0,british
+人物の顔,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",55,Female,5,CrowdWorks,2,5,5,9,7,0,119709.jpg,人物の顔,LVIS,119709_0,Japan
+ROOM,"[0, 1, 0, 1, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",52,Male,9,CrowdWorks,5,7,5,9,6,1,106123.jpg,ROOM,LVIS,106123_0,Japan
+Name on display,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",37,Male,5,Prolific,6,6,5,6,6,1,17ef06ab2c9e5e0c.jpg,Name on display,OpenImages,17ef06ab2c9e5e0c_0,United Kingdom
+Being away / location,"[0, 1, 1, 0, 0, 0]",4,"[0, 0, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",35,Male,7,Prolific,4,8,7,4,6,1,102331.jpg,Being away / location,LVIS,102331_0,British
+cat,"[1, 0, 1, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",28,Male,8,Prolific,8,3,6,5,10,0,276479.jpg,cat,LVIS,276479_0,United Kingdom
+携帯電話,"[1, 1, 1, 1, 1, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,9,CrowdWorks,6,5,6,9,6,1,0555a1f17c73207c.jpg,携帯電話,OpenImages,0555a1f17c73207c_0,Japan
+ビデオカメラ,"[1, 1, 1, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",38,Male,9,CrowdWorks,6,5,6,9,6,1,0555a1f17c73207c.jpg,ビデオカメラ,OpenImages,0555a1f17c73207c_1,Japan
+人物と風景,"[1, 1, 0, 1, 1, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Female,10,CrowdWorks,6,6,6,9,9,1,49902.jpg,人物と風景,LVIS,49902_0,Japan
+Members of public,"[1, 1, 1, 0, 1, 0]",5,"[0, 1, 1, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",34,Male,10,Prolific,2,8,6,7,8,0,49902.jpg,Members of public,LVIS,49902_0,British
+People,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",42,Male,7,Prolific,4,8,5,4,10,3,127394.jpg,People,LVIS,127394_0,prefer not to say
+Name,"[1, 0, 0, 0, 1, 0]",5,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",19,Male,4,Prolific,6,6,9,8,8,1,1b8d52cb603f71ad.jpg,Name,OpenImages,1b8d52cb603f71ad_0,British
+Baby,"[0, 0, 0, 0, 0, 1]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",50,Male,2,Prolific,4,4,8,6,9,0,153231.jpg,Baby,LVIS,153231_0,United Kingdom
+受付カウンター,"[0, 1, 0, 0, 0, 0]",2,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",32,Male,8,CrowdWorks,3,8,5,3,2,2,326966.jpg,受付カウンター,LVIS,326966_0,Japan
+People,"[1, 1, 0, 1, 1, 1]",6,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",34,Male,10,Prolific,2,8,6,7,8,0,314246.jpg,People,LVIS,314246_0,British
+Environment,"[0, 1, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",47,Other,7,Prolific,9,8,10,4,10,1,0222c555d2c21a2f.jpg,Environment,OpenImages,0222c555d2c21a2f_0,British
+顔1,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",48,Female,7,CrowdWorks,6,7,7,7,8,1,207215.jpg,顔1,LVIS,207215_0,Japan
+顔２,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",48,Female,7,CrowdWorks,6,7,7,7,8,1,207215.jpg,顔２,LVIS,207215_1,Japan
+Number plate,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",09,Female,1,Prolific,5,7,10,7,7,2,151483.jpg,Number plate,LVIS,151483_0,British
+顔,"[1, 0, 1, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",33,Male,7,CrowdWorks,3,2,4,7,10,3,277122.jpg,顔,LVIS,277122_0,Japan
+Location,"[0, 1, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",23,Female,7,Prolific,5,8,7,7,8,1,109591.jpg,Location,LVIS,109591_0,UK
+写真,"[1, 0, 0, 0, 0, 0]",3,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,7,CrowdWorks,6,4,5,6,7,0,0e2868759e7a615c.jpg,写真,OpenImages,0e2868759e7a615c_0,Japan
+child's face,"[1, 0, 1, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",75,Female,2,Prolific,8,6,7,5,7,0,114286.jpg,child's face,LVIS,114286_0,British
+人物,"[1, 1, 0, 0, 0, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",29,Female,9,CrowdWorks,3,6,6,6,8,1,138979.jpg,人物,LVIS,138979_0,Japan
+ナンバープレート,"[1, 1, 0, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",29,Female,9,CrowdWorks,3,6,6,6,8,1,138979.jpg,ナンバープレート,LVIS,138979_1,Japan
+Car model and registration,"[1, 0, 0, 0, 1, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",34,Male,8,Prolific,9,6,6,8,9,3,138979.jpg,Car model and registration,LVIS,138979_0,British
+car code,"[1, 0, 0, 0, 0, 0]",1,"[0, 1, 1, 1, 0, 0, 0]","[0, 1, 1, 1, 0, 0, 0]",33,Other,1,Prolific,3,7,5,10,10,4,197807.jpg,car code,LVIS,197807_0,United Kingdom
+人の顔,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,7,CrowdWorks,4,4,6,9,6,1,0e360a4689ac06e8.jpg,人の顔,OpenImages,0e360a4689ac06e8_0,Japan
+Face,"[0, 0, 0, 0, 0, 1]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",26,Male,4,Prolific,5,9,6,7,7,2,18982.jpg,Face,LVIS,18982_0,United Kingdom
+個人の顔,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,7,CrowdWorks,4,5,5,7,10,2,146315.jpg,個人の顔,LVIS,146315_0,Japan
+個人の顔,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,7,CrowdWorks,4,5,5,7,10,2,146315.jpg,個人の顔,LVIS,146315_1,Japan
+個人の顔,"[1, 0, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,7,CrowdWorks,4,5,5,7,10,2,146315.jpg,個人の顔,LVIS,146315_2,Japan
+制服,"[0, 0, 0, 0, 1, 0]",5,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,7,CrowdWorks,4,5,5,7,10,2,146315.jpg,制服,LVIS,146315_3,Japan
+個人の顔,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,7,CrowdWorks,4,5,5,7,10,2,124364.jpg,個人の顔,LVIS,124364_0,Japan
+個人の顔,"[1, 0, 0, 0, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",41,Female,7,CrowdWorks,4,5,5,7,10,2,124364.jpg,個人の顔,LVIS,124364_1,Japan
+Person,"[1, 0, 0, 0, 1, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",32,Female,6,Prolific,6,6,8,9,9,0,206102.jpg,Person,LVIS,206102_0,British
+Person,"[1, 0, 0, 0, 1, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",32,Female,6,Prolific,6,6,8,9,9,0,206102.jpg,Person,LVIS,206102_1,British
+DOG,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 1, 0, 0, 0, 0]","[0, 1, 1, 0, 0, 0, 0]",24,Female,5,CrowdWorks,4,6,5,8,7,1,125928.jpg,DOG,LVIS,125928_0,Japan
+Human head,"[1, 1, 1, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",26,Male,7,Prolific,6,6,7,6,8,1,104188.jpg,Human head,LVIS,104188_0,british
+Human head,"[1, 1, 0, 1, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",26,Male,7,Prolific,6,6,7,6,8,1,104188.jpg,Human head,LVIS,104188_1,british
+Human head,"[1, 1, 1, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",26,Male,7,Prolific,6,6,7,6,8,1,104188.jpg,Human head,LVIS,104188_2,british
+Human head,"[1, 1, 1, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",26,Male,7,Prolific,6,6,7,6,8,1,104188.jpg,Human head,LVIS,104188_3,british
+"Could be a company laptop, and while blurred it could be showing something like a serial number of the device or device number that's kept in the organisation","[1, 0, 0, 0, 1, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",27,Male,8,Prolific,5,7,9,6,8,2,435d906eb2bbc878.jpg,"Could be a company laptop, and while blurred it could be showing something like a serial number of the device or device number that's kept in the organisation",OpenImages,435d906eb2bbc878_0,British
+人の顔が写っている,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",44,Male,6,CrowdWorks,2,6,9,5,6,1,106338.jpg,人の顔が写っている,LVIS,106338_0,Japan
+車の中,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",32,Female,10,CrowdWorks,9,10,5,8,9,1,0b36a67f496e3001.jpg,車の中,OpenImages,0b36a67f496e3001_0,Japan
+車のナンバー,"[1, 0, 0, 1, 0, 0]",6,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",32,Female,10,CrowdWorks,9,10,5,8,9,1,0b36a67f496e3001.jpg,車のナンバー,OpenImages,0b36a67f496e3001_1,Japan
+社名,"[0, 1, 0, 0, 1, 0]",4,"[0, 0, 1, 0, 0, 0, 0]","[0, 0, 1, 0, 0, 0, 0]",32,Female,10,CrowdWorks,9,10,5,8,9,1,0b36a67f496e3001.jpg,社名,OpenImages,0b36a67f496e3001_2,Japan
+顔,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",42,Male,4,CrowdWorks,6,8,7,6,8,1,0f0c237588553730.jpg,顔,OpenImages,0f0c237588553730_0,Japan
+顔,"[1, 0, 0, 0, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",39,Female,5,CrowdWorks,3,4,5,9,8,1,00018457a4aafe75.jpg,顔,OpenImages,00018457a4aafe75_0,Japan
+書類,"[0, 0, 0, 1, 0, 0]",4,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",39,Female,5,CrowdWorks,3,4,5,9,8,1,00018457a4aafe75.jpg,書類,OpenImages,00018457a4aafe75_1,Japan
+work ID,"[1, 0, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Male,6,Prolific,3,6,5,6,8,1,00018457a4aafe75.jpg,work ID,OpenImages,00018457a4aafe75_0,british
+Men,"[0, 0, 1, 0, 0, 1]",5,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,8,Prolific,5,6,5,8,7,2,121031.jpg,Men,LVIS,121031_0,british
+poster on wall,"[0, 1, 1, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",49,Female,3,Prolific,3,4,5,8,7,2,0bb8c226cb97b705.jpg,poster on wall,OpenImages,0bb8c226cb97b705_0,British
+person with location,"[0, 1, 0, 0, 0, 0]",6,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",54,Female,3,Prolific,4,7,8,6,5,0,133766.jpg,person with location,LVIS,133766_0,British
+顔がわかる。,"[1, 1, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,7,CrowdWorks,8,6,8,4,7,1,11661.jpg,顔がわかる。,LVIS,11661_0,Japan
+顔,"[1, 1, 0, 0, 0, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",38,Female,7,CrowdWorks,8,6,8,4,7,1,11661.jpg,顔,LVIS,11661_1,Japan
+人の顔,"[1, 0, 0, 0, 0, 0]",0,"[0, 1, 0, 0, 0, 0, 0]","[0, 1, 0, 0, 0, 0, 0]",59,Male,7,CrowdWorks,4,4,6,9,6,1,110435.jpg,人の顔,LVIS,110435_0,Japan
+frequent flyer id,"[1, 0, 0, 0, 1, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",62,Male,3,Prolific,5,10,10,4,10,1,0da4cb46204a5c0d.jpg,frequent flyer id,OpenImages,0da4cb46204a5c0d_0,United Kingdom
+Map,"[0, 0, 0, 0, 0, 1]",2,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",34,Female,2,Prolific,4,4,5,7,4,1,3a689e83e0e9f6e9.jpg,Map,OpenImages,3a689e83e0e9f6e9_0,English
+着てる服や本など,"[0, 0, 0, 1, 0, 0]",4,"[0, 0, 0, 0, 1, 0, 0]","[0, 0, 0, 0, 1, 0, 0]",49,Male,5,CrowdWorks,4,6,4,8,4,1,14883.jpg,着てる服や本など,LVIS,14883_0,Japan
+Painting,"[0, 0, 1, 0, 0, 0]",4,"[0, 1, 1, 1, 1, 0, 0]","[0, 1, 1, 1, 1, 0, 0]",22,Male,6,Prolific,3,7,7,8,9,1,10092.jpg,Painting,LVIS,10092_0,English
+People,"[1, 0, 0, 0, 0, 0]",5,"[0, 1, 1, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",31,Male,6,Prolific,6,10,9,2,9,0,176463.jpg,People,LVIS,176463_0,British
+人物,"[1, 0, 0, 0, 0, 0]",4,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Female,10,CrowdWorks,6,6,6,9,9,1,003a5aaf6d17c917.jpg,人物,OpenImages,003a5aaf6d17c917_0,Japan
+会社名ロゴ,"[0, 1, 0, 0, 1, 0]",5,"[1, 0, 0, 0, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",46,Female,10,CrowdWorks,6,6,6,9,9,1,003a5aaf6d17c917.jpg,会社名ロゴ,OpenImages,003a5aaf6d17c917_1,Japan
+Company sign,"[0, 1, 0, 0, 0, 0]",3,"[0, 1, 1, 1, 0, 0, 0]","[1, 0, 0, 0, 0, 0, 0]",34,Male,10,Prolific,2,8,6,7,8,0,003a5aaf6d17c917.jpg,Company sign,OpenImages,003a5aaf6d17c917_0,British
