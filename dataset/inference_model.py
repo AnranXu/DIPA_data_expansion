@@ -117,11 +117,11 @@ class BaseModel(pl.LightningModule):
         recall = Recall(task="multilabel", num_labels=5, average='weighted', ignore_index = 4)
         f1score = F1Score(task="multilabel", num_labels=5, average='weighted', ignore_index = 4)
 
-        _, max_indices = torch.max(y_preds[:, :5], dim = 1)
-        accuracy(max_indices, information.type(torch.FloatTensor).to('cuda'))
-        precision(max_indices, information.type(torch.FloatTensor).to('cuda'))
-        recall(max_indices, information.type(torch.FloatTensor).to('cuda'))
-        f1score(max_indices, information.type(torch.FloatTensor).to('cuda'))
+        #_, max_indices = torch.max(y_preds[:, :5], dim = 1)
+        accuracy(y_preds[:, :5], information.type(torch.FloatTensor).to('cuda'))
+        precision(y_preds[:, :5], information.type(torch.FloatTensor).to('cuda'))
+        recall(y_preds[:, :5], information.type(torch.FloatTensor).to('cuda'))
+        f1score(y_preds[:, :5], information.type(torch.FloatTensor).to('cuda'))
 
         self.log(f"{text}/acc for information type", accuracy.compute())
         self.log(f"{text}/pre for information type", precision.compute())
@@ -138,11 +138,11 @@ class BaseModel(pl.LightningModule):
 
         self.log(f"{text}/distance for informativeness", distance)
 
-        _, max_indices = torch.max(y_preds[:,6:11], dim = 1)
-        accuracy(max_indices, sharingOwner.type(torch.FloatTensor).to('cuda'))
-        precision(max_indices, sharingOwner.type(torch.FloatTensor).to('cuda'))
-        recall(max_indices, sharingOwner.type(torch.FloatTensor).to('cuda'))
-        f1score(max_indices, sharingOwner.type(torch.FloatTensor).to('cuda'))
+        #_, max_indices = torch.max(y_preds[:,6:11], dim = 1)
+        accuracy(y_preds[:,6:11], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        precision(y_preds[:,6:11], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        recall(y_preds[:,6:11], sharingOwner.type(torch.FloatTensor).to('cuda'))
+        f1score(y_preds[:,6:11], sharingOwner.type(torch.FloatTensor).to('cuda'))
 
         self.log(f"{text}/acc for sharing as owner", accuracy.compute())
         self.log(f"{text}/pre for sharing as owner", precision.compute())
