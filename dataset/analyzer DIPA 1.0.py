@@ -188,7 +188,7 @@ class analyzer:
                             self.custom_informationType.append(value['informationTypeInput'])
                         entry = pd.DataFrame.from_dict({
                             'id': [id],
-                            "category": ['Object 0'],
+                            "category": ['Manual Label'],
                             "informationType":  [informationType],
                             "informativeness": [informativeness],
                             "sharing": [sharing],

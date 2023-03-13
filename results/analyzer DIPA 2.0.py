@@ -272,7 +272,7 @@ class analyzer:
                             self.custom_recipient_others.append(value['sharingOthersInput'])
                         entry = pd.DataFrame.from_dict({
                             'id': [id],
-                                "category": [category],
+                                "category": ['Manual Label'],
                                 "informationType":  [informationType],
                                 "informativeness": [informativeness],
                                 "sharingOwner": [sharingOwner],
@@ -838,7 +838,7 @@ if __name__ == '__main__':
     #analyze.count_worker_privacy_num()
     analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=False, ignore_prev_manual_anns=False)
     analyze.prepare_manual_label(save_csv=True, strict_mode=True)
-    #analyze.basic_count(ignore_prev_manual_anns=False)
+    analyze.basic_count(ignore_prev_manual_anns=False)
     analyze.prepare_regression_model_table(read_csv=True)
     #analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
     

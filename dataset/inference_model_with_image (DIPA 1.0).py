@@ -22,7 +22,7 @@ torch.set_default_tensor_type('torch.cuda.FloatTensor')
 if __name__ == '__main__':
     bigfives = ["extraversion", "agreeableness", "conscientiousness",
     "neuroticism", "openness"]
-    basic_info = [ "age", "gender", 'datasetName']
+    basic_info = [ "age", "gender", 'datasetName', 'platform']
     category = ['category']
     privacy_metrics = ['informationType', 'informativeness', 'sharing']
 
