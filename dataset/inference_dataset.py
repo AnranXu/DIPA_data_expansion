@@ -89,16 +89,16 @@ class ImageMaskDataset(Dataset):
         # input_vector = torch.from_numpy(input_vector)
         #label
         information = self.mega_table['informationType'].iloc[idx]
-        information = np.array(json.loads(information))
-        information = torch.from_numpy(information)
+        information = [0 if i == information else 1 for i in range(5)]
+        information = torch.tensor(information)
 
         informativeness = self.mega_table['informativeness'].iloc[idx]
         informativeness = torch.tensor(int(informativeness))
 
         sharingOwner = self.mega_table['sharing'].iloc[idx]
-        sharingOwner = np.array(json.loads(sharingOwner))
-        sharingOwner = torch.from_numpy(sharingOwner)
-        
+        sharingOwner = [0 if i == sharingOwner else 1 for i in range(5)]
+        sharingOwner = torch.tensor(sharingOwner)
+
         return image, mask, label, information, informativeness, sharingOwner
 
 
