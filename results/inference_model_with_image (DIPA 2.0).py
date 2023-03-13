@@ -32,7 +32,7 @@ if __name__ == '__main__':
     category = ['category']
     privacy_metrics = ['informationType', 'informativeness', 'sharingOwner', 'sharingOthers']
 
-    mega_table = pd.read_csv('./mega_table (strict).csv')
+    mega_table = pd.read_csv('./mega_table.csv')
 
     description = {'informationType': ['It tells personal information', 'It tells location of shooting',
         'It tells individual preferences/pastimes', 'It tells social circle', 
@@ -80,8 +80,8 @@ if __name__ == '__main__':
     train_loader = DataLoader(train_dataset, batch_size=96, generator=torch.Generator(device='cuda'), shuffle=True)
     val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=32)
     
-    wandb_logger = WandbLogger(project="DIPA2.0-inference test", name = 'micro (resnet 50)')
-    checkpoint_callback = ModelCheckpoint(dirpath='./models/micro (resnet 50)/', save_last=True, monitor='val loss')
+    wandb_logger = WandbLogger(project="DIPA2.0-inference test", name = 'pure micro (resnet 50)')
+    checkpoint_callback = ModelCheckpoint(dirpath='./models/pure micro (resnet 50)/', save_last=True, monitor='val loss')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, 
     auto_lr_find=True, max_epochs = 100, callbacks=[checkpoint_callback])
