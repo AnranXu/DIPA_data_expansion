@@ -71,11 +71,11 @@ if __name__ == '__main__':
     train_loader = DataLoader(train_dataset, batch_size=96, generator=torch.Generator(device='cuda'), shuffle=True)
     val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=64)
     
-    wandb_logger = WandbLogger(project="DIPA-inference", name = 'mix losses cross nationality (resnet 50)')
-    checkpoint_callback = ModelCheckpoint(dirpath='./models/mix losses cross nationality (resnet 50)/', save_last=True, monitor='val loss')
+    wandb_logger = WandbLogger(project="DIPA2.0-inference test", name = 'DIPA 1.0: Include prev manual label  (resnet 50)')
+    checkpoint_callback = ModelCheckpoint(dirpath='./models/DIPA 1.0: Include prev manual label (resnet 50)/', save_last=True, monitor='val loss')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[1],logger=wandb_logger, 
-    auto_lr_find=True, max_epochs = 300, callbacks=[checkpoint_callback])
+    auto_lr_find=True, max_epochs = 100, callbacks=[checkpoint_callback])
     lr_finder = trainer.tuner.lr_find(model, train_loader)
     model.hparams.learning_rate = lr_finder.suggestion()
     print(f'lr auto: {lr_finder.suggestion()}')

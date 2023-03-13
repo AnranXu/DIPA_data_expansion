@@ -154,9 +154,9 @@ class analyzer:
             self.mega_table.to_csv('./mega_table.csv', index =False)
     def prepare_manual_label(self, save_csv = False) -> None:
         self.manual_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharing", 'age', 'gender', 
-        'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness'])
-        for key in self.img_annotation_map.keys():
-            for platform, annotation_name in self.img_annotation_map[key].items():
+        'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'imagePath', 'originCategory', 'datasetName'])
+        for image_name in self.img_annotation_map.keys():
+            for platform, annotation_name in self.img_annotation_map[image_name].items():
                 # now, value[0] is the only availiable index
                 image_id = annotation_name[0].split('_')[0]
                 prefix_len = len(image_id) + 1
@@ -174,7 +174,8 @@ class analyzer:
                     agreeableness = worker['bigfives']['Agreeableness']
                     conscientiousness = worker['bigfives']['Conscientiousness']
                     neuroticism = worker['bigfives']['Neuroticism']
-                    openness = worker['bigfives']['Openness to Experience']           
+                    openness = worker['bigfives']['Openness to Experience']     
+                    dataset_name = label['source']         
                     for key, value in label['manualAnnotation'].items():
                         category = value['category']
                         id = image_id + '_' + key
@@ -187,7 +188,7 @@ class analyzer:
                             self.custom_informationType.append(value['informationTypeInput'])
                         entry = pd.DataFrame.from_dict({
                             'id': [id],
-                            "category": [category],
+                            "category": ['Object 0'],
                             "informationType":  [informationType],
                             "informativeness": [informativeness],
                             "sharing": [sharing],
@@ -199,7 +200,9 @@ class analyzer:
                             "conscientiousness": [conscientiousness],
                             "neuroticism": [neuroticism],
                             "openness": [openness],
-                            'imagePath': [annotation_name[0]]
+                            'imagePath': [image_name + '.jpg'],
+                            'originCategory': value['category'],
+                            'datasetName': [dataset_name]
                         })
 
                         self.manual_table = pd.concat([self.manual_table, entry], ignore_index=True)
@@ -615,12 +618,12 @@ if __name__ == '__main__':
     output_channel = privacy_metrics
     
     #output_channel = ['sharing']
-    analyze.prepare_mega_table(mycat_mode=False, save_csv=True)
+    #analyze.prepare_mega_table(mycat_mode=False, save_csv=True)
     #print(analyze.mega_table['informationType'].unique())
     #print(analyze.mega_table['sharing'].unique())
     #analyze.regression_model(input_channel, output_channel)
     #print(analyze.mega_table)
-    #analyze.prepare_manual_label(save_csv=True)
+    analyze.prepare_manual_label(save_csv=True)
     #print(analyze.custom_informationType)
     #print(analyze.custom_recipient)
     #print(len(analyze.mega_table['id'].unique()))
