@@ -42,22 +42,32 @@ class ImageMaskDataset(Dataset):
         ## generate mask
         image = trans(image)
 
+        mask = torch.zeros((self.input_dim, self.image_size[0], self.image_size[1]))
+
         category = self.mega_table['originCategory'].iloc[idx]
         label_file = image_path[:-4] + '_label.json'
         labels = None
         bboxes = []
         with open(os.path.join(self.label_folder, label_file)) as f:
             labels = json.load(f)
-        for key, value in labels['annotations'].items():
-            if value['category'] == category:
-                x, y, w, h = value['bbox']
-                x = x * ratio
-                y = y * ratio
-                w = w * ratio
-                h = h * ratio
-                bboxes.append([x,y,w,h])
 
-        mask = torch.zeros((self.input_dim, self.image_size[0], self.image_size[1]))
+        if category == 'Manual Label':
+            x, y, w, h = self.mega_table['bbox'].iloc[idx]
+            x = x * ratio
+            y = y * ratio
+            w = w * ratio
+            h = h * ratio
+            bboxes.append([x,y,w,h])
+        else:
+            for key, value in labels['annotations'].items():
+                if value['category'] == category:
+                    x, y, w, h = value['bbox']
+                    x = x * ratio
+                    y = y * ratio
+                    w = w * ratio
+                    h = h * ratio
+                    bboxes.append([x,y,w,h])
+
         for i, input_name in enumerate(self.input_vector):
             tot_num = np.amax(self.mega_table[input_name].values)
             if input_name == 'category':
@@ -75,12 +85,21 @@ class ImageMaskDataset(Dataset):
             image = TF.hflip(image)
             mask = TF.hflip(mask)
         #mask = mask.unsqueeze(0)
-        input_vector = self.mega_table[self.input_vector].iloc[idx].values
-        input_vector = torch.from_numpy(input_vector)
+        # input_vector = self.mega_table[self.input_vector].iloc[idx].values
+        # input_vector = torch.from_numpy(input_vector)
         #label
-        label = self.mega_table[self.output_vector].iloc[idx].values
-        label = torch.from_numpy(label)
-        return image, mask, label
+        information = self.mega_table['informationType'].iloc[idx]
+        information = np.array(json.loads(information))
+        information = torch.from_numpy(information)
+
+        informativeness = self.mega_table['informativeness'].iloc[idx]
+        informativeness = torch.tensor(int(informativeness))
+
+        sharingOwner = self.mega_table['sharing'].iloc[idx]
+        sharingOwner = np.array(json.loads(sharingOwner))
+        sharingOwner = torch.from_numpy(sharingOwner)
+        
+        return image, mask, label, information, informativeness, sharingOwner
 
 
 if __name__ == '__main__':

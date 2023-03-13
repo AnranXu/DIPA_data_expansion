@@ -217,7 +217,8 @@ class analyzer:
                                 'imagePath': [image_name + '.jpg'],
                                 'originCategory': value['category'],
                                 'datasetName': [dataset_name],
-                                'privacyNum': [privacy_num]
+                                'privacyNum': [privacy_num],
+                                'bbox': [[0,0,0,0]]
                             })
 
                             self.mega_table = pd.concat([self.mega_table, entry], ignore_index=True)
@@ -290,7 +291,8 @@ class analyzer:
                                 'imagePath': [image_name + '.jpg'],
                                 'originCategory': value['category'],
                                 'datasetName': [dataset_name],
-                                'privacyNum': [privacy_num]
+                                'privacyNum': [privacy_num],
+                                'bbox': [value['bbox']]
                         })
 
                         self.manual_table = pd.concat([self.manual_table, entry], ignore_index=True)

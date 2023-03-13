@@ -47,14 +47,23 @@ class ImageMaskDataset(Dataset):
         bboxes = []
         with open(os.path.join(self.label_folder, label_file)) as f:
             labels = json.load(f)
-        for key, value in labels['annotations'].items():
-            if value['category'] == category:
-                x, y, w, h = value['bbox']
-                x = x * ratio
-                y = y * ratio
-                w = w * ratio
-                h = h * ratio
-                bboxes.append([x,y,w,h])
+            
+        if category == 'Manual Label':
+            x, y, w, h = self.mega_table['bbox'].iloc[idx]
+            x = x * ratio
+            y = y * ratio
+            w = w * ratio
+            h = h * ratio
+            bboxes.append([x,y,w,h])
+        else:
+            for key, value in labels['annotations'].items():
+                if value['category'] == category:
+                    x, y, w, h = value['bbox']
+                    x = x * ratio
+                    y = y * ratio
+                    w = w * ratio
+                    h = h * ratio
+                    bboxes.append([x,y,w,h])
 
         mask = torch.zeros((self.input_dim, self.image_size[0], self.image_size[1]))
         for i, input_name in enumerate(self.input_vector):

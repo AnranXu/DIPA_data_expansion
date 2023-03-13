@@ -146,7 +146,8 @@ class analyzer:
                             "openness": [openness],
                             'imagePath': [image_name + '.jpg'],
                             'originCategory': value['category'],
-                            'datasetName': [dataset_name]
+                            'datasetName': [dataset_name],
+                            'bbox': [[0,0,0,0]]
                         })
 
                         self.mega_table = pd.concat([self.mega_table, entry], ignore_index=True)
@@ -202,7 +203,8 @@ class analyzer:
                             "openness": [openness],
                             'imagePath': [image_name + '.jpg'],
                             'originCategory': value['category'],
-                            'datasetName': [dataset_name]
+                            'datasetName': [dataset_name],
+                            'bbox': [value['bbox']]
                         })
 
                         self.manual_table = pd.concat([self.manual_table, entry], ignore_index=True)
@@ -623,7 +625,7 @@ if __name__ == '__main__':
     #print(analyze.mega_table['sharing'].unique())
     #analyze.regression_model(input_channel, output_channel)
     #print(analyze.mega_table)
-    #analyze.prepare_manual_label(save_csv=True)
+    analyze.prepare_manual_label(save_csv=True)
     #print(analyze.custom_informationType)
     #print(analyze.custom_recipient)
     #print(len(analyze.mega_table['id'].unique()))
