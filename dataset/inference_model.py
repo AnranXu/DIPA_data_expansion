@@ -87,7 +87,7 @@ class BaseModel(pl.LightningModule):
         self.log(f'{text} loss', loss)
         self.log(f'{text} type loss', TypeLoss)
         self.log(f'{text} informativeness loss', informativenessLosses)
-        self.log(f'{text} sharing loss', sharingLoss)
+        self.log(f'{text} sharingOwnerloss', sharingLoss)
         self.save_metrics(y_preds, y, text=text)
         return loss
 
@@ -148,10 +148,10 @@ class BaseModel(pl.LightningModule):
         recall(max_indices, y[:,2])
         f1score(max_indices, y[:,2])
 
-        self.log(f"{text}/acc for sharing", accuracy.compute())
-        self.log(f"{text}/pre for sharing", precision.compute())
-        self.log(f"{text}/rec for sharing", recall.compute())
-        self.log(f"{text}/f1 for sharing", f1score.compute())
+        self.log(f"{text}/acc for sharing as owner", accuracy.compute())
+        self.log(f"{text}/pre for sharing as owner", precision.compute())
+        self.log(f"{text}/rec for sharing as owner", recall.compute())
+        self.log(f"{text}/f1 for sharing as owner", f1score.compute())
 
         accuracy.reset()
         precision.reset()
