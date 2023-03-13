@@ -111,7 +111,7 @@ if __name__ == '__main__':
         pre[0].update(y_preds[:, :5], information.type(torch.FloatTensor).to('cuda'))
         rec[0].update(y_preds[:, :5], information.type(torch.FloatTensor).to('cuda'))
         f1[0].update(y_preds[:, :5], information.type(torch.FloatTensor).to('cuda'))
-        conf[0].update(y_preds[:, :5], information.to('cuda'))
+        conf[0].update(y_preds[:, :5], information.type(torch.LongTensor).to('cuda'))
 
         distance += l1_distance_loss(informativeness.detach().cpu().numpy(), y_preds[:,5].detach().cpu().numpy())
 
@@ -119,7 +119,7 @@ if __name__ == '__main__':
         pre[1].update(y_preds[:, 6:11], sharingOwner.type(torch.FloatTensor).to('cuda'))
         rec[1].update(y_preds[:, 6:11], sharingOwner.type(torch.FloatTensor).to('cuda'))
         f1[1].update(y_preds[:, 6:11], sharingOwner.type(torch.FloatTensor).to('cuda'))
-        conf[1].update(y_preds[:, 6:11], sharingOwner.to('cuda'))
+        conf[1].update(y_preds[:, 6:11], sharingOwner.type(torch.LongTensor).to('cuda'))
 
 
     distance = distance / len(val_loader)
