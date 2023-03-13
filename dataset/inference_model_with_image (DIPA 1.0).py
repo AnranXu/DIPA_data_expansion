@@ -128,6 +128,8 @@ if __name__ == '__main__':
                    'Precision' : [i.compute().detach().cpu().numpy() for i in pre], 
                    'Recall': [i.compute().detach().cpu().numpy() for i in rec], 
                    'f1': [i.compute().detach().cpu().numpy() for i in f1]}
+    
+    print(pandas_data.round(3))
 
     for i, (output_name, output_dim) in enumerate(output_channel.items()):
         with open('./confusion {}'.format(output_name), 'w') as w:
