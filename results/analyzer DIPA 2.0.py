@@ -839,6 +839,6 @@ if __name__ == '__main__':
     analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=False, ignore_prev_manual_anns=False)
     analyze.prepare_manual_label(save_csv=True, strict_mode=True)
     #analyze.basic_count(ignore_prev_manual_anns=False)
-    #analyze.prepare_regression_model_table(read_csv=True)
+    analyze.prepare_regression_model_table(read_csv=True)
     #analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
     
