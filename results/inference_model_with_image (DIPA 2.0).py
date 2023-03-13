@@ -94,7 +94,7 @@ if __name__ == '__main__':
     # I am confused about how the validation_step work on saving all valid result (rather than just a batch)
     # So I wrote this traditional one
     threshold = 0.5
-    average_method = 'weighted'
+    average_method = 'micro'
     acc = [Accuracy(task="multilabel", num_labels=output_dim, threshold = threshold, average=average_method, ignore_index = output_dim - 1) \
             for i, (output_name, output_dim) in enumerate(output_channel.items())]
     pre = [Precision(task="multilabel", num_labels=output_dim, threshold = threshold, average=average_method, ignore_index = output_dim - 1) \
