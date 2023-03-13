@@ -618,12 +618,12 @@ if __name__ == '__main__':
     output_channel = privacy_metrics
     
     #output_channel = ['sharing']
-    #analyze.prepare_mega_table(mycat_mode=False, save_csv=True)
+    analyze.prepare_mega_table(mycat_mode=False, save_csv=True)
     #print(analyze.mega_table['informationType'].unique())
     #print(analyze.mega_table['sharing'].unique())
     #analyze.regression_model(input_channel, output_channel)
     #print(analyze.mega_table)
-    analyze.prepare_manual_label(save_csv=True)
+    #analyze.prepare_manual_label(save_csv=True)
     #print(analyze.custom_informationType)
     #print(analyze.custom_recipient)
     #print(len(analyze.mega_table['id'].unique()))

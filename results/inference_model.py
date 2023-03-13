@@ -44,6 +44,7 @@ class BaseModel(pl.LightningModule):
         x = self.act(self.fc1(x))
         x = self.dropout(x)
         x = self.act(self.fc2(x))
+        x = self.dropout(x)
         x = self.fc3(x)
         # x[:6] = self.sigmoid(x[:6])
         # x[6] = self.sigmoid(x[6]) * 6
