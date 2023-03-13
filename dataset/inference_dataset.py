@@ -99,7 +99,7 @@ class ImageMaskDataset(Dataset):
         sharingOwner = [0 if i == sharingOwner else 1 for i in range(5)]
         sharingOwner = torch.tensor(sharingOwner)
 
-        return image, mask, label, information, informativeness, sharingOwner
+        return image, mask, information, informativeness, sharingOwner
 
 
 if __name__ == '__main__':
