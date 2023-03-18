@@ -76,6 +76,8 @@ class ImageMaskDataset(Dataset):
                         x, y, w, h = int(x), int(y), int(w), int(h)
                         mask[i, y:y+h, x:x+w] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
                 else:
+                    print(type(self.mega_table[input_name].iloc[idx]))
+                    print(self.mega_table[input_name].iloc[idx])
                     mask[i, :, :] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
                 if not os.path.exists(os.path.join('./masks', input_name)):
                     os.mkdir(os.path.join('./masks', input_name))
