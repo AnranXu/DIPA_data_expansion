@@ -50,7 +50,7 @@ class ImageMaskDataset(Dataset):
         for i, input_name in enumerate(self.input_vector):
             if os.path.exists(os.path.join('./masks', input_name, str(self.mega_table['id'].iloc[idx]))):
                 with open(os.path.join('./masks', input_name, str(self.mega_table['id'].iloc[idx])), 'rb') as f:
-                    mask[i, :, :] = np.load(f)
+                    mask[i, :, :] = np.load(f, allow_pickle=True)
             else:
                 tot_num = np.amax(self.mega_table[input_name].values)
                 if input_name == 'category':
