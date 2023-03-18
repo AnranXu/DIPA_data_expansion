@@ -168,7 +168,7 @@ class analyzer:
                         openness = worker['bigfives']['Openness to Experience']
                         dataset_name = label['source']     
                         frequency = worker['frequency']
-                        nationality = worker['nationality']
+                        nationality = worker['nationality'] if worker['nationality'] == 'Japan' else 'UK'
                         for key, value in label['defaultAnnotation'].items():
                             if value['ifNoPrivacy']:
                                 continue
@@ -257,7 +257,7 @@ class analyzer:
                     openness = worker['bigfives']['Openness to Experience']     
                     frequency = worker['frequency']     
                     dataset_name = label['source']  
-                    nationality = worker['nationality']  
+                    nationality = worker['nationality'] if worker['nationality'] == 'Japan' else 'UK'
                     for key, value in label['manualAnnotation'].items():
                         category = value['category']
                         id = annotation[:-11] + '_' + key
