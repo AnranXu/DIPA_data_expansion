@@ -79,7 +79,7 @@ class ImageMaskDataset(Dataset):
                     mask[i, :, :] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
                 if not os.path.exists(os.path.join('./masks', input_name)):
                     os.mkdir(os.path.join('./masks', input_name))
-                with open(os.path.join('./masks', input_name, str(self.mega_table['id'].iloc[idx])), 'wb') as f:
+                with open(os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx]), 'wb') as f:
                     np.save(f, mask[i, :, :])
         #input vector
         mask = torch.tensor(mask, dtype=torch.float)

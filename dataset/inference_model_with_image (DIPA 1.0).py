@@ -33,9 +33,7 @@ if __name__ == '__main__':
     mega_table['category'] = encoder.fit_transform(mega_table['category'])
     mega_table['gender'] = encoder.fit_transform(mega_table['gender'])
     mega_table['platform'] = encoder.fit_transform(mega_table['platform'])
-    mega_table['id'] = encoder.fit_transform(mega_table['id'])
     mega_table['datasetName'] = encoder.fit_transform(mega_table['datasetName'])
-    mega_table['informativeness'] = mega_table['informativeness']
 
     input_channel = []
     input_channel.extend(basic_info)

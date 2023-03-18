@@ -122,7 +122,7 @@ class analyzer:
                                 continue
                         else:
                             category = value['category']
-                        id = image_id + '_' + key
+                        id = annotation_name[0][:-11] + '_' + key
                         informationType = int(value['informationType']) - 1
                         informativeness = int(value['informativeness']) - 1
                         sharing = int(value['sharing']) - 1
@@ -179,7 +179,7 @@ class analyzer:
                     dataset_name = label['source']         
                     for key, value in label['manualAnnotation'].items():
                         category = value['category']
-                        id = image_id + '_' + key
+                        id = annotation_name[0][:-11] + '_' + key
                         informationType = int(value['informationType']) - 1
                         informativeness = int(value['informativeness']) - 1
                         sharing = int(value['sharing']) - 1
