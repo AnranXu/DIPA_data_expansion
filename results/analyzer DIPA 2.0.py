@@ -186,7 +186,7 @@ class analyzer:
                                 category = value['category']
                             if ignore_prev_manual_anns and category.startswith('Object'):
                                 continue
-                            id = image_id + '_' + key
+                            id = annotation[:-11] + '_' + key
                             informationType = value['informationType']
                             informativeness = int(value['informativeness']) - 1
                             sharingOwner = value['sharingOwner']
@@ -260,7 +260,7 @@ class analyzer:
                     nationality = worker['nationality']  
                     for key, value in label['manualAnnotation'].items():
                         category = value['category']
-                        id = image_id + '_' + key
+                        id = annotation[:-11] + '_' + key
                         informationType = value['informationType']
                         informativeness = int(value['informativeness']) - 1
                         sharingOwner = value['sharingOwner']
@@ -273,26 +273,26 @@ class analyzer:
                             self.custom_recipient_others.append(value['sharingOthersInput'])
                         entry = pd.DataFrame.from_dict({
                             'id': [id],
-                                "category": ['Manual Label'],
-                                "informationType":  [informationType],
-                                "informativeness": [informativeness],
-                                "sharingOwner": [sharingOwner],
-                                "sharingOthers": [sharingOthers],
-                                "age": [age],
-                                "gender": [gender],
-                                "platform": [platform],
-                                "nationality": [nationality],
-                                "extraversion": [extraversion],
-                                "agreeableness": [agreeableness],
-                                "conscientiousness": [conscientiousness],
-                                "neuroticism": [neuroticism],
-                                "openness": [openness],
-                                'frequency': [frequency],
-                                'imagePath': [image_name + '.jpg'],
-                                'originCategory': value['category'],
-                                'datasetName': [dataset_name],
-                                'privacyNum': [privacy_num],
-                                'bbox': [value['bbox']]
+                            "category": ['Manual Label'],
+                            "informationType":  [informationType],
+                            "informativeness": [informativeness],
+                            "sharingOwner": [sharingOwner],
+                            "sharingOthers": [sharingOthers],
+                            "age": [age],
+                            "gender": [gender],
+                            "platform": [platform],
+                            "nationality": [nationality],
+                            "extraversion": [extraversion],
+                            "agreeableness": [agreeableness],
+                            "conscientiousness": [conscientiousness],
+                            "neuroticism": [neuroticism],
+                            "openness": [openness],
+                            'frequency': [frequency],
+                            'imagePath': [image_name + '.jpg'],
+                            'originCategory': value['category'],
+                            'datasetName': [dataset_name],
+                            'privacyNum': [privacy_num],
+                            'bbox': [value['bbox']]
                         })
 
                         self.manual_table = pd.concat([self.manual_table, entry], ignore_index=True)
@@ -838,7 +838,7 @@ if __name__ == '__main__':
 
     #analyze.generate_img_annotation_map()
     #analyze.count_worker_privacy_num()
-    analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=False, ignore_prev_manual_anns=False)
+    analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False)
     analyze.prepare_manual_label(save_csv=True, strict_mode=True)
     analyze.basic_count(ignore_prev_manual_anns=False)
     analyze.prepare_regression_model_table(read_csv=True)

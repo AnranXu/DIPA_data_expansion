@@ -42,40 +42,47 @@ class ImageMaskDataset(Dataset):
         ## generate mask
         image = trans(image)
 
-        mask = torch.zeros((self.input_dim, self.image_size[0], self.image_size[1]))
-
         category = self.mega_table['originCategory'].iloc[idx]
         label_file = image_path[:-4] + '_label.json'
         labels = None
         bboxes = []
-        with open(os.path.join(self.label_folder, label_file)) as f:
-            labels = json.load(f)
 
-        if category == 'Manual Label':
-            x, y, w, h = self.mega_table['bbox'].iloc[idx]
-            x = x * ratio
-            y = y * ratio
-            w = w * ratio
-            h = h * ratio
-            bboxes.append([x,y,w,h])
-        else:
-            for key, value in labels['annotations'].items():
-                if value['category'] == category:
-                    x, y, w, h = value['bbox']
-                    x = x * ratio
-                    y = y * ratio
-                    w = w * ratio
-                    h = h * ratio
-                    bboxes.append([x,y,w,h])
-
+        mask = torch.zeros((self.input_dim, self.image_size[0], self.image_size[1]))
         for i, input_name in enumerate(self.input_vector):
-            tot_num = np.amax(self.mega_table[input_name].values)
-            if input_name == 'category':
-                for x, y, w, h in bboxes:
-                    x, y, w, h = int(x), int(y), int(w), int(h)
-                    mask[i, y:y+h, x:x+w] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
+            if os.path.exists(os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx])):
+                with open(os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx]), 'rb') as f:
+                    mask[i, :, :] = np.load(f)
             else:
-                mask[i, :, :] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
+                tot_num = np.amax(self.mega_table[input_name].values)
+                if input_name == 'category':
+                    with open(os.path.join(self.label_folder, label_file)) as f:
+                        labels = json.load(f)
+                    if category == 'Manual Label':
+                        x, y, w, h = self.mega_table['bbox'].iloc[idx]
+                        x = x * ratio
+                        y = y * ratio
+                        w = w * ratio
+                        h = h * ratio
+                        bboxes.append([x,y,w,h])
+                    else:
+                        for key, value in labels['annotations'].items():
+                            if value['category'] == category:
+                                x, y, w, h = value['bbox']
+                                x = x * ratio
+                                y = y * ratio
+                                w = w * ratio
+                                h = h * ratio
+                                bboxes.append([x,y,w,h])
+                    for x, y, w, h in bboxes:
+                        x, y, w, h = int(x), int(y), int(w), int(h)
+                        mask[i, y:y+h, x:x+w] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
+                else:
+                    mask[i, :, :] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
+                if not os.path.exists(os.path.join('./masks', input_name)):
+                    os.mkdir(os.path.join('./masks', input_name))
+                with open(os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx]), 'wb') as f:
+                    np.save(f, mask[i, :, :])
+                    
         #input vector
         if mask.nonzero().shape[0] == 0:
             print('non mask')
