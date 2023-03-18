@@ -80,7 +80,7 @@ class ImageMaskDataset(Dataset):
                     os.mkdir(os.path.join('./masks', input_name))
                 torch.save(mask[i, :, :], os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx] + '.pt'))
         #input vector
-        mask = torch.tensor(mask, dtype=torch.float)
+        #mask = torch.tensor(mask, dtype=torch.float)
         if mask.nonzero().shape[0] == 0:
             print('non mask')
         if (mask > 1).any():
