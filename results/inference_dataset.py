@@ -46,11 +46,10 @@ class ImageMaskDataset(Dataset):
         labels = None
         bboxes = []
         
-        mask = np.zeros((self.input_dim, self.image_size[0], self.image_size[1]))
+        mask = torch.zeros((self.input_dim, self.image_size[0], self.image_size[1]))
         for i, input_name in enumerate(self.input_vector):
-            if os.path.exists(os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx])):
-                with open(os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx]), 'rb') as f:
-                    mask[i, :, :] = np.load(f, allow_pickle=True)
+            if os.path.exists(os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx] + '.pt')):
+                mask[i, :, :] = torch.load(os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx] + '.pt'))
             else:
                 tot_num = np.amax(self.mega_table[input_name].values)
                 if input_name == 'category':
@@ -79,8 +78,7 @@ class ImageMaskDataset(Dataset):
                     mask[i, :, :] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
                 if not os.path.exists(os.path.join('./masks', input_name)):
                     os.mkdir(os.path.join('./masks', input_name))
-                with open(os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx]), 'wb') as f:
-                    np.save(f, mask[i, :, :])
+                torch.save(mask[i, :, :], os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx] + '.pt'))
         #input vector
         mask = torch.tensor(mask, dtype=torch.float)
         if mask.nonzero().shape[0] == 0:
