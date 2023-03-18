@@ -46,7 +46,7 @@ class ImageMaskDataset(Dataset):
         labels = None
         bboxes = []
         
-        mask = torch.zeros((self.input_dim, self.image_size[0], self.image_size[1]))
+        mask = np.zeros((self.input_dim, self.image_size[0], self.image_size[1]))
         for i, input_name in enumerate(self.input_vector):
             if os.path.exists(os.path.join('./masks', input_name, str(self.mega_table['id'].iloc[idx]))):
                 with open(os.path.join('./masks', input_name, str(self.mega_table['id'].iloc[idx])), 'rb') as f:
@@ -82,6 +82,7 @@ class ImageMaskDataset(Dataset):
                 with open(os.path.join('./masks', input_name, str(self.mega_table['id'].iloc[idx])), 'wb') as f:
                     np.save(f, mask[i, :, :])
         #input vector
+        mask = torch.tensor(mask)
         if mask.nonzero().shape[0] == 0:
             print('non mask')
         if (mask > 1).any():
