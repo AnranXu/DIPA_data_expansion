@@ -32,7 +32,7 @@ if __name__ == '__main__':
     category = ['category']
     privacy_metrics = ['informationType', 'informativeness', 'sharingOwner', 'sharingOthers']
 
-    mega_table = pd.read_csv('./mega_table.csv')
+    mega_table = pd.read_csv('./mega_table (strict).csv')
 
     description = {'informationType': ['It tells personal information', 'It tells location of shooting',
         'It tells individual preferences/pastimes', 'It tells social circle', 
