@@ -79,7 +79,7 @@ class analyzer:
                     category_name = self.code_openimage_map[cat]
                     self.openimages_mycat_map[category_name] = row[0]
 
-    def prepare_mega_table(self, mycat_mode = True, save_csv = False)->None:
+    def prepare_mega_table(self, mycat_mode = True, save_csv = False, include_not_private = False)->None:
         #mycat_mode: only aggregate annotations that can be summarized in mycat (also score them in mycat in mega_table).
         #the mega table includes all privacy annotations with all corresponding info (three metrics, big five, age, gender, platform)
 
@@ -108,7 +108,7 @@ class analyzer:
                     openness = worker['bigfives']['Openness to Experience']
                     dataset_name = label['source']             
                     for key, value in label['defaultAnnotation'].items():
-                        if value['ifNoPrivacy']:
+                        if value['ifNoPrivacy'] and not include_not_private:
                             continue
                         category = ''
                         if mycat_mode:
@@ -123,9 +123,9 @@ class analyzer:
                         else:
                             category = value['category']
                         id = annotation_name[0][:-11] + '_' + key
-                        informationType = int(value['informationType']) - 1
-                        informativeness = int(value['informativeness']) - 1
-                        sharing = int(value['sharing']) - 1
+                        informationType = -1 if value['ifNoPrivacy'] else int(value['informationType']) - 1
+                        informativeness = -1 if value['ifNoPrivacy'] else int(value['informativeness']) - 1
+                        sharing = -1 if value['ifNoPrivacy'] else int(value['sharing']) - 1
                         if sharing == 4:
                             self.custom_recipient.append(value['sharingInput'])
                         if informationType == 4:
@@ -620,7 +620,7 @@ if __name__ == '__main__':
     output_channel = privacy_metrics
     
     #output_channel = ['sharing']
-    analyze.prepare_mega_table(mycat_mode=False, save_csv=True)
+    analyze.prepare_mega_table(mycat_mode=False, save_csv=True, include_not_private= True)
     #print(analyze.mega_table['informationType'].unique())
     #print(analyze.mega_table['sharing'].unique())
     #analyze.regression_model(input_channel, output_channel)

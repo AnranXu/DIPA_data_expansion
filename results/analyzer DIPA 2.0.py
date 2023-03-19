@@ -131,7 +131,9 @@ class analyzer:
         with open('img_annotation_map.json', 'w') as w:
             json.dump(img_annotation_map, w)
 
-    def prepare_mega_table(self, mycat_mode = True, save_csv = False, strict_mode = False, ignore_prev_manual_anns=True, strict_num = 2)->None:
+    def prepare_mega_table(self, mycat_mode = True, save_csv = False, 
+                           strict_mode = False, ignore_prev_manual_anns=True, strict_num = 2,
+                           include_not_private = False)->None:
         #mycat_mode: only aggregate annotations that can be summarized in mycat (also score them in mycat in mega_table).
         #the mega table includes all privacy annotations with all corresponding info (three metrics, big five, age, gender, platform)
 
@@ -170,7 +172,7 @@ class analyzer:
                         frequency = worker['frequency']
                         nationality = worker['nationality'] if worker['nationality'] == 'Japan' else 'UK'
                         for key, value in label['defaultAnnotation'].items():
-                            if value['ifNoPrivacy']:
+                            if value['ifNoPrivacy'] and not include_not_private:
                                 continue
                             category = ''
                             if mycat_mode:
@@ -187,16 +189,17 @@ class analyzer:
                             if ignore_prev_manual_anns and category.startswith('Object'):
                                 continue
                             id = annotation[:-11] + '_' + key
-                            informationType = value['informationType']
-                            informativeness = int(value['informativeness']) - 1
-                            sharingOwner = value['sharingOwner']
-                            sharingOthers = value['sharingOthers']
+                            informationType = [0 for i in range(6)] if value['ifNoPrivacy'] else value['informationType']
+                            informativeness = -1 if value['ifNoPrivacy'] else int(value['informativeness']) - 1
+                            sharingOwner = [0 for i in range(7)] if value['ifNoPrivacy'] else value['sharingOwner']
+                            sharingOthers = [0 for i in range(7)] if value['ifNoPrivacy'] else value['sharingOthers']
                             if informationType[5] == 1:
                                 self.custom_informationType.append(value['informationTypeInput'])
                             if sharingOwner[6] == 1:
                                 self.custom_recipient_owner.append(value['sharingOwnerInput'])
                             if sharingOthers[6] == 1:
                                 self.custom_recipient_others.append(value['sharingOthersInput'])
+                            
                             entry = pd.DataFrame.from_dict({
                                 'id': [id],
                                 "category": [category],
@@ -838,7 +841,7 @@ if __name__ == '__main__':
 
     #analyze.generate_img_annotation_map()
     #analyze.count_worker_privacy_num()
-    analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False)
+    analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=True)
     analyze.prepare_manual_label(save_csv=True, strict_mode=True)
     analyze.basic_count(ignore_prev_manual_anns=False)
     analyze.prepare_regression_model_table(read_csv=True)
