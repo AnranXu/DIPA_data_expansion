@@ -11,7 +11,7 @@ import json
 
 
 class ImageMaskDataset(Dataset):
-    def __init__(self, mega_table, image_folder, label_folder, input_vector, image_size, flip = False, flip_prob = 0.5):
+    def __init__(self, mega_table, image_folder, label_folder, input_vector, image_size, flip = False, save_mask = False, flip_prob = 0.5):
         self.mega_table = mega_table
         self.category_num = len(mega_table['category'].unique())
         self.input_dim = len(input_vector)
@@ -20,6 +20,7 @@ class ImageMaskDataset(Dataset):
         self.input_vector = input_vector
         self.image_size = image_size
         self.flip_prob = flip_prob
+        self.save_mask = save_mask
         self.flip = flip
         self.padding_color = (0, 0, 0)
 
@@ -48,7 +49,7 @@ class ImageMaskDataset(Dataset):
         
         mask = torch.zeros((self.input_dim, self.image_size[0], self.image_size[1]))
         for i, input_name in enumerate(self.input_vector):
-            if os.path.exists(os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx] + '.pt')):
+            if self.save_mask and os.path.exists(os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx] + '.pt')):
                 mask[i, :, :] = torch.load(os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx] + '.pt'))
             else:
                 tot_num = np.amax(self.mega_table[input_name].values)
@@ -76,9 +77,10 @@ class ImageMaskDataset(Dataset):
                         mask[i, y:y+h, x:x+w] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
                 else:
                     mask[i, :, :] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
-                if not os.path.exists(os.path.join('./masks', input_name)):
-                    os.mkdir(os.path.join('./masks', input_name))
-                torch.save(mask[i, :, :], os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx] + '.pt'))
+                if self.save_mask:
+                    if not os.path.exists(os.path.join('./masks', input_name)):
+                        os.mkdir(os.path.join('./masks', input_name))
+                    torch.save(mask[i, :, :], os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx] + '.pt'))
         #input vector
         #mask = torch.tensor(mask, dtype=torch.float)
         if mask.nonzero().shape[0] == 0:
