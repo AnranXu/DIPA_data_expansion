@@ -89,7 +89,7 @@ if __name__ == '__main__':
     lr_finder = trainer.tuner.lr_find(model, train_loader)
     model.hparams.learning_rate = lr_finder.suggestion()
     print(f'lr auto: {lr_finder.suggestion()}')
-    trainer.fit(model, train_dataloaders = train_loader, val_dataloaders = val_loader)
+    trainer.fit(model, train_dataloaders = train_loader, val_dataloaders = val_loader, ckpt_path="./models/with no privacy (resnet 50)/last.ckpt")
     
     # validation. 
     # I am confused about how the validation_step work on saving all valid result (rather than just a batch)

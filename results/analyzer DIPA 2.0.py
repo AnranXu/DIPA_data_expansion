@@ -41,8 +41,8 @@ class analyzer:
         self.custom_recipient_others = []
         self.description = {'informationType': ['personal information', 'location of shooting',
         'individual preferences/pastimes', 'social circle', 'others\' private/confidential information', 'Other things'],
-        'informativeness':['negligible source','minor source','slight source','moderate source',
-        'effective source','substantial','maximum source'],
+        'informativeness':['Strongly disagree','Disagree','Slightly disagree','Neither',
+        'Slightly agree','Agree','Strongly agree'],
         'sharingOwner': ['I won\'t share it', 'Close relationship',
         'Regular relationship', 'Acquaintances', 'Public', 'Broadcast program', 'Other recipients'], 
         'sharingOthers':['I won\'t allow others to share it', 'Close relationship',
@@ -301,18 +301,22 @@ class analyzer:
                         self.manual_table = pd.concat([self.manual_table, entry], ignore_index=True)
         if save_csv:
             self.manual_table.to_csv('./manual_table.csv', index =False)
-    def basic_count(self, read_csv = False, strict_mode = True, ignore_prev_manual_anns=False, strict_num = 2) -> None:
+    def basic_count(self, read_csv = False, split_count = False, count_scale = 'CrowdWorks',
+                    strict_mode = True, ignore_prev_manual_anns=False, strict_num = 2) -> None:
 
         def calculate_array(input_array, option_num):
             res = np.zeros(option_num, dtype='int')
             for i in range(input_array.shape[0]):
-                res += np.array(input_array[i])
+                res += np.array(json.loads(input_array[i]))
             return res
         if read_csv:
             self.mega_table = pd.read_csv(self.mega_table_path)
         else:
             self.prepare_mega_table()
-
+        if split_count:
+            print(self.mega_table)
+            self.mega_table = self.mega_table[self.mega_table['platform'] == count_scale]
+            print(self.mega_table)
         frequency = self.mega_table['frequency'].value_counts()
         frequency = frequency.sort_index().values
         frequency = pd.DataFrame([frequency], columns=self.description['frequency'])
@@ -376,9 +380,29 @@ class analyzer:
             image_privacy_time['All'][annotation] = all
             privacy_time['All'][all] += 1
         
-        print(privacy_time)
+        print('privacy', privacy_time)
         
-                    
+        ## overlap with DIPA 1.0
+        dipa1_table = pd.read_csv('mega_table (DIPA 1.0).csv')
+        dipa1_table['id_content'] = dipa1_table.apply(lambda row: row['category'] + '_' + row['imagePath'], axis=1)
+        privacy_content_dipa1 = dipa1_table['id_content'].tolist()
+        self.mega_table['id_content'] = self.mega_table.apply(lambda row: row['category'] + '_' + row['imagePath'], axis=1)
+        privacy_content_dipa2 =self.mega_table['id_content'].tolist()
+        overlap = list(set(privacy_content_dipa2).intersection(privacy_content_dipa1))
+        print('overlap with DIPA 1.0:', len(overlap))
+        print('unique content in DIPA 2.0:', len(set(privacy_content_dipa2)))
+
+        ## how many times annotated in DIPA 2.0
+        print('content appear')
+        print(self.mega_table['id_content'].value_counts().value_counts())
+        ## annotation per content
+
+        self.mega_table['information choice time'] = self.mega_table.apply(lambda row: sum(json.loads(row['informationType'])), axis = 1)
+        print(self.mega_table['information choice time'].mean())
+        self.mega_table['owner choice time'] = self.mega_table.apply(lambda row: sum(json.loads(row['sharingOwner'])), axis = 1)
+        print(self.mega_table['owner choice time'].mean())
+        self.mega_table['others choice time'] = self.mega_table.apply(lambda row: sum(json.loads(row['sharingOthers'])), axis = 1)
+        print(self.mega_table['others choice time'].mean())
     def count_worker_privacy_num(self) -> None:
         # as every image in image pool is somewhat privacy-threatening, we count how many privacy-threatening image have each worker choose to measure if they care about privacy.
         # input: read img_annotation_map.json
@@ -841,9 +865,9 @@ if __name__ == '__main__':
 
     #analyze.generate_img_annotation_map()
     #analyze.count_worker_privacy_num()
-    analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=True)
-    analyze.prepare_manual_label(save_csv=True, strict_mode=True)
-    analyze.basic_count(ignore_prev_manual_anns=False)
-    analyze.prepare_regression_model_table(read_csv=True)
+    #analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=False)
+    #analyze.prepare_manual_label(save_csv=True, strict_mode=True)
+    analyze.basic_count(read_csv = True, ignore_prev_manual_anns=False,split_count=True,count_scale='CrowdWorks')
+    #analyze.prepare_regression_model_table(read_csv=True)
     #analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
     
