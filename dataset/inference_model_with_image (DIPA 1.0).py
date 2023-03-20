@@ -127,8 +127,17 @@ if __name__ == '__main__':
                    'Recall': [i.compute().detach().cpu().numpy() for i in rec], 
                    'f1': [i.compute().detach().cpu().numpy() for i in f1]}
     
-    print(pandas_data.round(3))
+    print(pandas_data)
 
     for i, (output_name, output_dim) in enumerate(output_channel.items()):
         with open('./confusion {}'.format(output_name), 'w') as w:
             w.write(str(conf[i].compute().detach().cpu().numpy()))
+
+    df = pd.DataFrame(pandas_data, index=output_channel.keys())
+    print(df.round(3))
+    df.to_csv('./result.csv', index =False)
+    with open('./distance', 'w') as w:
+        w.write(str(distance))
+    
+    if 'informativeness' in output_channel.keys():
+        print('informativenss distance: ', distance)
