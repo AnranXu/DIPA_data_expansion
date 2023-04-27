@@ -83,6 +83,41 @@ class analyzer:
                 for cat in openimages_cats:
                     category_name = self.code_openimage_map[cat]
                     self.openimages_mycat_map[category_name] = row[0]
+    def basic_info(self, platform='Prolific')->None:
+        age = {'18-24': {'Male': 0, 'Female': 0, 'Other': 0}, 
+        '25-34': {'Male': 0, 'Female': 0, 'Other': 0}, 
+        '35-44': {'Male': 0, 'Female': 0, 'Other': 0}, 
+        '45-54': {'Male': 0, 'Female': 0, 'Other': 0}, 
+        '55': {'Male': 0, 'Female': 0, 'Other': 0}}
+        valid_workers = []
+        with open(os.path.join(self.annotation_path, platform, 'valid_workers.json')) as f:
+            valid_workers = json.load(f)
+        info_paths = os.listdir(os.path.join(self.annotation_path, platform, 'workerinfo'))
+        for info_path in info_paths:
+            # check if nan, nan!=nan
+            with open(os.path.join(self.annotation_path, platform, 'workerinfo', info_path)) as f:
+                text = f.read()
+                info = json.loads(text)
+                if info['workerId'] not in valid_workers:
+                    print('unvalid worker: ', info['workerId'])
+                    continue
+                if int(info['age']) != int(info['age']):
+                    print('wrong age found', info)
+                    continue
+                year = int(info['age'])
+                if 18 <= year <= 24:
+                    age['18-24'][info['gender']] += 1
+                elif 25 <= year <= 34:
+                    age['25-34'][info['gender']] += 1
+                elif 35 <= year <= 44:
+                    age['35-44'][info['gender']] += 1
+                elif 45 <= year <= 54:
+                    age['45-54'][info['gender']] += 1
+                elif 55 <= year:
+                    age['55'][info['gender']] += 1
+        print('valid worker:', len(valid_workers))
+
+        print(age)
 
     def generate_img_annotation_map(self)->None:
         #label: the original label from OpenImages or LVIS 
@@ -317,6 +352,10 @@ class analyzer:
             print(self.mega_table)
             self.mega_table = self.mega_table[self.mega_table['platform'] == count_scale]
             print(self.mega_table)
+        valid_workers = []
+        with open(os.path.join(self.annotation_path, count_scale, 'valid_workers.json')) as f:
+            valid_workers = json.load(f)
+        print('val len:', len(valid_workers))
         frequency = self.mega_table['frequency'].value_counts()
         frequency = frequency.sort_index().values
         frequency = pd.DataFrame([frequency], columns=self.description['frequency'])
@@ -862,12 +901,12 @@ if __name__ == '__main__':
     input_channel.extend(basic_info)
     input_channel.extend(category)
     output_channel = privacy_metrics
-
+    analyze.basic_info()
     #analyze.generate_img_annotation_map()
     #analyze.count_worker_privacy_num()
     #analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=False)
     #analyze.prepare_manual_label(save_csv=True, strict_mode=True)
-    analyze.basic_count(read_csv = True, ignore_prev_manual_anns=False,split_count=True,count_scale='CrowdWorks')
+    #analyze.basic_count(read_csv = True, ignore_prev_manual_anns=False,split_count=True,count_scale='Prolific')
     #analyze.prepare_regression_model_table(read_csv=True)
     #analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
     
