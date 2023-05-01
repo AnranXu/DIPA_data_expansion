@@ -20,6 +20,7 @@ from statsmodels.formula.api import ols
 from statsmodels.stats.anova import AnovaRM
 from sklearn.linear_model import LogisticRegression
 from sklearn.linear_model import LinearRegression
+from scipy.stats import binom
 
 import torch
 import torch.nn as nn
@@ -83,7 +84,7 @@ class analyzer:
                 for cat in openimages_cats:
                     category_name = self.code_openimage_map[cat]
                     self.openimages_mycat_map[category_name] = row[0]
-    def basic_info(self, platform='Prolific')->None:
+    def basic_info(self, platform='CrowdWorks')->None:
         age = {'18-24': {'Male': 0, 'Female': 0, 'Other': 0}, 
         '25-34': {'Male': 0, 'Female': 0, 'Other': 0}, 
         '35-44': {'Male': 0, 'Female': 0, 'Other': 0}, 
@@ -105,6 +106,8 @@ class analyzer:
                     print('wrong age found', info)
                     continue
                 year = int(info['age'])
+                if year < 18:
+                    print('wrong age found', info)
                 if 18 <= year <= 24:
                     age['18-24'][info['gender']] += 1
                 elif 25 <= year <= 34:
@@ -115,8 +118,9 @@ class analyzer:
                     age['45-54'][info['gender']] += 1
                 elif 55 <= year:
                     age['55'][info['gender']] += 1
+                valid_workers.remove(info['workerId'])
         print('valid worker:', len(valid_workers))
-
+        print(valid_workers)
         print(age)
 
     def generate_img_annotation_map(self)->None:
@@ -165,6 +169,131 @@ class analyzer:
 
         with open('img_annotation_map.json', 'w') as w:
             json.dump(img_annotation_map, w)
+            
+    def distribution(self, read_csv = False, strict_mode = False, strict_num = 2)->None:
+        #distribution of privacy and not privacy annotations in each category
+        #if it is privacy, then calculate how many times for each object is annotated as privacy
+
+        ## calculate amount of all category 
+        category_and_id = {}
+        category_number = {}
+        for image_name in self.img_annotation_map.keys():
+            for platform, annotations in self.img_annotation_map[image_name].items():
+                for i, annotation in enumerate(annotations):
+                    if strict_mode and i >= strict_num:
+                        break
+                    with open(os.path.join(self.annotation_path, platform, 'labels', annotation), encoding="utf-8") as f:
+                        label = json.load(f)
+                        dataset_name = label['source']
+                        for key, value in label['defaultAnnotation'].items():
+                            if dataset_name == 'OpenImages':
+                                if key in self.openimages_mycat_map.keys():
+                                    category = self.openimages_mycat_map[key]
+                                else:
+                                    category = 'others'
+                            elif dataset_name == 'LVIS':
+                                if key in self.lvis_mycat_map.keys():
+                                    category = self.lvis_mycat_map[key]
+                                else:
+                                    category = 'others'
+                            object_id = image_name + '_' + key + '_' + category
+                            if category not in category_and_id.keys():
+                                category_and_id[category] = {}
+                            category_and_id[category][object_id] = 0
+
+        for key, value in category_and_id.items():
+            category_number[key] = len(value)
+        
+        # add up category number
+        tot_num = 0
+        for key, value in category_number.items():
+            tot_num += value
+
+        print(category_number)
+        print('total:', tot_num)
+
+        # calculate amount of privacy category
+        privacy_category = {'CrowdWorks':{}, 'Prolific':{}, 'All': {}}
+        privacy_num = {'CrowdWorks':{}, 'Prolific':{}, 'All': {}}
+        if read_csv:
+            self.mega_table = pd.read_csv(self.mega_table_path)
+        else:
+            self.prepare_mega_table()
+
+        exclude_manual = self.mega_table[self.mega_table.category != 'Manual Label']
+        # access each row of exclude_manual
+        for index, row in exclude_manual.iterrows():
+            dataset_name = row['datasetName']
+            platform = row['platform']
+            key = row['category']
+            image_name = row['imagePath'][:-4]
+            if dataset_name == 'OpenImages':
+                if key in self.openimages_mycat_map.keys():
+                    category = self.openimages_mycat_map[key]
+                else:
+                    category = 'others'
+            elif dataset_name == 'LVIS':
+                if key in self.lvis_mycat_map.keys():
+                    category = self.lvis_mycat_map[key]
+                else:
+                    category = 'others'
+            object_id = image_name + '_' + key + '_' + category
+            if category not in privacy_category[platform].keys():
+                privacy_category[platform][category] = {}
+            if category not in privacy_category['All'].keys():
+                privacy_category['All'][category] = {}
+
+            if object_id not in privacy_category[platform][category].keys():
+                privacy_category[platform][category][object_id] = 1
+            else:
+                privacy_category[platform][category][object_id] += 1
+
+            if object_id not in privacy_category['All'][category].keys():
+                privacy_category['All'][category][object_id] = 1
+            else:
+                privacy_category['All'][category][object_id] += 1
+        
+        for platform, category in privacy_category.items():
+            for key, value in category.items():
+                privacy_num[platform][key] = {1: 0, 2: 0, 3: 0, 4: 0}
+                for object_id, num in value.items():
+                    privacy_num[platform][key][num] += 1
+        
+        #Add up privacy number of All
+        tot = {'CrowdWorks': {1: 0, 2: 0, 3: 0, 4: 0},
+                'Prolific': {1: 0, 2: 0, 3: 0, 4: 0},
+                'All': {1: 0, 2: 0, 3: 0, 4: 0}}
+        for platform in privacy_num.keys():
+            for key, value in privacy_num[platform].items():
+                if key == 'others':
+                    continue
+                tot[platform][1] += value[1]
+                tot[platform][2] += value[2]
+                tot[platform][3] += value[3]
+                tot[platform][4] += value[4]
+
+        print('CrowdWorks:')
+        print(privacy_num['CrowdWorks'])
+        print('Prolific:')
+        print(privacy_num['Prolific'])
+        print('All:')
+        print(privacy_num['All'])
+
+        print('total:', tot)
+
+        # #binomial test
+        # p = (tot['CrowdWorks'][1] + tot['CrowdWorks'][2]) / tot_num
+        # num_successes = tot['Prolific'][1] + tot['Prolific'][2]
+        # # Number of trials
+        # num_trials = tot_num
+        # p_value = binom(num_trials, p).sf(num_successes - 1) + binom(num_trials, p).cdf(num_successes)
+
+        # # Calculate 95% confidence interval
+        # lower, upper = binom(num_trials, p).interval(0.95)
+
+        # print("p-value:", p_value)
+        # print("95% CI:", lower, upper)
+        
 
     def prepare_mega_table(self, mycat_mode = True, save_csv = False, 
                            strict_mode = False, ignore_prev_manual_anns=True, strict_num = 2,
@@ -433,7 +562,9 @@ class analyzer:
 
         ## how many times annotated in DIPA 2.0
         print('content appear')
-        print(self.mega_table['id_content'].value_counts().value_counts())
+        exclude_manual = self.mega_table[self.mega_table.category != 'Manual Label']
+        print(exclude_manual)
+        print(exclude_manual['id_content'].value_counts().value_counts())
         ## annotation per content
 
         self.mega_table['information choice time'] = self.mega_table.apply(lambda row: sum(json.loads(row['informationType'])), axis = 1)
@@ -442,6 +573,7 @@ class analyzer:
         print(self.mega_table['owner choice time'].mean())
         self.mega_table['others choice time'] = self.mega_table.apply(lambda row: sum(json.loads(row['sharingOthers'])), axis = 1)
         print(self.mega_table['others choice time'].mean())
+    
     def count_worker_privacy_num(self) -> None:
         # as every image in image pool is somewhat privacy-threatening, we count how many privacy-threatening image have each worker choose to measure if they care about privacy.
         # input: read img_annotation_map.json
@@ -901,12 +1033,14 @@ if __name__ == '__main__':
     input_channel.extend(basic_info)
     input_channel.extend(category)
     output_channel = privacy_metrics
-    analyze.basic_info()
+
+    #analyze.distribution(read_csv=True)
+    #analyze.basic_info()
     #analyze.generate_img_annotation_map()
     #analyze.count_worker_privacy_num()
     #analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=False)
     #analyze.prepare_manual_label(save_csv=True, strict_mode=True)
-    #analyze.basic_count(read_csv = True, ignore_prev_manual_anns=False,split_count=True,count_scale='Prolific')
+    analyze.basic_count(read_csv = True, ignore_prev_manual_anns=False,split_count=True,count_scale='Prolific')
     #analyze.prepare_regression_model_table(read_csv=True)
     #analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
     
