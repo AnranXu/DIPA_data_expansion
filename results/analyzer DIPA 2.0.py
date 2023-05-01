@@ -563,7 +563,7 @@ class analyzer:
         ## how many times annotated in DIPA 2.0
         print('content appear')
         exclude_manual = self.mega_table[self.mega_table.category != 'Manual Label']
-        print(exclude_manual)
+        #print(exclude_manual)
         print(exclude_manual['id_content'].value_counts().value_counts())
         ## annotation per content
 
@@ -574,6 +574,36 @@ class analyzer:
         self.mega_table['others choice time'] = self.mega_table.apply(lambda row: sum(json.loads(row['sharingOthers'])), axis = 1)
         print(self.mega_table['others choice time'].mean())
     
+        ### contigency table for information type, sharing owner, sharing others
+        # information type
+        # table 6*6
+        information_tab = np.zeros((6, 6))
+        for i, row in self.mega_table.iterrows():
+            information = json.loads(row['informationType'])
+            for j in range(6):
+                if information[j] == 1:
+                    information_tab[j] += information
+        print(information_tab)
+
+        # sharing owner
+        # table 7*7
+        sharingOwner_tab = np.zeros((7, 7))
+        for i, row in self.mega_table.iterrows():
+            sharingOwner = json.loads(row['sharingOwner'])
+            for j in range(7):
+                if sharingOwner[j] == 1:
+                    sharingOwner_tab[j] += sharingOwner
+        print(sharingOwner_tab)
+
+        # sharing others
+        # table 7*7
+        sharingOthers_tab = np.zeros((7, 7))
+        for i, row in self.mega_table.iterrows():
+            sharingOthers = json.loads(row['sharingOthers'])
+            for j in range(7):
+                if sharingOthers[j] == 1:
+                    sharingOthers_tab[j] += sharingOthers
+        print(sharingOthers_tab)
     def count_worker_privacy_num(self) -> None:
         # as every image in image pool is somewhat privacy-threatening, we count how many privacy-threatening image have each worker choose to measure if they care about privacy.
         # input: read img_annotation_map.json
@@ -633,27 +663,34 @@ class analyzer:
                         # we only analyze default annotations
                         ifPrivacy = False
                         year = int(worker['age'])
-                        if 18 <= year <= 24:
-                            age = 1
-                        elif 25 <= year <= 34:
-                            age = 2
-                        elif 35 <= year <= 44:
-                            age = 3
-                        elif 45 <= year <= 54:
-                            age = 4
-                        elif 55 <= year:
-                            age = 5
+                        # if 18 <= year <= 24:
+                        #     age = 1
+                        # elif 25 <= year <= 34:
+                        #     age = 2
+                        # elif 35 <= year <= 44:
+                        #     age = 3
+                        # elif 45 <= year <= 54:
+                        #     age = 4
+                        # elif 55 <= year:
+                        #     age = 5
                         gender = worker['gender']
+                        if gender == 'Male':
+                            gender = 0
+                        elif gender == 'Female':
+                            gender = 1
+                        else:
+                            gender = 2
                         frequency = worker['frequency']
+                        nationality = 0 if platform == 'CrowdWorks' else 1
                         if len(label['manualAnnotation']) > 0:
                             ifPrivacy = True
                         for key, value in label['defaultAnnotation'].items():
                             if not value['ifNoPrivacy']:
                                 ifPrivacy = True
                         entry = pd.DataFrame.from_dict({
-                                "age": [age],
+                                "age": [year],
                                 "gender": [gender],
-                                "platform": [platform],
+                                "nationality": [int(nationality)],
                                 'privacyNum': [privacy_num],
                                 'ifPrivacy': [1 if ifPrivacy else 0],
                                 'frequency': [frequency]
@@ -1040,7 +1077,7 @@ if __name__ == '__main__':
     #analyze.count_worker_privacy_num()
     #analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=False)
     #analyze.prepare_manual_label(save_csv=True, strict_mode=True)
-    analyze.basic_count(read_csv = True, ignore_prev_manual_anns=False,split_count=True,count_scale='Prolific')
-    #analyze.prepare_regression_model_table(read_csv=True)
+    #analyze.basic_count(read_csv = True, ignore_prev_manual_anns=False,split_count=False,count_scale='Prolific')
+    analyze.prepare_regression_model_table(read_csv=True)
     #analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
     
