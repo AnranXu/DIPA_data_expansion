@@ -54,7 +54,7 @@ if __name__ == '__main__':
 
     input_channel = []
     input_channel.extend(basic_info)
-    input_channel.extend(category)
+    #input_channel.extend(category)
     input_channel.extend(bigfives)
     input_dim = len(input_channel)
     output_name = privacy_metrics
@@ -81,11 +81,11 @@ if __name__ == '__main__':
     train_loader = DataLoader(train_dataset, batch_size=96, generator=torch.Generator(device='cuda'), shuffle=True)
     val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=32)
     
-    wandb_logger = WandbLogger(project="DIPA2.0-inference test", name = '200 epoch (resnet 50)')
-    checkpoint_callback = ModelCheckpoint(dirpath='./models/200 epoch (resnet 50)/', save_last=True, monitor='val loss')
+    wandb_logger = WandbLogger(project="DIPA2.0-inference test", name = 'no category (resnet 50)')
+    checkpoint_callback = ModelCheckpoint(dirpath='./models/no category (resnet 50)/', save_last=True, monitor='val loss')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, 
-    auto_lr_find=True, max_epochs = 200, callbacks=[checkpoint_callback])
+    auto_lr_find=True, max_epochs = 100, callbacks=[checkpoint_callback])
     lr_finder = trainer.tuner.lr_find(model, train_loader)
     model.hparams.learning_rate = lr_finder.suggestion()
     print(f'lr auto: {lr_finder.suggestion()}')
