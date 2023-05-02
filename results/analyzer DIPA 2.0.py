@@ -634,7 +634,7 @@ class analyzer:
         with open('worker_privacy_num.json', 'w', encoding="utf-8") as w:
             json.dump(worker_privacy_num, w)
 
-    def prepare_regression_model_table(self, read_csv = False)->None:
+    def prepare_regression_model_table(self, read_csv = False, strict_mode = True, strict_num = 2)->None:
         #we change running regression model to R
         #Two table: image_wise_regression_table.csv
         #           annotation_wise_regression_table.csv
@@ -701,7 +701,9 @@ class analyzer:
                                                                   'ifPrivacy'])
         for image_name in self.img_annotation_map.keys():
             for platform, annotations in self.img_annotation_map[image_name].items():
-                for annotation in annotations:
+                for i, annotation in enumerate(annotations):
+                    if strict_mode and i >= strict_num:
+                        break
                     image_id = annotation.split('_')[0]
                     prefix_len = len(image_id) + 1
                     worker_file = annotation[prefix_len:]

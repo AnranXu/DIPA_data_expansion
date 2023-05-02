@@ -2,13 +2,15 @@ library(nnet)
 library(rstatix)
 library(dplyr)
 # reference https://rpubs.com/malshe/214303
-data <- read.csv(file = './image_wise_regression_table.csv')
-#data <- data %>% convert_as_factor(age, gender, platform, ifPrivacy)
-formula <- "ifPrivacy ~ gender + age + nationality + frequency"
+data <- read.csv(file = './annotation_wise_regression_table.csv')
+data <- data %>% convert_as_factor(gender, nationality)
+formula <- "ifPrivacy ~ gender + age + nationality + extraversion + agreeableness + conscientiousness + neuroticism + openness"
+sum(data$ifPrivacy == 0)
+sum(data$ifPrivacy == 1)
 log.model <- glm(formula = formula, family = "binomial", data = data)
 summary(log.model)
 summary(log.model)$coefficients
-#odd ratio
+#odd ratio: The larger the odds ratio, the more likely the event is to be found with exposure. The smaller the odds ratio is than 1, the less likely the event is to be found with exposure.
 exp(coefficients(log.model))
 # 95% CI
 confint.default(log.model)
