@@ -645,7 +645,60 @@ class analyzer:
         with open('worker_privacy_num.json', encoding="utf-8") as f:
             worker_privacy_num = json.load(f)
         # image_wise_regression_table.csv
-        image_wise_regression_table = pd.DataFrame(columns=['age', "gender", "platform", 'privacyNum', 'frequency', 'ifPrivacy'])
+        # image_wise_regression_table = pd.DataFrame(columns=['age', "gender", "platform", 'privacyNum', 'frequency', 'ifPrivacy'])
+        # for image_name in self.img_annotation_map.keys():
+        #     for platform, annotations in self.img_annotation_map[image_name].items():
+        #         for annotation in annotations:
+        #             image_id = annotation.split('_')[0]
+        #             prefix_len = len(image_id) + 1
+        #             worker_file = annotation[prefix_len:]
+        #             worker_id = worker_file[:-11]
+        #             worker_file = worker_id + '.json'
+        #             privacy_num = worker_privacy_num[worker_id]
+                    
+        #             with open(os.path.join(self.annotation_path, platform, 'workerinfo', worker_file), encoding="utf-8") as f_worker, \
+        #             open(os.path.join(self.annotation_path, platform, 'labels', annotation), encoding="utf-8") as f_label:
+        #                 worker = json.load(f_worker)
+        #                 label = json.load(f_label)
+        #                 # we only analyze default annotations
+        #                 ifPrivacy = False
+        #                 year = int(worker['age'])
+        #                 # if 18 <= year <= 24:
+        #                 #     age = 1
+        #                 # elif 25 <= year <= 34:
+        #                 #     age = 2
+        #                 # elif 35 <= year <= 44:
+        #                 #     age = 3
+        #                 # elif 45 <= year <= 54:
+        #                 #     age = 4
+        #                 # elif 55 <= year:
+        #                 #     age = 5
+        #                 gender = worker['gender']
+        #                 frequency = worker['frequency']
+        #                 nationality = 'Japan' if platform == 'CrowdWorks' else 'British'
+        #                 if len(label['manualAnnotation']) > 0:
+        #                     ifPrivacy = True
+        #                 for key, value in label['defaultAnnotation'].items():
+        #                     if not value['ifNoPrivacy']:
+        #                         ifPrivacy = True
+        #                 entry = pd.DataFrame.from_dict({
+        #                         "age": [year],
+        #                         "gender": [gender],
+        #                         "nationality": [int(nationality)],
+        #                         'privacyNum': [privacy_num],
+        #                         'ifPrivacy': [1 if ifPrivacy else 0],
+        #                         'frequency': [frequency]
+        #                     })
+
+        #                 image_wise_regression_table = pd.concat([image_wise_regression_table, entry], ignore_index=True)
+
+        # image_wise_regression_table.to_csv('./image_wise_regression_table.csv', index =False)        
+        
+        # annotation_wise_regression_table.csv
+        annotation_wise_regression_table = pd.DataFrame(columns=['age', "gender", "nationality",
+                                                                 'extraversion', 'agreeableness', 'conscientiousness', 
+                                                                  'neuroticism', 'openness',
+                                                                  'ifPrivacy'])
         for image_name in self.img_annotation_map.keys():
             for platform, annotations in self.img_annotation_map[image_name].items():
                 for annotation in annotations:
@@ -663,43 +716,45 @@ class analyzer:
                         # we only analyze default annotations
                         ifPrivacy = False
                         year = int(worker['age'])
-                        # if 18 <= year <= 24:
-                        #     age = 1
-                        # elif 25 <= year <= 34:
-                        #     age = 2
-                        # elif 35 <= year <= 44:
-                        #     age = 3
-                        # elif 45 <= year <= 54:
-                        #     age = 4
-                        # elif 55 <= year:
-                        #     age = 5
                         gender = worker['gender']
-                        if gender == 'Male':
-                            gender = 0
-                        elif gender == 'Female':
-                            gender = 1
-                        else:
-                            gender = 2
                         frequency = worker['frequency']
-                        nationality = 0 if platform == 'CrowdWorks' else 1
-                        if len(label['manualAnnotation']) > 0:
-                            ifPrivacy = True
+                        nationality = 'Japan' if platform == 'CrowdWorks' else 'British'
+                        extraversion = worker['bigfives']['Extraversion']
+                        agreeableness = worker['bigfives']['Agreeableness']
+                        conscientiousness = worker['bigfives']['Conscientiousness']
+                        neuroticism = worker['bigfives']['Neuroticism']
+                        openness = worker['bigfives']['Openness to Experience']
                         for key, value in label['defaultAnnotation'].items():
-                            if not value['ifNoPrivacy']:
-                                ifPrivacy = True
-                        entry = pd.DataFrame.from_dict({
-                                "age": [year],
-                                "gender": [gender],
-                                "nationality": [int(nationality)],
-                                'privacyNum': [privacy_num],
-                                'ifPrivacy': [1 if ifPrivacy else 0],
-                                'frequency': [frequency]
-                            })
+                            ifPrivacy = value['ifNoPrivacy']                        
+                            entry = pd.DataFrame.from_dict({
+                                    "age": [year],
+                                    "gender": [gender],
+                                    "nationality": [nationality],
+                                    "extraversion": [extraversion],
+                                    "agreeableness": [agreeableness],
+                                    "conscientiousness": [conscientiousness],
+                                    "neuroticism": [neuroticism],
+                                    "openness": [openness],
+                                    'ifPrivacy': [1 if ifPrivacy else 0],
+                                })
 
-                        image_wise_regression_table = pd.concat([image_wise_regression_table, entry], ignore_index=True)
+                            annotation_wise_regression_table = pd.concat([annotation_wise_regression_table, entry], ignore_index=True)
+                        for key, value in label['manualAnnotation'].items():                     
+                            entry = pd.DataFrame.from_dict({
+                                    "age": [year],
+                                    "gender": [gender],
+                                    "nationality": [nationality],
+                                    "extraversion": [extraversion],
+                                    "agreeableness": [agreeableness],
+                                    "conscientiousness": [conscientiousness],
+                                    "neuroticism": [neuroticism],
+                                    "openness": [openness],
+                                    'ifPrivacy': [1],
+                                })
 
-        image_wise_regression_table.to_csv('./image_wise_regression_table.csv', index =False)        
-        
+                            annotation_wise_regression_table = pd.concat([annotation_wise_regression_table, entry], ignore_index=True)
+
+        annotation_wise_regression_table.to_csv('./annotation_wise_regression_table.csv', index =False)        
     def regression_model(self, input_channel, output_channel, read_csv = False)->None:
         if read_csv:
             self.mega_table = pd.read_csv(self.mega_table_path)
