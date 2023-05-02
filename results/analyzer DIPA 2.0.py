@@ -726,8 +726,7 @@ class analyzer:
                         conscientiousness = worker['bigfives']['Conscientiousness']
                         neuroticism = worker['bigfives']['Neuroticism']
                         openness = worker['bigfives']['Openness to Experience']
-                        for key, value in label['defaultAnnotation'].items():
-                            ifPrivacy = value['ifNoPrivacy']                        
+                        for key, value in label['defaultAnnotation'].items():                       
                             entry = pd.DataFrame.from_dict({
                                     "age": [year],
                                     "gender": [gender],
@@ -737,11 +736,11 @@ class analyzer:
                                     "conscientiousness": [conscientiousness],
                                     "neuroticism": [neuroticism],
                                     "openness": [openness],
-                                    'ifPrivacy': [1 if ifPrivacy else 0],
+                                    'ifPrivacy': [0 if value['ifNoPrivacy'] else 1],
                                 })
 
                             annotation_wise_regression_table = pd.concat([annotation_wise_regression_table, entry], ignore_index=True)
-                        for key, value in label['manualAnnotation'].items():                     
+                        for key, value in label['manualAnnotation'].items():                
                             entry = pd.DataFrame.from_dict({
                                     "age": [year],
                                     "gender": [gender],
