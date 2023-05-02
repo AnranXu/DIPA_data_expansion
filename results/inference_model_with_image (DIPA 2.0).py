@@ -53,9 +53,9 @@ if __name__ == '__main__':
     mega_table['nationality'] = encoder.fit_transform(mega_table['datasetName'])
 
     input_channel = []
-    input_channel.extend(basic_info)
-    #input_channel.extend(category)
-    input_channel.extend(bigfives)
+    #input_channel.extend(basic_info)
+    input_channel.extend(category)
+    #input_channel.extend(bigfives)
     input_dim = len(input_channel)
     output_name = privacy_metrics
     output_channel = {'informationType': 6, 'sharingOwner': 7, 'sharingOthers': 7}
@@ -81,8 +81,8 @@ if __name__ == '__main__':
     train_loader = DataLoader(train_dataset, batch_size=96, generator=torch.Generator(device='cuda'), shuffle=True)
     val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=32)
     
-    wandb_logger = WandbLogger(project="DIPA2.0-inference test", name = 'no category (resnet 50)')
-    checkpoint_callback = ModelCheckpoint(dirpath='./models/no category (resnet 50)/', save_last=True, monitor='val loss')
+    wandb_logger = WandbLogger(project="DIPA2.0-inference test", name = 'only category (resnet 50)')
+    checkpoint_callback = ModelCheckpoint(dirpath='./models/only category (resnet 50)/', save_last=True, monitor='val loss')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, 
     auto_lr_find=True, max_epochs = 100, callbacks=[checkpoint_callback])
