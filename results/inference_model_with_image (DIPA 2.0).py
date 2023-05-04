@@ -28,8 +28,8 @@ torch.set_default_tensor_type('torch.cuda.FloatTensor')
 if __name__ == '__main__':
     bigfives = ["extraversion", "agreeableness", "conscientiousness",
     "neuroticism", "openness"]
-    basic_info = [ "age", "gender", 'originalDataset', 'nationality']
-    category = ['category']
+    basic_info = [ "age", "gender", 'nationality']
+    category = ['category', 'originalDataset']
     privacy_metrics = ['informationType', 'informativeness', 'sharingOwner', 'sharingOthers']
 
     mega_table = pd.read_csv('./annotations.csv')
