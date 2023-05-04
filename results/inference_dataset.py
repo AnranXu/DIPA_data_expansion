@@ -55,7 +55,7 @@ class ImageMaskDataset(Dataset):
                 tot_num = np.amax(self.mega_table[input_name].values)
                 bboxes = np.array(json.loads(self.mega_table['bbox'].iloc[idx]))
                 print(type(bboxes))
-                print(bbox)
+                print(bboxes)
                 for i in range(bboxes.shape[0]):
                     bbox = bboxes[i]
                     x = bbox[0][0] * ratio
