@@ -28,7 +28,7 @@ torch.set_default_tensor_type('torch.cuda.FloatTensor')
 if __name__ == '__main__':
     bigfives = ["extraversion", "agreeableness", "conscientiousness",
     "neuroticism", "openness"]
-    basic_info = [ "age", "gender", 'nationality']
+    basic_info = [ "age", "gender", 'nationality', 'frequency']
     category = ['category', 'originalDataset']
     privacy_metrics = ['informationType', 'informativeness', 'sharingOwner', 'sharingOthers']
 
@@ -81,8 +81,8 @@ if __name__ == '__main__':
     train_loader = DataLoader(train_dataset, batch_size=96, generator=torch.Generator(device='cuda'), shuffle=True)
     val_loader = DataLoader(val_dataset, generator=torch.Generator(device='cuda'), batch_size=32)
     
-    wandb_logger = WandbLogger(project="DIPA2.0-inference test", name = 'publish version (resnet 50)')
-    checkpoint_callback = ModelCheckpoint(dirpath='./models/publish version (resnet 50)/', save_last=True, monitor='val loss')
+    wandb_logger = WandbLogger(project="DIPA2.0-inference test", name = 'publish version add frequency (resnet 50)')
+    checkpoint_callback = ModelCheckpoint(dirpath='./models/publish version add frequency (resnet 50)/', save_last=True, monitor='val loss')
 
     trainer = pl.Trainer(accelerator='gpu', devices=[0],logger=wandb_logger, 
     auto_lr_find=True, max_epochs = 100, callbacks=[checkpoint_callback])
