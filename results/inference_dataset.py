@@ -73,12 +73,12 @@ class ImageMaskDataset(Dataset):
                     #             w = w * ratio
                     #             h = h * ratio
                     #             bboxes.append([x,y,w,h])
-                    
-                    for x, y, w, h in bboxes:
+                    print(bboxes)
+                    for [x, y, w, h] in bboxes:
                         x, y, w, h = int(x), int(y), int(w), int(h)
                         mask[i, y:y+h, x:x+w] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
                 else:
-                    for x, y, w, h in bboxes:
+                    for [x, y, w, h] in bboxes:
                         x, y, w, h = int(x), int(y), int(w), int(h)
                         mask[i, y:y+h, x:x+w] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
                     #mask[i, :, :] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
