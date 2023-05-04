@@ -45,7 +45,7 @@ class ImageMaskDataset(Dataset):
         # category = self.mega_table['originCategory'].iloc[idx]
         label_file = image_path[:-4] + '_label.json'
         labels = None
-        if self.mega_table['bbox'].iloc[idx] == '[[]]':
+        if self.mega_table['bbox'].iloc[idx] == '[]':
             bboxes = [0, 0, self.image_size[0], self.image_size[1]]
         else:
             bboxes = json.loads(self.mega_table['bbox'].iloc[idx])
