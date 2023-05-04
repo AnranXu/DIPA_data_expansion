@@ -56,6 +56,7 @@ class ImageMaskDataset(Dataset):
                 bboxes = json.loads(self.mega_table['bbox'].iloc[idx])
                 for i in range(len(bboxes)):
                     bbox = bboxes[i]
+                    print(bbox)
                     x = bbox[0][0] * ratio
                     y = bbox[0][1] * ratio
                     w = bbox[0][2] * ratio
