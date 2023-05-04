@@ -56,11 +56,10 @@ class ImageMaskDataset(Dataset):
                 bboxes = json.loads(self.mega_table['bbox'].iloc[idx])
                 for i in range(len(bboxes)):
                     bbox = bboxes[i]
-                    print(bbox)
-                    x = bbox[0][0] * ratio
-                    y = bbox[0][1] * ratio
-                    w = bbox[0][2] * ratio
-                    h = bbox[0][3] * ratio
+                    x = bbox[0] * ratio
+                    y = bbox[1] * ratio
+                    w = bbox[2] * ratio
+                    h = bbox[3] * ratio
                     x, y, w, h = int(x), int(y), int(w), int(h)
                     mask[i, y:y+h, x:x+w] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
                 # if input_name == 'category':
