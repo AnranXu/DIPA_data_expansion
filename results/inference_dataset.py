@@ -42,7 +42,7 @@ class ImageMaskDataset(Dataset):
         ## generate mask
         image = trans(image)
 
-        category = self.mega_table['originCategory'].iloc[idx]
+        # category = self.mega_table['originCategory'].iloc[idx]
         label_file = image_path[:-4] + '_label.json'
         labels = None
         bboxes = []
