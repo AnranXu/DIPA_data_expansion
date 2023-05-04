@@ -26,6 +26,7 @@ results/new annotations/*
 results/annotations (wrong one)/*
 results/dataset/*
 results/images/*
+results/publish/*
 # dependencies
 /node_modules
 /.pnp
