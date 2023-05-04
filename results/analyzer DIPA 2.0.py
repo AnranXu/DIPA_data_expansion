@@ -440,6 +440,11 @@ class analyzer:
                         informativeness = int(value['informativeness']) - 1
                         sharingOwner = value['sharingOwner']
                         sharingOthers = value['sharingOthers']
+                        bboxes = [] 
+                        bbox = value['bbox']
+                        print(bbox)
+                        bbox = [int(x) for x in bbox]
+                        bboxes.append(bbox)
                         if informationType[5] == 1:
                             self.custom_informationType.append(value['informationTypeInput'])
                         if sharingOwner[6] == 1:
@@ -467,7 +472,7 @@ class analyzer:
                             #'originCategory': value['category'],
                             'originalDataset': [dataset_name],
                             #'privacyNum': [privacy_num],
-                            'bbox': [[value['bbox']]]
+                            'bbox': [bboxes]
                         })
 
                         self.manual_table = pd.concat([self.manual_table, entry], ignore_index=True)
@@ -1139,7 +1144,7 @@ if __name__ == '__main__':
     #analyze.basic_info()
     #analyze.generate_img_annotation_map()
     #analyze.count_worker_privacy_num()
-    analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=False)
+    #analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=False)
     analyze.prepare_manual_label(save_csv=True, strict_mode=True)
     #analyze.basic_count(read_csv = True, ignore_prev_manual_anns=False,split_count=False,count_scale='Prolific')
     #analyze.prepare_regression_model_table(read_csv=True)
