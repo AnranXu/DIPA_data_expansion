@@ -45,7 +45,10 @@ class ImageMaskDataset(Dataset):
         # category = self.mega_table['originCategory'].iloc[idx]
         label_file = image_path[:-4] + '_label.json'
         labels = None
-        bboxes = []
+        if self.mega_table['bbox'].iloc[idx] == '[[]]':
+            bboxes = [0, 0, self.image_size[0], self.image_size[1]]
+        else:
+            bboxes = json.loads(self.mega_table['bbox'].iloc[idx])
         
         mask = torch.zeros((self.input_dim, self.image_size[0], self.image_size[1]))
         for i, input_name in enumerate(self.input_vector):
@@ -53,7 +56,7 @@ class ImageMaskDataset(Dataset):
                 mask[i, :, :] = torch.load(os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx] + '.pt'))
             else:
                 tot_num = np.amax(self.mega_table[input_name].values)
-                bboxes = json.loads(self.mega_table['bbox'].iloc[idx])
+                
                 for j in range(len(bboxes)):
                     bbox = bboxes[j]
                     x = bbox[0] * ratio
