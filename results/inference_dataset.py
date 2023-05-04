@@ -53,7 +53,9 @@ class ImageMaskDataset(Dataset):
                 mask[i, :, :] = torch.load(os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx] + '.pt'))
             else:
                 tot_num = np.amax(self.mega_table[input_name].values)
-                bboxes = np.array(self.mega_table['bbox'].iloc[idx])
+                bboxes = np.array(json.loads(self.mega_table['bbox'].iloc[idx]))
+                print(type(bboxes))
+                print(bbox)
                 for i in range(bboxes.shape[0]):
                     bbox = bboxes[i]
                     x = bbox[0][0] * ratio
