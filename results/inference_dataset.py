@@ -53,30 +53,35 @@ class ImageMaskDataset(Dataset):
                 mask[i, :, :] = torch.load(os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx] + '.pt'))
             else:
                 tot_num = np.amax(self.mega_table[input_name].values)
+                bboxes = self.mega_table['bbox'].iloc[idx]
                 if input_name == 'category':
-                    with open(os.path.join(self.label_folder, label_file)) as f:
-                        labels = json.load(f)
-                    if category == 'Manual Label':
-                        x, y, w, h = self.mega_table['bbox'].iloc[idx]
-                        x = x * ratio
-                        y = y * ratio
-                        w = w * ratio
-                        h = h * ratio
-                        bboxes.append([x,y,w,h])
-                    else:
-                        for key, value in labels['annotations'].items():
-                            if value['category'] == category:
-                                x, y, w, h = value['bbox']
-                                x = x * ratio
-                                y = y * ratio
-                                w = w * ratio
-                                h = h * ratio
-                                bboxes.append([x,y,w,h])
+                    # with open(os.path.join(self.label_folder, label_file)) as f:
+                    #     labels = json.load(f)
+                    # if category == 'Manual Label':
+                    #     x, y, w, h = self.mega_table['bbox'].iloc[idx]
+                    #     x = x * ratio
+                    #     y = y * ratio
+                    #     w = w * ratio
+                    #     h = h * ratio
+                    #     bboxes.append([x,y,w,h])
+                    # else:
+                    #     for key, value in labels['annotations'].items():
+                    #         if value['category'] == category:
+                    #             x, y, w, h = value['bbox']
+                    #             x = x * ratio
+                    #             y = y * ratio
+                    #             w = w * ratio
+                    #             h = h * ratio
+                    #             bboxes.append([x,y,w,h])
+                    
                     for x, y, w, h in bboxes:
                         x, y, w, h = int(x), int(y), int(w), int(h)
                         mask[i, y:y+h, x:x+w] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
                 else:
-                    mask[i, :, :] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
+                    for x, y, w, h in bboxes:
+                        x, y, w, h = int(x), int(y), int(w), int(h)
+                        mask[i, y:y+h, x:x+w] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
+                    #mask[i, :, :] = self.mega_table[input_name].iloc[idx] / (tot_num + 1.0)
                 if self.save_mask:
                     if not os.path.exists(os.path.join('./masks', input_name)):
                         os.mkdir(os.path.join('./masks', input_name))

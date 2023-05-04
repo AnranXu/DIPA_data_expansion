@@ -305,8 +305,8 @@ class analyzer:
         with open('worker_privacy_num.json', encoding="utf-8") as f:
             worker_privacy_num = json.load(f)
         
-        self.mega_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharingOwner", "sharingOthers", 'age', 'gender', 'privacyNum',
-        'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'frequency', 'imagePath', 'originCategory', 'datasetName'])
+        self.mega_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharingOwner", "sharingOthers", 'age', 'gender', 
+        'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'imagePath', 'originalDataset', 'bbox'])
         for image_name in self.img_annotation_map.keys():
             for platform, annotations in self.img_annotation_map[image_name].items():
                 # now, value[0] is the only availiable index
@@ -321,9 +321,12 @@ class analyzer:
                     worker_file = worker_id + '.json'
                     privacy_num = worker_privacy_num[worker_id]
                     with open(os.path.join(self.annotation_path, platform, 'workerinfo', worker_file), encoding="utf-8") as f_worker, \
-                    open(os.path.join(self.annotation_path, platform, 'labels', annotation), encoding="utf-8") as f_label:
+                    open(os.path.join(self.annotation_path, platform, 'labels', annotation), encoding="utf-8") as f_label, \
+                    open(os.path.join('./new annotations', 'annotations', image_id + '_label.json'), encoding="utf-8") as f_oriLabel:
                         worker = json.load(f_worker)
                         label = json.load(f_label)
+                        oriLabel = json.load(f_oriLabel)
+                        oriLabel = oriLabel['annotations']
                         # we only analyze default annotations
                         age = worker['age']
                         gender = worker['gender']
@@ -336,9 +339,14 @@ class analyzer:
                         frequency = worker['frequency']
                         nationality = worker['nationality'] if worker['nationality'] == 'Japan' else 'UK'
                         for key, value in label['defaultAnnotation'].items():
+                            bbox = []
                             if value['ifNoPrivacy'] and not include_not_private:
                                 continue
                             category = ''
+                            for ori in oriLabel.values():
+                                if ori['category'] == key:
+                                    ori['bbox'] = [int(x) for x in ori['bbox']]
+                                    bbox.append(ori['bbox'])
                             if mycat_mode:
                                 if dataset_name == 'OpenImages':
                                     if key in self.openimages_mycat_map.keys():
@@ -365,7 +373,7 @@ class analyzer:
                                 self.custom_recipient_others.append(value['sharingOthersInput'])
                             
                             entry = pd.DataFrame.from_dict({
-                                'id': [id],
+                                #'id': [id],
                                 "category": [category],
                                 "informationType":  [informationType],
                                 "informativeness": [informativeness],
@@ -380,12 +388,12 @@ class analyzer:
                                 "conscientiousness": [conscientiousness],
                                 "neuroticism": [neuroticism],
                                 "openness": [openness],
-                                'frequency': [frequency],
+                                #'frequency': [frequency],
                                 'imagePath': [image_name + '.jpg'],
-                                'originCategory': value['category'],
-                                'datasetName': [dataset_name],
-                                'privacyNum': [privacy_num],
-                                'bbox': [[0,0,0,0]]
+                                #'originCategory': value['category'],
+                                'originalDataset': [dataset_name],
+                                #'privacyNum': [privacy_num],
+                                'bbox': [bbox]
                             })
 
                             self.mega_table = pd.concat([self.mega_table, entry], ignore_index=True)
@@ -393,8 +401,8 @@ class analyzer:
             self.mega_table.to_csv(self.mega_table_path, index =False)
 
     def prepare_manual_label(self, save_csv = False, strict_mode = True, ignore_prev_manual_anns=True, strict_num = 2) -> None:
-        self.manual_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharingOwner", "sharingOthers", 'age', 'gender', 'privacyNum',
-        'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'frequency', 'imagePath', 'originCategory', 'datasetName'])
+        self.manual_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharingOwner", "sharingOthers", 'age', 'gender', 
+        'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'imagePath', 'originalDataset', 'bbox'])
         with open('worker_privacy_num.json', encoding="utf-8") as f:
             worker_privacy_num = json.load(f)
         for image_name in self.img_annotation_map.keys():
@@ -439,7 +447,7 @@ class analyzer:
                         if sharingOthers[6] == 1:
                             self.custom_recipient_others.append(value['sharingOthersInput'])
                         entry = pd.DataFrame.from_dict({
-                            'id': [id],
+                            #'id': [id],
                             "category": ['Manual Label'],
                             "informationType":  [informationType],
                             "informativeness": [informativeness],
@@ -454,12 +462,12 @@ class analyzer:
                             "conscientiousness": [conscientiousness],
                             "neuroticism": [neuroticism],
                             "openness": [openness],
-                            'frequency': [frequency],
+                            #'frequency': [frequency],
                             'imagePath': [image_name + '.jpg'],
-                            'originCategory': value['category'],
-                            'datasetName': [dataset_name],
-                            'privacyNum': [privacy_num],
-                            'bbox': [value['bbox']]
+                            #'originCategory': value['category'],
+                            'originalDataset': [dataset_name],
+                            #'privacyNum': [privacy_num],
+                            'bbox': [[value['bbox']]]
                         })
 
                         self.manual_table = pd.concat([self.manual_table, entry], ignore_index=True)
@@ -1131,9 +1139,9 @@ if __name__ == '__main__':
     #analyze.basic_info()
     #analyze.generate_img_annotation_map()
     #analyze.count_worker_privacy_num()
-    #analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=False)
-    #analyze.prepare_manual_label(save_csv=True, strict_mode=True)
+    analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=False)
+    analyze.prepare_manual_label(save_csv=True, strict_mode=True)
     #analyze.basic_count(read_csv = True, ignore_prev_manual_anns=False,split_count=False,count_scale='Prolific')
-    analyze.prepare_regression_model_table(read_csv=True)
+    #analyze.prepare_regression_model_table(read_csv=True)
     #analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
     

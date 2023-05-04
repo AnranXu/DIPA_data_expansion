@@ -28,11 +28,11 @@ torch.set_default_tensor_type('torch.cuda.FloatTensor')
 if __name__ == '__main__':
     bigfives = ["extraversion", "agreeableness", "conscientiousness",
     "neuroticism", "openness"]
-    basic_info = [ "age", "gender", "platform", 'datasetName', 'frequency', 'privacyNum', 'nationality']
+    basic_info = [ "age", "gender", 'originalDataset', 'nationality']
     category = ['category']
     privacy_metrics = ['informationType', 'informativeness', 'sharingOwner', 'sharingOthers']
 
-    mega_table = pd.read_csv('./mega_table (strict).csv')
+    mega_table = pd.read_csv('./annotations.csv')
 
     description = {'informationType': ['It tells personal information', 'It tells location of shooting',
         'It tells individual preferences/pastimes', 'It tells social circle', 
@@ -53,9 +53,9 @@ if __name__ == '__main__':
     mega_table['nationality'] = encoder.fit_transform(mega_table['datasetName'])
 
     input_channel = []
-    #input_channel.extend(basic_info)
+    input_channel.extend(basic_info)
     input_channel.extend(category)
-    #input_channel.extend(bigfives)
+    input_channel.extend(bigfives)
     input_dim = len(input_channel)
     output_name = privacy_metrics
     output_channel = {'informationType': 6, 'sharingOwner': 7, 'sharingOthers': 7}
