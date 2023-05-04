@@ -305,7 +305,7 @@ class analyzer:
         with open('worker_privacy_num.json', encoding="utf-8") as f:
             worker_privacy_num = json.load(f)
         
-        self.mega_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharingOwner", "sharingOthers", 'age', 'gender', 
+        self.mega_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharingOwner", "sharingOthers", 'age', 'gender', 'frequency', 
         'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'imagePath', 'originalDataset', 'bbox'])
         for image_name in self.img_annotation_map.keys():
             for platform, annotations in self.img_annotation_map[image_name].items():
@@ -388,7 +388,7 @@ class analyzer:
                                 "conscientiousness": [conscientiousness],
                                 "neuroticism": [neuroticism],
                                 "openness": [openness],
-                                #'frequency': [frequency],
+                                'frequency': [frequency],
                                 'imagePath': [image_name + '.jpg'],
                                 #'originCategory': value['category'],
                                 'originalDataset': [dataset_name],
@@ -401,7 +401,7 @@ class analyzer:
             self.mega_table.to_csv(self.mega_table_path, index =False)
 
     def prepare_manual_label(self, save_csv = False, strict_mode = True, ignore_prev_manual_anns=True, strict_num = 2) -> None:
-        self.manual_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharingOwner", "sharingOthers", 'age', 'gender', 
+        self.manual_table = pd.DataFrame(columns=["category", "informationType", "informativeness", "sharingOwner", "sharingOthers", 'age', 'gender', 'frequency',
         'platform', 'extraversion', 'agreeableness', 'conscientiousness', 'neuroticism', 'openness', 'imagePath', 'originalDataset', 'bbox'])
         with open('worker_privacy_num.json', encoding="utf-8") as f:
             worker_privacy_num = json.load(f)
@@ -442,40 +442,42 @@ class analyzer:
                         sharingOthers = value['sharingOthers']
                         bboxes = [] 
                         bbox = value['bbox']
-                        print(bbox)
-                        bbox = [int(x) for x in bbox]
-                        bboxes.append(bbox)
-                        if informationType[5] == 1:
-                            self.custom_informationType.append(value['informationTypeInput'])
-                        if sharingOwner[6] == 1:
-                            self.custom_recipient_owner.append(value['sharingOwnerInput'])
-                        if sharingOthers[6] == 1:
-                            self.custom_recipient_others.append(value['sharingOthersInput'])
-                        entry = pd.DataFrame.from_dict({
-                            #'id': [id],
-                            "category": ['Manual Label'],
-                            "informationType":  [informationType],
-                            "informativeness": [informativeness],
-                            "sharingOwner": [sharingOwner],
-                            "sharingOthers": [sharingOthers],
-                            "age": [age],
-                            "gender": [gender],
-                            "platform": [platform],
-                            "nationality": [nationality],
-                            "extraversion": [extraversion],
-                            "agreeableness": [agreeableness],
-                            "conscientiousness": [conscientiousness],
-                            "neuroticism": [neuroticism],
-                            "openness": [openness],
-                            #'frequency': [frequency],
-                            'imagePath': [image_name + '.jpg'],
-                            #'originCategory': value['category'],
-                            'originalDataset': [dataset_name],
-                            #'privacyNum': [privacy_num],
-                            'bbox': [bboxes]
-                        })
+                        try:
+                            bbox = [int(x) for x in bbox]
+                            bboxes.append(bbox)
+                            if informationType[5] == 1:
+                                self.custom_informationType.append(value['informationTypeInput'])
+                            if sharingOwner[6] == 1:
+                                self.custom_recipient_owner.append(value['sharingOwnerInput'])
+                            if sharingOthers[6] == 1:
+                                self.custom_recipient_others.append(value['sharingOthersInput'])
+                            entry = pd.DataFrame.from_dict({
+                                #'id': [id],
+                                "category": ['Manual Label'],
+                                "informationType":  [informationType],
+                                "informativeness": [informativeness],
+                                "sharingOwner": [sharingOwner],
+                                "sharingOthers": [sharingOthers],
+                                "age": [age],
+                                "gender": [gender],
+                                "platform": [platform],
+                                "nationality": [nationality],
+                                "extraversion": [extraversion],
+                                "agreeableness": [agreeableness],
+                                "conscientiousness": [conscientiousness],
+                                "neuroticism": [neuroticism],
+                                "openness": [openness],
+                                'frequency': [frequency],
+                                'imagePath': [image_name + '.jpg'],
+                                #'originCategory': value['category'],
+                                'originalDataset': [dataset_name],
+                                #'privacyNum': [privacy_num],
+                                'bbox': [bboxes]
+                            })
 
-                        self.manual_table = pd.concat([self.manual_table, entry], ignore_index=True)
+                            self.manual_table = pd.concat([self.manual_table, entry], ignore_index=True)
+                        except:
+                            print('wrong bbox', bbox)
         if save_csv:
             self.manual_table.to_csv('./manual_table.csv', index =False)
     def basic_count(self, read_csv = False, split_count = False, count_scale = 'CrowdWorks',
@@ -711,7 +713,7 @@ class analyzer:
         annotation_wise_regression_table = pd.DataFrame(columns=['age', "gender", "nationality",
                                                                  'extraversion', 'agreeableness', 'conscientiousness', 
                                                                   'neuroticism', 'openness',
-                                                                  'ifPrivacy'])
+                                                                  'ifPrivacy', 'frequency'])
         for image_name in self.img_annotation_map.keys():
             for platform, annotations in self.img_annotation_map[image_name].items():
                 for i, annotation in enumerate(annotations):
@@ -749,6 +751,7 @@ class analyzer:
                                     "conscientiousness": [conscientiousness],
                                     "neuroticism": [neuroticism],
                                     "openness": [openness],
+                                    "frequency": [frequency],
                                     'ifPrivacy': [0 if value['ifNoPrivacy'] else 1],
                                 })
 
@@ -763,6 +766,7 @@ class analyzer:
                                     "conscientiousness": [conscientiousness],
                                     "neuroticism": [neuroticism],
                                     "openness": [openness],
+                                    "frequency": [frequency],
                                     'ifPrivacy': [1],
                                 })
 
@@ -1144,7 +1148,7 @@ if __name__ == '__main__':
     #analyze.basic_info()
     #analyze.generate_img_annotation_map()
     #analyze.count_worker_privacy_num()
-    #analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=False)
+    analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=False)
     analyze.prepare_manual_label(save_csv=True, strict_mode=True)
     #analyze.basic_count(read_csv = True, ignore_prev_manual_anns=False,split_count=False,count_scale='Prolific')
     #analyze.prepare_regression_model_table(read_csv=True)
