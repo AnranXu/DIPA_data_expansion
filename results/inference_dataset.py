@@ -45,8 +45,7 @@ class ImageMaskDataset(Dataset):
         # category = self.mega_table['originCategory'].iloc[idx]
         label_file = image_path[:-4] + '_label.json'
         labels = None
-        print(self.mega_table['bbox'].iloc[idx])
-        bboxes = json.loads(self.mega_table['bbox'].iloc[idx])
+        bboxes = self.mega_table['bbox'].iloc[idx]
         mask = torch.zeros((self.input_dim, self.image_size[0], self.image_size[1]))
         for i, input_name in enumerate(self.input_vector):
             if self.save_mask and os.path.exists(os.path.join('./masks', input_name, self.mega_table['id'].iloc[idx] + '.pt')):
