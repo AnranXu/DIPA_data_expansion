@@ -6,9 +6,11 @@ if __name__ == '__main__':
     img_path = './images/'
     img_annotation_map = {}
     img_annotation_map_path = './img_annotation_map.json'
+    new_img_annotation_map = {}
     valid_workers = []
     with open(img_annotation_map_path) as f:
         img_annotation_map = json.load(f)
+        new_img_annotation_map = img_annotation_map.copy()
     with open('./annotations/CrowdWorks/valid_workers.json') as f:
         valid_workers = json.load(f)
     with open('./annotations/Prolific/valid_workers.json') as f:
@@ -25,7 +27,9 @@ if __name__ == '__main__':
             for platform, annotations in img_annotation_map[image_name].items():
                 for i, annotation in enumerate(annotations):
                     if i >= 2:
-                        break
+                        #delete the annotation in new_img_annotation_map
+                        new_img_annotation_map[image_name][platform].remove(annotation)
+                        continue
                     image_id = annotation.split('_')[0]
                     prefix_len = len(image_id) + 1
                     worker_file = annotation[prefix_len:]
@@ -59,3 +63,6 @@ if __name__ == '__main__':
                         image_file = os.path.join(img_path, image_name + '.jpg')
                         if os.path.exists(image_file):
                             os.system('cp {} {}'.format(image_file, os.path.join('publish', 'images', image_name + '.jpg')))
+    # save new_img_annotation_map
+    with open('./publish/img_annotation_map.json', 'w') as f:
+        json.dump(new_img_annotation_map, f)

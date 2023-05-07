@@ -480,6 +480,34 @@ class analyzer:
                             print('wrong bbox', bbox)
         if save_csv:
             self.manual_table.to_csv('./manual_table.csv', index =False)
+    def count_frequency(self)->None:
+        ## count frenquency of sharing for each annotator
+        frequency = {'CrowdWorks': {0: 0, 1:0, 2:0, 3:0, 4:0}, 'Prolific': {0: 0, 1:0, 2:0, 3:0, 4:0}, 'All': {0: 0, 1:0, 2:0, 3:0, 4:0}}
+        # CrowdWorks
+        worker_file = os.listdir('./annotations/CrowdWorks/workerinfo')
+        with open(os.path.join(self.annotation_path, 'CrowdWorks', 'valid_workers.json')) as f:
+            valid_workers = json.load(f)
+        for file in worker_file:
+            if file[:-5] not in valid_workers:
+                continue
+            with open('./annotations/CrowdWorks/workerinfo/' + file) as f:
+                worker = json.load(f)
+                frequency['CrowdWorks'][int(worker['frequency'])] += 1
+                frequency['All'][int(worker['frequency'])] += 1
+        # Prolific
+        worker_file = os.listdir('./annotations/Prolific/workerinfo')
+        with open(os.path.join(self.annotation_path, 'Prolific', 'valid_workers.json')) as f:
+            valid_workers = json.load(f)
+        for file in worker_file:
+            if file[:-5] not in valid_workers:
+                continue
+            with open('./annotations/Prolific/workerinfo/' + file) as f:
+                worker = json.load(f)
+                frequency['Prolific'][int(worker['frequency'])] += 1
+                frequency['All'][int(worker['frequency'])] += 1
+        
+        print(frequency)
+
     def basic_count(self, read_csv = False, split_count = False, count_scale = 'CrowdWorks',
                     strict_mode = True, ignore_prev_manual_anns=False, strict_num = 2) -> None:
 
@@ -1148,9 +1176,10 @@ if __name__ == '__main__':
     #analyze.basic_info()
     #analyze.generate_img_annotation_map()
     #analyze.count_worker_privacy_num()
-    analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=False)
-    analyze.prepare_manual_label(save_csv=True, strict_mode=True)
+    #analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=False)
+    #analyze.prepare_manual_label(save_csv=True, strict_mode=True)
     #analyze.basic_count(read_csv = True, ignore_prev_manual_anns=False,split_count=False,count_scale='Prolific')
     #analyze.prepare_regression_model_table(read_csv=True)
     #analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
+    analyze.count_frequency()
     
