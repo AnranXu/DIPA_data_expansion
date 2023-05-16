@@ -41,6 +41,7 @@ class analyzer:
         self.test_size = 0.1
         self.custom_informationType = []
         self.custom_recipient = []
+        self.mega_table_path = './mega_table.csv'
         self.description = {'informationType': ['It tells personal identity.', 'It tells location of shooting.',
         'It tells personal habits.', 'It tells social circle.', 'Other things it can tell'],
         'informativeness':['extremely uninformative','moderately uninformative','slightly uninformative','neutral',
@@ -416,6 +417,25 @@ class analyzer:
         aov_table = sm.stats.anova_lm(model, typ=1)
         print(aov_table)
 
+    def basic_count(self, read_csv = False, split_count = False, count_scale = 'CrowdWorks',
+                    strict_mode = True, ignore_prev_manual_anns=False, strict_num = 2) -> None:
+
+        def calculate_array(input_array, option_num):
+            res = np.zeros(option_num, dtype='int')
+            for i in range(input_array.shape[0]):
+                res += np.array(json.loads(input_array[i]))
+            return res
+        if read_csv:
+            self.mega_table = pd.read_csv(self.mega_table_path)
+        else:
+            self.prepare_mega_table()
+        # if split_count:
+        #     print(self.mega_table)
+        #     self.mega_table = self.mega_table[self.mega_table['platform'] == count_scale]
+        #     print(self.mega_table)
+        informativeness = self.mega_table['informativeness'].value_counts()
+        print(informativeness)
+
     def neural_network(self, input_channel, output_channel, read_csv = False) -> None:
         def l1_distance_loss(prediction, target):
             loss = np.abs(prediction - target)
@@ -620,12 +640,12 @@ if __name__ == '__main__':
     output_channel = privacy_metrics
     
     #output_channel = ['sharing']
-    analyze.prepare_mega_table(mycat_mode=False, save_csv=True, include_not_private= False)
+   #analyze.prepare_mega_table(mycat_mode=False, save_csv=True, include_not_private= False)
     #print(analyze.mega_table['informationType'].unique())
     #print(analyze.mega_table['sharing'].unique())
     #analyze.regression_model(input_channel, output_channel)
     #print(analyze.mega_table)
-    analyze.prepare_manual_label(save_csv=True)
+    #analyze.prepare_manual_label(save_csv=True)
     #print(analyze.custom_informationType)
     #print(analyze.custom_recipient)
     #print(len(analyze.mega_table['id'].unique()))
@@ -634,4 +654,5 @@ if __name__ == '__main__':
     #analyze.neural_network(input_channel, output_channel, read_csv=True)
     #analyze.knn(input_channel, output_channel, read_csv=True)
     #analyze.prepare_regression_model_table(read_csv=True)
+    analyze.basic_count(read_csv=True, split_count=True, count_scale='CrowdWorks', strict_mode=True, ignore_prev_manual_anns=False, strict_num=2)
     

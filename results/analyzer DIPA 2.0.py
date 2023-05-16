@@ -51,6 +51,7 @@ class analyzer:
         'frequency': ['Never', 'Less than once a month', 'Once or more per month', 
         'Once or more per week', 'Once or more per day']}
         self.mega_table_path = './mega_table (strict).csv'
+        self.manual_table_path = './manual_table.csv'
         if not os.path.exists(self.img_annotation_map_path):
             self.generate_img_annotation_map()
         with open(self.img_annotation_map_path) as f:
@@ -223,7 +224,7 @@ class analyzer:
         exclude_manual = self.mega_table[self.mega_table.category != 'Manual Label']
         # access each row of exclude_manual
         for index, row in exclude_manual.iterrows():
-            dataset_name = row['datasetName']
+            dataset_name = row['originalDataset']
             platform = row['platform']
             key = row['category']
             image_name = row['imagePath'][:-4]
@@ -508,6 +509,53 @@ class analyzer:
         
         print(frequency)
 
+    import numpy as np
+
+    def non_max_suppression(self, boxes, overlapThresh):
+        # if there are no boxes, return an empty list
+        if len(boxes) == 0:
+            return []
+
+        # initialize the list of picked indexes
+        pick = []
+
+        # grab the coordinates of the bounding boxes
+        x1 = boxes[:, 0]
+        y1 = boxes[:, 1]
+        x2 = boxes[:, 0] + boxes[:, 2]
+        y2 = boxes[:, 1] + boxes[:, 3]
+
+        # compute the area of the bounding boxes and sort the bounding boxes by their area
+        area = boxes[:, 2] * boxes[:, 3]
+        idxs = np.argsort(area)[::-1]
+
+        # loop over the indexes of the bounding boxes
+        while len(idxs) > 0:
+            # grab the last index in the indexes list and add the index value to the list of picked indexes
+            last = len(idxs) - 1
+            i = idxs[last]
+            pick.append(i)
+
+            # find the largest (x, y) coordinates for the start of the bounding box and the smallest (x, y) coordinates
+            # for the end of the bounding box
+            xx1 = np.maximum(x1[i], x1[idxs[:last]])
+            yy1 = np.maximum(y1[i], y1[idxs[:last]])
+            xx2 = np.minimum(x2[i], x2[idxs[:last]])
+            yy2 = np.minimum(y2[i], y2[idxs[:last]])
+
+            # compute the width and height of the bounding box intersection
+            w = np.maximum(0, xx2 - xx1 + 1)
+            h = np.maximum(0, yy2 - yy1 + 1)
+
+            # compute the ratio of overlap between the bounding box and the rest of the bounding boxes
+            overlap = (w * h) / area[idxs[:last]]
+
+            # delete all indexes from the index list that have an overlap greater than the overlap threshold
+            idxs = np.delete(idxs, np.concatenate(([last], np.where(overlap > overlapThresh)[0])))
+
+        # return only the bounding boxes that were picked
+        return boxes[pick]
+
     def basic_count(self, read_csv = False, split_count = False, count_scale = 'CrowdWorks',
                     strict_mode = True, ignore_prev_manual_anns=False, strict_num = 2) -> None:
 
@@ -630,22 +678,46 @@ class analyzer:
 
         # sharing owner
         # table 7*7
+        # if a larger index == 1 while smaller index == 0, then it is unusual, except the case of index 0 and 6
+        unusual = 0
         sharingOwner_tab = np.zeros((7, 7))
         for i, row in self.mega_table.iterrows():
             sharingOwner = json.loads(row['sharingOwner'])
             for j in range(7):
                 if sharingOwner[j] == 1:
                     sharingOwner_tab[j] += sharingOwner
+            # find unusual
+            ifunusual = False
+            for j in range(1, 5):
+                for k in range(j + 1, 6):
+                    if sharingOwner[j] == 0 and sharingOwner[k] == 1:
+                        unusual += 1
+                        ifunusual = True
+                        break
+                if ifunusual:
+                    break
+        print('unusual:', unusual)
         print(sharingOwner_tab)
 
         # sharing others
         # table 7*7
+        unusual = 0
         sharingOthers_tab = np.zeros((7, 7))
         for i, row in self.mega_table.iterrows():
             sharingOthers = json.loads(row['sharingOthers'])
             for j in range(7):
                 if sharingOthers[j] == 1:
                     sharingOthers_tab[j] += sharingOthers
+            ifunusual = False
+            for j in range(1, 5):
+                for k in range(j + 1, 6):
+                    if sharingOthers[j] == 0 and sharingOthers[k] == 1:
+                        unusual += 1
+                        ifunusual = True
+                        break
+                if ifunusual:
+                    break
+        print('unusual:', unusual)
         print(sharingOthers_tab)
     def count_worker_privacy_num(self) -> None:
         # as every image in image pool is somewhat privacy-threatening, we count how many privacy-threatening image have each worker choose to measure if they care about privacy.
@@ -800,7 +872,83 @@ class analyzer:
 
                             annotation_wise_regression_table = pd.concat([annotation_wise_regression_table, entry], ignore_index=True)
 
-        annotation_wise_regression_table.to_csv('./annotation_wise_regression_table.csv', index =False)        
+        annotation_wise_regression_table.to_csv('./annotation_wise_regression_table.csv', index =False)      
+
+    def bbox_iou(self,boxA, boxB):
+    # boxA and boxB are expected to be lists or tuples of four numbers representing the (x, y, w, h) coordinates of the boxes
+
+    # calculate the (x, y)-coordinates of the intersection rectangle
+        xA = max(boxA[0], boxB[0])
+        yA = max(boxA[1], boxB[1])
+        xB = min(boxA[0] + boxA[2], boxB[0] + boxB[2])
+        yB = min(boxA[1] + boxA[3], boxB[1] + boxB[3])
+
+        # calculate the area of intersection rectangle
+        intersection_area = max(0, xB - xA + 1) * max(0, yB - yA + 1)
+
+        # calculate the area of both bounding boxes
+        boxA_area = boxA[2] * boxA[3]
+        boxB_area = boxB[2] * boxB[3]
+
+        # calculate the union area
+        union_area = boxA_area + boxB_area - intersection_area
+
+        # calculate IoU
+        iou = intersection_area / union_area
+
+        return iou
+    
+    def count_overlap_in_manual_table(self, split_count = False, count_scale = 'CrowdWorks')->None:
+        # read manual table
+        self.manual_table = pd.read_csv(self.manual_table_path)
+        #print len
+        print('manual table len:', len(self.manual_table))
+        # divide it by CrowdWorks and Prolific and out put length
+        print('CrowdWorks len:', len(self.manual_table[self.manual_table['platform'] == 'CrowdWorks']))
+        print('Prolific len:', len(self.manual_table[self.manual_table['platform'] == 'Prolific']))
+        #print unique image path len
+        if split_count:
+            self.manual_table = self.manual_table[self.manual_table['platform'] == count_scale]
+        print('unique image path len:', len(self.manual_table['imagePath'].unique()))
+        #imagePath bounding box map
+        imagePath = {}
+        for i, row in self.manual_table.iterrows():
+            if row['imagePath'] not in imagePath.keys():
+                imagePath[row['imagePath']] = []
+            bbox = json.loads(row['bbox'])
+            bbox = bbox[0]
+            imagePath[row['imagePath']].append(bbox)
+        
+        # count overlap in bounding box over a threshold
+        threshold = 0.7
+        overlap = 0
+       
+        #Non-Maximum Suppression if overlap > threshold
+        filtered_imagePath = {}
+        for key, value in imagePath.items():
+            value = np.array(value)
+            value = self.non_max_suppression(value, threshold)
+            filtered_imagePath[key] = value
+
+        #count number of filtered bounding box
+        for key, value in filtered_imagePath.items():
+            overlap += len(value)
+        print('overlap:', overlap)
+
+        #count specific overlap by filtered bounding box
+        overlap = {}
+        for key, value in filtered_imagePath.items():
+            for bbox in value:
+                overlap_num = 0
+                for ori_bbox in imagePath[key]:
+                    if self.bbox_iou(bbox, ori_bbox) > threshold:
+                        overlap_num += 1
+                if overlap_num not in overlap.keys():
+                    overlap[overlap_num] = 1
+                else:
+                    overlap[overlap_num] += 1
+        print('overlap:', overlap)  
+                        
     def regression_model(self, input_channel, output_channel, read_csv = False)->None:
         if read_csv:
             self.mega_table = pd.read_csv(self.mega_table_path)
@@ -1181,5 +1329,6 @@ if __name__ == '__main__':
     #analyze.basic_count(read_csv = True, ignore_prev_manual_anns=False,split_count=False,count_scale='Prolific')
     #analyze.prepare_regression_model_table(read_csv=True)
     #analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
-    analyze.count_frequency()
+    #analyze.count_frequency()
+    analyze.count_overlap_in_manual_table(split_count=False, count_scale='Prolific')
     

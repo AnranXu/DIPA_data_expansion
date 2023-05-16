@@ -10,7 +10,7 @@ if __name__ == '__main__':
     valid_workers = []
     with open(img_annotation_map_path) as f:
         img_annotation_map = json.load(f)
-        new_img_annotation_map = img_annotation_map.copy()
+        #new_img_annotation_map = img_annotation_map.copy()
     with open('./annotations/CrowdWorks/valid_workers.json') as f:
         valid_workers = json.load(f)
     with open('./annotations/Prolific/valid_workers.json') as f:
@@ -28,23 +28,27 @@ if __name__ == '__main__':
                 for i, annotation in enumerate(annotations):
                     if i >= 2:
                         #delete the annotation in new_img_annotation_map
-                        new_img_annotation_map[image_name][platform].remove(annotation)
+                        #new_img_annotation_map[image_name][platform].remove(annotation)
                         continue
                     image_id = annotation.split('_')[0]
                     prefix_len = len(image_id) + 1
                     worker_file = annotation[prefix_len:]
                     worker_id = worker_file[:-11]
                     worker_file = worker_id + '.json'
-                    
                     if worker_id not in valid_workers:
                         continue
+                    if image_id not in new_img_annotation_map.keys():
+                        new_img_annotation_map[image_id] = {}
+                    if platform not in new_img_annotation_map[image_id].keys():
+                        new_img_annotation_map[image_id][platform] = []
                     new_workerid = workerid_map[worker_id]
+                    new_annotation = image_id + '_' + workerid_map[worker_id] + '_label.json'
+                    new_img_annotation_map[image_id][platform].append(new_annotation)
                     with open(os.path.join(annotation_path, platform, 'workerinfo', worker_file), encoding="utf-8") as f_worker, \
                     open(os.path.join(annotation_path, platform, 'labels', annotation), encoding="utf-8") as f_label:
                         worker = json.load(f_worker)
                         label = json.load(f_label)
                         # remove key 'frequency' in worker
-                        worker.pop('frequency')
                         if platform == 'CrowdWorks':
                              worker['nationality'] = 'Japan'
                         else:
