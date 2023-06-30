@@ -27,6 +27,8 @@ results/annotations (wrong one)/*
 results/dataset/*
 results/images/*
 results/publish/*
+results/privacy-threateningImages/*
+results/selected images/*
 # dependencies
 /node_modules
 /.pnp

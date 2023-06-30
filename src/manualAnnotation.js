@@ -72,10 +72,6 @@ class ManualAnnotationCard extends Component{
         'previous': {'en': 'Previous', 'jp': '前へ'},
         'question': {'en': 'Page', 'jp': 'ページ'}};
     }
-    toolCallback = (childData) =>{
-        console.log(childData);
-        this.setState(childData);
-    }
     componentDidUpdate(prevProps, prevState) {
         if(this.props.bboxsLength !== prevProps.bboxsLength)
         {

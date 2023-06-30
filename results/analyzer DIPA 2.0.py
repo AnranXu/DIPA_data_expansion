@@ -4,6 +4,7 @@ import json
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+from PIL import Image
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
@@ -253,7 +254,6 @@ class analyzer:
                 privacy_category['All'][category][object_id] = 1
             else:
                 privacy_category['All'][category][object_id] += 1
-        
         for platform, category in privacy_category.items():
             for key, value in category.items():
                 privacy_num[platform][key] = {1: 0, 2: 0, 3: 0, 4: 0}
@@ -279,6 +279,30 @@ class analyzer:
         print(privacy_num['Prolific'])
         print('All:')
         print(privacy_num['All'])
+
+        #record all images that hit four times as privacy from privacy_category
+        four_time_list = []
+        for platform, category in privacy_category.items():
+            for key, value in category.items():
+                for object_id, num in value.items():
+                    if num == 4:
+                        img_id = object_id.split('_')[0] + '.jpg'
+                        four_time_list.append(img_id)
+        
+        #unique and print len
+        four_time_list = list(set(four_time_list))
+        print('four time list len:', len(four_time_list))
+        #generate task record for DMBIS pilot study
+        task_record = {}
+        task_per_worker = 20
+        task_num = -1
+        for i, imageId in enumerate(four_time_list):
+            if i % task_per_worker == 0:
+                task_num += 1
+                task_record[task_num] = []
+            task_record[task_num].append(imageId)
+        with open('task_record_for_dmbis_pilot.json', 'w') as f:
+            json.dump(task_record, f)
 
         print('total:', tot)
 
@@ -508,8 +532,6 @@ class analyzer:
                 frequency['All'][int(worker['frequency'])] += 1
         
         print(frequency)
-
-    import numpy as np
 
     def non_max_suppression(self, boxes, overlapThresh):
         # if there are no boxes, return an empty list
@@ -1304,6 +1326,143 @@ class analyzer:
 
             epoch_number += 1
         writer.close()
+    def visualDistribution(self, read_csv=False, visualization=False, outputSelection=False):
+        #target: get the distribution of all visual content by different metrics, like size, foreground or background, and relative location to the center.
+        #Each distribution has three or two categories, like small, medium, large, foreground, background, close, netural, far, etc.
+        # read mega table 
+        if read_csv:
+            self.mega_table = pd.read_csv(self.mega_table_path)
+        else:
+            self.prepare_mega_table()
+        
+        # for each item, get the image path, and get the image
+        # get the bounding box from mega table, and get the size of the bounding box and size of the image through PIL.image
+        # get the relative location of the bounding box to the center of the image
+        # read every row of the meage table
+        relative_sizes = []
+        relative_position = []
+        width_height_ratio = []
+        bbox_name=[]
+        bboxes = []
+        informativeness = []
+        for index, row in self.mega_table.iterrows():
+            #bboxes = json.loads(row['bbox'])
+            image_path = os.path.join('images', row['imagePath'])
+            image = Image.open(image_path)
+            image_width, image_height = image.size
+            for bbox in row['bbox']:
+                #size
+                size = bbox[2] * bbox[3]
+                relative_size = size / (image_width * image_height)
+                relative_sizes.append(relative_size)
+                #relative location
+                center_x = image_width / 2
+                center_y = image_height / 2
+                relative_x = (bbox[0] + bbox[2] / 2 - center_x) / image_width
+                relative_y = (bbox[1] + bbox[3] / 2 - center_y) / image_height
+                #print(relative_x, relative_y)
+                relative_position.append([relative_x, relative_y])
+                #width heigh ratio
+                width_height_ratio.append(bbox[2] / bbox[3])
+                bbox_name.append(row['imagePath'] + '_' + row['category'])
+                informativeness.append(row['informativeness'])
+                bboxes.append(bbox)
+        #visualize the distribution in coordinate system
+        relative_sizes = np.array(relative_sizes)
+        relative_position = np.array(relative_position)
+        width_height_ratio = np.array(width_height_ratio)
+        # divide data into 30, 40 ,30
+        low_number = 30
+        high_number = 70
+
+        # Divide data into 30, 40 ,30
+        low_size, high_size = np.percentile(relative_sizes, [low_number, high_number])
+        low_ratio, high_ratio = np.percentile(width_height_ratio, [low_number, high_number])
+
+        lowest_30_size = relative_sizes[relative_sizes < low_size]
+        middle_40_size = relative_sizes[(relative_sizes >= low_size) & (relative_sizes <= high_size)]
+        highest_30_size = relative_sizes[relative_sizes > high_size]
+
+        lowest_30_ratio = width_height_ratio[width_height_ratio < low_ratio]
+        middle_40_ratio = width_height_ratio[(width_height_ratio >= low_ratio) & (width_height_ratio <= high_ratio)]
+        highest_30_ratio = width_height_ratio[width_height_ratio > high_ratio]
+        # Compute the Euclidean distance of each point from the origin
+        # Compute the Euclidean distance of each point from the origin
+        distances = np.sqrt(np.sum(np.square(relative_position), axis=1))
+
+        # Divide the distances into quantiles
+        low_distance, high_distance = np.percentile(distances, [low_number, high_number])
+
+        # Divide the positions based on these distances
+        lowest_30_position = relative_position[distances < low_distance]
+        middle_40_position = relative_position[(distances >= low_distance) & (distances <= high_distance)]
+        highest_30_position = relative_position[distances > high_distance]
+
+        # Compute the median distance for each group
+        lowest_30_distance = np.median(distances[distances < low_distance])
+        middle_40_distance = np.median(distances[(distances >= low_distance) & (distances <= high_distance)])
+        highest_30_distance = np.median(distances[distances > high_distance])
+
+        # Print the median distance for each group
+        print('Median distance for the closest '+str(low_number)+'% of points:', lowest_30_distance)
+        print('Median distance for the middle '+str(high_number-low_number)+'% of points:', middle_40_distance)
+        print('Median distance for the farthest '+str(100-high_number)+'% of points:', highest_30_distance)
+        print('max distance and min distance:', np.max(distances), np.min(distances))
+
+        # Now you have your divided data, and you can use them for any further analysis. For example, you could print the average values:
+        print('Median size of the smallest '+str(low_number)+'% of boxes:', np.median(lowest_30_size))
+        print('Median size of the middle '+str(high_number-low_number)+'% of boxes:', np.median(middle_40_size))
+        print('Median size of the largest '+str(100-high_number)+'% of boxes:', np.median(highest_30_size))
+        print('max size and min size:', np.max(relative_sizes), np.min(relative_sizes))
+
+        print('Median ratio of the smallest '+str(low_number)+'% of boxes:', np.median(lowest_30_ratio))
+        print('Median ratio of the middle '+str(high_number-low_number)+'% of boxes:', np.median(middle_40_ratio))
+        print('Median ratio of the largest '+str(100-high_number)+'% of boxes:', np.median(highest_30_ratio))
+        print('max ratio and min ratio:', np.max(width_height_ratio), np.min(width_height_ratio))
+
+        #sample_size = 100
+        if outputSelection:
+            df = pd.DataFrame(columns=['image_path', 'category', 'bbox', 'informativeness', 'relative_size', 'relative_position', 'width_height_ratio'])
+            for i in range(len(relative_sizes)):
+                df.loc[i] = [bbox_name[i].split('_')[0], bbox_name[i].split('_')[1], bboxes[i], informativeness[i], relative_sizes[i], relative_position[i], width_height_ratio[i]]
+            print(df)
+            # Add a new column to identify the group of each row
+            df['size_group'] = pd.cut(df['relative_size'], bins=[-np.inf, low_size, high_size, np.inf], labels=['low', 'middle', 'high'])
+            df['position_group'] = pd.cut(df['relative_position'].apply(lambda x: np.sqrt(x[0]**2 + x[1]**2)), bins=[-np.inf, low_distance, high_distance, np.inf], labels=['low', 'middle', 'high'])
+            df['ratio_group'] = pd.cut(df['width_height_ratio'], bins=[-np.inf, low_ratio, high_ratio, np.inf], labels=['low', 'middle', 'high'])
+
+            # Group by image_path, category, and the new group columns, then aggregate the bboxes and informativeness
+            grouped = df.groupby(['image_path', 'category', 'size_group', 'position_group', 'ratio_group']).agg({
+                'bbox': lambda x: [list(b) for b in x],  # convert each bbox into a list, resulting in a list of lists
+                'informativeness': lambda x: np.mean(x), # calculate the mean informativeness
+            }).reset_index()
+            #print unique bbox
+            #remove all column if the informativeness or bbox is nan
+            grouped = grouped.dropna(subset=['informativeness', 'bbox'])
+            # save the dataframe
+            print(grouped)
+            grouped.to_csv('for_dmbis_comparison_study.csv', index=False)
+
+        if visualization:
+            plt.scatter(relative_position[:, 0], relative_position[:, 1], s=relative_sizes * 1000, c=width_height_ratio, cmap='viridis')
+            plt.colorbar()
+            #add titile
+            plt.title('relative position and size of bounding box')
+            plt.show()
+            #visualize the distribution in histogram
+            plt.hist(relative_sizes, bins=20)
+            plt.title('relative size of bounding box')
+            plt.show()
+            plt.hist(relative_position[:, 0], bins=20)
+            plt.title('relative x position of bounding box')
+            plt.show()
+            plt.hist(relative_position[:, 1], bins=20)
+            plt.title('relative y position of bounding box')
+            plt.show()
+            plt.hist(width_height_ratio, bins=20)
+            plt.title('width height ratio of bounding box')
+            plt.show()
+        
 if __name__ == '__main__':
     analyze = analyzer()
     bigfives = ["extraversion", "agreeableness", "conscientiousness",
@@ -1326,9 +1485,13 @@ if __name__ == '__main__':
     #analyze.count_worker_privacy_num()
     #analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=False)
     #analyze.prepare_manual_label(save_csv=True, strict_mode=True)
-    #analyze.basic_count(read_csv = True, ignore_prev_manual_anns=False,split_count=False,count_scale='Prolific')
+    #analyze.basic_count(read_csv = True, ignore_prev_manual_anns=False,split_count=False,count_scale='CrowdWorks')
     #analyze.prepare_regression_model_table(read_csv=True)
     #analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
     #analyze.count_frequency()
-    analyze.count_overlap_in_manual_table(split_count=False, count_scale='Prolific')
+    #analyze.count_overlap_in_manual_table(split_count=False, count_scale='Prolific')
+    analyze.visualDistribution(outputSelection=True)
+
+
+
     
