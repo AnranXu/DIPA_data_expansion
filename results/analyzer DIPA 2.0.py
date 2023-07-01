@@ -1345,6 +1345,8 @@ class analyzer:
         bbox_name=[]
         bboxes = []
         informativeness = []
+        # check if mega_table has category named manual label 
+        print(self.mega_table)
         for index, row in self.mega_table.iterrows():
             #bboxes = json.loads(row['bbox'])
             image_path = os.path.join('images', row['imagePath'])
@@ -1420,28 +1422,39 @@ class analyzer:
         print('Median ratio of the largest '+str(100-high_number)+'% of boxes:', np.median(highest_30_ratio))
         print('max ratio and min ratio:', np.max(width_height_ratio), np.min(width_height_ratio))
 
-        #sample_size = 100
+        sample_size_per_group = 10
         if outputSelection:
             df = pd.DataFrame(columns=['image_path', 'category', 'bbox', 'informativeness', 'relative_size', 'relative_position', 'width_height_ratio'])
             for i in range(len(relative_sizes)):
                 df.loc[i] = [bbox_name[i].split('_')[0], bbox_name[i].split('_')[1], bboxes[i], informativeness[i], relative_sizes[i], relative_position[i], width_height_ratio[i]]
-            print(df)
             # Add a new column to identify the group of each row
             df['size_group'] = pd.cut(df['relative_size'], bins=[-np.inf, low_size, high_size, np.inf], labels=['low', 'middle', 'high'])
             df['position_group'] = pd.cut(df['relative_position'].apply(lambda x: np.sqrt(x[0]**2 + x[1]**2)), bins=[-np.inf, low_distance, high_distance, np.inf], labels=['low', 'middle', 'high'])
             df['ratio_group'] = pd.cut(df['width_height_ratio'], bins=[-np.inf, low_ratio, high_ratio, np.inf], labels=['low', 'middle', 'high'])
-
+            
             # Group by image_path, category, and the new group columns, then aggregate the bboxes and informativeness
             grouped = df.groupby(['image_path', 'category', 'size_group', 'position_group', 'ratio_group']).agg({
                 'bbox': lambda x: [list(b) for b in x],  # convert each bbox into a list, resulting in a list of lists
-                'informativeness': lambda x: np.mean(x), # calculate the mean informativeness
+                'informativeness': lambda x: np.round(np.mean(x), 2), # calculate the mean informativeness, to 2 decimal places
+
             }).reset_index()
             #print unique bbox
             #remove all column if the informativeness or bbox is nan
             grouped = grouped.dropna(subset=['informativeness', 'bbox'])
             # save the dataframe
-            print(grouped)
-            grouped.to_csv('for_dmbis_comparison_study.csv', index=False)
+            # randomly choose sample_size rows
+            # Stratified sampling
+            grouped['informativeness_group'] = pd.cut(grouped['informativeness'], bins=[-np.inf, 2, 4.0001, np.inf], labels=['low', 'middle', 'high'])
+            grouped['group (size, position, ratio)'] = grouped['size_group'].astype(str) + "_" + grouped['position_group'].astype(str) + "_" + grouped['ratio_group'].astype(str)
+            
+
+            stratified = grouped.groupby('group (size, position, ratio)').apply(lambda x: x.sample(min(len(x), sample_size_per_group), random_state=0))
+            # unique category and print len
+            print('unique category:', grouped['category'].unique())
+            print('unique category len:', len(grouped['category'].unique()))
+            # Reset the index
+            stratified.reset_index(drop=True, inplace=True)
+            stratified.to_csv('for_dmbis_comparison_study (pilot).csv', index=False)
 
         if visualization:
             plt.scatter(relative_position[:, 0], relative_position[:, 1], s=relative_sizes * 1000, c=width_height_ratio, cmap='viridis')
@@ -1490,7 +1503,7 @@ if __name__ == '__main__':
     #analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
     #analyze.count_frequency()
     #analyze.count_overlap_in_manual_table(split_count=False, count_scale='Prolific')
-    analyze.visualDistribution(outputSelection=True)
+    analyze.visualDistribution(read_csv=False, outputSelection=True)
 
 
 
