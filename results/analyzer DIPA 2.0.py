@@ -1345,6 +1345,7 @@ class analyzer:
         bbox_name=[]
         bboxes = []
         informativeness = []
+        information_type = []
         # check if mega_table has category named manual label 
         print(self.mega_table)
         for index, row in self.mega_table.iterrows():
@@ -1368,6 +1369,7 @@ class analyzer:
                 width_height_ratio.append(bbox[2] / bbox[3])
                 bbox_name.append(row['imagePath'] + '_' + row['category'])
                 informativeness.append(row['informativeness'])
+                information_type.append(row['informationType'][:-1])
                 bboxes.append(bbox)
         #visualize the distribution in coordinate system
         relative_sizes = np.array(relative_sizes)
@@ -1424,9 +1426,9 @@ class analyzer:
 
         sample_size_per_group = 10
         if outputSelection:
-            df = pd.DataFrame(columns=['image_path', 'category', 'bbox', 'informativeness', 'relative_size', 'relative_position', 'width_height_ratio'])
+            df = pd.DataFrame(columns=['image_path', 'category', 'bbox', 'informationType', 'informativeness', 'relative_size', 'relative_position', 'width_height_ratio'])
             for i in range(len(relative_sizes)):
-                df.loc[i] = [bbox_name[i].split('_')[0], bbox_name[i].split('_')[1], bboxes[i], informativeness[i], relative_sizes[i], relative_position[i], width_height_ratio[i]]
+                df.loc[i] = [bbox_name[i].split('_')[0], bbox_name[i].split('_')[1], bboxes[i], information_type[i], informativeness[i], relative_sizes[i], relative_position[i], width_height_ratio[i]]
             # Add a new column to identify the group of each row
             df['size_group'] = pd.cut(df['relative_size'], bins=[-np.inf, low_size, high_size, np.inf], labels=['low', 'middle', 'high'])
             df['position_group'] = pd.cut(df['relative_position'].apply(lambda x: np.sqrt(x[0]**2 + x[1]**2)), bins=[-np.inf, low_distance, high_distance, np.inf], labels=['low', 'middle', 'high'])
@@ -1436,7 +1438,7 @@ class analyzer:
             grouped = df.groupby(['image_path', 'category', 'size_group', 'position_group', 'ratio_group']).agg({
                 'bbox': lambda x: [list(b) for b in x],  # convert each bbox into a list, resulting in a list of lists
                 'informativeness': lambda x: np.round(np.mean(x), 2), # calculate the mean informativeness, to 2 decimal places
-
+                'informationType': lambda x: np.any(np.array(list(x)), axis=0).astype(int).tolist() # calculate the logical OR of the informationType, to get a list of 0s and 1s
             }).reset_index()
             #print unique bbox
             #remove all column if the informativeness or bbox is nan
