@@ -22,6 +22,7 @@ from statsmodels.stats.anova import AnovaRM
 from sklearn.linear_model import LogisticRegression
 from sklearn.linear_model import LinearRegression
 from scipy.stats import binom
+from scipy.stats import zscore
 
 import torch
 import torch.nn as nn
@@ -1375,6 +1376,26 @@ class analyzer:
         relative_sizes = np.array(relative_sizes)
         relative_position = np.array(relative_position)
         width_height_ratio = np.array(width_height_ratio)
+        informativeness = np.array(informativeness)
+        information_type = np.array(information_type)
+        bboxes = np.array(bboxes)
+        bbox_name = np.array(bbox_name)
+
+        relative_sizes_z_scores = np.abs(zscore(relative_sizes))
+
+        # Identify indices where Z-score <= 3
+        valid_data_indices = np.where(relative_sizes_z_scores <= 3)[0]
+
+        # Filter data
+        relative_sizes = relative_sizes[valid_data_indices]
+        relative_position = relative_position[valid_data_indices]
+        width_height_ratio = width_height_ratio[valid_data_indices]
+        bbox_name = [bbox_name[i] for i in valid_data_indices]
+        informativeness = [informativeness[i] for i in valid_data_indices]
+        information_type = [information_type[i] for i in valid_data_indices]
+        bboxes = [bboxes[i] for i in valid_data_indices]
+        
+        
         # divide data into 30, 40 ,30
         low_number = 30
         high_number = 70
@@ -1424,7 +1445,7 @@ class analyzer:
         print('Median ratio of the largest '+str(100-high_number)+'% of boxes:', np.median(highest_30_ratio))
         print('max ratio and min ratio:', np.max(width_height_ratio), np.min(width_height_ratio))
 
-        sample_size_per_group = 10
+        sample_size_per_group = 1
         if outputSelection:
             df = pd.DataFrame(columns=['image_path', 'category', 'bbox', 'informationType', 'informativeness', 'relative_size', 'relative_position', 'width_height_ratio'])
             for i in range(len(relative_sizes)):
