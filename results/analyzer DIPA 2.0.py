@@ -346,6 +346,9 @@ class analyzer:
                     worker_id = worker_file[:-11]
                     worker_file = worker_id + '.json'
                     privacy_num = worker_privacy_num[worker_id]
+                    # read image and get image size
+                    image = Image.open(os.path.join('images', image_name + '.jpg'))
+                    width, height = image.size
                     with open(os.path.join(self.annotation_path, platform, 'workerinfo', worker_file), encoding="utf-8") as f_worker, \
                     open(os.path.join(self.annotation_path, platform, 'labels', annotation), encoding="utf-8") as f_label, \
                     open(os.path.join('./new annotations', 'annotations', image_id + '_label.json'), encoding="utf-8") as f_oriLabel:
@@ -369,21 +372,26 @@ class analyzer:
                             if value['ifNoPrivacy'] and not include_not_private:
                                 continue
                             category = ''
+                            mycat = ''
                             for ori in oriLabel.values():
                                 if ori['category'] == key:
                                     ori['bbox'] = [int(x) for x in ori['bbox']]
                                     bbox.append(ori['bbox'])
+
+                            if dataset_name == 'OpenImages':
+                                if key in self.openimages_mycat_map.keys():
+                                    mycat = self.openimages_mycat_map[key]
+                            elif dataset_name == 'LVIS':
+                                if key in self.lvis_mycat_map.keys():
+                                    mycat = self.lvis_mycat_map[key]
+                            if mycat == '':
+                                mycat = 'Others'
+
                             if mycat_mode:
-                                if dataset_name == 'OpenImages':
-                                    if key in self.openimages_mycat_map.keys():
-                                        category = self.openimages_mycat_map[key]
-                                elif dataset_name == 'LVIS':
-                                    if key in self.lvis_mycat_map.keys():
-                                        category = self.lvis_mycat_map[key]
-                                if category == '':
-                                    continue
+                                category = mycat
                             else:
                                 category = value['category']
+                            
                             if ignore_prev_manual_anns and category.startswith('Object'):
                                 continue
                             id = annotation[:-11] + '_' + key
@@ -401,6 +409,7 @@ class analyzer:
                             entry = pd.DataFrame.from_dict({
                                 #'id': [id],
                                 "category": [category],
+                                'DIPACategory': [mycat],
                                 "informationType":  [informationType],
                                 "informativeness": [informativeness],
                                 "sharingOwner": [sharingOwner],
@@ -419,7 +428,9 @@ class analyzer:
                                 #'originCategory': value['category'],
                                 'originalDataset': [dataset_name],
                                 #'privacyNum': [privacy_num],
-                                'bbox': [bbox]
+                                'bbox': [bbox],
+                                'width': [int(width)],
+                                'height': [int(height)]
                             })
 
                             self.mega_table = pd.concat([self.mega_table, entry], ignore_index=True)
@@ -444,6 +455,9 @@ class analyzer:
                     worker_id = worker_file[:-11]
                     worker_file = worker_id + '.json'
                     privacy_num = worker_privacy_num[worker_id]
+                    # read image and get image size
+                    image = Image.open(os.path.join('images', image_name + '.jpg'))
+                    width, height = image.size
                 with open(os.path.join(self.annotation_path, platform, 'workerinfo', worker_file), encoding="utf-8") as f_worker, \
                 open(os.path.join(self.annotation_path, platform, 'labels', annotation), encoding="utf-8") as f_label:
                     worker = json.load(f_worker)
@@ -480,6 +494,7 @@ class analyzer:
                             entry = pd.DataFrame.from_dict({
                                 #'id': [id],
                                 "category": ['Manual Label'],
+                                "DIPACategory": ['Others'],
                                 "informationType":  [informationType],
                                 "informativeness": [informativeness],
                                 "sharingOwner": [sharingOwner],
@@ -498,7 +513,9 @@ class analyzer:
                                 #'originCategory': value['category'],
                                 'originalDataset': [dataset_name],
                                 #'privacyNum': [privacy_num],
-                                'bbox': [bboxes]
+                                'bbox': [bboxes],
+                                'width': [int(width)],
+                                'height': [int(height)]
                             })
 
                             self.manual_table = pd.concat([self.manual_table, entry], ignore_index=True)
@@ -1381,11 +1398,15 @@ class analyzer:
         bboxes = np.array(bboxes)
         bbox_name = np.array(bbox_name)
 
-        relative_sizes_z_scores = np.abs(zscore(relative_sizes))
+        Q1 = np.percentile(relative_sizes, 25)
+        Q3 = np.percentile(relative_sizes, 75)
+        IQR = Q3 - Q1
 
-        # Identify indices where Z-score <= 3
-        valid_data_indices = np.where(relative_sizes_z_scores <= 3)[0]
-
+        # Identify indices where relative_sizes fall within Q1 - 1.5 * IQR and Q3 + 1.5 * IQR
+        valid_data_indices = np.where((Q1<= relative_sizes) & (relative_sizes <= Q3))[0]
+        #show how many data are removed
+        print('Number of valid data points:', len(valid_data_indices))
+        print('Number of invalid data points:', len(relative_sizes) - len(valid_data_indices))
         # Filter data
         relative_sizes = relative_sizes[valid_data_indices]
         relative_position = relative_position[valid_data_indices]
@@ -1519,14 +1540,14 @@ if __name__ == '__main__':
     #analyze.basic_info()
     #analyze.generate_img_annotation_map()
     #analyze.count_worker_privacy_num()
-    #analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=False)
-    #analyze.prepare_manual_label(save_csv=True, strict_mode=True)
+    analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=False)
+    analyze.prepare_manual_label(save_csv=True, strict_mode=True)
     #analyze.basic_count(read_csv = True, ignore_prev_manual_anns=False,split_count=False,count_scale='CrowdWorks')
     #analyze.prepare_regression_model_table(read_csv=True)
     #analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
     #analyze.count_frequency()
     #analyze.count_overlap_in_manual_table(split_count=False, count_scale='Prolific')
-    analyze.visualDistribution(read_csv=False, outputSelection=True)
+    #analyze.visualDistribution(read_csv=False, outputSelection=True)
 
 
 
