@@ -1541,7 +1541,7 @@ class analyzer:
         print('len of width_height_ratio:', len(width_height_ratio))
         if filter_data:
             print('filtering data')
-            # we first filter all data the size less than 0.01
+            # we first filter all data the size less than 0.005
             valid_data_indices = np.where(relative_sizes > 0.005)[0]
             # Filter data
             relative_sizes = relative_sizes[valid_data_indices]
@@ -1674,7 +1674,7 @@ class analyzer:
             grouped['group (size, position, ratio)'] = grouped['size_group'].astype(str) + "_" + grouped['position_group'].astype(str) + "_" + grouped['ratio_group'].astype(str)
             
 
-            stratified = grouped.groupby('group (size, position, ratio)').apply(lambda x: x.sample(min(len(x), 1000), random_state=0))
+            stratified = grouped.groupby('group (size, position, ratio)').apply(lambda x: x.sample(min(len(x), 1000), random_state=42))
             # add a new col ''bbox_name''
             stratified['bbox_name'] = stratified['image_path'] + '_' + stratified['category']
             # we need to ensure that each group (size, position, ratio) has exact 10 samples
@@ -1741,8 +1741,8 @@ class analyzer:
             final_samples_df = pd.concat(final_samples_list).reset_index(drop=True)
             # print the len of each group
             print('len of each group:', final_samples_df.groupby('group (size, position, ratio)').size())
-
-            final_samples_df.to_csv('final_samples.csv')
+            # remove the index
+            final_samples_df.to_csv('for_dmbis_comparison_study.csv', index=False)
 
             # Print the sample count for each category
             print("Sample Counts by Category:")
