@@ -1,28 +1,231 @@
-image_path,category,size_group,position_group,ratio_group,bbox,informativeness,informationType,informativeness_group,"group (size, position, ratio)"
-269788.jpg,Place Identifier,high,high,high,"[[71, 7, 181, 66], [71, 7, 181, 66]]",2.5,"[0, 1, 0, 0, 0]",middle,high_high_high
-1ea0b813513a3a40.jpg,Clothing,high,high,low,"[[635, 532, 132, 491]]",4.0,"[0, 1, 1, 1, 0]",middle,high_high_low
-4335c08518179b66.jpg,Musical instrument,high,high,middle,"[[828, 471, 193, 294], [828, 471, 193, 294]]",2.5,"[0, 0, 1, 1, 1]",middle,high_high_middle
-173825.jpg,Home interior,high,low,high,"[[78, 190, 202, 79], [78, 190, 202, 79], [78, 190, 202, 79]]",2.0,"[1, 1, 0, 1, 0]",low,high_low_high
-21269201fec8c14b.jpg,Person,high,low,low,"[[492, 116, 161, 281], [492, 116, 161, 281], [492, 116, 161, 281]]",3.67,"[1, 0, 0, 0, 1]",middle,high_low_low
-00e65d13159b498b.jpg,Person,high,low,middle,"[[447, 171, 154, 198], [423, 134, 178, 240], [447, 171, 154, 198], [423, 134, 178, 240]]",4.25,"[1, 0, 0, 0, 0]",high,high_low_middle
-204ddb40982865e6.jpg,Accessory,high,middle,high,"[[659, 207, 364, 138]]",5.0,"[1, 0, 0, 0, 0]",high,high_middle_high
-144522.jpg,Person,high,middle,low,"[[140, 0, 69, 212], [140, 0, 69, 212], [140, 0, 69, 212]]",4.67,"[1, 1, 0, 1, 0]",high,high_middle_low
-00a42a80e5e8d194.jpg,Person,high,middle,middle,"[[442, 135, 225, 222], [442, 135, 225, 222]]",5.0,"[1, 0, 0, 0, 0]",high,high_middle_middle
-171413.jpg,Book,low,high,high,"[[299, 479, 40, 20], [317, 206, 57, 15], [251, 419, 31, 23], [317, 234, 57, 16], [264, 96, 82, 14], [346, 416, 27, 24], [317, 222, 57, 22], [282, 479, 30, 19], [272, 90, 62, 11], [349, 428, 25, 22], [265, 420, 40, 30], [249, 432, 39, 17], [273, 405, 35, 31], [325, 212, 49, 23], [272, 415, 34, 27]]",6.0,"[1, 0, 0, 1, 0]",high,low_high_high
-0fa1f463189c8e42.jpg,Clothing,low,high,low,"[[0, 253, 26, 62], [0, 253, 26, 62]]",2.0,"[0, 0, 0, 1, 0]",low,low_high_low
-151975.jpg,Printed Material,low,high,middle,"[[474, 279, 25, 34], [474, 279, 25, 34]]",5.0,"[1, 0, 0, 0, 1]",high,low_high_middle
-1fe277f5abfc7d74.jpg,Person,low,low,high,"[[527, 300, 86, 54]]",0.0,"[1, 1, 0, 0, 0]",low,low_low_high
-148551.jpg,Musical instrument,low,low,low,"[[159, 214, 19, 57]]",3.0,"[0, 0, 0, 1, 0]",middle,low_low_low
-4a8a66861e06950b.jpg,Person,low,low,middle,"[[456, 345, 44, 51], [547, 360, 57, 75], [456, 345, 44, 51], [547, 360, 57, 75], [456, 329, 44, 65], [512, 356, 36, 55], [548, 345, 57, 84], [456, 345, 44, 51], [547, 360, 57, 75], [456, 329, 44, 65], [512, 356, 36, 55], [548, 345, 57, 84]]",5.17,"[1, 0, 0, 0, 0]",high,low_low_middle
-154000.jpg,Vehicle Plate,low,middle,high,"[[439, 348, 44, 19], [439, 348, 44, 19], [439, 348, 44, 19]]",4.0,"[1, 1, 0, 0, 1]",middle,low_middle_high
-032518c7e3660911.jpg,Person,low,middle,low,"[[267, 134, 38, 92], [302, 132, 41, 94], [267, 134, 38, 92], [302, 132, 41, 94]]",2.0,"[1, 1, 0, 0, 0]",low,low_middle_low
-20af1d21449acdce.jpg,Person,low,middle,middle,"[[276, 513, 49, 64], [276, 513, 49, 64]]",3.0,"[1, 0, 0, 0, 0]",middle,low_middle_middle
-146841.jpg,Printed Material,middle,high,high,"[[516, 94, 73, 38], [107, 64, 48, 45], [516, 94, 73, 38], [107, 64, 48, 45]]",0.5,"[0, 1, 1, 0, 0]",low,middle_high_high
-11b06ea19b8a48d9.jpg,Clothing,middle,high,low,"[[972, 238, 51, 197]]",1.0,"[0, 0, 0, 1, 0]",low,middle_high_low
-133034.jpg,Book,middle,high,middle,"[[582, 195, 57, 86]]",4.0,"[1, 0, 0, 0, 0]",middle,middle_high_middle
-27c41bbdb49d6f5f.jpg,Person,middle,low,high,"[[450, 225, 93, 77]]",4.0,"[1, 0, 0, 0, 0]",middle,middle_low_high
-46afaf945caee54c.jpg,Person,middle,low,low,"[[609, 346, 98, 169]]",4.0,"[0, 0, 0, 1, 0]",middle,middle_low_low
-133766.jpg,Book,middle,low,middle,"[[142, 208, 89, 109], [142, 208, 89, 109]]",3.5,"[0, 0, 1, 1, 0]",middle,middle_low_middle
-00fd93edd4717826.jpg,Person,middle,middle,high,"[[501, 529, 117, 57]]",3.0,"[1, 0, 0, 0, 0]",middle,middle_middle_high
-e034b5124fbd1d53.jpg,Clothing,middle,middle,low,"[[123, 390, 78, 137], [123, 390, 78, 137]]",1.5,"[0, 0, 0, 1, 1]",low,middle_middle_low
-01491bf840ae9939.jpg,Person,middle,middle,middle,"[[494, 148, 113, 144]]",4.0,"[0, 0, 1, 0, 0]",middle,middle_middle_middle
+image_path,category,bbox,informationType,informativeness,relative_size,relative_position,width_height_ratio,size_group,position_group,ratio_group,informativeness_group,"group (size, position, ratio)",bbox_name
+00dc0530e6779ca6.jpg,Vehicle Plate,"[[92, 400, 590, 623]]","[1, 0, 1, 0, 0]",4.0,,,,high,middle,middle,middle,high_middle_middle,00dc0530e6779ca6.jpg_Vehicle Plate
+0443efb101717113.jpg,Vehicle Plate,"[[667, 423, 148, 58], [667, 423, 148, 58], [667, 423, 148, 58], [667, 423, 148, 58]]","[1, 0, 0, 0, 1]",5.0,,,,low,middle,high,high,low_middle_high,0443efb101717113.jpg_Vehicle Plate
+141416.jpg,Vehicle Plate,"[[205, 0, 360, 420], [205, 0, 360, 420]]","[1, 1, 0, 1, 1]",4.0,,,,high,low,middle,middle,high_low_middle,141416.jpg_Vehicle Plate
+104124.jpg,Vehicle Plate,"[[141, 129, 345, 221]]","[0, 0, 0, 1, 0]",1.0,,,,high,low,high,low,high_low_high,104124.jpg_Vehicle Plate
+115355.jpg,Vehicle Plate,"[[327, 104, 142, 228]]","[0, 0, 0, 1, 0]",2.0,,,,high,middle,low,low,high_middle_low,115355.jpg_Vehicle Plate
+008637722500f239.jpg,Vehicle Plate,"[[711, 128, 312, 276], [711, 128, 312, 276], [711, 128, 312, 276]]","[1, 1, 0, 1, 0]",2.33,,,,middle,high,middle,middle,middle_high_middle,008637722500f239.jpg_Vehicle Plate
+144522.jpg,Vehicle Plate,"[[112, 14, 395, 402], [112, 14, 395, 402]]","[0, 1, 1, 1, 0]",4.5,,,,high,low,middle,high,high_low_middle,144522.jpg_Vehicle Plate
+0ee91c4938b6e7ee.jpg,Vehicle Plate,"[[301, 565, 140, 68], [301, 565, 140, 68], [301, 565, 140, 68], [301, 565, 140, 68]]","[1, 1, 0, 1, 1]",3.5,,,,low,low,high,middle,low_low_high,0ee91c4938b6e7ee.jpg_Vehicle Plate
+168848.jpg,Vehicle Plate,"[[0, 244, 43, 69], [0, 244, 43, 69], [0, 244, 43, 69]]","[0, 1, 0, 0, 0]",3.33,,,,low,high,low,middle,low_high_low,168848.jpg_Vehicle Plate
+0787b0fa95f545a5.jpg,Vehicle Plate,"[[84, 142, 702, 541], [84, 142, 702, 541]]","[1, 1, 0, 1, 1]",5.0,,,,high,low,high,high,high_low_high,0787b0fa95f545a5.jpg_Vehicle Plate
+334813.jpg,Table,"[[0, 358, 480, 281], [0, 358, 480, 281]]","[1, 1, 1, 1, 0]",4.5,,,,high,middle,high,high,high_middle_high,334813.jpg_Table
+34b65dafe328d39e.jpg,Table,"[[304, 550, 408, 153]]","[0, 1, 0, 0, 1]",4.0,,,,middle,middle,high,middle,middle_middle_high,34b65dafe328d39e.jpg_Table
+155591.jpg,Table,"[[0, 209, 223, 84], [0, 209, 223, 84], [0, 209, 223, 84]]","[1, 1, 1, 1, 1]",3.33,,,,middle,middle,high,middle,middle_middle_high,155591.jpg_Table
+03d9eaadefad5eaf.jpg,Table,"[[622, 307, 395, 166]]","[0, 0, 1, 0, 0]",4.0,,,,middle,middle,high,middle,middle_middle_high,03d9eaadefad5eaf.jpg_Table
+160201.jpg,Table,"[[156, 120, 343, 254], [156, 120, 343, 254]]","[1, 1, 1, 1, 1]",2.5,,,,high,middle,high,middle,high_middle_high,160201.jpg_Table
+34b65dafe328d39e.jpg,Table,"[[288, 460, 108, 89]]","[0, 1, 0, 0, 1]",4.0,,,,low,middle,high,middle,low_middle_high,34b65dafe328d39e.jpg_Table
+590f63eb87ae3901.jpg,Table,"[[333, 348, 156, 44]]","[0, 1, 1, 0, 1]",3.0,,,,low,low,high,middle,low_low_high,590f63eb87ae3901.jpg_Table
+34b65dafe328d39e.jpg,Table,"[[49, 488, 96, 131]]","[0, 1, 0, 0, 1]",4.0,,,,low,high,middle,middle,low_high_middle,34b65dafe328d39e.jpg_Table
+34b65dafe328d39e.jpg,Table,"[[404, 670, 617, 96]]","[0, 1, 0, 0, 1]",4.0,,,,middle,high,high,middle,middle_high_high,34b65dafe328d39e.jpg_Table
+0f0c237588553730.jpg,Table,"[[0, 101, 682, 360]]","[0, 0, 1, 0, 0]",1.0,,,,high,middle,high,low,high_middle_high,0f0c237588553730.jpg_Table
+49567019a665a27b.jpg,Person,"[[337, 190, 78, 215], [332, 192, 86, 217], [337, 190, 78, 215], [332, 192, 86, 217], [337, 190, 78, 215], [332, 192, 86, 217]]","[1, 1, 1, 1, 1]",6.0,,,,low,middle,low,high,low_middle_low,49567019a665a27b.jpg_Person
+10651d2876cd50d8.jpg,Person,"[[406, 251, 139, 268], [406, 251, 139, 268], [406, 251, 139, 268], [412, 251, 123, 257]]","[1, 1, 0, 0, 1]",5.75,,,,middle,low,low,high,middle_low_low,10651d2876cd50d8.jpg_Person
+709340946095cf0d.jpg,Person,"[[302, 259, 219, 380], [302, 259, 219, 380], [302, 259, 219, 380]]","[1, 0, 0, 0, 1]",4.33,,,,middle,low,low,high,middle_low_low,709340946095cf0d.jpg_Person
+0472586d97db6daf.jpg,Person,"[[874, 0, 149, 554], [874, 0, 149, 554], [874, 0, 149, 554], [874, 0, 149, 554]]","[1, 1, 1, 1, 1]",5.75,,,,middle,high,low,high,middle_high_low,0472586d97db6daf.jpg_Person
+0d03c760fe72ad6e.jpg,Person,"[[165, 180, 89, 130], [127, 175, 134, 130], [165, 180, 89, 130], [127, 175, 134, 130], [165, 180, 89, 130]]","[1, 0, 1, 0, 0]",3.0,,,,low,high,middle,middle,low_high_middle,0d03c760fe72ad6e.jpg_Person
+011417767312812e.jpg,Person,"[[546, 0, 123, 421], [542, 0, 152, 444]]","[0, 1, 1, 0, 0]",3.5,,,,middle,high,low,middle,middle_high_low,011417767312812e.jpg_Person
+133113.jpg,Person,"[[401, 320, 49, 178], [401, 320, 49, 178], [401, 320, 49, 178]]","[1, 1, 1, 0, 1]",5.0,,,,middle,high,low,high,middle_high_low,133113.jpg_Person
+022c1f420446d118.jpg,Person,"[[408, 68, 110, 91], [408, 68, 110, 91]]","[1, 0, 1, 1, 0]",5.0,,,,low,middle,high,high,low_middle_high,022c1f420446d118.jpg_Person
+115150a6ba4eb0ca.jpg,Person,"[[401, 66, 218, 184]]","[1, 0, 0, 0, 0]",1.0,,,,middle,middle,high,low,middle_middle_high,115150a6ba4eb0ca.jpg_Person
+5feb53a3d3a241a8.jpg,Person,"[[169, 69, 688, 613], [169, 69, 688, 613], [169, 69, 688, 613]]","[1, 0, 1, 0, 0]",4.0,,,,high,low,middle,middle,high_low_middle,5feb53a3d3a241a8.jpg_Person
+02ef01f6d6a665ac.jpg,Pet,"[[475, 456, 548, 312]]","[1, 0, 0, 0, 0]",4.0,,,,high,high,high,middle,high_high_high,02ef01f6d6a665ac.jpg_Pet
+198641.jpg,Pet,"[[142, 193, 352, 228]]","[0, 1, 0, 1, 0]",4.0,,,,high,low,high,middle,high_low_high,198641.jpg_Pet
+134586.jpg,Pet,"[[257, 512, 126, 125]]","[0, 1, 0, 0, 0]",4.0,,,,middle,high,middle,middle,middle_high_middle,134586.jpg_Pet
+032fb8f4fc8e15e7.jpg,Pet,"[[44, 88, 633, 667]]","[0, 0, 0, 1, 0]",1.0,,,,high,low,middle,low,high_low_middle,032fb8f4fc8e15e7.jpg_Pet
+121783.jpg,Pet,"[[194, 281, 140, 161], [194, 281, 140, 161]]","[1, 1, 0, 1, 0]",2.0,,,,middle,low,middle,low,middle_low_middle,121783.jpg_Pet
+149623.jpg,Pet,"[[131, 259, 65, 128], [131, 259, 65, 128]]","[1, 0, 0, 1, 0]",3.0,,,,middle,middle,low,middle,middle_middle_low,149623.jpg_Pet
+109591.jpg,Pet,"[[0, 176, 118, 157], [148, 355, 80, 89]]","[0, 1, 0, 1, 0]",4.0,,,,middle,middle,middle,middle,middle_middle_middle,109591.jpg_Pet
+137576.jpg,Pet,"[[6, 356, 44, 134]]","[0, 1, 0, 1, 1]",4.0,,,,low,high,low,middle,low_high_low,137576.jpg_Pet
+189806.jpg,Pet,"[[264, 193, 179, 105]]","[1, 0, 1, 0, 1]",2.0,,,,middle,middle,high,low,middle_middle_high,189806.jpg_Pet
+029847f4ae24dcfd.jpg,Pet,"[[438, 52, 504, 715]]","[1, 1, 1, 1, 0]",4.0,,,,high,low,middle,middle,high_low_middle,029847f4ae24dcfd.jpg_Pet
+333452abf04d1b2b.jpg,Clothing,"[[168, 326, 320, 364], [168, 326, 320, 364]]","[1, 0, 1, 0, 0]",4.0,,,,high,middle,middle,middle,high_middle_middle,333452abf04d1b2b.jpg_Clothing
+00dc0530e6779ca6.jpg,Clothing,"[[167, 185, 119, 214], [175, 188, 113, 324]]","[1, 0, 0, 1, 0]",4.0,,,,middle,middle,low,middle,middle_middle_low,00dc0530e6779ca6.jpg_Clothing
+0d16c88ec322340f.jpg,Clothing,"[[442, 178, 427, 503], [442, 178, 427, 503], [442, 178, 427, 503]]","[0, 1, 1, 1, 0]",3.0,,,,high,low,middle,middle,high_low_middle,0d16c88ec322340f.jpg_Clothing
+4a197f10b93d99d8.jpg,Clothing,"[[0, 226, 112, 339]]","[1, 0, 0, 0, 1]",4.0,,,,middle,high,low,middle,middle_high_low,4a197f10b93d99d8.jpg_Clothing
+01ab773186c630c4.jpg,Clothing,"[[202, 180, 58, 172], [294, 176, 42, 126], [700, 153, 49, 146], [766, 159, 54, 92], [839, 151, 67, 147], [202, 180, 58, 172], [294, 176, 42, 126], [700, 153, 49, 146], [766, 159, 54, 92], [839, 151, 67, 147]]","[1, 0, 1, 1, 1]",4.0,,,,low,middle,low,middle,low_middle_low,01ab773186c630c4.jpg_Clothing
+e034b5124fbd1d53.jpg,Clothing,"[[264, 390, 100, 169], [264, 390, 100, 169]]","[0, 0, 0, 1, 1]",1.5,,,,low,low,low,low,low_low_low,e034b5124fbd1d53.jpg_Clothing
+02c704b941566bc9.jpg,Clothing,"[[413, 214, 212, 468], [413, 214, 212, 468]]","[0, 1, 1, 1, 0]",5.5,,,,middle,low,low,high,middle_low_low,02c704b941566bc9.jpg_Clothing
+117321.jpg,Clothing,"[[89, 279, 75, 89]]","[1, 1, 0, 0, 0]",1.0,,,,low,high,middle,low,low_high_middle,117321.jpg_Clothing
+5bcc87c13b42e844.jpg,Clothing,"[[59, 388, 528, 460]]","[1, 0, 0, 0, 0]",5.0,,,,high,low,high,high,high_low_high,5bcc87c13b42e844.jpg_Clothing
+0b9aec984321bf53.jpg,Clothing,"[[508, 246, 448, 433], [508, 246, 448, 433], [508, 246, 448, 433]]","[1, 0, 1, 1, 1]",5.0,,,,high,middle,middle,high,high_middle_middle,0b9aec984321bf53.jpg_Clothing
+112798.jpg,Screen,"[[0, 45, 95, 182]]","[0, 0, 0, 0, 0]",4.0,,,,middle,high,low,middle,middle_high_low,112798.jpg_Screen
+7408fef212a5d3bc.jpg,Screen,"[[49, 0, 499, 526], [49, 0, 499, 526]]","[1, 0, 0, 0, 1]",4.5,,,,high,middle,middle,high,high_middle_middle,7408fef212a5d3bc.jpg_Screen
+172595.jpg,Screen,"[[254, 33, 81, 66], [254, 33, 81, 66]]","[1, 1, 0, 1, 1]",2.5,,,,low,middle,high,middle,low_middle_high,172595.jpg_Screen
+191136.jpg,Screen,"[[287, 32, 208, 222], [287, 32, 208, 222], [287, 32, 208, 222]]","[1, 0, 1, 1, 1]",3.67,,,,high,middle,middle,middle,high_middle_middle,191136.jpg_Screen
+135872.jpg,Screen,"[[271, 42, 85, 100], [271, 42, 85, 100], [271, 42, 85, 100]]","[0, 0, 0, 1, 1]",2.0,,,,middle,middle,middle,low,middle_middle_middle,135872.jpg_Screen
+1654c86093ada840.jpg,Screen,"[[224, 177, 88, 77], [224, 177, 88, 77]]","[1, 0, 0, 1, 1]",2.0,,,,low,middle,high,low,low_middle_high,1654c86093ada840.jpg_Screen
+115005.jpg,Screen,"[[119, 99, 209, 218], [119, 99, 209, 218], [119, 99, 209, 218], [119, 99, 209, 218]]","[1, 1, 1, 1, 1]",3.25,,,,high,low,middle,middle,high_low_middle,115005.jpg_Screen
+0f731adcd7458c2b.jpg,Screen,"[[739, 36, 284, 264]]","[0, 1, 0, 0, 0]",2.0,,,,middle,high,middle,low,middle_high_middle,0f731adcd7458c2b.jpg_Screen
+101479.jpg,Screen,"[[226, 215, 210, 149]]","[0, 0, 0, 0, 1]",6.0,,,,high,middle,high,high,high_middle_high,101479.jpg_Screen
+141278.jpg,Screen,"[[285, 104, 50, 51], [285, 104, 50, 51], [285, 104, 50, 51]]","[1, 1, 0, 1, 0]",4.33,,,,low,middle,middle,high,low_middle_middle,141278.jpg_Screen
+4a197f10b93d99d8.jpg,Others,"[[802, 275, 57, 140], [802, 275, 57, 140]]","[1, 0, 1, 1, 0]",4.5,,,,low,middle,low,high,low_middle_low,4a197f10b93d99d8.jpg_Others
+316336.jpg,Others,"[[0, 0, 73, 78], [0, 357, 84, 129]]","[0, 1, 0, 0, 1]",4.0,,,,middle,high,middle,middle,middle_high_middle,316336.jpg_Others
+142585.jpg,Others,"[[0, 1, 89, 496], [0, 1, 89, 496], [0, 1, 89, 496]]","[1, 1, 0, 0, 1]",4.67,,,,high,high,low,high,high_high_low,142585.jpg_Others
+0787b0fa95f545a5.jpg,Others,"[[8, 111, 134, 111]]","[1, 1, 0, 0, 1]",6.0,,,,low,high,high,high,low_high_high,0787b0fa95f545a5.jpg_Others
+018d4a117c1d7e16.jpg,Others,"[[81, 131, 570, 547]]","[1, 0, 0, 0, 0]",4.0,,,,high,low,middle,middle,high_low_middle,018d4a117c1d7e16.jpg_Others
+118811.jpg,Others,"[[248, 471, 108, 42]]","[1, 1, 1, 1, 0]",0.0,,,,low,middle,high,low,low_middle_high,118811.jpg_Others
+40a05ea0282d5897.jpg,Others,"[[202, 184, 207, 289], [202, 184, 207, 289], [202, 184, 207, 289]]","[1, 1, 1, 1, 0]",5.0,,,,middle,middle,middle,high,middle_middle_middle,40a05ea0282d5897.jpg_Others
+159828.jpg,Others,"[[101, 268, 79, 172]]","[0, 0, 0, 1, 0]",3.0,,,,middle,middle,low,middle,middle_middle_low,159828.jpg_Others
+4a197f10b93d99d8.jpg,Others,"[[129, 31, 373, 646], [129, 31, 373, 646]]","[1, 0, 1, 1, 0]",4.5,,,,high,middle,low,high,high_middle_low,4a197f10b93d99d8.jpg_Others
+1b8d52cb603f71ad.jpg,Others,"[[0, 54, 518, 630]]","[1, 0, 0, 0, 0]",5.0,,,,high,middle,middle,high,high_middle_middle,1b8d52cb603f71ad.jpg_Others
+28f45b12ee25ae19.jpg,Book,"[[171, 691, 254, 126], [359, 0, 378, 138], [439, 652, 556, 157]]","[0, 0, 0, 1, 0]",4.0,,,,middle,high,high,middle,middle_high_high,28f45b12ee25ae19.jpg_Book
+367569.jpg,Book,"[[83, 339, 72, 43]]","[0, 0, 0, 1, 0]",2.0,,,,low,middle,high,low,low_middle_high,367569.jpg_Book
+333452abf04d1b2b.jpg,Book,"[[267, 398, 360, 319]]","[0, 0, 1, 0, 0]",3.0,,,,middle,middle,middle,middle,middle_middle_middle,333452abf04d1b2b.jpg_Book
+28f45b12ee25ae19.jpg,Book,"[[944, 292, 77, 122]]","[0, 0, 0, 1, 0]",4.0,,,,low,high,low,middle,low_high_low,28f45b12ee25ae19.jpg_Book
+19aa0e0ad2fa06b6.jpg,Book,"[[436, 166, 279, 175], [443, 356, 369, 228]]","[1, 1, 0, 0, 0]",1.0,,,,middle,low,high,low,middle_low_high,19aa0e0ad2fa06b6.jpg_Book
+153638.jpg,Book,"[[289, 77, 154, 195]]","[0, 0, 0, 1, 0]",2.0,,,,middle,low,middle,low,middle_low_middle,153638.jpg_Book
+a09ff3a4b88d6f97.jpg,Book,"[[0, 44, 192, 161], [0, 206, 185, 128], [0, 476, 182, 139], [1, 337, 182, 140], [1, 612, 188, 155], [188, 0, 240, 92], [200, 68, 230, 142], [201, 585, 222, 160], [0, 44, 192, 161], [0, 206, 185, 128], [0, 476, 182, 139], [1, 337, 182, 140], [1, 612, 188, 155], [188, 0, 240, 92], [200, 68, 230, 142], [201, 585, 222, 160]]","[0, 1, 0, 1, 0]",3.0,,,,middle,high,high,middle,middle_high_high,a09ff3a4b88d6f97.jpg_Book
+171413.jpg,Book,"[[254, 366, 48, 33], [231, 254, 73, 42], [229, 280, 69, 41], [228, 340, 72, 31], [211, 367, 43, 37]]","[1, 0, 0, 1, 0]",6.0,,,,low,middle,high,high,low_middle_high,171413.jpg_Book
+505b4f9c1d24d83b.jpg,Book,"[[53, 78, 550, 348], [53, 78, 550, 348]]","[0, 0, 1, 1, 1]",4.0,,,,high,middle,high,middle,high_middle_high,505b4f9c1d24d83b.jpg_Book
+19aa0e0ad2fa06b6.jpg,Book,"[[0, 0, 1016, 152]]","[1, 1, 0, 0, 0]",1.0,,,,high,high,high,low,high_high_high,19aa0e0ad2fa06b6.jpg_Book
+141e44df42f4d07d.jpg,Place Identifier,"[[926, 127, 97, 117], [926, 127, 97, 117]]","[1, 1, 1, 1, 0]",4.5,,,,low,high,middle,high,low_high_middle,141e44df42f4d07d.jpg_Place Identifier
+252244.jpg,Place Identifier,"[[312, 105, 113, 30], [312, 105, 113, 30], [312, 105, 113, 30], [312, 105, 113, 30]]","[0, 1, 0, 0, 1]",3.25,,,,low,high,high,middle,low_high_high,252244.jpg_Place Identifier
+24c7ebbfb72cfd8b.jpg,Place Identifier,"[[6, 534, 758, 486], [6, 534, 758, 486], [6, 534, 758, 486]]","[0, 1, 1, 1, 0]",1.33,,,,high,middle,high,low,high_middle_high,24c7ebbfb72cfd8b.jpg_Place Identifier
+d9771d6601a26947.jpg,Place Identifier,"[[564, 0, 285, 483]]","[0, 1, 0, 0, 0]",2.0,,,,high,middle,low,low,high_middle_low,d9771d6601a26947.jpg_Place Identifier
+b26ed3fdc5e763a1.jpg,Place Identifier,"[[732, 332, 290, 72]]","[0, 1, 0, 0, 0]",5.0,,,,middle,middle,high,high,middle_middle_high,b26ed3fdc5e763a1.jpg_Place Identifier
+cf98919686aa9981.jpg,Place Identifier,"[[96, 1, 96, 125], [96, 1, 96, 125]]","[0, 1, 0, 1, 0]",3.5,,,,low,high,middle,middle,low_high_middle,cf98919686aa9981.jpg_Place Identifier
+116941.jpg,Place Identifier,"[[398, 321, 71, 49], [398, 321, 71, 49], [398, 321, 71, 49]]","[0, 1, 0, 1, 1]",2.67,,,,low,middle,high,middle,low_middle_high,116941.jpg_Place Identifier
+10566.jpg,Place Identifier,"[[497, 23, 77, 115], [497, 23, 77, 115]]","[0, 1, 0, 0, 0]",3.0,,,,middle,high,middle,middle,middle_high_middle,10566.jpg_Place Identifier
+2e969144f13eb1dc.jpg,Place Identifier,"[[0, 398, 413, 113]]","[0, 1, 0, 0, 0]",5.0,,,,middle,high,high,high,middle_high_high,2e969144f13eb1dc.jpg_Place Identifier
+ae733f15aef8d723.jpg,Place Identifier,"[[216, 0, 808, 454], [216, 0, 808, 454]]","[0, 1, 0, 0, 0]",4.5,,,,high,middle,high,high,high_middle_high,ae733f15aef8d723.jpg_Place Identifier
+179155.jpg,Scenery,"[[179, 67, 19, 150]]","[0, 1, 0, 0, 0]",4.0,,,,low,low,low,middle,low_low_low,179155.jpg_Scenery
+7ae56b9a673b49cb.jpg,Scenery,"[[260, 123, 241, 779], [260, 123, 241, 779]]","[0, 1, 0, 0, 0]",4.0,,,,high,low,low,middle,high_low_low,7ae56b9a673b49cb.jpg_Scenery
+537cca1ef4a1ff6b.jpg,Scenery,"[[505, 388, 77, 78], [505, 388, 77, 78]]","[0, 1, 0, 0, 0]",3.0,,,,low,low,middle,middle,low_low_middle,537cca1ef4a1ff6b.jpg_Scenery
+d94378dc2841b503.jpg,Scenery,"[[463, 113, 484, 219], [463, 113, 484, 219], [463, 113, 484, 219], [463, 113, 484, 219]]","[0, 1, 0, 0, 0]",2.75,,,,high,middle,high,middle,high_middle_high,d94378dc2841b503.jpg_Scenery
+152056.jpg,Scenery,"[[125, 2, 97, 468]]","[0, 1, 0, 0, 0]",4.0,,,,high,middle,low,middle,high_middle_low,152056.jpg_Scenery
+7ae56b9a673b49cb.jpg,Scenery,"[[201, 99, 139, 702], [352, 188, 160, 699], [201, 99, 139, 702], [352, 188, 160, 699]]","[0, 1, 0, 0, 0]",4.0,,,,middle,low,low,middle,middle_low_low,7ae56b9a673b49cb.jpg_Scenery
+d01d43bf0d8dc8e5.jpg,Scenery,"[[806, 0, 217, 481], [806, 0, 217, 481]]","[1, 1, 0, 0, 0]",3.0,,,,middle,high,low,middle,middle_high_low,d01d43bf0d8dc8e5.jpg_Scenery
+ae733f15aef8d723.jpg,Scenery,"[[830, 108, 48, 193], [830, 108, 48, 193]]","[0, 1, 0, 0, 0]",4.5,,,,low,high,low,high,low_high_low,ae733f15aef8d723.jpg_Scenery
+10a8197a3cf39567.jpg,Scenery,"[[0, 48, 206, 440], [0, 48, 206, 440]]","[0, 1, 0, 0, 1]",3.5,,,,middle,high,low,middle,middle_high_low,10a8197a3cf39567.jpg_Scenery
+af6e45d2e9a8b7a3.jpg,Scenery,"[[0, 0, 1022, 366], [0, 0, 1022, 366]]","[0, 1, 0, 0, 1]",4.0,,,,high,middle,high,middle,high_middle_high,af6e45d2e9a8b7a3.jpg_Scenery
+337490.jpg,Printed Material,"[[147, 88, 84, 138], [147, 88, 84, 138], [147, 88, 84, 138]]","[1, 1, 1, 1, 1]",3.67,,,,middle,low,low,middle,middle_low_low,337490.jpg_Printed Material
+182903.jpg,Printed Material,"[[291, 167, 27, 58], [291, 167, 27, 58], [291, 167, 27, 58]]","[1, 0, 0, 0, 1]",3.0,,,,low,low,low,middle,low_low_low,182903.jpg_Printed Material
+314530.jpg,Printed Material,"[[292, 203, 44, 88]]","[0, 0, 0, 0, 1]",4.0,,,,low,low,low,middle,low_low_low,314530.jpg_Printed Material
+170968.jpg,Printed Material,"[[327, 281, 90, 102], [327, 281, 90, 102]]","[0, 0, 1, 0, 0]",2.5,,,,middle,middle,middle,middle,middle_middle_middle,170968.jpg_Printed Material
+328780.jpg,Printed Material,"[[475, 313, 163, 70]]","[0, 0, 0, 1, 0]",0.0,,,,middle,high,high,low,middle_high_high,328780.jpg_Printed Material
+168331.jpg,Printed Material,"[[53, 118, 142, 56]]","[0, 0, 0, 1, 0]",3.0,,,,middle,middle,high,middle,middle_middle_high,168331.jpg_Printed Material
+134542.jpg,Printed Material,"[[0, 123, 550, 292], [0, 123, 550, 292], [0, 123, 550, 292]]","[0, 1, 0, 1, 0]",3.67,,,,high,low,high,middle,high_low_high,134542.jpg_Printed Material
+176435.jpg,Printed Material,"[[489, 58, 59, 51], [489, 58, 59, 51], [489, 58, 59, 51]]","[1, 1, 0, 0, 1]",2.33,,,,low,high,high,middle,low_high_high,176435.jpg_Printed Material
+117089.jpg,Printed Material,"[[81, 276, 346, 362], [81, 276, 346, 362]]","[0, 1, 1, 1, 0]",3.0,,,,high,middle,middle,middle,high_middle_middle,117089.jpg_Printed Material
+19b9a87786eb4c85.jpg,Printed Material,"[[227, 108, 609, 356], [227, 108, 609, 356]]","[0, 1, 0, 1, 1]",5.0,,,,high,low,high,high,high_low_high,19b9a87786eb4c85.jpg_Printed Material
+100958.jpg,Toy,"[[269, 308, 107, 107]]","[0, 0, 0, 1, 0]",4.0,,,,middle,middle,middle,middle,middle_middle_middle,100958.jpg_Toy
+2a509a3520ada9ca.jpg,Toy,"[[368, 235, 99, 147], [438, 260, 136, 151], [368, 235, 99, 147], [438, 260, 136, 151]]","[0, 1, 0, 1, 0]",2.5,,,,low,low,middle,middle,low_low_middle,2a509a3520ada9ca.jpg_Toy
+101172.jpg,Toy,"[[44, 429, 104, 140]]","[0, 0, 1, 0, 0]",5.0,,,,middle,high,middle,high,middle_high_middle,101172.jpg_Toy
+252244.jpg,Toy,"[[152, 516, 181, 37], [152, 516, 181, 37]]","[0, 0, 1, 1, 0]",2.5,,,,low,middle,high,middle,low_middle_high,252244.jpg_Toy
+1713ee115f571a3d.jpg,Toy,"[[614, 44, 395, 529]]","[0, 0, 1, 0, 0]",3.0,,,,high,middle,middle,middle,high_middle_middle,1713ee115f571a3d.jpg_Toy
+28c9331905cb8c5b.jpg,Toy,"[[23, 253, 171, 47]]","[0, 0, 0, 1, 0]",4.0,,,,low,high,high,middle,low_high_high,28c9331905cb8c5b.jpg_Toy
+2a509a3520ada9ca.jpg,Toy,"[[579, 398, 171, 182], [579, 398, 171, 182]]","[0, 1, 0, 1, 0]",2.5,,,,middle,middle,middle,middle,middle_middle_middle,2a509a3520ada9ca.jpg_Toy
+276476.jpg,Toy,"[[254, 243, 172, 89], [254, 243, 172, 89]]","[0, 0, 0, 1, 0]",3.5,,,,middle,low,high,middle,middle_low_high,276476.jpg_Toy
+337490.jpg,Toy,"[[377, 63, 67, 72]]","[0, 0, 0, 1, 0]",4.0,,,,low,high,middle,middle,low_high_middle,337490.jpg_Toy
+1713ee115f571a3d.jpg,Toy,"[[2, 0, 316, 277]]","[0, 0, 1, 0, 0]",3.0,,,,high,high,high,middle,high_high_high,1713ee115f571a3d.jpg_Toy
+146358.jpg,Home interior,"[[217, 103, 121, 67], [217, 103, 121, 67]]","[1, 1, 0, 1, 1]",1.5,,,,middle,middle,high,low,middle_middle_high,146358.jpg_Home interior
+146358.jpg,Home interior,"[[349, 104, 38, 148], [345, 29, 42, 75], [0, 100, 45, 142], [1, 29, 42, 73], [349, 104, 38, 148], [345, 29, 42, 75], [0, 100, 45, 142], [1, 29, 42, 73]]","[1, 1, 0, 1, 1]",1.5,,,,low,high,low,low,low_high_low,146358.jpg_Home interior
+0ba9d2cc31b93d70.jpg,Home interior,"[[117, 252, 176, 185]]","[0, 1, 0, 0, 0]",4.0,,,,middle,middle,middle,middle,middle_middle_middle,0ba9d2cc31b93d70.jpg_Home interior
+113836.jpg,Home interior,"[[10, 325, 333, 274], [10, 325, 333, 274]]","[0, 1, 0, 1, 0]",5.0,,,,high,middle,high,high,high_middle_high,113836.jpg_Home interior
+3454f5c299102bea.jpg,Home interior,"[[821, 106, 170, 212]]","[0, 1, 0, 0, 0]",4.0,,,,middle,high,middle,middle,middle_high_middle,3454f5c299102bea.jpg_Home interior
+123053.jpg,Home interior,"[[199, 129, 168, 394]]","[0, 1, 0, 0, 0]",1.0,,,,high,low,low,low,high_low_low,123053.jpg_Home interior
+b8b0d6a47e48cc8c.jpg,Home interior,"[[0, 205, 220, 123]]","[0, 1, 0, 0, 0]",1.0,,,,middle,high,high,low,middle_high_high,b8b0d6a47e48cc8c.jpg_Home interior
+125928.jpg,Home interior,"[[451, 1, 187, 404], [451, 1, 187, 404]]","[0, 1, 1, 1, 0]",3.0,,,,high,middle,low,middle,high_middle_low,125928.jpg_Home interior
+10192.jpg,Home interior,"[[333, 0, 177, 125], [333, 0, 177, 125]]","[0, 1, 1, 1, 0]",2.5,,,,middle,high,high,middle,middle_high_high,10192.jpg_Home interior
+108762.jpg,Home interior,"[[40, 146, 425, 333], [40, 146, 425, 333]]","[1, 1, 0, 1, 1]",3.5,,,,high,low,high,middle,high_low_high,108762.jpg_Home interior
+0a7c597abf1e90d4.jpg,Finger,"[[387, 347, 403, 419]]","[0, 0, 0, 0, 1]",2.0,,,,high,middle,middle,low,high_middle_middle,0a7c597abf1e90d4.jpg_Finger
+24c7ebbfb72cfd8b.jpg,Finger,"[[537, 595, 230, 428]]","[0, 1, 0, 0, 0]",1.0,,,,middle,high,low,low,middle_high_low,24c7ebbfb72cfd8b.jpg_Finger
+0a7c597abf1e90d4.jpg,Finger,"[[0, 342, 364, 423]]","[0, 0, 0, 0, 1]",2.0,,,,high,high,middle,low,high_high_middle,0a7c597abf1e90d4.jpg_Finger
+2a0905a2ff63f09e.jpg,Finger,"[[125, 676, 125, 181]]","[0, 1, 1, 0, 0]",5.0,,,,middle,middle,middle,high,middle_middle_middle,2a0905a2ff63f09e.jpg_Finger
+2a0905a2ff63f09e.jpg,Finger,"[[116, 912, 89, 111]]","[0, 1, 1, 0, 0]",5.0,,,,low,high,middle,high,low_high_middle,2a0905a2ff63f09e.jpg_Finger
+29def08271143710.jpg,Finger,"[[924, 419, 99, 79]]","[0, 1, 0, 0, 0]",4.0,,,,low,high,high,middle,low_high_high,29def08271143710.jpg_Finger
+29def08271143710.jpg,Finger,"[[756, 408, 160, 87]]","[0, 1, 0, 0, 0]",4.0,,,,low,middle,high,middle,low_middle_high,29def08271143710.jpg_Finger
+07b12cccb39c75a5.jpg,Finger,"[[0, 193, 556, 828], [249, 232, 339, 483]]","[0, 1, 0, 0, 0]",2.0,,,,high,low,middle,low,high_low_middle,07b12cccb39c75a5.jpg_Finger
+4efbf3d3374b6f2a.jpg,Finger,"[[209, 0, 208, 301]]","[0, 0, 0, 1, 0]",4.0,,,,middle,middle,middle,middle,middle_middle_middle,4efbf3d3374b6f2a.jpg_Finger
+5ba4992a5dec8a7a.jpg,Finger,"[[120, 463, 491, 560]]","[1, 0, 0, 0, 0]",4.0,,,,high,middle,middle,middle,high_middle_middle,5ba4992a5dec8a7a.jpg_Finger
+11d5e3643d620a73.jpg,Identity,"[[190, 411, 325, 189], [190, 411, 325, 189], [190, 411, 325, 189]]","[1, 0, 0, 0, 1]",2.67,,,,middle,middle,high,middle,middle_middle_high,11d5e3643d620a73.jpg_Identity
+156404.jpg,Identity,"[[173, 261, 66, 73], [173, 261, 66, 73]]","[1, 0, 0, 0, 0]",2.5,,,,low,low,middle,middle,low_low_middle,156404.jpg_Identity
+151900.jpg,Identity,"[[227, 250, 64, 66], [227, 250, 64, 66]]","[1, 0, 0, 0, 1]",4.0,,,,low,low,middle,middle,low_low_middle,151900.jpg_Identity
+088f6016c3222b4d.jpg,Identity,"[[108, 101, 441, 111], [108, 101, 441, 111], [108, 101, 441, 111], [108, 101, 441, 111]]","[1, 1, 1, 1, 0]",2.25,,,,middle,middle,high,middle,middle_middle_high,088f6016c3222b4d.jpg_Identity
+541538.jpg,Identity,"[[227, 222, 98, 128], [227, 222, 98, 128]]","[1, 0, 0, 1, 0]",0.5,,,,middle,low,middle,low,middle_low_middle,541538.jpg_Identity
+069261fc14e56fcf.jpg,Identity,"[[287, 394, 272, 206], [287, 394, 272, 206], [287, 394, 272, 206], [287, 394, 272, 206]]","[1, 1, 1, 0, 1]",5.5,,,,middle,middle,high,high,middle_middle_high,069261fc14e56fcf.jpg_Identity
+226de4149b840256.jpg,Identity,"[[153, 151, 715, 458], [153, 151, 715, 458], [153, 151, 715, 458], [153, 151, 715, 458]]","[1, 1, 0, 1, 1]",4.25,,,,high,low,high,high,high_low_high,226de4149b840256.jpg_Identity
+0f5a50a4cfde67df.jpg,Identity,"[[206, 337, 319, 253], [206, 337, 319, 253], [206, 337, 319, 253], [206, 337, 319, 253]]","[1, 1, 1, 1, 1]",6.0,,,,high,middle,high,high,high_middle_high,0f5a50a4cfde67df.jpg_Identity
+01ead89d32a58f87.jpg,Identity,"[[295, 18, 479, 663], [295, 18, 479, 663], [295, 18, 479, 663], [295, 18, 479, 663]]","[1, 1, 1, 0, 1]",5.25,,,,high,low,middle,high,high_low_middle,01ead89d32a58f87.jpg_Identity
+0ca3d03fab8c1088.jpg,Identity,"[[87, 197, 840, 297], [87, 197, 840, 297], [87, 197, 840, 297]]","[1, 1, 1, 0, 0]",3.67,,,,high,low,high,middle,high_low_high,0ca3d03fab8c1088.jpg_Identity
+131138.jpg,Machine,"[[419, 198, 143, 65]]","[0, 1, 0, 0, 0]",4.0,,,,middle,middle,high,middle,middle_middle_high,131138.jpg_Machine
+384235.jpg,Machine,"[[4, 98, 172, 95], [4, 98, 172, 95]]","[1, 0, 0, 0, 1]",3.5,,,,middle,high,high,middle,middle_high_high,384235.jpg_Machine
+2f666bfe74564b04.jpg,Machine,"[[156, 78, 659, 484]]","[0, 0, 1, 0, 0]",4.0,,,,high,low,high,middle,high_low_high,2f666bfe74564b04.jpg_Machine
+39477.jpg,Machine,"[[151, 266, 60, 88]]","[0, 0, 0, 1, 0]",3.0,,,,low,middle,middle,middle,low_middle_middle,39477.jpg_Machine
+175387.jpg,Machine,"[[119, 0, 20, 120]]","[0, 1, 0, 0, 0]",1.0,,,,low,high,low,low,low_high_low,175387.jpg_Machine
+062973d55a1303d6.jpg,Machine,"[[182, 97, 641, 344]]","[0, 0, 0, 1, 0]",4.0,,,,high,low,high,middle,high_low_high,062973d55a1303d6.jpg_Machine
+63a6c1a686088729.jpg,Machine,"[[89, 107, 682, 574]]","[0, 0, 0, 1, 0]",1.0,,,,high,low,high,low,high_low_high,63a6c1a686088729.jpg_Machine
+141278.jpg,Machine,"[[328, 92, 104, 93], [328, 92, 104, 93]]","[0, 0, 0, 1, 1]",3.5,,,,middle,middle,middle,middle,middle_middle_middle,141278.jpg_Machine
+237886.jpg,Machine,"[[46, 289, 31, 84]]","[0, 0, 0, 1, 0]",3.0,,,,low,high,low,middle,low_high_low,237886.jpg_Machine
+062973d55a1303d6.jpg,Machine,"[[454, 134, 116, 81]]","[0, 0, 0, 1, 0]",4.0,,,,low,middle,high,middle,low_middle_high,062973d55a1303d6.jpg_Machine
+119244.jpg,Place Identifier,"[[418, 257, 221, 220]]","[0, 1, 0, 1, 0]",2.0,,,,high,high,middle,low,high_high_middle,119244.jpg_Place Identifier
+36a26f43ca6afd6e.jpg,Person,"[[114, 495, 250, 444]]","[1, 0, 1, 0, 0]",3.0,,,,high,middle,low,middle,high_middle_low,36a26f43ca6afd6e.jpg_Person
+4704b2b97ee54840.jpg,Photo,"[[137, 174, 400, 360]]","[0, 0, 0, 1, 0]",5.0,,,,high,low,middle,high,high_low_middle,4704b2b97ee54840.jpg_Photo
+53f9fa304263f470.jpg,Photo,"[[691, 12, 145, 171], [691, 12, 145, 171]]","[1, 0, 0, 0, 0]",4.5,,,,middle,high,middle,high,middle_high_middle,53f9fa304263f470.jpg_Photo
+e034b5124fbd1d53.jpg,Photo,"[[11, 257, 756, 572]]","[1, 0, 0, 1, 0]",1.0,,,,high,low,high,low,high_low_high,e034b5124fbd1d53.jpg_Photo
+4704b2b97ee54840.jpg,Photo,"[[183, 553, 332, 296]]","[0, 0, 0, 1, 0]",5.0,,,,middle,low,middle,high,middle_low_middle,4704b2b97ee54840.jpg_Photo
+376b2bae838c36fb.jpg,Photo,"[[63, 172, 548, 730]]","[0, 0, 0, 1, 0]",3.0,,,,high,low,middle,middle,high_low_middle,376b2bae838c36fb.jpg_Photo
+20c0763f3931f53e.jpg,Photo,"[[481, 523, 89, 120]]","[0, 1, 0, 0, 0]",5.0,,,,low,middle,middle,high,low_middle_middle,20c0763f3931f53e.jpg_Photo
+3476c411e42d86cf.jpg,Photo,"[[403, 366, 126, 116], [403, 366, 126, 116]]","[1, 0, 1, 1, 0]",4.5,,,,low,low,middle,high,low_low_middle,3476c411e42d86cf.jpg_Photo
+fdc078c7ab17bc53.jpg,Photo,"[[412, 412, 223, 223], [412, 412, 223, 223], [412, 412, 223, 223]]","[0, 1, 0, 0, 0]",4.67,,,,middle,low,middle,high,middle_low_middle,fdc078c7ab17bc53.jpg_Photo
+030484a0c0f285f6.jpg,Food,"[[363, 576, 116, 120]]","[1, 0, 0, 1, 0]",4.0,,,,low,low,middle,middle,low_low_middle,030484a0c0f285f6.jpg_Food
+102820.jpg,Food,"[[40, 485, 216, 95], [40, 485, 216, 95]]","[1, 1, 1, 0, 0]",5.5,,,,middle,high,high,high,middle_high_high,102820.jpg_Food
+0543ad6f9b0f0927.jpg,Food,"[[69, 418, 557, 468]]","[0, 1, 0, 1, 0]",5.0,,,,high,low,high,high,high_low_high,0543ad6f9b0f0927.jpg_Food
+108253.jpg,Food,"[[237, 0, 127, 318], [237, 0, 127, 318], [237, 0, 127, 318]]","[0, 1, 1, 1, 0]",4.33,,,,middle,middle,low,high,middle_middle_low,108253.jpg_Food
+140640.jpg,Food,"[[476, 361, 116, 64], [476, 361, 116, 64]]","[0, 1, 1, 1, 0]",2.5,,,,low,high,high,middle,low_high_high,140640.jpg_Food
+030484a0c0f285f6.jpg,Food,"[[11, 648, 92, 81], [49, 670, 87, 96], [65, 686, 92, 102], [569, 785, 111, 116]]","[1, 0, 0, 1, 0]",4.0,,,,low,high,middle,middle,low_high_middle,030484a0c0f285f6.jpg_Food
+004e21eb2e686f40.jpg,Food,"[[169, 180, 510, 728]]","[0, 0, 1, 0, 0]",4.0,,,,high,low,middle,middle,high_low_middle,004e21eb2e686f40.jpg_Food
+030484a0c0f285f6.jpg,Food,"[[220, 142, 459, 408]]","[1, 0, 0, 1, 0]",4.0,,,,high,low,middle,middle,high_low_middle,030484a0c0f285f6.jpg_Food
+214720.jpg,Food,"[[85, 158, 49, 122], [85, 158, 49, 122]]","[1, 1, 1, 1, 0]",4.0,,,,middle,middle,low,middle,middle_middle_low,214720.jpg_Food
+9338ef15df611769.jpg,Food,"[[348, 88, 377, 511], [348, 88, 377, 511]]","[0, 0, 0, 1, 0]",2.5,,,,high,low,middle,middle,high_low_middle,9338ef15df611769.jpg_Food
+6da92952466f61c9.jpg,Cosmetics,"[[0, 0, 453, 761], [696, 0, 241, 761]]","[0, 1, 0, 1, 0]",3.0,,,,high,middle,low,middle,high_middle_low,6da92952466f61c9.jpg_Cosmetics
+b79453af8f7830a3.jpg,Cosmetics,"[[473, 1, 353, 427]]","[0, 1, 1, 0, 0]",4.0,,,,high,middle,middle,middle,high_middle_middle,b79453af8f7830a3.jpg_Cosmetics
+b806f7eb139a04e5.jpg,Cosmetics,"[[209, 182, 705, 515], [209, 182, 705, 515]]","[0, 0, 0, 1, 0]",1.5,,,,high,low,high,low,high_low_high,b806f7eb139a04e5.jpg_Cosmetics
+b79453af8f7830a3.jpg,Cosmetics,"[[0, 99, 219, 379], [0, 488, 140, 279]]","[0, 1, 1, 0, 0]",4.0,,,,middle,high,low,middle,middle_high_low,b79453af8f7830a3.jpg_Cosmetics
+6da92952466f61c9.jpg,Cosmetics,"[[407, 0, 321, 761]]","[0, 1, 0, 1, 0]",3.0,,,,high,low,low,middle,high_low_low,6da92952466f61c9.jpg_Cosmetics
+fa6800d1eb440c5c.jpg,Cosmetics,"[[106, 29, 345, 734], [101, 29, 350, 741], [106, 29, 345, 734], [101, 29, 350, 741]]","[1, 1, 1, 1, 1]",2.5,,,,high,middle,low,middle,high_middle_low,fa6800d1eb440c5c.jpg_Cosmetics
+5f000354e0e21c03.jpg,Cosmetics,"[[0, 150, 871, 576]]","[0, 0, 0, 1, 1]",3.0,,,,high,low,high,middle,high_low_high,5f000354e0e21c03.jpg_Cosmetics
+87a52aad8e5ad2bf.jpg,Cosmetics,"[[0, 274, 891, 207]]","[0, 0, 1, 0, 0]",3.0,,,,high,low,high,middle,high_low_high,87a52aad8e5ad2bf.jpg_Cosmetics
+ce714eef200f390f.jpg,Cosmetics,"[[378, 112, 197, 691]]","[0, 1, 1, 0, 0]",4.0,,,,middle,low,low,middle,middle_low_low,ce714eef200f390f.jpg_Cosmetics
+fa6800d1eb440c5c.jpg,Cosmetics,"[[503, 207, 309, 564], [502, 207, 309, 563], [503, 207, 309, 564], [502, 207, 309, 563]]","[1, 1, 1, 1, 1]",2.5,,,,high,low,low,middle,high_low_low,fa6800d1eb440c5c.jpg_Cosmetics
+367569.jpg,Musical instrument,"[[44, 364, 163, 131], [44, 364, 163, 131]]","[0, 1, 0, 1, 0]",3.0,,,,middle,middle,high,middle,middle_middle_high,367569.jpg_Musical instrument
+62e2f86f8228662b.jpg,Musical instrument,"[[574, 232, 294, 328], [574, 232, 294, 328]]","[0, 0, 1, 1, 0]",3.5,,,,middle,middle,middle,middle,middle_middle_middle,62e2f86f8228662b.jpg_Musical instrument
+10651d2876cd50d8.jpg,Musical instrument,"[[0, 318, 1024, 449]]","[1, 1, 1, 0, 0]",5.0,,,,high,middle,high,high,high_middle_high,10651d2876cd50d8.jpg_Musical instrument
+148551.jpg,Musical instrument,"[[9, 171, 29, 80], [110, 77, 30, 101], [27, 163, 35, 78]]","[0, 0, 0, 1, 0]",3.0,,,,low,high,low,middle,low_high_low,148551.jpg_Musical instrument
+171c2848e3ad670e.jpg,Musical instrument,"[[355, 316, 248, 297]]","[0, 0, 1, 0, 0]",6.0,,,,middle,low,middle,high,middle_low_middle,171c2848e3ad670e.jpg_Musical instrument
+4335c08518179b66.jpg,Musical instrument,"[[828, 471, 193, 294], [828, 471, 193, 294]]","[0, 0, 1, 1, 1]",2.5,,,,middle,high,middle,middle,middle_high_middle,4335c08518179b66.jpg_Musical instrument
+162557.jpg,Musical instrument,"[[69, 73, 244, 308], [69, 73, 244, 308]]","[0, 1, 0, 0, 1]",3.0,,,,high,middle,middle,middle,high_middle_middle,162557.jpg_Musical instrument
+434511.jpg,Musical instrument,"[[322, 38, 57, 248], [322, 38, 57, 248]]","[0, 0, 0, 1, 0]",2.5,,,,middle,low,low,middle,middle_low_low,434511.jpg_Musical instrument
+4335c08518179b66.jpg,Musical instrument,"[[667, 542, 102, 217], [667, 542, 102, 217]]","[0, 0, 1, 1, 1]",2.5,,,,middle,high,low,middle,middle_high_low,4335c08518179b66.jpg_Musical instrument
+4335c08518179b66.jpg,Musical instrument,"[[894, 361, 80, 108], [894, 361, 80, 108]]","[0, 0, 1, 1, 1]",2.5,,,,low,high,middle,middle,low_high_middle,4335c08518179b66.jpg_Musical instrument
+134586.jpg,Accessory,"[[140, 279, 115, 103], [140, 279, 115, 103]]","[1, 0, 0, 0, 0]",3.5,,,,middle,low,middle,middle,middle_low_middle,134586.jpg_Accessory
+319305414bb65188.jpg,Accessory,"[[488, 202, 283, 108], [488, 202, 283, 108], [488, 202, 283, 108]]","[1, 0, 1, 1, 0]",5.33,,,,middle,middle,high,high,middle_middle_high,319305414bb65188.jpg_Accessory
+255375.jpg,Accessory,"[[51, 246, 59, 49]]","[0, 0, 0, 1, 0]",2.0,,,,low,high,high,low,low_high_high,255375.jpg_Accessory
+0319faa662ff5d06.jpg,Accessory,"[[632, 231, 166, 54]]","[1, 0, 0, 1, 0]",4.0,,,,low,middle,high,middle,low_middle_high,0319faa662ff5d06.jpg_Accessory
+000a1249af2bc5f0.jpg,Accessory,"[[441, 189, 171, 139]]","[1, 0, 0, 1, 0]",3.0,,,,middle,low,high,middle,middle_low_high,000a1249af2bc5f0.jpg_Accessory
+1aa3acb3e0b57865.jpg,Accessory,"[[411, 345, 324, 104], [411, 345, 324, 104]]","[1, 0, 0, 0, 0]",5.0,,,,middle,low,high,high,middle_low_high,1aa3acb3e0b57865.jpg_Accessory
+119647.jpg,Accessory,"[[482, 305, 50, 122], [482, 305, 50, 122]]","[0, 0, 1, 1, 0]",3.0,,,,low,high,low,middle,low_high_low,119647.jpg_Accessory
+1fb9783df691b0ad.jpg,Accessory,"[[162, 346, 280, 73]]","[1, 0, 0, 1, 0]",5.0,,,,middle,low,high,high,middle_low_high,1fb9783df691b0ad.jpg_Accessory
+081b5acdf94c392a.jpg,Accessory,"[[431, 562, 270, 119]]","[0, 0, 0, 1, 0]",1.0,,,,middle,high,high,low,middle_high_high,081b5acdf94c392a.jpg_Accessory
+248b5f914b325928.jpg,Accessory,"[[123, 291, 329, 67]]","[0, 0, 0, 1, 0]",5.0,,,,low,middle,high,high,low_middle_high,248b5f914b325928.jpg_Accessory
+133679.jpg,Home interior,"[[469, 191, 153, 78]]","[0, 0, 1, 0, 0]",6.0,,,,middle,middle,high,high,middle_middle_high,133679.jpg_Home interior
+6cb95fd90d7c2bac.jpg,Person,"[[468, 362, 141, 140]]","[1, 0, 0, 0, 0]",1.0,,,,middle,low,middle,low,middle_low_middle,6cb95fd90d7c2bac.jpg_Person
+509260.jpg,Book,"[[331, 188, 24, 70], [331, 188, 24, 70], [331, 188, 24, 70]]","[0, 0, 1, 1, 0]",3.33,,,,low,middle,low,middle,low_middle_low,509260.jpg_Book
+2908288f0c371f1f.jpg,Screen,"[[229, 145, 182, 145], [229, 145, 182, 145], [229, 145, 182, 145]]","[1, 1, 0, 0, 1]",3.33,,,,middle,middle,high,middle,middle_middle_high,2908288f0c371f1f.jpg_Screen
+208fcde7b90bcbf8.jpg,Person,"[[190, 542, 119, 140], [190, 542, 119, 140]]","[0, 0, 0, 1, 1]",3.0,,,,low,high,middle,middle,low_high_middle,208fcde7b90bcbf8.jpg_Person
+272741.jpg,Others,"[[390, 126, 81, 72], [390, 126, 81, 72]]","[0, 1, 0, 1, 1]",2.5,,,,middle,middle,middle,middle,middle_middle_middle,272741.jpg_Others
+204ddb40982865e6.jpg,Person,"[[216, 138, 134, 310], [219, 33, 171, 561], [371, 25, 118, 428], [225, 27, 173, 561], [367, 25, 114, 417], [225, 25, 199, 536], [216, 138, 134, 310], [219, 33, 171, 561], [371, 25, 118, 428], [225, 27, 173, 561], [367, 25, 114, 417], [225, 25, 199, 536], [216, 138, 134, 310], [219, 33, 171, 561], [371, 25, 118, 428], [225, 27, 173, 561], [367, 25, 114, 417], [225, 25, 199, 536]]","[1, 1, 1, 0, 0]",4.17,,,,middle,middle,low,high,middle_middle_low,204ddb40982865e6.jpg_Person
+179397.jpg,Others,"[[481, 326, 98, 70]]","[0, 1, 0, 0, 0]",4.0,,,,low,high,high,middle,low_high_high,179397.jpg_Others
+232463.jpg,Cigarettes,"[[422, 222, 84, 41]]","[1, 0, 1, 0, 1]",5.0,,,,low,middle,high,high,low_middle_high,232463.jpg_Cigarettes
+259336.jpg,Cigarettes,"[[394, 158, 51, 74]]","[0, 0, 1, 0, 0]",1.0,,,,low,low,middle,low,low_low_middle,259336.jpg_Cigarettes
+133679.jpg,Home interior,"[[469, 191, 153, 78]]","[0, 0, 1, 0, 0]",6.0,,,,middle,middle,high,high,middle_middle_high,133679.jpg_Home interior
+6cb95fd90d7c2bac.jpg,Person,"[[468, 362, 141, 140]]","[1, 0, 0, 0, 0]",1.0,,,,middle,low,middle,low,middle_low_middle,6cb95fd90d7c2bac.jpg_Person
+509260.jpg,Book,"[[331, 188, 24, 70], [331, 188, 24, 70], [331, 188, 24, 70]]","[0, 0, 1, 1, 0]",3.33,,,,low,middle,low,middle,low_middle_low,509260.jpg_Book
+2908288f0c371f1f.jpg,Screen,"[[229, 145, 182, 145], [229, 145, 182, 145], [229, 145, 182, 145]]","[1, 1, 0, 0, 1]",3.33,,,,middle,middle,high,middle,middle_middle_high,2908288f0c371f1f.jpg_Screen
+208fcde7b90bcbf8.jpg,Person,"[[190, 542, 119, 140], [190, 542, 119, 140]]","[0, 0, 0, 1, 1]",3.0,,,,low,high,middle,middle,low_high_middle,208fcde7b90bcbf8.jpg_Person
+272741.jpg,Others,"[[390, 126, 81, 72], [390, 126, 81, 72]]","[0, 1, 0, 1, 1]",2.5,,,,middle,middle,middle,middle,middle_middle_middle,272741.jpg_Others
+1cc51804460299fb.jpg,Electronic Devices,"[[327, 399, 344, 92], [327, 399, 344, 92]]","[0, 0, 0, 1, 0]",2.0,,,,middle,low,high,low,middle_low_high,1cc51804460299fb.jpg_Electronic Devices
+74d9c3ea2244fe8f.jpg,Electronic Devices,"[[276, 203, 205, 475]]","[1, 0, 1, 0, 0]",5.0,,,,middle,middle,low,high,middle_middle_low,74d9c3ea2244fe8f.jpg_Electronic Devices
+410033.jpg,Electronic Devices,"[[11, 298, 134, 113]]","[0, 0, 1, 0, 0]",4.0,,,,middle,high,high,middle,middle_high_high,410033.jpg_Electronic Devices
+46da83ccb945db5a.jpg,Electronic Devices,"[[280, 0, 203, 345]]","[0, 1, 0, 1, 0]",4.0,,,,middle,middle,low,middle,middle_middle_low,46da83ccb945db5a.jpg_Electronic Devices

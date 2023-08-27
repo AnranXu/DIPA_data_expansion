@@ -123,6 +123,15 @@ class analyzer:
                                 continue
                         else:
                             category = value['category']
+                        DIPA_category = ''
+                        if dataset_name == 'OpenImages':
+                                if key in self.openimages_mycat_map.keys():
+                                    DIPA_category = self.openimages_mycat_map[key]
+                        elif dataset_name == 'LVIS':
+                            if key in self.lvis_mycat_map.keys():
+                                DIPA_category = self.lvis_mycat_map[key]
+                        if DIPA_category == '':
+                            DIPA_category = 'Others'
                         id = annotation_name[0][:-11] + '_' + key
                         informationType = -1 if value['ifNoPrivacy'] else int(value['informationType']) - 1
                         informativeness = -1 if value['ifNoPrivacy'] else int(value['informativeness']) - 1
@@ -148,7 +157,8 @@ class analyzer:
                             'imagePath': [image_name + '.jpg'],
                             'originCategory': value['category'],
                             'datasetName': [dataset_name],
-                            'bbox': [[0,0,0,0]]
+                            'bbox': [[0,0,0,0]],
+                            'DIPACategory': [DIPA_category]
                         })
 
                         self.mega_table = pd.concat([self.mega_table, entry], ignore_index=True)
@@ -433,8 +443,75 @@ class analyzer:
         #     print(self.mega_table)
         #     self.mega_table = self.mega_table[self.mega_table['platform'] == count_scale]
         #     print(self.mega_table)
-        informativeness = self.mega_table['informativeness'].value_counts()
-        print(informativeness)
+        # workers_progress = {}
+        # # only first worker in one platform is valid, also, worker need to have at least 10 annotations
+        # for image_name in self.img_annotation_map.keys():
+        #     for platform, annotation_name in self.img_annotation_map[image_name].items():
+        #         # now, value[0] is the only availiable index
+        #         image_id = annotation_name[0].split('_')[0]
+        #         prefix_len = len(image_id) + 1
+        #         worker_file = annotation_name[0][prefix_len:]
+        #         worker_id = worker_file[:-11]
+        #         if worker_id in workers_progress.keys():
+        #             workers_progress[worker_id] += 1
+        #         else:
+        #             workers_progress[worker_id] = 1
+        # # select valid workers
+        # valid_workers = []
+        # for worker_id, progress in workers_progress.items():
+        #     if progress >= 9:
+        #         valid_workers.append(worker_id)
+        annotator = {}
+        for image_name in self.img_annotation_map.keys():
+            for platform, annotation_name in self.img_annotation_map[image_name].items():
+                # now, value[0] is the only availiable index
+                image_id = annotation_name[0].split('_')[0]
+                prefix_len = len(image_id) + 1
+                worker_file = annotation_name[0][prefix_len:]
+                worker_id = worker_file[:-11]
+                with open(os.path.join(self.annotation_path, platform, 'labels', annotation_name[0])) as f_label:
+                    #load label
+                    label = json.load(f_label)
+                    # for each private default annotation and manual annotation, we + 1
+                    if len(label['defaultAnnotation']) > 0:
+                        for key, value in label['defaultAnnotation'].items():
+                            if not value['ifNoPrivacy']:
+                                if worker_id in annotator.keys():
+                                    annotator[worker_id] += 1
+                                else:
+                                    annotator[worker_id] = 1
+                    if len(label['manualAnnotation']) > 0:
+                        for key, value in label['manualAnnotation'].items():
+                            if worker_id in annotator.keys():
+                                annotator[worker_id] += 1
+                            else:
+                                annotator[worker_id] = 1
+        # we randomly drop the annotator to 360 persons
+        # randomly drop
+        import random
+        # set seed 42
+        random.seed(42)
+        annotator = dict(random.sample(annotator.items(), 360))
+
+        # calulate the distribution of annotation per annotator, according to 0--5 & 6--10 & 10-15 & 15-20 & 20--30 & 30--
+
+        annotator_count = {'0--5': 0, '6--10': 0, '10--15': 0, '15--20': 0, '20--30': 0, '30--': 0}
+        for key, value in annotator.items():
+            if value <= 5:
+                annotator_count['0--5'] += 1
+            elif value <= 10:
+                annotator_count['6--10'] += 1
+            elif value <= 15:
+                annotator_count['10--15'] += 1
+            elif value <= 20:
+                annotator_count['15--20'] += 1
+            elif value <= 30:
+                annotator_count['20--30'] += 1
+            else:
+                annotator_count['30--'] += 1
+        print('annotator count')
+        print(annotator_count)
+        print('total annotator: {}'.format(len(annotator.keys())))
 
     def neural_network(self, input_channel, output_channel, read_csv = False) -> None:
         def l1_distance_loss(prediction, target):
@@ -640,7 +717,7 @@ if __name__ == '__main__':
     output_channel = privacy_metrics
     
     #output_channel = ['sharing']
-   #analyze.prepare_mega_table(mycat_mode=False, save_csv=True, include_not_private= False)
+    #analyze.prepare_mega_table(mycat_mode=False, save_csv=True, include_not_private= False)
     #print(analyze.mega_table['informationType'].unique())
     #print(analyze.mega_table['sharing'].unique())
     #analyze.regression_model(input_channel, output_channel)

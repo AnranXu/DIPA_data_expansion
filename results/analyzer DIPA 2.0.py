@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from PIL import Image
+import cv2 
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
@@ -24,6 +25,7 @@ from sklearn.linear_model import LinearRegression
 from scipy.stats import binom
 from scipy.stats import zscore
 
+import random
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
@@ -37,6 +39,8 @@ class analyzer:
         self.img_annotation_map = {}
         self.code_openimage_map = {}
         self.openimages_mycat_map = {}
+        # some categories in others can still be mapped to mycat due to the mistakes when summarizing before
+        self.others_map = {}
         self.lvis_mycat_map = {}
         self.test_size = 0.2
         self.custom_informationType = []
@@ -87,6 +91,15 @@ class analyzer:
                 for cat in openimages_cats:
                     category_name = self.code_openimage_map[cat]
                     self.openimages_mycat_map[category_name] = row[0]
+        with open('./others_convertor.csv') as f:
+            res = csv.reader(f)
+            flag = 0
+            for row in res:
+                if not flag:
+                    flag = 1
+                    continue
+                self.others_map[row[0]] = row[1]
+
     def basic_info(self, platform='CrowdWorks')->None:
         age = {'18-24': {'Male': 0, 'Female': 0, 'Other': 0}, 
         '25-34': {'Male': 0, 'Female': 0, 'Other': 0}, 
@@ -691,6 +704,102 @@ class analyzer:
         print('overlap with DIPA 1.0:', len(overlap))
         print('unique content in DIPA 2.0:', len(set(privacy_content_dipa2)))
 
+        
+        # #count the not overlap content of DIPA1 according to their category
+        # dipa1_table_unoverlap = dipa1_table[~dipa1_table['id_content'].isin(overlap)]
+        # dipa1_table_unoverlap = dipa1_table_unoverlap[dipa1_table_unoverlap['DIPACategory'] != 'Manual Label']
+        
+        # dipa1_table_overlap = dipa1_table[dipa1_table['id_content'].isin(overlap)]
+        # dipa1_table_overlap = dipa1_table_overlap[dipa1_table_overlap['DIPACategory'] != 'Manual Label']
+        # # dipa1_table_unoverlap['category'] = dipa1_table_unoverlap['DIPACategory'].replace({
+        # #     'Paper&Document&Label': 'Printed materials',
+        # #     'Vehicle Plate': 'Vehicle plate'
+        # # })
+
+        # # dipa1_table_overlap['category'] = dipa1_table_overlap['DIPACategory'].replace({
+        # #     'Paper&Document&Label': 'Printed materials',
+        # #     'Vehicle Plate': 'Vehicle plate'
+        # # })
+        # dipa1_table_unoverlap['DIPACategory'] = dipa1_table_unoverlap['DIPACategory'].str.lower()
+        # dipa1_table_overlap['DIPACategory'] = dipa1_table_overlap['DIPACategory'].str.lower()
+        # # we generate a histogram of the categories of the not overlap content and overlap content
+        # # two sets of data
+        # # 1. not overlap content
+        # # 2. overlap content
+        # category_count_unoverlap = dipa1_table_unoverlap['DIPACategory'].value_counts()
+
+        # # Get the categories distribution for overlap data
+        # category_count_overlap = dipa1_table_overlap['DIPACategory'].value_counts()
+        # # order the two sets by number of content, the category name should also be ordered according to it
+        
+
+        
+        # print(category_count_unoverlap)
+        # print(category_count_overlap)
+        # # Create a DataFrame for plotting
+        # plot_df = pd.DataFrame({
+        #     'Unoverlap': category_count_unoverlap,
+        #     'Overlap': category_count_overlap
+        # })
+        # plot_df['total'] = plot_df['Unoverlap'] + plot_df['Overlap']
+        # plot_df = plot_df.sort_values('total', ascending=False).drop(columns='total')
+        # # Plotting the DataFrame as a bar plot
+        # plot_df.plot(kind='bar')
+        # # change the name of Paper&Document&Label to Printed materials
+        # # Vehicle Plate to Vehicle plate
+        
+
+        # plt.title('Category Distribution for Overlap vs Unoverlap Data')
+        # plt.ylabel('Count')
+        # plt.xlabel('Category')
+        # plt.yscale('log')
+        # plt.xticks(rotation=90, fontsize=8)
+        # plt.tight_layout()
+        # plt.show()
+
+
+
+
+        # count annotation per annotators, and the visualization of the distribution for DIPA 2.0
+        
+        annotator = {}
+        for image_name in self.img_annotation_map.keys():
+            for platform, annotations in self.img_annotation_map[image_name].items():
+                for annotation in annotations:
+                    image_id = annotation.split('_')[0]
+                    prefix_len = len(image_id) + 1
+                    worker_file = annotation[prefix_len:]
+                    worker_id = worker_file[:-11]
+                    # we + 1 for each valid annotation by the worker, we need to read annotation file to check if it is valid for each annotation
+                    if worker_id not in annotator.keys():
+                        annotator[worker_id] = 0
+                    with open(os.path.join(self.annotation_path, platform, 'labels', annotation), encoding="utf-8") as f_label:
+                        
+                        label = json.load(f_label)
+                        # for each valid label, we + 1
+                        for key, value in label['defaultAnnotation'].items():
+                            if not value['ifNoPrivacy']:
+                                annotator[worker_id] += 1
+                        for key, value in label['manualAnnotation'].items():
+                            annotator[worker_id] += 1
+        # calulate the distribution of annotation per annotator, according to 0--5 & 6--10 & 10-15 & 15-20 & 20--30 & 30--
+
+        annotator_count = {'0--5': 0, '6--10': 0, '10--15': 0, '15--20': 0, '20--30': 0, '30--': 0}
+        for key, value in annotator.items():
+            if value <= 5:
+                annotator_count['0--5'] += 1
+            elif value <= 10:
+                annotator_count['6--10'] += 1
+            elif value <= 15:
+                annotator_count['10--15'] += 1
+            elif value <= 20:
+                annotator_count['15--20'] += 1
+            elif value <= 30:
+                annotator_count['20--30'] += 1
+            else:
+                annotator_count['30--'] += 1
+        print('annotator count')
+        print(annotator_count)
         ## how many times annotated in DIPA 2.0
         print('content appear')
         exclude_manual = self.mega_table[self.mega_table.category != 'Manual Label']
@@ -1344,7 +1453,7 @@ class analyzer:
 
             epoch_number += 1
         writer.close()
-    def visualDistribution(self, read_csv=False, visualization=False, outputSelection=False):
+    def visualDistribution(self, read_csv=False, filter_data = True, filter_corridor = (25,75), visualization=False, outputSelection=False, only_manual = False, compare = False):
         #target: get the distribution of all visual content by different metrics, like size, foreground or background, and relative location to the center.
         #Each distribution has three or two categories, like small, medium, large, foreground, background, close, netural, far, etc.
         # read mega table 
@@ -1364,31 +1473,60 @@ class analyzer:
         bboxes = []
         informativeness = []
         information_type = []
+        category = []
+        others = {}
         # check if mega_table has category named manual label 
         print(self.mega_table)
+        if only_manual:
+            self.mega_table = self.mega_table[self.mega_table['category'] == 'Manual Label']
+        else:
+            # remove manual label and category with prefix Object
+            self.mega_table = self.mega_table[self.mega_table['category'] != 'Manual Label']
+            self.mega_table = self.mega_table[self.mega_table['category'].str.startswith('Object') == False]
         for index, row in self.mega_table.iterrows():
             #bboxes = json.loads(row['bbox'])
             image_path = os.path.join('images', row['imagePath'])
             image = Image.open(image_path)
             image_width, image_height = image.size
+            if read_csv:
+                row['bbox'] = json.loads(row['bbox'])
             for bbox in row['bbox']:
                 #size
+                if bbox[3] == 0:
+                    continue
+                # if category is Manual Label, we skip it
+                if row['category'] == 'Manual Label':
+                    continue
                 size = bbox[2] * bbox[3]
                 relative_size = size / (image_width * image_height)
-                relative_sizes.append(relative_size)
+                
                 #relative location
                 center_x = image_width / 2
                 center_y = image_height / 2
                 relative_x = (bbox[0] + bbox[2] / 2 - center_x) / image_width
                 relative_y = (bbox[1] + bbox[3] / 2 - center_y) / image_height
                 #print(relative_x, relative_y)
-                relative_position.append([relative_x, relative_y])
+                # the relative_x and relative_y are in the range of [-0.5, 0.5]
+                if relative_x > 0.5 or relative_x < -0.5 or relative_y > 0.5 or relative_y < -0.5:
+                    print('relative_x or relative_y out of range')
+                    continue
                 #width heigh ratio
+
+                relative_position.append([relative_x, relative_y])
+                relative_sizes.append(relative_size)
                 width_height_ratio.append(bbox[2] / bbox[3])
                 bbox_name.append(row['imagePath'] + '_' + row['category'])
                 informativeness.append(row['informativeness'])
-                information_type.append(row['informationType'][:-1])
+                information_type.append(json.loads(row['informationType'])[:-1])
                 bboxes.append(bbox)
+                category_name = row['DIPACategory']
+                if category_name == 'Others':
+                    if row['category'] in self.others_map.keys():
+                        category_name = self.others_map[row['category']]
+                category.append(category_name)
+                # if the category is Others, recording it in others
+                
+        
         #visualize the distribution in coordinate system
         relative_sizes = np.array(relative_sizes)
         relative_position = np.array(relative_position)
@@ -1398,24 +1536,68 @@ class analyzer:
         bboxes = np.array(bboxes)
         bbox_name = np.array(bbox_name)
 
-        Q1 = np.percentile(relative_sizes, 25)
-        Q3 = np.percentile(relative_sizes, 75)
-        IQR = Q3 - Q1
+        print('len of relative_sizes:', len(relative_sizes))
+        print('len of relative_position:', len(relative_position))
+        print('len of width_height_ratio:', len(width_height_ratio))
+        if filter_data:
+            print('filtering data')
+            # we first filter all data the size less than 0.01
+            valid_data_indices = np.where(relative_sizes > 0.005)[0]
+            # Filter data
+            relative_sizes = relative_sizes[valid_data_indices]
+            relative_position = relative_position[valid_data_indices]
+            width_height_ratio = width_height_ratio[valid_data_indices]
+            bbox_name = [bbox_name[i] for i in valid_data_indices]
+            informativeness = [informativeness[i] for i in valid_data_indices]
+            information_type = [information_type[i] for i in valid_data_indices]
+            bboxes = [bboxes[i] for i in valid_data_indices]
+            category = [category[i] for i in valid_data_indices]
+            print('Number of valid data points:', len(valid_data_indices))
 
-        # Identify indices where relative_sizes fall within Q1 - 1.5 * IQR and Q3 + 1.5 * IQR
-        valid_data_indices = np.where((Q1<= relative_sizes) & (relative_sizes <= Q3))[0]
-        #show how many data are removed
-        print('Number of valid data points:', len(valid_data_indices))
-        print('Number of invalid data points:', len(relative_sizes) - len(valid_data_indices))
-        # Filter data
-        relative_sizes = relative_sizes[valid_data_indices]
-        relative_position = relative_position[valid_data_indices]
-        width_height_ratio = width_height_ratio[valid_data_indices]
-        bbox_name = [bbox_name[i] for i in valid_data_indices]
-        informativeness = [informativeness[i] for i in valid_data_indices]
-        information_type = [information_type[i] for i in valid_data_indices]
-        bboxes = [bboxes[i] for i in valid_data_indices]
+            Q1 = np.percentile(relative_sizes, filter_corridor[0])
+            Q3 = np.percentile(relative_sizes, filter_corridor[1])
+            IQR = Q3 - Q1
+
+            # Identify indices where relative_sizes fall within Q1 - 1.5 * IQR and Q3 + 1.5 * IQR
+            valid_data_indices = np.where((Q1<= relative_sizes) & (relative_sizes <= Q3))[0]
+            #show how many data are removed
+            print('Number of valid data points:', len(valid_data_indices))
+            print('Number of invalid data points:', len(relative_sizes) - len(valid_data_indices))
+            # Filter data
+            relative_sizes = relative_sizes[valid_data_indices]
+            relative_position = relative_position[valid_data_indices]
+            width_height_ratio = width_height_ratio[valid_data_indices]
+            bbox_name = [bbox_name[i] for i in valid_data_indices]
+            informativeness = [informativeness[i] for i in valid_data_indices]
+            information_type = [information_type[i] for i in valid_data_indices]
+            bboxes = [bboxes[i] for i in valid_data_indices]
+            category = [category[i] for i in valid_data_indices]
+            print('Number of valid data points:', len(valid_data_indices))
+
+        # print the distribution of category, according to each category
+        category_count = {}
+        for cat in category:
+            # we first convert the category to DIPA's category
+            
+            if cat in category_count:
+                category_count[cat] += 1
+            else:
+                category_count[cat] = 1
+           
+        for cat, count in category_count.items():
+            print(f"{cat}: {count}")
         
+        for i, b_name in enumerate(bbox_name):
+            cat = category[i]
+            if cat == 'Others':
+                b_cat = b_name.split('_')[1]
+                if b_cat not in others.keys():
+                    others[b_cat] = 1
+                else:
+                    others[b_cat] += 1
+        print('others:', others)
+        print('others key', others.keys())
+
         
         # divide data into 30, 40 ,30
         low_number = 30
@@ -1466,11 +1648,11 @@ class analyzer:
         print('Median ratio of the largest '+str(100-high_number)+'% of boxes:', np.median(highest_30_ratio))
         print('max ratio and min ratio:', np.max(width_height_ratio), np.min(width_height_ratio))
 
-        sample_size_per_group = 1
+        sample_size_per_group =  10 # floor 270/23 
         if outputSelection:
             df = pd.DataFrame(columns=['image_path', 'category', 'bbox', 'informationType', 'informativeness', 'relative_size', 'relative_position', 'width_height_ratio'])
             for i in range(len(relative_sizes)):
-                df.loc[i] = [bbox_name[i].split('_')[0], bbox_name[i].split('_')[1], bboxes[i], information_type[i], informativeness[i], relative_sizes[i], relative_position[i], width_height_ratio[i]]
+                df.loc[i] = [bbox_name[i].split('_')[0], category[i], bboxes[i], information_type[i], informativeness[i], relative_sizes[i], relative_position[i], width_height_ratio[i]]
             # Add a new column to identify the group of each row
             df['size_group'] = pd.cut(df['relative_size'], bins=[-np.inf, low_size, high_size, np.inf], labels=['low', 'middle', 'high'])
             df['position_group'] = pd.cut(df['relative_position'].apply(lambda x: np.sqrt(x[0]**2 + x[1]**2)), bins=[-np.inf, low_distance, high_distance, np.inf], labels=['low', 'middle', 'high'])
@@ -1492,34 +1674,135 @@ class analyzer:
             grouped['group (size, position, ratio)'] = grouped['size_group'].astype(str) + "_" + grouped['position_group'].astype(str) + "_" + grouped['ratio_group'].astype(str)
             
 
-            stratified = grouped.groupby('group (size, position, ratio)').apply(lambda x: x.sample(min(len(x), sample_size_per_group), random_state=0))
-            # unique category and print len
-            print('unique category:', grouped['category'].unique())
-            print('unique category len:', len(grouped['category'].unique()))
-            # Reset the index
-            stratified.reset_index(drop=True, inplace=True)
-            stratified.to_csv('for_dmbis_comparison_study (pilot).csv', index=False)
+            stratified = grouped.groupby('group (size, position, ratio)').apply(lambda x: x.sample(min(len(x), 1000), random_state=0))
+            # add a new col ''bbox_name''
+            stratified['bbox_name'] = stratified['image_path'] + '_' + stratified['category']
+            # we need to ensure that each group (size, position, ratio) has exact 10 samples
+            # then we want to make the samples evenly distributed in category as much as possible.
+            # we have 23 categories, so each category will try to have 270/23 = 12 samples (some should be 11 to make sure the sum is 270)
+            
+            all_categories = stratified['category'].unique()
+            sample_size_per_category = 270 // 23  # ideal number of samples per category across all groups
+            category_num = {category: 0 for category in all_categories}
+            selected_data = []
+            selected_files = set()
+
+            final_samples_list = []  # This will be used to store all our final samples
+            def categories_sorted_by_count(all_categories, category_num):
+                return sorted(all_categories, key=lambda x: category_num[x])
+            for group in stratified['group (size, position, ratio)'].unique():
+                group_df = stratified[stratified['group (size, position, ratio)'] == group]
+                
+                samples_for_group = []  # samples collected for the current group
+                
+                # Try to get samples from each category for this group
+                for category in categories_sorted_by_count(all_categories, category_num):
+                    if len(samples_for_group) >= 10:
+                        break
+
+                    if category_num[category] >= sample_size_per_category:
+                        continue
+                    
+                    available_samples = group_df[(group_df['category'] == category) 
+                                                & (~group_df['bbox_name'].isin(selected_data))
+                                                & (~group_df['image_path'].isin(selected_files))]
+                    
+                    if not available_samples.empty:
+                        selected_sample = available_samples.sample(n=1, random_state=0)
+                        samples_for_group.append(selected_sample)
+                        selected_data.extend(selected_sample['bbox_name'].tolist())
+                        selected_files.add(selected_sample['image_path'].values[0])
+                        category_num[category] += 1
+                
+                # If not enough samples selected for this group, take extra from any available category
+                while len(samples_for_group) < 10:
+                    for category in categories_sorted_by_count(all_categories, category_num):
+                        if len(samples_for_group) >= 10:
+                            break
+                        
+                        available_samples = group_df[(group_df['category'] == category) 
+                                                    & (~group_df['bbox_name'].isin(selected_data))
+                                                    & (~group_df['image_path'].isin(selected_files))]
+                        if not available_samples.empty:
+                            selected_sample = available_samples.sample(n=1, random_state=0)
+                            samples_for_group.append(selected_sample)
+                            selected_data.extend(selected_sample['bbox_name'].tolist())
+                            selected_files.add(selected_sample['image_path'].values[0])
+                            category_num[category] += 1
+
+                assert len(samples_for_group) == 10, f"Group {group} has {len(samples_for_group)} samples instead of 10."
+                final_samples_list.extend(samples_for_group)
+
+
+            # Convert the list of selected dataframes into a single dataframe
+            # print len
+            print('len of final samples:', len(final_samples_list))
+
+            final_samples_df = pd.concat(final_samples_list).reset_index(drop=True)
+            # print the len of each group
+            print('len of each group:', final_samples_df.groupby('group (size, position, ratio)').size())
+
+            final_samples_df.to_csv('final_samples.csv')
+
+            # Print the sample count for each category
+            print("Sample Counts by Category:")
+            for category, count in category_num.items():
+                print(f"{category}: {count} samples")
+
+            # add up count in category_num
+            total_count = 0
+            for category, count in category_num.items():
+                total_count += count
+            print('total count:', total_count)
+
 
         if visualization:
-            plt.scatter(relative_position[:, 0], relative_position[:, 1], s=relative_sizes * 1000, c=width_height_ratio, cmap='viridis')
-            plt.colorbar()
-            #add titile
-            plt.title('relative position and size of bounding box')
-            plt.show()
-            #visualize the distribution in histogram
-            plt.hist(relative_sizes, bins=20)
-            plt.title('relative size of bounding box')
-            plt.show()
-            plt.hist(relative_position[:, 0], bins=20)
-            plt.title('relative x position of bounding box')
-            plt.show()
-            plt.hist(relative_position[:, 1], bins=20)
-            plt.title('relative y position of bounding box')
-            plt.show()
-            plt.hist(width_height_ratio, bins=20)
-            plt.title('width height ratio of bounding box')
-            plt.show()
-        
+            # compare with vizwiz-Priv dataset
+            if compare:
+                # read npy file to get vizwiz's results
+                vizwiz_relative_position = np.load('vizwiz_relative_position.npy')
+                vizwiz_relative_sizes = np.load('vizwiz_relative_sizes.npy')
+                vizwiz_width_height_ratio = np.load('vizwiz_width_height_ratio.npy')
+                # only show vizwiz data in one plt
+                plt.scatter(vizwiz_relative_position[:, 0], vizwiz_relative_position[:, 1], s=vizwiz_relative_sizes * 1000, c=vizwiz_width_height_ratio, cmap='viridis')
+                #add title for colorbar
+                plt.clim(0, 2)
+                plt.colorbar().ax.set_title('aspect ratio')
+                #add x,y axis title
+                plt.xlabel('relative position to center (width)')
+                plt.ylabel('relative position to center (height)')
+                #add title
+                plt.title('relative position and size of bounding box')
+                plt.show()
+
+                
+                
+            else:
+                plt.scatter(relative_position[:, 0], relative_position[:, 1], s=relative_sizes * 1000, c=width_height_ratio, cmap='viridis')
+                
+                #add title for colorbar
+                plt.clim(0, 2)
+                plt.colorbar().ax.set_title('aspect ratio')
+                #add x,y axis title
+                plt.xlabel('relative position to center (width)')
+                plt.ylabel('relative position to center (height)')
+                #add title
+                plt.title('relative position and size of bounding box')
+                plt.show()
+                #visualize the distribution in histogram
+                plt.hist(relative_sizes, bins=20)
+                plt.title('relative size of bounding box')
+                plt.show()
+                plt.hist(relative_position[:, 0], bins=20)
+                plt.title('relative x position of bounding box')
+                plt.show()
+                plt.hist(relative_position[:, 1], bins=20)
+                plt.title('relative y position of bounding box')
+                plt.show()
+                plt.hist(width_height_ratio, bins=20)
+                plt.title('width height ratio of bounding box')
+                plt.show()
+    
 if __name__ == '__main__':
     analyze = analyzer()
     bigfives = ["extraversion", "agreeableness", "conscientiousness",
@@ -1540,14 +1823,14 @@ if __name__ == '__main__':
     #analyze.basic_info()
     #analyze.generate_img_annotation_map()
     #analyze.count_worker_privacy_num()
-    analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=False)
-    analyze.prepare_manual_label(save_csv=True, strict_mode=True)
+    #analyze.prepare_mega_table(mycat_mode = False, save_csv=True, strict_mode=True, ignore_prev_manual_anns=False, include_not_private=False)
+    #analyze.prepare_manual_label(save_csv=True, strict_mode=True)
     #analyze.basic_count(read_csv = True, ignore_prev_manual_anns=False,split_count=False,count_scale='CrowdWorks')
     #analyze.prepare_regression_model_table(read_csv=True)
     #analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
     #analyze.count_frequency()
     #analyze.count_overlap_in_manual_table(split_count=False, count_scale='Prolific')
-    #analyze.visualDistribution(read_csv=False, outputSelection=True)
+    analyze.visualDistribution(read_csv=True, visualization=True, filter_data=True, filter_corridor=(10,90), outputSelection=True, only_manual=False, compare=True)
 
 
 

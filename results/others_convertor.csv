@@ -1,0 +1,165 @@
+Original Item,Converted Category
+handbag,Accessory
+sunglasses,Accessory
+Fashion accessory,Accessory
+wallet,Accessory
+bracelet,Accessory
+phonebook,Book
+sweater,Clothing
+Trousers,Clothing
+Dress,Clothing
+cape,Clothing
+hat,Clothing
+shirt,Clothing
+trousers,Clothing
+brassiere,Clothing
+necktie,Clothing
+jacket,Clothing
+swimsuit,Clothing
+Hat,Clothing
+short,Clothing
+suit,Clothing
+scarf,Clothing
+vest,Clothing
+suit,Clothing
+sweatshirt,Clothing
+Swimwear,Clothing
+Sports uniform,Clothing
+Personal care,Cosmetics
+Cream,Cosmetics
+Lipstick,Cosmetics
+cellular,Electronic Devices
+computer,Electronic Devices
+Tomato,Food
+Cake,Food
+Baked goods,Food
+pew,Home interior
+painting,Home interior
+sink,Home interior
+fireplace,Home interior
+apron,Home interior
+fireplug,Home interior
+table,Home interior
+Window,Home interior
+vase,Home interior
+curtain,Home interior
+Shelf,Home interior
+mirror,Home interior
+refrigerator,Home interior
+Traffic light,Home interior
+window,Home interior
+handle,Home interior
+drawer,Home interior
+Curtain,Home interior
+bottle,Home interior
+cabinet,Home interior
+clock,Home interior
+armchair,Home interior
+toilet,Home interior
+cushion,Home interior
+bucket,Home interior
+tablecloth,Home interior
+Couch,Home interior
+Tableware,Home interior
+bowl,Home interior
+Flowerpot,Home interior
+bathtub,Home interior
+Sofa bed,Home interior
+identity,Identity
+computer,Machine
+radiator,Machine
+harmonium,Musical instrument
+Violin,Musical instrument
+Musical keyboard,Musical instrument
+flute,Musical instrument
+Accordion,Musical instrument
+napkin,Others
+magnet,Others
+duffel,Others
+visor,Others
+pipe,Others
+car,Others
+fire,Others
+lamp,Others
+chair,Others
+box,Others
+Tower,Others
+Poster,Others
+Medical equipment,Others
+fire,Others
+brassiere,Others
+billboard,Others
+tank,Others
+umbrella,Others
+Bookcase,Others
+bookcase,Others
+plastic,Others
+polo,Others
+mallet,Others
+Desk,Others
+Land vehicle,Others
+wedding,Others
+statue,Others
+glass,Others
+mop,Others
+binder,Others
+Roller skates,Others
+Sports equipment,Others
+mousepad,Others
+key,Others
+cup,Others
+aquarium,Others
+fork,Others
+awning,Others
+camera,Others
+pole,Others
+Crown,Others
+poster,Others
+surfboard,Others
+dirt,Others
+candle,Others
+control,Others
+envelope,Others
+snowboard,Others
+pumpkin,Others
+figurine,Others
+armor,Others
+cash,Others
+receipt,Others
+Person,Person
+dog,Pet
+horse,Pet
+cow,Pet
+street,Place Identifier
+parking,Place Identifier
+Building,Place Identifier
+flag,Place Identifier
+park,Place Identifier
+street,Place Identifier
+House,Place Identifier
+Tower,Place Identifier
+window,Place Identifier
+Building,Place Identifier
+Porch,Place Identifier
+Poster,Printed Material
+poster,Printed Material
+television,Screen
+table,Table
+Desk,Table
+teddy,Toy
+skateboard,Toy
+Car,Vehicle Plate
+motorcycle,Vehicle Plate
+Cart,Vehicle Plate
+Vehicle,Vehicle Plate
+bicycle,Vehicle Plate
+bus,Vehicle Plate
+train,Vehicle Plate
+boat,Vehicle Plate
+Watercraft,Vehicle Plate
+Boat,Vehicle Plate
+airplane,Vehicle Plate
+truck,Vehicle Plate
+Train,Vehicle Plate
+minivan,Vehicle Plate
+Bicycle,Vehicle Plate
