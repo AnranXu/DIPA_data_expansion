@@ -398,7 +398,11 @@ class analyzer:
                                 if key in self.lvis_mycat_map.keys():
                                     mycat = self.lvis_mycat_map[key]
                             if mycat == '':
-                                mycat = 'Others'
+                                # we try if it can be mapped by others
+                                if category in self.others_map:
+                                    mycat = self.others_map[category]
+                                else:
+                                    mycat = 'Others'
 
                             if mycat_mode:
                                 category = mycat
@@ -1541,8 +1545,8 @@ class analyzer:
         print('len of width_height_ratio:', len(width_height_ratio))
         if filter_data:
             print('filtering data')
-            # we first filter all data the size less than 0.005
-            valid_data_indices = np.where(relative_sizes > 0.005)[0]
+            # we first filter all data the size less than 0.005 and greater than 0.7
+            valid_data_indices = np.where((relative_sizes > 0.005) & (relative_sizes < 0.7))[0]
             # Filter data
             relative_sizes = relative_sizes[valid_data_indices]
             relative_position = relative_position[valid_data_indices]
@@ -1778,6 +1782,8 @@ class analyzer:
                 
                 
             else:
+                
+
                 plt.scatter(relative_position[:, 0], relative_position[:, 1], s=relative_sizes * 1000, c=width_height_ratio, cmap='viridis')
                 
                 #add title for colorbar
@@ -1830,7 +1836,7 @@ if __name__ == '__main__':
     #analyze.regression_model(input_channel=input_channel, output_channel=output_channel, read_csv=True)
     #analyze.count_frequency()
     #analyze.count_overlap_in_manual_table(split_count=False, count_scale='Prolific')
-    analyze.visualDistribution(read_csv=True, visualization=True, filter_data=True, filter_corridor=(10,90), outputSelection=True, only_manual=False, compare=True)
+    analyze.visualDistribution(read_csv=True, visualization=True, filter_data=True, filter_corridor=(0,100), outputSelection=True, only_manual=False, compare=True)
 
 
 

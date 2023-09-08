@@ -1,271 +1,271 @@
 image_path,category,size_group,position_group,ratio_group,bbox,informativeness,informationType,informativeness_group,"group (size, position, ratio)",bbox_name
-38d60954765f7b4f.jpg,Place Identifier,high,high,high,"[[647, 0, 376, 321]]",1.0,"[0, 1, 0, 0, 0]",low,high_high_high,38d60954765f7b4f.jpg_Place Identifier
-20291.jpg,Printed Material,high,high,high,"[[128, 497, 298, 141], [128, 497, 298, 141]]",5.0,"[1, 0, 0, 1, 0]",high,high_high_high,20291.jpg_Printed Material
-29def08271143710.jpg,Table,high,high,high,"[[579, 488, 444, 279]]",4.0,"[0, 1, 0, 0, 0]",middle,high_high_high,29def08271143710.jpg_Table
-1f1c6b669606f32b.jpg,Person,high,high,high,"[[609, 363, 412, 315], [609, 363, 412, 315], [609, 363, 412, 315]]",4.0,"[1, 0, 0, 1, 0]",middle,high_high_high,1f1c6b669606f32b.jpg_Person
-19aa0e0ad2fa06b6.jpg,Book,high,high,high,"[[0, 0, 1016, 152]]",1.0,"[1, 1, 0, 0, 0]",low,high_high_high,19aa0e0ad2fa06b6.jpg_Book
-d74fdc4b64b21978.jpg,Scenery,high,high,high,"[[0, 1, 921, 206], [0, 1, 921, 206]]",4.0,"[0, 1, 0, 0, 0]",middle,high_high_high,d74fdc4b64b21978.jpg_Scenery
-1713ee115f571a3d.jpg,Toy,high,high,high,"[[2, 0, 316, 277]]",3.0,"[0, 0, 1, 0, 0]",middle,high_high_high,1713ee115f571a3d.jpg_Toy
-040dd20f15657190.jpg,Others,high,high,high,"[[87, 373, 355, 311]]",4.0,"[0, 0, 0, 1, 0]",middle,high_high_high,040dd20f15657190.jpg_Others
-976ca910c239e2fc.jpg,Clothing,high,high,high,"[[102, 765, 527, 258]]",4.0,"[0, 0, 0, 1, 0]",middle,high_high_high,976ca910c239e2fc.jpg_Clothing
+12435d88b4504d3f.jpg,Book,high,high,high,"[[0, 0, 486, 273]]",3.0,"[0, 0, 1, 0, 0]",middle,high_high_high,12435d88b4504d3f.jpg_Book
+114759.jpg,Place Identifier,high,high,high,"[[0, 0, 223, 135]]",2.0,"[0, 1, 0, 0, 0]",low,high_high_high,114759.jpg_Place Identifier
 0e360a4689ac06e8.jpg,Vehicle Plate,high,high,high,"[[0, 0, 1022, 125]]",5.0,"[1, 1, 0, 1, 0]",high,high_high_high,0e360a4689ac06e8.jpg_Vehicle Plate
-110435.jpg,Pet,high,high,low,"[[7, 123, 141, 224]]",4.0,"[1, 0, 0, 0, 0]",middle,high_high_low,110435.jpg_Pet
+27c41bbdb49d6f5f.jpg,Table,high,high,high,"[[0, 510, 904, 172], [0, 510, 904, 172], [0, 510, 904, 172], [0, 510, 904, 172]]",4.25,"[1, 1, 1, 1, 1]",high,high_high_high,27c41bbdb49d6f5f.jpg_Table
+24b14dbf64eeced1.jpg,Person,high,high,high,"[[27, 364, 382, 318], [25, 361, 383, 321], [27, 364, 382, 318], [27, 364, 382, 318]]",5.0,"[1, 1, 1, 1, 0]",high,high_high_high,24b14dbf64eeced1.jpg_Person
+20291.jpg,Printed Material,high,high,high,"[[128, 497, 298, 141], [128, 497, 298, 141]]",5.0,"[1, 0, 0, 1, 0]",high,high_high_high,20291.jpg_Printed Material
+04b9f8abc09386ee.jpg,Others,high,high,high,"[[0, 0, 808, 140], [1, 0, 1020, 118]]",5.0,"[0, 1, 0, 0, 0]",high,high_high_high,04b9f8abc09386ee.jpg_Others
+02ef01f6d6a665ac.jpg,Pet,high,high,high,"[[475, 456, 548, 312]]",4.0,"[1, 0, 0, 0, 0]",middle,high_high_high,02ef01f6d6a665ac.jpg_Pet
+d74fdc4b64b21978.jpg,Scenery,high,high,high,"[[0, 1, 921, 206], [0, 1, 921, 206]]",4.0,"[0, 1, 0, 0, 0]",middle,high_high_high,d74fdc4b64b21978.jpg_Scenery
+319305414bb65188.jpg,Clothing,high,high,high,"[[567, 512, 454, 253], [567, 512, 454, 253]]",4.0,"[1, 0, 1, 1, 0]",middle,high_high_high,319305414bb65188.jpg_Clothing
+227734.jpg,Home interior,high,high,low,"[[0, 97, 149, 247], [0, 97, 149, 247], [0, 97, 149, 247]]",4.0,"[1, 1, 1, 1, 1]",middle,high_high_low,227734.jpg_Home interior
+1713ee115f571a3d.jpg,Toy,high,high,low,"[[822, 0, 199, 427]]",3.0,"[0, 0, 1, 0, 0]",middle,high_high_low,1713ee115f571a3d.jpg_Toy
 007f71665b0812a7.jpg,Screen,high,high,low,"[[0, 76, 278, 502], [0, 76, 278, 502]]",3.0,"[1, 0, 0, 1, 0]",middle,high_high_low,007f71665b0812a7.jpg_Screen
-09453a7c716a9ef3.jpg,Place Identifier,high,high,low,"[[0, 0, 286, 555], [0, 0, 286, 555], [0, 0, 286, 555]]",3.67,"[0, 1, 0, 0, 0]",middle,high_high_low,09453a7c716a9ef3.jpg_Place Identifier
-683307758eb4fd7c.jpg,Printed Material,high,high,low,"[[0, 0, 180, 682]]",4.0,"[0, 0, 0, 1, 0]",middle,high_high_low,683307758eb4fd7c.jpg_Printed Material
-01dc49e587b180a4.jpg,Person,high,high,low,"[[710, 270, 305, 497]]",0.0,"[1, 1, 1, 0, 0]",low,high_high_low,01dc49e587b180a4.jpg_Person
 1b5a2df8bba6d498.jpg,Book,high,high,low,"[[0, 0, 217, 500], [0, 0, 217, 500]]",2.0,"[1, 0, 1, 1, 0]",low,high_high_low,1b5a2df8bba6d498.jpg_Book
-7ae56b9a673b49cb.jpg,Scenery,high,high,low,"[[0, 0, 190, 1022], [0, 0, 190, 1022]]",4.0,"[0, 1, 0, 0, 0]",middle,high_high_low,7ae56b9a673b49cb.jpg_Scenery
-263784cf4057af29.jpg,Others,high,high,low,"[[709, 262, 314, 761]]",4.0,"[0, 0, 1, 0, 0]",middle,high_high_low,263784cf4057af29.jpg_Others
-2e0982a26b23f67a.jpg,Clothing,high,high,low,"[[21, 265, 260, 416]]",4.0,"[1, 0, 0, 0, 0]",middle,high_high_low,2e0982a26b23f67a.jpg_Clothing
+09453a7c716a9ef3.jpg,Place Identifier,high,high,low,"[[0, 0, 286, 555], [0, 0, 286, 555], [0, 0, 286, 555]]",3.67,"[0, 1, 0, 0, 0]",middle,high_high_low,09453a7c716a9ef3.jpg_Place Identifier
+040dd20f15657190.jpg,Vehicle Plate,high,high,low,"[[831, 22, 192, 662]]",4.0,"[0, 0, 0, 1, 0]",middle,high_high_low,040dd20f15657190.jpg_Vehicle Plate
 0c3faec726e97005.jpg,Person,high,high,low,"[[0, 0, 176, 679], [0, 0, 176, 679], [0, 0, 176, 679]]",5.0,"[1, 0, 1, 1, 1]",high,high_high_low,0c3faec726e97005.jpg_Person
-113836.jpg,Home interior,high,high,middle,"[[352, 331, 247, 268], [352, 331, 247, 268]]",5.0,"[0, 1, 0, 1, 0]",high,high_high_middle,113836.jpg_Home interior
+683307758eb4fd7c.jpg,Printed Material,high,high,low,"[[0, 0, 180, 682]]",4.0,"[0, 0, 0, 1, 0]",middle,high_high_low,683307758eb4fd7c.jpg_Printed Material
+011417767312812e.jpg,Others,high,high,low,"[[542, 0, 187, 464]]",4.0,"[0, 1, 1, 0, 0]",middle,high_high_low,011417767312812e.jpg_Others
+110435.jpg,Pet,high,high,low,"[[7, 123, 141, 224]]",4.0,"[1, 0, 0, 0, 0]",middle,high_high_low,110435.jpg_Pet
 0a7c597abf1e90d4.jpg,Finger,high,high,middle,"[[0, 342, 364, 423]]",2.0,"[0, 0, 0, 0, 1]",low,high_high_middle,0a7c597abf1e90d4.jpg_Finger
-029847f4ae24dcfd.jpg,Pet,high,high,middle,"[[14, 326, 286, 441]]",4.0,"[1, 1, 1, 1, 0]",middle,high_high_middle,029847f4ae24dcfd.jpg_Pet
-259336.jpg,Screen,high,high,middle,"[[420, 0, 219, 230], [420, 0, 219, 230], [420, 0, 219, 230]]",4.33,"[1, 1, 0, 1, 1]",high,high_high_middle,259336.jpg_Screen
-168905.jpg,Place Identifier,high,high,middle,"[[414, 0, 225, 241], [414, 0, 225, 241]]",4.0,"[0, 1, 0, 0, 0]",middle,high_high_middle,168905.jpg_Place Identifier
-0386a1c1ca5b2da7.jpg,Others,high,high,middle,"[[643, 372, 374, 395], [643, 372, 374, 395]]",3.0,"[1, 0, 0, 1, 0]",middle,high_high_middle,0386a1c1ca5b2da7.jpg_Others
-0931a086102a933f.jpg,Clothing,high,high,middle,"[[721, 293, 302, 371], [721, 293, 302, 371]]",5.0,"[1, 0, 0, 1, 1]",high,high_high_middle,0931a086102a933f.jpg_Clothing
-d8fbeafad402da5b.jpg,Person,high,high,middle,"[[721, 338, 300, 343], [721, 338, 300, 343]]",3.5,"[1, 1, 1, 0, 0]",middle,high_high_middle,d8fbeafad402da5b.jpg_Person
-144280.jpg,Home interior,high,high,middle,"[[4, 0, 252, 229]]",3.0,"[0, 0, 0, 1, 0]",middle,high_high_middle,144280.jpg_Home interior
+154704.jpg,Clothing,high,high,middle,"[[0, 334, 249, 277], [0, 334, 249, 277]]",2.0,"[1, 1, 0, 1, 0]",low,high_high_middle,154704.jpg_Clothing
+410033.jpg,Home interior,high,high,middle,"[[0, 0, 251, 221], [0, 0, 251, 221]]",4.5,"[0, 1, 0, 0, 1]",high,high_high_middle,410033.jpg_Home interior
 572495.jpg,Screen,high,high,middle,"[[457, 18, 168, 233], [457, 18, 168, 233], [457, 18, 168, 233], [457, 18, 168, 233]]",3.0,"[1, 1, 0, 1, 1]",middle,high_high_middle,572495.jpg_Screen
-062973d55a1303d6.jpg,Machine,high,low,high,"[[182, 97, 641, 344]]",4.0,"[0, 0, 0, 1, 0]",middle,high_low_high,062973d55a1303d6.jpg_Machine
-e034b5124fbd1d53.jpg,Photo,high,low,high,"[[11, 257, 756, 572]]",1.0,"[1, 0, 0, 1, 0]",low,high_low_high,e034b5124fbd1d53.jpg_Photo
-0543ad6f9b0f0927.jpg,Food,high,low,high,"[[69, 418, 557, 468]]",5.0,"[0, 1, 0, 1, 0]",high,high_low_high,0543ad6f9b0f0927.jpg_Food
-226de4149b840256.jpg,Identity,high,low,high,"[[153, 151, 715, 458], [153, 151, 715, 458], [153, 151, 715, 458], [153, 151, 715, 458]]",4.25,"[1, 1, 0, 1, 1]",high,high_low_high,226de4149b840256.jpg_Identity
+12145.jpg,Place Identifier,high,high,middle,"[[419, 0, 209, 273], [419, 0, 209, 273]]",5.0,"[0, 1, 1, 0, 0]",high,high_high_middle,12145.jpg_Place Identifier
+000a1249af2bc5f0.jpg,Person,high,high,middle,"[[0, 0, 314, 419], [0, 0, 314, 419]]",2.5,"[1, 0, 1, 1, 0]",middle,high_high_middle,000a1249af2bc5f0.jpg_Person
+29def08271143710.jpg,Others,high,high,middle,"[[0, 318, 337, 449]]",4.0,"[0, 1, 0, 0, 0]",middle,high_high_middle,29def08271143710.jpg_Others
+029847f4ae24dcfd.jpg,Pet,high,high,middle,"[[14, 326, 286, 441]]",4.0,"[1, 1, 1, 1, 0]",middle,high_high_middle,029847f4ae24dcfd.jpg_Pet
+0931a086102a933f.jpg,Clothing,high,high,middle,"[[721, 293, 302, 371], [721, 293, 302, 371]]",5.0,"[1, 0, 0, 1, 1]",high,high_high_middle,0931a086102a933f.jpg_Clothing
+144280.jpg,Home interior,high,high,middle,"[[4, 0, 252, 229]]",3.0,"[0, 0, 0, 1, 0]",middle,high_high_middle,144280.jpg_Home interior
+10eb9f46843bd20c.jpg,Identity,high,low,high,"[[0, 1, 1024, 499], [0, 1, 1024, 499], [0, 1, 1024, 499]]",2.67,"[1, 1, 1, 1, 0]",middle,high_low_high,10eb9f46843bd20c.jpg_Identity
+63a6c1a686088729.jpg,Machine,high,low,high,"[[89, 107, 682, 574]]",1.0,"[0, 0, 0, 1, 0]",low,high_low_high,63a6c1a686088729.jpg_Machine
 5f000354e0e21c03.jpg,Cosmetics,high,low,high,"[[0, 150, 871, 576]]",3.0,"[0, 0, 0, 1, 1]",middle,high_low_high,5f000354e0e21c03.jpg_Cosmetics
-27c41bbdb49d6f5f.jpg,Table,high,low,high,"[[155, 231, 868, 203], [155, 231, 868, 203], [155, 231, 868, 203], [155, 231, 868, 203]]",4.25,"[1, 1, 1, 1, 1]",high,high_low_high,27c41bbdb49d6f5f.jpg_Table
-25d2f50cc91acc29.jpg,Toy,high,low,high,"[[1, 114, 675, 512]]",4.0,"[0, 0, 0, 1, 0]",middle,high_low_high,25d2f50cc91acc29.jpg_Toy
-168848.jpg,Vehicle Plate,high,low,high,"[[128, 183, 390, 296], [128, 183, 390, 296], [128, 183, 390, 296]]",3.33,"[0, 1, 0, 0, 0]",middle,high_low_high,168848.jpg_Vehicle Plate
+0543ad6f9b0f0927.jpg,Food,high,low,high,"[[69, 418, 557, 468]]",5.0,"[0, 1, 0, 1, 0]",high,high_low_high,0543ad6f9b0f0927.jpg_Food
+e034b5124fbd1d53.jpg,Photo,high,low,high,"[[11, 257, 756, 572]]",1.0,"[1, 0, 0, 1, 0]",low,high_low_high,e034b5124fbd1d53.jpg_Photo
+04efbfa009755571.jpg,Scenery,high,low,high,"[[0, 230, 1024, 279]]",2.0,"[0, 1, 0, 0, 0]",low,high_low_high,04efbfa009755571.jpg_Scenery
+29614732b9d68b94.jpg,Toy,high,low,high,"[[29, 301, 994, 345]]",1.0,"[0, 1, 1, 1, 0]",low,high_low_high,29614732b9d68b94.jpg_Toy
+3edf7490a8c07e59.jpg,Book,high,low,high,"[[124, 108, 809, 620], [124, 108, 809, 620]]",1.5,"[0, 0, 0, 1, 0]",low,high_low_high,3edf7490a8c07e59.jpg_Book
+052ad2ea2d01ae65.jpg,Vehicle Plate,high,low,high,"[[96, 127, 808, 336], [96, 127, 808, 336], [96, 127, 808, 336]]",3.67,"[0, 0, 1, 1, 0]",middle,high_low_high,052ad2ea2d01ae65.jpg_Vehicle Plate
 19b9a87786eb4c85.jpg,Printed Material,high,low,high,"[[227, 108, 609, 356], [227, 108, 609, 356]]",5.0,"[0, 1, 0, 1, 1]",high,high_low_high,19b9a87786eb4c85.jpg_Printed Material
-2a4a981209d491b5.jpg,Book,high,low,high,"[[16, 294, 1007, 208]]",6.0,"[1, 1, 0, 1, 0]",high,high_low_high,2a4a981209d491b5.jpg_Book
 36a26f43ca6afd6e.jpg,Musical instrument,high,low,low,"[[152, 114, 433, 909]]",3.0,"[1, 1, 1, 0, 0]",middle,high_low_low,36a26f43ca6afd6e.jpg_Musical instrument
-6da92952466f61c9.jpg,Cosmetics,high,low,low,"[[407, 0, 321, 761]]",3.0,"[0, 1, 0, 1, 0]",middle,high_low_low,6da92952466f61c9.jpg_Cosmetics
+034143ae71047bbc.jpg,Identity,high,low,low,"[[171, 107, 504, 997], [171, 107, 504, 997], [171, 107, 504, 997], [171, 107, 504, 997]]",3.25,"[1, 1, 1, 1, 1]",middle,high_low_low,034143ae71047bbc.jpg_Identity
+fa6800d1eb440c5c.jpg,Cosmetics,high,low,low,"[[503, 207, 309, 564], [502, 207, 309, 563], [503, 207, 309, 564], [502, 207, 309, 563]]",2.5,"[1, 1, 1, 1, 1]",middle,high_low_low,fa6800d1eb440c5c.jpg_Cosmetics
 bc527ffd7ef408bb.jpg,Scenery,high,low,low,"[[192, 32, 387, 992]]",5.0,"[0, 1, 1, 0, 0]",high,high_low_low,bc527ffd7ef408bb.jpg_Scenery
 206501.jpg,Toy,high,low,low,"[[230, 1, 178, 424]]",4.0,"[0, 0, 0, 1, 0]",middle,high_low_low,206501.jpg_Toy
+621cdf5122a8b1e0.jpg,Place Identifier,high,low,low,"[[118, 14, 537, 1009]]",4.0,"[0, 1, 0, 0, 0]",middle,high_low_low,621cdf5122a8b1e0.jpg_Place Identifier
 171685.jpg,Vehicle Plate,high,low,low,"[[203, 42, 235, 408], [203, 42, 235, 408]]",2.5,"[1, 0, 1, 0, 0]",middle,high_low_low,171685.jpg_Vehicle Plate
+02eb8d9a3e34b370.jpg,Person,high,low,low,"[[0, 0, 419, 1003]]",4.0,"[1, 0, 0, 0, 0]",middle,high_low_low,02eb8d9a3e34b370.jpg_Person
+106003.jpg,Others,high,low,low,"[[320, 69, 125, 337]]",4.0,"[1, 0, 0, 0, 0]",middle,high_low_low,106003.jpg_Others
 17936.jpg,Pet,high,low,low,"[[320, 12, 204, 415]]",4.0,"[1, 0, 0, 1, 0]",middle,high_low_low,17936.jpg_Pet
-831ef1ed000ea182.jpg,Home interior,high,low,low,"[[355, 168, 360, 600]]",1.0,"[0, 0, 1, 1, 1]",low,high_low_low,831ef1ed000ea182.jpg_Home interior
-117142f3ff2f20d1.jpg,Others,high,low,low,"[[235, 108, 300, 547]]",6.0,"[1, 1, 0, 1, 0]",high,high_low_low,117142f3ff2f20d1.jpg_Others
-2eb849114cbb18d9.jpg,Clothing,high,low,low,"[[232, 183, 420, 810], [232, 183, 420, 810]]",4.0,"[1, 0, 1, 0, 0]",middle,high_low_low,2eb849114cbb18d9.jpg_Clothing
-02c704b941566bc9.jpg,Person,high,low,low,"[[338, 60, 341, 622], [348, 57, 330, 622], [338, 60, 341, 622], [348, 57, 330, 622], [338, 60, 341, 622], [348, 57, 330, 622], [338, 60, 341, 622], [348, 57, 330, 622]]",4.62,"[1, 1, 1, 1, 1]",high,high_low_low,02c704b941566bc9.jpg_Person
+127394.jpg,Table,high,low,middle,"[[0, 231, 409, 408]]",2.0,"[0, 1, 1, 0, 0]",low,high_low_middle,127394.jpg_Table
 07b12cccb39c75a5.jpg,Finger,high,low,middle,"[[0, 193, 556, 828], [249, 232, 339, 483]]",2.0,"[0, 1, 0, 0, 0]",low,high_low_middle,07b12cccb39c75a5.jpg_Finger
+9338ef15df611769.jpg,Food,high,low,middle,"[[348, 88, 377, 511], [348, 88, 377, 511]]",2.5,"[0, 0, 0, 1, 0]",middle,high_low_middle,9338ef15df611769.jpg_Food
 4704b2b97ee54840.jpg,Photo,high,low,middle,"[[137, 174, 400, 360]]",5.0,"[0, 0, 0, 1, 0]",high,high_low_middle,4704b2b97ee54840.jpg_Photo
-104564.jpg,Food,high,low,middle,"[[137, 20, 339, 336], [137, 20, 339, 336], [137, 20, 339, 336], [137, 20, 339, 336]]",3.0,"[1, 0, 0, 0, 0]",middle,high_low_middle,104564.jpg_Food
-1ef78414c8864ddd.jpg,Identity,high,low,middle,"[[149, 48, 339, 530], [149, 48, 339, 530], [149, 48, 339, 530]]",3.67,"[0, 1, 1, 1, 0]",middle,high_low_middle,1ef78414c8864ddd.jpg_Identity
-1fe4f3b33573cf79.jpg,Musical instrument,high,low,middle,"[[258, 324, 364, 484]]",2.0,"[0, 0, 0, 1, 0]",low,high_low_middle,1fe4f3b33573cf79.jpg_Musical instrument
-28c9331905cb8c5b.jpg,Table,high,low,middle,"[[1, 288, 379, 522]]",4.0,"[0, 0, 0, 1, 0]",middle,high_low_middle,28c9331905cb8c5b.jpg_Table
-208b5dac144c51b6.jpg,Place Identifier,high,low,middle,"[[190, 0, 570, 683], [190, 0, 570, 683]]",3.0,"[0, 1, 0, 0, 0]",middle,high_low_middle,208b5dac144c51b6.jpg_Place Identifier
-231351.jpg,Book,high,low,middle,"[[66, 152, 220, 227], [66, 152, 220, 227]]",2.0,"[0, 0, 0, 1, 0]",low,high_low_middle,231351.jpg_Book
+0fa1f463189c8e42.jpg,Musical instrument,high,low,middle,"[[387, 0, 473, 505]]",6.0,"[1, 0, 1, 1, 0]",high,high_low_middle,0fa1f463189c8e42.jpg_Musical instrument
+50cf0e2640533c1b.jpg,Screen,high,low,middle,"[[164, 128, 693, 896], [164, 128, 693, 896], [164, 128, 693, 896]]",5.33,"[1, 0, 1, 1, 1]",high,high_low_middle,50cf0e2640533c1b.jpg_Screen
+050874abcc46c370.jpg,Identity,high,low,middle,"[[84, 44, 579, 577], [84, 44, 579, 577], [84, 44, 579, 577]]",3.33,"[1, 0, 0, 1, 1]",middle,high_low_middle,050874abcc46c370.jpg_Identity
+28c9331905cb8c5b.jpg,Book,high,low,middle,"[[49, 360, 306, 433]]",4.0,"[0, 0, 0, 1, 0]",middle,high_low_middle,28c9331905cb8c5b.jpg_Book
+013e4b54ccdf22aa.jpg,Printed Material,high,low,middle,"[[265, 187, 659, 579]]",5.0,"[1, 1, 0, 1, 1]",high,high_low_middle,013e4b54ccdf22aa.jpg_Printed Material
 9ba50cb2198a23d8.jpg,Scenery,high,low,middle,"[[209, 118, 499, 649], [209, 118, 499, 649]]",5.5,"[1, 1, 0, 0, 0]",high,high_low_middle,9ba50cb2198a23d8.jpg_Scenery
-145381.jpg,Toy,high,low,middle,"[[249, 52, 257, 323], [249, 52, 257, 323]]",3.5,"[0, 0, 1, 1, 0]",middle,high_low_middle,145381.jpg_Toy
 676b3350d3fb8061.jpg,Machine,high,middle,high,"[[357, 1, 437, 368], [357, 1, 437, 368]]",3.0,"[0, 0, 0, 1, 0]",middle,high_middle_high,676b3350d3fb8061.jpg_Machine
-1777256e995e1ec6.jpg,Finger,high,middle,high,"[[28, 353, 995, 290]]",4.0,"[0, 1, 0, 0, 0]",middle,high_middle_high,1777256e995e1ec6.jpg_Finger
-210d5c663bb145af.jpg,Identity,high,middle,high,"[[4, 14, 472, 224], [4, 14, 472, 224], [4, 14, 472, 224]]",3.67,"[0, 1, 1, 1, 0]",middle,high_middle_high,210d5c663bb145af.jpg_Identity
-69444449be0d216e.jpg,Cosmetics,high,middle,high,"[[441, 22, 425, 372]]",3.0,"[0, 0, 0, 1, 1]",middle,high_middle_high,69444449be0d216e.jpg_Cosmetics
-79ca3f2ab67af190.jpg,Musical instrument,high,middle,high,"[[408, 290, 612, 244]]",2.0,"[0, 0, 0, 1, 0]",low,high_middle_high,79ca3f2ab67af190.jpg_Musical instrument
-146481.jpg,Printed Material,high,middle,high,"[[68, 200, 303, 261], [68, 200, 303, 261], [68, 200, 303, 261]]",3.33,"[1, 0, 1, 1, 1]",middle,high_middle_high,146481.jpg_Printed Material
 036c89a81d6bd616.jpg,Table,high,middle,high,"[[0, 564, 681, 459]]",4.0,"[0, 1, 0, 0, 0]",middle,high_middle_high,036c89a81d6bd616.jpg_Table
-0490dbf686cc0da2.jpg,Vehicle Plate,high,middle,high,"[[0, 495, 1016, 140]]",6.0,"[0, 0, 0, 1, 0]",high,high_middle_high,0490dbf686cc0da2.jpg_Vehicle Plate
-108718.jpg,Pet,high,middle,high,"[[72, 316, 219, 162]]",4.0,"[1, 0, 0, 0, 0]",middle,high_middle_high,108718.jpg_Pet
-101479.jpg,Screen,high,middle,high,"[[226, 215, 210, 149]]",6.0,"[0, 0, 0, 0, 1]",high,high_middle_high,101479.jpg_Screen
+23c9df7f5d2945cd.jpg,Finger,high,middle,high,"[[0, 342, 636, 332], [0, 342, 636, 332]]",2.5,"[0, 1, 0, 0, 0]",middle,high_middle_high,23c9df7f5d2945cd.jpg_Finger
+10651d2876cd50d8.jpg,Musical instrument,high,middle,high,"[[0, 318, 1024, 449]]",5.0,"[1, 1, 1, 0, 0]",high,high_middle_high,10651d2876cd50d8.jpg_Musical instrument
+403f19bb9f019cd9.jpg,Clothing,high,middle,high,"[[0, 270, 521, 411]]",2.0,"[0, 0, 1, 0, 0]",low,high_middle_high,403f19bb9f019cd9.jpg_Clothing
+0a6bc386b28f2aac.jpg,Home interior,high,middle,high,"[[186, 411, 546, 301], [385, 456, 628, 311]]",4.0,"[0, 1, 0, 1, 0]",middle,high_middle_high,0a6bc386b28f2aac.jpg_Home interior
+25d2f50cc91acc29.jpg,Toy,high,middle,high,"[[25, 69, 610, 178]]",4.0,"[0, 0, 0, 1, 0]",middle,high_middle_high,25d2f50cc91acc29.jpg_Toy
+130183.jpg,Screen,high,middle,high,"[[0, 172, 342, 202], [0, 172, 342, 202]]",3.0,"[1, 0, 0, 1, 0]",middle,high_middle_high,130183.jpg_Screen
+10851.jpg,Identity,high,middle,high,"[[293, 221, 299, 257], [293, 221, 299, 257]]",3.5,"[1, 0, 0, 0, 1]",middle,high_middle_high,10851.jpg_Identity
+505b4f9c1d24d83b.jpg,Book,high,middle,high,"[[53, 78, 550, 348], [53, 78, 550, 348]]",4.0,"[0, 0, 1, 1, 1]",middle,high_middle_high,505b4f9c1d24d83b.jpg_Book
 1fb9783df691b0ad.jpg,Accessory,high,middle,low,"[[232, 501, 253, 457]]",6.0,"[1, 0, 0, 1, 0]",high,high_middle_low,1fb9783df691b0ad.jpg_Accessory
-125928.jpg,Home interior,high,middle,low,"[[451, 1, 187, 404], [451, 1, 187, 404]]",3.0,"[0, 1, 1, 1, 0]",middle,high_middle_low,125928.jpg_Home interior
-fa6800d1eb440c5c.jpg,Cosmetics,high,middle,low,"[[106, 29, 345, 734], [101, 29, 350, 741], [106, 29, 345, 734], [101, 29, 350, 741]]",2.5,"[1, 1, 1, 1, 1]",middle,high_middle_low,fa6800d1eb440c5c.jpg_Cosmetics
-410033.jpg,Musical instrument,high,middle,low,"[[410, 0, 229, 480]]",4.0,"[0, 0, 1, 1, 0]",middle,high_middle_low,410033.jpg_Musical instrument
+74d9c3ea2244fe8f.jpg,Electronic Devices,high,middle,low,"[[276, 203, 205, 475]]",5.0,"[1, 0, 1, 0, 0]",high,high_middle_low,74d9c3ea2244fe8f.jpg_Electronic Devices
+bddfd477fa68ee18.jpg,Cosmetics,high,middle,low,"[[136, 73, 273, 541], [649, 108, 206, 565], [136, 73, 273, 541], [649, 108, 206, 565]]",3.0,"[0, 0, 1, 1, 0]",middle,high_middle_low,bddfd477fa68ee18.jpg_Cosmetics
+27ba6189609ff436.jpg,Musical instrument,high,middle,low,"[[289, 8, 214, 517], [289, 8, 214, 517]]",2.5,"[0, 0, 1, 1, 0]",middle,high_middle_low,27ba6189609ff436.jpg_Musical instrument
 a16a08b532c78f9e.jpg,Place Identifier,high,middle,low,"[[681, 27, 222, 563]]",5.0,"[0, 1, 1, 1, 0]",high,high_middle_low,a16a08b532c78f9e.jpg_Place Identifier
-b024368eccd34bfe.jpg,Scenery,high,middle,low,"[[116, 74, 321, 641], [569, 10, 357, 705], [116, 74, 321, 641], [569, 10, 357, 705]]",3.0,"[0, 1, 0, 0, 0]",middle,high_middle_low,b024368eccd34bfe.jpg_Scenery
-1e5434d089338ca9.jpg,Others,high,middle,low,"[[0, 0, 320, 714], [0, 0, 320, 714], [0, 0, 320, 714]]",4.0,"[1, 0, 0, 1, 0]",middle,high_middle_low,1e5434d089338ca9.jpg_Others
-00e65d13159b498b.jpg,Clothing,high,middle,low,"[[363, 359, 290, 487], [363, 359, 290, 487]]",2.5,"[0, 1, 1, 0, 0]",middle,high_middle_low,00e65d13159b498b.jpg_Clothing
 115355.jpg,Vehicle Plate,high,middle,low,"[[327, 104, 142, 228]]",2.0,"[0, 0, 0, 1, 0]",low,high_middle_low,115355.jpg_Vehicle Plate
-152994.jpg,Screen,high,middle,low,"[[247, 79, 147, 267], [247, 79, 147, 267], [247, 79, 147, 267]]",4.0,"[1, 0, 1, 0, 1]",middle,high_middle_low,152994.jpg_Screen
-0dd09cf15ce15412.jpg,Finger,high,middle,middle,"[[427, 169, 547, 542]]",2.0,"[0, 1, 0, 0, 0]",low,high_middle_middle,0dd09cf15ce15412.jpg_Finger
-02f4ebb9043ee62a.jpg,Identity,high,middle,middle,"[[0, 19, 585, 588], [0, 19, 585, 588], [0, 19, 585, 588]]",4.0,"[1, 0, 0, 0, 1]",middle,high_middle_middle,02f4ebb9043ee62a.jpg_Identity
-117089.jpg,Printed Material,high,middle,middle,"[[81, 276, 346, 362], [81, 276, 346, 362]]",3.0,"[0, 1, 1, 1, 0]",middle,high_middle_middle,117089.jpg_Printed Material
+1ea0b813513a3a40.jpg,Person,high,middle,low,"[[225, 497, 302, 526], [223, 497, 304, 526], [225, 497, 302, 526], [225, 497, 302, 526]]",5.0,"[1, 1, 1, 1, 0]",high,high_middle_low,1ea0b813513a3a40.jpg_Person
+39f51578022219ef.jpg,Others,high,middle,low,"[[0, 0, 308, 749]]",0.0,"[0, 0, 0, 1, 0]",low,high_middle_low,39f51578022219ef.jpg_Others
+7ae56b9a673b49cb.jpg,Scenery,high,middle,low,"[[505, 0, 260, 801], [505, 0, 260, 801]]",4.0,"[0, 1, 0, 0, 0]",middle,high_middle_low,7ae56b9a673b49cb.jpg_Scenery
+200907829e4fbe95.jpg,Clothing,high,middle,low,"[[0, 63, 345, 616]]",3.0,"[0, 0, 1, 0, 0]",middle,high_middle_low,200907829e4fbe95.jpg_Clothing
 384235.jpg,Table,high,middle,middle,"[[0, 131, 296, 294]]",5.0,"[1, 0, 1, 0, 0]",high,high_middle_middle,384235.jpg_Table
-128679.jpg,Pet,high,middle,middle,"[[0, 101, 250, 273]]",4.0,"[1, 1, 0, 1, 0]",middle,high_middle_middle,128679.jpg_Pet
-4319a313fae699f9.jpg,Home interior,high,middle,middle,"[[478, 28, 545, 739]]",5.0,"[1, 1, 0, 1, 0]",high,high_middle_middle,4319a313fae699f9.jpg_Home interior
+5ba4992a5dec8a7a.jpg,Finger,high,middle,middle,"[[120, 463, 491, 560]]",4.0,"[1, 0, 0, 0, 0]",middle,high_middle_middle,5ba4992a5dec8a7a.jpg_Finger
 b79453af8f7830a3.jpg,Cosmetics,high,middle,middle,"[[473, 1, 353, 427]]",4.0,"[0, 1, 1, 0, 0]",middle,high_middle_middle,b79453af8f7830a3.jpg_Cosmetics
-146439.jpg,Musical instrument,high,middle,middle,"[[0, 20, 253, 391]]",4.0,"[0, 1, 0, 1, 0]",middle,high_middle_middle,146439.jpg_Musical instrument
-d01d43bf0d8dc8e5.jpg,Place Identifier,high,middle,middle,"[[550, 0, 473, 673], [550, 0, 473, 673], [550, 0, 473, 673]]",3.33,"[0, 1, 0, 0, 0]",middle,high_middle_middle,d01d43bf0d8dc8e5.jpg_Place Identifier
-00e9084d1bc8e0ea.jpg,Person,high,middle,middle,"[[140, 0, 338, 463]]",1.0,"[0, 0, 0, 1, 0]",low,high_middle_middle,00e9084d1bc8e0ea.jpg_Person
+117089.jpg,Printed Material,high,middle,middle,"[[81, 276, 346, 362], [81, 276, 346, 362]]",3.0,"[0, 1, 1, 1, 0]",middle,high_middle_middle,117089.jpg_Printed Material
+126696.jpg,Pet,high,middle,middle,"[[192, 0, 200, 300]]",3.0,"[0, 0, 0, 1, 0]",middle,high_middle_middle,126696.jpg_Pet
+2e337021bb7b4c90.jpg,Home interior,high,middle,middle,"[[99, 84, 403, 488]]",3.0,"[0, 0, 0, 1, 0]",middle,high_middle_middle,2e337021bb7b4c90.jpg_Home interior
+195918.jpg,Screen,high,middle,middle,"[[37, 119, 204, 192], [37, 119, 204, 192], [37, 119, 204, 192]]",3.67,"[1, 0, 0, 1, 1]",middle,high_middle_middle,195918.jpg_Screen
+07b75881c1ffc059.jpg,Identity,high,middle,middle,"[[446, 223, 271, 276], [446, 223, 271, 276], [446, 223, 271, 276], [446, 223, 271, 276]]",4.0,"[1, 1, 0, 1, 0]",middle,high_middle_middle,07b75881c1ffc059.jpg_Identity
+162557.jpg,Musical instrument,high,middle,middle,"[[69, 73, 244, 308], [69, 73, 244, 308]]",3.0,"[0, 1, 0, 0, 1]",middle,high_middle_middle,162557.jpg_Musical instrument
+333452abf04d1b2b.jpg,Book,high,middle,middle,"[[267, 398, 360, 319]]",3.0,"[0, 0, 1, 0, 0]",middle,high_middle_middle,333452abf04d1b2b.jpg_Book
 1b8d52cb603f71ad.jpg,Accessory,low,high,high,"[[510, 57, 163, 66]]",4.0,"[1, 0, 0, 0, 0]",middle,low_high_high,1b8d52cb603f71ad.jpg_Accessory
-140640.jpg,Food,low,high,high,"[[476, 361, 116, 64], [476, 361, 116, 64]]",2.5,"[0, 1, 1, 1, 0]",middle,low_high_high,140640.jpg_Food
-171413.jpg,Book,low,high,high,"[[260, 103, 92, 22], [307, 343, 65, 47], [287, 380, 58, 40], [321, 186, 53, 30], [300, 372, 67, 36], [262, 117, 80, 19], [288, 321, 58, 28]]",6.0,"[1, 0, 0, 1, 0]",high,low_high_high,171413.jpg_Book
-187886.jpg,Toy,low,high,high,"[[381, 247, 51, 37], [3, 186, 53, 41], [178, 23, 80, 57], [381, 247, 51, 37], [3, 186, 53, 41], [178, 23, 80, 57], [381, 247, 51, 37], [3, 186, 53, 41], [178, 23, 80, 57]]",3.0,"[1, 0, 1, 1, 0]",middle,low_high_high,187886.jpg_Toy
-146841.jpg,Printed Material,low,high,high,"[[516, 94, 73, 38], [275, 20, 61, 53], [516, 94, 73, 38], [275, 20, 61, 53]]",0.5,"[0, 1, 1, 0, 0]",low,low_high_high,146841.jpg_Printed Material
-2a0905a2ff63f09e.jpg,Table,low,high,high,"[[0, 647, 164, 111]]",5.0,"[0, 1, 1, 0, 0]",high,low_high_high,2a0905a2ff63f09e.jpg_Table
-d9771d6601a26947.jpg,Scenery,low,high,high,"[[913, 78, 110, 57]]",5.0,"[0, 1, 0, 1, 0]",high,low_high_high,d9771d6601a26947.jpg_Scenery
-135666.jpg,Others,low,high,high,"[[549, 215, 79, 35]]",4.0,"[1, 0, 0, 1, 0]",middle,low_high_high,135666.jpg_Others
-022caa5e84da4026.jpg,Clothing,low,high,high,"[[613, 35, 88, 64], [613, 35, 88, 64], [613, 35, 88, 64]]",3.67,"[1, 1, 1, 1, 1]",middle,low_high_high,022caa5e84da4026.jpg_Clothing
+140122.jpg,Electronic Devices,low,high,high,"[[530, 458, 85, 21]]",2.0,"[0, 0, 1, 0, 0]",low,low_high_high,140122.jpg_Electronic Devices
+24c7ebbfb72cfd8b.jpg,Table,low,high,high,"[[639, 732, 124, 76]]",1.0,"[0, 1, 0, 0, 0]",low,low_high_high,24c7ebbfb72cfd8b.jpg_Table
+187886.jpg,Toy,low,high,high,"[[35, 224, 51, 28], [381, 247, 51, 37], [3, 186, 53, 41], [35, 224, 51, 28], [381, 247, 51, 37], [3, 186, 53, 41], [35, 224, 51, 28], [381, 247, 51, 37], [3, 186, 53, 41]]",3.0,"[1, 0, 1, 1, 0]",middle,low_high_high,187886.jpg_Toy
+a07d695db0b2c700.jpg,Place Identifier,low,high,high,"[[860, 334, 110, 76], [905, 347, 110, 83], [860, 334, 110, 76], [905, 347, 110, 83]]",2.5,"[0, 1, 1, 0, 0]",middle,low_high_high,a07d695db0b2c700.jpg_Place Identifier
 109900.jpg,Vehicle Plate,low,high,high,"[[0, 134, 113, 33]]",1.0,"[0, 1, 0, 0, 0]",low,low_high_high,109900.jpg_Vehicle Plate
-237886.jpg,Machine,low,high,low,"[[46, 289, 31, 84]]",3.0,"[0, 0, 0, 1, 0]",middle,low_high_low,237886.jpg_Machine
-119647.jpg,Accessory,low,high,low,"[[482, 305, 50, 122], [482, 305, 50, 122]]",3.0,"[0, 0, 1, 1, 0]",middle,low_high_low,119647.jpg_Accessory
-004e21eb2e686f40.jpg,Food,low,high,low,"[[0, 886, 55, 137]]",4.0,"[0, 0, 1, 0, 0]",middle,low_high_low,004e21eb2e686f40.jpg_Food
-23c9df7f5d2945cd.jpg,Finger,low,high,low,"[[0, 25, 76, 166], [0, 25, 76, 166]]",2.5,"[0, 1, 0, 0, 0]",middle,low_high_low,23c9df7f5d2945cd.jpg_Finger
-28f45b12ee25ae19.jpg,Book,low,high,low,"[[944, 292, 77, 122]]",4.0,"[0, 0, 0, 1, 0]",middle,low_high_low,28f45b12ee25ae19.jpg_Book
-137576.jpg,Pet,low,high,low,"[[6, 356, 44, 134]]",4.0,"[0, 1, 0, 1, 1]",middle,low_high_low,137576.jpg_Pet
-172595.jpg,Screen,low,high,low,"[[588, 6, 51, 96], [588, 6, 51, 96]]",2.5,"[1, 1, 0, 1, 1]",middle,low_high_low,172595.jpg_Screen
-130921.jpg,Home interior,low,high,low,"[[236, 431, 56, 122]]",5.0,"[1, 1, 0, 0, 0]",high,low_high_low,130921.jpg_Home interior
+5394ab5de1e1a647.jpg,Person,low,high,high,"[[252, 12, 129, 96], [252, 12, 129, 96]]",1.5,"[1, 0, 0, 1, 0]",low,low_high_high,5394ab5de1e1a647.jpg_Person
+146841.jpg,Printed Material,low,high,high,"[[516, 94, 73, 38], [275, 20, 61, 53], [516, 94, 73, 38], [275, 20, 61, 53]]",0.5,"[0, 1, 1, 0, 0]",low,low_high_high,146841.jpg_Printed Material
+147952.jpg,Others,low,high,high,"[[395, 76, 44, 26]]",4.0,"[0, 0, 1, 0, 1]",middle,low_high_high,147952.jpg_Others
+d9771d6601a26947.jpg,Scenery,low,high,high,"[[913, 78, 110, 57]]",5.0,"[0, 1, 0, 1, 0]",high,low_high_high,d9771d6601a26947.jpg_Scenery
+175387.jpg,Machine,low,high,low,"[[119, 0, 20, 120]]",1.0,"[0, 1, 0, 0, 0]",low,low_high_low,175387.jpg_Machine
+416451.jpg,Food,low,high,low,"[[522, 381, 26, 97], [615, 347, 24, 86], [522, 381, 26, 97], [615, 347, 24, 86]]",3.5,"[0, 0, 1, 1, 0]",middle,low_high_low,416451.jpg_Food
+43de98e809efd632.jpg,Finger,low,high,low,"[[842, 470, 45, 78]]",4.0,"[0, 1, 0, 0, 0]",middle,low_high_low,43de98e809efd632.jpg_Finger
+109591.jpg,Pet,low,high,low,"[[294, 366, 21, 45]]",4.0,"[0, 1, 0, 1, 0]",middle,low_high_low,109591.jpg_Pet
+34075a7a303487f9.jpg,Clothing,low,high,low,"[[0, 34, 48, 120], [0, 34, 48, 120], [0, 34, 48, 120]]",4.67,"[1, 0, 1, 1, 1]",high,low_high_low,34075a7a303487f9.jpg_Clothing
+180578.jpg,Home interior,low,high,low,"[[624, 36, 15, 151], [624, 36, 15, 151]]",3.0,"[0, 1, 0, 0, 0]",middle,low_high_low,180578.jpg_Home interior
+124803.jpg,Screen,low,high,low,"[[329, 162, 45, 81]]",4.0,"[0, 1, 1, 1, 0]",middle,low_high_low,124803.jpg_Screen
 4335c08518179b66.jpg,Musical instrument,low,high,low,"[[425, 563, 65, 203], [425, 563, 65, 203]]",2.5,"[0, 0, 1, 1, 1]",middle,low_high_low,4335c08518179b66.jpg_Musical instrument
+0dbd358b804cdc0d.jpg,Book,low,high,low,"[[951, 406, 71, 116], [954, 529, 68, 113]]",5.0,"[0, 0, 1, 0, 0]",high,low_high_low,0dbd358b804cdc0d.jpg_Book
 e35623bbfca05b41.jpg,Place Identifier,low,high,low,"[[0, 617, 52, 136], [0, 617, 52, 136]]",2.5,"[0, 1, 0, 0, 0]",middle,low_high_low,e35623bbfca05b41.jpg_Place Identifier
 5b5f5c5c05f700b3.jpg,Accessory,low,high,middle,"[[598, 897, 79, 123]]",2.0,"[0, 0, 0, 1, 0]",low,low_high_middle,5b5f5c5c05f700b3.jpg_Accessory
-030484a0c0f285f6.jpg,Food,low,high,middle,"[[11, 648, 92, 81], [49, 670, 87, 96], [65, 686, 92, 102], [569, 785, 111, 116]]",4.0,"[1, 0, 0, 1, 0]",middle,low_high_middle,030484a0c0f285f6.jpg_Food
-251016.jpg,Identity,low,high,middle,"[[165, 33, 64, 85], [165, 33, 64, 85]]",3.0,"[1, 0, 0, 0, 1]",middle,low_high_middle,251016.jpg_Identity
-337490.jpg,Toy,low,high,middle,"[[377, 63, 67, 72]]",4.0,"[0, 0, 0, 1, 0]",middle,low_high_middle,337490.jpg_Toy
-173217.jpg,Printed Material,low,high,middle,"[[39, 146, 66, 66], [429, 289, 56, 52], [39, 146, 66, 66], [429, 289, 56, 52], [39, 146, 66, 66], [429, 289, 56, 52]]",4.67,"[1, 1, 0, 0, 1]",high,low_high_middle,173217.jpg_Printed Material
+150265.jpg,Electronic Devices,low,high,middle,"[[49, 78, 33, 47], [49, 78, 33, 47]]",3.0,"[1, 0, 0, 1, 0]",middle,low_high_middle,150265.jpg_Electronic Devices
+030484a0c0f285f6.jpg,Food,low,high,middle,"[[11, 648, 92, 81], [49, 670, 87, 96], [65, 686, 92, 102], [367, 20, 83, 73], [569, 785, 111, 116]]",4.0,"[1, 0, 0, 1, 0]",middle,low_high_middle,030484a0c0f285f6.jpg_Food
 34b65dafe328d39e.jpg,Table,low,high,middle,"[[49, 488, 96, 131]]",4.0,"[0, 1, 0, 0, 1]",middle,low_high_middle,34b65dafe328d39e.jpg_Table
-110982.jpg,Person,low,high,middle,"[[99, 308, 48, 52], [11, 282, 84, 100], [99, 308, 48, 52], [11, 282, 84, 100]]",4.0,"[1, 1, 1, 1, 0]",middle,low_high_middle,110982.jpg_Person
-2310a9d90806ca38.jpg,Book,low,high,middle,"[[693, 476, 141, 131], [693, 476, 141, 131]]",1.5,"[0, 1, 0, 1, 0]",low,low_high_middle,2310a9d90806ca38.jpg_Book
-003a5aaf6d17c917.jpg,Others,low,high,middle,"[[223, 55, 74, 84], [83, 40, 69, 84]]",2.5,"[0, 0, 0, 1, 0]",middle,low_high_middle,003a5aaf6d17c917.jpg_Others
-117321.jpg,Clothing,low,high,middle,"[[89, 279, 75, 89]]",1.0,"[1, 1, 0, 0, 0]",low,low_high_middle,117321.jpg_Clothing
-115150a6ba4eb0ca.jpg,Accessory,low,low,high,"[[398, 208, 202, 58]]",1.0,"[1, 0, 0, 0, 0]",low,low_low_high,115150a6ba4eb0ca.jpg_Accessory
-887113740f7d7548.jpg,Scenery,low,low,high,"[[434, 206, 110, 66], [434, 206, 110, 66]]",2.0,"[0, 1, 0, 1, 0]",low,low_low_high,887113740f7d7548.jpg_Scenery
-0cacb08195a3e2d7.jpg,Vehicle Plate,low,low,high,"[[308, 386, 126, 84], [308, 386, 126, 84]]",2.5,"[1, 0, 0, 0, 0]",middle,low_low_high,0cacb08195a3e2d7.jpg_Vehicle Plate
-107656.jpg,Pet,low,low,high,"[[173, 209, 83, 46], [173, 209, 83, 46], [173, 209, 83, 46]]",4.33,"[1, 0, 1, 1, 0]",high,low_low_high,107656.jpg_Pet
-334813.jpg,Screen,low,low,high,"[[179, 338, 91, 42], [179, 338, 91, 42], [179, 338, 91, 42]]",4.67,"[1, 1, 1, 0, 1]",high,low_low_high,334813.jpg_Screen
-286182.jpg,Home interior,low,low,high,"[[149, 334, 66, 58], [222, 333, 62, 53]]",2.0,"[0, 0, 0, 1, 0]",low,low_low_high,286182.jpg_Home interior
-2e969144f13eb1dc.jpg,Place Identifier,low,low,high,"[[392, 243, 209, 61], [392, 243, 209, 61], [392, 243, 209, 61]]",4.33,"[0, 1, 0, 0, 0]",high,low_low_high,2e969144f13eb1dc.jpg_Place Identifier
+337490.jpg,Toy,low,high,middle,"[[430, 98, 36, 37]]",4.0,"[0, 0, 0, 1, 0]",middle,low_high_middle,337490.jpg_Toy
+2a0905a2ff63f09e.jpg,Finger,low,high,middle,"[[116, 912, 89, 111]]",5.0,"[0, 1, 1, 0, 0]",high,low_high_middle,2a0905a2ff63f09e.jpg_Finger
+463157.jpg,Identity,low,high,middle,"[[387, 109, 31, 34]]",1.0,"[0, 1, 0, 1, 0]",low,low_high_middle,463157.jpg_Identity
+0197df7725980004.jpg,Vehicle Plate,low,high,middle,"[[653, 0, 69, 67]]",3.0,"[1, 0, 0, 0, 0]",middle,low_high_middle,0197df7725980004.jpg_Vehicle Plate
+6dc9c50218de115b.jpg,Person,low,high,middle,"[[892, 339, 84, 76], [892, 339, 84, 76], [892, 339, 84, 76]]",2.33,"[1, 0, 0, 0, 0]",middle,low_high_middle,6dc9c50218de115b.jpg_Person
+173217.jpg,Printed Material,low,high,middle,"[[429, 289, 56, 52], [429, 289, 56, 52], [429, 289, 56, 52]]",4.67,"[1, 1, 0, 0, 1]",high,low_high_middle,173217.jpg_Printed Material
+0515eb8d42f77988.jpg,Accessory,low,low,high,"[[349, 644, 139, 66]]",3.0,"[1, 0, 0, 1, 0]",middle,low_low_high,0515eb8d42f77988.jpg_Accessory
 590f63eb87ae3901.jpg,Table,low,low,high,"[[333, 348, 156, 44]]",3.0,"[0, 1, 1, 0, 1]",middle,low_low_high,590f63eb87ae3901.jpg_Table
-34075a7a303487f9.jpg,Person,low,low,high,"[[371, 186, 132, 97], [371, 186, 132, 97], [371, 186, 132, 97]]",5.0,"[1, 0, 0, 0, 0]",high,low_low_high,34075a7a303487f9.jpg_Person
-168331.jpg,Book,low,low,high,"[[205, 113, 103, 13], [193, 119, 114, 16]]",3.0,"[0, 0, 0, 1, 0]",middle,low_low_high,168331.jpg_Book
-196510.jpg,Printed Material,low,low,low,"[[303, 187, 45, 84]]",5.0,"[0, 1, 0, 0, 0]",high,low_low_low,196510.jpg_Printed Material
+263604.jpg,Others,low,low,high,"[[170, 304, 60, 50], [170, 303, 60, 50]]",6.0,"[1, 0, 1, 1, 1]",high,low_low_high,263604.jpg_Others
+887113740f7d7548.jpg,Scenery,low,low,high,"[[434, 206, 110, 66], [434, 206, 110, 66]]",2.0,"[0, 1, 0, 1, 0]",low,low_low_high,887113740f7d7548.jpg_Scenery
+02b7e70979560df7.jpg,Clothing,low,low,high,"[[274, 336, 88, 54]]",5.0,"[0, 1, 1, 0, 0]",high,low_low_high,02b7e70979560df7.jpg_Clothing
+286182.jpg,Home interior,low,low,high,"[[222, 333, 62, 53]]",2.0,"[0, 0, 0, 1, 0]",low,low_low_high,286182.jpg_Home interior
+334813.jpg,Screen,low,low,high,"[[179, 338, 91, 42], [179, 338, 91, 42], [179, 338, 91, 42]]",4.67,"[1, 1, 1, 0, 1]",high,low_low_high,334813.jpg_Screen
+168331.jpg,Book,low,low,high,"[[187, 134, 77, 15], [210, 109, 85, 12], [205, 113, 103, 13], [193, 119, 114, 16]]",3.0,"[0, 0, 0, 1, 0]",middle,low_low_high,168331.jpg_Book
+29715.jpg,Place Identifier,low,low,high,"[[275, 180, 84, 59], [275, 180, 84, 59]]",4.0,"[0, 1, 1, 0, 0]",middle,low_low_high,29715.jpg_Place Identifier
+168848.jpg,Vehicle Plate,low,low,high,"[[358, 268, 83, 56], [335, 229, 49, 33], [228, 234, 56, 36], [283, 226, 56, 45], [358, 268, 83, 56], [335, 229, 49, 33], [228, 234, 56, 36], [283, 226, 56, 45], [358, 268, 83, 56], [335, 229, 49, 33], [228, 234, 56, 36], [283, 226, 56, 45]]",3.33,"[0, 1, 0, 0, 0]",middle,low_low_high,168848.jpg_Vehicle Plate
+062973d55a1303d6.jpg,Machine,low,low,low,"[[395, 411, 40, 105], [419, 412, 57, 121]]",4.0,"[0, 0, 0, 1, 0]",middle,low_low_low,062973d55a1303d6.jpg_Machine
+137576.jpg,Pet,low,low,low,"[[315, 180, 43, 74]]",4.0,"[0, 1, 0, 1, 1]",middle,low_low_low,137576.jpg_Pet
+239757.jpg,Toy,low,low,low,"[[219, 193, 36, 65]]",3.0,"[0, 0, 0, 1, 0]",middle,low_low_low,239757.jpg_Toy
+01dc49e587b180a4.jpg,Person,low,low,low,"[[372, 312, 38, 124], [515, 323, 36, 142]]",0.0,"[1, 1, 0, 0, 0]",low,low_low_low,01dc49e587b180a4.jpg_Person
+182903.jpg,Printed Material,low,low,low,"[[291, 167, 27, 58], [291, 167, 27, 58], [291, 167, 27, 58]]",3.0,"[1, 0, 0, 0, 1]",middle,low_low_low,182903.jpg_Printed Material
+105388.jpg,Others,low,low,low,"[[217, 176, 46, 74]]",4.0,"[0, 0, 1, 0, 0]",middle,low_low_low,105388.jpg_Others
 179155.jpg,Scenery,low,low,low,"[[179, 67, 19, 150]]",4.0,"[0, 1, 0, 0, 0]",middle,low_low_low,179155.jpg_Scenery
-00dc0530e6779ca6.jpg,Others,low,low,low,"[[352, 333, 74, 178]]",4.0,"[1, 0, 0, 0, 0]",middle,low_low_low,00dc0530e6779ca6.jpg_Others
-01ab773186c630c4.jpg,Clothing,low,low,low,"[[407, 167, 53, 161], [533, 148, 47, 122], [618, 156, 35, 143], [643, 164, 49, 115], [407, 167, 53, 161], [533, 148, 47, 122], [618, 156, 35, 143], [643, 164, 49, 115]]",4.0,"[1, 0, 1, 1, 1]",middle,low_low_low,01ab773186c630c4.jpg_Clothing
+00dc0530e6779ca6.jpg,Clothing,low,low,low,"[[250, 285, 57, 132], [344, 354, 80, 152], [356, 353, 72, 141]]",4.0,"[1, 0, 0, 1, 0]",middle,low_low_low,00dc0530e6779ca6.jpg_Clothing
 119600.jpg,Home interior,low,low,low,"[[242, 80, 28, 84], [242, 80, 28, 84]]",1.5,"[0, 1, 0, 0, 0]",low,low_low_low,119600.jpg_Home interior
-12418.jpg,Place Identifier,low,low,low,"[[255, 207, 47, 133], [255, 207, 47, 133]]",4.5,"[0, 1, 0, 0, 0]",high,low_low_low,12418.jpg_Place Identifier
-02f5d2bc887486c6.jpg,Person,low,low,low,"[[661, 272, 88, 162], [412, 247, 34, 170], [522, 238, 40, 176], [661, 272, 88, 162]]",3.0,"[1, 1, 0, 1, 0]",middle,low_low_low,02f5d2bc887486c6.jpg_Person
-314530.jpg,Printed Material,low,low,low,"[[292, 203, 44, 88]]",4.0,"[0, 0, 0, 0, 1]",middle,low_low_low,314530.jpg_Printed Material
-a07d695db0b2c700.jpg,Scenery,low,low,low,"[[364, 286, 65, 108]]",1.0,"[0, 1, 0, 0, 0]",low,low_low_low,a07d695db0b2c700.jpg_Scenery
-00e8e1122ed9f31c.jpg,Others,low,low,low,"[[621, 224, 108, 180], [621, 224, 108, 180]]",3.5,"[1, 1, 0, 0, 0]",middle,low_low_low,00e8e1122ed9f31c.jpg_Others
+176415.jpg,Book,low,low,low,"[[238, 211, 16, 90], [239, 211, 16, 91]]",2.5,"[0, 0, 0, 1, 0]",middle,low_low_low,176415.jpg_Book
+259336.jpg,Cigarettes,low,low,middle,"[[394, 158, 51, 74]]",1.0,"[0, 0, 1, 0, 0]",low,low_low_middle,259336.jpg_Cigarettes
 3476c411e42d86cf.jpg,Photo,low,low,middle,"[[403, 366, 126, 116], [403, 366, 126, 116]]",4.5,"[1, 0, 1, 1, 0]",high,low_low_middle,3476c411e42d86cf.jpg_Photo
+154358.jpg,Accessory,low,low,middle,"[[239, 363, 43, 39]]",1.0,"[0, 0, 0, 1, 0]",low,low_low_middle,154358.jpg_Accessory
 151900.jpg,Identity,low,low,middle,"[[227, 250, 64, 66], [227, 250, 64, 66]]",4.0,"[1, 0, 0, 0, 1]",middle,low_low_middle,151900.jpg_Identity
-107129.jpg,Toy,low,low,middle,"[[249, 258, 69, 77]]",3.0,"[0, 0, 0, 1, 0]",middle,low_low_middle,107129.jpg_Toy
 202080.jpg,Pet,low,low,middle,"[[368, 186, 47, 47]]",3.0,"[0, 1, 0, 0, 0]",middle,low_low_middle,202080.jpg_Pet
-143024.jpg,Screen,low,low,middle,"[[313, 152, 48, 66], [313, 152, 48, 66]]",4.5,"[1, 0, 1, 0, 1]",high,low_low_middle,143024.jpg_Screen
-a09ff3a4b88d6f97.jpg,Book,low,low,middle,"[[419, 468, 100, 112], [419, 468, 100, 112]]",3.0,"[0, 1, 0, 1, 0]",middle,low_low_middle,a09ff3a4b88d6f97.jpg_Book
-205473.jpg,Clothing,low,low,middle,"[[283, 223, 77, 69], [283, 223, 77, 69]]",4.5,"[1, 0, 1, 1, 0]",high,low_low_middle,205473.jpg_Clothing
-50202badfd6b50fe.jpg,Home interior,low,low,middle,"[[333, 292, 87, 77]]",4.0,"[0, 0, 0, 1, 0]",middle,low_low_middle,50202badfd6b50fe.jpg_Home interior
+2a509a3520ada9ca.jpg,Toy,low,low,middle,"[[368, 235, 99, 147], [368, 235, 99, 147]]",2.5,"[0, 1, 0, 1, 0]",middle,low_low_middle,2a509a3520ada9ca.jpg_Toy
+32bf2344be92e972.jpg,Screen,low,low,middle,"[[494, 328, 104, 127]]",1.0,"[0, 0, 0, 0, 0]",low,low_low_middle,32bf2344be92e972.jpg_Screen
 278796.jpg,Place Identifier,low,low,middle,"[[354, 278, 69, 73]]",5.0,"[0, 1, 0, 0, 0]",high,low_low_middle,278796.jpg_Place Identifier
-013e4b54ccdf22aa.jpg,Printed Material,low,low,middle,"[[401, 270, 73, 92], [409, 409, 73, 97], [492, 284, 89, 97], [502, 428, 86, 103], [604, 288, 107, 113]]",5.0,"[1, 1, 0, 1, 1]",high,low_low_middle,013e4b54ccdf22aa.jpg_Printed Material
+324909.jpg,Person,low,low,middle,"[[280, 287, 41, 50], [280, 287, 41, 50], [280, 287, 41, 50], [280, 287, 41, 50]]",3.75,"[1, 1, 1, 1, 0]",middle,low_low_middle,324909.jpg_Person
+118839.jpg,Others,low,low,middle,"[[297, 123, 48, 51], [297, 123, 48, 51]]",2.5,"[1, 1, 1, 1, 0]",middle,low_low_middle,118839.jpg_Others
 232463.jpg,Cigarettes,low,middle,high,"[[422, 222, 84, 41]]",5.0,"[1, 0, 1, 0, 1]",high,low_middle_high,232463.jpg_Cigarettes
-16f352b006a890cd.jpg,Finger,low,middle,high,"[[144, 324, 153, 102]]",4.0,"[0, 1, 0, 0, 1]",middle,low_middle_high,16f352b006a890cd.jpg_Finger
-248b5f914b325928.jpg,Accessory,low,middle,high,"[[123, 291, 329, 67]]",5.0,"[0, 0, 0, 1, 0]",high,low_middle_high,248b5f914b325928.jpg_Accessory
+139429.jpg,Accessory,low,middle,high,"[[442, 234, 72, 61]]",3.0,"[0, 0, 0, 1, 0]",middle,low_middle_high,139429.jpg_Accessory
 159424.jpg,Musical instrument,low,middle,high,"[[258, 230, 67, 53], [258, 230, 67, 53]]",1.5,"[0, 0, 1, 1, 0]",low,low_middle_high,159424.jpg_Musical instrument
-252244.jpg,Toy,low,middle,high,"[[152, 516, 181, 37], [152, 516, 181, 37]]",2.5,"[0, 0, 1, 1, 0]",middle,low_middle_high,252244.jpg_Toy
-0ee131f55fb5b7f2.jpg,Vehicle Plate,low,middle,high,"[[189, 410, 136, 81]]",4.0,"[1, 0, 0, 0, 0]",middle,low_middle_high,0ee131f55fb5b7f2.jpg_Vehicle Plate
-4afc9fce9b1398c0.jpg,Table,low,middle,high,"[[713, 387, 308, 65], [713, 387, 308, 65]]",2.5,"[0, 0, 0, 1, 0]",middle,low_middle_high,4afc9fce9b1398c0.jpg_Table
-171735.jpg,Pet,low,middle,high,"[[323, 168, 114, 62], [323, 168, 114, 62]]",4.0,"[0, 1, 0, 1, 0]",middle,low_middle_high,171735.jpg_Pet
-254420.jpg,Screen,low,middle,high,"[[208, 261, 97, 67], [208, 261, 97, 67], [208, 261, 97, 67]]",3.67,"[1, 0, 0, 0, 1]",middle,low_middle_high,254420.jpg_Screen
-177bf73e23ce2913.jpg,Person,low,middle,high,"[[632, 197, 137, 94]]",5.0,"[1, 0, 0, 0, 0]",high,low_middle_high,177bf73e23ce2913.jpg_Person
-18466.jpg,Accessory,low,middle,low,"[[334, 109, 36, 80], [332, 102, 43, 114], [334, 109, 36, 80], [332, 102, 43, 114]]",2.5,"[0, 0, 1, 1, 0]",middle,low_middle_low,18466.jpg_Accessory
-148551.jpg,Musical instrument,low,middle,low,"[[329, 215, 42, 94], [131, 157, 38, 113]]",3.0,"[0, 0, 0, 1, 0]",middle,low_middle_low,148551.jpg_Musical instrument
+13cfe71ebbf0ae3b.jpg,Table,low,middle,high,"[[729, 452, 104, 39]]",4.0,"[0, 1, 1, 0, 0]",middle,low_middle_high,13cfe71ebbf0ae3b.jpg_Table
+0b0328075ddf03fc.jpg,Vehicle Plate,low,middle,high,"[[435, 552, 209, 39], [435, 552, 209, 39]]",5.0,"[1, 0, 0, 0, 1]",high,low_middle_high,0b0328075ddf03fc.jpg_Vehicle Plate
+155253.jpg,Printed Material,low,middle,high,"[[298, 347, 76, 44], [298, 347, 76, 44]]",5.0,"[1, 1, 0, 0, 1]",high,low_middle_high,155253.jpg_Printed Material
+0065e1098f7a353b.jpg,Clothing,low,middle,high,"[[366, 199, 83, 64]]",1.0,"[0, 0, 1, 0, 0]",low,low_middle_high,0065e1098f7a353b.jpg_Clothing
+50202badfd6b50fe.jpg,Home interior,low,middle,high,"[[224, 283, 114, 69]]",4.0,"[0, 0, 0, 1, 0]",middle,low_middle_high,50202badfd6b50fe.jpg_Home interior
+126301.jpg,Screen,low,middle,high,"[[137, 174, 70, 34]]",1.0,"[0, 0, 0, 0, 0]",low,low_middle_high,126301.jpg_Screen
+133034.jpg,Book,low,middle,high,"[[190, 60, 78, 22], [384, 81, 114, 36]]",4.0,"[1, 0, 0, 0, 0]",middle,low_middle_high,133034.jpg_Book
+237886.jpg,Machine,low,middle,low,"[[196, 255, 23, 65]]",3.0,"[0, 0, 0, 1, 0]",middle,low_middle_low,237886.jpg_Machine
+18466.jpg,Accessory,low,middle,low,"[[334, 109, 36, 80], [334, 109, 36, 80]]",2.5,"[0, 0, 1, 1, 0]",middle,low_middle_low,18466.jpg_Accessory
+148551.jpg,Musical instrument,low,middle,low,"[[120, 160, 19, 105], [329, 215, 42, 94], [131, 157, 38, 113], [110, 77, 30, 101]]",3.0,"[0, 0, 0, 1, 0]",middle,low_middle_low,148551.jpg_Musical instrument
 2995bebb788ad1ba.jpg,Table,low,middle,low,"[[249, 304, 57, 198], [249, 304, 57, 198], [249, 304, 57, 198]]",4.0,"[0, 1, 0, 1, 1]",middle,low_middle_low,2995bebb788ad1ba.jpg_Table
-509260.jpg,Book,low,middle,low,"[[331, 188, 24, 70], [331, 188, 24, 70], [331, 188, 24, 70]]",3.33,"[0, 0, 1, 1, 0]",middle,low_middle_low,509260.jpg_Book
-175237.jpg,Others,low,middle,low,"[[123, 172, 39, 145], [88, 179, 30, 91], [123, 172, 39, 145], [88, 179, 30, 91]]",3.0,"[1, 1, 1, 1, 0]",middle,low_middle_low,175237.jpg_Others
-22a5848e375335e3.jpg,Clothing,low,middle,low,"[[796, 487, 90, 175]]",5.0,"[0, 1, 0, 0, 0]",high,low_middle_low,22a5848e375335e3.jpg_Clothing
-153666.jpg,Home interior,low,middle,low,"[[175, 411, 40, 81], [217, 414, 35, 71]]",3.0,"[0, 1, 0, 0, 0]",middle,low_middle_low,153666.jpg_Home interior
+177060.jpg,Scenery,low,middle,low,"[[539, 208, 25, 90]]",5.0,"[0, 1, 0, 0, 0]",high,low_middle_low,177060.jpg_Scenery
 d94378dc2841b503.jpg,Place Identifier,low,middle,low,"[[315, 148, 66, 152], [315, 148, 66, 152], [315, 148, 66, 152], [315, 148, 66, 152]]",2.5,"[0, 1, 0, 0, 0]",middle,low_middle_low,d94378dc2841b503.jpg_Place Identifier
-215114.jpg,Printed Material,low,middle,low,"[[68, 301, 70, 132], [68, 301, 70, 132]]",4.0,"[1, 1, 0, 0, 0]",middle,low_middle_low,215114.jpg_Printed Material
-204ddb40982865e6.jpg,Person,low,middle,low,"[[412, 96, 72, 314], [412, 96, 72, 314], [412, 96, 72, 314]]",5.67,"[1, 0, 0, 0, 0]",high,low_middle_low,204ddb40982865e6.jpg_Person
-39477.jpg,Machine,low,middle,middle,"[[151, 266, 60, 88]]",3.0,"[0, 0, 0, 1, 0]",middle,low_middle_middle,39477.jpg_Machine
+144522.jpg,Person,low,middle,low,"[[390, 21, 38, 141], [390, 21, 38, 141], [390, 21, 38, 141]]",4.67,"[1, 1, 0, 1, 0]",high,low_middle_low,144522.jpg_Person
+196510.jpg,Printed Material,low,middle,low,"[[403, 353, 44, 90], [461, 214, 30, 105]]",5.0,"[0, 1, 0, 0, 0]",high,low_middle_low,196510.jpg_Printed Material
+112480.jpg,Others,low,middle,low,"[[200, 84, 47, 91], [200, 84, 47, 91], [200, 84, 47, 91], [200, 84, 47, 91]]",3.25,"[0, 1, 1, 1, 0]",middle,low_middle_low,112480.jpg_Others
+120676.jpg,Clothing,low,middle,low,"[[479, 221, 55, 89], [479, 221, 55, 89]]",3.0,"[0, 1, 0, 0, 1]",middle,low_middle_low,120676.jpg_Clothing
 20c0763f3931f53e.jpg,Photo,low,middle,middle,"[[481, 523, 89, 120]]",5.0,"[0, 1, 0, 0, 0]",high,low_middle_middle,20c0763f3931f53e.jpg_Photo
+39477.jpg,Machine,low,middle,middle,"[[151, 266, 60, 88]]",3.0,"[0, 0, 0, 1, 0]",middle,low_middle_middle,39477.jpg_Machine
 484075.jpg,Identity,low,middle,middle,"[[124, 207, 46, 41], [124, 207, 46, 41], [124, 207, 46, 41]]",2.33,"[1, 1, 0, 0, 1]",middle,low_middle_middle,484075.jpg_Identity
-104999.jpg,Accessory,low,middle,middle,"[[135, 118, 63, 91]]",5.0,"[1, 0, 1, 0, 1]",high,low_middle_middle,104999.jpg_Accessory
+12614.jpg,Accessory,low,middle,middle,"[[197, 197, 60, 69], [197, 197, 60, 69]]",1.0,"[0, 0, 0, 1, 0]",low,low_middle_middle,12614.jpg_Accessory
 131764.jpg,Vehicle Plate,low,middle,middle,"[[127, 247, 39, 42], [127, 247, 39, 42], [127, 247, 39, 42], [127, 247, 39, 42]]",3.75,"[1, 0, 0, 0, 1]",middle,low_middle_middle,131764.jpg_Vehicle Plate
-170558.jpg,Screen,low,middle,middle,"[[338, 393, 58, 77]]",5.0,"[1, 0, 0, 1, 0]",high,low_middle_middle,170558.jpg_Screen
-13cfe71ebbf0ae3b.jpg,Table,low,middle,middle,"[[569, 467, 145, 132]]",4.0,"[0, 1, 1, 0, 0]",middle,low_middle_middle,13cfe71ebbf0ae3b.jpg_Table
-0dbd358b804cdc0d.jpg,Book,low,middle,middle,"[[372, 406, 146, 130]]",5.0,"[0, 0, 1, 0, 0]",high,low_middle_middle,0dbd358b804cdc0d.jpg_Book
-104621.jpg,Others,low,middle,middle,"[[181, 64, 58, 79], [313, 58, 62, 82]]",5.0,"[1, 0, 0, 1, 0]",high,low_middle_middle,104621.jpg_Others
-112708.jpg,Clothing,low,middle,middle,"[[154, 168, 59, 68]]",4.0,"[1, 1, 0, 1, 1]",middle,low_middle_middle,112708.jpg_Clothing
-102820.jpg,Food,middle,high,high,"[[40, 485, 216, 95], [40, 485, 216, 95]]",5.5,"[1, 1, 1, 0, 0]",high,middle_high_high,102820.jpg_Food
-0f399ca1789c8087.jpg,Identity,middle,high,high,"[[24, 69, 288, 106], [26, 496, 289, 113], [24, 69, 288, 106], [26, 496, 289, 113], [24, 69, 288, 106], [26, 496, 289, 113]]",2.33,"[0, 1, 0, 1, 1]",middle,middle_high_high,0f399ca1789c8087.jpg_Identity
-167e73349f96c0e2.jpg,Musical instrument,middle,high,high,"[[319, 433, 160, 109], [319, 433, 160, 109]]",2.5,"[0, 1, 1, 0, 0]",middle,middle_high_high,167e73349f96c0e2.jpg_Musical instrument
-081b5acdf94c392a.jpg,Accessory,middle,high,high,"[[431, 562, 270, 119]]",1.0,"[0, 0, 0, 1, 0]",low,middle_high_high,081b5acdf94c392a.jpg_Accessory
-cf98919686aa9981.jpg,Scenery,middle,high,high,"[[793, 0, 230, 187]]",5.0,"[0, 1, 0, 0, 0]",high,middle_high_high,cf98919686aa9981.jpg_Scenery
+10192.jpg,Home interior,low,middle,middle,"[[199, 342, 47, 57], [199, 342, 47, 57]]",2.5,"[0, 1, 1, 1, 0]",middle,low_middle_middle,10192.jpg_Home interior
+13659.jpg,Screen,low,middle,middle,"[[96, 251, 56, 74], [96, 251, 56, 74], [96, 251, 56, 74]]",4.0,"[1, 1, 1, 0, 1]",middle,low_middle_middle,13659.jpg_Screen
+19aa0e0ad2fa06b6.jpg,Book,low,middle,middle,"[[312, 504, 110, 139]]",1.0,"[1, 1, 0, 0, 0]",low,low_middle_middle,19aa0e0ad2fa06b6.jpg_Book
+269788.jpg,Place Identifier,low,middle,middle,"[[376, 98, 51, 54], [376, 98, 51, 54]]",2.5,"[0, 1, 0, 0, 0]",middle,low_middle_middle,269788.jpg_Place Identifier
+86a6366f57093823.jpg,Person,low,middle,middle,"[[206, 204, 77, 76], [482, 56, 70, 65]]",6.0,"[1, 0, 0, 0, 0]",high,low_middle_middle,86a6366f57093823.jpg_Person
+140640.jpg,Food,middle,high,high,"[[476, 361, 116, 64], [476, 361, 116, 64]]",2.5,"[0, 1, 1, 1, 0]",middle,middle_high_high,140640.jpg_Food
+210d5c663bb145af.jpg,Identity,middle,high,high,"[[45, 416, 270, 159], [45, 416, 270, 159], [45, 416, 270, 159]]",3.67,"[0, 1, 1, 1, 0]",middle,middle_high_high,210d5c663bb145af.jpg_Identity
+146439.jpg,Musical instrument,middle,high,high,"[[234, 93, 178, 114]]",4.0,"[0, 1, 0, 1, 0]",middle,middle_high_high,146439.jpg_Musical instrument
+204ddb40982865e6.jpg,Accessory,middle,high,high,"[[659, 207, 364, 138]]",5.0,"[1, 0, 0, 0, 0]",high,middle_high_high,204ddb40982865e6.jpg_Accessory
+4afc9fce9b1398c0.jpg,Table,middle,high,high,"[[688, 507, 334, 227], [688, 507, 334, 227]]",2.5,"[0, 0, 0, 1, 0]",middle,middle_high_high,4afc9fce9b1398c0.jpg_Table
+ac14e7cec3fe432b.jpg,Scenery,middle,high,high,"[[36, 179, 245, 203], [36, 179, 245, 203]]",4.0,"[0, 1, 0, 0, 1]",middle,middle_high_high,ac14e7cec3fe432b.jpg_Scenery
 135872.jpg,Vehicle Plate,middle,high,high,"[[0, 287, 155, 92]]",2.0,"[0, 0, 0, 1, 0]",low,middle_high_high,135872.jpg_Vehicle Plate
-188804.jpg,Screen,middle,high,high,"[[296, 169, 113, 97], [296, 169, 113, 97], [296, 169, 113, 97]]",4.33,"[1, 1, 1, 1, 1]",high,middle_high_high,188804.jpg_Screen
-10192.jpg,Home interior,middle,high,high,"[[333, 0, 177, 125], [333, 0, 177, 125]]",2.5,"[0, 1, 1, 1, 0]",middle,middle_high_high,10192.jpg_Home interior
-009d177d2b1ba392.jpg,Identity,middle,high,high,"[[113, 421, 214, 178], [113, 421, 214, 178], [113, 421, 214, 178]]",4.67,"[1, 1, 0, 0, 1]",high,middle_high_high,009d177d2b1ba392.jpg_Identity
-10651d2876cd50d8.jpg,Musical instrument,middle,high,high,"[[0, 523, 496, 126]]",4.0,"[1, 0, 1, 0, 0]",middle,middle_high_high,10651d2876cd50d8.jpg_Musical instrument
-24c7ebbfb72cfd8b.jpg,Finger,middle,high,low,"[[537, 595, 230, 428]]",1.0,"[0, 1, 0, 0, 0]",low,middle_high_low,24c7ebbfb72cfd8b.jpg_Finger
+125821.jpg,Printed Material,middle,high,high,"[[15, 223, 99, 76], [15, 223, 99, 76], [15, 223, 99, 76], [15, 223, 99, 76]]",2.75,"[1, 0, 1, 1, 1]",middle,middle_high_high,125821.jpg_Printed Material
+036738459e165ca3.jpg,Others,middle,high,high,"[[234, 537, 380, 145]]",4.0,"[1, 0, 0, 0, 1]",middle,middle_high_high,036738459e165ca3.jpg_Others
+123633.jpg,Clothing,middle,high,high,"[[123, 375, 183, 104]]",0.0,"[1, 1, 1, 1, 0]",low,middle_high_high,123633.jpg_Clothing
+6da92952466f61c9.jpg,Cosmetics,middle,high,low,"[[891, 0, 129, 709]]",3.0,"[0, 1, 0, 1, 0]",middle,middle_high_low,6da92952466f61c9.jpg_Cosmetics
 101172.jpg,Toy,middle,high,low,"[[363, 401, 88, 144]]",5.0,"[0, 0, 1, 0, 0]",high,middle_high_low,101172.jpg_Toy
-109591.jpg,Pet,middle,high,low,"[[201, 2, 94, 165]]",4.0,"[0, 1, 0, 1, 0]",middle,middle_high_low,109591.jpg_Pet
-152056.jpg,Scenery,middle,high,low,"[[548, 11, 91, 267]]",4.0,"[0, 1, 0, 0, 0]",middle,middle_high_low,152056.jpg_Scenery
-0822a13549844948.jpg,Vehicle Plate,middle,high,low,"[[0, 211, 190, 306], [0, 211, 190, 306], [0, 211, 190, 306]]",4.33,"[1, 1, 0, 0, 1]",high,middle_high_low,0822a13549844948.jpg_Vehicle Plate
-af6e45d2e9a8b7a3.jpg,Place Identifier,middle,high,low,"[[112, 0, 102, 438], [112, 0, 102, 438]]",3.5,"[0, 1, 0, 0, 1]",middle,middle_high_low,af6e45d2e9a8b7a3.jpg_Place Identifier
-1e07b2d0cdc10135.jpg,Person,middle,high,low,"[[0, 265, 98, 240]]",4.0,"[1, 0, 0, 0, 0]",middle,middle_high_low,1e07b2d0cdc10135.jpg_Person
+119647.jpg,Accessory,middle,high,low,"[[482, 305, 50, 122], [482, 305, 50, 122]]",3.0,"[0, 0, 1, 1, 0]",middle,middle_high_low,119647.jpg_Accessory
+110784.jpg,Scenery,middle,high,low,"[[5, 109, 68, 136]]",4.0,"[1, 1, 0, 1, 1]",middle,middle_high_low,110784.jpg_Scenery
+133679.jpg,Home interior,middle,high,low,"[[0, 155, 67, 152]]",6.0,"[0, 0, 1, 0, 0]",high,middle_high_low,133679.jpg_Home interior
+146004.jpg,Screen,middle,high,low,"[[322, 215, 77, 124], [322, 215, 77, 124]]",3.0,"[1, 0, 1, 1, 1]",middle,middle_high_low,146004.jpg_Screen
 3b3b9931325d65c9.jpg,Book,middle,high,low,"[[0, 108, 140, 226]]",3.0,"[0, 0, 0, 1, 0]",middle,middle_high_low,3b3b9931325d65c9.jpg_Book
-10a8197a3cf39567.jpg,Scenery,middle,high,low,"[[0, 48, 206, 440], [0, 48, 206, 440]]",3.5,"[0, 1, 0, 0, 1]",middle,middle_high_low,10a8197a3cf39567.jpg_Scenery
-4a197f10b93d99d8.jpg,Others,middle,high,low,"[[0, 167, 108, 434], [856, 269, 117, 345], [0, 167, 108, 434], [856, 269, 117, 345]]",4.5,"[1, 0, 1, 1, 0]",high,middle_high_low,4a197f10b93d99d8.jpg_Others
+af6e45d2e9a8b7a3.jpg,Place Identifier,middle,high,low,"[[112, 0, 102, 438], [112, 0, 102, 438]]",3.5,"[0, 1, 0, 0, 1]",middle,middle_high_low,af6e45d2e9a8b7a3.jpg_Place Identifier
+169448.jpg,Vehicle Plate,middle,high,low,"[[590, 156, 49, 81], [590, 156, 49, 81]]",4.0,"[0, 0, 1, 1, 0]",middle,middle_high_low,169448.jpg_Vehicle Plate
+05798ca4c1946ae1.jpg,Person,middle,high,low,"[[778, 382, 205, 363], [778, 382, 205, 363]]",4.0,"[1, 0, 0, 1, 0]",middle,middle_high_low,05798ca4c1946ae1.jpg_Person
 53f9fa304263f470.jpg,Photo,middle,high,middle,"[[691, 12, 145, 171], [691, 12, 145, 171]]",4.5,"[1, 0, 0, 0, 0]",high,middle_high_middle,53f9fa304263f470.jpg_Photo
-541538.jpg,Identity,middle,high,middle,"[[30, 333, 115, 122], [30, 333, 115, 122]]",0.5,"[1, 0, 0, 1, 0]",low,middle_high_middle,541538.jpg_Identity
 134586.jpg,Pet,middle,high,middle,"[[257, 512, 126, 125]]",4.0,"[0, 1, 0, 0, 0]",middle,middle_high_middle,134586.jpg_Pet
-267fb36486a00fcc.jpg,Musical instrument,middle,high,middle,"[[67, 223, 160, 198]]",4.0,"[1, 0, 0, 1, 0]",middle,middle_high_middle,267fb36486a00fcc.jpg_Musical instrument
-133034.jpg,Identity,middle,high,middle,"[[0, 203, 156, 204]]",4.0,"[1, 0, 0, 0, 0]",middle,middle_high_middle,133034.jpg_Identity
+231351.jpg,Toy,middle,high,middle,"[[91, 4, 94, 83]]",2.0,"[0, 0, 0, 1, 0]",low,middle_high_middle,231351.jpg_Toy
+541538.jpg,Identity,middle,high,middle,"[[30, 333, 115, 122], [30, 333, 115, 122]]",0.5,"[1, 0, 0, 1, 0]",low,middle_high_middle,541538.jpg_Identity
+459121.jpg,Musical instrument,middle,high,middle,"[[430, 182, 51, 76]]",3.0,"[0, 0, 0, 1, 0]",middle,middle_high_middle,459121.jpg_Musical instrument
+251016.jpg,Identity,middle,high,middle,"[[165, 33, 64, 85], [165, 33, 64, 85]]",3.0,"[1, 0, 0, 0, 1]",middle,middle_high_middle,251016.jpg_Identity
 217704.jpg,Printed Material,middle,high,middle,"[[237, 415, 171, 164]]",4.0,"[0, 0, 0, 1, 0]",middle,middle_high_middle,217704.jpg_Printed Material
-11b06ea19b8a48d9.jpg,Clothing,middle,high,middle,"[[777, 173, 181, 167]]",1.0,"[0, 0, 0, 1, 0]",low,middle_high_middle,11b06ea19b8a48d9.jpg_Clothing
-119594.jpg,Vehicle Plate,middle,high,middle,"[[543, 219, 91, 82]]",2.0,"[0, 1, 0, 1, 0]",low,middle_high_middle,119594.jpg_Vehicle Plate
-137967.jpg,Screen,middle,high,middle,"[[393, 110, 106, 119]]",6.0,"[1, 0, 0, 0, 0]",high,middle_high_middle,137967.jpg_Screen
-3454f5c299102bea.jpg,Home interior,middle,high,middle,"[[821, 106, 170, 212]]",4.0,"[0, 1, 0, 0, 0]",middle,middle_high_middle,3454f5c299102bea.jpg_Home interior
+2ddc8a002b4183e1.jpg,Others,middle,high,middle,"[[817, 376, 107, 137], [817, 376, 107, 137]]",4.0,"[1, 0, 1, 1, 0]",middle,middle_high_middle,2ddc8a002b4183e1.jpg_Others
+b8b0d6a47e48cc8c.jpg,Scenery,middle,high,middle,"[[503, 564, 176, 187]]",4.0,"[0, 1, 0, 0, 0]",middle,middle_high_middle,b8b0d6a47e48cc8c.jpg_Scenery
+01c9c7321fe8e116.jpg,Clothing,middle,high,middle,"[[815, 592, 207, 238]]",5.0,"[0, 0, 1, 1, 0]",high,middle_high_middle,01c9c7321fe8e116.jpg_Clothing
 1cc51804460299fb.jpg,Electronic Devices,middle,low,high,"[[327, 399, 344, 92], [327, 399, 344, 92]]",2.0,"[0, 0, 0, 1, 0]",low,middle_low_high,1cc51804460299fb.jpg_Electronic Devices
+2ed000d799794d71.jpg,Pet,middle,low,high,"[[301, 273, 214, 146]]",1.0,"[0, 0, 1, 0, 0]",low,middle_low_high,2ed000d799794d71.jpg_Pet
+16f352b006a890cd.jpg,Table,middle,low,high,"[[320, 409, 278, 129]]",2.0,"[0, 1, 0, 1, 0]",low,middle_low_high,16f352b006a890cd.jpg_Table
 276476.jpg,Toy,middle,low,high,"[[254, 243, 172, 89], [254, 243, 172, 89]]",3.5,"[0, 0, 0, 1, 0]",middle,middle_low_high,276476.jpg_Toy
-0ca56558107bdae5.jpg,Accessory,middle,low,high,"[[164, 343, 415, 180]]",3.0,"[1, 0, 1, 1, 0]",middle,middle_low_high,0ca56558107bdae5.jpg_Accessory
-30aa53f05602d3ec.jpg,Accessory,middle,low,high,"[[436, 220, 401, 153]]",6.0,"[1, 1, 0, 0, 0]",high,middle_low_high,30aa53f05602d3ec.jpg_Accessory
+0ccdb16a34d67aaa.jpg,Accessory,middle,low,high,"[[367, 196, 527, 129]]",5.0,"[1, 0, 0, 0, 0]",high,middle_low_high,0ccdb16a34d67aaa.jpg_Accessory
+107656.jpg,Pet,middle,low,high,"[[173, 209, 83, 46], [173, 209, 83, 46], [173, 209, 83, 46]]",4.33,"[1, 0, 1, 1, 0]",high,middle_low_high,107656.jpg_Pet
 155591.jpg,Table,middle,low,high,"[[211, 204, 91, 64], [211, 204, 91, 64], [211, 204, 91, 64]]",3.33,"[1, 1, 1, 1, 1]",middle,middle_low_high,155591.jpg_Table
-110735.jpg,Pet,middle,low,high,"[[175, 188, 212, 100], [175, 188, 212, 100], [175, 188, 212, 100], [175, 188, 212, 100]]",4.0,"[1, 1, 0, 1, 0]",middle,middle_low_high,110735.jpg_Pet
-117993.jpg,Place Identifier,middle,low,high,"[[169, 189, 109, 72], [171, 189, 107, 73], [169, 189, 109, 72], [171, 189, 107, 73]]",4.75,"[0, 0, 1, 1, 1]",high,middle_low_high,117993.jpg_Place Identifier
-0065e1098f7a353b.jpg,Person,middle,low,high,"[[313, 199, 481, 174], [310, 198, 486, 176], [313, 199, 481, 174], [310, 198, 486, 176], [313, 199, 481, 174], [310, 198, 486, 176], [313, 199, 481, 174], [310, 198, 486, 176]]",4.75,"[1, 1, 1, 1, 0]",high,middle_low_high,0065e1098f7a353b.jpg_Person
-115846.jpg,Book,middle,low,high,"[[237, 263, 312, 60], [237, 263, 312, 60]]",3.5,"[1, 0, 0, 1, 0]",middle,middle_low_high,115846.jpg_Book
-ae733f15aef8d723.jpg,Scenery,middle,low,high,"[[257, 240, 224, 103], [257, 240, 224, 103]]",4.5,"[0, 1, 0, 0, 0]",high,middle_low_high,ae733f15aef8d723.jpg_Scenery
-ce714eef200f390f.jpg,Cosmetics,middle,low,low,"[[378, 112, 197, 691]]",4.0,"[0, 1, 1, 0, 0]",middle,middle_low_low,ce714eef200f390f.jpg_Cosmetics
+171413.jpg,Home interior,middle,low,high,"[[105, 156, 154, 79]]",5.0,"[0, 1, 0, 1, 0]",high,middle_low_high,171413.jpg_Home interior
+387098.jpg,Screen,middle,low,high,"[[283, 183, 147, 105], [283, 183, 147, 105], [283, 183, 147, 105], [283, 183, 147, 105]]",3.25,"[1, 0, 0, 1, 1]",middle,middle_low_high,387098.jpg_Screen
+116872.jpg,Accessory,middle,low,high,"[[197, 191, 112, 58], [197, 191, 112, 58]]",3.5,"[0, 0, 1, 1, 0]",middle,middle_low_high,116872.jpg_Accessory
 113021.jpg,Musical instrument,middle,low,low,"[[184, 218, 75, 282]]",2.0,"[0, 0, 0, 1, 0]",low,middle_low_low,113021.jpg_Musical instrument
-205904.jpg,Accessory,middle,low,low,"[[194, 202, 70, 176]]",4.0,"[0, 0, 1, 0, 0]",middle,middle_low_low,205904.jpg_Accessory
-82e02465a9c48fd0.jpg,Others,middle,low,low,"[[373, 333, 132, 211], [454, 339, 123, 216]]",1.0,"[0, 1, 0, 0, 0]",low,middle_low_low,82e02465a9c48fd0.jpg_Others
-29715.jpg,Clothing,middle,low,low,"[[164, 169, 99, 225], [164, 169, 99, 225]]",3.5,"[0, 0, 1, 1, 0]",middle,middle_low_low,29715.jpg_Clothing
 126110.jpg,Pet,middle,low,low,"[[104, 53, 57, 129], [104, 53, 57, 129]]",2.5,"[1, 0, 1, 0, 0]",middle,middle_low_low,126110.jpg_Pet
+434511.jpg,Musical instrument,middle,low,low,"[[322, 38, 57, 248], [322, 38, 57, 248]]",2.5,"[0, 0, 0, 1, 0]",middle,middle_low_low,434511.jpg_Musical instrument
+12418.jpg,Place Identifier,middle,low,low,"[[255, 207, 47, 133], [255, 207, 47, 133]]",4.5,"[0, 1, 0, 0, 0]",high,middle_low_low,12418.jpg_Place Identifier
+141382.jpg,Person,middle,low,low,"[[212, 110, 74, 177], [212, 110, 74, 177], [212, 110, 74, 177]]",4.67,"[0, 1, 1, 1, 0]",high,middle_low_low,141382.jpg_Person
+121744.jpg,Others,middle,low,low,"[[276, 174, 55, 135], [318, 170, 52, 137], [351, 167, 60, 122]]",5.0,"[0, 0, 0, 1, 0]",high,middle_low_low,121744.jpg_Others
+10a8197a3cf39567.jpg,Scenery,middle,low,low,"[[392, 89, 203, 321], [392, 89, 203, 321]]",3.5,"[0, 1, 0, 0, 1]",middle,middle_low_low,10a8197a3cf39567.jpg_Scenery
+022caa5e84da4026.jpg,Clothing,middle,low,low,"[[317, 197, 91, 199], [360, 281, 110, 197], [317, 197, 91, 199], [360, 281, 110, 197], [317, 197, 91, 199], [360, 281, 110, 197]]",3.67,"[1, 1, 1, 1, 1]",middle,middle_low_low,022caa5e84da4026.jpg_Clothing
 644395d01b541528.jpg,Home interior,middle,low,low,"[[451, 291, 164, 273]]",3.0,"[0, 1, 0, 0, 0]",middle,middle_low_low,644395d01b541528.jpg_Home interior
-9e3b268c8f585dbc.jpg,Place Identifier,middle,low,low,"[[543, 37, 61, 247], [543, 37, 61, 247]]",3.5,"[0, 1, 0, 0, 0]",middle,middle_low_low,9e3b268c8f585dbc.jpg_Place Identifier
-022c1f420446d118.jpg,Person,middle,low,low,"[[441, 336, 124, 276], [491, 336, 163, 327], [441, 336, 124, 276], [491, 336, 163, 327]]",2.0,"[0, 0, 0, 1, 0]",low,middle_low_low,022c1f420446d118.jpg_Person
-5337819360fbbe51.jpg,Scenery,middle,low,low,"[[282, 127, 118, 739]]",2.0,"[0, 1, 0, 0, 0]",low,middle_low_low,5337819360fbbe51.jpg_Scenery
+205904.jpg,Accessory,middle,low,low,"[[194, 202, 70, 176]]",4.0,"[0, 0, 1, 0, 0]",middle,middle_low_low,205904.jpg_Accessory
 fdc078c7ab17bc53.jpg,Photo,middle,low,middle,"[[412, 412, 223, 223], [412, 412, 223, 223], [412, 412, 223, 223]]",4.67,"[0, 1, 0, 0, 0]",high,middle_low_middle,fdc078c7ab17bc53.jpg_Photo
-0a6bc386b28f2aac.jpg,Finger,middle,low,middle,"[[288, 311, 131, 174]]",3.0,"[0, 0, 0, 1, 0]",middle,middle_low_middle,0a6bc386b28f2aac.jpg_Finger
 366683.jpg,Identity,middle,low,middle,"[[151, 251, 209, 199], [151, 251, 209, 199]]",1.5,"[0, 0, 0, 1, 1]",low,middle_low_middle,366683.jpg_Identity
-46b3ee69cede9f7c.jpg,Screen,middle,low,middle,"[[277, 114, 252, 242]]",4.0,"[1, 0, 1, 0, 1]",middle,middle_low_middle,46b3ee69cede9f7c.jpg_Screen
+04311ae05c027377.jpg,Book,middle,low,middle,"[[534, 337, 150, 195]]",2.0,"[0, 1, 1, 0, 0]",low,middle_low_middle,04311ae05c027377.jpg_Book
+121783.jpg,Pet,middle,low,middle,"[[194, 281, 140, 161], [194, 281, 140, 161]]",2.0,"[1, 1, 0, 1, 0]",low,middle_low_middle,121783.jpg_Pet
+14335.jpg,Screen,middle,low,middle,"[[332, 119, 159, 143]]",1.0,"[1, 0, 0, 1, 0]",low,middle_low_middle,14335.jpg_Screen
 171c2848e3ad670e.jpg,Musical instrument,middle,low,middle,"[[355, 316, 248, 297]]",6.0,"[0, 0, 1, 0, 0]",high,middle_low_middle,171c2848e3ad670e.jpg_Musical instrument
-259345.jpg,Accessory,middle,low,middle,"[[164, 222, 88, 119], [155, 226, 150, 206]]",4.0,"[0, 0, 0, 1, 0]",middle,middle_low_middle,259345.jpg_Accessory
-153638.jpg,Book,middle,low,middle,"[[289, 77, 154, 195]]",2.0,"[0, 0, 0, 1, 0]",low,middle_low_middle,153638.jpg_Book
+168905.jpg,Place Identifier,middle,low,middle,"[[334, 245, 73, 94], [334, 245, 73, 94]]",4.0,"[0, 1, 0, 0, 0]",middle,middle_low_middle,168905.jpg_Place Identifier
+45a98c6eb828a0c9.jpg,Person,middle,low,middle,"[[563, 409, 148, 151], [563, 409, 148, 151]]",6.0,"[1, 1, 1, 1, 1]",high,middle_low_middle,45a98c6eb828a0c9.jpg_Person
 117922.jpg,Others,middle,low,middle,"[[280, 102, 166, 167]]",4.0,"[0, 0, 0, 0, 1]",middle,middle_low_middle,117922.jpg_Others
-235933.jpg,Clothing,middle,low,middle,"[[104, 167, 59, 91], [104, 167, 59, 91]]",2.5,"[0, 1, 0, 1, 0]",middle,middle_low_middle,235933.jpg_Clothing
-2ed000d799794d71.jpg,Pet,middle,low,middle,"[[482, 205, 192, 213]]",1.0,"[0, 0, 1, 0, 0]",low,middle_low_middle,2ed000d799794d71.jpg_Pet
+102411.jpg,Clothing,middle,low,middle,"[[315, 159, 76, 80]]",4.0,"[0, 0, 0, 1, 1]",middle,middle_low_middle,102411.jpg_Clothing
+102820.jpg,Food,middle,middle,high,"[[40, 485, 216, 95], [40, 485, 216, 95]]",5.5,"[1, 1, 1, 0, 0]",high,middle_middle_high,102820.jpg_Food
 131138.jpg,Machine,middle,middle,high,"[[419, 198, 143, 65]]",4.0,"[0, 1, 0, 0, 0]",middle,middle_middle_high,131138.jpg_Machine
 2afcec1f707608d2.jpg,Food,middle,middle,high,"[[134, 621, 398, 203], [155, 626, 376, 201], [155, 626, 376, 201]]",4.33,"[1, 0, 0, 1, 0]",high,middle_middle_high,2afcec1f707608d2.jpg_Food
-1ddcde13ef6914c9.jpg,Toy,middle,middle,high,"[[221, 179, 332, 290]]",4.0,"[0, 1, 0, 1, 0]",middle,middle_middle_high,1ddcde13ef6914c9.jpg_Toy
+252244.jpg,Toy,middle,middle,high,"[[152, 516, 181, 37], [152, 516, 181, 37]]",2.5,"[0, 0, 1, 1, 0]",middle,middle_middle_high,252244.jpg_Toy
+003a5aaf6d17c917.jpg,Vehicle Plate,middle,middle,high,"[[672, 140, 351, 219]]",1.0,"[0, 0, 0, 1, 0]",low,middle_middle_high,003a5aaf6d17c917.jpg_Vehicle Plate
 140263.jpg,Table,middle,middle,high,"[[0, 387, 213, 57]]",3.0,"[0, 1, 0, 0, 0]",middle,middle_middle_high,140263.jpg_Table
-0727983dd5f9e4e6.jpg,Vehicle Plate,middle,middle,high,"[[486, 593, 224, 100], [486, 593, 224, 100], [486, 593, 224, 100], [486, 593, 224, 100]]",4.75,"[1, 1, 1, 1, 0]",high,middle_middle_high,0727983dd5f9e4e6.jpg_Vehicle Plate
-088f6016c3222b4d.jpg,Identity,middle,middle,high,"[[108, 101, 441, 111], [108, 101, 441, 111], [108, 101, 441, 111], [108, 101, 441, 111]]",2.25,"[1, 1, 1, 1, 0]",middle,middle_middle_high,088f6016c3222b4d.jpg_Identity
-118544.jpg,Screen,middle,middle,high,"[[99, 14, 71, 59], [99, 14, 71, 59], [99, 14, 71, 59]]",4.33,"[1, 1, 1, 1, 0]",high,middle_middle_high,118544.jpg_Screen
-133679.jpg,Home interior,middle,middle,high,"[[469, 191, 153, 78]]",6.0,"[0, 0, 1, 0, 0]",high,middle_middle_high,133679.jpg_Home interior
-62e2f86f8228662b.jpg,Musical instrument,middle,middle,high,"[[206, 483, 360, 139]]",1.0,"[0, 0, 0, 1, 0]",low,middle_middle_high,62e2f86f8228662b.jpg_Musical instrument
-319305414bb65188.jpg,Accessory,middle,middle,high,"[[488, 202, 283, 108], [488, 202, 283, 108], [488, 202, 283, 108]]",5.33,"[1, 0, 1, 1, 0]",high,middle_middle_high,319305414bb65188.jpg_Accessory
-74d9c3ea2244fe8f.jpg,Electronic Devices,middle,middle,low,"[[276, 203, 205, 475]]",5.0,"[1, 0, 1, 0, 0]",high,middle_middle_low,74d9c3ea2244fe8f.jpg_Electronic Devices
-214720.jpg,Food,middle,middle,low,"[[85, 158, 49, 122], [85, 158, 49, 122]]",4.0,"[1, 1, 1, 1, 0]",middle,middle_middle_low,214720.jpg_Food
+159a3280b4de5ec9.jpg,Identity,middle,middle,high,"[[218, 270, 479, 59], [218, 270, 479, 59], [218, 270, 479, 59], [218, 270, 479, 59]]",3.0,"[0, 1, 1, 1, 0]",middle,middle_middle_high,159a3280b4de5ec9.jpg_Identity
+976ca910c239e2fc.jpg,Book,middle,middle,high,"[[0, 247, 378, 128], [0, 381, 378, 154], [1, 552, 387, 161], [389, 157, 325, 114], [399, 272, 327, 129], [413, 566, 354, 149], [448, 729, 313, 98]]",6.0,"[1, 0, 0, 1, 0]",high,middle_middle_high,976ca910c239e2fc.jpg_Book
+171735.jpg,Pet,middle,middle,high,"[[323, 168, 114, 62], [323, 168, 114, 62]]",4.0,"[0, 1, 0, 1, 0]",middle,middle_middle_high,171735.jpg_Pet
+ae733f15aef8d723.jpg,Scenery,middle,middle,high,"[[579, 180, 243, 124], [579, 180, 243, 124]]",4.5,"[0, 1, 0, 0, 0]",high,middle_middle_high,ae733f15aef8d723.jpg_Scenery
 46da83ccb945db5a.jpg,Electronic Devices,middle,middle,low,"[[280, 0, 203, 345]]",4.0,"[0, 1, 0, 1, 0]",middle,middle_middle_low,46da83ccb945db5a.jpg_Electronic Devices
 108253.jpg,Food,middle,middle,low,"[[237, 0, 127, 318], [237, 0, 127, 318], [237, 0, 127, 318]]",4.33,"[0, 1, 1, 1, 0]",high,middle_middle_low,108253.jpg_Food
-6e38935a10c37c78.jpg,Printed Material,middle,middle,low,"[[134, 132, 212, 439], [705, 129, 202, 456], [134, 132, 212, 439], [705, 129, 202, 456], [134, 132, 212, 439], [705, 129, 202, 456]]",3.33,"[1, 1, 0, 1, 1]",middle,middle_middle_low,6e38935a10c37c78.jpg_Printed Material
-017527da8bfeb97d.jpg,Vehicle Plate,middle,middle,low,"[[114, 173, 119, 326]]",2.0,"[1, 0, 0, 0, 0]",low,middle_middle_low,017527da8bfeb97d.jpg_Vehicle Plate
-4d3f37c325489e39.jpg,Place Identifier,middle,middle,low,"[[158, 199, 123, 292], [752, 212, 153, 352]]",3.0,"[0, 1, 0, 0, 0]",middle,middle_middle_low,4d3f37c325489e39.jpg_Place Identifier
-0472586d97db6daf.jpg,Person,middle,middle,low,"[[590, 93, 110, 268], [590, 93, 110, 268], [590, 93, 110, 268], [590, 93, 110, 268]]",5.75,"[1, 1, 1, 1, 1]",high,middle_middle_low,0472586d97db6daf.jpg_Person
-123053.jpg,Scenery,middle,middle,low,"[[346, 0, 79, 451]]",1.0,"[0, 1, 0, 0, 0]",low,middle_middle_low,123053.jpg_Scenery
-370899.jpg,Others,middle,middle,low,"[[162, 88, 101, 198], [440, 85, 78, 178]]",5.0,"[1, 0, 0, 0, 1]",high,middle_middle_low,370899.jpg_Others
-141278.jpg,Machine,middle,middle,middle,"[[328, 92, 104, 93], [328, 92, 104, 93]]",3.5,"[0, 0, 0, 1, 1]",middle,middle_middle_middle,141278.jpg_Machine
+214720.jpg,Food,middle,middle,low,"[[85, 158, 49, 122], [85, 158, 49, 122]]",4.0,"[1, 1, 1, 1, 0]",middle,middle_middle_low,214720.jpg_Food
+215114.jpg,Printed Material,middle,middle,low,"[[68, 301, 70, 132], [68, 301, 70, 132]]",4.0,"[1, 1, 0, 0, 0]",middle,middle_middle_low,215114.jpg_Printed Material
+1ddcde13ef6914c9.jpg,Toy,middle,middle,low,"[[672, 238, 121, 609]]",4.0,"[0, 1, 0, 1, 0]",middle,middle_middle_low,1ddcde13ef6914c9.jpg_Toy
+d01d43bf0d8dc8e5.jpg,Vehicle Plate,middle,middle,low,"[[204, 430, 123, 195], [204, 430, 123, 195]]",2.0,"[0, 1, 0, 0, 0]",low,middle_middle_low,d01d43bf0d8dc8e5.jpg_Vehicle Plate
+21465.jpg,Home interior,middle,middle,low,"[[199, 8, 41, 112]]",1.0,"[0, 0, 0, 1, 0]",low,middle_middle_low,21465.jpg_Home interior
+101882.jpg,Place Identifier,middle,middle,low,"[[97, 95, 78, 324], [97, 95, 78, 324]]",4.5,"[0, 1, 0, 0, 0]",high,middle_middle_low,101882.jpg_Place Identifier
+5bcc87c13b42e844.jpg,Person,middle,middle,low,"[[387, 193, 254, 412]]",5.0,"[1, 0, 0, 0, 0]",high,middle_middle_low,5bcc87c13b42e844.jpg_Person
+022c1f420446d118.jpg,Others,middle,middle,low,"[[400, 33, 121, 214], [400, 33, 121, 214]]",5.0,"[1, 0, 0, 1, 0]",high,middle_middle_low,022c1f420446d118.jpg_Others
 4efbf3d3374b6f2a.jpg,Finger,middle,middle,middle,"[[209, 0, 208, 301]]",4.0,"[0, 0, 0, 1, 0]",middle,middle_middle_middle,4efbf3d3374b6f2a.jpg_Finger
-100958.jpg,Toy,middle,middle,middle,"[[269, 308, 107, 107]]",4.0,"[0, 0, 0, 1, 0]",middle,middle_middle_middle,100958.jpg_Toy
+141278.jpg,Machine,middle,middle,middle,"[[328, 92, 104, 93], [328, 92, 104, 93]]",3.5,"[0, 0, 0, 1, 1]",middle,middle_middle_middle,141278.jpg_Machine
 170968.jpg,Printed Material,middle,middle,middle,"[[327, 281, 90, 102], [327, 281, 90, 102]]",2.5,"[0, 0, 1, 0, 0]",middle,middle_middle_middle,170968.jpg_Printed Material
-333452abf04d1b2b.jpg,Book,middle,middle,middle,"[[267, 398, 360, 319]]",3.0,"[0, 0, 1, 0, 0]",middle,middle_middle_middle,333452abf04d1b2b.jpg_Book
-119337.jpg,Clothing,middle,middle,middle,"[[346, 211, 145, 215]]",2.0,"[0, 0, 1, 1, 0]",low,middle_middle_middle,119337.jpg_Clothing
+100958.jpg,Toy,middle,middle,middle,"[[269, 308, 107, 107]]",4.0,"[0, 0, 0, 1, 0]",middle,middle_middle_middle,100958.jpg_Toy
+189820.jpg,Screen,middle,middle,middle,"[[190, 84, 82, 113]]",2.0,"[0, 0, 0, 1, 0]",low,middle_middle_middle,189820.jpg_Screen
+167e73349f96c0e2.jpg,Musical instrument,middle,middle,middle,"[[610, 136, 222, 222], [610, 136, 222, 222]]",2.5,"[0, 1, 1, 0, 0]",middle,middle_middle_middle,167e73349f96c0e2.jpg_Musical instrument
+104999.jpg,Accessory,middle,middle,middle,"[[135, 118, 63, 91]]",5.0,"[1, 0, 1, 0, 1]",high,middle_middle_middle,104999.jpg_Accessory
+133766.jpg,Book,middle,middle,middle,"[[157, 63, 87, 94], [142, 208, 89, 109], [401, 71, 86, 89], [503, 210, 88, 106], [503, 210, 88, 107], [158, 64, 86, 93], [401, 71, 86, 89], [157, 63, 87, 94], [142, 208, 89, 109], [401, 71, 86, 89], [503, 210, 88, 106]]",3.36,"[0, 0, 1, 1, 0]",middle,middle_middle_middle,133766.jpg_Book
 171548.jpg,Vehicle Plate,middle,middle,middle,"[[160, 292, 154, 165], [375, 305, 109, 164], [160, 292, 154, 165], [375, 305, 109, 164]]",4.0,"[1, 0, 1, 0, 1]",middle,middle_middle_middle,171548.jpg_Vehicle Plate
 106166.jpg,Pet,middle,middle,middle,"[[372, 207, 76, 79]]",3.0,"[0, 0, 0, 1, 0]",middle,middle_middle_middle,106166.jpg_Pet
-392476.jpg,Screen,middle,middle,middle,"[[102, 109, 129, 122]]",3.0,"[1, 0, 0, 0, 0]",middle,middle_middle_middle,392476.jpg_Screen
-104666.jpg,Home interior,middle,middle,middle,"[[431, 136, 97, 118]]",2.0,"[0, 0, 1, 0, 0]",low,middle_middle_middle,104666.jpg_Home interior
